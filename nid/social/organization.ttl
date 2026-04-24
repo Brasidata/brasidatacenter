@@ -78,10 +78,10 @@ schema:WebSite rdf:type owl:Class .
 ###  http://datacenter.app.br/nid/social/organization.ttl#Brasidata
 bdc_org:Brasidata rdf:type owl:NamedIndividual ,
                            foaf:Organization ;
-                  skos:altLabel "BRASIDATA ENGENHARIA"@pt_br ,
+                  skos:altLabel "BRASIDATA ENGENHARIA"@pt-br ,
                                 "BRASIDATA ENGINEERING"@en ;
                   rov:legalName "BRASIDATA CONSULTORIA EM ENGENHARIA, TECNOLOGIA, TREINAMENTO E DESENVOLVIMENTO DE SOFTWARE LTDA - ME" ;
-                  schema:areaServed "Mundial"@pt_br ,
+                  schema:areaServed "Mundial"@pt-br ,
                                     "Worldwide"@en ;
                   schema:name "BRASIDATA CONSULTORIA EM ENGENHARIA E TECNOLOGIA" .
 
@@ -92,7 +92,7 @@ bdc_org:GitHub rdf:type owl:NamedIndividual ,
                         schema:WebSite ;
                rov:legalName "GitHub, Inc." ;
                foaf:homepage "https://github.com/"^^xsd:anyURI ;
-               schema:areaServed "Mundial"@pt_br ,
+               schema:areaServed "Mundial"@pt-br ,
                                  "Worldwide"@en ;
                schema:name "GitHub" .
 
@@ -108,7 +108,7 @@ bdc_org:LinkedIn rdf:type owl:NamedIndividual ,
                           schema:WebSite ;
                  rov:legalName "LinkedIn Corporation" ;
                  foaf:homepage "https://www.linkedin.com/"^^xsd:anyURI ;
-                 schema:areaServed "Mundial"@pt_br ,
+                 schema:areaServed "Mundial"@pt-br ,
                                    "Worldwide"@en ;
                  schema:name "LinkedIn" .
 
@@ -123,7 +123,7 @@ bdc_org:Zigurat rdf:type owl:NamedIndividual ,
                          foaf:Organization ,
                          cv:EducationalOrg ;
                 rov:legalName "ZIGURAT GLOBAL INSTITUTE OF TECHNOLOGY SL" ;
-                schema:areaServed "Mundial"@pt_br ,
+                schema:areaServed "Mundial"@pt-br ,
                                   "Worldwide"@en ;
                 schema:name "ZIGURAT" .
 
@@ -132,16 +132,16 @@ bdc_org:PUC_Rio rdf:type owl:NamedIndividual ,
                            foaf:Organization ,
                            cv:EducationalOrg ;
                 rov:legalName "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro" ;
-                schema:areaServed "Brasil"@pt_br ,
+                schema:areaServed "Brasil"@pt-br ,
                                   "Brazil"@en ;
-                schema:name "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro"@pt_br ,
+                schema:name "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro"@pt-br ,
                                 "Pontifical Catholic University of Rio de Janeiro"@en .
 
 bdc_org:Uniabeu rdf:type owl:NamedIndividual ,
                            foaf:Organization ,
                            cv:EducationalOrg ;
                 rov:legalName "ASSOCIACAO BRASILEIRA DE ENSINO UNIVERSITARIO ABEU" ;
-                schema:areaServed "Brasil"@pt_br ,
+                schema:areaServed "Brasil"@pt-br ,
                                   "Brazil"@en ;
                 schema:name "UNIABEU" .
 
