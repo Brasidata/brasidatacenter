@@ -369,7 +369,7 @@ def main():
     html_path = base_dir / "nid" / "index.html"
     
     # Define Base URI matching the ontology
-    base_uri = "http://kb.elias.eng.br/nid.ttl#"
+    base_uri = "http://kb.elias.eng.br/nid/elias.ttl#"
 
     print(f"Loading RDF from {ttl_path}...")
     g = Graph()
