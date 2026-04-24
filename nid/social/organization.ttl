@@ -145,3 +145,12 @@ bdc_org:Uniabeu rdf:type owl:NamedIndividual ,
                                   "Brazil"@en ;
                 schema:name "UNIABEU" .
 
+
+bdc_org:buildingSMART rdf:type owl:NamedIndividual ,
+                           foaf:Organization ,
+                           cv:EducationalOrg ;
+                rov:legalName "buildingSMART International" ;
+                schema:areaServed "Mundial"@pt-br ,
+                                  "Worldwide"@en ;
+                schema:name "buildingSMART International" .
+
