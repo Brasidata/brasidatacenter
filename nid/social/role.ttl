@@ -84,3 +84,8 @@ bdc_role:SkillGroup rdf:type owl:Class ;
                                        "Habilidades"@pt-br .
 
 bdc_role:hasSkillGroup rdf:type owl:Class .
+
+
+bdc_role:hasAchievement rdf:type owl:ObjectProperty ;
+                        rdfs:label "hasAchievement"@en ,
+                                   "hasAchievement"@pt-br .
