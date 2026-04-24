@@ -130,7 +130,8 @@ bdc_org:Zigurat rdf:type owl:NamedIndividual ,
 
 bdc_org:PUC_Rio rdf:type owl:NamedIndividual ,
                            foaf:Organization ,
-                           cv:EducationalOrg ;
+                           cv:EducationalOrg ,
+                           cv:Company ;
                 rov:legalName "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro" ;
                 schema:areaServed "Brasil"@pt-br ,
                                   "Brazil"@en ;
@@ -145,6 +146,39 @@ bdc_org:Uniabeu rdf:type owl:NamedIndividual ,
                                   "Brazil"@en ;
                 schema:name "UNIABEU" .
 
+
+bdc_org:ReforceSul rdf:type owl:NamedIndividual ,
+                           foaf:Organization ,
+                           cv:Company ;
+                schema:areaServed "Brasil"@pt-br ,
+                                  "Brazil"@en ;
+                schema:name "ReforceSul"@pt-br ,
+                                "ReforceSul"@en .
+
+
+bdc_org:InfraCidades rdf:type owl:NamedIndividual ,
+                           foaf:Organization ,
+                           cv:Company ;
+                schema:areaServed "Brasil"@pt-br ,
+                                  "Brazil"@en ;
+                schema:name "Programa InfraCidades"@pt-br ,
+                                "InfraCidades Program"@en .
+
+bdc_org:Concat rdf:type owl:NamedIndividual ,
+                           foaf:Organization ,
+                           cv:Company ;
+                schema:areaServed "Brasil"@pt-br ,
+                                  "Brazil"@en ;
+                schema:name "Concat Soluções Inteligentes"@pt-br ,
+                                "Concat Smart Solutions"@en .
+
+bdc_org:CERTI rdf:type owl:NamedIndividual ,
+                           foaf:Organization ,
+                           cv:Company ;
+                schema:areaServed "Brasil"@pt-br ,
+                                  "Brazil"@en ;
+                schema:name "Fundação CERTI"@pt-br ,
+                                "CERTI Foundation"@en .
 
 bdc_org:buildingSMART rdf:type owl:NamedIndividual ,
                            foaf:Organization ,
