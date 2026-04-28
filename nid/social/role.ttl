@@ -1,91 +1,39 @@
-@prefix : <http://datacenter.app.br/nid/social/role.ttl#> .
+
+@prefix schema: <https://schema.org/> .
 @prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
+@prefix role: <http://datacenter.app.br/nid/social/role.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix bdc_role: <http://datacenter.app.br/nid/social/role.ttl#> .
 @base <http://datacenter.app.br/nid/social/role.ttl#> .
 
 <http://datacenter.app.br/nid/social/role.ttl> rdf:type owl:Ontology .
 
-#################################################################
-#    Data properties
-#################################################################
 
-###  http://rdfs.org/resume-rdf/cv.rdfs#targetJobDescription
-cv:targetJobDescription rdf:type owl:DatatypeProperty .
-
-
-###  http://rdfs.org/resume-rdf/cv.rdfs#targetJobTitle
-cv:targetJobTitle rdf:type owl:DatatypeProperty .
-
-
-###  https://schema.org/description
-schema:description rdf:type owl:DatatypeProperty .
-
-
-###  https://schema.org/name
-schema:name rdf:type owl:DatatypeProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://rdfs.org/resume-rdf/cv.rdfs#Target
-cv:Target rdf:type owl:Class .
-
-
-###  https://schema.org/Occupation
-schema:Occupation rdf:type owl:Class .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://datacenter.app.br/nid/social/role.ttl#BIMCoordinatorProfile
-bdc_role:BIMCoordinatorProfile rdf:type owl:Class ;
-                               rdfs:subClassOf cv:Target ,
-                                               schema:Occupation ;
-                               rdfs:comment "BIM Coordinator with 10 years of experience in managing clash detection..."@en ,
-                                            "Coordenador BIM com 10 anos de experiência em gestão de clash detection..."@pt-br ;
-                               rdfs:label "BIM Coordinator"@en ,
-                                          "Coordenador BIM"@pt-br .
-
-
-###  http://datacenter.app.br/nid/social/role.ttl#BIMResearcherProfile
-bdc_role:BIMResearcherProfile rdf:type owl:Class ;
+###  http://datacenter.app.br/nid/social/job.ttl#BIMCoordinatorProfile
+role:BIMCoordinatorProfile rdf:type owl:Class ;
                               rdfs:subClassOf cv:Target ,
                                               schema:Occupation ;
-                              rdfs:comment "Engenheiro Pesquisador em Modelagem e Simulação de Informações"@pt-br ,
-                                           "Research Engineer in Information Modeling and Simulation"@en ;
-                              rdfs:label "Engenheiro Pesquisador"@pt-br ,
-                                         "Research Engineer"@en .
+                              rdfs:comment "BIM Coordinator with 10 years of experience in managing clash detection..."@en ,
+                                           "Coordenador BIM com 10 anos de experiência em gestão de clash detection..."@pt-br ;
+                              rdfs:label "BIM Coordinator"@en ,
+                                         "Coordenador BIM"@pt-br .
 
 
-###  http://datacenter.app.br/nid/social/role.ttl#BIMTechLeadProfile
-bdc_role:BIMTechLeadProfile rdf:type owl:Class ;
-                            rdfs:subClassOf cv:Target ,
-                                            schema:Occupation ;
-                            rdfs:comment "Líder Técnico focado em web semântica, parsers IFC e pipelines de dados..."@pt-br ,
-                                         "Technical Lead focused on semantic web, IFC parsers, and data pipelines..."@en ;
-                            rdfs:label "Líder Técnico"@pt-br ,
-                                       "Tech Lead"@en .
-
-bdc_role:SkillGroup rdf:type owl:Class ;
-                            rdfs:subClassOf cv:CV ;
-                            rdfs:label "Skill Group"@en ,
-                                       "Habilidades"@pt-br .
-                            rdfs:comment "Skill Group"@en ,
-                                       "Habilidades"@pt-br .
-
-bdc_role:hasSkillGroup rdf:type owl:Class .
+###  http://datacenter.app.br/nid/social/job.ttl#BIMResearcherProfile
+role:BIMResearcherProfile rdf:type owl:Class ;
+                             rdfs:subClassOf cv:Target ,
+                                             schema:Occupation ;
+                             rdfs:comment "Engenheiro Pesquisador em Modelagem e Simulação de Informações"@pt-br ,
+                                          "Research Engineer in Information Modeling and Simulation"@en ;
+                             rdfs:label "Engenheiro Pesquisador"@pt-br ,
+                                        "Research Engineer"@en .
 
 
-bdc_role:hasAchievement rdf:type owl:ObjectProperty ;
-                        rdfs:label "hasAchievement"@en ,
-                                   "hasAchievement"@pt-br .
+###  http://datacenter.app.br/nid/social/job.ttl#BIMTechLeadProfile
+role:BIMTechLeadProfile rdf:type owl:Class ;
+                           rdfs:subClassOf cv:Target ,
+                                           schema:Occupation ;
+                           rdfs:comment "Líder Técnico focado em web semântica, parsers IFC e pipelines de dados..."@pt-br ,
+                                        "Technical Lead focused on semantic web, IFC parsers, and data pipelines..."@en ;
+                           rdfs:label "Líder Técnico"@pt-br ,
+                                      "Tech Lead"@en .
