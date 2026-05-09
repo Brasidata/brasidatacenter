@@ -112,7 +112,7 @@ sh:NodeShape rdf:type owl:Class .
                        sh:description "Projection of a job guardrail view shape"@en ;
                        sh:name "JobGuardrailViewShape"@en ;
                        sh:property [ sh:datatype rdf:langString ;
-                                     sh:description "Human-readable name of the term set."@en ;
+                                     sh:description "Human-readable name of the job offer."@en ;
                                      sh:minCount 1 ;
                                      sh:name "name" ;
                                      sh:path schema:name
