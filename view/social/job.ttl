@@ -154,7 +154,7 @@ sh:NodeShape rdf:type owl:Class .
                                      sh:minCount 1 ;
                                      sh:maxCount 1 ;
                                      sh:path schema:employmentType ;
-                                     sh:in ( jobid:CONTRACT jobid:FULL_TIME jobid:INTERNSHIP jobid:PART_TIME jobid:SEASONAL jobid:TEMPORARY )
+                                     sh:in ( jobid:CONTRACT jobid:FULL_TIME jobid:INTERNSHIP jobid:PART_TIME jobid:SEASONAL jobid:TEMPORARY jobid:UNKNOWN_EMPLOYMENT )
                                    ] ,
                                    [ sh:datatype xsd:string ;
                                      sh:description "The location type of the job (e.g., hybrid, remote, onsite)."@en ;
@@ -162,7 +162,7 @@ sh:NodeShape rdf:type owl:Class .
                                      sh:minCount 1 ;
                                      sh:maxCount 1 ;
                                      sh:path schema:jobLocationType ;
-                                     sh:in ( jobid:ASYNCHRONOUS jobid:HYBRID jobid:ONSITE jobid:REMOTE jobid:SYNCHRONOUS jobid:UNKNOWN )
+                                     sh:in ( jobid:ASYNCHRONOUS jobid:HYBRID jobid:ONSITE jobid:REMOTE jobid:SYNCHRONOUS jobid:UNKNOWN_LOCATION )
                                    ] ,
                                    [ sh:datatype rdf:langString ;
                                      sh:description "Skills required for the job."@en ;
