@@ -5,7 +5,7 @@ PREFIX schema:  <http://schema.org/>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri (GROUP_CONCAT(?enumValue; separator=",") AS ?enumValues)
+SELECT ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri ?maxCount (GROUP_CONCAT(?enumValue; separator=",") AS ?enumValues)
 WHERE {
   view:JobGuardrailViewShape a sh:NodeShape ;
                              sh:property ?propertyNode .
@@ -42,6 +42,10 @@ WHERE {
   }
 
   OPTIONAL {
+    ?propertyNode sh:maxCount ?maxCount .
+  }
+
+  OPTIONAL {
     ?propertyNode sh:in ?inList .
     ?inList rdf:rest*/rdf:first ?enumValue .
     
@@ -52,4 +56,4 @@ WHERE {
     }
   }
 }
-GROUP BY ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri
+GROUP BY ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri ?maxCount
