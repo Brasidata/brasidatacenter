@@ -1,11 +1,31 @@
 PREFIX jobid:   <http://datacenter.app.br/nid/social/job.ttl#>
-
 PREFIX view:    <http://datacenter.app.br/view/social/job.ttl#>
-
 PREFIX sh:      <http://www.w3.org/ns/shacl#>
-
 PREFIX schema:  <http://schema.org/>
-
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-SELECT
+SELECT ?propertyName ?propertyType ?semanticUri ?isRequired
+WHERE {
+  view:JobGuardrailViewShape a sh:NodeShape ;
+                             sh:property ?propertyNode .
+  
+  ?propertyNode sh:name ?propertyName ;
+                sh:path ?semanticUri .
+                
+  OPTIONAL {
+    ?propertyNode sh:datatype ?datatypeUri .
+    BIND(
+      IF(?datatypeUri = rdf:langString, "object",
+      IF(?datatypeUri = xsd:string, "string",
+      IF(?datatypeUri = xsd:integer, "integer",
+      IF(?datatypeUri = xsd:boolean, "boolean", "string"))))
+      AS ?propertyType
+    )
+  }
+  
+  OPTIONAL {
+    ?propertyNode sh:minCount ?minCount .
+    BIND(IF(?minCount >= 1, "true"^^xsd:boolean, "false"^^xsd:boolean) AS ?isRequired)
+  }
+}

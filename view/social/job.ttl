@@ -81,3 +81,5 @@ sh:NodeShape rdf:type owl:Class .
                                    ] ;
                        sh:targetClass schema:DefinedTermSet .
 
+
+
