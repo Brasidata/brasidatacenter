@@ -112,7 +112,9 @@ sh:NodeShape rdf:type owl:Class .
                        sh:description "Projection of a job guardrail view shape"@en ;
                        sh:name "JobGuardrailViewShape"@en ;
                        sh:property [ sh:datatype xsd:string ;
+                                     sh:description "A unique string that identifies the job offer."@en ;
                                      sh:name "identifier" ;
+                                     sh:minCount 1 ;
                                      sh:path dcterms:identifier ;
                                      sh:pattern "^[A-Za-z][A-Za-z0-9_]{2,127}$"
                                    ] ,
@@ -121,6 +123,18 @@ sh:NodeShape rdf:type owl:Class .
                                      sh:minCount 1 ;
                                      sh:name "name" ;
                                      sh:path schema:name
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The organization offering the job."@en ;
+                                     sh:name "hiringOrganization" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:hiringOrganization
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The geographic location of the job."@en ;
+                                     sh:name "location" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:jobLocation
                                    ] ;
                        sh:targetClass schema:DefinedTermSet .
 
