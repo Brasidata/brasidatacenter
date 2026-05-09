@@ -12,7 +12,9 @@
 @prefix schema: <http://schema.org/> .
 @base <http://datacenter.app.br/ns/social/organization.ttl#> .
 
-<http://datacenter.app.br/ns/social/organization.ttl> rdf:type owl:Ontology .
+<http://datacenter.app.br/ns/social/organization.ttl> rdf:type owl:Ontology ;
+                                                owl:versionIRI <http://datacenter.app.br/ns/social/organization.ttl/1.0.0> ;
+                                               rdfs:label "BrasiDataCenter Social Organization Ontology" .
 
 #################################################################
 #    Data properties

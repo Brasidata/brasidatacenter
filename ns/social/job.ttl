@@ -9,6 +9,7 @@
 @base <http://datacenter.app.br/ns/social/job.ttl#> .
 
 <http://datacenter.app.br/ns/social/job.ttl> rdf:type owl:Ontology ;
+                                               owl:versionIRI <http://datacenter.app.br/ns/social/job.ttl/1.0.0> ;
                                               rdfs:label "BrasiDataCenter Social Job Ontology" .
 
 #################################################################

@@ -10,6 +10,7 @@
 @base <http://datacenter.app.br/nid/social/job.ttl#> .
 
 <http://datacenter.app.br/nid/social/job.ttl> rdf:type owl:Ontology ;
+                                               owl:versionIRI <http://datacenter.app.br/nid/social/job.ttl/1.0.0> ;
                                                schema:name "OntoBDC" .
 
 #################################################################

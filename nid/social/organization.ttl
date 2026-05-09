@@ -14,6 +14,7 @@
 @base <http://datacenter.app.br/nid/social/organization.ttl#> .
 
 <http://datacenter.app.br/nid/social/organization.ttl> rdf:type owl:Ontology ;
+                                                        owl:versionIRI <http://datacenter.app.br/nid/social/organization.ttl/1.0.0> ;
                                                         schema:name "Social" .
 
 #################################################################
