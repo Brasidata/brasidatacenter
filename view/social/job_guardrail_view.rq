@@ -5,7 +5,7 @@ PREFIX schema:  <http://schema.org/>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?propertyName ?propertyType ?semanticUri ?isRequired
+SELECT ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage
 WHERE {
   view:JobGuardrailViewShape a sh:NodeShape ;
                              sh:property ?propertyNode .
@@ -14,13 +14,21 @@ WHERE {
                 sh:path ?semanticUri .
                 
   OPTIONAL {
+    ?propertyNode sh:description ?propertyDescription .
+  }
+                
+  OPTIONAL {
     ?propertyNode sh:datatype ?datatypeUri .
     BIND(
-      IF(?datatypeUri = rdf:langString, "object",
+      IF(?datatypeUri = rdf:langString, "string",
       IF(?datatypeUri = xsd:string, "string",
       IF(?datatypeUri = xsd:integer, "integer",
       IF(?datatypeUri = xsd:boolean, "boolean", "string"))))
       AS ?propertyType
+    )
+    BIND(
+      IF(?datatypeUri = rdf:langString, "true"^^xsd:boolean, "false"^^xsd:boolean)
+      AS ?isMultiLanguage
     )
   }
   
