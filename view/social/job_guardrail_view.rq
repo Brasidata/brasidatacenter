@@ -1,0 +1,11 @@
+PREFIX jobid:   <http://datacenter.app.br/nid/social/job.ttl#>
+
+PREFIX view:    <http://datacenter.app.br/view/social/job.ttl#>
+
+PREFIX sh:      <http://www.w3.org/ns/shacl#>
+
+PREFIX schema:  <http://schema.org/>
+
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT

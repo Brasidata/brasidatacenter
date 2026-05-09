@@ -1,0 +1,83 @@
+@prefix : <http://datacenter.app.br/view/social/job.ttl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jobid: <http://datacenter.app.br/nid/social/job.ttl#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://datacenter.app.br/view/social/job.ttl#> .
+
+<http://datacenter.app.br/view/social/job.ttl> rdf:type owl:Ontology ;
+                                                owl:versionIRI <http://datacenter.app.br/view/social/job.ttl/1.0.0> ;
+                                                owl:imports <http://datacenter.app.br/nid/social/job.ttl> ;
+                                                dcterms:description "SHACL shapes used to project job controlled vocabularies into JSON schema-like structures."@en ;
+                                                dcterms:title "Job schema view shapes"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#datatype
+sh:datatype rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#description
+sh:description rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#minCount
+sh:minCount rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#name
+sh:name rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/ns/shacl#NodeShape
+sh:NodeShape rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/view/social/job.ttl#JobGuardrailViewShape
+:JobGuardrailViewShape rdf:type owl:NamedIndividual ,
+                                sh:NodeShape ;
+                       sh:description "Projection of a job guardrail view shape"@en ;
+                       sh:name "JobGuardrailViewShape"@en ;
+                       sh:property [ sh:datatype rdf:langString ;
+                                     sh:description "Human-readable name of the term set."@en ;
+                                     sh:minCount 1 ;
+                                     sh:name "name" ;
+                                     sh:path schema:name
+                                   ] ;
+                       sh:targetClass schema:DefinedTermSet .
+
