@@ -111,7 +111,12 @@ sh:NodeShape rdf:type owl:Class .
                        prof:hasResource :JobGuardrailViewQueryResource ;
                        sh:description "Projection of a job guardrail view shape"@en ;
                        sh:name "JobGuardrailViewShape"@en ;
-                       sh:property [ sh:datatype rdf:langString ;
+                       sh:property [ sh:datatype xsd:string ;
+                                     sh:name "identifier" ;
+                                     sh:path dcterms:identifier ;
+                                     sh:pattern "^[A-Za-z][A-Za-z0-9_]{2,127}$"
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
                                      sh:description "Human-readable name of the job offer."@en ;
                                      sh:minCount 1 ;
                                      sh:name "name" ;
