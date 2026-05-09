@@ -1,12 +1,12 @@
 @prefix : <http://datacenter.app.br/nid/social/job.ttl#> .
 @prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
+@prefix obdc_job: <http://datacenter.app.br/ns/social/job.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
-@prefix obdc_job: <http://datacenter.app.br/ns/social/job.ttl#> .
 @base <http://datacenter.app.br/nid/social/job.ttl#> .
 
 <http://datacenter.app.br/nid/social/job.ttl> rdf:type owl:Ontology ;
@@ -48,6 +48,12 @@ schema:DefinedTerm rdf:type owl:Class .
 ###  http://schema.org/DefinedTermSet
 schema:DefinedTermSet rdf:type owl:Class .
 
+
+obdc_job:JobLocationTypeEnumValue rdf:type owl:Class ;
+                                  schema:terms :HYBRID ,
+                                               :ONSITE ,
+                                               :REMOTE ,
+                                               :UNKNOWN .
 
 #################################################################
 #    Individuals
@@ -106,19 +112,6 @@ schema:DefinedTermSet rdf:type owl:Class .
                     schema:name "Estágio"@pt-br ,
                                 "Internship"@en ;
                     schema:termCode "internship" .
-
-
-###  http://datacenter.app.br/nid/social/job.ttl#JobLocationTypeEnumValue
-obdc_job:JobLocationTypeEnumValue rdf:type owl:NamedIndividual ,
-                                           schema:DefinedTermSet ;
-                                  schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en ,
-                                                     "Vocabulário controlado para onde o trabalho é realizado (presencial, híbrido, remoto, desconhecido)."@pt-br ;
-                                  schema:name "Tipo de local de trabalho"@pt-br ,
-                                              "Work location type"@en ;
-                                  schema:terms obdc_job:HYBRID ,
-                                               obdc_job:ONSITE ,
-                                               obdc_job:REMOTE ,
-                                               obdc_job:UNKNOWN .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#ONSITE
