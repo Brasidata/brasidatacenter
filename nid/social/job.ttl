@@ -5,129 +5,213 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
-@prefix obdc_job: <http://datacenter.app.br/ns/social/job.ttl#> .
+@prefix schema: <http://schema.org/> .
+@prefix obdc_job: <http://datacenter.app.br/nid/social/job.ttl#> .
 @base <http://datacenter.app.br/nid/social/job.ttl#> .
 
-<http://datacenter.app.br/nid/social/job.ttl> rdf:type owl:Ontology .
+<http://datacenter.app.br/nid/social/job.ttl> rdf:type owl:Ontology ;
+                                               owl:versionIRI <http://datacenter.app.br/nid/social/job.ttl/1.0.0> ;
+                                               schema:name "OntoBDC" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/inDefinedTermSet
+schema:inDefinedTermSet rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/termCode
+schema:termCode rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/terms
+schema:terms rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://schema.org/DefinedTerm
+schema:DefinedTerm rdf:type owl:Class .
+
+
+###  http://schema.org/DefinedTermSet
+schema:DefinedTermSet rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
+###  http://datacenter.app.br/nid/social/job.ttl#ASYNCHRONOUS
+obdc_job:ASYNCHRONOUS rdf:type owl:NamedIndividual ,
+                               schema:DefinedTerm ;
+                      schema:description "Asynchronous communication: non-real-time interaction (e.g., email, tickets, messages)."@en ,
+                                         "Comunicação assíncrona: interação não simultânea (ex.: e-mail, tickets, mensagens)."@pt-br ;
+                      schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                      schema:name "Assincrono"@pt-br ,
+                                  "Asynchronous"@en ;
+                      schema:termCode "asynchronous" .
+
+
 ###  http://datacenter.app.br/nid/social/job.ttl#CONTRACT
-:CONTRACT rdf:type schema:DefinedTerm ;
-                 schema:name "Contract"@en ,
-                                        "Contrato"@pt-br ;
-                schema:termCode "contract" ;
-                schema:description "Relação de trabalho formalizada por contrato."@pt-br ,
-                                   "Employment relationship formalized by a contract."@en ;
-                schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue .
+obdc_job:CONTRACT rdf:type owl:NamedIndividual ,
+                           schema:DefinedTerm ;
+                  schema:description "Employment relationship formalized by a contract."@en ,
+                                     "Relação de trabalho formalizada por contrato."@pt-br ;
+                  schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                  schema:name "Contract"@en ,
+                              "Contrato"@pt-br ;
+                  schema:termCode "contract" .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#EmploymentTypeEnumValue
+obdc_job:EmploymentTypeEnumValue rdf:type owl:NamedIndividual ,
+                                          schema:DefinedTermSet ;
+                                 schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en ,
+                                                    "Vocabulário controlado de tipos de vínculo/contratação usados em vagas."@pt-br ;
+                                 schema:name "Employment type"@en ,
+                                             "Tipo de vínculo"@pt-br ;
+                                 schema:terms obdc_job:CONTRACT ,
+                                              obdc_job:FULL_TIME ,
+                                              obdc_job:INTERNSHIP ,
+                                              obdc_job:PART_TIME ,
+                                              obdc_job:SEASONAL ,
+                                              obdc_job:TEMPORARY .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#FULL_TIME
-:FULL_TIME rdf:type schema:DefinedTerm ;
-                 schema:name "Full-time"@en ,
-                                        "Integral"@pt-br ;
-                schema:termCode "full-time" ;
-                schema:description "Jornada integral (carga horária padrão de tempo integral)."@pt-br ,
-                                   "Full-time workload (standard full-time hours)."@en ;
-                schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue .
+obdc_job:FULL_TIME rdf:type owl:NamedIndividual ,
+                            schema:DefinedTerm ;
+                   schema:description "Full-time workload (standard full-time hours)."@en ,
+                                      "Jornada integral (carga horária padrão de tempo integral)."@pt-br ;
+                   schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                   schema:name "Full-time"@en ,
+                               "Integral"@pt-br ;
+                   schema:termCode "full-time" .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#HYBRID
+obdc_job:HYBRID rdf:type owl:NamedIndividual ,
+                         schema:DefinedTerm ;
+                schema:description "Hybrid arrangement: combines remote and on-site work."@en ,
+                                   "Modelo híbrido: combina trabalho remoto e presencial."@pt-br ;
+                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                schema:name "Hybrid"@en ,
+                            "Hybrid"@pt-br ;
+                schema:termCode "hybrid" .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#INTERNSHIP
-:INTERNSHIP rdf:type schema:DefinedTerm ;
-                 schema:name "Internship"@en ,
-                                        "Estágio"@pt-br ;
-                schema:termCode "internship" ;
-                schema:description "Vaga de estágio para estudantes, com foco em formação e aprendizagem."@pt-br ,
-                                   "Internship position for students, primarily focused on training and learning."@en ;
-                schema:inDefinedTermSet :EmploymentTypeEnumValue .
+obdc_job:INTERNSHIP rdf:type owl:NamedIndividual ,
+                             schema:DefinedTerm ;
+                    schema:description "Internship position for students, primarily focused on training and learning."@en ,
+                                       "Vaga de estágio para estudantes, com foco em formação e aprendizagem."@pt-br ;
+                    schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                    schema:name "Estágio"@pt-br ,
+                                "Internship"@en ;
+                    schema:termCode "internship" .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#JobLocationTypeEnumValue
+obdc_job:JobLocationTypeEnumValue rdf:type owl:NamedIndividual ,
+                                           schema:DefinedTermSet ;
+                                  schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en ,
+                                                     "Vocabulário controlado para onde o trabalho é realizado (presencial, híbrido, remoto, desconhecido)."@pt-br ;
+                                  schema:name "Tipo de local de trabalho"@pt-br ,
+                                              "Work location type"@en ;
+                                  schema:terms obdc_job:HYBRID ,
+                                               obdc_job:ONSITE ,
+                                               obdc_job:REMOTE ,
+                                               obdc_job:UNKNOWN .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#ONSITE
+obdc_job:ONSITE rdf:type owl:NamedIndividual ,
+                         schema:DefinedTerm ;
+                schema:description "On-site work: duties performed at the employer's location."@en ,
+                                   "Trabalho presencial: atividades realizadas no local do empregador."@pt-br ;
+                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                schema:name "Onsite"@en ,
+                            "Onsite"@pt-br ;
+                schema:termCode "on-site" ,
+                                "onsite" .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#PART_TIME
-:PART_TIME rdf:type schema:DefinedTerm ;
-                 schema:name "Part-time"@en ,
-                                        "Meio período"@pt-br ;
-                schema:termCode "part-time" ;
-                schema:description "Meio período; carga horária reduzida em relação ao tempo integral."@pt-br ,
-                                   "Part-time workload; reduced hours compared to full-time."@en ;
-                schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue .
+obdc_job:PART_TIME rdf:type owl:NamedIndividual ,
+                            schema:DefinedTerm ;
+                   schema:description "Meio período; carga horária reduzida em relação ao tempo integral."@pt-br ,
+                                      "Part-time workload; reduced hours compared to full-time."@en ;
+                   schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                   schema:name "Meio período"@pt-br ,
+                               "Part-time"@en ;
+                   schema:termCode "part-time" .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#REMOTE
+obdc_job:REMOTE rdf:type owl:NamedIndividual ,
+                         schema:DefinedTerm ;
+                schema:description "Remote work: duties performed off-site without continuous physical presence."@en ,
+                                   "Trabalho remoto: atividades executadas à distância, sem presença física contínua."@pt-br ;
+                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                schema:name "Remote"@en ,
+                            "Remoto"@pt-br ;
+                schema:termCode "remote" .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#SEASONAL
-:SEASONAL rdf:type schema:DefinedTerm ;
-                 schema:name "Seasonal"@en ,
-                                        "Sazonal"@pt-br ;
-                schema:termCode "seasonal" ;
-                schema:description "Contrato sazonal vinculado a períodos específicos (ex.: alta temporada)."@pt-br ,
-                                   "Seasonal employment tied to specific periods (e.g., peak season)."@en ;
-                schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue .
+obdc_job:SEASONAL rdf:type owl:NamedIndividual ,
+                           schema:DefinedTerm ;
+                  schema:description "Contrato sazonal vinculado a períodos específicos (ex.: alta temporada)."@pt-br ,
+                                     "Seasonal employment tied to specific periods (e.g., peak season)."@en ;
+                  schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                  schema:name "Sazonal"@pt-br ,
+                              "Seasonal"@en ;
+                  schema:termCode "seasonal" .
+
+
+###  http://datacenter.app.br/nid/social/job.ttl#SYNCHRONOUS
+obdc_job:SYNCHRONOUS rdf:type owl:NamedIndividual ,
+                              schema:DefinedTerm ;
+                     schema:description "Comunicação síncrona: interação em tempo real (ex.: reuniões ao vivo, chamadas)."@pt-br ,
+                                        "Synchronous communication: real-time interaction (e.g., live meetings, calls)."@en ;
+                     schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                     schema:name "Sincrono"@pt-br ,
+                                 "Synchronous"@en ;
+                     schema:termCode "synchronous" .
 
 
 ###  http://datacenter.app.br/nid/social/job.ttl#TEMPORARY
-:TEMPORARY rdf:type schema:DefinedTerm ;
-                 schema:name "Temporary"@en ,
-                                        "Temporário"@pt-br ;
-                schema:termCode "temporary" ;
-                schema:description "Contrato temporário com duração limitada e data fim definida."@pt-br ,
-                                   "Temporary employment with limited duration and a defined end date."@en ;
-                schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue .
+obdc_job:TEMPORARY rdf:type owl:NamedIndividual ,
+                            schema:DefinedTerm ;
+                   schema:description "Contrato temporário com duração limitada e data fim definida."@pt-br ,
+                                      "Temporary employment with limited duration and a defined end date."@en ;
+                   schema:inDefinedTermSet obdc_job:EmploymentTypeEnumValue ;
+                   schema:name "Temporary"@en ,
+                               "Temporário"@pt-br ;
+                   schema:termCode "temporary" .
 
 
-:HYBRID rdf:type schema:DefinedTerm ;
-                 schema:name "Hybrid"@en ,
-                                        "Hybrid"@pt-br ;
-                schema:termCode "hybrid" ;
-                schema:description "Modelo híbrido: combina trabalho remoto e presencial."@pt-br ,
-                                   "Hybrid arrangement: combines remote and on-site work."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
-
-
-:REMOTE rdf:type schema:DefinedTerm ;
-                 schema:name "Remote"@en ,
-                                        "Remoto"@pt-br ;
-                schema:termCode "remote" ;
-                schema:description "Trabalho remoto: atividades executadas à distância, sem presença física contínua."@pt-br ,
-                                   "Remote work: duties performed off-site without continuous physical presence."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
-
-
-:ONSITE rdf:type schema:DefinedTerm ;
-                 schema:name "Onsite"@en ,
-                                        "Onsite"@pt-br ;
-                schema:termCode "onsite", "on-site" ;
-                schema:description "Trabalho presencial: atividades realizadas no local do empregador."@pt-br ,
-                                   "On-site work: duties performed at the employer's location."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
-
-
-:SYNCHRONOUS rdf:type schema:DefinedTerm ;
-                 schema:name "Synchronous"@en ,
-                                        "Sincrono"@pt-br ;
-                schema:termCode "synchronous" ;
-                schema:description "Comunicação síncrona: interação em tempo real (ex.: reuniões ao vivo, chamadas)."@pt-br ,
-                                   "Synchronous communication: real-time interaction (e.g., live meetings, calls)."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
-
-
-:ASYNCHRONOUS rdf:type schema:DefinedTerm ;
-                 schema:name "Asynchronous"@en ,
-                                        "Assincrono"@pt-br ;
-                schema:termCode "asynchronous" ;
-                schema:description "Comunicação assíncrona: interação não simultânea (ex.: e-mail, tickets, mensagens)."@pt-br ,
-                                   "Asynchronous communication: non-real-time interaction (e.g., email, tickets, messages)."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
-
-
-:UNKNOWN rdf:type schema:DefinedTerm ;
-                 schema:name "Unknown"@en ,
-                                        "Desconhecido"@pt-br ;
-                schema:termCode "unknown" ;
-                schema:description "Usado quando o valor não é informado ou não pode ser inferido."@pt-br ,
-                                   "Used when the value is not provided or cannot be inferred."@en ;
-                schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue .
+###  http://datacenter.app.br/nid/social/job.ttl#UNKNOWN
+obdc_job:UNKNOWN rdf:type owl:NamedIndividual ,
+                          schema:DefinedTerm ;
+                 schema:description "Usado quando o valor não é informado ou não pode ser inferido."@pt-br ,
+                                    "Used when the value is not provided or cannot be inferred."@en ;
+                 schema:inDefinedTermSet obdc_job:JobLocationTypeEnumValue ;
+                 schema:name "Desconhecido"@pt-br ,
+                             "Unknown"@en ;
+                 schema:termCode "unknown" .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
