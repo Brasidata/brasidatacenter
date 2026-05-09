@@ -5,10 +5,19 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @base <http://datacenter.app.br/ns/social/job.ttl#> .
 
-<http://datacenter.app.br/ns/social/job.ttl> rdf:type owl:Ontology .
+<http://datacenter.app.br/ns/social/job.ttl> rdf:type owl:Ontology ;
+                                              rdfs:label "BrasiDataCenter Social Job Ontology" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://schema.org/terms
+schema:terms rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Object Properties
@@ -16,14 +25,14 @@
 
 ###  http://datacenter.app.br/ns/social/job.ttl#hasAchievement
 :hasAchievement rdf:type owl:ObjectProperty ;
-                       rdfs:label "has Achievement"@en ,
-                                  "has Achievement"@pt-br .
+                rdfs:label "has Achievement"@en ,
+                           "has Achievement"@pt-br .
 
 
 ###  http://datacenter.app.br/ns/social/job.ttl#hasSkillGroup
 :hasSkillGroup rdf:type owl:ObjectProperty ;
-                      rdfs:label "has Skill Group"@en ,
-                                 "has Skill Group"@pt-br .
+               rdfs:label "has Skill Group"@en ,
+                          "has Skill Group"@pt-br .
 
 
 #################################################################
@@ -38,11 +47,11 @@ cv:targetJobDescription rdf:type owl:DatatypeProperty .
 cv:targetJobTitle rdf:type owl:DatatypeProperty .
 
 
-###  https://schema.org/description
+###  http://schema.org/description
 schema:description rdf:type owl:DatatypeProperty .
 
 
-###  https://schema.org/name
+###  http://schema.org/name
 schema:name rdf:type owl:DatatypeProperty .
 
 
@@ -50,51 +59,27 @@ schema:name rdf:type owl:DatatypeProperty .
 #    Classes
 #################################################################
 
-
-###  http://datacenter.app.br/nid/social/job.ttl#DesirableRequirement
+###  http://datacenter.app.br/ns/social/job.ttl#DesirableRequirement
 :DesirableRequirement rdf:type owl:Class ;
-                             rdfs:subClassOf :JobRequirement .
+                      rdfs:subClassOf :JobRequirement .
 
 
-###  http://datacenter.app.br/nid/social/job.ttl#EmploymentTypeEnumValue
-:EmploymentTypeEnumValue rdf:type schema:DefinedTermSet ;
-    schema:name "Employment type"@en ,
-                "Tipo de vínculo"@pt-br ;
-    schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en ,
-                       "Vocabulário controlado de tipos de vínculo/contratação usados em vagas."@pt-br ;
-    schema:terms :CONTRACT ,
-                 :FULL_TIME ,
-                 :INTERNSHIP ,
-                 :PART_TIME ,
-                 :SEASONAL ,
-                 :TEMPORARY .
-
-:JobLocationTypeEnumValue rdf:type schema:DefinedTermSet ;
-    schema:name "Work location type"@en ,
-                "Tipo de local de trabalho"@pt-br ;
-    schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en ,
-                       "Vocabulário controlado para onde o trabalho é realizado (presencial, híbrido, remoto, desconhecido)."@pt-br ;
-    schema:terms :ONSITE ,
-                 :HYBRID ,
-                 :REMOTE ,
-                 :UNKNOWN .
-
-###  http://datacenter.app.br/nid/social/job.ttl#JobRequirement
+###  http://datacenter.app.br/ns/social/job.ttl#JobRequirement
 :JobRequirement rdf:type owl:Class .
 
 
-###  http://datacenter.app.br/nid/social/job.ttl#MandatoryRequirement
+###  http://datacenter.app.br/ns/social/job.ttl#MandatoryRequirement
 :MandatoryRequirement rdf:type owl:Class ;
-                             rdfs:subClassOf :JobRequirement .
+                      rdfs:subClassOf :JobRequirement .
 
 
-###  http://datacenter.app.br/nid/social/job.ttl#SkillGroup
+###  http://datacenter.app.br/ns/social/job.ttl#SkillGroup
 :SkillGroup rdf:type owl:Class ;
-                   rdfs:subClassOf cv:CV ;
-                   rdfs:comment "Habilidades"@pt-br ,
-                                "Skill Group"@en ;
-                   rdfs:label "Habilidades"@pt-br ,
-                              "Skill Group"@en .
+            rdfs:subClassOf cv:CV ;
+            rdfs:comment "Habilidades"@pt-br ,
+                         "Skill Group"@en ;
+            rdfs:label "Habilidades"@pt-br ,
+                       "Skill Group"@en .
 
 
 ###  http://rdfs.org/resume-rdf/cv.rdfs#CV
@@ -105,5 +90,12 @@ cv:CV rdf:type owl:Class .
 cv:Target rdf:type owl:Class .
 
 
-###  https://schema.org/Occupation
+###  http://schema.org/DefinedTermSet
+schema:DefinedTermSet rdf:type owl:Class .
+
+
+###  http://schema.org/Occupation
 schema:Occupation rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
