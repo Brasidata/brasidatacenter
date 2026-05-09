@@ -135,6 +135,19 @@ sh:NodeShape rdf:type owl:Class .
                                      sh:name "location" ;
                                      sh:minCount 1 ;
                                      sh:path schema:jobLocation
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The language of the job offer."@en ;
+                                     sh:name "inLanguage" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:inLanguage
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "Type of employment."@en ;
+                                     sh:name "employmentType" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:employmentType ;
+                                     sh:in ( jobid:CONTRACT jobid:FULL_TIME jobid:INTERNSHIP jobid:PART_TIME jobid:SEASONAL jobid:TEMPORARY )
                                    ] ;
                        sh:targetClass schema:DefinedTermSet .
 

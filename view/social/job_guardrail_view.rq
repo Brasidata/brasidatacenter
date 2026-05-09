@@ -5,7 +5,7 @@ PREFIX schema:  <http://schema.org/>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
-SELECT ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern
+SELECT ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri (GROUP_CONCAT(?enumValue; separator=",") AS ?enumValues)
 WHERE {
   view:JobGuardrailViewShape a sh:NodeShape ;
                              sh:property ?propertyNode .
@@ -40,4 +40,16 @@ WHERE {
     ?propertyNode sh:minCount ?minCount .
     BIND(IF(?minCount >= 1, "true"^^xsd:boolean, "false"^^xsd:boolean) AS ?isRequired)
   }
+
+  OPTIONAL {
+    ?propertyNode sh:in ?inList .
+    ?inList rdf:rest*/rdf:first ?enumValue .
+    
+    # Tentamos buscar o class/type do elemento que é listado no sh:in
+    # Para saber a qual DefinedTermSet (ou class) este enum pertence
+    OPTIONAL {
+      ?enumValue schema:inDefinedTermSet ?enumClassUri .
+    }
+  }
 }
+GROUP BY ?propertyName ?propertyType ?semanticUri ?isRequired ?propertyDescription ?isMultiLanguage ?pattern ?enumClassUri

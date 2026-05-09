@@ -65,6 +65,15 @@ schema:name rdf:type owl:DatatypeProperty .
                       rdfs:subClassOf :JobRequirement .
 
 
+###  http://datacenter.app.br/ns/social/job.ttl#EmploymentTypeEnumValue
+:EmploymentTypeEnumValue rdf:type owl:Class ;
+                         rdfs:subClassOf schema:DefinedTermSet ;
+                         schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en ,
+                                            "Vocabulário controlado de tipos de vínculo/contratação usados em vagas."@pt-br ;
+                         schema:name "Employment type"@en ,
+                                     "Tipo de vínculo"@pt-br .
+
+
 ###  http://datacenter.app.br/ns/social/job.ttl#JobRequirement
 :JobRequirement rdf:type owl:Class .
 
