@@ -65,6 +65,22 @@ schema:name rdf:type owl:DatatypeProperty .
                       rdfs:subClassOf :JobRequirement .
 
 
+###  http://datacenter.app.br/ns/social/job.ttl#EmploymentTypeEnumValue
+:EmploymentTypeEnumValue rdf:type owl:Class ;
+                         rdfs:subClassOf schema:DefinedTermSet ;
+                         schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en ,
+                                            "Vocabulário controlado de tipos de vínculo/contratação usados em vagas."@pt-br ;
+                         schema:name "Employment type"@en ,
+                                     "Tipo de vínculo"@pt-br .
+
+###  http://datacenter.app.br/ns/social/job.ttl#JobLocationTypeEnumValue
+:JobLocationTypeEnumValue rdf:type owl:Class ;
+                          rdfs:subClassOf schema:DefinedTermSet ;
+                          schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en ,
+                                             "Vocabulário controlado para onde o trabalho é realizado (presencial, híbrido, remoto, desconhecido)."@pt-br ;
+                          schema:name "Tipo de local de trabalho"@pt-br ,
+                                      "Work location type"@en .
+
 ###  http://datacenter.app.br/ns/social/job.ttl#JobRequirement
 :JobRequirement rdf:type owl:Class .
 

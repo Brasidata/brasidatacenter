@@ -1,0 +1,193 @@
+@prefix : <http://datacenter.app.br/view/social/job.ttl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ns_job: <http://datacenter.app.br/ns/social/job.ttl#> .
+@prefix jobid: <http://datacenter.app.br/nid/social/job.ttl#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://datacenter.app.br/view/social/job.ttl#> .
+
+<http://datacenter.app.br/view/social/job.ttl> rdf:type owl:Ontology ;
+                                                owl:versionIRI <http://datacenter.app.br/view/social/job.ttl/1.0.0> ;
+                                                owl:imports <http://datacenter.app.br/nid/social/job.ttl> ;
+                                                dcterms:description "SHACL shapes used to project job controlled vocabularies into JSON schema-like structures."@en ;
+                                                dcterms:title "Job schema view shapes"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/format
+dcterms:format rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dx/prof/hasArtifact
+prof:hasArtifact rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dx/prof/hasResource
+prof:hasResource rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dx/prof/hasArtifact
+prof:hasArtifact rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/dx/prof/hasResource
+prof:hasResource rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#datatype
+sh:datatype rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#description
+sh:description rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#minCount
+sh:minCount rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#name
+sh:name rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/ns/dx/prof/ResourceDescriptor
+prof:ResourceDescriptor rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/dx/prof/ResourceDescriptor
+prof:ResourceDescriptor rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/shacl#NodeShape
+sh:NodeShape rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/view/social/job.ttl#JobGuardrailViewQueryResource
+:JobGuardrailViewQueryResource rdf:type owl:NamedIndividual ,
+                                        prof:ResourceDescriptor ;
+                               dcterms:format "application/sparql-query" ;
+                               dcterms:title "Job guardrail view SPARQL query resource"@en ;
+                               prof:hasArtifact <http://datacenter.app.br/view/social/job_guardrail_view.rq> .
+
+
+###  http://datacenter.app.br/view/social/job.ttl#JobGuardrailViewShape
+:JobGuardrailViewShape rdf:type owl:NamedIndividual ,
+                                sh:NodeShape ;
+                       prof:hasResource :JobGuardrailViewQueryResource ;
+                       sh:description "Projection of a job guardrail view shape"@en ;
+                       sh:name "JobGuardrailViewShape"@en ;
+                       sh:property [ sh:datatype xsd:string ;
+                                     sh:description "A unique string that identifies the job offer."@en ;
+                                     sh:name "identifier" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path dcterms:identifier ;
+                                     sh:pattern "^[A-Za-z][A-Za-z0-9_]{2,127}$"
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
+                                     sh:description "Human-readable name of the job offer."@en ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:name "name" ;
+                                     sh:path schema:name
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The organization offering the job."@en ;
+                                     sh:name "hiringOrganization" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path schema:hiringOrganization
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The geographic location of the job."@en ;
+                                     sh:name "location" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path schema:jobLocation
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The language of the job offer."@en ;
+                                     sh:name "inLanguage" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path schema:inLanguage
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "Type of employment."@en ;
+                                     sh:name "employmentType" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path schema:employmentType ;
+                                     sh:in ( jobid:CONTRACT jobid:FULL_TIME jobid:INTERNSHIP jobid:PART_TIME jobid:SEASONAL jobid:TEMPORARY jobid:UNKNOWN_EMPLOYMENT )
+                                   ] ,
+                                   [ sh:datatype xsd:string ;
+                                     sh:description "The location type of the job (e.g., hybrid, remote, onsite)."@en ;
+                                     sh:name "jobLocationType" ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ;
+                                     sh:path schema:jobLocationType ;
+                                     sh:in ( jobid:ASYNCHRONOUS jobid:HYBRID jobid:ONSITE jobid:REMOTE jobid:SYNCHRONOUS jobid:UNKNOWN_LOCATION )
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
+                                     sh:description "Skills required for the job."@en ;
+                                     sh:name "skills" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:skills
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
+                                     sh:description "Activities and responsibilities for the job."@en ;
+                                     sh:name "activities" ;
+                                     sh:minCount 1 ;
+                                     sh:path schema:responsibilities
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
+                                     sh:description "Indispensable/Mandatory requirements for the job."@en ;
+                                     sh:name "requirements_indispensable" ;
+                                     sh:minCount 1 ;
+                                     sh:path ns_job:MandatoryRequirement
+                                   ] ,
+                                   [ sh:datatype rdf:langString ;
+                                     sh:description "Desirable requirements for the job."@en ;
+                                     sh:name "requirements_desirable" ;
+                                     sh:path ns_job:DesirableRequirement
+                                   ] ;
+                       sh:targetClass schema:DefinedTermSet .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
