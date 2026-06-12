@@ -117,12 +117,20 @@ ct:Organisation rdf:type owl:Class .
                              ct:InternalDocument ,
                              void:Dataset ;
               void:class schema:Country ;
+              dcterms:type :CountryEntity ;
               ct:createdBy :OntoBDC ;
               ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
               ct:description "RDF document containing individuals of schema:Country for the country dataset." ;
               ct:name "country-nid" ;
               ct:versionDescription "Initial version of the RDF country graph." ;
               ct:versionID "0.1.0" .
+
+
+:CountryEntity rdfs:subClassOf prov:Entity ;
+              dcterms:title "Country"@en ,
+                            "País"@pt ;
+              dcterms:description "Country identified by ISO 3166-1-alpha-2-en."@en ,
+                                  "País identificado pelo padrão ISO 3166-1-alpha-2-en."@pt .
 
 
 ###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryListFile
