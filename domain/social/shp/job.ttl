@@ -1,0 +1,114 @@
+
+@prefix : <http://ontobdc.org/ontology/social/shp.ttl#> .
+@prefix peo: <https://w3id.org/peo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+
+@base <http://ontobdc.org/ontology/social/shp.ttl#> .
+
+<http://ontobdc.org/ontology/social/shp.ttl> rdf:type owl:Ontology .
+
+:JobOfferShape a sh:NodeShape, obdc:TransformableDataShape ;
+  sh:targetClass cv:JobOffer ;
+  sh:closed true ;
+  sh:ignoredProperties ( rdf:type ) ;
+  peo:hasPrompt :JobOfferExtractionPrompt ;
+  sh:property [
+    sh:path cv:name ;
+    sh:datatype xsd:string ;
+    sh:pattern "^[A-Za-z][A-Za-z0-9_]{2,127}$" ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:title ;
+    sh:or (
+      [ sh:datatype xsd:string ]
+      [ sh:datatype rdf:langString ]
+    ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:minLength 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:inLanguage ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:in ( "pt-br" "en" "es" "fr" ) ;
+  ] ;
+  sh:property [
+    sh:path cv:hiringOrganization ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:location ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:employmentType ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:in ( "full-time" "contract" "internship" "part-time" "seasonal" "temporary" ) ;
+  ] ;
+  sh:property [
+    sh:path cv:jobLocationType ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:in ( "hybrid" "remote" "onsite" "synchronous" "asynchronous" "unknown" ) ;
+  ] ;
+  sh:property [
+    sh:path cv:skills ;
+    sh:or (
+      [ sh:datatype xsd:string ]
+      [ sh:datatype rdf:langString ]
+    ) ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:activities ;
+    sh:or (
+      [ sh:datatype xsd:string ]
+      [ sh:datatype rdf:langString ]
+    ) ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:requirements_indispensable ;
+    sh:or (
+      [ sh:datatype xsd:string ]
+      [ sh:datatype rdf:langString ]
+    ) ;
+    sh:minCount 1 ;
+  ] ;
+  sh:property [
+    sh:path cv:requirements_desirable ;
+    sh:or (
+      [ sh:datatype xsd:string ]
+      [ sh:datatype rdf:langString ]
+    ) ;
+    sh:minCount 1 ;
+  ] .
+
+:JobOfferExtractionPrompt a peo:Prompt, owl:NamedIndividual ;
+  peo:hasInstruction """Extract REQUIRED job fields from the provided job posting text.
+Rules:
+- Output MUST conform to the provided JSON Schema.
+- Do NOT include any extra keys.
+- Always output ALL keys in the schema. If unknown, use empty string or empty array as appropriate.
+- name must be a stable identifier in PascalCase with underscores, no accents.
+- inLanguage: choose pt-br if the posting is primarily in Portuguese, otherwise en.
+- hiringOrganization: the company/employer name.
+- jobLocationType: on-site, hybrid, remote, or unknown.
+- skills: short, de-duplicated list, preserve product names (e.g., Navisworks)."""@en .
+
