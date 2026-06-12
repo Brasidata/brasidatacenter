@@ -11,6 +11,8 @@
 @prefix schema: <https://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix obdc_project: <http://brasidatacenter.com/domain/social/nid/project.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix void: <http://rdfs.org/ns/void#> .
 @base <http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#> .
 
 <http://brasidatacenter.com/domain/social/ds/country/dataset.ttl> rdf:type owl:Ontology ;
@@ -110,43 +112,57 @@ ct:Organisation rdf:type owl:Class .
                   obdc_project:OntoBDC ;
                   .
 
-###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryIdentifier
-:countryIdentifier rdf:type owl:NamedIndividual ,
-                             ct:InternalDocument ;
-                    ct:createdBy :OntoBDC ;
-                    ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
-                    ct:description "Country identifier document ISO 3166-1-alpha-2-en." ;
-                    ct:filename "country-identifier-iso3166-1-alpha-2-en.csv" ;
-                    ct:filetype "csv" ;
-                    ct:format "text/csv" ;
-                    ct:name "country-identifier" ;
-                    ct:requested "true"^^xsd:boolean ;
-                    ct:versionDescription "Initial version of the country identifier document." ;
-                    ct:versionID "0.1.0" ;
-                    prov:generatedAtTime "2026-05-21T00:00:00"^^xsd:dateTime .
-
-
-###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryList
-:countryList rdf:type owl:NamedIndividual ,
-                       ct:InternalDocument ;
-              dcterms:type <http://schema.org/Country> ;
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryIdentifierFile
+:countryIdentifierFile rdf:type owl:NamedIndividual ,
+                             ct:InternalDocument ,
+                             void:Dataset ;
+              void:class schema:Country ;
               ct:createdBy :OntoBDC ;
               ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
               ct:description "RDF document containing individuals of schema:Country for the country dataset." ;
-              ct:filename "nid.rdf" ;
-              ct:filetype "rdf" ;
-              ct:format "application/rdf+xml" ;
-              ct:name "nid" ;
+              ct:name "country-nid" ;
               ct:versionDescription "Initial version of the RDF country graph." ;
               ct:versionID "0.1.0" .
+
+
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryListFile
+:countryListFile rdf:type owl:NamedIndividual ,
+                       ct:InternalDocument ;
+                    ct:createdBy :OntoBDC ;
+                    ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
+                    ct:description "Country identifier document ISO 3166-1-alpha-2-en." ;
+                    ct:name "country-base-file" ;
+                    ct:requested "true"^^xsd:boolean ;
+                    ct:versionDescription "Initial version of the country identifier document." ;
+                    ct:versionID "0.1.0" .
+
+
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#listCountryCapability
+:listCountryCapability rdf:type owl:NamedIndividual ,
+                             obdc:QueryCapability ;
+                    dcterms:identifier "org.ontobdc.domain.social.country.capability.query.list" ;
+                    dcterms:title "List Countries"@en ;
+                    dcterms:description "Reads the country dataset payload and returns a list of countries with their codes and names."@en ;
+                    dcterms:version "0.1.0" ;
+                    prov:wasAttributedTo :OntoBDC ;
+                    prov:generatedAtTime "2026-06-12T00:00:00"^^xsd:dateTime ;
+                    obdc:outputContains :countryListSchema .
+
+
+:countryListSchema rdf:type owl:NamedIndividual ,
+                             obdc:outputSchema ;
+                             rdfs:subClassOf obdc:QueryResponse ;
+                             dcterms:identifier "org.ontobdc.domain.social.country.list" ;
+                             dcterms:title "List of Countries"@en ;
+                             dcterms:description "List of countries with their codes and names."@en .
 
 
 ###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryDescription
 :countryDescription rdf:type owl:NamedIndividual ,
                         ct:ContainerDescription ,
                         dcat:Dataset ;
-                ct:containsDocument :countryIdentifier ,
-                                    :countryList ;
+                ct:containsDocument :countryIdentifierFile ,
+                                    :countryListFile ;
                 ct:publishedBy :OntoBDC ;
                 ct:versionDescription "Initial version of the semantic container for the OntoBDC country dataset index." ;
                 ct:versionID "0.1.0" ;

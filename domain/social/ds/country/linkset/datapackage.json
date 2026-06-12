@@ -1,6 +1,6 @@
 {
-  "name": "ontobdc-social-country-triples",
-  "title": "OntoBDC Country Dataset Triples",
+  "name": "ontobdc-social-country-data-package",
+  "title": "OntoBDC Country Dataset Data Package",
   "description": "Frictionless Data Package descriptor for the triples payload of the OntoBDC country dataset.",
   "licenses": [
     {
@@ -11,15 +11,15 @@
     "ontobdc",
     "social",
     "dataset",
-    "triples",
-    "rdf"
+    "data-package",
+    "package"
   ],
   "version": "0.1.0",
   "resources": [
     {
-      "name": "country-identifier-iso3166-1-alpha-2-en",
+      "name": "country-base-file",
       "type": "table",
-      "path": "../../payload/documents/country-identifier-iso3166-1-alpha-2-en.csv",
+      "path": "../payload/documents/country-identifier-iso3166-1-alpha-2-en.csv",
       "scheme": "file",
       "format": "text/csv",
       "mediatype": "text/csv",
@@ -38,6 +38,38 @@
           }
         ]
       }
+    },
+    {
+      "name": "country-nid",
+      "type": "table",
+      "path": "../payload/triples/nid.ttl",
+      "scheme": "file",
+      "format": "text/turtle",
+      "mediatype": "text/turtle",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "Code",
+            "type": "string",
+            "rdfType": "http://schema.org/identifier"
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "rdfType": "http://schema.org/name"
+          }
+        ]
+      }
+    },
+    {
+      "name": "org.ontobdc.domain.social.country.capability.query.list",
+      "type": "file",
+      "profile": "data-resource",
+      "path": "../capability/country-list.py",
+      "scheme": "file",
+      "format": "py",
+      "mediatype": "text/x-python"
     }
   ]
 }
