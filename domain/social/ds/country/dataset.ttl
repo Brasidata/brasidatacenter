@@ -151,7 +151,6 @@ ct:Organisation rdf:type owl:Class .
                     dcterms:identifier "org.ontobdc.domain.social.country.capability.query.list" ;
                     dcterms:title "List Countries"@en ;
                     dcterms:description "Reads the country dataset payload and returns a list of countries with their codes and names."@en ;
-                    dcterms:version "0.1.0" ;
                     prov:wasAttributedTo :OntoBDC ;
                     prov:generatedAtTime "2026-06-12T00:00:00"^^xsd:dateTime ;
                     obdc:outputContains :countryListSchema .

@@ -41,26 +41,13 @@
     },
     {
       "name": "country-nid",
-      "type": "table",
+      "type": "file",
+      "profile": "data-resource",
       "path": "../payload/triples/nid.ttl",
       "scheme": "file",
-      "format": "text/turtle",
+      "format": "ttl",
       "mediatype": "text/turtle",
-      "encoding": "utf-8",
-      "schema": {
-        "fields": [
-          {
-            "name": "Code",
-            "type": "string",
-            "rdfType": "http://schema.org/identifier"
-          },
-          {
-            "name": "Name",
-            "type": "string",
-            "rdfType": "http://schema.org/name"
-          }
-        ]
-      }
+      "encoding": "utf-8"
     },
     {
       "name": "org.ontobdc.domain.social.country.capability.query.list",
