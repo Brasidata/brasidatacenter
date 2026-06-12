@@ -110,8 +110,8 @@ ct:Organisation rdf:type owl:Class .
                   obdc_project:OntoBDC ;
                   .
 
-###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#country-identifier
-:country-identifier rdf:type owl:NamedIndividual ,
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryIdentifier
+:countryIdentifier rdf:type owl:NamedIndividual ,
                              ct:InternalDocument ;
                     ct:createdBy :OntoBDC ;
                     ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
@@ -126,8 +126,8 @@ ct:Organisation rdf:type owl:Class .
                     prov:generatedAtTime "2026-05-21T00:00:00"^^xsd:dateTime .
 
 
-###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#country-list
-:country-list rdf:type owl:NamedIndividual ,
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryList
+:countryList rdf:type owl:NamedIndividual ,
                        ct:InternalDocument ;
               dcterms:type <http://schema.org/Country> ;
               ct:createdBy :OntoBDC ;
@@ -141,12 +141,12 @@ ct:Organisation rdf:type owl:Class .
               ct:versionID "0.1.0" .
 
 
-###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#country_description
-:country_description rdf:type owl:NamedIndividual ,
+###  http://brasidatacenter.com/domain/social/ds/country/dataset.ttl#countryDescription
+:countryDescription rdf:type owl:NamedIndividual ,
                         ct:ContainerDescription ,
                         dcat:Dataset ;
-                ct:containsDocument :country-identifier ,
-                                    :country-list ;
+                ct:containsDocument :countryIdentifier ,
+                                    :countryList ;
                 ct:publishedBy :OntoBDC ;
                 ct:versionDescription "Initial version of the semantic container for the OntoBDC country dataset index." ;
                 ct:versionID "0.1.0" ;
