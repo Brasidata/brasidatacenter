@@ -65,6 +65,7 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         """
         print(self.metadata.output_schema)
         # resource: RemoteResourcePort = self.remote_dataset_repo.get_resource()
+        raise NotImplementedError("ListCountryCapability.execute not implemented")
 
 
 
