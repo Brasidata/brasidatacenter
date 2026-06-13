@@ -28,7 +28,8 @@
         "fields": [
           {
             "name": "Name",
-            "type": "string",
+            "type": "langString",
+            "lang": "en",
             "rdfType": "http://schema.org/name"
           },
           {
