@@ -1,16 +1,15 @@
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 from ontobdc.shared.domain.port.context import CliContextPort
-from ontobdc.context.adapter.loader import RemoteResourceLoader
 from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
+from ontobdc.context.adapter.remote import RemoteDatasetCapability
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
-from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort, RemoteDatasetCapabilityPort
-from ontobdc.context.domain.port.remote import LinksetDatapackageResourcePort, RemoteResourceLoaderPort
+from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort
 
 SCHEMA = get_ontology_by_prefix("schema")
 
 
-class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
+class ListCountryCapability(QueryCapability, RemoteDatasetCapability):
     """
     Capability to list countries from the dataset payload.
     """
@@ -34,15 +33,16 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
             "properties": {
                 "org.ontobdc.domain.social.country.list": {
                     "type": "array",
+                    "entity": SCHEMA.Country,
                     "description": "A list of dictionaries containing 'name' and 'code' for each country.",
                 },
             },
         },
     )
 
-    def __init__(self, repo: RemoteDatasetRepositoryPort):
-        super().__init__()
-        self._remote_dataset_repo: RemoteDatasetRepositoryPort = repo
+    def __init__(self):
+        self._gifts: Dict[str, List[Dict[str, Any]]] = {}
+        self._remote_dataset_repo: RemoteDatasetRepositoryPort = None
 
     @property
     def remote_dataset_repo(self) -> RemoteDatasetRepositoryPort:
@@ -62,30 +62,15 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         }
         return descriptions.get(lang, descriptions["en"])
 
+    def accept_gift(self, name: str, data: List[Dict[str, Any]]):
+        self._gifts[name] = data
+
     def execute(self, context: CliContextPort) -> Dict[str, Any]:
         """
         Execute the capability to list countries from the dataset payload.
         """
-        linkset: LinksetDatapackageResourcePort = self.remote_dataset_repo.linkset_datapackage
-        output_schema_keys: List[str] = list(self.metadata.output_schema.get("properties", {}).keys())
+        for output_schema_key in self.METADATA.output_schema.get("properties").keys():
+            if output_schema_key not in self._gifts:
+                raise ValueError(f"Missing values for output schema key '{output_schema_key}'.")
 
-        # Find the exact resource by name from output schema
-        schema_resource: Optional[Dict[str, Any]] = None
-        for schema_id in output_schema_keys:
-            schema_resource = linkset.get_resource_by_name(schema_id)
-            if schema_resource and schema_resource.get("schema"):
-                break
-
-        if not schema_resource:
-            raise ValueError(f"No valid schema resource found with name '{output_schema_keys[0]}' in the dataset payload.")
-
-        load_strategy: RemoteResourceLoaderPort = RemoteResourceLoader.make(schema_resource)
-        data_list: List[Dict[str, Any]] = list(load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country).values())
-
-        # Create full response with output schema structure
-        response: Dict[str, Any] = {}
-        output_key = output_schema_keys[0]
-        response[output_key] = data_list
-
-        return response
-
+        return self._gifts
