@@ -1,7 +1,7 @@
 
 from typing import Any, Dict, List, Optional
 from ontobdc.shared.domain.port.context import CliContextPort
-from ontobdc.context.adapter.remote import RemoteResourceLoader
+from ontobdc.context.adapter.loader import RemoteResourceLoader
 from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
 from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort, RemoteDatasetCapabilityPort
