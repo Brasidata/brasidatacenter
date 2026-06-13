@@ -27,14 +27,14 @@
       "schema": {
         "fields": [
           {
-            "name": "Code",
-            "type": "string",
-            "rdfType": "http://schema.org/identifier"
-          },
-          {
             "name": "Name",
             "type": "string",
             "rdfType": "http://schema.org/name"
+          },
+          {
+            "name": "Code",
+            "type": "string",
+            "rdfType": "http://schema.org/identifier"
           }
         ]
       }
