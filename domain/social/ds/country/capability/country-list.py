@@ -1,10 +1,10 @@
 
-from typing import Any, Dict, List
+from typing import Any, Dict
 from ontobdc.shared.domain.port.context import CliContextPort
 from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
 from ontobdc.context.adapter.remote import RemoteDatasetCapability
+from ontobdc.storage.domain.port.dataset import EntityQueryCapabilityVisitablePort
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
-from ontobdc.storage.domain.port.dataset import EntityQueryCapabilityVisitablePort, RemoteDatasetRepositoryPort
 
 SCHEMA = get_ontology_by_prefix("schema")
 
