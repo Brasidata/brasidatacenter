@@ -1,14 +1,11 @@
 
-import os
-import csv
 from typing import Any, Dict, List, Optional
-from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
-from rdflib import Namespace
 from ontobdc.shared.domain.port.context import CliContextPort
+from ontobdc.context.adapter.remote import RemoteResourceLoader
+from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
 from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort, RemoteDatasetCapabilityPort
 from ontobdc.context.domain.port.remote import LinksetDatapackageResourcePort, RemoteResourceLoaderPort
-from ontobdc.context.adapter.remote import RemoteResourceLoader
 
 SCHEMA = get_ontology_by_prefix("schema")
 
@@ -69,57 +66,36 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         """
         Execute the capability to list countries from the dataset payload.
         """
-        resource: LinksetDatapackageResourcePort = self.remote_dataset_repo.linkset_datapackage
-        output_schemas: List[str] = []
-
-        for schema_id in list(self.metadata.output_schema.get("properties", {}).keys()):
-            schema_resource: Optional[Dict[str, Any]] = resource.get_resource_by_name(schema_id)
-            if schema_resource:
-                output_schemas.append(schema_resource)
-
-        if not output_schemas:
-            raise ValueError("No output schemas found in the dataset payload.")
-
+        linkset: LinksetDatapackageResourcePort = self.remote_dataset_repo.linkset_datapackage
+        output_schema_keys: List[str] = list(self.metadata.output_schema.get("properties", {}).keys())
         output: Dict[str, List[Dict[str, Any]]] = {}
 
-        for schema_resource in output_schemas:
-            load_strategy: RemoteResourceLoaderPort = RemoteResourceLoader.make(schema_resource)
-            data: Dict[str, Dict[str, Any]] = load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country)
-            output[schema_resource.get("name")] = list(data.values())
+        # We need to find the resource with a schema (the CSV, not the TTL)
+        # For now, find the resource that has "schema" defined
+        schema_resource: Optional[Dict[str, Any]] = None
+        for schema_id in output_schema_keys:
+            # First try exact name match
+            resource = linkset.get_resource_by_name(schema_id)
+            if resource and resource.get("schema"):
+                schema_resource = resource
+                break
+        
+        # If exact match not found, look for any resource with schema
+        if not schema_resource:
+            all_resources: List[Dict[str, Any]] = linkset.get_all_resources()
+            for res in all_resources:
+                if res.get("schema"):
+                    schema_resource = res
+                    break
+
+        if not schema_resource:
+            raise ValueError("No valid schema resource found in the dataset payload.")
+
+        load_strategy: RemoteResourceLoaderPort = RemoteResourceLoader.make(schema_resource)
+        data: Dict[str, Dict[str, Any]] = load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country)
+        
+        # Use the first output schema key as the output key
+        output[output_schema_keys[0]] = list(data.values())
 
         return output
 
-
-
-
-
-        # Path to the CSV file relative to this script
-        # This script is at: brasidatacenter/domain/social/ds/country/capability/country-list.py
-        # CSV is at: brasidatacenter/domain/social/ds/country/payload/documents/country-identifier-iso3166-1-alpha-2-en.csv
-        # current_dir = os.path.dirname(os.path.abspath(__file__))
-        # csv_path = os.path.join(
-        #     current_dir, 
-        #     "..",
-        #     "payload",
-        #     "documents",
-        #     "country-identifier-iso3166-1-alpha-2-en.csv"
-        # )
-
-        # 
-        
-        # try:
-        #     with open(csv_path, mode='r', encoding='utf-8') as f:
-        #         reader = csv.DictReader(f)
-        #         for row in reader:
-        #             countries.append({
-        #                 "name": row.get("Name", "").strip(),
-        #                 "code": row.get("Code", "").strip()
-        #             })
-        # except FileNotFoundError:
-        #     raise RuntimeError(f"Country payload file not found at {csv_path}")
-        # except Exception as e:
-        #     raise RuntimeError(f"Failed to read country list: {str(e)}")
-
-        # return {
-        #     "org.ontobdc.domain.social.country.list": countries,
-        # }
