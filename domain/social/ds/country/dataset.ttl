@@ -139,7 +139,7 @@ ct:Organisation rdf:type owl:Class .
                     ct:createdBy :OntoBDC ;
                     ct:creationDate "2026-05-21T00:00:00"^^xsd:dateTime ;
                     ct:description "Country identifier document ISO 3166-1-alpha-2-en." ;
-                    ct:name "country-base-file" ;
+                    ct:name "countryListFile" ;
                     ct:requested "true"^^xsd:boolean ;
                     ct:versionDescription "Initial version of the country identifier document." ;
                     ct:versionID "0.1.0" .

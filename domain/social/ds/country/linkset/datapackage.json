@@ -17,7 +17,7 @@
   "version": "0.1.0",
   "resources": [
     {
-      "name": "country-base-file",
+      "name": "countryListFile",
       "type": "table",
       "path": "../payload/documents/country-identifier-iso3166-1-alpha-2-en.csv",
       "scheme": "file",

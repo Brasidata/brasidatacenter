@@ -1,10 +1,16 @@
 
 import os
 import csv
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
+from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
+from rdflib import Namespace
 from ontobdc.shared.domain.port.context import CliContextPort
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
 from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort, RemoteDatasetCapabilityPort
+from ontobdc.context.domain.port.remote import LinksetDatapackageResourcePort, RemoteResourceLoaderPort
+from ontobdc.context.adapter.remote import RemoteResourceLoader
+
+SCHEMA = get_ontology_by_prefix("schema")
 
 
 class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
@@ -63,14 +69,30 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         """
         Execute the capability to list countries from the dataset payload.
         """
-        print(self.metadata.output_schema.get("properties", {}).keys())
-        # resource: RemoteResourcePort = self.remote_dataset_repo.get_resource()
-        raise NotImplementedError("ListCountryCapability.execute not implemented")
+        resource: LinksetDatapackageResourcePort = self.remote_dataset_repo.linkset_datapackage
+        output_schemas: List[str] = []
+
+        for schema_id in list(self.metadata.output_schema.get("properties", {}).keys()):
+            schema_resource: Optional[Dict[str, Any]] = resource.get_resource_by_name(schema_id)
+            if schema_resource:
+                output_schemas.append(schema_resource)
+
+        if not output_schemas:
+            raise ValueError("No output schemas found in the dataset payload.")
+
+        output: Dict[str, List[Dict[str, Any]]] = {}
+
+        for schema_resource in output_schemas:
+            load_strategy: RemoteResourceLoaderPort = RemoteResourceLoader.make(schema_resource)
+            data: Dict[str, Dict[str, Any]] = load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country)
+            output[schema_resource.get("name")] = list(data.values())
+
+        return output
 
 
 
 
-        
+
         # Path to the CSV file relative to this script
         # This script is at: brasidatacenter/domain/social/ds/country/capability/country-list.py
         # CSV is at: brasidatacenter/domain/social/ds/country/payload/documents/country-identifier-iso3166-1-alpha-2-en.csv
@@ -83,7 +105,7 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         #     "country-identifier-iso3166-1-alpha-2-en.csv"
         # )
 
-        countries: List[Dict[str, str]] = []
+        # 
         
         # try:
         #     with open(csv_path, mode='r', encoding='utf-8') as f:
@@ -98,6 +120,6 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         # except Exception as e:
         #     raise RuntimeError(f"Failed to read country list: {str(e)}")
 
-        return {
-            "org.ontobdc.domain.social.country.list": countries,
-        }
+        # return {
+        #     "org.ontobdc.domain.social.country.list": countries,
+        # }
