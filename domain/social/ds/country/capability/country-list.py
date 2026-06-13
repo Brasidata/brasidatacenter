@@ -4,9 +4,10 @@ import csv
 from typing import Any, Dict, List
 from ontobdc.shared.domain.port.context import CliContextPort
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
+from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort, RemoteDatasetCapabilityPort
 
 
-class ListCountryCapability(QueryCapability):
+class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
     """
     Capability to list countries from the dataset payload.
     """
@@ -36,6 +37,14 @@ class ListCountryCapability(QueryCapability):
         },
     )
 
+    def __init__(self, repo: RemoteDatasetRepositoryPort):
+        super().__init__()
+        self._remote_dataset_repo: RemoteDatasetRepositoryPort = repo
+
+    @property
+    def remote_dataset_repo(self) -> RemoteDatasetRepositoryPort:
+        return self._remote_dataset_repo
+
     def label(self, lang: str = "en") -> str:
         labels = {
             "en": "List Countries",
@@ -51,32 +60,42 @@ class ListCountryCapability(QueryCapability):
         return descriptions.get(lang, descriptions["en"])
 
     def execute(self, context: CliContextPort) -> Dict[str, Any]:
+        """
+        Execute the capability to list countries from the dataset payload.
+        """
+        print(self.metadata.output_schema)
+        # resource: RemoteResourcePort = self.remote_dataset_repo.get_resource()
+
+
+
+
+        
         # Path to the CSV file relative to this script
         # This script is at: brasidatacenter/domain/social/ds/country/capability/country-list.py
         # CSV is at: brasidatacenter/domain/social/ds/country/payload/documents/country-identifier-iso3166-1-alpha-2-en.csv
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        csv_path = os.path.join(
-            current_dir, 
-            "..", 
-            "payload", 
-            "documents", 
-            "country-identifier-iso3166-1-alpha-2-en.csv"
-        )
+        # current_dir = os.path.dirname(os.path.abspath(__file__))
+        # csv_path = os.path.join(
+        #     current_dir, 
+        #     "..",
+        #     "payload",
+        #     "documents",
+        #     "country-identifier-iso3166-1-alpha-2-en.csv"
+        # )
 
         countries: List[Dict[str, str]] = []
         
-        try:
-            with open(csv_path, mode='r', encoding='utf-8') as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    countries.append({
-                        "name": row.get("Name", "").strip(),
-                        "code": row.get("Code", "").strip()
-                    })
-        except FileNotFoundError:
-            raise RuntimeError(f"Country payload file not found at {csv_path}")
-        except Exception as e:
-            raise RuntimeError(f"Failed to read country list: {str(e)}")
+        # try:
+        #     with open(csv_path, mode='r', encoding='utf-8') as f:
+        #         reader = csv.DictReader(f)
+        #         for row in reader:
+        #             countries.append({
+        #                 "name": row.get("Name", "").strip(),
+        #                 "code": row.get("Code", "").strip()
+        #             })
+        # except FileNotFoundError:
+        #     raise RuntimeError(f"Country payload file not found at {csv_path}")
+        # except Exception as e:
+        #     raise RuntimeError(f"Failed to read country list: {str(e)}")
 
         return {
             "org.ontobdc.domain.social.country.list": countries,

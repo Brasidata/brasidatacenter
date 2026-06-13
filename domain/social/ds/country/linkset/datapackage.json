@@ -40,7 +40,7 @@
       }
     },
     {
-      "name": "country-nid",
+      "name": "org.ontobdc.domain.social.country.list",
       "type": "file",
       "profile": "data-resource",
       "path": "../payload/triples/nid.ttl",
