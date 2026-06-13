@@ -21,7 +21,7 @@
       "type": "table",
       "path": "../payload/documents/country-identifier-iso3166-1-alpha-2-en.csv",
       "scheme": "file",
-      "format": "text/csv",
+      "format": "csv",
       "mediatype": "text/csv",
       "encoding": "utf-8",
       "schema": {
