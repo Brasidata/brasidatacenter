@@ -68,34 +68,24 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapabilityPort):
         """
         linkset: LinksetDatapackageResourcePort = self.remote_dataset_repo.linkset_datapackage
         output_schema_keys: List[str] = list(self.metadata.output_schema.get("properties", {}).keys())
-        output: Dict[str, List[Dict[str, Any]]] = {}
 
-        # We need to find the resource with a schema (the CSV, not the TTL)
-        # For now, find the resource that has "schema" defined
+        # Find the exact resource by name from output schema
         schema_resource: Optional[Dict[str, Any]] = None
         for schema_id in output_schema_keys:
-            # First try exact name match
-            resource = linkset.get_resource_by_name(schema_id)
-            if resource and resource.get("schema"):
-                schema_resource = resource
+            schema_resource = linkset.get_resource_by_name(schema_id)
+            if schema_resource and schema_resource.get("schema"):
                 break
-        
-        # If exact match not found, look for any resource with schema
-        if not schema_resource:
-            all_resources: List[Dict[str, Any]] = linkset.get_all_resources()
-            for res in all_resources:
-                if res.get("schema"):
-                    schema_resource = res
-                    break
 
         if not schema_resource:
-            raise ValueError("No valid schema resource found in the dataset payload.")
+            raise ValueError(f"No valid schema resource found with name '{output_schema_keys[0]}' in the dataset payload.")
 
         load_strategy: RemoteResourceLoaderPort = RemoteResourceLoader.make(schema_resource)
-        data: Dict[str, Dict[str, Any]] = load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country)
-        
-        # Use the first output schema key as the output key
-        output[output_schema_keys[0]] = list(data.values())
+        data_list: List[Dict[str, Any]] = list(load_strategy.get_entity_instances(self.remote_dataset_repo, SCHEMA.Country).values())
 
-        return output
+        # Create full response with output schema structure
+        response: Dict[str, Any] = {}
+        output_key = output_schema_keys[0]
+        response[output_key] = data_list
+
+        return response
 
