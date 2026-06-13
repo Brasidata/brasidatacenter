@@ -40,9 +40,9 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapability):
         },
     )
 
-    def __init__(self):
+    def __init__(self, remote_dataset_repo: RemoteDatasetRepositoryPort):
         self._gifts: Dict[str, List[Dict[str, Any]]] = {}
-        self._remote_dataset_repo: RemoteDatasetRepositoryPort = None
+        self._remote_dataset_repo: RemoteDatasetRepositoryPort = remote_dataset_repo
 
     @property
     def remote_dataset_repo(self) -> RemoteDatasetRepositoryPort:
