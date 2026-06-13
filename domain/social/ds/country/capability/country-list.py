@@ -4,12 +4,12 @@ from ontobdc.shared.domain.port.context import CliContextPort
 from ontobdc.shared.adapter.ontology import get_ontology_by_prefix
 from ontobdc.context.adapter.remote import RemoteDatasetCapability
 from ontobdc.shared.domain.resource.capability import CapabilityMetadata, QueryCapability
-from ontobdc.storage.domain.port.dataset import RemoteDatasetRepositoryPort
+from ontobdc.storage.domain.port.dataset import EntityQueryCapabilityVisitablePort, RemoteDatasetRepositoryPort
 
 SCHEMA = get_ontology_by_prefix("schema")
 
 
-class ListCountryCapability(QueryCapability, RemoteDatasetCapability):
+class ListCountryCapability(QueryCapability, RemoteDatasetCapability, EntityQueryCapabilityVisitablePort):
     """
     Capability to list countries from the dataset payload.
     """
@@ -40,14 +40,6 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapability):
         },
     )
 
-    def __init__(self, remote_dataset_repo: RemoteDatasetRepositoryPort):
-        self._gifts: Dict[str, List[Dict[str, Any]]] = {}
-        self._remote_dataset_repo: RemoteDatasetRepositoryPort = remote_dataset_repo
-
-    @property
-    def remote_dataset_repo(self) -> RemoteDatasetRepositoryPort:
-        return self._remote_dataset_repo
-
     def label(self, lang: str = "en") -> str:
         labels = {
             "en": "List Countries",
@@ -62,15 +54,12 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapability):
         }
         return descriptions.get(lang, descriptions["en"])
 
-    def accept_gift(self, name: str, data: List[Dict[str, Any]]):
-        self._gifts[name] = data
-
     def execute(self, context: CliContextPort) -> Dict[str, Any]:
         """
         Execute the capability to list countries from the dataset payload.
         """
         for output_schema_key in self.METADATA.output_schema.get("properties").keys():
-            if output_schema_key not in self._gifts:
+            if output_schema_key not in self.gifts:
                 raise ValueError(f"Missing values for output schema key '{output_schema_key}'.")
 
-        return self._gifts
+        return self.gifts
