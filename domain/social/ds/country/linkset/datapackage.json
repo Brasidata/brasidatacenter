@@ -25,6 +25,7 @@
       "mediatype": "text/csv",
       "encoding": "utf-8",
       "schema": {
+        "primaryKey": "Code",
         "fields": [
           {
             "name": "Name",
