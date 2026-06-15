@@ -73,17 +73,6 @@ foaf:Organization rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://datacenter.app.br/domain/social/nid/organization.ttl#Brasidata
-:Brasidata rdf:type owl:NamedIndividual ,
-                    foaf:Organization ;
-           schema:areaServed "Mundial"@pt-br ,
-                             "Worldwide"@en ;
-           schema:name "BRASIDATA CONSULTORIA EM ENGENHARIA E TECNOLOGIA" ;
-           skos:altLabel "BRASIDATA ENGENHARIA"@pt-br ,
-                         "BRASIDATA ENGINEERING"@en ;
-           rov:legalName "BRASIDATA CONSULTORIA EM ENGENHARIA, TECNOLOGIA, TREINAMENTO E DESENVOLVIMENTO DE SOFTWARE LTDA - ME" .
-
-
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#CERTI
 :CERTI rdf:type owl:NamedIndividual ,
                 cv:Company ,
