@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OntoBDC Blog</title>
+    <meta name="description" content="OntoBDC Blog">
+    <link rel="icon" href="../assets/images/favicon.png" type="image/png">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6fbfc;
+        --panel: #ffffff;
+        --fg: #162126;
+        --muted: #5f6f78;
+        --accent: #00bcd4;
+        --accent-dark: #0097a7;
+        --border: rgba(22, 33, 38, 0.10);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f1418;
+          --panel: #182127;
+          --fg: #f3f7f8;
+          --muted: #a8b5bb;
+          --border: rgba(255, 255, 255, 0.10);
+          --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        }
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        font-family: Poppins, Arial, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(0, 188, 212, 0.16), transparent 28rem),
+          var(--bg);
+        color: var(--fg);
+      }
+
+      main {
+        flex: 1 0 auto;
+      }
+
+      .wrap {
+        width: min(1040px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 4rem 0 2rem;
+      }
+
+      .eyebrow {
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin: 0 0 1rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 1.05;
+      }
+
+      .lead {
+        max-width: 48rem;
+        margin: 1rem 0 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.7;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.75rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.8rem;
+        padding: 0 1.1rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 1px solid var(--border);
+        color: var(--fg);
+        background: var(--panel);
+      }
+
+      .btn--primary {
+        background: var(--accent);
+        color: #ffffff;
+        border-color: transparent;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 1rem 0 4rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 1.1rem;
+        padding: 1.25rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card__meta {
+        color: var(--accent-dark);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .card h2 {
+        margin: 0.75rem 0 0.65rem;
+        font-size: 1.1rem;
+        line-height: 1.3;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .bd-footer {
+        flex-shrink: 0;
+        background: #000000;
+        color: rgba(255, 255, 255, 0.92);
+        padding: 1.25rem 0 1.75rem;
+        margin-top: 0;
+      }
+
+      .bd-footer__inner {
+        width: min(1040px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .bd-footer__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .bd-footer__brand {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .bd-footer__logo-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .bd-footer__logo-wrap img {
+        height: 50px;
+        width: auto;
+      }
+
+      .bd-footer__logo-wrap span span {
+        color: #00bcd4;
+      }
+
+      .bd-footer__social {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .bd-footer__icon {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.86);
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        text-decoration: none;
+      }
+
+      .bd-footer__icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .bd-footer__meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+        text-align: right;
+        word-break: break-word;
+      }
+
+      .bd-footer__meta-top {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .bd-footer__meta-bottom {
+        font-size: 0.8rem;
+        color: #888;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .bd-footer__link {
+        color: rgba(255, 255, 255, 0.86);
+        text-decoration: none;
+      }
+
+      .bd-footer__maintainer {
+        color: #ccc;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .bd-footer__maintainer img {
+        height: 1.2em;
+        width: auto;
+      }
+
+      @media (max-width: 60rem) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .bd-footer__top {
+          align-items: flex-start;
+        }
+
+        .bd-footer__meta {
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .bd-footer__meta-top,
+        .bd-footer__meta-bottom {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero" style="text-align: center;">
+        <p class="eyebrow">OntoBDC Blog</p>
+        <h1>Execução Offline de Dataset</h1>
+        <p class="lead" style="margin: 1rem auto;">
+          Para contornar as restrições de segurança do navegador ao rodar offline, 
+          clique no botão abaixo e selecione a pasta do dataset (<strong>country</strong>).
+        </p>
+        <div class="actions" style="justify-content: center; margin-top: 2rem;">
+          <label class="btn btn--primary" style="cursor: pointer; padding: 0 2rem; font-size: 1.1rem;">
+            📁 Selecionar Pasta do Dataset
+            <input type="file" id="dir-picker" webkitdirectory directory multiple style="display: none;" />
+          </label>
+        </div>
+      </section>
+
+      <section style="padding: 2rem 0; margin-bottom: 2rem;">
+        <h2 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Console de Saída</h2>
+        <pre id="pyodide-output" style="background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem; overflow-x: auto; white-space: pre-wrap; color: var(--fg); font-size: 0.9rem; line-height: 1.5; min-height: 20rem; box-shadow: var(--shadow);">Aguardando você selecionar a pasta...</pre>
+      </section>
+    </main>
+    <footer class="bd-footer">
+      <div class="bd-footer__inner">
+        <div class="bd-footer__top">
+          <div class="bd-footer__brand">
+            <a class="bd-footer__logo-wrap" href="/">
+              <img src="../assets/images/ontobdc-logo.png" alt="OntoBDC Logo">
+              <span>Onto<span>BDC</span></span>
+            </a>
+            <div class="bd-footer__social" aria-label="Social links">
+              <a class="bd-footer__icon" href="mailto:hello@ontobdc.org" aria-label="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 8l-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v10c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2Z"/></svg>
+              </a>
+              <a class="bd-footer__icon" href="https://github.com/OntoBDC" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 8.36 22.93c.58.11.79-.25.79-.56v-2.02c-3.22.7-3.9-1.38-3.9-1.38-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.41-1.27.74-1.56-2.57-.29-5.27-1.28-5.27-5.7 0-1.26.45-2.29 1.2-3.09-.12-.3-.52-1.47.12-3.07 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.64 1.6.24 2.77.12 3.07.75.8 1.2 1.83 1.2 3.09 0 4.43-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+              </a>
+              <a class="bd-footer__icon" href="https://discord.gg/ontobdc" target="_blank" rel="noopener" aria-label="Discord">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.03.06.04.09.02c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="bd-footer__meta">
+            <div class="bd-footer__meta-top">
+              <a href="#" class="bd-footer__link">Terms of Use</a>
+              <span>|</span>
+              <a href="#" class="bd-footer__link">Privacy Policy</a>
+              <span>|</span>
+              <span>© OntoBDC Foundation · 2026</span>
+            </div>
+            <div class="bd-footer__meta-bottom">
+              <span>OntoBDC is proudly created and maintained by</span>
+              <a href="https://brasidata.com" target="_blank" rel="noopener" class="bd-footer__maintainer">
+                <img src="../assets/images/brasidata-logo.png" alt="Brasidata Logo">
+                <strong>BrasiDATA</strong>
+              </a>
+              <span>🇧🇷</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+<!-- O arquivo HTML foi corrigido removendo o trecho duplicado -->
+    <!-- Pyodide Script -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script>
+      function updateOutput(msg) {
+        const el = document.getElementById("pyodide-output");
+        if (el) {
+          if (el.innerText === "Aguardando você selecionar a pasta...") {
+            el.innerText = "";
+          }
+          el.innerText += msg + "\\n";
+          el.scrollTop = el.scrollHeight;
+        }
+      }
+
+      document.getElementById('dir-picker').addEventListener('change', async (e) => {
+        const files = e.target.files;
+        if (files.length === 0) return;
+
+        updateOutput(`\\nIniciando o processamento. Lendo ${files.length} arquivos...`);
+
+        try {
+                updateOutput("Carregando ambiente Pyodide...");
+                if (!window.pyodide) {
+                    window.pyodide = await loadPyodide();
+                    updateOutput("Instalando dependências base (isso pode levar alguns segundos)...");
+                    await window.pyodide.loadPackage("micropip");
+                    const micropip = window.pyodide.pyimport("micropip");
+                    // Instalando dependências e o ontobdc diretamente do PyPI (ignorando deps pesadas)
+                    await micropip.install(['pyodide-http', 'requests', 'rdflib', 'pyyaml', 'networkx']);
+                    await window.pyodide.runPythonAsync(`
+import micropip
+await micropip.install('ontobdc', deps=False)
+                    `);
+                }
+
+                const pyodide = window.pyodide;
+                updateOutput("Montando sistema de arquivos virtual...");
+
+                // When user selects 'country' folder, we want to place its contents inside '/tmp/dataset'
+                const base_dataset_dir = "/tmp/dataset";
+                try { pyodide.FS.mkdir("/tmp/dataset"); } catch(err) {}
+
+                let foundDataset = false;
+
+                for (let file of files) {
+                    const pathParts = file.webkitRelativePath.split('/');
+                    pathParts.shift(); // Remove the top-level folder name chosen by user
+                    if (pathParts.length === 0) continue;
+
+                    const targetPath = base_dataset_dir + "/" + pathParts.join('/');
+                    
+                    if (targetPath.endsWith('dataset.ttl')) foundDataset = true;
+
+                    // Create dirs
+                    let curr = base_dataset_dir;
+                    for (let i = 0; i < pathParts.length - 1; i++) {
+                        curr += "/" + pathParts[i];
+                        try { pyodide.FS.mkdir(curr); } catch(err) {}
+                    }
+
+                    // Write file to Pyodide
+                    const arrayBuffer = await file.arrayBuffer();
+                    pyodide.FS.writeFile(targetPath, new Uint8Array(arrayBuffer));
+                }
+
+                if (!foundDataset) {
+                    updateOutput("⚠️ AVISO: Parece que você não selecionou a pasta correta do dataset. Certifique-se de selecionar a pasta que contém o arquivo dataset.ttl.");
+                }
+
+                updateOutput("Arquivos carregados com sucesso! Executando script Python...");
+
+                await pyodide.runPythonAsync(`
+import sys
+import os
+import js
+import pyodide_http
+import importlib
+
+pyodide_http.patch_all()
+
+class DOMOutput:
+    def write(self, txt):
+        if txt.strip():
+            js.updateOutput(txt.rstrip("\\n"))
+    def flush(self): pass
+
+sys.stdout = DOMOutput()
+sys.stderr = DOMOutput()
+
+os.environ["ONTOBDC_PROJECT_ROOT"] = "/tmp/dataset"
+
+# Create config
+os.makedirs("/tmp/dataset/.__ontobdc__", exist_ok=True)
+with open("/tmp/dataset/.__ontobdc__/config.yaml", "w") as f:
+    f.write("context:\\n  obdc:\\n    contextLanguage: en\\n")
+
+# Mocks para dependencias nativas dificeis de instalar
+class DummyModule:
+    def __init__(self, name):
+        self.__name__ = name
+        self.__path__ = []
+    def __getattr__(self, item):
+        if item in ["__path__", "__all__"]: return []
+        return DummyModule(f"{self.__name__}.{item}")
+    def __call__(self, *args, **kwargs): return DummyModule("call")
+    def __iter__(self): return iter([])
+
+class MockResource:
+    def __init__(self, r_data):
+        self.path = r_data.get('path', '')
+        if 'nid.ttl' in self.path:
+            self.normpath = "/tmp/dataset/payload/triples/nid.ttl"
+        else:
+            self.normpath = "/tmp/dataset/payload/documents/country-identifier-iso3166-1-alpha-2-en.csv"
+    def read_rows(self):
+        import csv
+        with open(self.normpath, 'r') as f:
+            return list(csv.DictReader(f))
+
+class MockFrictionlessPackage:
+    def __init__(self, data, basepath=None):
+        if isinstance(data, str) and data.startswith('file://'):
+            import json
+            with open(data[7:], 'r') as f: self.data = json.load(f)
+        else:
+            self.data = data
+    def get_resource(self, name):
+        for r in self.data.get('resources', []):
+            if r['name'] == name: return MockResource(r)
+        return None
+
+sys.modules['frictionless'] = type('frictionless', (), {'Package': MockFrictionlessPackage, 'system': type('MockSystem', (), {})})
+sys.modules['frictionless.system'] = type('frictionless.system', (), {'system': type('MockSystem', (), {})})
+
+for mod in ['rocrate', 'sismic', 'spacy', 'lxml', 'pyspellchecker', 'datapackage', 'tableschema', 'numpy', 'rich']:
+    sys.modules[mod] = DummyModule(mod)
+
+# Executar dataset
+base_dataset_dir = "/tmp/dataset"
+script_url = f"{base_dataset_dir}/core/py/context/plugin/command/dataset.py"
+
+with open(script_url, "r") as f:
+    source = f.read()
+
+# Substituir URIs remotas pelas locais montadas
+source = source.replace(
+    'https://raw.githubusercontent.com/Brasidata/brasidatacenter/091b6ce50c9d0fffd8ab15d252aabc79a5d2daed/domain/social/ds/country/dataset.ttl',
+    f'file://{base_dataset_dir}/dataset.ttl'
+)
+
+# Mock de validações HTTP do file://
+mock_code = """import ontobdc.shared.adapter.util
+ontobdc.shared.adapter.util.is_valid_url = lambda *a, **k: True
+import requests
+class DummyResponse:
+    def __init__(self, content=''): self.headers={}; self.text=content; self.content=content.encode('utf-8')
+    def raise_for_status(self): pass
+    def json(self): import json; return json.loads(self.text)
+requests.head = lambda *a, **k: DummyResponse()
+_og = requests.get
+def _mock_get(url, *a, **k):
+    if url.startswith('file://'):
+        with open(url[7:], 'r') as f: return DummyResponse(f.read())
+    return _og(url, *a, **k)
+requests.get = _mock_get
+"""
+
+# Replace print(capability.run()) to output JSON
+import re
+source = re.sub(
+    r'\\s*print\\(capability\\.run\\(\\)\\)',
+    '\\n        ' + mock_code.replace('\\n', '\\n        ') + '\\n        import json\\n        res = capability.run()\\n        try:\\n            if hasattr(res, "content") and "response" in res.content:\\n                print(json.dumps(res.content["response"], indent=2))\\n            elif hasattr(res, "content"):\\n                print(json.dumps(res.content, indent=2))\\n            else:\\n                print(res)\\n        except:\\n            print(res)',
+    source
+)
+
+exec(source, {"__name__": "__main__"})
+                `);
+                updateOutput("\\n✅ Processamento concluído com sucesso!");
+            } catch (err) {
+            updateOutput("\\n❌ Erro durante a execução:\\n" + err);
+            console.error(err);
+        }
+      });
+    </script>
+  </body>
+</html>
