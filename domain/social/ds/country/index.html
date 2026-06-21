@@ -475,6 +475,9 @@ class MockFrictionlessPackage:
 
 sys.modules['frictionless'] = type('frictionless', (), {'Package': MockFrictionlessPackage, 'system': type('MockSystem', (), {})})
 sys.modules['frictionless.system'] = type('frictionless.system', (), {'system': type('MockSystem', (), {})})
+sys.modules['frictionless.resources'] = DummyModule('frictionless.resources')
+sys.modules['frictionless.resources.resource'] = type('frictionless.resources.resource', (), {'Resource': MockResource})
+sys.modules['frictionless.resources.table'] = type('frictionless.resources.table', (), {'TableResource': MockResource})
 
 # Mocking rocrate
 class MockROCrate:
@@ -515,11 +518,11 @@ def _mock_get(url, *a, **k):
 requests.get = _mock_get
 """
 
-# Replace print(capability.run()) to output JSON
+# Força a execução removendo completamente o "if capability.check():"
 import re
 source = re.sub(
-    r'\\s*print\\(capability\\.run\\(\\)\\)',
-    '\\n        ' + mock_code.replace('\\n', '\\n        ') + '\\n        import json\\n        res = capability.run()\\n        try:\\n            if hasattr(res, "content") and isinstance(res.content, dict) and "response" in res.content:\\n                print(json.dumps(res.content["response"], indent=2, default=str))\\n            elif hasattr(res, "content"):\\n                print(json.dumps(res.content, indent=2, default=str))\\n            else:\\n                print(json.dumps(res, indent=2, default=str))\\n        except Exception as e:\\n            print(f"Erro ao converter JSON: {e}")\\n            print(f"Fallback output: {res}")',
+    r'\\s*if capability\\.check\\(\\):[\\s\\S]*?else:\\s*print\\(.*\\)',
+    '\\n    ' + mock_code.replace('\\n', '\\n    ') + '\\n    import json\\n    res = capability.run()\\n    try:\\n        if hasattr(res, "content") and isinstance(res.content, dict) and "response" in res.content:\\n            print(json.dumps(res.content["response"], indent=2, default=str))\\n        elif hasattr(res, "content"):\\n            print(json.dumps(res.content, indent=2, default=str))\\n        else:\\n            print(json.dumps(res, indent=2, default=str))\\n    except Exception as e:\\n        print(f"Erro ao converter JSON: {e}")\\n        print(f"Fallback output: {res}")',
     source
 )
 
