@@ -282,22 +282,22 @@
     <main class="wrap">
       <section class="hero" style="text-align: center;">
         <p class="eyebrow">OntoBDC Blog</p>
-        <h1>Execução Offline de Dataset</h1>
+        <h1>Offline Dataset Execution</h1>
         <p class="lead" style="margin: 1rem auto;">
-          Para contornar as restrições de segurança do navegador ao rodar offline, 
-          clique no botão abaixo e selecione a pasta do dataset (<strong>country</strong>).
+          To bypass browser security restrictions when running offline, 
+          click the button below and select the dataset folder (<strong>country</strong>).
         </p>
         <div class="actions" style="justify-content: center; margin-top: 2rem;">
           <label class="btn btn--primary" style="cursor: pointer; padding: 0 2rem; font-size: 1.1rem;">
-            📁 Selecionar Pasta do Dataset
+            📁 Select Dataset Folder
             <input type="file" id="dir-picker" webkitdirectory directory multiple style="display: none;" />
           </label>
         </div>
       </section>
 
       <section style="padding: 2rem 0; margin-bottom: 2rem;">
-        <h2 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Console de Saída</h2>
-        <pre id="pyodide-output" style="background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem; overflow-x: auto; white-space: pre-wrap; color: var(--fg); font-size: 0.9rem; line-height: 1.5; min-height: 20rem; box-shadow: var(--shadow);">Aguardando você selecionar a pasta...</pre>
+        <h2 style="margin-top: 0; font-size: 1.5rem; margin-bottom: 1rem;">Output Console</h2>
+        <pre id="pyodide-output" style="background: var(--panel); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem; overflow-x: auto; white-space: pre-wrap; color: var(--fg); font-size: 0.9rem; line-height: 1.5; min-height: 20rem; box-shadow: var(--shadow);">Waiting for you to select the folder...</pre>
       </section>
     </main>
     <footer class="bd-footer">
@@ -341,14 +341,14 @@
       </div>
     </footer>
 
-<!-- O arquivo HTML foi corrigido removendo o trecho duplicado -->
+<!-- The HTML file has been corrected by removing the duplicated snippet -->
     <!-- Pyodide Script -->
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     <script>
       function updateOutput(msg) {
         const el = document.getElementById("pyodide-output");
         if (el) {
-          if (el.innerText === "Aguardando você selecionar a pasta...") {
+          if (el.innerText === "Waiting for you to select the folder...") {
             el.innerText = "";
           }
           el.innerText += msg + "\n";
@@ -360,16 +360,16 @@
         const files = e.target.files;
         if (files.length === 0) return;
 
-        updateOutput(`\nIniciando o processamento. Lendo ${files.length} arquivos...`);
+        updateOutput(`\nStarting processing. Reading ${files.length} files...`);
 
         try {
-                updateOutput("Carregando ambiente Pyodide...");
+                updateOutput("Loading Pyodide environment...");
                 if (!window.pyodide) {
                     window.pyodide = await loadPyodide();
-                    updateOutput("Instalando dependências base (isso pode levar alguns segundos)...");
+                    updateOutput("Installing base dependencies (this may take a few seconds)...");
                     await window.pyodide.loadPackage("micropip");
                     const micropip = window.pyodide.pyimport("micropip");
-                    // Instalando dependências e o ontobdc diretamente do PyPI (ignorando deps pesadas)
+                    // Installing dependencies and ontobdc directly from PyPI (ignoring heavy deps)
                     await micropip.install(['pyodide-http', 'requests', 'rdflib', 'pyyaml', 'networkx']);
                     await window.pyodide.runPythonAsync(`
 import micropip
@@ -378,7 +378,7 @@ await micropip.install('ontobdc', deps=False)
                 }
 
                 const pyodide = window.pyodide;
-                updateOutput("Montando sistema de arquivos virtual...");
+                updateOutput("Mounting virtual file system...");
 
                 // When user selects 'country' folder, we want to place its contents inside '/tmp/dataset'
                 const base_dataset_dir = "/tmp/dataset";
@@ -408,10 +408,10 @@ await micropip.install('ontobdc', deps=False)
                 }
 
                 if (!foundDataset) {
-                    updateOutput("⚠️ AVISO: Parece que você não selecionou a pasta correta do dataset. Certifique-se de selecionar a pasta que contém o arquivo dataset.ttl.");
+                    updateOutput("⚠️ WARNING: It seems you did not select the correct dataset folder. Make sure to select the folder containing the dataset.ttl file.");
                 }
 
-                updateOutput("Arquivos carregados com sucesso! Executando script Python...");
+                updateOutput("Files loaded successfully! Executing Python script...");
 
                 await pyodide.runPythonAsync(`
 import sys
@@ -422,14 +422,10 @@ import importlib
 
 pyodide_http.patch_all()
 
-class DOMOutput:
-    def write(self, txt):
-        if txt.strip():
-            js.updateOutput(txt.rstrip("\\n"))
-    def flush(self): pass
+from ontobdc.run.adapter.ui import BrowserConsoleFeedbackAdapter
 
-sys.stdout = DOMOutput()
-sys.stderr = DOMOutput()
+sys.stdout = BrowserConsoleFeedbackAdapter()
+sys.stderr = BrowserConsoleFeedbackAdapter()
 
 os.environ["ONTOBDC_PROJECT_ROOT"] = "/tmp/dataset"
 
@@ -438,7 +434,7 @@ os.makedirs("/tmp/dataset/.__ontobdc__", exist_ok=True)
 with open("/tmp/dataset/.__ontobdc__/config.yaml", "w") as f:
     f.write("context:\\n  obdc:\\n    contextLanguage: en\\n")
 
-# Mocks para dependencias nativas dificeis de instalar
+# Mocks for hard-to-install native dependencies
 class DummyModule:
     def __init__(self, name):
         self.__name__ = name
@@ -488,20 +484,20 @@ sys.modules['rocrate.rocrate'] = type('rocrate.rocrate', (), {'ROCrate': MockROC
 for mod in ['sismic', 'spacy', 'lxml', 'pyspellchecker', 'datapackage', 'tableschema', 'numpy', 'rich']:
     sys.modules[mod] = DummyModule(mod)
 
-# Executar dataset
+# Execute dataset
 base_dataset_dir = "/tmp/dataset"
 script_url = f"{base_dataset_dir}/core/py/context/plugin/command/dataset.py"
 
 with open(script_url, "r") as f:
     source = f.read()
 
-# Substituir URIs remotas pelas locais montadas
+# Replace remote URIs with the mounted local ones
 source = source.replace(
     'https://raw.githubusercontent.com/Brasidata/brasidatacenter/091b6ce50c9d0fffd8ab15d252aabc79a5d2daed/domain/social/ds/country/dataset.ttl',
     f'file://{base_dataset_dir}/dataset.ttl'
 )
 
-# Mock de validações HTTP do file://
+# Mock HTTP validations for file://
 mock_code = """import ontobdc.shared.adapter.util
 ontobdc.shared.adapter.util.is_valid_url = lambda *a, **k: True
 import requests
@@ -518,22 +514,22 @@ def _mock_get(url, *a, **k):
 requests.get = _mock_get
 """
 
-# Força a execução removendo completamente o "if capability.check():"
+# Force execution by completely removing "if capability.check():"
 import re
 source = re.sub(
     r'\\s*if capability\\.check\\(\\):[\\s\\S]*?else:\\s*print\\(.*\\)',
-    '\\n    ' + mock_code.replace('\\n', '\\n    ') + '\\n    import json\\n    res = capability.run()\\n    try:\\n        if hasattr(res, "content") and isinstance(res.content, dict) and "response" in res.content:\\n            print(json.dumps(res.content["response"], indent=2, default=str))\\n        elif hasattr(res, "content"):\\n            print(json.dumps(res.content, indent=2, default=str))\\n        else:\\n            print(json.dumps(res, indent=2, default=str))\\n    except Exception as e:\\n        print(f"Erro ao converter JSON: {e}")\\n        print(f"Fallback output: {res}")',
+    '\\n    ' + mock_code.replace('\\n', '\\n    ') + '\\n    import json\\n    res = capability.run()\\n    try:\\n        if hasattr(res, "content") and isinstance(res.content, dict) and "response" in res.content:\\n            print(json.dumps(res.content["response"], indent=2, default=str))\\n        elif hasattr(res, "content"):\\n            print(json.dumps(res.content, indent=2, default=str))\\n        else:\\n            print(json.dumps(res, indent=2, default=str))\\n    except Exception as e:\\n        print(f"Error converting JSON: {e}")\\n        print(f"Fallback output: {res}")',
     source
 )
 
-# Adiciona traceback pra gente saber o que rolou se der erro no dataset
-source = f"import traceback\\ntry:\\n{re.sub('^', '    ', source, flags=re.MULTILINE)}\\nexcept Exception as e:\\n    print('Deu ruim interno do Python:')\\n    traceback.print_exc()"
+# Add traceback so we know what happened if the dataset fails
+source = f"import traceback\\ntry:\\n{re.sub('^', '    ', source, flags=re.MULTILINE)}\\nexcept Exception as e:\\n    print('Internal Python failure:')\\n    traceback.print_exc()"
 
 exec(source, {"__name__": "__main__"})
                 `);
-                updateOutput("\n✅ Processamento concluído com sucesso!");
+                updateOutput("\n✅ Processing completed successfully!");
             } catch (err) {
-            updateOutput("\n❌ Erro durante a execução:\n" + err);
+            updateOutput("\n❌ Error during execution:\n" + err);
             console.error(err);
         }
       });

@@ -26,14 +26,12 @@ schema:terms rdf:type owl:AnnotationProperty .
 
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#hasAchievement
 :hasAchievement rdf:type owl:ObjectProperty ;
-                rdfs:label "has Achievement"@en ,
-                           "has Achievement"@pt-br .
+                rdfs:label "has Achievement"@en  .
 
 
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#hasSkillGroup
 :hasSkillGroup rdf:type owl:ObjectProperty ;
-               rdfs:label "has Skill Group"@en ,
-                          "has Skill Group"@pt-br .
+               rdfs:label "has Skill Group"@en  .
 
 
 #################################################################
@@ -68,17 +66,14 @@ schema:name rdf:type owl:DatatypeProperty .
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#EmploymentTypeEnumValue
 :EmploymentTypeEnumValue rdf:type owl:Class ;
                          rdfs:subClassOf schema:DefinedTermSet ;
-                         schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en ,
-                                            "Vocabulário controlado de tipos de vínculo/contratação usados em vagas."@pt-br ;
-                         schema:name "Employment type"@en ,
-                                     "Tipo de vínculo"@pt-br .
+                         schema:description "Controlled vocabulary for employment/vínculo types used in job postings."@en  ;
+                         schema:name "Employment type"@en  .
 
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#JobLocationTypeEnumValue
 :JobLocationTypeEnumValue rdf:type owl:Class ;
                           rdfs:subClassOf schema:DefinedTermSet ;
-                          schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en ,
-                                             "Vocabulário controlado para onde o trabalho é realizado (presencial, híbrido, remoto, desconhecido)."@pt-br ;
-                          schema:name "Tipo de local de trabalho"@pt-br ,
+                          schema:description "Controlled vocabulary for where the work is performed (on-site, hybrid, remote, unknown)."@en  ;
+                          schema:name 
                                       "Work location type"@en .
 
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#JobRequirement
@@ -93,9 +88,9 @@ schema:name rdf:type owl:DatatypeProperty .
 ###  http://datacenter.app.br/domain/social/ns/job.ttl#SkillGroup
 :SkillGroup rdf:type owl:Class ;
             rdfs:subClassOf cv:CV ;
-            rdfs:comment "Habilidades"@pt-br ,
+            rdfs:comment 
                          "Skill Group"@en ;
-            rdfs:label "Habilidades"@pt-br ,
+            rdfs:label 
                        "Skill Group"@en .
 
 
