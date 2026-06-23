@@ -351,7 +351,7 @@
           if (el.innerText === "Aguardando você selecionar a pasta...") {
             el.innerText = "";
           }
-          el.innerText += msg + "\\n";
+          el.innerText += msg + "\n";
           el.scrollTop = el.scrollHeight;
         }
       }
@@ -360,7 +360,7 @@
         const files = e.target.files;
         if (files.length === 0) return;
 
-        updateOutput(`\\nIniciando o processamento. Lendo ${files.length} arquivos...`);
+        updateOutput(`\nIniciando o processamento. Lendo ${files.length} arquivos...`);
 
         try {
                 updateOutput("Carregando ambiente Pyodide...");
@@ -531,9 +531,9 @@ source = f"import traceback\\ntry:\\n{re.sub('^', '    ', source, flags=re.MULTI
 
 exec(source, {"__name__": "__main__"})
                 `);
-                updateOutput("\\n✅ Processamento concluído com sucesso!");
+                updateOutput("\n✅ Processamento concluído com sucesso!");
             } catch (err) {
-            updateOutput("\\n❌ Erro durante a execução:\\n" + err);
+            updateOutput("\n❌ Erro durante a execução:\n" + err);
             console.error(err);
         }
       });
