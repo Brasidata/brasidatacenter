@@ -369,12 +369,11 @@
                     updateOutput("Installing base dependencies (this may take a few seconds)...");
                     await window.pyodide.loadPackage("micropip");
                     const micropip = window.pyodide.pyimport("micropip");
-                    // Installing dependencies and ontobdc directly from PyPI (ignoring heavy deps)
-                    await micropip.install(['pyodide-http', 'requests', 'rdflib', 'pyyaml', 'networkx']);
-                    await window.pyodide.runPythonAsync(`
-import micropip
-await micropip.install('ontobdc', deps=False)
-                    `);
+                    // Using native pyodide requests via pyodide-http
+                    // We use the lightweight version of the stack to prevent downloading unnecessary dependencies.
+                    // Since it is not yet on PyPI, we fetch the locally built wheel.
+                    const origin = window.location.href.split('/').slice(0, -1).join('/');
+                    await micropip.install(['pyodide-http', 'requests', `${origin}/.__ontobdc__/ontobdc_lt-0.11.0-py3-none-any.whl`]);
                 }
 
                 const pyodide = window.pyodide;
