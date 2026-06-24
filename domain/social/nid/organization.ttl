@@ -73,42 +73,29 @@ foaf:Organization rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://datacenter.app.br/domain/social/nid/organization.ttl#Brasidata
-:Brasidata rdf:type owl:NamedIndividual ,
-                    foaf:Organization ;
-           schema:areaServed "Mundial"@pt-br ,
-                             "Worldwide"@en ;
-           schema:name "BRASIDATA CONSULTORIA EM ENGENHARIA E TECNOLOGIA" ;
-           skos:altLabel "BRASIDATA ENGENHARIA"@pt-br ,
-                         "BRASIDATA ENGINEERING"@en ;
-           rov:legalName "BRASIDATA CONSULTORIA EM ENGENHARIA, TECNOLOGIA, TREINAMENTO E DESENVOLVIMENTO DE SOFTWARE LTDA - ME" .
-
-
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#CERTI
 :CERTI rdf:type owl:NamedIndividual ,
                 cv:Company ,
                 foaf:Organization ;
-       schema:areaServed "Brasil"@pt-br ,
+       schema:areaServed 
                          "Brazil"@en ;
-       schema:name "CERTI Foundation"@en ,
-                   "Fundação CERTI"@pt-br .
+       schema:name "CERTI Foundation"@en  .
 
 
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#Concat
 :Concat rdf:type owl:NamedIndividual ,
                  cv:Company ,
                  foaf:Organization ;
-        schema:areaServed "Brasil"@pt-br ,
+        schema:areaServed 
                           "Brazil"@en ;
-        schema:name "Concat Smart Solutions"@en ,
-                    "Concat Soluções Inteligentes"@pt-br .
+        schema:name "Concat Smart Solutions"@en  .
 
 
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#GitHub
 :GitHub rdf:type owl:NamedIndividual ,
                  obdc_org:GithubAccount ,
                  schema:WebSite ;
-        schema:areaServed "Mundial"@pt-br ,
+        schema:areaServed 
                           "Worldwide"@en ;
         schema:name "GitHub" ;
         rov:legalName "GitHub, Inc." ;
@@ -119,17 +106,16 @@ foaf:Organization rdf:type owl:Class .
 :InfraCidades rdf:type owl:NamedIndividual ,
                        cv:Company ,
                        foaf:Organization ;
-              schema:areaServed "Brasil"@pt-br ,
+              schema:areaServed 
                                 "Brazil"@en ;
-              schema:name "InfraCidades Program"@en ,
-                          "Programa InfraCidades"@pt-br .
+              schema:name "InfraCidades Program"@en  .
 
 
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#LinkedIn
 :LinkedIn rdf:type owl:NamedIndividual ,
                    obdc_org:LinkedInAccount ,
                    schema:WebSite ;
-          schema:areaServed "Mundial"@pt-br ,
+          schema:areaServed 
                             "Worldwide"@en ;
           schema:name "LinkedIn" ;
           rov:legalName "LinkedIn Corporation" ;
@@ -141,9 +127,9 @@ foaf:Organization rdf:type owl:Class .
                   cv:Company ,
                   cv:EducationalOrg ,
                   foaf:Organization ;
-         schema:areaServed "Brasil"@pt-br ,
+         schema:areaServed 
                            "Brazil"@en ;
-         schema:name "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro"@pt-br ,
+         schema:name 
                      "Pontifical Catholic University of Rio de Janeiro"@en ;
          rov:legalName "PUC-Rio - Pontifícia Universidade Católica do Rio de Janeiro" .
 
@@ -152,17 +138,16 @@ foaf:Organization rdf:type owl:Class .
 :ReforceSul rdf:type owl:NamedIndividual ,
                      cv:Company ,
                      foaf:Organization ;
-            schema:areaServed "Brasil"@pt-br ,
+            schema:areaServed 
                               "Brazil"@en ;
-            schema:name "ReforceSul"@en ,
-                        "ReforceSul"@pt-br .
+            schema:name "ReforceSul"@en  .
 
 
 ###  http://datacenter.app.br/domain/social/nid/organization.ttl#Uniabeu
 :Uniabeu rdf:type owl:NamedIndividual ,
                   cv:EducationalOrg ,
                   foaf:Organization ;
-         schema:areaServed "Brasil"@pt-br ,
+         schema:areaServed 
                            "Brazil"@en ;
          schema:name "UNIABEU" ;
          rov:legalName "ASSOCIACAO BRASILEIRA DE ENSINO UNIVERSITARIO ABEU" .
@@ -172,7 +157,7 @@ foaf:Organization rdf:type owl:Class .
 :Zigurat rdf:type owl:NamedIndividual ,
                   cv:EducationalOrg ,
                   foaf:Organization ;
-         schema:areaServed "Mundial"@pt-br ,
+         schema:areaServed 
                            "Worldwide"@en ;
          schema:name "ZIGURAT" ;
          rov:legalName "ZIGURAT GLOBAL INSTITUTE OF TECHNOLOGY SL" .
@@ -182,7 +167,7 @@ foaf:Organization rdf:type owl:Class .
 :bSI rdf:type owl:NamedIndividual ,
               cv:EducationalOrg ,
               foaf:Organization ;
-     schema:areaServed "Mundial"@pt-br ,
+     schema:areaServed 
                        "Worldwide"@en ;
      schema:name "buildingSMART International" ;
      rov:legalName "buildingSMART International" .

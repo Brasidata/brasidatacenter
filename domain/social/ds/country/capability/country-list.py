@@ -21,9 +21,8 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapability, EntityQuer
         author=["http://kb.elias.eng.br/nid/elias.ttl#Elias"],
         tags={
             "en": ["social", "country", "list", "query"],
-            "pt": ["social", "país", "lista", "consulta"],
         },
-        supported_languages=["en", "pt"],
+        supported_languages=["en"],
         input_schema={
             "type": "object",
             "properties": {},
@@ -43,14 +42,12 @@ class ListCountryCapability(QueryCapability, RemoteDatasetCapability, EntityQuer
     def label(self, lang: str = "en") -> str:
         labels = {
             "en": "List Countries",
-            "pt": "Listar Países",
         }
         return labels.get(lang, labels["en"])
 
     def description(self, lang: str = "en") -> str:
         descriptions = {
             "en": "Reads the country dataset payload and returns a list of countries.",
-            "pt": "Lê o payload do dataset de países e retorna uma lista de países.",
         }
         return descriptions.get(lang, descriptions["en"])
 
