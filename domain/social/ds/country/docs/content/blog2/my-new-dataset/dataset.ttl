@@ -1,0 +1,11 @@
+@prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+<urn:ontobdc:storage/dataset/my-new-dataset> a ct:ContainerDescription,
+        ct:Folder,
+        dcat:Dataset ;
+    dcterms:isPartOf <urn:ontobdc:storage/local/brasidatacenter/domain/social/ds/country/docs/content/blog2> ;
+    prov:atLocation <file:///Users/eliasmpjunior/infobim/deploy/ontobdc-stack/brasidatacenter/domain/social/ds/country/docs/content/blog2/my-new-dataset> .
+
