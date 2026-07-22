@@ -1,0 +1,75 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/vector.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix type: <http://datacenter.app.br/ontology/social/entity/document/type.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/vector.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/vector.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/social/entity/document/type.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#contentLanguage
+:contentLanguage rdf:type owl:DatatypeProperty .
+
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#languageScore
+:languageScore rdf:type owl:DatatypeProperty .
+
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#learnedAt
+:learnedAt rdf:type owl:DatatypeProperty .
+
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#sourceFile
+:sourceFile rdf:type owl:DatatypeProperty .
+
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#sourceFilePath
+:sourceFilePath rdf:type owl:DatatypeProperty .
+
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#supportedFileType
+:supportedFileType rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/vector.ttl#LinkedInJobOffer
+:LinkedInJobOffer rdf:type owl:NamedIndividual ,
+        obdc:DocumentType ;
+    schema:description "LinkedIn job posting describing a target job title, role summary, employment type, work location, requirements, skill groups, and achievements expected for a position."@en ;
+    schema:identifier "linkedin_job_offer" ;
+    schema:name "LinkedIn Job Offer"@en ;
+    obdc:isDocumentEntityTypeOf type:JobOffer ;
+    obdc:documentTypeVectorValue "[0.06, 0.54, 0.18, 0.0453]" ;
+    :contentLanguage "en" ;
+    :languageScore -14156.663292884827 ;
+    :learnedAt "2026-07-22T20:23:18+00:00"^^xsd:dateTime ;
+    :supportedFileType "application/pdf" .
