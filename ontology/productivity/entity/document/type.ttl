@@ -1,0 +1,125 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ontouml: <http://w3id.org/ontouml#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/document/type.ttl> rdf:type owl:Ontology ;
+                                              owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#obdc-entity:Contract
+:obdc-entity:Contract rdf:type owl:AnnotationProperty .
+
+
+###  http://w3id.org/ontouml#name
+ontouml:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#DataEntity
+obdc:DataEntity rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
+:BlogPost rdf:type owl:NamedIndividual ,
+                   obdc:DataEntity ;
+          ontouml:name "Blog Post"@en ;
+          rdfs:comment "Document type data entity for blog post documents."@en ;
+          schema:description "Online article with title, sections, hyperlinks, and narrative structure; typically less formal and more topical than technical reports."@en ;
+          schema:identifier "blog_post" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
+:Contract rdf:type owl:NamedIndividual ,
+                   obdc:DataEntity ;
+          ontouml:name "Contract"@en ;
+          rdfs:comment "Document type data entity for contract documents."@en ;
+          schema:description "Bilateral agreement with clauses, sections, and recurring legal terminology."@en ;
+          schema:identifier "contract" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Invoice
+:Invoice rdf:type owl:NamedIndividual ,
+                  obdc:DataEntity ;
+         ontouml:name "Invoice"@en ;
+         rdfs:comment "Document type data entity for invoice documents."@en ;
+         schema:description "Commercial billing document with low section density and structured numeric listing."@en ;
+         schema:identifier "invoice" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#MeetingMinutes
+:MeetingMinutes rdf:type owl:NamedIndividual ,
+                         obdc:DataEntity ;
+                ontouml:name "Meeting Minutes"@en ;
+                rdfs:comment "Document type data entity for meeting minutes documents."@en ;
+                schema:description "Meeting record with section markers, participant/action listings, and lighter lexical recurrence."@en ;
+                schema:identifier "meeting_minutes" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Proposal
+:Proposal rdf:type owl:NamedIndividual ,
+                   obdc:DataEntity ;
+          ontouml:name "Proposal"@en ;
+          rdfs:comment "Document type data entity for proposal documents."@en ;
+          schema:description "Commercial or technical proposal with moderate sections and moderate repeated persuasive vocabulary."@en ;
+          schema:identifier "proposal" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#PurchaseOrder
+:PurchaseOrder rdf:type owl:NamedIndividual ,
+                        obdc:DataEntity ;
+               ontouml:name "Purchase Order"@en ;
+               rdfs:comment "Document type data entity for purchase order documents."@en ;
+               schema:description "Procurement request with list-heavy structure and moderate business vocabulary repetition."@en ;
+               schema:identifier "purchase_order" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Receipt
+:Receipt rdf:type owl:NamedIndividual ,
+                  obdc:DataEntity ;
+         ontouml:name "Receipt"@en ;
+         rdfs:comment "Document type data entity for receipt documents."@en ;
+         schema:description "Short proof-of-payment document with very low page count and sparse sections."@en ;
+         schema:identifier "receipt" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalReport
+:TechnicalReport rdf:type owl:NamedIndividual ,
+                          obdc:DataEntity ;
+                 ontouml:name "Technical Report"@en ;
+                 rdfs:comment "Document type data entity for technical report documents."@en ;
+                 schema:description "Analytical document with several sections, moderate lists, and denser repeated terminology."@en ;
+                 schema:identifier "technical_report" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalSpecification
+:TechnicalSpecification rdf:type owl:NamedIndividual ,
+                                 obdc:DataEntity ;
+                        ontouml:name "Technical Specification"@en ;
+                        rdfs:comment "Document type data entity for technical specification documents."@en ;
+                        schema:description "Structured specification with high section density and repeated domain terminology."@en ;
+                        schema:identifier "technical_specification" .
