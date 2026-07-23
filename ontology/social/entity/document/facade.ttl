@@ -1,0 +1,243 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/document/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
+@prefix type: <http://datacenter.app.br/ontology/social/entity/document/type.ttl#> .
+@prefix job: <http://datacenter.app.br/domain/social/ns/job.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/document/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/document/facade.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/social/entity/document/type.ttl> ,
+                <http://datacenter.app.br/domain/social/ns/job.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#DataEntityFacade
+:DataEntityFacade rdf:type owl:Class ;
+    rdfs:label "Data Entity Facade"@en ;
+    schema:description "Public projection of a data entity, listing the fields and information exposed externally."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#FacadeField
+:FacadeField rdf:type owl:Class ;
+    rdfs:label "Facade Field"@en ;
+    schema:description "A public field declared by a data entity facade."@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#hasDataEntityFacade
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade ;
+    rdfs:label "has data entity facade"@en ;
+    schema:description "Associates a data entity with its public facade."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#isFacadeOf
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity ;
+    rdfs:label "is facade of"@en ;
+    schema:description "Associates a facade with the data entity it publicly represents."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#hasFacadeField
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField ;
+    rdfs:label "has facade field"@en ;
+    schema:description "Lists the public fields exposed by a data entity facade."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#fieldDatatype
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype ;
+    rdfs:label "field datatype"@en ;
+    schema:description "Declares the expected datatype for a public field."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#mapsToProperty
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property ;
+    rdfs:label "maps to property"@en ;
+    schema:description "Links a facade field to a canonical RDF property when such mapping exists."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#usesControlledTermSet
+:usesControlledTermSet rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "uses controlled term set"@en ;
+    schema:description "Links a public field to the controlled vocabulary or class that constrains its values."@en .
+
+
+#################################################################
+#    Data Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#isRequired
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is required"@en ;
+    schema:description "Indicates whether the public field is required in the facade contract."@en .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#isMultivalued
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is multivalued"@en ;
+    schema:description "Indicates whether the public field can expose multiple values."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
+type:JobOffer :hasDataEntityFacade :JobOfferFacade .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferFacade
+:JobOfferFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "job_offer_facade" ;
+    schema:name "Job Offer Facade"@en ;
+    schema:description "Public facade for job offer and job posting documents."@en ;
+    :isFacadeOf type:JobOffer ;
+    :hasFacadeField :JobOfferTitleField ,
+        :JobOfferDescriptionField ,
+        :JobOfferEmploymentTypeField ,
+        :JobOfferLocationTypeField ,
+        :JobOfferMandatoryRequirementField ,
+        :JobOfferDesirableRequirementField ,
+        :JobOfferSkillGroupField ,
+        :JobOfferAchievementField .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferTitleField
+:JobOfferTitleField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "target_job_title" ;
+    schema:name "Target Job Title"@en ;
+    schema:description "Public target job title announced by the offer."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty cv:targetJobTitle ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferDescriptionField
+:JobOfferDescriptionField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "target_job_description" ;
+    schema:name "Target Job Description"@en ;
+    schema:description "Narrative description of the role, mission, and responsibilities."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty cv:targetJobDescription ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferEmploymentTypeField
+:JobOfferEmploymentTypeField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "employment_type" ;
+    schema:name "Employment Type"@en ;
+    schema:description "Public employment or contract type declared by the posting."@en ;
+    :fieldDatatype xsd:string ;
+    :usesControlledTermSet job:EmploymentTypeEnumValue ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferLocationTypeField
+:JobOfferLocationTypeField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "job_location_type" ;
+    schema:name "Job Location Type"@en ;
+    schema:description "Public work location arrangement such as on-site, hybrid, or remote."@en ;
+    :fieldDatatype xsd:string ;
+    :usesControlledTermSet job:JobLocationTypeEnumValue ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferMandatoryRequirementField
+:JobOfferMandatoryRequirementField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "mandatory_requirements" ;
+    schema:name "Mandatory Requirements"@en ;
+    schema:description "Public list of requirements explicitly marked as mandatory for candidates."@en ;
+    :fieldDatatype xsd:string ;
+    :usesControlledTermSet job:MandatoryRequirement ;
+    :isRequired false ;
+    :isMultivalued true .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferDesirableRequirementField
+:JobOfferDesirableRequirementField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "desirable_requirements" ;
+    schema:name "Desirable Requirements"@en ;
+    schema:description "Public list of optional or desirable candidate requirements."@en ;
+    :fieldDatatype xsd:string ;
+    :usesControlledTermSet job:DesirableRequirement ;
+    :isRequired false ;
+    :isMultivalued true .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferSkillGroupField
+:JobOfferSkillGroupField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "skill_groups" ;
+    schema:name "Skill Groups"@en ;
+    schema:description "Public skill groupings or competency clusters referenced by the offer."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty job:hasSkillGroup ;
+    :usesControlledTermSet job:SkillGroup ;
+    :isRequired false ;
+    :isMultivalued true .
+
+
+###  http://datacenter.app.br/ontology/social/entity/document/facade.ttl#JobOfferAchievementField
+:JobOfferAchievementField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "achievements" ;
+    schema:name "Achievements"@en ;
+    schema:description "Public achievements, outcomes, or track record expectations attached to the role."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty job:hasAchievement ;
+    :isRequired false ;
+    :isMultivalued true .

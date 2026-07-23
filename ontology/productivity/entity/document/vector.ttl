@@ -1,0 +1,132 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl> rdf:type owl:Ontology ;
+                                              owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                                                          <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/value
+schema:value rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://schema.org/Thing
+schema:Thing rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#Contract
+:Contract rdf:type owl:NamedIndividual ,
+                   obdc:DocumentType ;
+          schema:description "Bilateral agreement with clauses, sections, and recurring legal terminology."@en ;
+          schema:identifier "contract" ;
+          schema:name "Contract"@en ;
+          obdc:isDocumentEntityTypeOf type:Contract ;
+          obdc:documentTypeVectorValue "[0.08, 0.40, 0.07, 0.0821]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#Invoice
+:Invoice rdf:type owl:NamedIndividual ,
+                  obdc:DocumentType ;
+         schema:description "Commercial billing document with low section density and structured numeric listing."@en ;
+         schema:identifier "invoice" ;
+         schema:name "Invoice"@en ;
+         obdc:isDocumentEntityTypeOf type:Invoice ;
+         obdc:documentTypeVectorValue "[0.02, 0.06, 0.32, 0.0210]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#MaxDistance
+:MaxDistance rdf:type owl:NamedIndividual ,
+                      schema:Thing ;
+             schema:identifier "max_distance" ;
+             schema:value "0.22" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#MeetingMinutes
+:MeetingMinutes rdf:type owl:NamedIndividual ,
+                         obdc:DocumentType ;
+                schema:description "Meeting record with section markers, participant/action listings, and lighter lexical recurrence."@en ;
+                schema:identifier "meeting_minutes" ;
+                schema:name "Meeting Minutes"@en ;
+                obdc:isDocumentEntityTypeOf type:MeetingMinutes ;
+                obdc:documentTypeVectorValue "[0.03, 0.16, 0.22, 0.0240]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#Proposal
+:Proposal rdf:type owl:NamedIndividual ,
+                   obdc:DocumentType ;
+          schema:description "Commercial or technical proposal with moderate sections and moderate repeated persuasive vocabulary."@en ;
+          schema:identifier "proposal" ;
+          schema:name "Proposal"@en ;
+          obdc:isDocumentEntityTypeOf type:Proposal ;
+          obdc:documentTypeVectorValue "[0.06, 0.22, 0.11, 0.0480]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#PurchaseOrder
+:PurchaseOrder rdf:type owl:NamedIndividual ,
+                        obdc:DocumentType ;
+               schema:description "Procurement request with list-heavy structure and moderate business vocabulary repetition."@en ;
+               schema:identifier "purchase_order" ;
+               schema:name "Purchase Order"@en ;
+               obdc:isDocumentEntityTypeOf type:PurchaseOrder ;
+               obdc:documentTypeVectorValue "[0.03, 0.08, 0.41, 0.0260]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#Receipt
+:Receipt rdf:type owl:NamedIndividual ,
+                  obdc:DocumentType ;
+         schema:description "Short proof-of-payment document with very low page count and sparse sections."@en ;
+         schema:identifier "receipt" ;
+         schema:name "Receipt"@en ;
+         obdc:isDocumentEntityTypeOf type:Receipt ;
+         obdc:documentTypeVectorValue "[0.01, 0.02, 0.18, 0.0105]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#TechnicalReport
+:TechnicalReport rdf:type owl:NamedIndividual ,
+                          obdc:DocumentType ;
+                 schema:description "Analytical document with several sections, moderate lists, and denser repeated terminology."@en ;
+                 schema:identifier "technical_report" ;
+                 schema:name "Technical Report"@en ;
+                 obdc:isDocumentEntityTypeOf type:TechnicalReport ;
+                 obdc:documentTypeVectorValue "[0.10, 0.28, 0.09, 0.0610]" .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/vector.ttl#TechnicalSpecification
+:TechnicalSpecification rdf:type owl:NamedIndividual ,
+                                 obdc:DocumentType ;
+                        schema:description "Structured specification with high section density and repeated domain terminology."@en ;
+                        schema:identifier "technical_specification" ;
+                        schema:name "Technical Specification"@en ;
+                        obdc:isDocumentEntityTypeOf type:TechnicalSpecification ;
+                        obdc:documentTypeVectorValue "[0.12, 0.46, 0.14, 0.0740]" .
