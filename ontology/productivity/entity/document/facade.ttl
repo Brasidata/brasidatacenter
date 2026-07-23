@@ -1,0 +1,330 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#DataEntityFacade
+:DataEntityFacade rdf:type owl:Class ;
+    rdfs:label "Data Entity Facade"@en ;
+    schema:description "Public projection of a data entity, listing the fields and information exposed externally."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#FacadeField
+:FacadeField rdf:type owl:Class ;
+    rdfs:label "Facade Field"@en ;
+    schema:description "A public field declared by a data entity facade."@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#hasDataEntityFacade
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade ;
+    rdfs:label "has data entity facade"@en ;
+    schema:description "Associates a data entity with its public facade."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#isFacadeOf
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity ;
+    rdfs:label "is facade of"@en ;
+    schema:description "Associates a facade with the data entity it publicly represents."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#hasFacadeField
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField ;
+    rdfs:label "has facade field"@en ;
+    schema:description "Lists the public fields exposed by a data entity facade."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#fieldDatatype
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype ;
+    rdfs:label "field datatype"@en ;
+    schema:description "Declares the expected datatype for a public field."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#mapsToProperty
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property ;
+    rdfs:label "maps to property"@en ;
+    schema:description "Links a facade field to a canonical RDF property when such mapping exists."@en .
+
+
+#################################################################
+#    Data Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#isRequired
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is required"@en ;
+    schema:description "Indicates whether the public field is required in the facade contract."@en .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#isMultivalued
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is multivalued"@en ;
+    schema:description "Indicates whether the public field can expose multiple values."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
+type:Contract :hasDataEntityFacade :ContractFacade .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#ContractFacade
+:ContractFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "contract_facade" ;
+    schema:name "Contract Facade"@en ;
+    schema:description "Public facade for contract documents."@en ;
+    :isFacadeOf type:Contract ;
+    :hasFacadeField :ContractTitleField ,
+        :ContractCounterpartyField ,
+        :ContractEffectiveDateField ,
+        :ContractJurisdictionField .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#ContractTitleField
+:ContractTitleField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ;
+    schema:description "Public title of the contract."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#ContractCounterpartyField
+:ContractCounterpartyField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "counterparty" ;
+    schema:name "Counterparty"@en ;
+    schema:description "Primary external party declared in the contract."@en ;
+    :fieldDatatype xsd:string ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#ContractEffectiveDateField
+:ContractEffectiveDateField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "effective_date" ;
+    schema:name "Effective Date"@en ;
+    schema:description "Date when the contract becomes effective."@en ;
+    :fieldDatatype xsd:date ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#ContractJurisdictionField
+:ContractJurisdictionField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "governing_jurisdiction" ;
+    schema:name "Governing Jurisdiction"@en ;
+    schema:description "Jurisdiction or forum publicly associated with the contract."@en ;
+    :fieldDatatype xsd:string ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Invoice
+type:Invoice :hasDataEntityFacade :InvoiceFacade .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceFacade
+:InvoiceFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "invoice_facade" ;
+    schema:name "Invoice Facade"@en ;
+    schema:description "Public facade for invoice documents."@en ;
+    :isFacadeOf type:Invoice ;
+    :hasFacadeField :InvoiceNumberField ,
+        :InvoiceIssueDateField ,
+        :InvoiceIssuerNameField ,
+        :InvoiceTotalAmountField ,
+        :InvoiceCurrencyField .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceNumberField
+:InvoiceNumberField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "invoice_number" ;
+    schema:name "Invoice Number"@en ;
+    schema:description "Business identifier publicly displayed by the invoice."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceIssueDateField
+:InvoiceIssueDateField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "issue_date" ;
+    schema:name "Issue Date"@en ;
+    schema:description "Date when the invoice was issued."@en ;
+    :fieldDatatype xsd:date ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceIssuerNameField
+:InvoiceIssuerNameField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "issuer_name" ;
+    schema:name "Issuer Name"@en ;
+    schema:description "Name of the organization or person issuing the invoice."@en ;
+    :fieldDatatype xsd:string ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceTotalAmountField
+:InvoiceTotalAmountField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "total_amount" ;
+    schema:name "Total Amount"@en ;
+    schema:description "Total amount publicly charged by the invoice."@en ;
+    :fieldDatatype xsd:decimal ;
+    :mapsToProperty schema:price ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#InvoiceCurrencyField
+:InvoiceCurrencyField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "currency" ;
+    schema:name "Currency"@en ;
+    schema:description "Currency code used by the invoice total."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:priceCurrency ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
+type:BlogPost :hasDataEntityFacade :BlogPostFacade .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostFacade
+:BlogPostFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "blog_post_facade" ;
+    schema:name "Blog Post Facade"@en ;
+    schema:description "Public facade for blog post documents."@en ;
+    :isFacadeOf type:BlogPost ;
+    :hasFacadeField :BlogPostTitleField ,
+        :BlogPostSummaryField ,
+        :BlogPostAuthorNameField ,
+        :BlogPostPublishedAtField ,
+        :BlogPostKeywordsField .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostTitleField
+:BlogPostTitleField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ;
+    schema:description "Public title of the blog post."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:headline ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostSummaryField
+:BlogPostSummaryField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "summary" ;
+    schema:name "Summary"@en ;
+    schema:description "Short public summary of the blog post."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:description ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostAuthorNameField
+:BlogPostAuthorNameField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "author_name" ;
+    schema:name "Author Name"@en ;
+    schema:description "Public author name displayed by the blog post."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:author ;
+    :isRequired true ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostPublishedAtField
+:BlogPostPublishedAtField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "published_at" ;
+    schema:name "Published At"@en ;
+    schema:description "Publication date of the blog post."@en ;
+    :fieldDatatype xsd:dateTime ;
+    :mapsToProperty schema:datePublished ;
+    :isRequired false ;
+    :isMultivalued false .
+
+
+###  http://datacenter.app.br/ontology/productivity/entity/document/facade.ttl#BlogPostKeywordsField
+:BlogPostKeywordsField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "keywords" ;
+    schema:name "Keywords"@en ;
+    schema:description "Topical keywords or tags publicly associated with the blog post."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:keywords ;
+    :isRequired false ;
+    :isMultivalued true .
