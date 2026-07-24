@@ -1,0 +1,334 @@
+@prefix : <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#> .
+@base <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/facade.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+schema:description rdf:type owl:AnnotationProperty .
+schema:identifier rdf:type owl:AnnotationProperty .
+schema:name rdf:type owl:AnnotationProperty .
+
+#################################################################
+#    Classes
+#################################################################
+
+:DataEntityFacade rdf:type owl:Class ;
+    rdfs:label "Data Entity Facade"@en ;
+    schema:description "Public projection of a data entity, listing the row-level fields and information exposed externally."@en .
+
+:FacadeField rdf:type owl:Class ;
+    rdfs:label "Facade Field"@en ;
+    schema:description "A public field declared by a row-level data entity facade."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade ;
+    rdfs:label "has data entity facade"@en ;
+    schema:description "Associates a data entity with its public facade."@en .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity ;
+    rdfs:label "is facade of"@en ;
+    schema:description "Associates a facade with the data entity it publicly represents."@en .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField ;
+    rdfs:label "has facade field"@en ;
+    schema:description "Lists the public fields exposed by a data entity facade."@en .
+
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype ;
+    rdfs:label "field datatype"@en ;
+    schema:description "Declares the expected datatype for a public field."@en .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property ;
+    rdfs:label "maps to property"@en ;
+    schema:description "Links a facade field to a canonical RDF property when such mapping exists."@en .
+
+:mapsFromHeaderField rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range type:HeaderField ;
+    rdfs:label "maps from header field"@en ;
+    schema:description "Links a facade field to the semanticized HeaderField concept that can populate it."@en .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is required"@en ;
+    schema:description "Indicates whether the public field is required in the facade contract."@en .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is multivalued"@en ;
+    schema:description "Indicates whether the public field can expose multiple values."@en .
+
+:ifcClassName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:string ;
+    rdfs:label "IFC class name"@en ;
+    schema:description "IFC entity class that this facade projects to when materializing row instances."@en .
+
+:instanceRole rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:string ;
+    rdfs:label "instance role"@en ;
+    schema:description "Stable role name used by the import pipeline to group row-level projected instances."@en .
+
+:isRepeatable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is repeatable"@en ;
+    schema:description "Indicates whether one row can materialize multiple instances of this facade."@en .
+
+:ifcAttributeName rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:string ;
+    rdfs:label "IFC attribute name"@en ;
+    schema:description "IFC attribute name populated by the facade field when one exists."@en .
+
+#################################################################
+#    Individuals
+#################################################################
+
+type:IfcWorkScheduleHeaderVocabulary :hasDataEntityFacade
+    :IfcTaskFacade ,
+    :IfcTaskTimeFacade ,
+    :IfcRelSequencePredecessorFacade ,
+    :IfcRelSequenceSuccessorFacade .
+
+:IfcTaskFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "ifc_task_facade" ;
+    schema:name "IfcTask Facade"@en ;
+    schema:description "Row-level facade that projects task identity and task naming fields to IfcTask."@en ;
+    :isFacadeOf type:IfcWorkScheduleHeaderVocabulary ;
+    :ifcClassName "IfcTask" ;
+    :instanceRole "task" ;
+    :isRepeatable false ;
+    :hasFacadeField
+        :IfcTaskDocumentIdentifierField ,
+        :IfcTaskWorkBreakdownStructureField ,
+        :IfcTaskNameField .
+
+:IfcTaskDocumentIdentifierField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "document_identifier" ;
+    schema:name "Document Identifier"@en ;
+    schema:description "Document-local task identifier captured in the tabular source row."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:IdentifierField ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskWorkBreakdownStructureField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "work_breakdown_structure" ;
+    schema:name "Work Breakdown Structure"@en ;
+    schema:description "Primary work breakdown structure code projected to the IFC task identification."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:WorkBreakdownStructureField ;
+    :ifcAttributeName "Identification" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskNameField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    schema:description "Primary task name projected to the IFC task name."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :mapsFromHeaderField type:TaskNameField ;
+    :ifcAttributeName "Name" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "ifc_task_time_facade" ;
+    schema:name "IfcTaskTime Facade"@en ;
+    schema:description "Row-level facade that projects schedule metrics and dates to IfcTaskTime."@en ;
+    :isFacadeOf type:IfcWorkScheduleHeaderVocabulary ;
+    :ifcClassName "IfcTaskTime" ;
+    :instanceRole "task_time" ;
+    :isRepeatable false ;
+    :hasFacadeField
+        :IfcTaskTimeDurationField ,
+        :IfcTaskTimeStartField ,
+        :IfcTaskTimeFinishField ,
+        :IfcTaskTimePlannedProgressField ,
+        :IfcTaskTimeExecutedProgressField ,
+        :IfcTaskTimeDeviationField ,
+        :IfcTaskTimeCompletionField .
+
+:IfcTaskTimeDurationField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "schedule_duration" ;
+    schema:name "Schedule Duration"@en ;
+    schema:description "Planned schedule duration projected to IfcTaskTime."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:DurationField ;
+    :ifcAttributeName "ScheduleDuration" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeStartField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "schedule_start" ;
+    schema:name "Schedule Start"@en ;
+    schema:description "Planned start date projected to IfcTaskTime."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:StartDateField ;
+    :ifcAttributeName "ScheduleStart" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeFinishField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "schedule_finish" ;
+    schema:name "Schedule Finish"@en ;
+    schema:description "Planned finish date projected to IfcTaskTime."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:FinishDateField ;
+    :ifcAttributeName "ScheduleFinish" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimePlannedProgressField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "planned_progress_percent" ;
+    schema:name "Planned Progress Percent"@en ;
+    schema:description "Planned progress percentage captured from the source row."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:PlannedProgressPercentField ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeExecutedProgressField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "executed_progress_percent" ;
+    schema:name "Executed Progress Percent"@en ;
+    schema:description "Executed progress percentage captured from the source row."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:ExecutedProgressPercentField ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeDeviationField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "deviation_percent" ;
+    schema:name "Deviation Percent"@en ;
+    schema:description "Deviation percentage captured from the source row."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:DeviationPercentField ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcTaskTimeCompletionField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "completion_percent" ;
+    schema:name "Completion Percent"@en ;
+    schema:description "Completion percentage projected to IfcTaskTime completion."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:CompletionPercentField ;
+    :ifcAttributeName "Completion" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcRelSequencePredecessorFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "ifc_rel_sequence_predecessor_facade" ;
+    schema:name "IfcRelSequence Predecessor Facade"@en ;
+    schema:description "Row-level facade that projects predecessor relations to IfcRelSequence."@en ;
+    :isFacadeOf type:IfcWorkScheduleHeaderVocabulary ;
+    :ifcClassName "IfcRelSequence" ;
+    :instanceRole "predecessor_relation" ;
+    :isRepeatable true ;
+    :hasFacadeField
+        :IfcRelSequencePredecessorCurrentTaskField ,
+        :IfcRelSequencePredecessorReferenceField .
+
+:IfcRelSequencePredecessorCurrentTaskField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "related_process" ;
+    schema:name "Related Process"@en ;
+    schema:description "Current row task reference projected as the related process of the predecessor relation."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:WorkBreakdownStructureField ;
+    :ifcAttributeName "RelatedProcess" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcRelSequencePredecessorReferenceField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "relating_process" ;
+    schema:name "Relating Process"@en ;
+    schema:description "Predecessor task references projected as the relating process of the sequence relation."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:PredecessorsField ;
+    :ifcAttributeName "RelatingProcess" ;
+    :isRequired false ;
+    :isMultivalued true .
+
+:IfcRelSequenceSuccessorFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "ifc_rel_sequence_successor_facade" ;
+    schema:name "IfcRelSequence Successor Facade"@en ;
+    schema:description "Row-level facade that projects successor relations to IfcRelSequence."@en ;
+    :isFacadeOf type:IfcWorkScheduleHeaderVocabulary ;
+    :ifcClassName "IfcRelSequence" ;
+    :instanceRole "successor_relation" ;
+    :isRepeatable true ;
+    :hasFacadeField
+        :IfcRelSequenceSuccessorCurrentTaskField ,
+        :IfcRelSequenceSuccessorReferenceField .
+
+:IfcRelSequenceSuccessorCurrentTaskField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "relating_process" ;
+    schema:name "Relating Process"@en ;
+    schema:description "Current row task reference projected as the relating process of the successor relation."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:WorkBreakdownStructureField ;
+    :ifcAttributeName "RelatingProcess" ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:IfcRelSequenceSuccessorReferenceField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "related_process" ;
+    schema:name "Related Process"@en ;
+    schema:description "Successor task references projected as the related process of the sequence relation."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsFromHeaderField type:SuccessorsField ;
+    :ifcAttributeName "RelatedProcess" ;
+    :isRequired false ;
+    :isMultivalued true .
