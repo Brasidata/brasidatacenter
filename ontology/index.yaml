@@ -1,0 +1,4 @@
+
+entity:
+  aliases:
+    - email: http://datacenter.app.br/ontology/social/entity/ns.ttl#Email 
