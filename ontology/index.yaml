@@ -1,4 +1,6 @@
 
 entity:
   aliases:
-    - email: http://datacenter.app.br/ontology/social/entity/ns.ttl#Email 
+    - email: http://datacenter.app.br/ontology/social/entity/ns.ttl#Email
+    - workstream: http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#WorkStream
+    - work_stream: http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#WorkStream
