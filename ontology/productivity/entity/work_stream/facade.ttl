@@ -75,6 +75,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     :isFacadeOf type:WorkStream ;
     :hasFacadeField :GlobalIdField ,
         :NameField ,
+        :DescriptionField ,
         :WhatField ,
         :WhyField ,
         :WhoField ,
@@ -100,6 +101,16 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     :fieldDatatype xsd:string ;
     :mapsToProperty dcterms:title ;
     :isRequired true ;
+    :isMultivalued false .
+
+:DescriptionField rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Description" ;
+    schema:name "Description"@en ;
+    schema:description "Free-text description of the work to be performed in the WorkStream."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty dcterms:description ;
+    :isRequired false ;
     :isMultivalued false .
 
 :WhatField rdf:type owl:NamedIndividual ,
