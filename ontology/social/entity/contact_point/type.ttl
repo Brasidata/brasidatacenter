@@ -1,0 +1,23 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
+:ContactPoint rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf schema:ContactPoint ;
+    rdfs:label "Contact Point"@en ;
+    schema:description "Contact point through which a person can be reached, such as an email address, telephone number, or URL."@en ;
+    schema:identifier "contact_point" .
