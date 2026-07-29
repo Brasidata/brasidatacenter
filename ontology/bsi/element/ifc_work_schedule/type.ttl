@@ -1,0 +1,731 @@
+@prefix : <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ontouml: <http://w3id.org/ontouml#> .
+@base <http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#> .
+
+<http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://w3id.org/ontouml#name
+ontouml:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/name
+schema:name rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#DataEntity
+obdc:DataEntity rdf:type owl:Class .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#HeaderField
+:HeaderField rdf:type owl:Class ;
+    rdfs:label "Header Field"@en ;
+    schema:description "Canonical semantic concept for a grounded IfcWorkSchedule table header."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#PreferredHeaderLabel
+:PreferredHeaderLabel rdf:type owl:Class ;
+    rdfs:label "Preferred Header Label"@en ;
+    schema:description "Preferred human-facing label for a HeaderField concept in a specific language."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#ObservedHeaderAlias
+:ObservedHeaderAlias rdf:type owl:Class ;
+    rdfs:label "Observed Header Alias"@en ;
+    schema:description "Observed header label variant that can be normalized into a canonical IfcWorkSchedule header concept."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#IfcSchemaRelease
+:IfcSchemaRelease rdf:type owl:Class ;
+    rdfs:label "IFC Schema Release"@en ;
+    schema:description "IFC schema release explicitly supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#hasHeaderField
+:hasHeaderField rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :HeaderField ;
+    rdfs:label "has header field"@en ;
+    schema:description "Lists the canonical semantic header fields supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#hasPreferredLabel
+:hasPreferredLabel rdf:type owl:ObjectProperty ;
+    rdfs:domain :HeaderField ;
+    rdfs:range :PreferredHeaderLabel ;
+    rdfs:label "has preferred label"@en ;
+    schema:description "Associates a header concept with a preferred label in a specific language."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#hasObservedAlias
+:hasObservedAlias rdf:type owl:ObjectProperty ;
+    rdfs:domain :HeaderField ;
+    rdfs:range :ObservedHeaderAlias ;
+    rdfs:label "has observed alias"@en ;
+    schema:description "Associates a canonical header concept with an observed alias found in real documents."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#supportsIfcSchema
+:supportsIfcSchema rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :IfcSchemaRelease ;
+    rdfs:label "supports IFC schema"@en ;
+    schema:description "Associates the vocabulary with IFC schema releases that can use these header semantics."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#mapsToProperty
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :HeaderField ;
+    rdfs:range rdf:Property ;
+    rdfs:label "maps to property"@en ;
+    schema:description "Links a canonical header concept to a canonical RDF property when such mapping exists."@en .
+
+
+#################################################################
+#    Data Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#semanticKey
+:semanticKey rdf:type owl:DatatypeProperty ;
+    rdfs:domain :HeaderField ;
+    rdfs:range xsd:string ;
+    rdfs:label "semantic key"@en ;
+    schema:description "Stable semantic key used by the import pipeline for the canonical header concept."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#canonicalNormalizedForm
+:canonicalNormalizedForm rdf:type owl:DatatypeProperty ;
+    rdfs:domain :HeaderField ;
+    rdfs:range xsd:string ;
+    rdfs:label "canonical normalized form"@en ;
+    schema:description "Stable canonical normalized text used by the import pipeline for the header concept."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#surfaceForm
+:surfaceForm rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "surface form"@en ;
+    schema:description "Literal text form used either as a preferred label or as an observed alias."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#normalizedForm
+:normalizedForm rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "normalized form"@en ;
+    schema:description "Deterministically normalized textual form of a label or alias."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#languageCode
+:languageCode rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "language code"@en ;
+    schema:description "BCP47-like language code used to qualify labels and aliases."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#Ifc4Schema
+:Ifc4Schema rdf:type owl:NamedIndividual ,
+        :IfcSchemaRelease ;
+    schema:identifier "IFC4" ;
+    schema:name "IFC4"@en ;
+    schema:description "IFC4 schema release supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#Ifc4Add1Schema
+:Ifc4Add1Schema rdf:type owl:NamedIndividual ,
+        :IfcSchemaRelease ;
+    schema:identifier "IFC4_ADD1" ;
+    schema:name "IFC4 Addendum 1"@en ;
+    schema:description "IFC4 Addendum 1 schema release supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#Ifc4Add2Schema
+:Ifc4Add2Schema rdf:type owl:NamedIndividual ,
+        :IfcSchemaRelease ;
+    schema:identifier "IFC4_ADD2" ;
+    schema:name "IFC4 Addendum 2"@en ;
+    schema:description "IFC4 Addendum 2 schema release supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#Ifc4x3Schema
+:Ifc4x3Schema rdf:type owl:NamedIndividual ,
+        :IfcSchemaRelease ;
+    schema:identifier "IFC4X3" ;
+    schema:name "IFC4x3"@en ;
+    schema:description "IFC4x3 schema family supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#Ifc4x3Add2Schema
+:Ifc4x3Add2Schema rdf:type owl:NamedIndividual ,
+        :IfcSchemaRelease ;
+    schema:identifier "IFC4X3_ADD2" ;
+    schema:name "IFC4x3 Addendum 2"@en ;
+    schema:description "IFC4x3 Addendum 2 schema release supported by the IfcWorkSchedule header vocabulary."@en .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#IfcWorkScheduleHeaderVocabulary
+:IfcWorkScheduleHeaderVocabulary rdf:type owl:NamedIndividual ,
+        obdc:DataEntity ;
+    ontouml:name "IfcWorkSchedule Header Vocabulary"@en ;
+    rdfs:comment "Controlled vocabulary for grounded table headers detected in IfcWorkSchedule imports."@en ;
+    schema:description "Semantic vocabulary used to interpret grounded IfcWorkSchedule table headers as canonical concepts, preferred labels, observed aliases, normalized forms, and stable semantic keys."@en ;
+    schema:identifier "ifc_work_schedule_header_vocabulary" ;
+    schema:name "IfcWorkSchedule Header Vocabulary"@en ;
+    :supportsIfcSchema :Ifc4Schema ,
+        :Ifc4Add1Schema ,
+        :Ifc4Add2Schema ,
+        :Ifc4x3Schema ,
+        :Ifc4x3Add2Schema ;
+    :hasHeaderField :IdentifierField ,
+        :WorkBreakdownStructureField ,
+        :RowNumberField ,
+        :TaskNameField ,
+        :DurationField ,
+        :StartDateField ,
+        :FinishDateField ,
+        :PlannedProgressPercentField ,
+        :ExecutedProgressPercentField ,
+        :DeviationPercentField ,
+        :CompletionPercentField ,
+        :PredecessorsField ,
+        :SuccessorsField .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#IdentifierField
+:IdentifierField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "identifier" ;
+    schema:name "Identifier"@en ;
+    schema:description "Business identifier column for schedule rows."@en ;
+    :semanticKey "identifier" ;
+    :canonicalNormalizedForm "id" ;
+    :mapsToProperty schema:identifier ;
+    :hasPreferredLabel :IdentifierPreferredLabelPtBr ,
+        :IdentifierPreferredLabelEn ;
+    :hasObservedAlias :IdentifierObservedAliasId ,
+        :IdentifierObservedAliasID .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#WorkBreakdownStructureField
+:WorkBreakdownStructureField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "work_breakdown_structure" ;
+    schema:name "Work Breakdown Structure"@en ;
+    schema:description "Hierarchical decomposition code of the work schedule."@en ;
+    :semanticKey "work_breakdown_structure" ;
+    :canonicalNormalizedForm "edt" ;
+    :hasPreferredLabel :WorkBreakdownStructurePreferredLabelPtBr ,
+        :WorkBreakdownStructurePreferredLabelEn ;
+    :hasObservedAlias :WorkBreakdownStructureObservedAliasEDT ,
+        :WorkBreakdownStructureObservedAliasItem ,
+        :WorkBreakdownStructureObservedAliasWBS .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#RowNumberField
+:RowNumberField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "row_number" ;
+    schema:name "Row Number"@en ;
+    schema:description "Row ordinal number used in tabular schedule listings."@en ;
+    :semanticKey "row_number" ;
+    :canonicalNormalizedForm "numero" ;
+    :hasPreferredLabel :RowNumberPreferredLabelPtBr ,
+        :RowNumberPreferredLabelEn ;
+    :hasObservedAlias :RowNumberObservedAliasNo ,
+        :RowNumberObservedAliasNumero ,
+        :RowNumberObservedAliasNumeroAbreviado .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#TaskNameField
+:TaskNameField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "task_name" ;
+    schema:name "Task Name"@en ;
+    schema:description "Primary task label or textual task description."@en ;
+    :semanticKey "task_name" ;
+    :canonicalNormalizedForm "nome tarefa" ;
+    :mapsToProperty schema:name ;
+    :hasPreferredLabel :TaskNamePreferredLabelPtBr ,
+        :TaskNamePreferredLabelEn ;
+    :hasObservedAlias :TaskNameObservedAliasNomeTarefa ,
+        :TaskNameObservedAliasAtividades ,
+        :TaskNameObservedAliasTarefa .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#DurationField
+:DurationField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "duration" ;
+    schema:name "Duration"@en ;
+    schema:description "Planned or effective duration of the task."@en ;
+    :semanticKey "duration" ;
+    :canonicalNormalizedForm "duracao" ;
+    :mapsToProperty schema:duration ;
+    :hasPreferredLabel :DurationPreferredLabelPtBr ,
+        :DurationPreferredLabelEn ;
+    :hasObservedAlias :DurationObservedAliasDuracaoEmSemanas .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#StartDateField
+:StartDateField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "start_date" ;
+    schema:name "Start Date"@en ;
+    schema:description "Planned or actual start date of the task."@en ;
+    :semanticKey "start_date" ;
+    :canonicalNormalizedForm "inicio" ;
+    :mapsToProperty schema:startDate ;
+    :hasPreferredLabel :StartDatePreferredLabelPtBr ,
+        :StartDatePreferredLabelEn ;
+    :hasObservedAlias :StartDateObservedAliasDataInicio .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#FinishDateField
+:FinishDateField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "finish_date" ;
+    schema:name "Finish Date"@en ;
+    schema:description "Planned or actual finish date of the task."@en ;
+    :semanticKey "finish_date" ;
+    :canonicalNormalizedForm "termino" ;
+    :mapsToProperty schema:endDate ;
+    :hasPreferredLabel :FinishDatePreferredLabelPtBr ,
+        :FinishDatePreferredLabelEn ;
+    :hasObservedAlias :FinishDateObservedAliasDataTermino .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#PlannedProgressPercentField
+:PlannedProgressPercentField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "planned_progress_percent" ;
+    schema:name "Planned Progress Percent"@en ;
+    schema:description "Planned progress percentage for the task."@en ;
+    :semanticKey "planned_progress_percent" ;
+    :canonicalNormalizedForm "percentual planejar" ;
+    :hasPreferredLabel :PlannedProgressPercentPreferredLabelPtBr ,
+        :PlannedProgressPercentPreferredLabelEn ;
+    :hasObservedAlias :PlannedProgressPercentObservedAliasPercentPlan ,
+        :PlannedProgressPercentObservedAliasProgressoPlanejado .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#ExecutedProgressPercentField
+:ExecutedProgressPercentField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "executed_progress_percent" ;
+    schema:name "Executed Progress Percent"@en ;
+    schema:description "Executed progress percentage for the task."@en ;
+    :semanticKey "executed_progress_percent" ;
+    :canonicalNormalizedForm "percentual executar" ;
+    :hasPreferredLabel :ExecutedProgressPercentPreferredLabelPtBr ,
+        :ExecutedProgressPercentPreferredLabelEn ;
+    :hasObservedAlias :ExecutedProgressPercentObservedAliasPercentExec ,
+        :ExecutedProgressPercentObservedAliasProgressoExecutado .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#DeviationPercentField
+:DeviationPercentField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "deviation_percent" ;
+    schema:name "Deviation Percent"@en ;
+    schema:description "Deviation percentage between planned and executed progress."@en ;
+    :semanticKey "deviation_percent" ;
+    :canonicalNormalizedForm "percentual desvio" ;
+    :hasPreferredLabel :DeviationPercentPreferredLabelPtBr ,
+        :DeviationPercentPreferredLabelEn ;
+    :hasObservedAlias :DeviationPercentObservedAliasPercentDesvio ,
+        :DeviationPercentObservedAliasDesvio .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#CompletionPercentField
+:CompletionPercentField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "completion_percent" ;
+    schema:name "Completion Percent"@en ;
+    schema:description "Completion percentage of the task."@en ;
+    :semanticKey "completion_percent" ;
+    :canonicalNormalizedForm "percentual concluir" ;
+    :hasPreferredLabel :CompletionPercentPreferredLabelPtBr ,
+        :CompletionPercentPreferredLabelEn ;
+    :hasObservedAlias :CompletionPercentObservedAliasPercentConcluida ,
+        :CompletionPercentObservedAliasPercentConcluido .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#PredecessorsField
+:PredecessorsField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "predecessors" ;
+    schema:name "Predecessors"@en ;
+    schema:description "Predecessor task references."@en ;
+    :semanticKey "predecessors" ;
+    :canonicalNormalizedForm "predecessor" ;
+    :hasPreferredLabel :PredecessorsPreferredLabelPtBr ,
+        :PredecessorsPreferredLabelEn ;
+    :hasObservedAlias :PredecessorsObservedAliasPredecessores ,
+        :PredecessorsObservedAliasPredecessor .
+
+
+###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#SuccessorsField
+:SuccessorsField rdf:type owl:NamedIndividual ,
+        :HeaderField ;
+    schema:identifier "successors" ;
+    schema:name "Successors"@en ;
+    schema:description "Successor task references."@en ;
+    :semanticKey "successors" ;
+    :canonicalNormalizedForm "sucessor" ;
+    :hasPreferredLabel :SuccessorsPreferredLabelPtBr ,
+        :SuccessorsPreferredLabelEn ;
+    :hasObservedAlias :SuccessorsObservedAliasSucessores ,
+        :SuccessorsObservedAliasSucessor ,
+        :SuccessorsObservedAliasS .
+
+
+###  Preferred Labels
+:IdentifierPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Id" ;
+    :normalizedForm "id" ;
+    :languageCode "pt-br" .
+
+:IdentifierPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Identifier" ;
+    :normalizedForm "identifier" ;
+    :languageCode "en" .
+
+:WorkBreakdownStructurePreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "EDT" ;
+    :normalizedForm "edt" ;
+    :languageCode "pt-br" .
+
+:WorkBreakdownStructurePreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "WBS" ;
+    :normalizedForm "wbs" ;
+    :languageCode "en" .
+
+:RowNumberPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Número" ;
+    :normalizedForm "numero" ;
+    :languageCode "pt-br" .
+
+:RowNumberPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Row Number" ;
+    :normalizedForm "row number" ;
+    :languageCode "en" .
+
+:TaskNamePreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Nome da Tarefa" ;
+    :normalizedForm "nome da tarefa" ;
+    :languageCode "pt-br" .
+
+:TaskNamePreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Task Name" ;
+    :normalizedForm "task name" ;
+    :languageCode "en" .
+
+:DurationPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Duração" ;
+    :normalizedForm "duracao" ;
+    :languageCode "pt-br" .
+
+:DurationPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Duration" ;
+    :normalizedForm "duration" ;
+    :languageCode "en" .
+
+:StartDatePreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Início" ;
+    :normalizedForm "inicio" ;
+    :languageCode "pt-br" .
+
+:StartDatePreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Start Date" ;
+    :normalizedForm "start date" ;
+    :languageCode "en" .
+
+:FinishDatePreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Término" ;
+    :normalizedForm "termino" ;
+    :languageCode "pt-br" .
+
+:FinishDatePreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Finish Date" ;
+    :normalizedForm "finish date" ;
+    :languageCode "en" .
+
+:PlannedProgressPercentPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Percentual Planejado" ;
+    :normalizedForm "percentual planejado" ;
+    :languageCode "pt-br" .
+
+:PlannedProgressPercentPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Planned Progress Percent" ;
+    :normalizedForm "planned progress percent" ;
+    :languageCode "en" .
+
+:ExecutedProgressPercentPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Percentual Executado" ;
+    :normalizedForm "percentual executado" ;
+    :languageCode "pt-br" .
+
+:ExecutedProgressPercentPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Executed Progress Percent" ;
+    :normalizedForm "executed progress percent" ;
+    :languageCode "en" .
+
+:DeviationPercentPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Percentual de Desvio" ;
+    :normalizedForm "percentual de desvio" ;
+    :languageCode "pt-br" .
+
+:DeviationPercentPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Deviation Percent" ;
+    :normalizedForm "deviation percent" ;
+    :languageCode "en" .
+
+:CompletionPercentPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Percentual Concluído" ;
+    :normalizedForm "percentual concluido" ;
+    :languageCode "pt-br" .
+
+:CompletionPercentPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Completion Percent" ;
+    :normalizedForm "completion percent" ;
+    :languageCode "en" .
+
+:PredecessorsPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Predecessoras" ;
+    :normalizedForm "predecessoras" ;
+    :languageCode "pt-br" .
+
+:PredecessorsPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Predecessors" ;
+    :normalizedForm "predecessors" ;
+    :languageCode "en" .
+
+:SuccessorsPreferredLabelPtBr rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Sucessoras" ;
+    :normalizedForm "sucessoras" ;
+    :languageCode "pt-br" .
+
+:SuccessorsPreferredLabelEn rdf:type owl:NamedIndividual ,
+        :PreferredHeaderLabel ;
+    :surfaceForm "Successors" ;
+    :normalizedForm "successors" ;
+    :languageCode "en" .
+
+
+###  Observed Aliases
+:IdentifierObservedAliasId rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Id" ;
+    :normalizedForm "id" ;
+    :languageCode "pt-br" .
+
+:IdentifierObservedAliasID rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "ID" ;
+    :normalizedForm "id" ;
+    :languageCode "pt-br" .
+
+:WorkBreakdownStructureObservedAliasEDT rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "EDT" ;
+    :normalizedForm "edt" ;
+    :languageCode "pt-br" .
+
+:WorkBreakdownStructureObservedAliasItem rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "ITEM" ;
+    :normalizedForm "item" ;
+    :languageCode "pt-br" .
+
+:WorkBreakdownStructureObservedAliasWBS rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "WBS" ;
+    :normalizedForm "wbs" ;
+    :languageCode "en" .
+
+:RowNumberObservedAliasNo rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "No" ;
+    :normalizedForm "no" ;
+    :languageCode "en" .
+
+:RowNumberObservedAliasNumero rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Número" ;
+    :normalizedForm "numero" ;
+    :languageCode "pt-br" .
+
+:RowNumberObservedAliasNumeroAbreviado rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Nº" ;
+    :normalizedForm "numero" ;
+    :languageCode "pt-br" .
+
+:TaskNameObservedAliasNomeTarefa rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Nome Tarefa" ;
+    :normalizedForm "nome tarefa" ;
+    :languageCode "pt-br" .
+
+:TaskNameObservedAliasAtividades rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "ATIVIDADES" ;
+    :normalizedForm "atividades" ;
+    :languageCode "pt-br" .
+
+:TaskNameObservedAliasTarefa rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Tarefa" ;
+    :normalizedForm "tarefa" ;
+    :languageCode "pt-br" .
+
+:DurationObservedAliasDuracaoEmSemanas rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "DURAÇÃO EM SEMANAS" ;
+    :normalizedForm "duracao em semanas" ;
+    :languageCode "pt-br" .
+
+:StartDateObservedAliasDataInicio rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Data de Início" ;
+    :normalizedForm "data de inicio" ;
+    :languageCode "pt-br" .
+
+:FinishDateObservedAliasDataTermino rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Data de Término" ;
+    :normalizedForm "data de termino" ;
+    :languageCode "pt-br" .
+
+:PlannedProgressPercentObservedAliasPercentPlan rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "% Plan" ;
+    :normalizedForm "percent plan" ;
+    :languageCode "en" .
+
+:PlannedProgressPercentObservedAliasProgressoPlanejado rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Progresso Planejado" ;
+    :normalizedForm "progresso planejado" ;
+    :languageCode "pt-br" .
+
+:ExecutedProgressPercentObservedAliasPercentExec rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "% Exec" ;
+    :normalizedForm "percent exec" ;
+    :languageCode "en" .
+
+:ExecutedProgressPercentObservedAliasProgressoExecutado rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Progresso Executado" ;
+    :normalizedForm "progresso executado" ;
+    :languageCode "pt-br" .
+
+:DeviationPercentObservedAliasPercentDesvio rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "% Desvio" ;
+    :normalizedForm "percent desvio" ;
+    :languageCode "pt-br" .
+
+:DeviationPercentObservedAliasDesvio rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Desvio" ;
+    :normalizedForm "desvio" ;
+    :languageCode "pt-br" .
+
+:CompletionPercentObservedAliasPercentConcluida rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "% Concluída" ;
+    :normalizedForm "percent concluida" ;
+    :languageCode "pt-br" .
+
+:CompletionPercentObservedAliasPercentConcluido rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "% Concluído" ;
+    :normalizedForm "percent concluido" ;
+    :languageCode "pt-br" .
+
+:PredecessorsObservedAliasPredecessores rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Predecessores" ;
+    :normalizedForm "predecessores" ;
+    :languageCode "pt-br" .
+
+:PredecessorsObservedAliasPredecessor rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Predecessor" ;
+    :normalizedForm "predecessor" ;
+    :languageCode "pt-br" .
+
+:SuccessorsObservedAliasSucessores rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Sucessores" ;
+    :normalizedForm "sucessores" ;
+    :languageCode "pt-br" .
+
+:SuccessorsObservedAliasSucessor rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "Sucessor" ;
+    :normalizedForm "sucessor" ;
+    :languageCode "pt-br" .
+
+:SuccessorsObservedAliasS rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "S" ;
+    :normalizedForm "s" ;
+    :languageCode "pt-br" .
