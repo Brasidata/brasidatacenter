@@ -15,7 +15,6 @@
 
 ###  http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
 :ContactPoint rdf:type owl:Class ,
-        owl:NamedIndividual ,
         obdc:DataEntity ;
     rdfs:subClassOf schema:ContactPoint ;
     rdfs:label "Contact Point"@en ;

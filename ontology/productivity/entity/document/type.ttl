@@ -45,7 +45,7 @@ obdc:DataEntity rdf:type owl:Class .
 #################################################################
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
-:BlogPost rdf:type owl:NamedIndividual ,
+:BlogPost rdf:type 
                    obdc:DataEntity ;
           ontouml:name "Blog Post"@en ;
           rdfs:comment "Document type data entity for blog post documents."@en ;
@@ -54,7 +54,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
-:Contract rdf:type owl:NamedIndividual ,
+:Contract rdf:type 
                    obdc:DataEntity ;
           ontouml:name "Contract"@en ;
           rdfs:comment "Document type data entity for contract documents."@en ;
@@ -63,7 +63,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Invoice
-:Invoice rdf:type owl:NamedIndividual ,
+:Invoice rdf:type 
                   obdc:DataEntity ;
          ontouml:name "Invoice"@en ;
          rdfs:comment "Document type data entity for invoice documents."@en ;
@@ -72,7 +72,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#MeetingMinutes
-:MeetingMinutes rdf:type owl:NamedIndividual ,
+:MeetingMinutes rdf:type 
                          obdc:DataEntity ;
                 ontouml:name "Meeting Minutes"@en ;
                 rdfs:comment "Document type data entity for meeting minutes documents."@en ;
@@ -81,7 +81,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Proposal
-:Proposal rdf:type owl:NamedIndividual ,
+:Proposal rdf:type 
                    obdc:DataEntity ;
           ontouml:name "Proposal"@en ;
           rdfs:comment "Document type data entity for proposal documents."@en ;
@@ -90,7 +90,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#PurchaseOrder
-:PurchaseOrder rdf:type owl:NamedIndividual ,
+:PurchaseOrder rdf:type 
                         obdc:DataEntity ;
                ontouml:name "Purchase Order"@en ;
                rdfs:comment "Document type data entity for purchase order documents."@en ;
@@ -99,7 +99,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Receipt
-:Receipt rdf:type owl:NamedIndividual ,
+:Receipt rdf:type 
                   obdc:DataEntity ;
          ontouml:name "Receipt"@en ;
          rdfs:comment "Document type data entity for receipt documents."@en ;
@@ -108,7 +108,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalReport
-:TechnicalReport rdf:type owl:NamedIndividual ,
+:TechnicalReport rdf:type 
                           obdc:DataEntity ;
                  ontouml:name "Technical Report"@en ;
                  rdfs:comment "Document type data entity for technical report documents."@en ;
@@ -117,7 +117,7 @@ obdc:DataEntity rdf:type owl:Class .
 
 
 ###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalSpecification
-:TechnicalSpecification rdf:type owl:NamedIndividual ,
+:TechnicalSpecification rdf:type 
                                  obdc:DataEntity ;
                         ontouml:name "Technical Specification"@en ;
                         rdfs:comment "Document type data entity for technical specification documents."@en ;

@@ -14,6 +14,8 @@ entity:
       - joboffer: http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
       - job_offer: http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
       - person: http://datacenter.app.br/ontology/social/entity/person/type.ttl#Person
+      - weblink: http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#WebLink
+      - web_link: http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#WebLink
 
   productivity:
     aliases:

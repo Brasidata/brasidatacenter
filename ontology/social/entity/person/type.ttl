@@ -15,7 +15,6 @@
 
 ###  http://datacenter.app.br/ontology/social/entity/person/type.ttl#Person
 :Person rdf:type owl:Class ,
-        owl:NamedIndividual ,
         obdc:DataEntity ;
     rdfs:subClassOf schema:Person ;
     rdfs:label "Person"@en ;

@@ -1,0 +1,90 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/weblink/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix type: <http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/weblink/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/weblink/facade.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/social/entity/weblink/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:WebLink :hasDataEntityFacade :WebLinkFacade .
+
+:WebLinkFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "weblink_facade" ;
+    schema:name "Web Link Facade"@en ;
+    schema:description "Public facade for web links represented in social datasets."@en ;
+    :isFacadeOf type:WebLink ;
+    :hasFacadeField :WebLinkGlobalIdField ,
+        :WebLinkNameField ,
+        :WebLinkUrlField ,
+        :WebLinkDescriptionField .
+
+:WebLinkGlobalIdField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:WebLinkNameField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:WebLinkUrlField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "url" ;
+    schema:name "URL"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty schema:url ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:WebLinkDescriptionField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:description ;
+    :isRequired false ;
+    :isMultivalued false .

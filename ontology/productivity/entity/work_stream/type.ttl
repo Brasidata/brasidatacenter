@@ -109,37 +109,37 @@
 #    Dimension Kinds
 #################################################################
 
-:What rdf:type owl:NamedIndividual ,
+:What rdf:type
         :DimensionKind ;
     rdfs:label "What"@en ;
     schema:identifier "what" .
 
-:Why rdf:type owl:NamedIndividual ,
+:Why rdf:type
         :DimensionKind ;
     rdfs:label "Why"@en ;
     schema:identifier "why" .
 
-:Where rdf:type owl:NamedIndividual ,
+:Where rdf:type
         :DimensionKind ;
     rdfs:label "Where"@en ;
     schema:identifier "where" .
 
-:When rdf:type owl:NamedIndividual ,
+:When rdf:type
         :DimensionKind ;
     rdfs:label "When"@en ;
     schema:identifier "when" .
 
-:Who rdf:type owl:NamedIndividual ,
+:Who rdf:type
         :DimensionKind ;
     rdfs:label "Who"@en ;
     schema:identifier "who" .
 
-:How rdf:type owl:NamedIndividual ,
+:How rdf:type
         :DimensionKind ;
     rdfs:label "How"@en ;
     schema:identifier "how" .
 
-:HowMuch rdf:type owl:NamedIndividual ,
+:HowMuch rdf:type
         :DimensionKind ;
     rdfs:label "How Much"@en ;
     schema:identifier "how-much" .

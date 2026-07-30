@@ -1,0 +1,22 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/weblink/type.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#WebLink
+:WebLink rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf schema:WebPage ;
+    rdfs:label "Web Link"@en ;
+    schema:description "Web link represented in social datasets as a resolvable URL reference."@en ;
+    schema:identifier "weblink" .
