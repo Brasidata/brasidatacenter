@@ -1,0 +1,95 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ;
+    dcterms:title "Enrichment Annotation Ontology"@en ;
+    dcterms:description
+        "Spatially anchored enrichment notes whose geometry is expressed against a versioned visual representation of an external engineering resource."@en .
+
+:EnrichmentAnnotation
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf
+        oa:Annotation ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty oa:motivatedBy ;
+            owl:hasValue oa:commenting
+        ] ;
+    rdfs:label "Enrichment annotation"@en ;
+    rdfs:comment
+        "An annotation that enriches an external resource without modifying that resource."@en .
+
+:PointSelector
+    rdf:type owl:Class ;
+    rdfs:subClassOf oa:Selector ;
+    rdfs:label "Point selector"@en ;
+    rdfs:comment
+        "One or more normalized points anchored to a visual representation."@en .
+
+:logicalSource
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "logical source"@en .
+
+:representationSource
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "representation source"@en .
+
+:representationHash
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "representation hash"@en .
+
+:sourceWidth
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PointSelector ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "source width"@en .
+
+:sourceHeight
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PointSelector ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "source height"@en .
+
+:normalizedPoint
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PointSelector ;
+    rdfs:range xsd:string ;
+    rdfs:label "normalized point"@en ;
+    rdfs:comment
+        "A JSON array of points whose x and y values are normalized to the closed interval from zero to one."@en .
+
+:relatedDimension
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "related dimension"@en .
+
+:markerColor
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "marker color"@en .
+
+:payload
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "annotation interchange payload"@en ;
+    rdfs:comment
+        "A JSON serialization used by lightweight offline viewers while the explicit RDF statements remain authoritative."@en .
