@@ -19,6 +19,8 @@ entity:
 
   productivity:
     aliases:
+      - enrichmentannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
+      - enrichment_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
       - blogpost: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - blog_post: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - contract: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
