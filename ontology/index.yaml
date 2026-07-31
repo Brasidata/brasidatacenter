@@ -21,6 +21,16 @@ entity:
     aliases:
       - enrichmentannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
       - enrichment_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
+      - noteannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#NoteAnnotation
+      - note_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#NoteAnnotation
+      - issueannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#IssueAnnotation
+      - issue_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#IssueAnnotation
+      - classificationannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#ClassificationAnnotation
+      - classification_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#ClassificationAnnotation
+      - locationannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#LocationAnnotation
+      - location_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#LocationAnnotation
+      - recordannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
+      - record_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
       - blogpost: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - blog_post: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - contract: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
