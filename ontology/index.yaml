@@ -31,6 +31,8 @@ entity:
       - location_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#LocationAnnotation
       - recordannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
       - record_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
+      - visualrepresentationtype: http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#VisualRepresentationType
+      - visual_representation_type: http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#VisualRepresentationType
       - blogpost: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - blog_post: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
       - contract: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
