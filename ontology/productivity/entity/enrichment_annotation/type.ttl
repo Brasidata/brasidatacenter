@@ -5,6 +5,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
 
@@ -13,28 +14,421 @@
     owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ;
     dcterms:title "Enrichment Annotation Ontology"@en ;
     dcterms:description
-        "Spatially anchored enrichment notes whose geometry is expressed against a versioned visual representation of an external engineering resource."@en .
+        "Typed enrichment annotations that add notes, issues, classifications, locations, and records to external resources without modifying those resources."@en .
+
+#################################################################
+#    Annotation Properties
+#################################################################
+
+:defaultVisualShape
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "default visual shape"@en .
+
+:visualColorPolicy
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "visual color policy"@en .
+
+:visualStrokeStyle
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "visual stroke style"@en .
+
+:visualFillPolicy
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "visual fill policy"@en .
+
+:visualIconPolicy
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "visual icon policy"@en .
+
+:statusColorRole
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "status color role"@en .
+
+:legacyDefaultSubtype
+    rdf:type owl:AnnotationProperty ;
+    rdfs:label "legacy default subtype"@en .
+
+#################################################################
+#    Core Annotation Classes
+#################################################################
 
 :EnrichmentAnnotation
     rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf oa:Annotation ;
+    rdfs:label "Enrichment annotation"@en ,
+        "Anotação de enriquecimento"@pt-BR ;
+    rdfs:comment
+        "An annotation that enriches an external resource without modifying that resource. A visual selector is optional unless required by a more specific annotation subtype."@en ;
+    schema:identifier "enrichment_annotation" ;
+    :legacyDefaultSubtype :NoteAnnotation .
+
+:NoteAnnotation
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
         obdc:DataEntity ;
     rdfs:subClassOf
-        oa:Annotation ,
+        :EnrichmentAnnotation ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty oa:motivatedBy ;
             owl:hasValue oa:commenting
         ] ;
-    rdfs:label "Enrichment annotation"@en ;
+    rdfs:label "Note annotation"@en ,
+        "Anotação de nota"@pt-BR ;
     rdfs:comment
-        "An annotation that enriches an external resource without modifying that resource."@en .
+        "Free-form contextual information without a required resolution workflow."@en ;
+    schema:identifier "note_annotation" ;
+    :defaultVisualShape "square" ;
+    :visualColorPolicy "user-selected" .
+
+:IssueAnnotation
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf
+        :EnrichmentAnnotation ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty oa:motivatedBy ;
+            owl:hasValue :raisingIssue
+        ] ;
+    rdfs:label "Issue annotation"@en ,
+        "Anotação de issue"@pt-BR ;
+    rdfs:comment
+        "A problem, question, pending matter, inconsistency, or required decision that must be followed until an outcome is reached."@en ;
+    schema:identifier "issue_annotation" ;
+    :defaultVisualShape "circle" ;
+    :visualColorPolicy "issue-status" .
+
+:ClassificationAnnotation
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf
+        :EnrichmentAnnotation ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty oa:motivatedBy ;
+            owl:hasValue oa:classifying
+        ] ;
+    rdfs:label "Classification annotation"@en ,
+        "Anotação de classificação"@pt-BR ;
+    rdfs:comment
+        "A semantic assertion stating what a selected resource or visual region is."@en ;
+    schema:identifier "classification_annotation" ;
+    :defaultVisualShape "bounding-box" ;
+    :visualColorPolicy "fixed-light-neutral" ;
+    :visualStrokeStyle "dashed" ;
+    :visualFillPolicy "transparent" .
+
+:LocationAnnotation
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf
+        :EnrichmentAnnotation ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty oa:motivatedBy ;
+            owl:hasValue :locating
+        ] ;
+    rdfs:label "Location annotation"@en ,
+        "Anotação de localização"@pt-BR ;
+    rdfs:comment
+        "An assertion that locates a resource geographically, positionally, relatively, or within a visual representation."@en ;
+    schema:identifier "location_annotation" ;
+    :defaultVisualShape "pin" ;
+    :visualColorPolicy "fixed-category" .
+
+:RecordAnnotation
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:subClassOf
+        :EnrichmentAnnotation ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty oa:motivatedBy ;
+            owl:hasValue :recording
+        ] ;
+    rdfs:label "Record annotation"@en ,
+        "Anotação de registro"@pt-BR ;
+    rdfs:comment
+        "An annotation that links a recorded artifact or observation to a location, resource, subject, event, activity, or other annotation. Evidence is a contextual role of the record, not its intrinsic type."@en ;
+    schema:identifier "record_annotation" ;
+    :defaultVisualShape "badge" ;
+    :visualColorPolicy "fixed-neutral" ;
+    :visualIconPolicy "record-kind" .
+
+#################################################################
+#    Custom Motivations
+#################################################################
+
+:raisingIssue
+    rdf:type owl:NamedIndividual ,
+        oa:Motivation ;
+    rdfs:label "raising issue"@en ;
+    rdfs:comment
+        "The motivation for recording a matter that requires clarification, action, decision, or resolution."@en .
+
+:locating
+    rdf:type owl:NamedIndividual ,
+        oa:Motivation ;
+    rdfs:label "locating"@en ;
+    rdfs:comment
+        "The motivation for asserting where something is or how it is spatially related to another resource."@en .
+
+:recording
+    rdf:type owl:NamedIndividual ,
+        oa:Motivation ;
+    rdfs:label "recording"@en ;
+    rdfs:comment
+        "The motivation for associating a recorded artifact or observation with a contextual target."@en .
+
+#################################################################
+#    Selector Classes
+#################################################################
+
+:VisualSelector
+    rdf:type owl:Class ;
+    rdfs:subClassOf oa:Selector ;
+    rdfs:label "Visual selector"@en ;
+    rdfs:comment
+        "A selector whose geometry is expressed against a visual representation."@en .
 
 :PointSelector
     rdf:type owl:Class ;
-    rdfs:subClassOf oa:Selector ;
+    rdfs:subClassOf :VisualSelector ;
     rdfs:label "Point selector"@en ;
     rdfs:comment
         "One or more normalized points anchored to a visual representation."@en .
+
+:BoundingBoxSelector
+    rdf:type owl:Class ;
+    rdfs:subClassOf :VisualSelector ;
+    rdfs:label "Bounding box selector"@en ;
+    rdfs:comment
+        "A normalized rectangular region anchored to a visual representation."@en .
+
+:NormalizedDecimal
+    rdf:type rdfs:Datatype ;
+    owl:equivalentClass [
+        rdf:type rdfs:Datatype ;
+        owl:onDatatype xsd:decimal ;
+        owl:withRestrictions (
+            [ xsd:minInclusive "0"^^xsd:decimal ]
+            [ xsd:maxInclusive "1"^^xsd:decimal ]
+        )
+    ] ;
+    rdfs:label "Normalized decimal"@en .
+
+#################################################################
+#    Issue Classes
+#################################################################
+
+:IssueStatus
+    rdf:type owl:Class ;
+    rdfs:label "Issue status"@en ,
+        "Status da issue"@pt-BR .
+
+:IssueKind
+    rdf:type owl:Class ;
+    rdfs:label "Issue kind"@en ,
+        "Tipo de issue"@pt-BR .
+
+:Open
+    rdf:type owl:NamedIndividual ,
+        :IssueStatus ;
+    rdfs:label "Open"@en ,
+        "Aberta"@pt-BR ;
+    schema:identifier "open" ;
+    :statusColorRole "danger" .
+
+:InProgress
+    rdf:type owl:NamedIndividual ,
+        :IssueStatus ;
+    rdfs:label "In progress"@en ,
+        "Em andamento"@pt-BR ;
+    schema:identifier "in_progress" ;
+    :statusColorRole "warning" .
+
+:Resolved
+    rdf:type owl:NamedIndividual ,
+        :IssueStatus ;
+    rdfs:label "Resolved"@en ,
+        "Resolvida"@pt-BR ;
+    schema:identifier "resolved" ;
+    :statusColorRole "success" .
+
+:Closed
+    rdf:type owl:NamedIndividual ,
+        :IssueStatus ;
+    rdfs:label "Closed"@en ,
+        "Fechada"@pt-BR ;
+    schema:identifier "closed" ;
+    :statusColorRole "neutral" .
+
+:Problem
+    rdf:type owl:NamedIndividual ,
+        :IssueKind ;
+    rdfs:label "Problem"@en ,
+        "Problema"@pt-BR ;
+    schema:identifier "problem" .
+
+:Question
+    rdf:type owl:NamedIndividual ,
+        :IssueKind ;
+    rdfs:label "Question"@en ,
+        "Pergunta"@pt-BR ;
+    schema:identifier "question" .
+
+#################################################################
+#    Location Classes
+#################################################################
+
+:LocationKind
+    rdf:type owl:Class ;
+    rdfs:label "Location kind"@en ,
+        "Tipo de localização"@pt-BR .
+
+:SpatialRelation
+    rdf:type owl:Class ;
+    rdfs:label "Spatial relation"@en ,
+        "Relação espacial"@pt-BR .
+
+:GeospatialLocation
+    rdf:type owl:NamedIndividual ,
+        :LocationKind ;
+    rdfs:label "Geospatial location"@en ,
+        "Localização geoespacial"@pt-BR ;
+    schema:identifier "geospatial" .
+
+:PositionalLocation
+    rdf:type owl:NamedIndividual ,
+        :LocationKind ;
+    rdfs:label "Positional location"@en ,
+        "Localização posicional"@pt-BR ;
+    schema:identifier "positional" .
+
+:RelativeLocation
+    rdf:type owl:NamedIndividual ,
+        :LocationKind ;
+    rdfs:label "Relative location"@en ,
+        "Localização relativa"@pt-BR ;
+    schema:identifier "relative" .
+
+:RepresentationLocation
+    rdf:type owl:NamedIndividual ,
+        :LocationKind ;
+    rdfs:label "Representation location"@en ,
+        "Localização na representação"@pt-BR ;
+    schema:identifier "representation" .
+
+:Inside
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Inside"@en ,
+        "Dentro de"@pt-BR ;
+    schema:identifier "inside" .
+
+:Above
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Above"@en ,
+        "Acima de"@pt-BR ;
+    schema:identifier "above" .
+
+:Below
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Below"@en ,
+        "Abaixo de"@pt-BR ;
+    schema:identifier "below" .
+
+:Near
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Near"@en ,
+        "Próximo de"@pt-BR ;
+    schema:identifier "near" .
+
+:AdjacentTo
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Adjacent to"@en ,
+        "Adjacente a"@pt-BR ;
+    schema:identifier "adjacent_to" .
+
+:Between
+    rdf:type owl:NamedIndividual ,
+        :SpatialRelation ;
+    rdfs:label "Between"@en ,
+        "Entre"@pt-BR ;
+    schema:identifier "between" .
+
+#################################################################
+#    Record Classes
+#################################################################
+
+:RecordKind
+    rdf:type owl:Class ;
+    rdfs:label "Record kind"@en ,
+        "Tipo de registro"@pt-BR .
+
+:PhotoRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Photo"@en ,
+        "Fotografia"@pt-BR ;
+    schema:identifier "photo" .
+
+:VideoRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Video"@en ,
+        "Vídeo"@pt-BR ;
+    schema:identifier "video" .
+
+:AudioRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Audio"@en ,
+        "Áudio"@pt-BR ;
+    schema:identifier "audio" .
+
+:InvoiceRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Invoice"@en ,
+        "Nota fiscal"@pt-BR ;
+    schema:identifier "invoice" .
+
+:DocumentRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Document"@en ,
+        "Documento"@pt-BR ;
+    schema:identifier "document" .
+
+:MeasurementRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Measurement"@en ,
+        "Medição"@pt-BR ;
+    schema:identifier "measurement" .
+
+:GenericRecord
+    rdf:type owl:NamedIndividual ,
+        :RecordKind ;
+    rdfs:label "Generic record"@en ,
+        "Registro genérico"@pt-BR ;
+    schema:identifier "generic" .
+
+#################################################################
+#    General Properties
+#################################################################
 
 :logicalSource
     rdf:type owl:DatatypeProperty ;
@@ -54,15 +448,33 @@
     rdfs:range xsd:string ;
     rdfs:label "representation hash"@en .
 
+:relatedDimension
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "related dimension"@en .
+
+:payload
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "annotation interchange payload"@en ;
+    rdfs:comment
+        "A JSON serialization used by lightweight offline viewers while the explicit RDF statements remain authoritative."@en .
+
+#################################################################
+#    Visual Selector Properties
+#################################################################
+
 :sourceWidth
     rdf:type owl:DatatypeProperty ;
-    rdfs:domain :PointSelector ;
+    rdfs:domain :VisualSelector ;
     rdfs:range xsd:positiveInteger ;
     rdfs:label "source width"@en .
 
 :sourceHeight
     rdf:type owl:DatatypeProperty ;
-    rdfs:domain :PointSelector ;
+    rdfs:domain :VisualSelector ;
     rdfs:range xsd:positiveInteger ;
     rdfs:label "source height"@en .
 
@@ -72,24 +484,171 @@
     rdfs:range xsd:string ;
     rdfs:label "normalized point"@en ;
     rdfs:comment
-        "A JSON array of points whose x and y values are normalized to the closed interval from zero to one."@en .
+        "A JSON serialization of one or more points whose x and y values are normalized to the closed interval from zero to one. Retained for compatibility with existing annotation payloads."@en .
 
-:relatedDimension
+:normalizedX
     rdf:type owl:DatatypeProperty ;
-    rdfs:domain :EnrichmentAnnotation ;
-    rdfs:range xsd:anyURI ;
-    rdfs:label "related dimension"@en .
+    rdfs:domain :VisualSelector ;
+    rdfs:range :NormalizedDecimal ;
+    rdfs:label "normalized x"@en .
+
+:normalizedY
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :VisualSelector ;
+    rdfs:range :NormalizedDecimal ;
+    rdfs:label "normalized y"@en .
+
+:normalizedWidth
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :BoundingBoxSelector ;
+    rdfs:range :NormalizedDecimal ;
+    rdfs:label "normalized width"@en .
+
+:normalizedHeight
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :BoundingBoxSelector ;
+    rdfs:range :NormalizedDecimal ;
+    rdfs:label "normalized height"@en .
+
+#################################################################
+#    Note Properties
+#################################################################
 
 :markerColor
     rdf:type owl:DatatypeProperty ;
-    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:domain :NoteAnnotation ;
     rdfs:range xsd:string ;
-    rdfs:label "marker color"@en .
-
-:payload
-    rdf:type owl:DatatypeProperty ;
-    rdfs:domain :EnrichmentAnnotation ;
-    rdfs:range xsd:string ;
-    rdfs:label "annotation interchange payload"@en ;
+    rdfs:label "marker color"@en ;
     rdfs:comment
-        "A JSON serialization used by lightweight offline viewers while the explicit RDF statements remain authoritative."@en .
+        "User-selected color for a note marker. Other annotation categories derive their colors from their category or state."@en .
+
+#################################################################
+#    Issue Properties
+#################################################################
+
+:issueStatus
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range :IssueStatus ;
+    rdfs:label "issue status"@en .
+
+:issueKind
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range :IssueKind ;
+    rdfs:label "issue kind"@en .
+
+:resolution
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "resolution"@en .
+
+:resolvedAt
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "resolved at"@en .
+
+#################################################################
+#    Classification Properties
+#################################################################
+
+:classifiedAs
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ClassificationAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "classified as"@en .
+
+:classificationLabel
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ClassificationAnnotation ;
+    rdfs:range xsd:string ;
+    rdfs:label "classification label"@en ;
+    rdfs:comment
+        "Optional presentation label. The resource identified by classifiedAs remains authoritative."@en .
+
+#################################################################
+#    Location Properties
+#################################################################
+
+:locationKind
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range :LocationKind ;
+    rdfs:label "location kind"@en .
+
+:latitude
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "latitude"@en .
+
+:longitude
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "longitude"@en .
+
+:altitude
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "altitude"@en .
+
+:coordinateReferenceSystem
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "coordinate reference system"@en .
+
+:relativeTo
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "relative to"@en .
+
+:spatialRelation
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :LocationAnnotation ;
+    rdfs:range :SpatialRelation ;
+    rdfs:label "spatial relation"@en .
+
+#################################################################
+#    Record Properties
+#################################################################
+
+:recordResource
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :RecordAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "record resource"@en .
+
+:recordKind
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :RecordAnnotation ;
+    rdfs:range :RecordKind ;
+    rdfs:label "record kind"@en .
+
+:recordedAt
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :RecordAnnotation ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "recorded at"@en .
+
+:recordedBy
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :RecordAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "recorded by"@en .
+
+:evidenceFor
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :RecordAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "evidence for"@en ;
+    rdfs:comment
+        "Relates a record to the assertion, issue, activity, event, subject, or other resource for which it serves as evidence."@en .
