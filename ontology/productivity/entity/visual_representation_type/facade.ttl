@@ -78,12 +78,13 @@ type:VisualRepresentationType
         :VisualRepresentationTypeColorAuthorityField ,
         :VisualRepresentationTypeAllowedColorsField ,
         :VisualRepresentationTypeRecommendedColorRoleField ,
+        :VisualRepresentationTypeIssueStatusColorRulesField ,
         :VisualRepresentationTypeIconAuthorityField ,
         :VisualRepresentationTypeFixedIconNameField ,
         :VisualRepresentationTypeRecordKindIconRulesField .
 
 :VisualRepresentationTypeGlobalIdField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "global_id" ;
     schema:name "Global ID"@en ;
     :fieldDatatype xsd:string ;
@@ -92,7 +93,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeNameField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "name" ;
     schema:name "Name"@en ;
     :fieldDatatype xsd:string ;
@@ -101,7 +102,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeShapeField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "shape" ;
     schema:name "Shape"@en ;
     :mapsToProperty type:visualShape ;
@@ -110,7 +111,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeBorderStyleField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "border_style" ;
     schema:name "Border Style"@en ;
     :mapsToProperty type:borderStyle ;
@@ -119,7 +120,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeBorderToneField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "border_tone" ;
     schema:name "Border Tone"@en ;
     :mapsToProperty type:borderTone ;
@@ -128,7 +129,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeFillStyleField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "fill_style" ;
     schema:name "Fill Style"@en ;
     :mapsToProperty type:fillStyle ;
@@ -137,7 +138,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeColorAuthorityField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "color_authority" ;
     schema:name "Color Authority"@en ;
     :mapsToProperty type:colorAuthority ;
@@ -146,7 +147,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeAllowedColorsField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "allowed_colors" ;
     schema:name "Allowed Colors"@en ;
     schema:description
@@ -157,7 +158,7 @@ type:VisualRepresentationType
     :isMultivalued true .
 
 :VisualRepresentationTypeRecommendedColorRoleField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "recommended_color_role" ;
     schema:name "Recommended Color Role"@en ;
     :fieldDatatype xsd:string ;
@@ -165,8 +166,19 @@ type:VisualRepresentationType
     :isRequired false ;
     :isMultivalued false .
 
+:VisualRepresentationTypeIssueStatusColorRulesField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "issue_status_color_rules" ;
+    schema:name "Issue-status Color Rules"@en ;
+    schema:description
+        "Optional mappings from issue statuses to semantic color roles."@en ;
+    :mapsToProperty type:issueStatusColorRule ;
+    :usesControlledTermSet type:IssueStatusColorRule ;
+    :isRequired false ;
+    :isMultivalued true .
+
 :VisualRepresentationTypeIconAuthorityField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "icon_authority" ;
     schema:name "Icon Authority"@en ;
     :mapsToProperty type:iconAuthority ;
@@ -175,7 +187,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeFixedIconNameField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "fixed_icon_name" ;
     schema:name "Fixed Icon Name"@en ;
     :fieldDatatype xsd:string ;
@@ -184,7 +196,7 @@ type:VisualRepresentationType
     :isMultivalued false .
 
 :VisualRepresentationTypeRecordKindIconRulesField
-    rdf:type owl:NamedIndividual , :FacadeField ;
+    a owl:NamedIndividual , :FacadeField ;
     schema:identifier "record_kind_icon_rules" ;
     schema:name "Record-kind Icon Rules"@en ;
     :mapsToProperty type:recordKindIconRule ;
