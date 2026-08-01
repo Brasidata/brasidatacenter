@@ -1,0 +1,97 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+@prefix visual: <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/ns.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:mapsToProperty
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:usesControlledTermSet
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Class .
+
+:isRequired
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isDerived
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment
+        "Indicates that the exposed value is resolved from the annotation category rather than redundantly stored on every annotation instance."@en .
+
+type:EnrichmentAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+type:NoteAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+type:IssueAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+type:ClassificationAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+type:LocationAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+type:RecordAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
+
+:EnrichmentAnnotationVisualFacade
+    rdf:type owl:NamedIndividual , :DataEntityFacade ;
+    schema:identifier "enrichment_annotation_visual_facade" ;
+    schema:name "Enrichment Annotation Visual Facade"@en ;
+    schema:description
+        "Public visual projection shared by enrichment annotation categories. The concrete visual representation type is derived from the annotation category."@en ;
+    :isFacadeOf
+        type:EnrichmentAnnotation ,
+        type:NoteAnnotation ,
+        type:IssueAnnotation ,
+        type:ClassificationAnnotation ,
+        type:LocationAnnotation ,
+        type:RecordAnnotation ;
+    :hasFacadeField :AnnotationVisualRepresentationTypeField .
+
+:AnnotationVisualRepresentationTypeField
+    rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "visual_representation_type" ;
+    schema:name "Visual Representation Type"@en ;
+    schema:description
+        "Renderer-neutral visual contract resolved from the annotation category."@en ;
+    :mapsToProperty visual:hasVisualRepresentationType ;
+    :usesControlledTermSet visual:VisualRepresentationType ;
+    :isRequired true ;
+    :isMultivalued false ;
+    :isDerived true .
