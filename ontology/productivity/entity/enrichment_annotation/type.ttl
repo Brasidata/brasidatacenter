@@ -6,6 +6,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
 
@@ -75,6 +76,13 @@
           owl:hasValue :recording ] ;
     rdfs:label "Record annotation"@en, "Anotação de registro"@pt-BR ;
     schema:identifier "record_annotation" .
+
+:Subject
+    a owl:Class, owl:NamedIndividual, obdc:DataEntity ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Subject"@en, "Assunto"@pt-BR ;
+    rdfs:comment "A reusable concept that organizes annotations without replacing their target."@en ;
+    schema:identifier "subject" .
 
 #################################################################
 # Motivations
@@ -244,6 +252,24 @@
     rdfs:label "annotation interchange payload"@en ;
     rdfs:comment
         "A strict schema-versioned JSON serialization for lightweight offline viewers. Explicit RDF statements remain authoritative."@en .
+
+:modifiedBy
+    a owl:ObjectProperty ;
+    rdfs:domain :EnrichmentAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "modified by"@en .
+
+:assignedTo
+    a owl:ObjectProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "assigned to"@en .
+
+:resolvedBy
+    a owl:ObjectProperty ;
+    rdfs:domain :IssueAnnotation ;
+    rdfs:range rdfs:Resource ;
+    rdfs:label "resolved by"@en .
 
 #################################################################
 # Selector properties

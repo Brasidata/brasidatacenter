@@ -1,5 +1,7 @@
 @prefix : <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl#> .
 @prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -82,7 +84,13 @@ type:RecordAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
         type:ClassificationAnnotation ,
         type:LocationAnnotation ,
         type:RecordAnnotation ;
-    :hasFacadeField :AnnotationVisualRepresentationTypeField .
+    :hasFacadeField
+        :AnnotationVisualRepresentationTypeField ,
+        :AnnotationCreatorField ,
+        :AnnotationCreatedField ,
+        :AnnotationModifiedField ,
+        :AnnotationModifierField ,
+        :AnnotationSubjectField .
 
 :AnnotationVisualRepresentationTypeField
     rdf:type owl:NamedIndividual , :FacadeField ;
@@ -95,3 +103,24 @@ type:RecordAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
     :isRequired true ;
     :isMultivalued false ;
     :isDerived true .
+
+:AnnotationCreatorField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "annotated_by" ; schema:name "Creator"@en ;
+    :mapsToProperty oa:annotatedBy ; :isRequired false ; :isMultivalued false ; :isDerived false .
+
+:AnnotationCreatedField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "annotated_at" ; schema:name "Created"@en ;
+    :mapsToProperty oa:annotatedAt ; :isRequired true ; :isMultivalued false ; :isDerived false .
+
+:AnnotationModifiedField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "modified" ; schema:name "Last modified"@en ;
+    :mapsToProperty dcterms:modified ; :isRequired false ; :isMultivalued false ; :isDerived false .
+
+:AnnotationModifierField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "modified_by" ; schema:name "Last modifier"@en ;
+    :mapsToProperty type:modifiedBy ; :isRequired false ; :isMultivalued false ; :isDerived false .
+
+:AnnotationSubjectField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "subjects" ; schema:name "Subjects"@en ;
+    :mapsToProperty dcterms:subject ; :usesControlledTermSet type:Subject ;
+    :isRequired false ; :isMultivalued true ; :isDerived false .
