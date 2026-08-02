@@ -19,16 +19,27 @@
 #    Annotation properties
 #################################################################
 
+
+###  http://w3id.org/ontouml#name
 ontouml:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
 schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
 schema:identifier rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#DataEntity
 obdc:DataEntity rdf:type owl:Class .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#WebPage
 :WebPage
     rdf:type owl:Class ;
     rdfs:subClassOf
@@ -45,6 +56,7 @@ obdc:DataEntity rdf:type owl:Class .
         "Entidade de página web que especializa schema:WebPage no domínio social."@pt-BR ;
     schema:identifier "web_page" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#ContainerWebPage
 :ContainerWebPage
     rdf:type owl:Class ;
     rdfs:subClassOf :WebPage ;
@@ -60,6 +72,7 @@ obdc:DataEntity rdf:type owl:Class .
         "A classe do domínio social equivalente à representação de container como página web do OntoBDC."@pt-BR ;
     schema:identifier "container_web_page" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#Email
 :Email rdf:type obdc:DataEntity, sioc:Post, schema:EmailMessage ;
        ontouml:name "Email"@en ;
        rdfs:comment "Data entity for email messages."@en ;
@@ -68,6 +81,7 @@ obdc:DataEntity rdf:type owl:Class .
                         "email"@pt, "e-mail"@pt, "correio eletronico"@pt, "mensagem de email"@pt ;
        schema:identifier "email" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#Chat
 :Chat rdf:type obdc:DataEntity, sioc:Thread, schema:Conversation ;
       ontouml:name "Chat"@en ;
       rdfs:comment "Generic chat conversation unit that acts as a part of a broader conversation thread."@en ;
@@ -76,6 +90,7 @@ obdc:DataEntity rdf:type owl:Class .
                        "group chat"@en, "chat"@pt, "conversa de chat"@pt, "grupo"@pt, "grupo de chat"@pt ;
       schema:identifier "chat" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#Thread
 :Thread rdf:type obdc:DataEntity, sioc:Thread, schema:Conversation ;
        ontouml:name "Thread"@en ;
        rdfs:comment "Data entity for threaded conversations across social and messaging platforms."@en ;
@@ -85,6 +100,7 @@ obdc:DataEntity rdf:type owl:Class .
                         "conversa"@pt, "thread de email"@pt ;
        schema:identifier "thread" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#ChatMessage
 :ChatMessage rdf:type obdc:DataEntity, sioc:Post, schema:Message ;
        ontouml:name "Chat Message"@en ;
        rdfs:comment "Data entity for chat messages exchanged in platforms such as Telegram, WhatsApp, and similar messengers."@en ;
@@ -93,6 +109,7 @@ obdc:DataEntity rdf:type owl:Class .
                         "mensagem"@pt, "mensagem de chat"@pt, "mensagem instantanea"@pt, "torpedo"@pt ;
        schema:identifier "chat_message" .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#ConversationAgent
 :ConversationAgent rdf:type obdc:DataEntity, sioc:UserAccount ;
        ontouml:name "Conversation Agent"@en ;
        rdfs:comment "Participant entity for threaded conversations, chats, and exchanged messages."@en ;
@@ -106,65 +123,77 @@ obdc:DataEntity rdf:type owl:Class .
 #    Object Properties
 #################################################################
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#hasConversationPart
 :hasConversationPart rdf:type owl:ObjectProperty ;
        rdfs:domain :Thread ;
        rdfs:range :Chat ;
        rdfs:comment "Relates a conversation thread to one of its chat parts."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#isConversationPartOf
 :isConversationPartOf rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasConversationPart ;
        rdfs:domain :Chat ;
        rdfs:range :Thread ;
        rdfs:comment "Relates a chat part back to its parent conversation thread."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#hasChatMessage
 :hasChatMessage rdf:type owl:ObjectProperty ;
        rdfs:domain :Chat ;
        rdfs:range :ChatMessage ;
        rdfs:comment "Relates a chat conversation part to one of its messages."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#isChatMessageOf
 :isChatMessageOf rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasChatMessage ;
        rdfs:domain :ChatMessage ;
        rdfs:range :Chat ;
        rdfs:comment "Relates a chat message back to the chat it belongs to."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#hasEmail
 :hasEmail rdf:type owl:ObjectProperty ;
        rdfs:domain :Thread ;
        rdfs:range :Email ;
        rdfs:comment "Relates a thread to one of its email messages."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#isEmailOf
 :isEmailOf rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasEmail ;
        rdfs:domain :Email ;
        rdfs:range :Thread ;
        rdfs:comment "Relates an email message back to the thread it belongs to."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#hasParticipant
 :hasParticipant rdf:type owl:ObjectProperty ;
        rdfs:domain :Thread ;
        rdfs:range :ConversationAgent ;
        rdfs:comment "Relates a thread to one of its participants."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#participatesIn
 :participatesIn rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasParticipant ;
        rdfs:domain :ConversationAgent ;
        rdfs:range :Thread ;
        rdfs:comment "Relates a conversation agent to a thread they participate in."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#hasChatParticipant
 :hasChatParticipant rdf:type owl:ObjectProperty ;
        rdfs:domain :Chat ;
        rdfs:range :ConversationAgent ;
        rdfs:comment "Relates a chat part to one of its participants."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#participatesInChat
 :participatesInChat rdf:type owl:ObjectProperty ;
        owl:inverseOf :hasChatParticipant ;
        rdfs:domain :ConversationAgent ;
        rdfs:range :Chat ;
        rdfs:comment "Relates a conversation agent to a chat they participate in."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#sentBy
 :sentBy rdf:type owl:ObjectProperty ;
        rdfs:range :ConversationAgent ;
        rdfs:comment "Relates a message entity to the conversation agent who sent it."@en .
 
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#sends
 :sends rdf:type owl:ObjectProperty ;
        owl:inverseOf :sentBy ;
        rdfs:domain :ConversationAgent ;
