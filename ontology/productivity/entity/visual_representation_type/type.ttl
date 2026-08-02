@@ -1,0 +1,477 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ea: <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/ns.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl> ;
+    dcterms:title "Visual Representation Type Ontology"@en ;
+    dcterms:description
+        "Declarative visual contracts used to render enrichment annotation categories consistently without hardcoding their presentation rules in application code."@en .
+
+#################################################################
+#    Core Classes
+#################################################################
+
+:VisualRepresentationType
+    rdf:type owl:Class ,
+        owl:NamedIndividual ,
+        obdc:DataEntity ;
+    rdfs:label "Visual representation type"@en ,
+        "Tipo de representação visual"@pt-BR ;
+    rdfs:comment
+        "A reusable visual contract defining shape, border, fill, color authority, permitted colors, status-color rules, and icon behavior for a rendered data entity."@en ;
+    schema:identifier "visual_representation_type" .
+
+:VisualShape
+    rdf:type owl:Class ;
+    rdfs:label "Visual shape"@en , "Formato visual"@pt-BR .
+
+:BorderStyle
+    rdf:type owl:Class ;
+    rdfs:label "Border style"@en , "Estilo da borda"@pt-BR .
+
+:BorderTone
+    rdf:type owl:Class ;
+    rdfs:label "Border tone"@en , "Tonalidade da borda"@pt-BR .
+
+:FillStyle
+    rdf:type owl:Class ;
+    rdfs:label "Fill style"@en , "Estilo de preenchimento"@pt-BR .
+
+:ColorAuthority
+    rdf:type owl:Class ;
+    rdfs:label "Color authority"@en , "Autoridade da cor"@pt-BR ;
+    rdfs:comment
+        "The actor, state, category, or rule responsible for determining the rendered color."@en .
+
+:IconAuthority
+    rdf:type owl:Class ;
+    rdfs:label "Icon authority"@en , "Autoridade do ícone"@pt-BR ;
+    rdfs:comment
+        "The rule responsible for determining the icon rendered inside or alongside a visual marker."@en .
+
+:VisualColor
+    rdf:type owl:Class ;
+    rdfs:label "Visual color"@en , "Cor visual"@pt-BR ;
+    rdfs:comment
+        "A named or machine-readable color that may be included in an allowed palette. An empty allowed-color list means the profile does not constrain the palette."@en .
+
+:IssueStatusColorRule
+    rdf:type owl:Class ;
+    rdfs:label "Issue-status color rule"@en ,
+        "Regra de cor por status da issue"@pt-BR ;
+    rdfs:comment
+        "Maps one issue status to a renderer-neutral semantic color role."@en .
+
+:RecordKindIconRule
+    rdf:type owl:Class ;
+    rdfs:label "Record-kind icon rule"@en ,
+        "Regra de ícone por tipo de registro"@pt-BR ;
+    rdfs:comment
+        "A symbolic icon mapping for one record kind. Icon names are renderer-neutral identifiers rather than names from a specific icon library."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasVisualRepresentationType
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :VisualRepresentationType ;
+    rdfs:label "has visual representation type"@en ,
+        "tem tipo de representação visual"@pt-BR ;
+    rdfs:comment
+        "Associates a data entity or annotation category with the visual contract used by renderers."@en .
+
+:visualShape
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :VisualShape ;
+    rdfs:label "visual shape"@en .
+
+:borderStyle
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :BorderStyle ;
+    rdfs:label "border style"@en .
+
+:borderTone
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :BorderTone ;
+    rdfs:label "border tone"@en .
+
+:fillStyle
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :FillStyle ;
+    rdfs:label "fill style"@en .
+
+:colorAuthority
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :ColorAuthority ;
+    rdfs:label "color authority"@en .
+
+:allowedColor
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :VisualColor ;
+    rdfs:label "allowed color"@en ;
+    rdfs:comment
+        "A permitted color in the visual profile. The absence of values means that the profile does not constrain the palette."@en .
+
+:issueStatusColorRule
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :IssueStatusColorRule ;
+    rdfs:label "issue-status color rule"@en .
+
+:appliesToIssueStatus
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :IssueStatusColorRule ;
+    rdfs:range ea:IssueStatus ;
+    rdfs:label "applies to issue status"@en .
+
+:iconAuthority
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :IconAuthority ;
+    rdfs:label "icon authority"@en .
+
+:recordKindIconRule
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range :RecordKindIconRule ;
+    rdfs:label "record-kind icon rule"@en .
+
+:appliesToRecordKind
+    rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :RecordKindIconRule ;
+    rdfs:range ea:RecordKind ;
+    rdfs:label "applies to record kind"@en .
+
+#################################################################
+#    Datatype Properties
+#################################################################
+
+:recommendedColorRole
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range xsd:string ;
+    rdfs:label "recommended color role"@en ;
+    rdfs:comment
+        "A semantic role such as neutral or location that the active theme resolves to a concrete color."@en .
+
+:issueStatusColorRole
+    rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :IssueStatusColorRule ;
+    rdfs:range xsd:string ;
+    rdfs:label "issue-status color role"@en ;
+    rdfs:comment
+        "A semantic role such as danger, warning, success, or neutral that the active theme resolves to a concrete color."@en .
+
+:colorValue
+    rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualColor ;
+    rdfs:range xsd:string ;
+    rdfs:label "color value"@en ;
+    rdfs:comment
+        "A machine-readable color value, normally expressed as a CSS-compatible color string."@en .
+
+:fixedIconName
+    rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :VisualRepresentationType ;
+    rdfs:range xsd:string ;
+    rdfs:label "fixed icon name"@en .
+
+:recordKindIconName
+    rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain :RecordKindIconRule ;
+    rdfs:range xsd:string ;
+    rdfs:label "record-kind icon name"@en .
+
+#################################################################
+#    Controlled Visual Shapes
+#################################################################
+
+:Square a owl:NamedIndividual , :VisualShape ;
+    rdfs:label "Square"@en , "Quadrado"@pt-BR ;
+    schema:identifier "square" .
+
+:Circle a owl:NamedIndividual , :VisualShape ;
+    rdfs:label "Circle"@en , "Círculo"@pt-BR ;
+    schema:identifier "circle" .
+
+:BoundingBox a owl:NamedIndividual , :VisualShape ;
+    rdfs:label "Bounding box"@en , "Caixa delimitadora"@pt-BR ;
+    schema:identifier "bounding_box" .
+
+:Pin a owl:NamedIndividual , :VisualShape ;
+    rdfs:label "Pin"@en , "Alfinete"@pt-BR ;
+    schema:identifier "pin" .
+
+:Badge a owl:NamedIndividual , :VisualShape ;
+    rdfs:label "Badge"@en , "Marcador"@pt-BR ;
+    schema:identifier "badge" .
+
+#################################################################
+#    Controlled Border Styles
+#################################################################
+
+:SolidBorder a owl:NamedIndividual , :BorderStyle ;
+    rdfs:label "Solid border"@en , "Borda sólida"@pt-BR ;
+    schema:identifier "solid" .
+
+:DashedBorder a owl:NamedIndividual , :BorderStyle ;
+    rdfs:label "Dashed border"@en , "Borda tracejada"@pt-BR ;
+    schema:identifier "dashed" .
+
+:DottedBorder a owl:NamedIndividual , :BorderStyle ;
+    rdfs:label "Dotted border"@en , "Borda pontilhada"@pt-BR ;
+    schema:identifier "dotted" .
+
+:NoBorder a owl:NamedIndividual , :BorderStyle ;
+    rdfs:label "No border"@en , "Sem borda"@pt-BR ;
+    schema:identifier "none" .
+
+#################################################################
+#    Controlled Border Tones
+#################################################################
+
+:LightTone a owl:NamedIndividual , :BorderTone ;
+    rdfs:label "Light tone"@en , "Tonalidade clara"@pt-BR ;
+    schema:identifier "light" .
+
+:DarkTone a owl:NamedIndividual , :BorderTone ;
+    rdfs:label "Dark tone"@en , "Tonalidade escura"@pt-BR ;
+    schema:identifier "dark" .
+
+:ThemeTone a owl:NamedIndividual , :BorderTone ;
+    rdfs:label "Theme tone"@en , "Tonalidade do tema"@pt-BR ;
+    schema:identifier "theme" .
+
+#################################################################
+#    Controlled Fill Styles
+#################################################################
+
+:SolidFill a owl:NamedIndividual , :FillStyle ;
+    rdfs:label "Solid fill"@en , "Preenchimento sólido"@pt-BR ;
+    schema:identifier "solid" .
+
+:TransparentFill a owl:NamedIndividual , :FillStyle ;
+    rdfs:label "Transparent fill"@en , "Preenchimento transparente"@pt-BR ;
+    schema:identifier "transparent" .
+
+:NoFill a owl:NamedIndividual , :FillStyle ;
+    rdfs:label "No fill"@en , "Sem preenchimento"@pt-BR ;
+    schema:identifier "none" .
+
+#################################################################
+#    Controlled Color Authorities
+#################################################################
+
+:UserColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "User color authority"@en , "Cor definida pelo usuário"@pt-BR ;
+    schema:identifier "user" .
+
+:IssueStatusColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Issue-status color authority"@en , "Cor definida pelo status da issue"@pt-BR ;
+    schema:identifier "issue_status" .
+
+:IssueKindColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Issue-kind color authority"@en , "Cor definida pelo tipo da issue"@pt-BR ;
+    schema:identifier "issue_kind" .
+
+:AnnotationCategoryColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Annotation-category color authority"@en , "Cor definida pela categoria da anotação"@pt-BR ;
+    schema:identifier "annotation_category" .
+
+:RecordKindColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Record-kind color authority"@en , "Cor definida pelo tipo de registro"@pt-BR ;
+    schema:identifier "record_kind" .
+
+:FixedColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Fixed color authority"@en , "Cor fixa"@pt-BR ;
+    schema:identifier "fixed" .
+
+:ThemeColorAuthority a owl:NamedIndividual , :ColorAuthority ;
+    rdfs:label "Theme color authority"@en , "Cor definida pelo tema"@pt-BR ;
+    schema:identifier "theme" .
+
+#################################################################
+#    Controlled Icon Authorities
+#################################################################
+
+:NoIconAuthority a owl:NamedIndividual , :IconAuthority ;
+    rdfs:label "No icon"@en , "Sem ícone"@pt-BR ;
+    schema:identifier "none" .
+
+:FixedIconAuthority a owl:NamedIndividual , :IconAuthority ;
+    rdfs:label "Fixed icon authority"@en , "Ícone fixo"@pt-BR ;
+    schema:identifier "fixed" .
+
+:RecordKindIconAuthority a owl:NamedIndividual , :IconAuthority ;
+    rdfs:label "Record-kind icon authority"@en , "Ícone definido pelo tipo de registro"@pt-BR ;
+    schema:identifier "record_kind" .
+
+#################################################################
+#    Annotation Visual Profiles
+#################################################################
+
+:NoteVisualRepresentation
+    a owl:NamedIndividual , :VisualRepresentationType ;
+    schema:identifier "note_visual_representation" ;
+    schema:name "Note visual representation"@en ;
+    :visualShape :Square ;
+    :borderStyle :SolidBorder ;
+    :borderTone :ThemeTone ;
+    :fillStyle :SolidFill ;
+    :colorAuthority :UserColorAuthority ;
+    :iconAuthority :NoIconAuthority .
+
+:IssueVisualRepresentation
+    a owl:NamedIndividual , :VisualRepresentationType ;
+    schema:identifier "issue_visual_representation" ;
+    schema:name "Issue visual representation"@en ;
+    :visualShape :Circle ;
+    :borderStyle :SolidBorder ;
+    :borderTone :ThemeTone ;
+    :fillStyle :SolidFill ;
+    :colorAuthority :IssueStatusColorAuthority ;
+    :issueStatusColorRule
+        :OpenIssueStatusColorRule ,
+        :InProgressIssueStatusColorRule ,
+        :ResolvedIssueStatusColorRule ,
+        :ClosedIssueStatusColorRule ;
+    :iconAuthority :NoIconAuthority .
+
+:ClassificationVisualRepresentation
+    a owl:NamedIndividual , :VisualRepresentationType ;
+    schema:identifier "classification_visual_representation" ;
+    schema:name "Classification visual representation"@en ;
+    :visualShape :BoundingBox ;
+    :borderStyle :DashedBorder ;
+    :borderTone :LightTone ;
+    :fillStyle :TransparentFill ;
+    :colorAuthority :FixedColorAuthority ;
+    :recommendedColorRole "neutral" ;
+    :iconAuthority :NoIconAuthority .
+
+:LocationVisualRepresentation
+    a owl:NamedIndividual , :VisualRepresentationType ;
+    schema:identifier "location_visual_representation" ;
+    schema:name "Location visual representation"@en ;
+    :visualShape :Pin ;
+    :borderStyle :NoBorder ;
+    :borderTone :ThemeTone ;
+    :fillStyle :SolidFill ;
+    :colorAuthority :AnnotationCategoryColorAuthority ;
+    :recommendedColorRole "location" ;
+    :iconAuthority :FixedIconAuthority ;
+    :fixedIconName "location-pin" .
+
+:RecordVisualRepresentation
+    a owl:NamedIndividual , :VisualRepresentationType ;
+    schema:identifier "record_visual_representation" ;
+    schema:name "Record visual representation"@en ;
+    :visualShape :Badge ;
+    :borderStyle :SolidBorder ;
+    :borderTone :ThemeTone ;
+    :fillStyle :SolidFill ;
+    :colorAuthority :AnnotationCategoryColorAuthority ;
+    :recommendedColorRole "neutral" ;
+    :iconAuthority :RecordKindIconAuthority ;
+    :recordKindIconRule
+        :PhotoRecordIconRule ,
+        :VideoRecordIconRule ,
+        :AudioRecordIconRule ,
+        :InvoiceRecordIconRule ,
+        :DocumentRecordIconRule ,
+        :MeasurementRecordIconRule ,
+        :GenericRecordIconRule .
+
+#################################################################
+#    Issue Status Color Rules
+#################################################################
+
+:OpenIssueStatusColorRule
+    a owl:NamedIndividual , :IssueStatusColorRule ;
+    :appliesToIssueStatus ea:Open ;
+    :issueStatusColorRole "danger" .
+
+:InProgressIssueStatusColorRule
+    a owl:NamedIndividual , :IssueStatusColorRule ;
+    :appliesToIssueStatus ea:InProgress ;
+    :issueStatusColorRole "warning" .
+
+:ResolvedIssueStatusColorRule
+    a owl:NamedIndividual , :IssueStatusColorRule ;
+    :appliesToIssueStatus ea:Resolved ;
+    :issueStatusColorRole "success" .
+
+:ClosedIssueStatusColorRule
+    a owl:NamedIndividual , :IssueStatusColorRule ;
+    :appliesToIssueStatus ea:Closed ;
+    :issueStatusColorRole "neutral" .
+
+#################################################################
+#    Record Icon Rules
+#################################################################
+
+:PhotoRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:PhotoRecord ;
+    :recordKindIconName "camera" .
+
+:VideoRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:VideoRecord ;
+    :recordKindIconName "video-camera" .
+
+:AudioRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:AudioRecord ;
+    :recordKindIconName "microphone" .
+
+:InvoiceRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:InvoiceRecord ;
+    :recordKindIconName "receipt" .
+
+:DocumentRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:DocumentRecord ;
+    :recordKindIconName "document" .
+
+:MeasurementRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:MeasurementRecord ;
+    :recordKindIconName "measurement" .
+
+:GenericRecordIconRule a owl:NamedIndividual , :RecordKindIconRule ;
+    :appliesToRecordKind ea:GenericRecord ;
+    :recordKindIconName "attachment" .
+
+#################################################################
+#    Annotation Category Bindings
+#################################################################
+
+ea:NoteAnnotation
+    :hasVisualRepresentationType :NoteVisualRepresentation .
+
+ea:IssueAnnotation
+    :hasVisualRepresentationType :IssueVisualRepresentation .
+
+ea:ClassificationAnnotation
+    :hasVisualRepresentationType :ClassificationVisualRepresentation .
+
+ea:LocationAnnotation
+    :hasVisualRepresentationType :LocationVisualRepresentation .
+
+ea:RecordAnnotation
+    :hasVisualRepresentationType :RecordVisualRepresentation .

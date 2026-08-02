@@ -1,23 +1,19 @@
-@prefix : <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/productivity/entity/ns.ttl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix ontouml: <http://w3id.org/ontouml#> .
-@base <http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/ns.ttl#> .
 
-<http://datacenter.app.br/ontology/productivity/entity/document/type.ttl> rdf:type owl:Ontology ;
-                                              owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+<http://datacenter.app.br/ontology/productivity/entity/ns.ttl> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
 #################################################################
-
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#obdc-entity:Contract
-:obdc-entity:Contract rdf:type owl:AnnotationProperty .
 
 
 ###  http://w3id.org/ontouml#name
@@ -36,7 +32,7 @@ schema:identifier rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#DataEntity
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#DataEntity
 obdc:DataEntity rdf:type owl:Class .
 
 
@@ -44,17 +40,8 @@ obdc:DataEntity rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
-:BlogPost rdf:type 
-                   obdc:DataEntity ;
-          ontouml:name "Blog Post"@en ;
-          rdfs:comment "Document type data entity for blog post documents."@en ;
-          schema:description "Online article with title, sections, hyperlinks, and narrative structure; typically less formal and more topical than technical reports."@en ;
-          schema:identifier "blog_post" .
-
-
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
-:Contract rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#Contract
+:Contract rdf:type owl:NamedIndividual ,
                    obdc:DataEntity ;
           ontouml:name "Contract"@en ;
           rdfs:comment "Document type data entity for contract documents."@en ;
@@ -62,8 +49,8 @@ obdc:DataEntity rdf:type owl:Class .
           schema:identifier "contract" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Invoice
-:Invoice rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#Invoice
+:Invoice rdf:type owl:NamedIndividual ,
                   obdc:DataEntity ;
          ontouml:name "Invoice"@en ;
          rdfs:comment "Document type data entity for invoice documents."@en ;
@@ -71,8 +58,8 @@ obdc:DataEntity rdf:type owl:Class .
          schema:identifier "invoice" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#MeetingMinutes
-:MeetingMinutes rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#MeetingMinutes
+:MeetingMinutes rdf:type owl:NamedIndividual ,
                          obdc:DataEntity ;
                 ontouml:name "Meeting Minutes"@en ;
                 rdfs:comment "Document type data entity for meeting minutes documents."@en ;
@@ -80,8 +67,8 @@ obdc:DataEntity rdf:type owl:Class .
                 schema:identifier "meeting_minutes" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Proposal
-:Proposal rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#Proposal
+:Proposal rdf:type owl:NamedIndividual ,
                    obdc:DataEntity ;
           ontouml:name "Proposal"@en ;
           rdfs:comment "Document type data entity for proposal documents."@en ;
@@ -89,8 +76,8 @@ obdc:DataEntity rdf:type owl:Class .
           schema:identifier "proposal" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#PurchaseOrder
-:PurchaseOrder rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#PurchaseOrder
+:PurchaseOrder rdf:type owl:NamedIndividual ,
                         obdc:DataEntity ;
                ontouml:name "Purchase Order"@en ;
                rdfs:comment "Document type data entity for purchase order documents."@en ;
@@ -98,8 +85,8 @@ obdc:DataEntity rdf:type owl:Class .
                schema:identifier "purchase_order" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Receipt
-:Receipt rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#Receipt
+:Receipt rdf:type owl:NamedIndividual ,
                   obdc:DataEntity ;
          ontouml:name "Receipt"@en ;
          rdfs:comment "Document type data entity for receipt documents."@en ;
@@ -107,8 +94,8 @@ obdc:DataEntity rdf:type owl:Class .
          schema:identifier "receipt" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalReport
-:TechnicalReport rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#TechnicalReport
+:TechnicalReport rdf:type owl:NamedIndividual ,
                           obdc:DataEntity ;
                  ontouml:name "Technical Report"@en ;
                  rdfs:comment "Document type data entity for technical report documents."@en ;
@@ -116,10 +103,13 @@ obdc:DataEntity rdf:type owl:Class .
                  schema:identifier "technical_report" .
 
 
-###  http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalSpecification
-:TechnicalSpecification rdf:type 
+###  http://datacenter.app.br/ontology/productivity/entity/ns.ttl#TechnicalSpecification
+:TechnicalSpecification rdf:type owl:NamedIndividual ,
                                  obdc:DataEntity ;
                         ontouml:name "Technical Specification"@en ;
                         rdfs:comment "Document type data entity for technical specification documents."@en ;
                         schema:description "Structured specification with high section density and repeated domain terminology."@en ;
                         schema:identifier "technical_specification" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

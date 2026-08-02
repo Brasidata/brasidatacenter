@@ -247,6 +247,7 @@ obdc:DataEntity rdf:type owl:Class .
     :hasPreferredLabel :WorkBreakdownStructurePreferredLabelPtBr ,
         :WorkBreakdownStructurePreferredLabelEn ;
     :hasObservedAlias :WorkBreakdownStructureObservedAliasEDT ,
+        :WorkBreakdownStructureObservedAliasItem ,
         :WorkBreakdownStructureObservedAliasWBS .
 
 
@@ -277,6 +278,7 @@ obdc:DataEntity rdf:type owl:Class .
     :hasPreferredLabel :TaskNamePreferredLabelPtBr ,
         :TaskNamePreferredLabelEn ;
     :hasObservedAlias :TaskNameObservedAliasNomeTarefa ,
+        :TaskNameObservedAliasAtividades ,
         :TaskNameObservedAliasTarefa .
 
 
@@ -290,7 +292,8 @@ obdc:DataEntity rdf:type owl:Class .
     :canonicalNormalizedForm "duracao" ;
     :mapsToProperty schema:duration ;
     :hasPreferredLabel :DurationPreferredLabelPtBr ,
-        :DurationPreferredLabelEn .
+        :DurationPreferredLabelEn ;
+    :hasObservedAlias :DurationObservedAliasDuracaoEmSemanas .
 
 
 ###  http://datacenter.app.br/ontology/bsi/element/ifc_work_schedule/type.ttl#StartDateField
@@ -583,6 +586,12 @@ obdc:DataEntity rdf:type owl:Class .
     :normalizedForm "edt" ;
     :languageCode "pt-br" .
 
+:WorkBreakdownStructureObservedAliasItem rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "ITEM" ;
+    :normalizedForm "item" ;
+    :languageCode "pt-br" .
+
 :WorkBreakdownStructureObservedAliasWBS rdf:type owl:NamedIndividual ,
         :ObservedHeaderAlias ;
     :surfaceForm "WBS" ;
@@ -613,10 +622,22 @@ obdc:DataEntity rdf:type owl:Class .
     :normalizedForm "nome tarefa" ;
     :languageCode "pt-br" .
 
+:TaskNameObservedAliasAtividades rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "ATIVIDADES" ;
+    :normalizedForm "atividades" ;
+    :languageCode "pt-br" .
+
 :TaskNameObservedAliasTarefa rdf:type owl:NamedIndividual ,
         :ObservedHeaderAlias ;
     :surfaceForm "Tarefa" ;
     :normalizedForm "tarefa" ;
+    :languageCode "pt-br" .
+
+:DurationObservedAliasDuracaoEmSemanas rdf:type owl:NamedIndividual ,
+        :ObservedHeaderAlias ;
+    :surfaceForm "DURAÇÃO EM SEMANAS" ;
+    :normalizedForm "duracao em semanas" ;
     :languageCode "pt-br" .
 
 :StartDateObservedAliasDataInicio rdf:type owl:NamedIndividual ,

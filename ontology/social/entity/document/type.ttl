@@ -43,8 +43,7 @@ obdc:DataEntity rdf:type owl:Class .
 #################################################################
 
 ###  http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
-:JobOffer rdf:type owl:NamedIndividual ,
-        obdc:DataEntity ;
+:JobOffer rdf:type obdc:DataEntity ;
     ontouml:name "Job Offer"@en ;
     rdfs:comment "Document type data entity for job offer and job posting documents."@en ;
     schema:description "Recruitment document describing a target job title, role summary, employment type, work location, requirements, skill groups, and achievements expected for a position."@en ;

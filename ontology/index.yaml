@@ -1,0 +1,59 @@
+
+entity:
+  social:
+    aliases:
+      - email: http://datacenter.app.br/ontology/social/entity/ns.ttl#Email
+      - chat: http://datacenter.app.br/ontology/social/entity/ns.ttl#Chat
+      - thread: http://datacenter.app.br/ontology/social/entity/ns.ttl#Thread
+      - chatmessage: http://datacenter.app.br/ontology/social/entity/ns.ttl#ChatMessage
+      - chat_message: http://datacenter.app.br/ontology/social/entity/ns.ttl#ChatMessage
+      - conversationagent: http://datacenter.app.br/ontology/social/entity/ns.ttl#ConversationAgent
+      - conversation_agent: http://datacenter.app.br/ontology/social/entity/ns.ttl#ConversationAgent
+      - contactpoint: http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
+      - contact_point: http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
+      - joboffer: http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
+      - job_offer: http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
+      - person: http://datacenter.app.br/ontology/social/entity/person/type.ttl#Person
+      - weblink: http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#WebLink
+      - web_link: http://datacenter.app.br/ontology/social/entity/weblink/type.ttl#WebLink
+
+  productivity:
+    aliases:
+      - enrichmentannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
+      - enrichment_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#EnrichmentAnnotation
+      - noteannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#NoteAnnotation
+      - note_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#NoteAnnotation
+      - issueannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#IssueAnnotation
+      - issue_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#IssueAnnotation
+      - classificationannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#ClassificationAnnotation
+      - classification_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#ClassificationAnnotation
+      - locationannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#LocationAnnotation
+      - location_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#LocationAnnotation
+      - recordannotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
+      - record_annotation: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#RecordAnnotation
+      - subject: http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#Subject
+      - visualrepresentationtype: http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#VisualRepresentationType
+      - visual_representation_type: http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#VisualRepresentationType
+      - blogpost: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
+      - blog_post: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#BlogPost
+      - contract: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Contract
+      - invoice: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Invoice
+      - meetingminutes: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#MeetingMinutes
+      - meeting_minutes: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#MeetingMinutes
+      - proposal: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Proposal
+      - purchaseorder: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#PurchaseOrder
+      - purchase_order: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#PurchaseOrder
+      - receipt: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#Receipt
+      - technicalreport: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalReport
+      - technical_report: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalReport
+      - technicalspecification: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalSpecification
+      - technical_specification: http://datacenter.app.br/ontology/productivity/entity/document/type.ttl#TechnicalSpecification
+      - workstream: http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#WorkStream
+      - work_stream: http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#WorkStream
+
+  sales:
+    aliases:
+      - salesfunnel: http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl#SalesFunnel
+      - sales_funnel: http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl#SalesFunnel
+      - salesopportunity: http://datacenter.app.br/ontology/sales/entity/sales_opportunity/type.ttl#SalesOpportunity
+      - sales_opportunity: http://datacenter.app.br/ontology/sales/entity/sales_opportunity/type.ttl#SalesOpportunity

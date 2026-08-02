@@ -1,0 +1,108 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/person/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix type: <http://datacenter.app.br/ontology/social/entity/person/type.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/person/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/person/facade.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/social/entity/person/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:Person :hasDataEntityFacade :PersonFacade .
+
+:PersonFacade rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "person_facade" ;
+    schema:name "Person Facade"@en ;
+    schema:description "Public facade for people represented in social and address book datasets."@en ;
+    :isFacadeOf type:Person ;
+    :hasFacadeField :PersonGlobalIdField ,
+        :PersonNameField ,
+        :PersonGivenNameField ,
+        :PersonFamilyNameField ,
+        :PersonDescriptionField ,
+        :PersonContactPointField .
+
+:PersonGlobalIdField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:PersonNameField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:PersonGivenNameField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "given_name" ;
+    schema:name "Given Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:givenName ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:PersonFamilyNameField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "family_name" ;
+    schema:name "Family Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:familyName ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:PersonDescriptionField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:description ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:PersonContactPointField rdf:type owl:NamedIndividual , :FacadeField ;
+    schema:identifier "contact_points" ;
+    schema:name "Contact Points"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty schema:contactPoint ;
+    :isRequired false ;
+    :isMultivalued true .

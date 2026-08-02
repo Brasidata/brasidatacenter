@@ -1,0 +1,205 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/ns.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToProperty
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:usesControlledTermSet
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Class .
+
+:isRequired
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:VisualRepresentationType
+    :hasDataEntityFacade :VisualRepresentationTypeFacade .
+
+:VisualRepresentationTypeFacade
+    rdf:type owl:NamedIndividual , :DataEntityFacade ;
+    schema:identifier "visual_representation_type_facade" ;
+    schema:name "Visual Representation Type Facade"@en ;
+    schema:description
+        "Public facade exposing the complete renderer-neutral visual contract for an annotation category."@en ;
+    :isFacadeOf type:VisualRepresentationType ;
+    :hasFacadeField
+        :VisualRepresentationTypeGlobalIdField ,
+        :VisualRepresentationTypeNameField ,
+        :VisualRepresentationTypeShapeField ,
+        :VisualRepresentationTypeBorderStyleField ,
+        :VisualRepresentationTypeBorderToneField ,
+        :VisualRepresentationTypeFillStyleField ,
+        :VisualRepresentationTypeColorAuthorityField ,
+        :VisualRepresentationTypeAllowedColorsField ,
+        :VisualRepresentationTypeRecommendedColorRoleField ,
+        :VisualRepresentationTypeIssueStatusColorRulesField ,
+        :VisualRepresentationTypeIconAuthorityField ,
+        :VisualRepresentationTypeFixedIconNameField ,
+        :VisualRepresentationTypeRecordKindIconRulesField .
+
+:VisualRepresentationTypeGlobalIdField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeNameField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeShapeField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "shape" ;
+    schema:name "Shape"@en ;
+    :mapsToProperty type:visualShape ;
+    :usesControlledTermSet type:VisualShape ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeBorderStyleField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "border_style" ;
+    schema:name "Border Style"@en ;
+    :mapsToProperty type:borderStyle ;
+    :usesControlledTermSet type:BorderStyle ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeBorderToneField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "border_tone" ;
+    schema:name "Border Tone"@en ;
+    :mapsToProperty type:borderTone ;
+    :usesControlledTermSet type:BorderTone ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeFillStyleField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "fill_style" ;
+    schema:name "Fill Style"@en ;
+    :mapsToProperty type:fillStyle ;
+    :usesControlledTermSet type:FillStyle ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeColorAuthorityField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "color_authority" ;
+    schema:name "Color Authority"@en ;
+    :mapsToProperty type:colorAuthority ;
+    :usesControlledTermSet type:ColorAuthority ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeAllowedColorsField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "allowed_colors" ;
+    schema:name "Allowed Colors"@en ;
+    schema:description
+        "Optional permitted palette. No values means that the visual profile does not constrain the palette."@en ;
+    :mapsToProperty type:allowedColor ;
+    :usesControlledTermSet type:VisualColor ;
+    :isRequired false ;
+    :isMultivalued true .
+
+:VisualRepresentationTypeRecommendedColorRoleField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "recommended_color_role" ;
+    schema:name "Recommended Color Role"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty type:recommendedColorRole ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeIssueStatusColorRulesField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "issue_status_color_rules" ;
+    schema:name "Issue-status Color Rules"@en ;
+    schema:description
+        "Optional mappings from issue statuses to semantic color roles."@en ;
+    :mapsToProperty type:issueStatusColorRule ;
+    :usesControlledTermSet type:IssueStatusColorRule ;
+    :isRequired false ;
+    :isMultivalued true .
+
+:VisualRepresentationTypeIconAuthorityField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "icon_authority" ;
+    schema:name "Icon Authority"@en ;
+    :mapsToProperty type:iconAuthority ;
+    :usesControlledTermSet type:IconAuthority ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeFixedIconNameField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "fixed_icon_name" ;
+    schema:name "Fixed Icon Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty type:fixedIconName ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:VisualRepresentationTypeRecordKindIconRulesField
+    a owl:NamedIndividual , :FacadeField ;
+    schema:identifier "record_kind_icon_rules" ;
+    schema:name "Record-kind Icon Rules"@en ;
+    :mapsToProperty type:recordKindIconRule ;
+    :usesControlledTermSet type:RecordKindIconRule ;
+    :isRequired false ;
+    :isMultivalued true .
