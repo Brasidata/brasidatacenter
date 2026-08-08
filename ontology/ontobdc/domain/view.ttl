@@ -4,34 +4,33 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix schema: <https://schema.org/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix aria: <http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 
 <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl>
     rdf:type owl:Ontology ;
     rdfs:label "OntoBDC View Ontology"@en ;
-    rdfs:comment "Ontology for presentation layers, presentation surfaces, tiles, capabilities, requests and runtime allocation."@en ;
+    rdfs:comment "Ontology for presentation layers, presentation surfaces, tiles, support profiles, requests and runtime allocation."@en ;
     schema:description "Semantic model for interoperable OntoBDC presentation components independently of a concrete renderer such as a browser."@en .
 
 #################################################################
-#    Classes
+#    Core classes
 #################################################################
 
 :PresentationLayer rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:Situation ;
     rdfs:label "Presentation Layer"@en ;
-    rdfs:comment "Presentation boundary responsible for materializing information through one or more presentation surfaces."@en .
+    rdfs:comment "Relational presentation context in which information is materialized through one or more presentation surfaces."@en .
 
 :PresentationSurface rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:Region ;
     rdfs:label "Presentation Surface"@en ;
-    rdfs:comment "Spatial or otherwise allocatable presentation space in which components are materialized."@en .
+    rdfs:comment "Allocatable presentation region in which components can be materialized."@en .
 
 :PresentationRegion rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:Region ;
     rdfs:label "Presentation Region"@en ;
     rdfs:comment "A region of a presentation surface governed by a placement policy."@en .
 
@@ -43,7 +42,7 @@
 :ContentRegion rdf:type owl:Class ;
     rdfs:subClassOf :PresentationRegion ;
     rdfs:label "Content Region"@en ;
-    rdfs:comment "Region containing contextual content whose ordering may change according to recency or other presentation policy."@en .
+    rdfs:comment "Region containing contextual content whose ordering may change according to recency or another presentation policy."@en .
 
 :PinnedRegion rdf:type owl:Class ;
     rdfs:subClassOf :PresentationRegion ;
@@ -51,44 +50,44 @@
     rdfs:comment "Stable region containing content explicitly fixed by the user or another authorized actor."@en .
 
 :Component rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:InformationObject ;
     rdfs:label "Presentation Component"@en ;
-    rdfs:comment "Reusable presentation-capable component independent of its concrete renderer implementation."@en .
+    rdfs:comment "Reusable information object that defines a presentation-capable component independently of a concrete renderer implementation."@en .
 
 :Tile rdf:type owl:Class ;
     rdfs:subClassOf :Component ;
     rdfs:label "Tile"@en ;
     rdfs:comment "Unit of materialization negotiated with a presentation surface."@en .
 
-:Capability rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
-    rdfs:label "Capability"@en ;
-    rdfs:comment "A presentation capability declared by a component, including its supported spatial envelope and presentation features."@en .
+:PresentationSupportProfile rdf:type owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Presentation Support Profile"@en ;
+    rdfs:comment "Description of the presentation envelope and features supported by a component. This is intentionally distinct from an OntoBDC executable Capability."@en .
 
 :PresentationRequest rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:Description ;
     rdfs:label "Presentation Request"@en ;
-    rdfs:comment "A request describing required, optional and contextual parameters for materializing a component."@en .
+    rdfs:comment "Description of required, optional and contextual parameters for materializing a component."@en .
 
 :Allocation rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf dul:Situation ;
     rdfs:label "Allocation"@en ;
-    rdfs:comment "Runtime result of negotiation between a presentation surface and a component."@en .
+    rdfs:comment "Runtime situation resulting from negotiation between a presentation surface and a component."@en .
 
 :PresentationRole rdf:type owl:Class ;
-    rdfs:subClassOf skos:Concept ;
+    rdfs:subClassOf dul:Role ;
     rdfs:label "Presentation Role"@en ;
-    rdfs:comment "Semantic role performed by a component in a particular presentation context, independent of implementation technology."@en .
+    rdfs:comment "Role performed by a component in a particular presentation context, independent of implementation technology."@en .
 
 :Theme rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity, skos:Concept ;
+    rdfs:subClassOf dul:Description ;
     rdfs:label "Theme"@en ;
-    rdfs:comment "Named set of presentation tokens and presentation-level options."@en .
+    rdfs:comment "Description containing a named set of presentation tokens and presentation-level options."@en .
 
 :PresentationEvent rdf:type owl:Class ;
-    rdfs:subClassOf prov:InstantaneousEvent ;
+    rdfs:subClassOf dul:Event ;
     rdfs:label "Presentation Event"@en ;
-    rdfs:comment "Semantic event occurring within or crossing a presentation layer boundary."@en .
+    rdfs:comment "Event occurring within or crossing a presentation layer boundary."@en .
 
 #################################################################
 #    Browser / WAI-ARIA specialization
@@ -161,11 +160,13 @@
 #################################################################
 
 :hasSurface rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasRegion ;
     rdfs:domain :PresentationLayer ;
     rdfs:range :PresentationSurface ;
     rdfs:label "has surface"@en .
 
 :hasRegion rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasPart ;
     rdfs:domain :PresentationSurface ;
     rdfs:range :PresentationRegion ;
     rdfs:label "has region"@en .
@@ -180,12 +181,14 @@
     rdfs:range :PresentationRegion ;
     rdfs:label "placed in region"@en .
 
-:hasCapability rdf:type owl:ObjectProperty ;
+:hasSupportProfile rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:isDescribedBy ;
     rdfs:domain :Component ;
-    rdfs:range :Capability ;
-    rdfs:label "has capability"@en .
+    rdfs:range :PresentationSupportProfile ;
+    rdfs:label "has support profile"@en .
 
 :hasRequest rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:isDescribedBy ;
     rdfs:domain :Component ;
     rdfs:range :PresentationRequest ;
     rdfs:label "has request"@en .
@@ -206,6 +209,7 @@
     rdfs:label "allocation for"@en .
 
 :hasPresentationRole rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasRole ;
     rdfs:domain :Component ;
     rdfs:range :PresentationRole ;
     rdfs:label "has presentation role"@en .
@@ -252,46 +256,46 @@
     rdfs:comment "Space reserved by a presentation surface around a component inside its allocated area."@en .
 
 #################################################################
-#    Datatype Properties - Capability envelope
+#    Datatype Properties - Presentation support profile
 #################################################################
 
 :minColumns rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "minimum columns"@en .
 
 :maxColumns rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "maximum columns"@en .
 
 :preferredColumns rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "preferred columns"@en .
 
 :minRows rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "minimum rows"@en .
 
 :maxRows rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "maximum rows"@en .
 
 :preferredRows rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:integer ;
     rdfs:label "preferred rows"@en .
 
 :supportsTransparentBackground rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:boolean ;
     rdfs:label "supports transparent background"@en .
 
 :supportsTheme rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Capability ;
+    rdfs:domain :PresentationSupportProfile ;
     rdfs:range xsd:boolean ;
     rdfs:label "supports theme"@en .
 
@@ -348,8 +352,8 @@
 #    SHACL - executable contract baseline
 #################################################################
 
-:CapabilityShape rdf:type sh:NodeShape ;
-    sh:targetClass :Capability ;
+:PresentationSupportProfileShape rdf:type sh:NodeShape ;
+    sh:targetClass :PresentationSupportProfile ;
     sh:property [
         sh:path :minColumns ;
         sh:datatype xsd:integer ;
