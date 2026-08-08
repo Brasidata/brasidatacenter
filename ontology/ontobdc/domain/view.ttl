@@ -7,6 +7,7 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix aria: <http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#> .
 @base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 
 <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl>
@@ -88,6 +89,72 @@
     rdfs:subClassOf prov:InstantaneousEvent ;
     rdfs:label "Presentation Event"@en ;
     rdfs:comment "Semantic event occurring within or crossing a presentation layer boundary."@en .
+
+#################################################################
+#    Browser / WAI-ARIA specialization
+#################################################################
+
+:BrowserComponent rdf:type owl:Class ;
+    rdfs:subClassOf :Component ;
+    rdfs:label "Browser Component"@en ;
+    rdfs:comment "Presentation component materialized in a browser presentation layer."@en .
+
+:BrowserWidgetComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:widget ;
+    rdfs:label "Browser Widget Component"@en ;
+    rdfs:comment "Browser component whose interaction semantics specialize the WAI-ARIA widget role taxonomy."@en .
+
+:BrowserButtonComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserWidgetComponent, aria:button ;
+    rdfs:label "Browser Button Component"@en .
+
+:BrowserImageComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:img ;
+    rdfs:label "Browser Image Component"@en .
+
+:BrowserStatusComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:status ;
+    rdfs:label "Browser Status Component"@en .
+
+:BrowserLogComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:log ;
+    rdfs:label "Browser Log Component"@en .
+
+:BrowserTimerComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserStatusComponent, aria:timer ;
+    rdfs:label "Browser Timer Component"@en .
+
+:BrowserToolbarComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:toolbar ;
+    rdfs:label "Browser Toolbar Component"@en .
+
+:BrowserRegionComponent rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserComponent, aria:region ;
+    rdfs:label "Browser Region Component"@en .
+
+#################################################################
+#    Current OntoBDC View components
+#################################################################
+
+:ThemeTile rdf:type owl:Class ;
+    rdfs:subClassOf :Tile, :BrowserButtonComponent ;
+    rdfs:label "Theme Tile"@en .
+
+:LanguageTile rdf:type owl:Class ;
+    rdfs:subClassOf :Tile, :BrowserButtonComponent ;
+    rdfs:label "Language Tile"@en .
+
+:LogoTile rdf:type owl:Class ;
+    rdfs:subClassOf :Tile, :BrowserImageComponent ;
+    rdfs:label "Logo Tile"@en .
+
+:PhotoTile rdf:type owl:Class ;
+    rdfs:subClassOf :Tile, :BrowserImageComponent ;
+    rdfs:label "Photo Tile"@en .
+
+:PresentationSystemLog rdf:type owl:Class ;
+    rdfs:subClassOf :BrowserLogComponent ;
+    rdfs:label "Presentation System Log"@en .
 
 #################################################################
 #    Object Properties
