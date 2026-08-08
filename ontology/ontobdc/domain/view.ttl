@@ -5,6 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix schema: <https://schema.org/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 
@@ -19,14 +20,17 @@
 #################################################################
 
 :PresentationLayer rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Presentation Layer"@en ;
     rdfs:comment "Presentation boundary responsible for materializing information through one or more presentation surfaces."@en .
 
 :PresentationSurface rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Presentation Surface"@en ;
     rdfs:comment "Spatial or otherwise allocatable presentation space in which components are materialized."@en .
 
 :PresentationRegion rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Presentation Region"@en ;
     rdfs:comment "A region of a presentation surface governed by a placement policy."@en .
 
@@ -46,6 +50,7 @@
     rdfs:comment "Stable region containing content explicitly fixed by the user or another authorized actor."@en .
 
 :Component rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Presentation Component"@en ;
     rdfs:comment "Reusable presentation-capable component independent of its concrete renderer implementation."@en .
 
@@ -55,27 +60,32 @@
     rdfs:comment "Unit of materialization negotiated with a presentation surface."@en .
 
 :Capability rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Capability"@en ;
     rdfs:comment "A presentation capability declared by a component, including its supported spatial envelope and presentation features."@en .
 
 :PresentationRequest rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Presentation Request"@en ;
     rdfs:comment "A request describing required, optional and contextual parameters for materializing a component."@en .
 
 :Allocation rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
     rdfs:label "Allocation"@en ;
     rdfs:comment "Runtime result of negotiation between a presentation surface and a component."@en .
 
 :PresentationRole rdf:type owl:Class ;
+    rdfs:subClassOf skos:Concept ;
     rdfs:label "Presentation Role"@en ;
     rdfs:comment "Semantic role performed by a component in a particular presentation context, independent of implementation technology."@en .
 
 :Theme rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity, skos:Concept ;
     rdfs:label "Theme"@en ;
     rdfs:comment "Named set of presentation tokens and presentation-level options."@en .
 
 :PresentationEvent rdf:type owl:Class ;
-    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf prov:InstantaneousEvent ;
     rdfs:label "Presentation Event"@en ;
     rdfs:comment "Semantic event occurring within or crossing a presentation layer boundary."@en .
 
