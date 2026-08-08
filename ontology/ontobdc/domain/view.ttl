@@ -1,0 +1,343 @@
+@prefix : <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+
+<http://datacenter.app.br/ontology/ontobdc/domain/view.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "OntoBDC View Ontology"@en ;
+    rdfs:comment "Ontology for presentation layers, presentation surfaces, tiles, capabilities, requests and runtime allocation."@en ;
+    schema:description "Semantic model for interoperable OntoBDC presentation components independently of a concrete renderer such as a browser."@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+view:PresentationLayer rdf:type owl:Class ;
+    rdfs:label "Presentation Layer"@en ;
+    rdfs:comment "Presentation boundary responsible for materializing information through one or more presentation surfaces."@en .
+
+view:PresentationSurface rdf:type owl:Class ;
+    rdfs:label "Presentation Surface"@en ;
+    rdfs:comment "Spatial or otherwise allocatable presentation space in which components are materialized."@en .
+
+view:PresentationRegion rdf:type owl:Class ;
+    rdfs:label "Presentation Region"@en ;
+    rdfs:comment "A region of a presentation surface governed by a placement policy."@en .
+
+view:OperationRegion rdf:type owl:Class ;
+    rdfs:subClassOf view:PresentationRegion ;
+    rdfs:label "Operation Region"@en ;
+    rdfs:comment "Stable region reserved for operational controls and presentation-level functions."@en .
+
+view:ContentRegion rdf:type owl:Class ;
+    rdfs:subClassOf view:PresentationRegion ;
+    rdfs:label "Content Region"@en ;
+    rdfs:comment "Region containing contextual content whose ordering may change according to recency or other presentation policy."@en .
+
+view:PinnedRegion rdf:type owl:Class ;
+    rdfs:subClassOf view:PresentationRegion ;
+    rdfs:label "Pinned Region"@en ;
+    rdfs:comment "Stable region containing content explicitly fixed by the user or another authorized actor."@en .
+
+view:Component rdf:type owl:Class ;
+    rdfs:label "Presentation Component"@en ;
+    rdfs:comment "Reusable presentation-capable component independent of its concrete renderer implementation."@en .
+
+view:Tile rdf:type owl:Class ;
+    rdfs:subClassOf view:Component ;
+    rdfs:label "Tile"@en ;
+    rdfs:comment "Unit of materialization negotiated with a presentation surface."@en .
+
+view:Capability rdf:type owl:Class ;
+    rdfs:label "Capability"@en ;
+    rdfs:comment "A presentation capability declared by a component, including its supported spatial envelope and presentation features."@en .
+
+view:PresentationRequest rdf:type owl:Class ;
+    rdfs:label "Presentation Request"@en ;
+    rdfs:comment "A request describing required, optional and contextual parameters for materializing a component."@en .
+
+view:Allocation rdf:type owl:Class ;
+    rdfs:label "Allocation"@en ;
+    rdfs:comment "Runtime result of negotiation between a presentation surface and a component."@en .
+
+view:PresentationRole rdf:type owl:Class ;
+    rdfs:label "Presentation Role"@en ;
+    rdfs:comment "Semantic role performed by a component in a particular presentation context, independent of implementation technology."@en .
+
+view:Theme rdf:type owl:Class ;
+    rdfs:label "Theme"@en ;
+    rdfs:comment "Named set of presentation tokens and presentation-level options."@en .
+
+view:PresentationEvent rdf:type owl:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Presentation Event"@en ;
+    rdfs:comment "Semantic event occurring within or crossing a presentation layer boundary."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+view:hasSurface rdf:type owl:ObjectProperty ;
+    rdfs:domain view:PresentationLayer ;
+    rdfs:range view:PresentationSurface ;
+    rdfs:label "has surface"@en .
+
+view:hasRegion rdf:type owl:ObjectProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range view:PresentationRegion ;
+    rdfs:label "has region"@en .
+
+view:presentedIn rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:PresentationSurface ;
+    rdfs:label "presented in"@en .
+
+view:placedInRegion rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:PresentationRegion ;
+    rdfs:label "placed in region"@en .
+
+view:hasCapability rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:Capability ;
+    rdfs:label "has capability"@en .
+
+view:hasRequest rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:PresentationRequest ;
+    rdfs:label "has request"@en .
+
+view:hasAllocation rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:Allocation ;
+    rdfs:label "has allocation"@en .
+
+view:allocatedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Allocation ;
+    rdfs:range view:PresentationSurface ;
+    rdfs:label "allocated by"@en .
+
+view:allocationFor rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Allocation ;
+    rdfs:range view:Component ;
+    rdfs:label "allocation for"@en .
+
+view:hasPresentationRole rdf:type owl:ObjectProperty ;
+    rdfs:domain view:Component ;
+    rdfs:range view:PresentationRole ;
+    rdfs:label "has presentation role"@en .
+
+view:usesTheme rdf:type owl:ObjectProperty ;
+    rdfs:range view:Theme ;
+    rdfs:label "uses theme"@en .
+
+#################################################################
+#    Datatype Properties - Surface geometry
+#################################################################
+
+view:slotTarget rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "slot target"@en ;
+    rdfs:comment "Preferred physical size of a logical surface slot in renderer-specific units."@en .
+
+view:slotSize rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "slot size"@en .
+
+view:columnCount rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range xsd:integer ;
+    rdfs:label "column count"@en .
+
+view:gap rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "gap"@en ;
+    rdfs:comment "Space between logical cells managed by the surface."@en .
+
+view:padding rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationSurface ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "padding"@en ;
+    rdfs:comment "Space between the surface boundary and its allocatable regions."@en .
+
+view:margin rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "margin"@en ;
+    rdfs:comment "Space reserved by a presentation surface around a component inside its allocated area."@en .
+
+#################################################################
+#    Datatype Properties - Capability envelope
+#################################################################
+
+view:minColumns rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "minimum columns"@en .
+
+view:maxColumns rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "maximum columns"@en .
+
+view:preferredColumns rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "preferred columns"@en .
+
+view:minRows rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "minimum rows"@en .
+
+view:maxRows rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "maximum rows"@en .
+
+view:preferredRows rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:integer ;
+    rdfs:label "preferred rows"@en .
+
+view:supportsTransparentBackground rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "supports transparent background"@en .
+
+view:supportsTheme rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Capability ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "supports theme"@en .
+
+#################################################################
+#    Datatype Properties - Request and allocation
+#################################################################
+
+view:requestedColumns rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:integer ;
+    rdfs:label "requested columns"@en .
+
+view:requestedRows rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:integer ;
+    rdfs:label "requested rows"@en .
+
+view:allocatedColumns rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Allocation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "allocated columns"@en .
+
+view:allocatedRows rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Allocation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "allocated rows"@en .
+
+view:allocatedMargin rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:Allocation ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "allocated margin"@en .
+
+view:language rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:language ;
+    rdfs:label "language"@en .
+
+view:transparentBackground rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "transparent background"@en .
+
+view:borderWidth rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "border width"@en .
+
+view:borderRadius rdf:type owl:DatatypeProperty ;
+    rdfs:domain view:PresentationRequest ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "border radius"@en .
+
+#################################################################
+#    SHACL - executable contract baseline
+#################################################################
+
+view:CapabilityShape rdf:type sh:NodeShape ;
+    sh:targetClass view:Capability ;
+    sh:property [
+        sh:path view:minColumns ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:maxColumns ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:minRows ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:maxRows ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] .
+
+view:AllocationShape rdf:type sh:NodeShape ;
+    sh:targetClass view:Allocation ;
+    sh:property [
+        sh:path view:allocatedColumns ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:allocatedRows ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:allocationFor ;
+        sh:class view:Component ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path view:allocatedBy ;
+        sh:class view:PresentationSurface ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
+
+view:PresentationSurfaceShape rdf:type sh:NodeShape ;
+    sh:targetClass view:PresentationSurface ;
+    sh:property [
+        sh:path view:columnCount ;
+        sh:datatype xsd:integer ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path view:gap ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0
+    ] ;
+    sh:property [
+        sh:path view:padding ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0
+    ] .
