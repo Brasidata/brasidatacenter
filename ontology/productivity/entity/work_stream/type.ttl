@@ -1,4 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -13,21 +14,23 @@
 #    Classes
 #################################################################
 
-:WorkStream rdf:type owl:Class ;
+:WorkStream rdf:type owl:Class ,
+        obdc:SurfaceableEntity ;
     rdfs:label "Work Stream"@en ,
         "Frente de trabalho"@pt-BR ;
     rdfs:comment "Coherent scope of coordinated work within a project."@en ;
     schema:description "Project work scope organized through the 5W2H dimensions: what, why, who, where, when, how, and how much."@en .
 
 :WorkStreamDimension rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ;
     rdfs:label "Work Stream Dimension"@en ,
         "Dimensão da frente de trabalho"@pt-BR ;
-    rdfs:comment "Contextual 5W2H dimension belonging to one Work Stream."@en ;
-    schema:description "Identifiable 5W2H dimension used to link one Work Stream aspect to project resources without duplicating its workbook text."@en .
+    rdfs:comment "Identifiable, non-hierarchical contextual dimension belonging to one Work Stream."@en ;
+    schema:description "Semantic endpoint for one 5W2H aspect. External datasets and resources may be linked to the dimension without becoming parts, children, or decompositions of the Work Stream."@en .
 
 :DimensionKind rdf:type owl:Class ;
-    rdfs:label "Dimension Kind"@en ,
-        "Tipo de dimensão"@pt-BR ;
+    rdfs:label "Work Stream Dimension Kind"@en ,
+        "Tipo de dimensão da frente de trabalho"@pt-BR ;
     schema:description "Controlled classification of the seven 5W2H dimensions."@en .
 
 #################################################################
@@ -39,7 +42,8 @@
     rdfs:domain :WorkStream ;
     rdfs:range :WorkStreamDimension ;
     rdfs:label "has dimension"@en ,
-        "possui dimensão"@pt-BR .
+        "possui dimensão"@pt-BR ;
+    rdfs:comment "Associates a Work Stream with an identifiable contextual dimension. It does not make resources linked to that dimension hierarchical parts of the Work Stream."@en .
 
 :dimensionOf rdf:type owl:ObjectProperty ;
     rdfs:domain :WorkStreamDimension ;
