@@ -9,6 +9,10 @@ entity:
       - chat_message: http://datacenter.app.br/ontology/social/entity/ns.ttl#ChatMessage
       - conversationagent: http://datacenter.app.br/ontology/social/entity/ns.ttl#ConversationAgent
       - conversation_agent: http://datacenter.app.br/ontology/social/entity/ns.ttl#ConversationAgent
+      - webpage: http://datacenter.app.br/ontology/social/entity/ns.ttl#WebPage
+      - web_page: http://datacenter.app.br/ontology/social/entity/ns.ttl#WebPage
+      - containerwebpage: http://datacenter.app.br/ontology/social/entity/ns.ttl#ContainerWebPage
+      - container_web_page: http://datacenter.app.br/ontology/social/entity/ns.ttl#ContainerWebPage
       - contactpoint: http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
       - contact_point: http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl#ContactPoint
       - joboffer: http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer

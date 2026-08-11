@@ -1,4 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/social/entity/ns.ttl#> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -10,7 +11,9 @@
 @prefix ontouml: <http://w3id.org/ontouml#> .
 @base <http://datacenter.app.br/ontology/social/entity/ns.ttl#> .
 
-<http://datacenter.app.br/ontology/social/entity/ns.ttl> rdf:type owl:Ontology .
+<http://datacenter.app.br/ontology/social/entity/ns.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/facade.ttl> .
 
 #################################################################
 #    Annotation properties
@@ -35,6 +38,39 @@ schema:identifier rdf:type owl:AnnotationProperty .
 
 ###  http://datacenter.app.br/ontology/social/entity/ns.ttl#DataEntity
 obdc:DataEntity rdf:type owl:Class .
+
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#WebPage
+:WebPage
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        obdc:DataEntity ,
+        schema:WebPage ;
+    rdfs:label
+        "Web Page"@en ,
+        "Página web"@pt-BR ;
+    rdfs:comment
+        "A web page represented as a data entity in the social domain."@en ,
+        "Uma página web representada como entidade de dados do domínio social."@pt-BR ;
+    schema:description
+        "Web page entity that provides the social-domain specialization of schema:WebPage."@en ,
+        "Entidade de página web que especializa schema:WebPage no domínio social."@pt-BR ;
+    schema:identifier "web_page" .
+
+###  http://datacenter.app.br/ontology/social/entity/ns.ttl#ContainerWebPage
+:ContainerWebPage
+    rdf:type owl:Class ;
+    rdfs:subClassOf :WebPage ;
+    owl:equivalentClass facade:ContainerWebPageRepresentation ;
+    rdfs:label
+        "Container Web Page"@en ,
+        "Página web de container"@pt-BR ;
+    rdfs:comment
+        "A web page that presents a projection of data resolved from a semantic container."@en ,
+        "Uma página web que apresenta uma projeção de dados resolvidos a partir de um container semântico."@pt-BR ;
+    schema:description
+        "The social-domain class equivalent to the OntoBDC container web page representation."@en ,
+        "A classe do domínio social equivalente à representação de container como página web do OntoBDC."@pt-BR ;
+    schema:identifier "container_web_page" .
 
 ###  http://datacenter.app.br/ontology/social/entity/ns.ttl#Email
 :Email rdf:type obdc:DataEntity, sioc:Post, schema:EmailMessage ;
