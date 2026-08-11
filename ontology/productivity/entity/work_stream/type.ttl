@@ -14,7 +14,8 @@
 #    Classes
 #################################################################
 
-:WorkStream rdf:type owl:Class ;
+:WorkStream rdf:type owl:Class ,
+        obdc:SurfaceableEntity ;
     rdfs:label "Work Stream"@en ,
         "Frente de trabalho"@pt-BR ;
     rdfs:comment "Coherent scope of coordinated work within a project."@en ;

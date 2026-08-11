@@ -1,0 +1,170 @@
+@prefix : <http://ontobdc.org/ontology/domain/code.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ontobdc.org/ontology/domain/code.ttl>
+    a owl:Ontology ;
+    owl:versionIRI <http://ontobdc.org/ontology/domain/code.ttl/2.0.0> ;
+    dcterms:source <https://github.com/EliasMPJunior/ontobdc-wip/tree/e8dc4e780fbdf957a00d6b0bccb4c31c4cc6e46e/src/ontobdc> ;
+    rdfs:label "OntoBDC code ontology"@en ;
+    rdfs:comment "Canonical ontology describing the current first-order Python modules of OntoBDC and their direct package dependencies."@en .
+
+:OntoBDCApplication
+    a owl:Class ;
+    rdfs:subClassOf schema:SoftwareApplication ;
+    rdfs:label "OntoBDC application"@en .
+
+:PythonModule
+    a owl:Class ;
+    rdfs:subClassOf schema:SoftwareApplication ;
+    rdfs:label "Python module"@en ;
+    rdfs:comment "An importable first-order Python package that composes the OntoBDC application."@en .
+
+:hasModule
+    a owl:ObjectProperty ;
+    owl:inverseOf :isModuleOf ;
+    rdfs:subPropertyOf schema:hasPart ;
+    rdfs:domain :OntoBDCApplication ;
+    rdfs:range :PythonModule ;
+    rdfs:label "has module"@en .
+
+:isModuleOf
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf schema:isPartOf ;
+    rdfs:domain :PythonModule ;
+    rdfs:range :OntoBDCApplication ;
+    rdfs:label "is module of"@en .
+
+:dependsOnModule
+    a owl:ObjectProperty ;
+    rdfs:domain :PythonModule ;
+    rdfs:range :PythonModule ;
+    rdfs:label "depends on module"@en ;
+    rdfs:comment "Direct package dependency evidenced by imports in the reviewed OntoBDC source snapshot."@en .
+
+:discoversModule
+    a owl:ObjectProperty ;
+    rdfs:domain :PythonModule ;
+    rdfs:range :PythonModule ;
+    rdfs:label "discovers module"@en ;
+    rdfs:comment "Dynamic plugin discovery of another package namespace."@en .
+
+:sourcePath
+    a owl:DatatypeProperty ;
+    rdfs:domain :PythonModule ;
+    rdfs:range xsd:string ;
+    rdfs:label "source path"@en .
+
+:OntoBDC
+    a owl:NamedIndividual, :OntoBDCApplication ;
+    schema:name "OntoBDC" ;
+    :hasModule :CliModule,
+               :StorageModule,
+               :SharedModule,
+               :ViewModule,
+               :ContextModule,
+               :DevModule,
+               :EntityModule,
+               :ExtensionModuleNamespace .
+
+:CliModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.cli" ;
+    :sourcePath "src/ontobdc/cli" ;
+    :dependsOnModule :SharedModule,
+                     :ViewModule,
+                     :StorageModule,
+                     :ContextModule .
+
+:StorageModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.storage" ;
+    :sourcePath "src/ontobdc/storage" ;
+    :dependsOnModule :CliModule,
+                     :SharedModule .
+
+:SharedModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.shared" ;
+    :sourcePath "src/ontobdc/shared" ;
+    :dependsOnModule :CliModule,
+                     :StorageModule,
+                     :ContextModule ;
+    :discoversModule :ExtensionModuleNamespace .
+
+:ViewModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.view" ;
+    :sourcePath "src/ontobdc/view" ;
+    :dependsOnModule :CliModule,
+                     :SharedModule .
+
+:ContextModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.context" ;
+    :sourcePath "src/ontobdc/context" ;
+    :dependsOnModule :CliModule,
+                     :SharedModule,
+                     :StorageModule .
+
+:DevModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.dev" ;
+    :sourcePath "src/ontobdc/dev" ;
+    :dependsOnModule :CliModule,
+                     :SharedModule .
+
+:EntityModule
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.entity" ;
+    :sourcePath "src/ontobdc/entity" ;
+    :dependsOnModule :CliModule,
+                     :ContextModule,
+                     :SharedModule,
+                     :StorageModule .
+
+:ExtensionModuleNamespace
+    a owl:NamedIndividual, :PythonModule ;
+    schema:name "ontobdc.module" ;
+    :sourcePath "src/ontobdc/module" ;
+    rdfs:comment "Namespace scanned dynamically by the shared plugin loader for packaged extension modules."@en .
+
+:InspectionLevel
+    a owl:Class ;
+    rdfs:label "Inspection level"@en ,
+        "Nível de inspeção"@pt-BR .
+
+:inspectionOrder
+    a owl:DatatypeProperty ;
+    rdfs:domain :InspectionLevel ;
+    rdfs:range xsd:positiveInteger .
+
+:inspectionScope
+    a owl:ObjectProperty ;
+    rdfs:domain :InspectionLevel ;
+    rdfs:range :InspectionScope .
+
+:InspectionScope
+    a owl:Class .
+
+:FileSystemStructureScope
+    a owl:NamedIndividual ,
+        :InspectionScope ;
+    rdfs:label "Folder and file structure"@en ,
+        "Estrutura de pastas e arquivos"@pt-BR .
+
+:FileSystemStructureInspection
+    a owl:NamedIndividual ,
+        :InspectionLevel ;
+    schema:identifier "structure" ;
+    :inspectionOrder 1 ;
+    :inspectionScope :FileSystemStructureScope ;
+    rdfs:label "Folder and file structure"@en ,
+        "Estrutura de pastas e arquivos"@pt-BR ;
+    rdfs:comment
+        "Inspects the hierarchical organization of folders and files without analyzing source-code contents."@en .
+

@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "brasidatacenter"
+version = "0.1.0"
+description = "BrasidataCenter ontology distribution package"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Brasidata" }
+]
+keywords = ["ontology", "rdf", "semantic-web", "ontobdc", "brasidata"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2",
+  "pytest>=8",
+  "twine>=5",
+]
+
+[project.urls]
+Repository = "https://github.com/Brasidata/brasidatacenter"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/brasidatacenter"]
+
+# Keep the ontology source tree at repository root while packaging it inside
+# the Python package, so installed consumers can access it via importlib.resources.
+[tool.hatch.build.targets.wheel.force-include]
+"ontology" = "brasidatacenter/ontology"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src/brasidatacenter",
+  "/ontology",
+  "/README.md",
+  "/pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
