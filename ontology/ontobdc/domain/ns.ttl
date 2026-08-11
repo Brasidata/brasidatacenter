@@ -127,7 +127,8 @@ schema:value rdf:type owl:DatatypeProperty .
 #################################################################
 
 ###  http://ontobdc.org/ontology/domain/ns.ttl#DataContainer
-:DataContainer rdf:type owl:Class ;
+:DataContainer rdf:type owl:Class ,
+                        :SurfaceableEntity ;
                rdfs:subClassOf ct:ContainerDescription ,
                                dcat:Catalog ;
                ontouml:name "Data container"@en ;
@@ -193,6 +194,12 @@ schema:value rdf:type owl:DatatypeProperty .
                  function:returns :QueryResponse ;
                  ontouml:name "Query capability"@en ;
                  rdfs:comment "Executes a query over a declared data or semantic context."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#SurfaceableEntity
+:SurfaceableEntity rdf:type owl:Class ;
+                   ontouml:name "Surfaceable entity"@en ;
+                   rdfs:comment "Marks an entity class whose instances are eligible for a direct representation (a Tile) on an OntoBDC presentation surface."@en .
 
 
 ###  http://ontobdc.org/ontology/domain/ns.ttl#TransformationCapability
