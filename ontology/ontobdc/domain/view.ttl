@@ -12,8 +12,9 @@
 <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl>
     rdf:type owl:Ontology ;
     rdfs:label "OntoBDC View Ontology"@en ;
-    rdfs:comment "Ontology for presentation layers, presentation surfaces, tiles, support profiles, requests and runtime allocation."@en ;
-    schema:description "Semantic model for interoperable OntoBDC presentation components independently of a concrete renderer such as a browser."@en .
+    rdfs:comment "Ontology for presentation layers, presentation surfaces, regions, tiles, declarative layout, support profiles, requests and runtime allocation."@en ;
+    schema:description "Semantic model for interoperable OntoBDC presentation components and renderer-neutral surface composition. SHACL UI may be used inside semantic resource components to render RDF values, while this ontology governs the composition of the presentation surface itself."@en ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
 
 #################################################################
 #    Core classes
@@ -27,17 +28,17 @@
 :PresentationSurface rdf:type owl:Class ;
     rdfs:subClassOf dul:Region ;
     rdfs:label "Presentation Surface"@en ;
-    rdfs:comment "Allocatable presentation region in which components can be materialized."@en .
+    rdfs:comment "Allocatable presentation surface whose logical grid and regions may be declared independently of a concrete renderer."@en .
 
 :PresentationRegion rdf:type owl:Class ;
     rdfs:subClassOf dul:Region ;
     rdfs:label "Presentation Region"@en ;
-    rdfs:comment "A region of a presentation surface governed by a placement policy."@en .
+    rdfs:comment "A logical region of a presentation surface governed by a placement and flow policy."@en .
 
 :OperationRegion rdf:type owl:Class ;
     rdfs:subClassOf :PresentationRegion ;
     rdfs:label "Operation Region"@en ;
-    rdfs:comment "Stable region reserved for operational controls and presentation-level functions."@en .
+    rdfs:comment "Region reserved for operational controls and presentation-level functions."@en .
 
 :ContentRegion rdf:type owl:Class ;
     rdfs:subClassOf :PresentationRegion ;
@@ -47,7 +48,7 @@
 :PinnedRegion rdf:type owl:Class ;
     rdfs:subClassOf :PresentationRegion ;
     rdfs:label "Pinned Region"@en ;
-    rdfs:comment "Stable region containing content explicitly fixed by the user or another authorized actor."@en .
+    rdfs:comment "Region containing tiles explicitly pinned or selected for persistent presentation by the user or another authorized actor. Pinned is a presentation role and does not imply any renderer-specific positioning mechanism."@en .
 
 :Component rdf:type owl:Class ;
     rdfs:subClassOf dul:InformationObject ;
@@ -58,6 +59,16 @@
     rdfs:subClassOf :Component ;
     rdfs:label "Tile"@en ;
     rdfs:comment "Unit of materialization negotiated with a presentation surface."@en .
+
+:ComponentPlacement rdf:type owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Component Placement"@en ;
+    rdfs:comment "Declarative placement of one presentation component inside one presentation region, including logical order and alignment. It is part of the surface description and is distinct from runtime Allocation."@en .
+
+:PresentationAlignment rdf:type owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Presentation Alignment"@en ;
+    rdfs:comment "Renderer-neutral alignment intent used by component placements."@en .
 
 :PresentationSupportProfile rdf:type owl:Class ;
     rdfs:subClassOf dul:Description ;
@@ -88,6 +99,22 @@
     rdfs:subClassOf dul:Event ;
     rdfs:label "Presentation Event"@en ;
     rdfs:comment "Event occurring within or crossing a presentation layer boundary."@en .
+
+#################################################################
+#    Alignment individuals
+#################################################################
+
+:StartAlignment rdf:type :PresentationAlignment ;
+    rdfs:label "Start Alignment"@en ;
+    rdfs:comment "Align the placement toward the logical start of the region."@en .
+
+:CenterAlignment rdf:type :PresentationAlignment ;
+    rdfs:label "Center Alignment"@en ;
+    rdfs:comment "Align the placement toward the logical center of the region."@en .
+
+:EndAlignment rdf:type :PresentationAlignment ;
+    rdfs:label "End Alignment"@en ;
+    rdfs:comment "Align the placement toward the logical end of the region."@en .
 
 #################################################################
 #    Browser / WAI-ARIA specialization
@@ -171,6 +198,25 @@
     rdfs:range :PresentationRegion ;
     rdfs:label "has region"@en .
 
+:hasComponentPlacement rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasPart ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range :ComponentPlacement ;
+    rdfs:label "has component placement"@en ;
+    rdfs:comment "Declares one component placement belonging to a presentation region."@en .
+
+:placesComponent rdf:type owl:ObjectProperty ;
+    rdfs:domain :ComponentPlacement ;
+    rdfs:range :Component ;
+    rdfs:label "places component"@en ;
+    rdfs:comment "Identifies the component placed by a declarative ComponentPlacement."@en .
+
+:hasAlignment rdf:type owl:ObjectProperty ;
+    rdfs:domain :ComponentPlacement ;
+    rdfs:range :PresentationAlignment ;
+    rdfs:label "has alignment"@en ;
+    rdfs:comment "Declares renderer-neutral alignment intent for a component placement."@en .
+
 :presentedIn rdf:type owl:ObjectProperty ;
     rdfs:domain :Component ;
     rdfs:range :PresentationSurface ;
@@ -179,7 +225,8 @@
 :placedInRegion rdf:type owl:ObjectProperty ;
     rdfs:domain :Component ;
     rdfs:range :PresentationRegion ;
-    rdfs:label "placed in region"@en .
+    rdfs:label "placed in region"@en ;
+    rdfs:comment "Relates a materialized component to the region in which it is presented. Declarative screen composition should use ComponentPlacement."@en .
 
 :hasSupportProfile rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf dul:isDescribedBy ;
@@ -236,7 +283,14 @@
 :columnCount rdf:type owl:DatatypeProperty ;
     rdfs:domain :PresentationSurface ;
     rdfs:range xsd:integer ;
-    rdfs:label "column count"@en .
+    rdfs:label "column count"@en ;
+    rdfs:comment "Number of logical columns declared by the presentation surface."@en .
+
+:rowCount rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationSurface ;
+    rdfs:range xsd:integer ;
+    rdfs:label "row count"@en ;
+    rdfs:comment "Number of logical rows declared by the presentation surface."@en .
 
 :gap rdf:type owl:DatatypeProperty ;
     rdfs:domain :PresentationSurface ;
@@ -254,6 +308,50 @@
     rdfs:range xsd:decimal ;
     rdfs:label "margin"@en ;
     rdfs:comment "Space reserved by a presentation surface around a component inside its allocated area."@en .
+
+#################################################################
+#    Datatype Properties - Region layout
+#################################################################
+
+:rowStart rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range xsd:integer ;
+    rdfs:label "row start"@en ;
+    rdfs:comment "One-based logical row at which a region begins within its presentation surface."@en .
+
+:columnStart rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range xsd:integer ;
+    rdfs:label "column start"@en ;
+    rdfs:comment "One-based logical column at which a region begins within its presentation surface."@en .
+
+:rowSpan rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range xsd:integer ;
+    rdfs:label "row span"@en ;
+    rdfs:comment "Number of logical surface rows occupied by a region."@en .
+
+:columnSpan rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range xsd:integer ;
+    rdfs:label "column span"@en ;
+    rdfs:comment "Number of logical surface columns occupied by a region."@en .
+
+:scrollable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :PresentationRegion ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "scrollable"@en ;
+    rdfs:comment "Whether the user may navigate content that exceeds the region's allocated extent. This is renderer-neutral and does not prescribe a browser overflow mechanism."@en .
+
+#################################################################
+#    Datatype Properties - Component placement
+#################################################################
+
+:placementOrder rdf:type owl:DatatypeProperty ;
+    rdfs:domain :ComponentPlacement ;
+    rdfs:range xsd:integer ;
+    rdfs:label "placement order"@en ;
+    rdfs:comment "Logical order of the component placement within its alignment group and region. Lower values precede higher values."@en .
 
 #################################################################
 #    Datatype Properties - Presentation support profile
@@ -409,15 +507,84 @@
     sh:property [
         sh:path :columnCount ;
         sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path :rowCount ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
         sh:minInclusive 1
     ] ;
     sh:property [
         sh:path :gap ;
         sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
         sh:minInclusive 0
     ] ;
     sh:property [
         sh:path :padding ;
         sh:datatype xsd:decimal ;
+        sh:maxCount 1 ;
+        sh:minInclusive 0
+    ] ;
+    sh:property [
+        sh:path :hasRegion ;
+        sh:class :PresentationRegion
+    ] .
+
+:PresentationRegionShape rdf:type sh:NodeShape ;
+    sh:targetClass :PresentationRegion ;
+    sh:property [
+        sh:path :rowStart ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path :columnStart ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path :rowSpan ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path :columnSpan ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1
+    ] ;
+    sh:property [
+        sh:path :scrollable ;
+        sh:datatype xsd:boolean ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path :hasComponentPlacement ;
+        sh:class :ComponentPlacement
+    ] .
+
+:ComponentPlacementShape rdf:type sh:NodeShape ;
+    sh:targetClass :ComponentPlacement ;
+    sh:property [
+        sh:path :placesComponent ;
+        sh:class :Component ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path :hasAlignment ;
+        sh:class :PresentationAlignment ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path :placementOrder ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
         sh:minInclusive 0
     ] .
