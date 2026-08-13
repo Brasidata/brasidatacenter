@@ -1,4 +1,4 @@
-@prefix infobim: <https://infobim.org/ontology/ns#> .
+@prefix ibim: <https://infobim.org/ontology/ns#> .
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -19,21 +19,21 @@
 # Core classes
 #################################################################
 
-infobim:Facade
+ibim:Facade
     a owl:Class ;
     rdfs:subClassOf dul:Description ;
     rdfs:label "Facade"@en ;
     rdfs:comment "Reusable semantic projection describing which fields of a domain resource are exposed to a presentation or interaction layer."@en .
 
-infobim:FacadeField
+ibim:FacadeField
     a owl:Class ;
     rdfs:subClassOf dul:Description ;
     rdfs:label "Facade Field"@en ;
     rdfs:comment "One field participating in an InfoBIM Facade. The field may declare a default RDF property and presentation metadata without owning renderer behavior."@en .
 
-infobim:IfcProjectFacade
+ibim:IfcProjectFacade
     a owl:Class ;
-    rdfs:subClassOf infobim:Facade ;
+    rdfs:subClassOf ibim:Facade ;
     rdfs:label "IFC Project Facade"@en ;
     rdfs:comment "Facade definition for exposing the default human-facing projection of an IFC project resource."@en .
 
@@ -41,23 +41,23 @@ infobim:IfcProjectFacade
 # Object properties
 #################################################################
 
-infobim:hasFacadeField
+ibim:hasFacadeField
     a owl:ObjectProperty ;
-    rdfs:domain infobim:Facade ;
-    rdfs:range infobim:FacadeField ;
+    rdfs:domain ibim:Facade ;
+    rdfs:range ibim:FacadeField ;
     rdfs:label "has facade field"@en ;
     rdfs:comment "Associates a facade with one of the fields that compose its semantic projection."@en .
 
-infobim:defaultProperty
+ibim:defaultProperty
     a owl:ObjectProperty ;
-    rdfs:domain infobim:FacadeField ;
+    rdfs:domain ibim:FacadeField ;
     rdfs:range rdf:Property ;
     rdfs:label "default property"@en ;
     rdfs:comment "Identifies the RDF property used by default to obtain the value represented by a facade field."@en .
 
-infobim:targetsClass
+ibim:targetsClass
     a owl:ObjectProperty ;
-    rdfs:domain infobim:Facade ;
+    rdfs:domain ibim:Facade ;
     rdfs:range rdfs:Class ;
     rdfs:label "targets class"@en ;
     rdfs:comment "Identifies the domain class for which a facade is intended."@en .
@@ -66,23 +66,23 @@ infobim:targetsClass
 # Datatype properties
 #################################################################
 
-infobim:fieldOrder
+ibim:fieldOrder
     a owl:DatatypeProperty ;
-    rdfs:domain infobim:FacadeField ;
+    rdfs:domain ibim:FacadeField ;
     rdfs:range xsd:integer ;
     rdfs:label "field order"@en ;
     rdfs:comment "Default logical order of a facade field inside its facade. This is domain projection order, not screen-placement order."@en .
 
-infobim:fieldLabel
+ibim:fieldLabel
     a owl:DatatypeProperty ;
-    rdfs:domain infobim:FacadeField ;
+    rdfs:domain ibim:FacadeField ;
     rdfs:range rdf:langString ;
     rdfs:label "field label"@en ;
     rdfs:comment "Optional human-readable label associated with a facade field."@en .
 
-infobim:isIdentifierField
+ibim:isIdentifierField
     a owl:DatatypeProperty ;
-    rdfs:domain infobim:FacadeField ;
+    rdfs:domain ibim:FacadeField ;
     rdfs:range xsd:boolean ;
     rdfs:label "is identifier field"@en ;
     rdfs:comment "Indicates whether the field is the preferred identifier exposed by the facade."@en .
@@ -91,112 +91,112 @@ infobim:isIdentifierField
 # IFC Project facade field classes
 #################################################################
 
-infobim:IfcProjectGlobalIdField
+ibim:IfcProjectGlobalIdField
     a owl:Class ;
-    rdfs:subClassOf infobim:FacadeField ;
+    rdfs:subClassOf ibim:FacadeField ;
     rdfs:label "IFC Project GlobalId Field"@en .
 
-infobim:IfcProjectNameField
+ibim:IfcProjectNameField
     a owl:Class ;
-    rdfs:subClassOf infobim:FacadeField ;
+    rdfs:subClassOf ibim:FacadeField ;
     rdfs:label "IFC Project Name Field"@en .
 
-infobim:IfcProjectDescriptionField
+ibim:IfcProjectDescriptionField
     a owl:Class ;
-    rdfs:subClassOf infobim:FacadeField ;
+    rdfs:subClassOf ibim:FacadeField ;
     rdfs:label "IFC Project Description Field"@en .
 
-infobim:IfcProjectLongNameField
+ibim:IfcProjectLongNameField
     a owl:Class ;
-    rdfs:subClassOf infobim:FacadeField ;
+    rdfs:subClassOf ibim:FacadeField ;
     rdfs:label "IFC Project Long Name Field"@en .
 
-infobim:IfcProjectPhaseField
+ibim:IfcProjectPhaseField
     a owl:Class ;
-    rdfs:subClassOf infobim:FacadeField ;
+    rdfs:subClassOf ibim:FacadeField ;
     rdfs:label "IFC Project Phase Field"@en .
 
 #################################################################
 # Canonical facade instance and field instances
 #################################################################
 
-infobim:DefaultIfcProjectFacade
-    a infobim:IfcProjectFacade ;
+ibim:DefaultIfcProjectFacade
+    a ibim:IfcProjectFacade ;
     rdfs:label "Default IFC Project Facade"@en ;
-    infobim:hasFacadeField
-        infobim:IfcProjectGlobalIdFieldDefault ,
-        infobim:IfcProjectNameFieldDefault ,
-        infobim:IfcProjectDescriptionFieldDefault ,
-        infobim:IfcProjectLongNameFieldDefault ,
-        infobim:IfcProjectPhaseFieldDefault .
+    ibim:hasFacadeField
+        ibim:IfcProjectGlobalIdFieldDefault ,
+        ibim:IfcProjectNameFieldDefault ,
+        ibim:IfcProjectDescriptionFieldDefault ,
+        ibim:IfcProjectLongNameFieldDefault ,
+        ibim:IfcProjectPhaseFieldDefault .
 
-infobim:IfcProjectGlobalIdFieldDefault
-    a infobim:IfcProjectGlobalIdField ;
-    infobim:fieldOrder 10 ;
-    infobim:fieldLabel "GlobalId"@en ;
-    infobim:isIdentifierField true .
+ibim:IfcProjectGlobalIdFieldDefault
+    a ibim:IfcProjectGlobalIdField ;
+    ibim:fieldOrder 10 ;
+    ibim:fieldLabel "GlobalId"@en ;
+    ibim:isIdentifierField true .
 
-infobim:IfcProjectNameFieldDefault
-    a infobim:IfcProjectNameField ;
-    infobim:fieldOrder 20 ;
-    infobim:fieldLabel "Name"@en .
+ibim:IfcProjectNameFieldDefault
+    a ibim:IfcProjectNameField ;
+    ibim:fieldOrder 20 ;
+    ibim:fieldLabel "Name"@en .
 
-infobim:IfcProjectDescriptionFieldDefault
-    a infobim:IfcProjectDescriptionField ;
-    infobim:fieldOrder 30 ;
-    infobim:fieldLabel "Description"@en .
+ibim:IfcProjectDescriptionFieldDefault
+    a ibim:IfcProjectDescriptionField ;
+    ibim:fieldOrder 30 ;
+    ibim:fieldLabel "Description"@en .
 
-infobim:IfcProjectLongNameFieldDefault
-    a infobim:IfcProjectLongNameField ;
-    infobim:fieldOrder 40 ;
-    infobim:fieldLabel "Long name"@en .
+ibim:IfcProjectLongNameFieldDefault
+    a ibim:IfcProjectLongNameField ;
+    ibim:fieldOrder 40 ;
+    ibim:fieldLabel "Long name"@en .
 
-infobim:IfcProjectPhaseFieldDefault
-    a infobim:IfcProjectPhaseField ;
-    infobim:fieldOrder 50 ;
-    infobim:fieldLabel "Phase"@en .
+ibim:IfcProjectPhaseFieldDefault
+    a ibim:IfcProjectPhaseField ;
+    ibim:fieldOrder 50 ;
+    ibim:fieldLabel "Phase"@en .
 
 # The exact IFC ontology/property IRIs are intentionally not hardcoded here
 # until the project selects the canonical IFC RDF vocabulary/version used by
 # InfoBIM. Once selected, the five default field instances above receive
-# infobim:defaultProperty triples and DefaultIfcProjectFacade receives an
-# infobim:targetsClass triple. This avoids binding the ontology to an assumed
+# ibim:defaultProperty triples and DefaultIfcProjectFacade receives an
+# ibim:targetsClass triple. This avoids binding the ontology to an assumed
 # IFCOWL namespace/version.
 
 #################################################################
 # SHACL baseline
 #################################################################
 
-infobim:FacadeShape
+ibim:FacadeShape
     a sh:NodeShape ;
-    sh:targetClass infobim:Facade ;
+    sh:targetClass ibim:Facade ;
     sh:property [
-        sh:path infobim:hasFacadeField ;
-        sh:class infobim:FacadeField ;
+        sh:path ibim:hasFacadeField ;
+        sh:class ibim:FacadeField ;
         sh:minCount 1
     ] ;
     sh:property [
-        sh:path infobim:targetsClass ;
+        sh:path ibim:targetsClass ;
         sh:class rdfs:Class ;
         sh:maxCount 1
     ] .
 
-infobim:FacadeFieldShape
+ibim:FacadeFieldShape
     a sh:NodeShape ;
-    sh:targetClass infobim:FacadeField ;
+    sh:targetClass ibim:FacadeField ;
     sh:property [
-        sh:path infobim:defaultProperty ;
+        sh:path ibim:defaultProperty ;
         sh:class rdf:Property ;
         sh:maxCount 1
     ] ;
     sh:property [
-        sh:path infobim:fieldOrder ;
+        sh:path ibim:fieldOrder ;
         sh:datatype xsd:integer ;
         sh:maxCount 1 ;
         sh:minInclusive 0
     ] ;
     sh:property [
-        sh:path infobim:isIdentifierField ;
+        sh:path ibim:isIdentifierField ;
         sh:datatype xsd:boolean ;
         sh:maxCount 1
     ] .
