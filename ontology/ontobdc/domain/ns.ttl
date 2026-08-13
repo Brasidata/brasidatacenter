@@ -1,5 +1,6 @@
 @prefix : <http://ontobdc.org/ontology/domain/ns.ttl#> .
 @prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix cpms: <https://doi.org/10.2139/ssrn.2062696#> .
 @prefix err: <http://www.w3.org/2010/02/rdfa/errors#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -13,6 +14,7 @@
 @prefix ontouml: <http://w3id.org/ontouml#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix function: <http://w3id.org/function/ontology#> .
+@prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 @base <http://ontobdc.org/ontology/domain/ns.ttl#> .
 
 <http://ontobdc.org/ontology/domain/ns.ttl> rdf:type owl:Ontology .
@@ -89,6 +91,14 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   rdfs:comment "The data container has the specified entity dataset."@en .
 
 
+###  http://ontobdc.org/ontology/domain/ns.ttl#usesProjectManagementFramework
+:usesProjectManagementFramework rdf:type owl:ObjectProperty ;
+                                rdfs:domain ws:WorkStream ;
+                                rdfs:range :ProjectManagementFramework ;
+                                ontouml:name "Uses project management framework"@en ;
+                                rdfs:comment "Associates a Work Stream with a project management framework. The property is intentionally non-functional, allowing one Work Stream to use multiple frameworks."@en .
+
+
 ###  http://purl.org/dc/terms/hasPart
 dcterms:hasPart rdf:type owl:ObjectProperty .
 
@@ -125,6 +135,13 @@ schema:value rdf:type owl:DatatypeProperty .
 #################################################################
 #    Classes
 #################################################################
+
+###  https://doi.org/10.2139/ssrn.2062696#ManagementTechnique
+cpms:ManagementTechnique rdf:type owl:Class ;
+                         rdfs:label "Management Technique"@en ;
+                         rdfs:isDefinedBy <https://doi.org/10.2139/ssrn.2062696> ;
+                         rdfs:comment "Management-technique dimension of the Construction Project Management System (CPMS) ontological framework."@en .
+
 
 ###  http://ontobdc.org/ontology/domain/ns.ttl#DataContainer
 :DataContainer rdf:type owl:Class ,
@@ -185,6 +202,14 @@ schema:value rdf:type owl:DatatypeProperty .
               dcterms:identifier "ooutput_schema" ;
               ontouml:name "Output schema"@en ;
               rdfs:comment "The schema of the output data produced by the query execution."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#ProjectManagementFramework
+:ProjectManagementFramework rdf:type owl:Class ;
+                            rdfs:subClassOf cpms:ManagementTechnique ;
+                            ontouml:name "Project management framework"@en ;
+                            rdfs:label "Project Management Framework"@en ;
+                            rdfs:comment "A management technique or structured framework used to organize, guide, or support the management of project work."@en .
 
 
 ###  http://ontobdc.org/ontology/domain/ns.ttl#QueryCapability
