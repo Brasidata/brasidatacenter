@@ -116,7 +116,7 @@
   :opensPresentationClass :WorkStreamDetailedPresentation ; :usesSupportProfile :WorkStreamTileSupport ;
   schema:description "Base WorkStream Tile: identity, description and applied frameworks."@en .
 :FiveWTwoHWorkStreamTileContract a :TilePresentationContract ;
-  :forTileClass :WorkStreamTile ; :appliesWhenFrameworkClass ws:FiveWTwoH ;
+  :forTileClass :WorkStreamTile ; :appliesWhenFrameworkIs ws:FiveWTwoH ;
   :usesNodeShape :FiveWTwoHWorkStreamTileShape ; :expandable true ;
   :opensPresentationClass :FiveWTwoHDetailedPresentation ;
   schema:description "5W2H extension: expanded 5W2H fields and 5W2H detailed presentation."@en .
@@ -134,6 +134,6 @@
     [ sh:path :usesNodeShape ; sh:maxCount 1 ; sh:class sh:NodeShape ],
     [ sh:path :usesSupportProfile ; sh:maxCount 1 ; sh:class view:PresentationSupportProfile ],
     [ sh:path :opensPresentationClass ; sh:maxCount 1 ; sh:class owl:Class ],
-    [ sh:path :appliesWhenFrameworkClass ; sh:maxCount 1 ; sh:class owl:Class ],
+    [ sh:path :appliesWhenFrameworkIs ; sh:maxCount 1 ; sh:class owl:Class ],
     [ sh:path :defaultClosed ; sh:datatype xsd:boolean ; sh:maxCount 1 ],
     [ sh:path :expandable ; sh:datatype xsd:boolean ; sh:maxCount 1 ] .
