@@ -1,0 +1,54 @@
+@prefix : <https://infobim.org/ontology/tile#> .
+@prefix pres: <https://infobim.org/ontology/presentation#> .
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix obdcTile: <http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+<https://infobim.org/ontology/domain/tile>
+    a owl:Ontology ;
+    rdfs:label "InfoBIM Tile Ontology"@en ;
+    rdfs:comment "InfoBIM-specific Tile extension point. Concrete BIM/OpenBIM Tiles belong here rather than in the generic OntoBDC Tile ontology."@en ;
+    schema:description "Keeps domain presentation specialization separate: OntoBDC defines generic Tile and Surface contracts; InfoBIM defines only Tiles whose semantics require BIM/OpenBIM knowledge. SHACL/SHACL UI field contracts remain renderer-neutral and may be rendered by web or native mobile hosts."@en ;
+    owl:imports <https://infobim.org/ontology/domain/presentation> ,
+                <http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl> .
+
+:InfoBIMTile
+    a owl:Class ;
+    rdfs:subClassOf view:Tile ;
+    rdfs:label "InfoBIM Tile"@en ;
+    rdfs:comment "Presentation Tile whose semantics depend on the InfoBIM/OpenBIM domain."@en .
+
+:IfcTile
+    a owl:Class ;
+    rdfs:subClassOf :InfoBIMTile ;
+    rdfs:label "IFC Tile"@en ;
+    rdfs:comment "InfoBIM Tile whose focus or navigation semantics depend on IFC/IfcOWL."@en .
+
+:IfcModelTile
+    a owl:Class ;
+    rdfs:subClassOf :IfcTile ;
+    rdfs:label "IFC Model Tile"@en ;
+    rdfs:comment "Aggregated navigation Tile for the logical IFC model of an InfoBIM Project. It must not imply that every IFC class or element becomes an independent generic OntoBDC Tile."@en .
+
+:ProjectTile
+    a owl:Class ;
+    rdfs:subClassOf :IfcTile ;
+    rdfs:label "Project Tile"@en ;
+    rdfs:comment "InfoBIM presentation of the IfcProject that identifies the Project."@en .
+
+# The first concrete presentation contract was created in presentation.ttl
+# before this dedicated catalog existed. Classify it here without duplicating
+# its SHACL UI field definition; future concrete InfoBIM Tiles should be added
+# to this file (or imported domain-specific Tile files) and reuse the same
+# presentation contract vocabulary.
+pres:DefaultIfcProjectTile a :ProjectTile .
+
+:usesGenericTileContract
+    a owl:ObjectProperty ;
+    rdfs:domain :InfoBIMTile ;
+    rdfs:range obdcTile:TilePresentationContract ;
+    rdfs:label "uses generic tile contract"@en ;
+    rdfs:comment "Optional link for an InfoBIM Tile that specializes an existing generic OntoBDC Tile presentation contract instead of redefining renderer behavior."@en .
