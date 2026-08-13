@@ -1,0 +1,233 @@
+@prefix : <http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shui: <http://www.w3.org/ns/shacl-ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl>
+    a owl:Ontology ;
+    rdfs:label "OntoBDC Tile Presentation Ontology"@en ;
+    rdfs:comment "Renderer-neutral semantic descriptions of the Tiles currently supplied by OntoBDC View. This ontology describes presentation intent and data requirements; HTML custom-element names and Flutter widget classes remain renderer implementation details."@en ;
+    schema:description "Generic OntoBDC Tile contracts. Domain extensions such as InfoBIM must define their own Tiles in separate ontologies and may reuse these contracts without making OntoBDC depend on the extension."@en ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+                <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> ;
+    rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
+
+#################################################################
+# Generic Tile contract
+#################################################################
+
+:ContentTile
+    a owl:Class ;
+    rdfs:subClassOf view:Tile ;
+    rdfs:label "Content Tile"@en ;
+    rdfs:comment "Tile whose presentation is resolved from a focus data resource and its semantic type/properties."@en .
+
+:ChromeTile
+    a owl:Class ;
+    rdfs:subClassOf view:Tile ;
+    rdfs:label "Chrome Tile"@en ;
+    rdfs:comment "Tile that belongs to the presentation chrome and is selected by Tile class rather than by a focus DataEntity."@en .
+
+:TilePresentationContract
+    a owl:Class ;
+    rdfs:label "Tile Presentation Contract"@en ;
+    rdfs:comment "Renderer-neutral declaration connecting a Tile kind with an optional SHACL UI node shape and presentation behavior."@en .
+
+:forTileClass
+    a owl:ObjectProperty ;
+    rdfs:domain :TilePresentationContract ;
+    rdfs:range owl:Class ;
+    rdfs:label "for tile class"@en .
+
+:usesNodeShape
+    a owl:ObjectProperty ;
+    rdfs:domain :TilePresentationContract ;
+    rdfs:range sh:NodeShape ;
+    rdfs:label "uses node shape"@en .
+
+:defaultClosed
+    a owl:DatatypeProperty ;
+    rdfs:domain :TilePresentationContract ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "default closed"@en ;
+    rdfs:comment "Whether a renderer should initially keep the Tile closed/hidden until explicitly opened. This is presentation behavior, not CSS visibility."@en .
+
+#################################################################
+# Content Tiles currently implemented by OntoBDC View
+#################################################################
+
+:DataContainerTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "Data Container Tile"@en ;
+    rdfs:comment "Summary presentation of an obdc:DataContainer."@en .
+
+:FileTreeTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "File Tree Tile"@en ;
+    rdfs:comment "Hierarchical presentation of the files known to an obdc:FileTree resource."@en .
+
+:GenericFileTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "Generic File Tile"@en ;
+    rdfs:comment "Metadata-oriented presentation for an obdc:GenericFile when no specialized preview is available."@en .
+
+:ImageFileTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "Image File Tile"@en ;
+    rdfs:comment "Image preview presentation for an obdc:ImageFile."@en .
+
+:PdfFileTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "PDF File Tile"@en ;
+    rdfs:comment "PDF preview presentation for an obdc:PdfFile."@en .
+
+:CsvFileTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "CSV File Tile"@en ;
+    rdfs:comment "Tabular preview presentation for an obdc:CsvFile."@en .
+
+:WorkStreamTile a owl:Class ;
+    rdfs:subClassOf :ContentTile ;
+    rdfs:label "WorkStream Tile"@en ;
+    rdfs:comment "Summary presentation of a WorkStream entity. The Tile contract remains generic OntoBDC presentation infrastructure even though the focus class is defined by the productivity ontology."@en .
+
+#################################################################
+# Chrome Tiles currently implemented by OntoBDC View
+#################################################################
+
+# These are aligned with the classes already present in view.ttl. The
+# equivalentClass assertions allow existing callers using view:* URIs to
+# keep working while tile.ttl becomes the detailed Tile catalog.
+:LogoTile a owl:Class ; rdfs:subClassOf :ChromeTile ; owl:equivalentClass view:LogoTile ; rdfs:label "Logo Tile"@en .
+:ThemeTile a owl:Class ; rdfs:subClassOf :ChromeTile ; owl:equivalentClass view:ThemeTile ; rdfs:label "Theme Tile"@en .
+:LanguageTile a owl:Class ; rdfs:subClassOf :ChromeTile ; owl:equivalentClass view:LanguageTile ; rdfs:label "Language Tile"@en .
+:PhotoTile a owl:Class ; rdfs:subClassOf :ChromeTile ; owl:equivalentClass view:PhotoTile ; rdfs:label "Photo Tile"@en .
+
+#################################################################
+# SHACL / SHACL UI shapes for content Tiles
+#################################################################
+
+:DataContainerTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:DataContainer ;
+    sh:name "Data Container"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Title"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path dcterms:description ; sh:name "Description"@en ; sh:order 20 ; shui:viewer shui:LiteralViewer ] .
+
+:FileTreeTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:FileTree ;
+    sh:name "Files"@en ;
+    sh:property [ sh:path obdc:filePath ; sh:name "File path"@en ; sh:order 10 ; shui:viewer shui:LiteralViewer ] .
+
+:GenericFileTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:GenericFile ;
+    sh:name "File"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Name"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path obdc:filePath ; sh:name "Path"@en ; sh:order 20 ; shui:viewer shui:LiteralViewer ] .
+
+:ImageFileTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:ImageFile ;
+    sh:name "Image"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Name"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path obdc:filePath ; sh:name "Image"@en ; sh:order 20 ; shui:viewer shui:ImageViewer ] .
+
+:PdfFileTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:PdfFile ;
+    sh:name "PDF"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Name"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path obdc:filePath ; sh:name "PDF resource"@en ; sh:order 20 ; shui:viewer shui:HyperlinkViewer ] .
+
+:CsvFileTileShape
+    a sh:NodeShape ;
+    sh:targetClass obdc:CsvFile ;
+    sh:name "CSV"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Name"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path obdc:filePath ; sh:name "Tabular resource"@en ; sh:order 20 ; shui:viewer shui:ValueTableViewer ] .
+
+:WorkStreamTileShape
+    a sh:NodeShape ;
+    sh:targetClass ws:WorkStream ;
+    sh:name "WorkStream"@en ;
+    sh:property
+        [ sh:path dcterms:title ; sh:name "Title"@en ; sh:order 10 ; shui:viewer shui:LabelViewer ; shui:propertyRole shui:LabelRole ],
+        [ sh:path dcterms:identifier ; sh:name "Identifier"@en ; sh:order 20 ; shui:viewer shui:LiteralViewer ] .
+
+#################################################################
+# Contracts and support profiles mirror the active Component metadata
+#################################################################
+
+:DataContainerTileContract a :TilePresentationContract ;
+    :forTileClass :DataContainerTile ; :usesNodeShape :DataContainerTileShape ;
+    :defaultClosed false ;
+    view:hasSupportProfile :DataContainerTileSupport .
+:DataContainerTileSupport a view:PresentationSupportProfile ; view:minColumns 1 ; view:maxColumns 6 ; view:minRows 2 ; view:maxRows 2 .
+
+:FileTreeTileContract a :TilePresentationContract ;
+    :forTileClass :FileTreeTile ; :usesNodeShape :FileTreeTileShape ;
+    :defaultClosed false ;
+    view:hasSupportProfile :FileTreeTileSupport .
+:FileTreeTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 4 .
+
+:GenericFileTileContract a :TilePresentationContract ;
+    :forTileClass :GenericFileTile ; :usesNodeShape :GenericFileTileShape ;
+    :defaultClosed true ;
+    view:hasSupportProfile :GenericFileTileSupport .
+:GenericFileTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 5 .
+
+:ImageFileTileContract a :TilePresentationContract ;
+    :forTileClass :ImageFileTile ; :usesNodeShape :ImageFileTileShape ;
+    :defaultClosed true ;
+    view:hasSupportProfile :ImageFileTileSupport .
+:ImageFileTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 5 .
+
+:PdfFileTileContract a :TilePresentationContract ;
+    :forTileClass :PdfFileTile ; :usesNodeShape :PdfFileTileShape ;
+    :defaultClosed true ;
+    view:hasSupportProfile :PdfFileTileSupport .
+:PdfFileTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 5 .
+
+:CsvFileTileContract a :TilePresentationContract ;
+    :forTileClass :CsvFileTile ; :usesNodeShape :CsvFileTileShape ;
+    :defaultClosed true ;
+    view:hasSupportProfile :CsvFileTileSupport .
+:CsvFileTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 5 .
+
+:WorkStreamTileContract a :TilePresentationContract ;
+    :forTileClass :WorkStreamTile ; :usesNodeShape :WorkStreamTileShape ;
+    :defaultClosed false ;
+    view:hasSupportProfile :WorkStreamTileSupport .
+:WorkStreamTileSupport a view:PresentationSupportProfile ; view:minColumns 6 ; view:minRows 2 ; view:maxRows 2 .
+
+:LogoTileContract a :TilePresentationContract ; :forTileClass :LogoTile ; :defaultClosed false .
+:ThemeTileContract a :TilePresentationContract ; :forTileClass :ThemeTile ; :defaultClosed false .
+:LanguageTileContract a :TilePresentationContract ; :forTileClass :LanguageTile ; :defaultClosed false .
+:PhotoTileContract a :TilePresentationContract ; :forTileClass :PhotoTile ; :defaultClosed false .
+
+#################################################################
+# Contract validation
+#################################################################
+
+:TilePresentationContractShape
+    a sh:NodeShape ;
+    sh:targetClass :TilePresentationContract ;
+    sh:property
+        [ sh:path :forTileClass ; sh:minCount 1 ; sh:maxCount 1 ],
+        [ sh:path :usesNodeShape ; sh:maxCount 1 ; sh:class sh:NodeShape ],
+        [ sh:path :defaultClosed ; sh:datatype xsd:boolean ; sh:maxCount 1 ] .
