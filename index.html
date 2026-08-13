@@ -1,64 +1,93 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="BrasidataCenter Ontology Reference">
-<title>BrasidataCenter Ontology Reference</title>
+<meta name="description" content="BrasidataCenter — Brasidata's ontology collection for social, productivity, and sales data.">
+<title>BrasidataCenter</title>
 <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/u/107327745?s=64&v=4">
 <style>
-:root{--bg:#07110f;--panel:#0d1d19;--panel2:#10251f;--text:#f3f7f4;--muted:#a6b8b0;--line:rgba(171,255,214,.18);--accent:#79f2ba;--accent2:#c8ffdf;--code:#091712;--max:1180px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.shell{width:min(calc(100% - 32px),var(--max));margin:auto}
-header{position:sticky;top:0;z-index:10;background:rgba(7,17,15,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-nav{height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:800;letter-spacing:-.02em}.brand-logo{width:38px;height:38px;border-radius:10px;display:block;object-fit:contain}
-.navlinks{display:flex;gap:18px;font-size:.92rem}.hero{padding:72px 0 40px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
-h1{font-size:clamp(2.8rem,7vw,5.5rem);line-height:.95;letter-spacing:-.06em;margin:14px 0 20px;max-width:900px}.lead{max-width:850px;font-size:1.17rem;color:var(--muted)}
-.meta{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.meta div{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.meta b{display:block;color:var(--accent);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.meta span{font-size:.94rem}
-main{display:grid;grid-template-columns:260px 1fr;gap:48px;padding:44px 0 90px}.toc{position:sticky;top:92px;align-self:start}.toc h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.toc a{display:block;padding:7px 0;color:var(--muted)}.toc a:hover{color:var(--text);text-decoration:none}
-section{padding:0 0 52px}h2{font-size:2rem;letter-spacing:-.035em;margin:0 0 14px}h3{font-size:1.22rem;margin:28px 0 10px}.copy{color:var(--muted);max-width:820px}
-.notice{padding:18px 20px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 14px 14px 0;color:var(--muted)}
-code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}code{color:var(--accent2)}pre{background:var(--code);padding:18px;border:1px solid var(--line);border-radius:16px;overflow:auto;color:#d9efe3}
-.modules{display:grid;gap:16px}.module{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px}.module-head{display:flex;align-items:start;justify-content:space-between;gap:18px}.module h3{margin:0 0 6px}.ns{font-family:ui-monospace,monospace;font-size:.8rem;color:var(--muted);word-break:break-all}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.pill{display:inline-flex;padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);font-size:.82rem}.pill:hover{text-decoration:none;border-color:var(--accent)}
-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.94rem}th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}td{color:var(--muted)}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
-@media(max-width:900px){main{grid-template-columns:1fr}.toc{position:static}.meta{grid-template-columns:1fr 1fr}.navlinks{display:none}}
-@media(max-width:560px){.meta{grid-template-columns:1fr}.module-head{display:block}}
+:root{--bg:#07110f;--panel:#0d1d19;--text:#f3f7f4;--muted:#a6b8b0;--line:rgba(171,255,214,.18);--accent:#79f2ba;--accent2:#c8ffdf;--code:#091712;--max:880px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.shell{width:min(calc(100% - 40px),var(--max));margin:auto}
+header{padding:28px 0}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+.brand-logo{width:30px;height:30px;border-radius:8px;object-fit:contain}
+.hero{padding:20px 0 56px}
+h1{font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.05;letter-spacing:-.04em;margin:0 0 16px}
+.lead{max-width:620px;font-size:1.1rem;color:var(--muted);margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;border:1px solid var(--line);font-size:.95rem;font-weight:600}
+.btn.primary{background:var(--accent);color:#07110f;border-color:var(--accent)}
+.btn.primary:hover{text-decoration:none;opacity:.9}
+.btn:not(.primary):hover{text-decoration:none;border-color:var(--accent)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent2);background:var(--code);padding:2px 7px;border-radius:6px;font-size:.9em}
+main{padding-bottom:70px}
+h2{font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 16px;font-weight:700}
+.domain{margin-bottom:36px}
+.modules{display:grid;gap:10px}
+.module{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;border:1px solid var(--line);background:var(--panel);border-radius:14px;flex-wrap:wrap}
+.module-name{font-weight:700}
+.module-ns{font-family:ui-monospace,monospace;font-size:.78rem;color:var(--muted);word-break:break-all;margin-top:2px}
+.module-links{display:flex;gap:8px;flex-shrink:0}
+.pill{display:inline-flex;padding:6px 12px;border-radius:999px;border:1px solid var(--line);font-size:.8rem}
+.pill:hover{text-decoration:none;border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </style>
 </head>
 <body>
-<header><nav class="shell"><a class="brand" href="#top"><img class="brand-logo" src="https://avatars.githubusercontent.com/u/107327745?s=96&v=4" alt="Brasidata logo">BrasidataCenter</a><div class="navlinks"><a href="#overview">Overview</a><a href="#modules">Ontologies</a><a href="#terms">Terms</a><a href="https://github.com/Brasidata/brasidatacenter">GitHub</a></div></nav></header>
-<div class="hero" id="top"><div class="shell"><div class="eyebrow">Ontology Reference</div><h1>BrasidataCenter Ontologies</h1><p class="lead">A modular ontology collection for social, productivity and sales data. This page is the entry point for namespaces, ontology modules, source files and reusable terms.</p><div class="meta"><div><b>Status</b><span>Living specification</span></div><div><b>Serialization</b><span>RDF / Turtle</span></div><div><b>Model</b><span>OWL ontologies</span></div><div><b>Repository</b><span>Brasidata/brasidatacenter</span></div></div></div></div>
-<main class="shell">
-<aside class="toc"><h2>Contents</h2><a href="#overview">1. Overview</a><a href="#namespaces">2. Namespaces</a><a href="#modules">3. Ontology modules</a><a href="#terms">4. Registered terms</a><a href="#usage">5. Usage</a><a href="#downloads">6. Downloads</a></aside>
-<div>
-<section id="overview"><h2>1. Overview</h2><p class="copy">BrasidataCenter publishes domain ontologies as small, composable modules. Each module defines semantic types, relations and, when available, facade contracts for applications that need a stable public projection of ontology-backed data.</p><div class="notice">The ontology files are authoritative. This page is a human-readable index and does not replace the Turtle sources.</div></section>
-<section id="namespaces"><h2>2. Namespaces</h2><table><thead><tr><th>Prefix</th><th>Namespace</th><th>Purpose</th></tr></thead><tbody>
-<tr><td><code>bdc-social</code></td><td><code>http://datacenter.app.br/ontology/social/</code></td><td>People, contact points, messages and social resources.</td></tr>
-<tr><td><code>bdc-productivity</code></td><td><code>http://datacenter.app.br/ontology/productivity/</code></td><td>Documents, work streams, annotations and visual contracts.</td></tr>
-<tr><td><code>bdc-sales</code></td><td><code>http://datacenter.app.br/ontology/sales/</code></td><td>Sales funnels and opportunities.</td></tr>
-</tbody></table></section>
-<section id="modules"><h2>3. Ontology modules</h2><p class="copy">Use the links below to open the canonical Turtle files or inspect their source in GitHub.</p><div class="modules">
-<article class="module"><div class="module-head"><div><h3>Social Core</h3><div class="ns">http://datacenter.app.br/ontology/social/entity/ns.ttl</div></div></div><p class="copy">Core social entities including Email, Chat, Thread, ChatMessage and ConversationAgent.</p><div class="links"><a class="pill" href="ontology/social/entity/ns.ttl" download>Download TTL</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/ns.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Person</h3><div class="ns">http://datacenter.app.br/ontology/social/entity/person/type.ttl</div></div></div><p class="copy">Person entities aligned with external vocabularies and reusable across datasets.</p><div class="links"><a class="pill" href="ontology/social/entity/person/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/person/type.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Contact Point</h3><div class="ns">http://datacenter.app.br/ontology/social/entity/contact_point/type.ttl</div></div></div><p class="copy">Contact channels and identifiers associated with people and organizations.</p><div class="links"><a class="pill" href="ontology/social/entity/contact_point/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/contact_point/type.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Productivity Documents</h3><div class="ns">http://datacenter.app.br/ontology/productivity/entity/document/type.ttl</div></div></div><p class="copy">Blog posts, contracts, invoices, meeting minutes, proposals, purchase orders, receipts and technical documents.</p><div class="links"><a class="pill" href="ontology/productivity/entity/document/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/productivity/entity/document/type.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Work Stream</h3><div class="ns">http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl</div></div></div><p class="copy">Semantic model for work streams and operational context.</p><div class="links"><a class="pill" href="ontology/productivity/entity/work_stream/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/productivity/entity/work_stream/type.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Enrichment Annotation</h3><div class="ns">http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl</div></div></div><p class="copy">Typed notes, issues, classifications, locations and records linked to external resources.</p><div class="links"><a class="pill" href="ontology/productivity/entity/enrichment_annotation/type.ttl" download>Download type.ttl</a><a class="pill" href="ontology/productivity/entity/enrichment_annotation/facade.ttl" download>Download facade.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/tree/master/ontology/productivity/entity/enrichment_annotation">View module</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Visual Representation Type</h3><div class="ns">http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl</div></div></div><p class="copy">Renderer-neutral visual contracts and controlled terms for ontology-backed representations.</p><div class="links"><a class="pill" href="ontology/productivity/entity/visual_representation_type/type.ttl" download>Download type.ttl</a><a class="pill" href="ontology/productivity/entity/visual_representation_type/facade.ttl" download>Download facade.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/tree/master/ontology/productivity/entity/visual_representation_type">View module</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Sales Funnel</h3><div class="ns">http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl</div></div></div><p class="copy">Semantic representation of sales funnels.</p><div class="links"><a class="pill" href="ontology/sales/entity/sales_funnel/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/sales/entity/sales_funnel/type.ttl">View source</a></div></article>
-<article class="module"><div class="module-head"><div><h3>Sales Opportunity</h3><div class="ns">http://datacenter.app.br/ontology/sales/entity/sales_opportunity/type.ttl</div></div></div><p class="copy">Semantic representation of commercial opportunities.</p><div class="links"><a class="pill" href="ontology/sales/entity/sales_opportunity/type.ttl" download>Download type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/sales/entity/sales_opportunity/type.ttl">View source</a></div></article>
-</div></section>
-<section id="terms"><h2>4. Registered terms</h2><p class="copy">The registry below summarizes aliases exposed by <code>ontology/index.yaml</code>.</p><table><thead><tr><th>Domain</th><th>Terms</th></tr></thead><tbody><tr><td>Social</td><td>Email, Chat, Thread, ChatMessage, ConversationAgent, ContactPoint, JobOffer, Person, WebLink</td></tr><tr><td>Productivity</td><td>EnrichmentAnnotation, NoteAnnotation, IssueAnnotation, ClassificationAnnotation, LocationAnnotation, RecordAnnotation, VisualRepresentationType, BlogPost, Contract, Invoice, MeetingMinutes, Proposal, PurchaseOrder, Receipt, TechnicalReport, TechnicalSpecification, WorkStream</td></tr><tr><td>Sales</td><td>SalesFunnel, SalesOpportunity</td></tr></tbody></table></section>
-<section id="usage"><h2>5. Usage</h2><h3>Importing a module</h3><pre>@prefix ea: &lt;http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#&gt; .
-@prefix schema: &lt;https://schema.org/&gt; .
+<header><div class="shell"><nav>
+<a class="brand" href="#top"><img class="brand-logo" src="https://avatars.githubusercontent.com/u/107327745?s=96&v=4" alt="Brasidata logo">BrasidataCenter</a>
+<a class="pill" href="https://github.com/Brasidata/brasidatacenter">GitHub</a>
+</nav></div></header>
 
-:issue-001 a ea:IssueAnnotation ;
-    schema:name "Resolve document inconsistency"@en .</pre><h3>Using a facade</h3><pre>&lt;http://example.org/my-ontology&gt;
-    owl:imports
-        &lt;http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl&gt; .</pre></section>
-<section id="downloads"><h2>6. Downloads and source</h2><p class="copy">The complete ontology collection and alias registry are available in the repository.</p><div class="links"><a class="pill" href="ontology/index.yaml" download>Download ontology index</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/tree/master/ontology">Browse all ontology files</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/archive/refs/heads/master.zip">Download repository ZIP</a></div></section>
-</div></main>
-<footer><div class="shell">BrasidataCenter · Ontology reference · Turtle sources are authoritative.</div></footer>
+<div class="hero shell" id="top">
+<h1>Brasidata's ontology collection.</h1>
+<p class="lead">Modular RDF/OWL ontologies for social, productivity, and sales data — versioned, downloadable, and installable as a Python package.</p>
+<div class="cta">
+<a class="btn primary" href="#modules">Browse the ontologies</a>
+<a class="btn" href="https://pypi.org/project/brasidatacenter/"><code style="background:none;padding:0;color:inherit">pip install brasidatacenter</code></a>
+</div>
+</div>
+
+<main class="shell">
+
+<div class="domain" id="modules">
+<h2>Social</h2>
+<div class="modules">
+<div class="module"><div><div class="module-name">Social Core</div><div class="module-ns">bdc-social · Email, Chat, Thread, ChatMessage, ConversationAgent</div></div><div class="module-links"><a class="pill" href="ontology/social/entity/ns.ttl" download>ns.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/ns.ttl">Source</a></div></div>
+<div class="module"><div><div class="module-name">Person</div><div class="module-ns">bdc-social · people, aligned with external vocabularies</div></div><div class="module-links"><a class="pill" href="ontology/social/entity/person/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/person/type.ttl">Source</a></div></div>
+<div class="module"><div><div class="module-name">Contact Point</div><div class="module-ns">bdc-social · channels and identifiers for people and organizations</div></div><div class="module-links"><a class="pill" href="ontology/social/entity/contact_point/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/social/entity/contact_point/type.ttl">Source</a></div></div>
+</div>
+</div>
+
+<div class="domain">
+<h2>Productivity</h2>
+<div class="modules">
+<div class="module"><div><div class="module-name">Documents</div><div class="module-ns">bdc-productivity · contracts, invoices, proposals, receipts, reports</div></div><div class="module-links"><a class="pill" href="ontology/productivity/entity/document/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/productivity/entity/document/type.ttl">Source</a></div></div>
+<div class="module"><div><div class="module-name">Work Stream</div><div class="module-ns">bdc-productivity · work streams and operational context</div></div><div class="module-links"><a class="pill" href="ontology/productivity/entity/work_stream/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/productivity/entity/work_stream/type.ttl">Source</a></div></div>
+<div class="module"><div><div class="module-name">Enrichment Annotation</div><div class="module-ns">bdc-productivity · notes, issues, classifications, locations, records</div></div><div class="module-links"><a class="pill" href="https://github.com/Brasidata/brasidatacenter/tree/master/ontology/productivity/entity/enrichment_annotation">Source</a></div></div>
+<div class="module"><div><div class="module-name">Visual Representation Type</div><div class="module-ns">bdc-productivity · renderer-neutral visual contracts</div></div><div class="module-links"><a class="pill" href="https://github.com/Brasidata/brasidatacenter/tree/master/ontology/productivity/entity/visual_representation_type">Source</a></div></div>
+</div>
+</div>
+
+<div class="domain">
+<h2>Sales</h2>
+<div class="modules">
+<div class="module"><div><div class="module-name">Sales Funnel</div><div class="module-ns">bdc-sales · sales funnels</div></div><div class="module-links"><a class="pill" href="ontology/sales/entity/sales_funnel/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/sales/entity/sales_funnel/type.ttl">Source</a></div></div>
+<div class="module"><div><div class="module-name">Sales Opportunity</div><div class="module-ns">bdc-sales · commercial opportunities</div></div><div class="module-links"><a class="pill" href="ontology/sales/entity/sales_opportunity/type.ttl" download>type.ttl</a><a class="pill" href="https://github.com/Brasidata/brasidatacenter/blob/master/ontology/sales/entity/sales_opportunity/type.ttl">Source</a></div></div>
+</div>
+</div>
+
+</main>
+
+<footer><div class="shell" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<span>Turtle sources are authoritative — this page is just an index.</span>
+<span><a href="https://github.com/Brasidata/brasidatacenter/blob/master/LICENSE">Apache 2.0</a> · <a href="https://github.com/Brasidata/brasidatacenter">GitHub</a></span>
+</div></footer>
+
 </body>
 </html>

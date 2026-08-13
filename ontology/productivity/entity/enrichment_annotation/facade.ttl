@@ -7,6 +7,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix type: <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+@prefix thread: <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl#> .
 @prefix visual: <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl#> .
@@ -16,6 +17,7 @@
     owl:imports
         <http://ontobdc.org/ontology/domain/ns.ttl> ,
         <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl> ,
         <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl> .
 
 :DataEntityFacade rdf:type owl:Class .
@@ -90,7 +92,7 @@ type:RecordAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
         :AnnotationCreatedField ,
         :AnnotationModifiedField ,
         :AnnotationModifierField ,
-        :AnnotationSubjectField .
+        :AnnotationThreadField .
 
 :AnnotationVisualRepresentationTypeField
     rdf:type owl:NamedIndividual , :FacadeField ;
@@ -120,7 +122,8 @@ type:RecordAnnotation :hasDataEntityFacade :EnrichmentAnnotationVisualFacade .
     schema:identifier "modified_by" ; schema:name "Last modifier"@en ;
     :mapsToProperty type:modifiedBy ; :isRequired false ; :isMultivalued false ; :isDerived false .
 
-:AnnotationSubjectField a owl:NamedIndividual, :FacadeField ;
-    schema:identifier "subjects" ; schema:name "Subjects"@en ;
-    :mapsToProperty dcterms:subject ; :usesControlledTermSet type:Subject ;
+:AnnotationThreadField a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "threads" ; schema:name "Threads"@en ;
+    schema:description "Persistent OntoBDC Thread entities associated with the annotation."@en ;
+    :mapsToProperty type:thread ;
     :isRequired false ; :isMultivalued true ; :isDerived false .
