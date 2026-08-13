@@ -91,6 +91,31 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   rdfs:comment "The data container has the specified entity dataset."@en .
 
 
+###  http://ontobdc.org/ontology/domain/ns.ttl#hasFileGroupingScheme
+:hasFileGroupingScheme rdf:type owl:ObjectProperty ;
+                       rdfs:domain :ProjectManagementFramework ;
+                       rdfs:range :FileGroupingScheme ;
+                       ontouml:name "Has file grouping scheme"@en ;
+                       rdfs:comment "Associates a project management framework application with a renderer-neutral scheme for grouping candidate files by semantic criteria."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#hasFileGroup
+:hasFileGroup rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf dcterms:hasPart ;
+              rdfs:domain :FileGroupingScheme ;
+              rdfs:range :FileGroup ;
+              ontouml:name "Has file group"@en ;
+              rdfs:comment "Associates a file grouping scheme with one of its semantic file groups."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#matchesMediaType
+:matchesMediaType rdf:type owl:ObjectProperty ;
+                  rdfs:domain :FileGroup ;
+                  rdfs:range dcterms:MediaType ;
+                  ontouml:name "Matches media type"@en ;
+                  rdfs:comment "Declares a media-type criterion for a file group. MIME detection and any filename-extension fallback are runtime concerns and are not part of this semantic contract."@en .
+
+
 ###  http://ontobdc.org/ontology/domain/ns.ttl#usesProjectManagementFramework
 :usesProjectManagementFramework rdf:type owl:ObjectProperty ;
                                 rdfs:domain ws:WorkStream ;
@@ -182,6 +207,25 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                rdfs:comment "A dataset representing a collection of related data entities."@en .
 
 
+###  http://ontobdc.org/ontology/domain/ns.ttl#FileGroupingScheme
+:FileGroupingScheme rdf:type owl:Class ;
+                    ontouml:name "File grouping scheme"@en ;
+                    rdfs:comment "Renderer-neutral scheme that organizes a finite candidate set of files into semantic groups for a project management framework application."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#FileGroup
+:FileGroup rdf:type owl:Class ;
+           ontouml:name "File group"@en ;
+           rdfs:comment "Semantic group within a file grouping scheme. Membership may be selected by one or more declared criteria such as media type."@en .
+
+
+###  http://ontobdc.org/ontology/domain/ns.ttl#ResidualFileGroup
+:ResidualFileGroup rdf:type owl:Class ;
+                   rdfs:subClassOf :FileGroup ;
+                   ontouml:name "Residual file group"@en ;
+                   rdfs:comment "Residual group whose members are candidate files not matched by any non-residual sibling FileGroup in the same FileGroupingScheme. Membership is evaluated over the finite candidate set by deterministic runtime logic and must not be interpreted as an OWL complement."@en .
+
+
 ###  http://ontobdc.org/ontology/domain/ns.ttl#ExecutionContext
 :ExecutionContext rdf:type owl:Class ;
                   ontouml:name "Execution context"@en ;
@@ -234,6 +278,10 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                           function:returns :TransformationResponse ;
                           ontouml:name "Transformation capability"@en ;
                           rdfs:comment "Executes a transformation over a declared data or semantic context."@en .
+
+
+###  http://purl.org/dc/terms/MediaType
+dcterms:MediaType rdf:type owl:Class .
 
 
 ###  http://schema.org/DefinedTerm
