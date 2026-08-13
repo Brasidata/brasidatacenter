@@ -113,8 +113,8 @@
 #    Project Management Frameworks
 #################################################################
 
-:FiveWTwoH rdf:type owl:NamedIndividual ,
-        obdc:ProjectManagementFramework ;
+:FiveWTwoH rdf:type owl:Class ;
+    rdfs:subClassOf obdc:ProjectManagementFramework ;
     rdfs:label "5W2H"@en ,
         "5W2H"@pt-BR ;
     schema:identifier "5w2h" ;
