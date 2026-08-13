@@ -1,0 +1,175 @@
+@prefix infobim: <https://infobim.org/ontology/ns#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://infobim.org/ontology/ns>
+    a owl:Ontology ;
+    rdfs:label "InfoBIM Domain Ontology"@en ;
+    rdfs:comment "Core InfoBIM domain vocabulary for semantic OpenBIM entities."@en ;
+    rdfs:seeAlso <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcprocessextension/lexical/ifcworkschedule.htm> .
+
+#################################################################
+# Classes
+#################################################################
+
+infobim:IfcWorkSchedule
+    a owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ,
+        ifcowl:IfcWorkSchedule ;
+    rdfs:label "IFC Work Schedule"@en ,
+        "Cronograma IFC"@pt-BR ;
+    rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule, treated as an OntoBDC data entity and enriched with the same 5W2H operational semantics used by WorkStream."@en ;
+    schema:description "A work schedule that retains its IFC semantic identity while participating in InfoBIM deterministic semantic workflows through WorkStream-analogous properties."@en .
+
+infobim:WorkScheduleDimension
+    a owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ;
+    rdfs:label "Work Schedule Dimension"@en ,
+        "Dimensão do cronograma"@pt-BR ;
+    rdfs:comment "Identifiable contextual dimension belonging to one InfoBIM IfcWorkSchedule, analogous to a WorkStreamDimension."@en .
+
+infobim:WorkScheduleDimensionKind
+    a owl:Class ;
+    rdfs:label "Work Schedule Dimension Kind"@en ,
+        "Tipo de dimensão do cronograma"@pt-BR ;
+    rdfs:comment "Controlled classification of the seven 5W2H dimensions for an InfoBIM IfcWorkSchedule."@en .
+
+#################################################################
+# Object properties - WorkStream analogues
+#################################################################
+
+infobim:hasDimension
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ws:hasDimension ;
+    owl:inverseOf infobim:dimensionOf ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range infobim:WorkScheduleDimension ;
+    rdfs:label "has dimension"@en ,
+        "possui dimensão"@pt-BR ;
+    rdfs:comment "Associates an IfcWorkSchedule with an identifiable 5W2H contextual dimension."@en .
+
+infobim:dimensionOf
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ws:dimensionOf ;
+    rdfs:domain infobim:WorkScheduleDimension ;
+    rdfs:range infobim:IfcWorkSchedule ;
+    rdfs:label "dimension of"@en ,
+        "dimensão de"@pt-BR .
+
+infobim:dimensionKind
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf ws:dimensionKind ;
+    rdfs:domain infobim:WorkScheduleDimension ;
+    rdfs:range infobim:WorkScheduleDimensionKind ;
+    rdfs:label "dimension kind"@en ,
+        "tipo de dimensão"@pt-BR .
+
+infobim:who
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ws:who ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:label "who"@en ,
+        "quem"@pt-BR ;
+    schema:description "Person, organization, team, role, or other responsible actor associated with the schedule."@en .
+
+infobim:where
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf ws:where ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:label "where"@en ,
+        "onde"@pt-BR ;
+    schema:description "Place, facility, building, storey, zone, project area, or other spatial context of the schedule."@en .
+
+#################################################################
+# Datatype properties - WorkStream analogues
+#################################################################
+
+infobim:what
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ws:what ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range xsd:string ;
+    rdfs:label "what"@en ,
+        "o que"@pt-BR ;
+    schema:description "Free-text definition of the scope represented or controlled by the work schedule."@en .
+
+infobim:why
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ws:why ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range xsd:string ;
+    rdfs:label "why"@en ,
+        "por que"@pt-BR ;
+    schema:description "Purpose, need, justification, or scheduling rationale."@en .
+
+infobim:when
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ws:when ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range xsd:string ;
+    rdfs:label "when"@en ,
+        "quando"@pt-BR ;
+    schema:description "Human-readable temporal context, milestone, period, or execution window associated with the schedule."@en .
+
+infobim:how
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ws:how ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range xsd:string ;
+    rdfs:label "how"@en ,
+        "como"@pt-BR ;
+    schema:description "Method, procedure, planning approach, or execution strategy associated with the schedule."@en .
+
+infobim:howMuch
+    a owl:DatatypeProperty ;
+    rdfs:subPropertyOf ws:howMuch ;
+    rdfs:domain infobim:IfcWorkSchedule ;
+    rdfs:range xsd:string ;
+    rdfs:label "how much"@en ,
+        "quanto"@pt-BR ;
+    schema:description "Cost, quantity, effort, productivity, or other magnitude associated with the schedule."@en .
+
+#################################################################
+# Dimension kinds
+#################################################################
+
+infobim:What
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "What"@en ;
+    schema:identifier "what" .
+
+infobim:Why
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "Why"@en ;
+    schema:identifier "why" .
+
+infobim:Where
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "Where"@en ;
+    schema:identifier "where" .
+
+infobim:When
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "When"@en ;
+    schema:identifier "when" .
+
+infobim:Who
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "Who"@en ;
+    schema:identifier "who" .
+
+infobim:How
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "How"@en ;
+    schema:identifier "how" .
+
+infobim:HowMuch
+    a infobim:WorkScheduleDimensionKind ;
+    rdfs:label "How Much"@en ;
+    schema:identifier "how-much" .
