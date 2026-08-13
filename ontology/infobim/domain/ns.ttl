@@ -2,6 +2,7 @@
 @prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
 @prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 @prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -62,6 +63,23 @@ ibim:assignsRelatedClass
     rdfs:label "assigns related class"@en , "atribui classe relacionada"@pt-BR ;
     rdfs:comment "Declares another class that belongs to the operational entity context of the subject class. The relation is representation-neutral: it does not prescribe files, sheets, serialization formats, or user-interface structure."@en ;
     schema:description "Used by InfoBIM commands and capabilities to discover additional entity classes that must be handled together with a requested root entity class."@en .
+
+ibim:workStreamOfProject
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:isPartOf ;
+    owl:inverseOf ibim:hasWorkStream ;
+    rdfs:domain ws:WorkStream ;
+    rdfs:range ifcowl:IfcProject ;
+    rdfs:label "work stream of project"@en , "frente de trabalho do projeto"@pt-BR ;
+    rdfs:comment "Relates a WorkStream to the IFC project whose coordinated work scope it represents."@en .
+
+ibim:hasWorkStream
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:hasPart ;
+    rdfs:domain ifcowl:IfcProject ;
+    rdfs:range ws:WorkStream ;
+    rdfs:label "has work stream"@en , "possui frente de trabalho"@pt-BR ;
+    rdfs:comment "Inverse relation from an IFC project to a WorkStream defined within that project context."@en .
 
 ibim:hasDimension
     a owl:ObjectProperty ;
