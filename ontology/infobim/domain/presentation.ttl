@@ -1,0 +1,72 @@
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix pres: <https://infobim.org/ontology/presentation#> .
+@prefix w3cp: <https://infobim.org/ontology/w3c-proxy#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://infobim.org/ontology/domain/presentation> a owl:Ontology ;
+  rdfs:label "InfoBIM Presentation Contract Ontology"@en ;
+  schema:description "Renderer-neutral bridge between DataEntity facades, SHACL/SHACL UI presentation metadata and OntoBDC Tiles/Surfaces. The same contract may be rendered as web UI or native mobile widgets without requiring HTML interoperability."@en ;
+  owl:imports <https://infobim.org/ontology/domain/view>, <https://infobim.org/ontology/domain/W3C>, <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> ;
+  rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
+
+pres:PresentationContract a owl:Class ; rdfs:label "Presentation Contract"@en .
+pres:TilePresentationContract a owl:Class ; rdfs:subClassOf pres:PresentationContract ; rdfs:label "Tile Presentation Contract"@en .
+pres:PresentationMode a owl:Class .
+pres:ViewMode a pres:PresentationMode .
+pres:EditMode a pres:PresentationMode .
+pres:ViewAndEditMode a pres:PresentationMode .
+
+pres:usesFacade a owl:ObjectProperty ; rdfs:domain pres:PresentationContract ; rdfs:range ibim:Facade .
+pres:usesNodeShape a owl:ObjectProperty ; rdfs:domain pres:PresentationContract ; rdfs:range w3cp:NodeShape .
+pres:usesComponent a owl:ObjectProperty ; rdfs:domain pres:PresentationContract ; rdfs:range view:Component .
+pres:presentationMode a owl:ObjectProperty ; rdfs:domain pres:PresentationContract ; rdfs:range pres:PresentationMode .
+pres:mapsFacadeField a owl:ObjectProperty ; rdfs:domain w3cp:PropertyShape ; rdfs:range ibim:FacadeField ; rdfs:comment "Traceability from a SHACL property shape to the facade field it presents; sh:path remains authoritative for graph traversal."@en .
+
+# SHACL UI defines LabelRole and explicitly permits domain-specific roles.
+pres:IdentifierRole a owl:NamedIndividual, w3cp:PropertyRole ; rdfs:label "Identifier Role"@en .
+pres:DescriptionRole a owl:NamedIndividual, w3cp:PropertyRole ; rdfs:label "Description Role"@en .
+pres:SecondaryLabelRole a owl:NamedIndividual, w3cp:PropertyRole ; rdfs:label "Secondary Label Role"@en .
+pres:StatusRole a owl:NamedIndividual, w3cp:PropertyRole ; rdfs:label "Status Role"@en .
+
+pres:PresentationContractShape a sh:NodeShape ; sh:targetClass pres:PresentationContract ;
+  sh:property [ sh:path pres:usesFacade ; sh:class ibim:Facade ; sh:minCount 1 ; sh:maxCount 1 ],
+              [ sh:path pres:usesNodeShape ; sh:class w3cp:NodeShape ; sh:minCount 1 ; sh:maxCount 1 ],
+              [ sh:path pres:usesComponent ; sh:class view:Component ; sh:minCount 1 ; sh:maxCount 1 ],
+              [ sh:path pres:presentationMode ; sh:class pres:PresentationMode ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+# A Tile is NOT a Facade subclass. Facade says what data is exposed; the
+# SHACL UI shape says how that projection is presented/edited; view.ttl says
+# where the Tile is placed on a Surface; the renderer chooses HTML/Flutter/etc.
+pres:DefaultIfcProjectTile a view:Tile ; rdfs:label "IFC Project"@en .
+pres:DefaultIfcProjectTileContract a pres:TilePresentationContract ;
+  pres:usesFacade ibim:DefaultIfcProjectFacade ;
+  pres:usesNodeShape pres:DefaultIfcProjectTileShape ;
+  pres:usesComponent pres:DefaultIfcProjectTile ;
+  pres:presentationMode pres:ViewAndEditMode .
+
+pres:DefaultIfcProjectTileShape a sh:NodeShape, w3cp:NodeShape ;
+  sh:targetClass ifcowl:IfcProject ;
+  sh:name "IFC Project"@en ;
+  sh:property pres:IfcProjectGlobalIdShape, pres:IfcProjectNameShape, pres:IfcProjectDescriptionShape, pres:IfcProjectLongNameShape, pres:IfcProjectPhaseShape .
+
+pres:IfcProjectGlobalIdShape a sh:PropertyShape, w3cp:PropertyShape ; sh:path ifcowl:globalId_IfcRoot ; sh:name "GlobalId"@en ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:order 10 ; w3cp:viewer w3cp:LiteralViewer ; w3cp:editor w3cp:TextFieldEditor ; w3cp:propertyRole pres:IdentifierRole ; pres:mapsFacadeField ibim:IfcProjectGlobalIdFieldDefault .
+pres:IfcProjectNameShape a sh:PropertyShape, w3cp:PropertyShape ; sh:path ifcowl:name_IfcRoot ; sh:name "Name"@en ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:order 20 ; w3cp:viewer w3cp:LiteralViewer ; w3cp:editor w3cp:TextFieldEditor ; w3cp:propertyRole w3cp:LabelRole ; pres:mapsFacadeField ibim:IfcProjectNameFieldDefault .
+pres:IfcProjectDescriptionShape a sh:PropertyShape, w3cp:PropertyShape ; sh:path ifcowl:description_IfcRoot ; sh:name "Description"@en ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:singleLine false ; sh:order 30 ; w3cp:viewer w3cp:LiteralViewer ; w3cp:editor w3cp:TextAreaEditor ; w3cp:propertyRole pres:DescriptionRole ; pres:mapsFacadeField ibim:IfcProjectDescriptionFieldDefault .
+pres:IfcProjectLongNameShape a sh:PropertyShape, w3cp:PropertyShape ; sh:path ifcowl:longName_IfcContext ; sh:name "Long Name"@en ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:order 40 ; w3cp:viewer w3cp:LiteralViewer ; w3cp:editor w3cp:TextFieldEditor ; w3cp:propertyRole pres:SecondaryLabelRole ; pres:mapsFacadeField ibim:IfcProjectLongNameFieldDefault .
+pres:IfcProjectPhaseShape a sh:PropertyShape, w3cp:PropertyShape ; sh:path ifcowl:phase_IfcContext ; sh:name "Phase"@en ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:order 50 ; w3cp:viewer w3cp:LiteralViewer ; w3cp:editor w3cp:TextFieldEditor ; w3cp:propertyRole pres:StatusRole ; pres:mapsFacadeField ibim:IfcProjectPhaseFieldDefault .
+
+ibim:IfcProjectGlobalIdFieldDefault ibim:defaultProperty ifcowl:globalId_IfcRoot .
+ibim:IfcProjectNameFieldDefault ibim:defaultProperty ifcowl:name_IfcRoot .
+ibim:IfcProjectDescriptionFieldDefault ibim:defaultProperty ifcowl:description_IfcRoot .
+ibim:IfcProjectLongNameFieldDefault ibim:defaultProperty ifcowl:longName_IfcContext .
+ibim:IfcProjectPhaseFieldDefault ibim:defaultProperty ifcowl:phase_IfcContext .
+
+pres:RendererContract a owl:Class ; rdfs:comment "Renderer consumes facade + shape + surface metadata and may choose platform-native components. The contract must not require HTML, CSS, Flutter widget names or device classes."@en .
+pres:WebRenderer a owl:Class ; rdfs:subClassOf pres:RendererContract .
+pres:NativeMobileRenderer a owl:Class ; rdfs:subClassOf pres:RendererContract ; rdfs:comment "A Flutter implementation may render the same contract natively while retaining camera, notifications, filesystem and other mobile capabilities outside the Tile renderer."@en .
