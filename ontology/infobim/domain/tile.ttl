@@ -15,6 +15,10 @@
     owl:imports <https://infobim.org/ontology/domain/presentation> ,
                 <http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl> .
 
+#################################################################
+# InfoBIM Tile taxonomy
+#################################################################
+
 :InfoBIMTile
     a owl:Class ;
     rdfs:subClassOf view:Tile ;
@@ -27,24 +31,73 @@
     rdfs:label "IFC Tile"@en ;
     rdfs:comment "InfoBIM Tile whose focus or navigation semantics depend on IFC/IfcOWL."@en .
 
-:IfcModelTile
-    a owl:Class ;
-    rdfs:subClassOf :IfcTile ;
-    rdfs:label "IFC Model Tile"@en ;
-    rdfs:comment "Aggregated navigation Tile for the logical IFC model of an InfoBIM Project. It must not imply that every IFC class or element becomes an independent generic OntoBDC Tile."@en .
-
 :ProjectTile
     a owl:Class ;
     rdfs:subClassOf :IfcTile ;
     rdfs:label "Project Tile"@en ;
     rdfs:comment "InfoBIM presentation of the IfcProject that identifies the Project."@en .
 
-# The first concrete presentation contract was created in presentation.ttl
-# before this dedicated catalog existed. Classify it here without duplicating
-# its SHACL UI field definition; future concrete InfoBIM Tiles should be added
-# to this file (or imported domain-specific Tile files) and reuse the same
-# presentation contract vocabulary.
-pres:DefaultIfcProjectTile a :ProjectTile .
+:IfcModelTile
+    a owl:Class ;
+    rdfs:subClassOf :IfcTile ;
+    rdfs:label "IFC Model Tile"@en ;
+    rdfs:comment "Aggregated navigation Tile for the distributed logical IFC model of an InfoBIM Project. It presents IFC classes and GlobalId-addressed elements without implying that each IFC class or element becomes an independent generic OntoBDC Tile."@en .
+
+:IfcWorkScheduleTile
+    a owl:Class ;
+    rdfs:subClassOf :IfcTile ;
+    rdfs:label "IFC Work Schedule Tile"@en ;
+    rdfs:comment "InfoBIM presentation of an IfcWorkSchedule from semantic project data, independent of the physical spreadsheet worksheet used to persist schedule information."@en .
+
+#################################################################
+# Concrete Tiles currently implemented by InfoBIM View
+#################################################################
+
+# These three concrete Tiles correspond to the active components in the
+# InfoBIM feat/infobim-view implementation. Their renderer code remains in
+# InfoBIM; this ontology records only renderer-neutral identity and support.
+
+pres:DefaultIfcProjectTile
+    a :ProjectTile ;
+    rdfs:label "IFC Project"@en ;
+    view:hasSupportProfile :DefaultIfcProjectTileSupport .
+
+pres:DefaultIfcModelTile
+    a :IfcModelTile ;
+    rdfs:label "IFC Model"@en ;
+    view:hasSupportProfile :DefaultIfcModelTileSupport .
+
+pres:DefaultIfcWorkScheduleTile
+    a :IfcWorkScheduleTile ;
+    rdfs:label "IFC Work Schedule"@en ;
+    view:hasSupportProfile :DefaultIfcWorkScheduleTileSupport .
+
+# Support envelopes mirror the current ComponentMetadata declarations in
+# InfoBIM View. They are semantic presentation constraints, not CSS sizing.
+:DefaultIfcProjectTileSupport
+    a view:PresentationSupportProfile ;
+    view:minColumns 3 ;
+    view:maxColumns 12 ;
+    view:minRows 2 ;
+    view:maxRows 3 .
+
+:DefaultIfcModelTileSupport
+    a view:PresentationSupportProfile ;
+    view:minColumns 4 ;
+    view:maxColumns 12 ;
+    view:minRows 4 ;
+    view:maxRows 8 .
+
+:DefaultIfcWorkScheduleTileSupport
+    a view:PresentationSupportProfile ;
+    view:minColumns 3 ;
+    view:maxColumns 8 ;
+    view:minRows 2 ;
+    view:maxRows 5 .
+
+#################################################################
+# Extension relation
+#################################################################
 
 :usesGenericTileContract
     a owl:ObjectProperty ;
