@@ -28,7 +28,7 @@
 :usesNodeShape a owl:ObjectProperty ; rdfs:domain :TilePresentationContract ; rdfs:range sh:NodeShape ; rdfs:label "uses node shape"@en .
 :usesSupportProfile a owl:ObjectProperty ; rdfs:domain :TilePresentationContract ; rdfs:range view:PresentationSupportProfile ; rdfs:label "uses support profile"@en ; rdfs:comment "Presentation envelope requested by this semantic Tile contract; separate from the runtime Component support profile."@en .
 :opensPresentationClass a owl:ObjectProperty ; rdfs:domain :TilePresentationContract ; rdfs:range owl:Class ; rdfs:label "opens presentation class"@en ; rdfs:comment "Detailed presentation class opened by an explicit Tile action."@en .
-:appliesWhenFrameworkClass a owl:ObjectProperty ;
+:appliesWhenFrameworkIs a owl:ObjectProperty ;
   rdfs:domain :TilePresentationContract ; rdfs:range owl:Class ; rdfs:label "applies when framework class"@en ;
   rdfs:comment "Applies when the focus WorkStream uses a framework instance of the specified class through obdc:usesProjectManagementFramework."@en .
 :defaultClosed a owl:DatatypeProperty ; rdfs:domain :TilePresentationContract ; rdfs:range xsd:boolean ; rdfs:label "default closed"@en ; rdfs:comment "Whether the Tile is initially closed until explicitly opened."@en .
