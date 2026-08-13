@@ -25,8 +25,9 @@
 ibim:IfcWorkSchedule
     a owl:Class , obdc:SurfaceableEntity ;
     rdfs:subClassOf obdc:DataEntity , ifcowl:IfcWorkSchedule ;
+    ibim:assignsRelatedClass ifcowl:IfcTask , ifcowl:IfcTaskTime ;
     rdfs:label "IFC Work Schedule"@en , "Cronograma IFC"@pt-BR ;
-    rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule. It preserves the IFC identity of the schedule while exposing production-control dimensions that compare planned, actual, and where meaningful forecast conditions."@en ;
+    rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule. It preserves the IFC identity of the schedule while exposing production-control dimensions that compare planned, actual, and where meaningful forecast conditions. Its operational entity context also includes IFC tasks and task-time records through ibim:assignsRelatedClass."@en ;
     schema:description "A surfaceable OntoBDC data entity for deterministic planning and production-control workflows over IFC work schedules."@en .
 
 ibim:WorkScheduleDimension
@@ -53,6 +54,14 @@ ibim:WorkScheduleState
 #################################################################
 # Object properties
 #################################################################
+
+ibim:assignsRelatedClass
+    a owl:ObjectProperty ;
+    rdfs:domain owl:Class ;
+    rdfs:range owl:Class ;
+    rdfs:label "assigns related class"@en , "atribui classe relacionada"@pt-BR ;
+    rdfs:comment "Declares another class that belongs to the operational entity context of the subject class. The relation is representation-neutral: it does not prescribe files, sheets, serialization formats, or user-interface structure."@en ;
+    schema:description "Used by InfoBIM commands and capabilities to discover additional entity classes that must be handled together with a requested root entity class."@en .
 
 ibim:hasDimension
     a owl:ObjectProperty ;
