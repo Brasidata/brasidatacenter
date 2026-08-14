@@ -1,0 +1,63 @@
+@prefix : <https://infobim.org/ontology/w3c-proxy#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shui: <http://www.w3.org/ns/shacl-ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://infobim.org/ontology/domain/W3C> a owl:Ontology ;
+  dcterms:title "InfoBIM W3C SHACL UI Compatibility Proxy"@en ;
+  rdfs:comment "Temporary compatibility proxy used while SHACL 1.2 User Interfaces remains a W3C Working Draft."@en ;
+  schema:description "Safeguard layer only. InfoBIM and OntoBDC presentation ontologies reference these proxy terms so draft W3C identifier changes remain isolated here. This proxy is intended to disappear once SHACL UI reaches a stable final W3C Recommendation and the final vocabulary is confirmed."@en ;
+  owl:versionInfo "Proxy for SHACL 1.2 UI First Public Working Draft, 2026-05-26" ;
+  dcterms:issued "2026-08-13"^^xsd:date ;
+  rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
+
+:NodeShape a owl:Class ; owl:equivalentClass sh:NodeShape .
+:PropertyShape a owl:Class ; owl:equivalentClass sh:PropertyShape .
+:PropertyGroup a owl:Class ; owl:equivalentClass sh:PropertyGroup .
+:targetClass a owl:ObjectProperty ; owl:equivalentProperty sh:targetClass .
+:property a owl:ObjectProperty ; owl:equivalentProperty sh:property .
+:path a rdf:Property ; owl:equivalentProperty sh:path .
+:name a rdf:Property ; owl:equivalentProperty sh:name .
+:description a rdf:Property ; owl:equivalentProperty sh:description .
+:datatype a owl:ObjectProperty ; owl:equivalentProperty sh:datatype .
+:nodeKind a owl:ObjectProperty ; owl:equivalentProperty sh:nodeKind .
+:class a owl:ObjectProperty ; owl:equivalentProperty sh:class .
+:node a owl:ObjectProperty ; owl:equivalentProperty sh:node .
+:minCount a owl:DatatypeProperty ; owl:equivalentProperty sh:minCount .
+:maxCount a owl:DatatypeProperty ; owl:equivalentProperty sh:maxCount .
+:order a owl:DatatypeProperty ; owl:equivalentProperty sh:order .
+:group a owl:ObjectProperty ; owl:equivalentProperty sh:group .
+:singleLine a owl:DatatypeProperty ; owl:equivalentProperty sh:singleLine .
+:rootClass a owl:ObjectProperty ; owl:equivalentProperty sh:rootClass .
+
+:Widget a owl:Class ; owl:equivalentClass shui:Widget .
+:Editor a owl:Class ; owl:equivalentClass shui:Editor ; rdfs:subClassOf :Widget .
+:Viewer a owl:Class ; owl:equivalentClass shui:Viewer ; rdfs:subClassOf :Widget .
+:PropertyRole a owl:Class ; owl:equivalentClass shui:PropertyRole .
+:editor a owl:ObjectProperty ; owl:equivalentProperty shui:editor .
+:viewer a owl:ObjectProperty ; owl:equivalentProperty shui:viewer .
+:propertyRole a owl:ObjectProperty ; owl:equivalentProperty shui:propertyRole .
+
+:LabelRole a owl:NamedIndividual, :PropertyRole ; owl:sameAs shui:LabelRole .
+:BooleanEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:BooleanEditor .
+:DatePickerEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:DatePickerEditor .
+:DateTimePickerEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:DateTimePickerEditor .
+:DetailsEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:DetailsEditor .
+:EnumSelectEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:EnumSelectEditor .
+:InstancesSelectEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:InstancesSelectEditor .
+:IRIEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:IRIEditor .
+:NumberFieldEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:NumberFieldEditor .
+:TextAreaEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:TextAreaEditor .
+:TextFieldEditor a owl:NamedIndividual, :Editor ; owl:sameAs shui:TextFieldEditor .
+:DetailsViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:DetailsViewer .
+:HyperlinkViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:HyperlinkViewer .
+:ImageViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:ImageViewer .
+:IRIViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:IRIViewer .
+:LabelViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:LabelViewer .
+:LiteralViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:LiteralViewer .
+:ValueTableViewer a owl:NamedIndividual, :Viewer ; owl:sameAs shui:ValueTableViewer .

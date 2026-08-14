@@ -1,0 +1,349 @@
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://infobim.org/ontology/ns>
+    a owl:Ontology ;
+    rdfs:label "InfoBIM Domain Ontology"@en ;
+    rdfs:comment "Core InfoBIM domain vocabulary for semantic OpenBIM entities."@en ;
+    vann:preferredNamespacePrefix "ibim" ;
+    vann:preferredNamespaceUri "https://infobim.org/ontology/ns#" ;
+    rdfs:seeAlso <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcprocessextension/lexical/ifcworkschedule.htm> ,
+        <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcdatetimeresource/lexical/ifctasktime.htm> .
+
+#################################################################
+# Classes
+#################################################################
+
+ibim:IfcWorkSchedule
+    a owl:Class , obdc:SurfaceableEntity ;
+    rdfs:subClassOf obdc:DataEntity , ifcowl:IfcWorkSchedule ;
+    ibim:assignsRelatedClass ifcowl:IfcTask , ifcowl:IfcTaskTime ;
+    rdfs:label "IFC Work Schedule"@en , "Cronograma IFC"@pt-BR ;
+    rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule. It preserves the IFC identity of the schedule while exposing production-control dimensions that compare planned, actual, and where meaningful forecast conditions. Its operational entity context also includes IFC tasks and task-time records through ibim:assignsRelatedClass."@en ;
+    schema:description "A surfaceable OntoBDC data entity for deterministic planning and production-control workflows over IFC work schedules."@en .
+
+ibim:WorkScheduleDimension
+    a owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ;
+    rdfs:label "Work Schedule Dimension"@en , "Dimensão do cronograma"@pt-BR ;
+    rdfs:comment "Identifiable control dimension belonging to an InfoBIM IfcWorkSchedule. A dimension is classified independently by an aspect such as cost or labor and by a state such as planned or actual."@en .
+
+ibim:WorkScheduleDimensionKind
+    a owl:Class ;
+    rdfs:label "Work Schedule Dimension Kind"@en , "Tipo de dimensão do cronograma"@pt-BR ;
+    rdfs:comment "Reusable classification combining one schedule-control aspect with one schedule-control state."@en .
+
+ibim:WorkScheduleAspect
+    a owl:Class ;
+    rdfs:label "Work Schedule Aspect"@en , "Aspecto do cronograma"@pt-BR ;
+    rdfs:comment "Controlled semantic axis describing what is being planned or measured in a work schedule."@en .
+
+ibim:WorkScheduleState
+    a owl:Class ;
+    rdfs:label "Work Schedule State"@en , "Estado do cronograma"@pt-BR ;
+    rdfs:comment "Controlled semantic axis describing whether schedule information is planned, actual, or forecast."@en .
+
+#################################################################
+# Object properties
+#################################################################
+
+ibim:assignsRelatedClass
+    a owl:ObjectProperty ;
+    rdfs:domain owl:Class ;
+    rdfs:range owl:Class ;
+    rdfs:label "assigns related class"@en , "atribui classe relacionada"@pt-BR ;
+    rdfs:comment "Declares another class that belongs to the operational entity context of the subject class. The relation is representation-neutral: it does not prescribe files, sheets, serialization formats, or user-interface structure."@en ;
+    schema:description "Used by InfoBIM commands and capabilities to discover additional entity classes that must be handled together with a requested root entity class."@en .
+
+ibim:workStreamOfProject
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:isPartOf ;
+    owl:inverseOf ibim:hasWorkStream ;
+    rdfs:domain ws:WorkStream ;
+    rdfs:range ifcowl:IfcProject ;
+    rdfs:label "work stream of project"@en , "frente de trabalho do projeto"@pt-BR ;
+    rdfs:comment "Relates a WorkStream to the IFC project whose coordinated work scope it represents."@en .
+
+ibim:hasWorkStream
+    a owl:ObjectProperty ;
+    rdfs:subPropertyOf dcterms:hasPart ;
+    rdfs:domain ifcowl:IfcProject ;
+    rdfs:range ws:WorkStream ;
+    rdfs:label "has work stream"@en , "possui frente de trabalho"@pt-BR ;
+    rdfs:comment "Inverse relation from an IFC project to a WorkStream defined within that project context."@en .
+
+ibim:hasDimension
+    a owl:ObjectProperty ;
+    owl:inverseOf ibim:dimensionOf ;
+    rdfs:domain ibim:IfcWorkSchedule ;
+    rdfs:range ibim:WorkScheduleDimension ;
+    rdfs:label "has dimension"@en , "possui dimensão"@pt-BR ;
+    rdfs:comment "Associates an IFC work schedule with an identifiable production-control dimension."@en .
+
+ibim:dimensionOf
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:WorkScheduleDimension ;
+    rdfs:range ibim:IfcWorkSchedule ;
+    rdfs:label "dimension of"@en , "dimensão de"@pt-BR .
+
+ibim:dimensionKind
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ibim:WorkScheduleDimension ;
+    rdfs:range ibim:WorkScheduleDimensionKind ;
+    rdfs:label "dimension kind"@en , "tipo de dimensão"@pt-BR .
+
+ibim:dimensionAspect
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ibim:WorkScheduleDimensionKind ;
+    rdfs:range ibim:WorkScheduleAspect ;
+    rdfs:label "dimension aspect"@en , "aspecto da dimensão"@pt-BR .
+
+ibim:dimensionState
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain ibim:WorkScheduleDimensionKind ;
+    rdfs:range ibim:WorkScheduleState ;
+    rdfs:label "dimension state"@en , "estado da dimensão"@pt-BR .
+
+ibim:scheduledBy
+    a owl:ObjectProperty ;
+    owl:inverseOf ibim:schedulesDimension ;
+    rdfs:domain ws:WorkStreamDimension ;
+    rdfs:range ibim:IfcWorkSchedule ;
+    rdfs:label "scheduled by"@en , "cronogramado por"@pt-BR ;
+    rdfs:comment "Relates a WorkStream temporal dimension to the IFC work schedule that plans, records, or controls its execution in time. Its intended subject is a ws:WorkStreamDimension classified with ws:dimensionKind ws:When."@en .
+
+ibim:schedulesDimension
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:IfcWorkSchedule ;
+    rdfs:range ws:WorkStreamDimension ;
+    rdfs:label "schedules dimension"@en , "cronograma dimensão"@pt-BR ;
+    rdfs:comment "Inverse relation from an IFC work schedule to the WorkStream temporal dimension whose execution it schedules or controls."@en .
+
+#################################################################
+# Schedule-control aspects
+#################################################################
+
+ibim:Scope
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Scope"@en , "Escopo"@pt-BR ;
+    schema:identifier "scope" ;
+    schema:description "Work content expected or evidenced as executed, including activities, deliverables, quantities, and other scope evidence."@en .
+
+ibim:Time
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Time"@en , "Tempo"@pt-BR ;
+    schema:identifier "time" ;
+    schema:description "Temporal execution information such as starts, finishes, durations, milestones, remaining time, and schedule windows."@en .
+
+ibim:Progress
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Progress"@en , "Avanço"@pt-BR ;
+    schema:identifier "progress" ;
+    schema:description "Expected, measured, or forecast completion of scheduled work."@en .
+
+ibim:Labor
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Labor"@en , "Mão de obra"@pt-BR ;
+    schema:identifier "labor" ;
+    schema:description "Human resources assigned to or consumed by scheduled work, including teams, roles, quantities, work-hours, and utilization."@en .
+
+ibim:Equipment
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Equipment"@en , "Equipamentos"@pt-BR ;
+    schema:identifier "equipment" ;
+    schema:description "Non-human execution resources such as machinery, equipment, tools, temporary means, and their utilization."@en .
+
+ibim:Material
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Material"@en , "Materiais"@pt-BR ;
+    schema:identifier "material" ;
+    schema:description "Materials and consumable inputs required by or consumed during scheduled work."@en .
+
+ibim:Cost
+    a ibim:WorkScheduleAspect ;
+    rdfs:label "Cost"@en , "Custo"@pt-BR ;
+    schema:identifier "cost" ;
+    schema:description "Financial value associated with scheduled work, resources, goods, services, and production."@en .
+
+#################################################################
+# Schedule-control states
+#################################################################
+
+ibim:Planned
+    a ibim:WorkScheduleState ;
+    rdfs:label "Planned"@en , "Previsto"@pt-BR ;
+    schema:identifier "planned" ;
+    rdfs:comment "Baseline or currently approved plan against which execution is evaluated."@en .
+
+ibim:Actual
+    a ibim:WorkScheduleState ;
+    rdfs:label "Actual"@en , "Realizado"@pt-BR ;
+    schema:identifier "actual" ;
+    rdfs:comment "Measured, recorded, or otherwise evidenced condition of execution."@en .
+
+ibim:Forecast
+    a ibim:WorkScheduleState ;
+    rdfs:label "Forecast"@en , "Projeção"@pt-BR ;
+    schema:identifier "forecast" ;
+    rdfs:comment "Current projection of future or remaining execution based on the status known at the analysis date."@en .
+
+#################################################################
+# Dimension kinds - Scope
+#################################################################
+
+ibim:ScopePlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Scope ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Scope"@en , "Escopo previsto"@pt-BR ;
+    schema:identifier "scope-planned" .
+
+ibim:ScopeActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Scope ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Scope"@en , "Escopo realizado"@pt-BR ;
+    schema:identifier "scope-actual" .
+
+#################################################################
+# Dimension kinds - Time
+#################################################################
+
+ibim:TimePlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Time ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Time"@en , "Tempo previsto"@pt-BR ;
+    schema:identifier "time-planned" ;
+    schema:description "Scheduled starts, finishes, durations, and temporal constraints."@en .
+
+ibim:TimeActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Time ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Time"@en , "Tempo realizado"@pt-BR ;
+    schema:identifier "time-actual" ;
+    schema:description "Measured starts, finishes, and durations."@en .
+
+ibim:TimeForecast
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Time ;
+    ibim:dimensionState ibim:Forecast ;
+    rdfs:label "Forecast Time"@en , "Tempo projetado"@pt-BR ;
+    schema:identifier "time-forecast" ;
+    schema:description "Projected remaining time and projected completion dates based on current status."@en .
+
+#################################################################
+# Dimension kinds - Progress
+#################################################################
+
+ibim:ProgressPlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Progress ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Progress"@en , "Avanço previsto"@pt-BR ;
+    schema:identifier "progress-planned" .
+
+ibim:ProgressActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Progress ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Progress"@en , "Avanço realizado"@pt-BR ;
+    schema:identifier "progress-actual" ;
+    schema:description "Measured completion at the applicable status date."@en .
+
+ibim:ProgressForecast
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Progress ;
+    ibim:dimensionState ibim:Forecast ;
+    rdfs:label "Forecast Progress"@en , "Avanço projetado"@pt-BR ;
+    schema:identifier "progress-forecast" .
+
+#################################################################
+# Dimension kinds - Labor
+#################################################################
+
+ibim:LaborPlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Labor ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Labor"@en , "Mão de obra prevista"@pt-BR ;
+    schema:identifier "labor-planned" .
+
+ibim:LaborActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Labor ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Labor"@en , "Mão de obra realizada"@pt-BR ;
+    schema:identifier "labor-actual" .
+
+#################################################################
+# Dimension kinds - Equipment
+#################################################################
+
+ibim:EquipmentPlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Equipment ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Equipment"@en , "Equipamentos previstos"@pt-BR ;
+    schema:identifier "equipment-planned" .
+
+ibim:EquipmentActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Equipment ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Equipment"@en , "Equipamentos utilizados"@pt-BR ;
+    schema:identifier "equipment-actual" .
+
+#################################################################
+# Dimension kinds - Material
+#################################################################
+
+ibim:MaterialPlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Material ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Material"@en , "Materiais previstos"@pt-BR ;
+    schema:identifier "material-planned" .
+
+ibim:MaterialActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Material ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Material"@en , "Materiais consumidos"@pt-BR ;
+    schema:identifier "material-actual" .
+
+#################################################################
+# Dimension kinds - Cost
+#################################################################
+
+ibim:CostPlanned
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Cost ;
+    ibim:dimensionState ibim:Planned ;
+    rdfs:label "Planned Cost"@en , "Custo previsto"@pt-BR ;
+    schema:identifier "cost-planned" .
+
+ibim:CostActual
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Cost ;
+    ibim:dimensionState ibim:Actual ;
+    rdfs:label "Actual Cost"@en , "Custo realizado"@pt-BR ;
+    schema:identifier "cost-actual" .
+
+ibim:CostForecast
+    a ibim:WorkScheduleDimensionKind ;
+    ibim:dimensionAspect ibim:Cost ;
+    ibim:dimensionState ibim:Forecast ;
+    rdfs:label "Forecast Cost"@en , "Custo projetado"@pt-BR ;
+    schema:identifier "cost-forecast" ;
+    schema:description "Current projection of total or remaining cost based on known execution."@en .

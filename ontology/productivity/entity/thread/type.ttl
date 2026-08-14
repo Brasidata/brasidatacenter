@@ -1,0 +1,52 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl#> .
+@prefix ea: <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl>
+    a owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ;
+    rdfs:label "Thread Ontology"@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+:Thread
+    a owl:Class, owl:NamedIndividual, obdc:DataEntity ;
+    rdfs:label "Thread"@en, "Thread"@pt-BR ;
+    rdfs:comment "A persistent discussion or reasoning thread to which annotations may belong."@en ;
+    schema:identifier "thread" .
+
+#################################################################
+#    Properties
+#################################################################
+
+:title
+    a owl:DatatypeProperty ;
+    rdfs:domain :Thread ;
+    rdfs:range xsd:string ;
+    rdfs:label "title"@en .
+
+:description
+    a owl:DatatypeProperty ;
+    rdfs:domain :Thread ;
+    rdfs:range xsd:string ;
+    rdfs:label "description"@en .
+
+# The annotation-to-thread relation is owned by the annotation vocabulary
+# but its range is the reusable OntoBDC Thread entity.
+ea:thread
+    a owl:ObjectProperty ;
+    rdfs:domain ea:EnrichmentAnnotation ;
+    rdfs:range :Thread ;
+    rdfs:label "thread"@en, "thread"@pt-BR ;
+    rdfs:comment "Associates an enrichment annotation with a persistent Thread entity."@en .
+
+# Kept only as a compatibility marker for existing annotation datasets.
+ea:Subject owl:deprecated true .
