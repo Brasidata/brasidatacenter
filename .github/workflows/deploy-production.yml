@@ -1,0 +1,78 @@
+name: Deploy production repository
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brasidatacenter-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Replace production content
+    if: >-
+      startsWith(github.event.release.tag_name, 'v') ||
+      startsWith(github.event.release.tag_name, 'V')
+    runs-on: ubuntu-latest
+
+    env:
+      PRODUCTION_REPOSITORY: Brasidata/brasidatacenter
+      PRODUCTION_BRANCH: master
+
+    steps:
+      - name: Checkout released version
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Confirm deployed release
+        run: |
+          echo "Deploying release: ${{ github.event.release.name }}"
+          echo "Deploying tag: ${{ github.event.release.tag_name }}"
+          echo "Deploying commit: $GITHUB_SHA"
+          echo "Production repository: $PRODUCTION_REPOSITORY"
+
+      - name: Clone production repository
+        env:
+          PRODUCTION_REPO_TOKEN: ${{ secrets.PRODUCTION_REPO_TOKEN }}
+        run: |
+          git clone \
+            --branch "$PRODUCTION_BRANCH" \
+            "https://x-access-token:${PRODUCTION_REPO_TOKEN}@github.com/${PRODUCTION_REPOSITORY}.git" \
+            production
+
+      - name: Replace production content
+        run: |
+          rsync -av --delete \
+            --exclude=".git/" \
+            --exclude=".github/" \
+            --exclude="production/" \
+            --exclude="reinstall.ps1" \
+            --exclude="reinstall.sh" \
+            ./ production/
+
+      - name: Commit and push production
+        working-directory: production
+        env:
+          DEPLOYED_TAG: ${{ github.event.release.tag_name }}
+          DEPLOYED_SHA: ${{ github.sha }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "Production already matches ${DEPLOYED_TAG}."
+            exit 0
+          fi
+
+          git commit -m "Deploy ${DEPLOYED_TAG} (${DEPLOYED_SHA})"
+          git push origin "$PRODUCTION_BRANCH"
