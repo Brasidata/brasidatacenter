@@ -51,6 +51,7 @@
 :LanguageTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserButtonComponent ; rdfs:label "Language Tile"@en .
 :LogoTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserImageComponent ; rdfs:label "Logo Tile"@en .
 :PhotoTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserImageComponent ; rdfs:label "Photo Tile"@en .
+:FileSizeTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserStatusComponent ; rdfs:label "File Size Tile"@en .
 :PresentationSystemLog a owl:Class ; rdfs:subClassOf :BrowserLogComponent ; rdfs:label "Presentation System Log"@en .
 
 :hasSurface a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasRegion ; rdfs:domain :PresentationLayer ; rdfs:range :PresentationSurface ; rdfs:label "has surface"@en .
