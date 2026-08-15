@@ -19,7 +19,7 @@
     rdfs:label "Work Stream"@en ,
         "Frente de trabalho"@pt-BR ;
     rdfs:comment "Coherent scope of coordinated work within a project."@en ;
-    schema:description "Project work scope organized through the 5W2H dimensions: what, why, who, where, when, how, and how much."@en .
+    schema:description "Project work scope that may be organized and managed through one or more project management frameworks. 5W2H is one supported framework."@en .
 
 :WorkStreamDimension rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity ;
@@ -100,7 +100,7 @@
     rdfs:range xsd:string ;
     rdfs:label "how"@en ,
         "como"@pt-BR ;
-    schema:description "Method, procedure, or execution strategy for the work stream."@en .
+    schema:description "Method, procedure, or execution strategy of the work stream within the applied project management framework."@en .
 
 :howMuch rdf:type owl:DatatypeProperty ;
     rdfs:domain :WorkStream ;
@@ -108,6 +108,17 @@
     rdfs:label "how much"@en ,
         "quanto"@pt-BR ;
     schema:description "Cost, quantity, effort, or other magnitude associated with the work stream."@en .
+
+#################################################################
+#    Project Management Frameworks
+#################################################################
+
+:FiveWTwoH rdf:type owl:Class ;
+    rdfs:subClassOf obdc:ProjectManagementFramework ;
+    rdfs:label "5W2H"@en ,
+        "5W2H"@pt-BR ;
+    schema:identifier "5w2h" ;
+    schema:description "Project management framework that structures a work scope through What, Why, Who, Where, When, How, and How Much dimensions."@en .
 
 #################################################################
 #    Dimension Kinds

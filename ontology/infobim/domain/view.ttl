@@ -1,0 +1,217 @@
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+
+<https://infobim.org/ontology/domain/view>
+    a owl:Ontology ;
+    rdfs:label "InfoBIM View Ontology"@en ;
+    rdfs:comment "InfoBIM-specific semantic vocabulary for facade definitions and facade fields used to project engineering-domain resources into presentation components."@en ;
+    schema:description "Defines reusable InfoBIM facade descriptions, the fields that compose them, and mappings from facade fields to default RDF properties. Surface composition remains owned by the OntoBDC View Ontology."@en ;
+    owl:imports <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> .
+
+#################################################################
+# Core classes
+#################################################################
+
+ibim:Facade
+    a owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Facade"@en ;
+    rdfs:comment "Reusable semantic projection describing which fields of a domain resource are exposed to a presentation or interaction layer."@en .
+
+ibim:FacadeField
+    a owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "Facade Field"@en ;
+    rdfs:comment "One field participating in an InfoBIM Facade. The field may declare a default RDF property and presentation metadata without owning renderer behavior."@en .
+
+ibim:IfcProjectFacade a owl:Class ; rdfs:subClassOf ibim:Facade ; rdfs:label "IFC Project Facade"@en .
+ibim:IfcWorkScheduleFacade a owl:Class ; rdfs:subClassOf ibim:Facade ; rdfs:label "IFC Work Schedule Facade"@en .
+ibim:IfcTaskFacade a owl:Class ; rdfs:subClassOf ibim:Facade ; rdfs:label "IFC Task Facade"@en .
+ibim:IfcTaskTimeFacade a owl:Class ; rdfs:subClassOf ibim:Facade ; rdfs:label "IFC Task Time Facade"@en .
+
+#################################################################
+# Object properties
+#################################################################
+
+ibim:hasFacadeField
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:Facade ;
+    rdfs:range ibim:FacadeField ;
+    rdfs:label "has facade field"@en .
+
+ibim:defaultProperty
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:FacadeField ;
+    rdfs:range rdf:Property ;
+    rdfs:label "default property"@en .
+
+ibim:targetsClass
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:Facade ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "targets class"@en .
+
+ibim:fieldDatatype
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:FacadeField ;
+    rdfs:range rdfs:Datatype ;
+    rdfs:label "field datatype"@en ;
+    rdfs:comment "Logical datatype of a facade field, independent of its physical serialization."@en .
+
+#################################################################
+# Datatype properties
+#################################################################
+
+ibim:fieldOrder
+    a owl:DatatypeProperty ;
+    rdfs:domain ibim:FacadeField ;
+    rdfs:range xsd:integer ;
+    rdfs:label "field order"@en .
+
+ibim:fieldLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain ibim:FacadeField ;
+    rdfs:range rdf:langString ;
+    rdfs:label "field label"@en .
+
+ibim:isIdentifierField
+    a owl:DatatypeProperty ;
+    rdfs:domain ibim:FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is identifier field"@en .
+
+#################################################################
+# IFC Project facade
+#################################################################
+
+ibim:DefaultIfcProjectFacade
+    a ibim:IfcProjectFacade ;
+    ibim:targetsClass ifcowl:IfcProject ;
+    rdfs:label "Default IFC Project Facade"@en ;
+    ibim:hasFacadeField ibim:IfcProjectGlobalIdFieldDefault , ibim:IfcProjectNameFieldDefault , ibim:IfcProjectDescriptionFieldDefault , ibim:IfcProjectLongNameFieldDefault , ibim:IfcProjectPhaseFieldDefault .
+
+ibim:IfcProjectGlobalIdFieldDefault a ibim:FacadeField ; schema:identifier "GlobalId" ; ibim:fieldOrder 10 ; ibim:fieldLabel "GlobalId"@en ; ibim:fieldDatatype xsd:string ; ibim:isIdentifierField true .
+ibim:IfcProjectNameFieldDefault a ibim:FacadeField ; schema:identifier "Name" ; ibim:fieldOrder 20 ; ibim:fieldLabel "Name"@en ; ibim:fieldDatatype xsd:string .
+ibim:IfcProjectDescriptionFieldDefault a ibim:FacadeField ; schema:identifier "Description" ; ibim:fieldOrder 30 ; ibim:fieldLabel "Description"@en ; ibim:fieldDatatype xsd:string .
+ibim:IfcProjectLongNameFieldDefault a ibim:FacadeField ; schema:identifier "LongName" ; ibim:fieldOrder 40 ; ibim:fieldLabel "LongName"@en ; ibim:fieldDatatype xsd:string .
+ibim:IfcProjectPhaseFieldDefault a ibim:FacadeField ; schema:identifier "Phase" ; ibim:fieldOrder 50 ; ibim:fieldLabel "Phase"@en ; ibim:fieldDatatype xsd:string .
+
+#################################################################
+# IFC Work Schedule facade
+#################################################################
+
+ibim:DefaultIfcWorkScheduleFacade
+    a ibim:IfcWorkScheduleFacade ;
+    ibim:targetsClass ibim:IfcWorkSchedule ;
+    rdfs:label "Default IFC Work Schedule Facade"@en ;
+    rdfs:comment "Default user-facing projection of an IFC work schedule. Physical grouping with related classes is intentionally not described here."@en ;
+    ibim:hasFacadeField
+        ibim:IfcWorkScheduleGlobalIdField , ibim:IfcWorkScheduleNameField , ibim:IfcWorkScheduleDescriptionField ,
+        ibim:IfcWorkScheduleObjectTypeField , ibim:IfcWorkScheduleIdentificationField , ibim:IfcWorkScheduleCreationDateField ,
+        ibim:IfcWorkScheduleCreatorsField , ibim:IfcWorkSchedulePurposeField , ibim:IfcWorkScheduleDurationField ,
+        ibim:IfcWorkScheduleTotalFloatField , ibim:IfcWorkScheduleStartTimeField , ibim:IfcWorkScheduleFinishTimeField ,
+        ibim:IfcWorkSchedulePredefinedTypeField .
+
+ibim:IfcWorkScheduleGlobalIdField a ibim:FacadeField ; schema:identifier "GlobalId" ; ibim:fieldOrder 10 ; ibim:fieldDatatype xsd:string ; ibim:isIdentifierField true .
+ibim:IfcWorkScheduleNameField a ibim:FacadeField ; schema:identifier "Name" ; ibim:fieldOrder 20 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkScheduleDescriptionField a ibim:FacadeField ; schema:identifier "Description" ; ibim:fieldOrder 30 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkScheduleObjectTypeField a ibim:FacadeField ; schema:identifier "ObjectType" ; ibim:fieldOrder 40 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkScheduleIdentificationField a ibim:FacadeField ; schema:identifier "Identification" ; ibim:fieldOrder 50 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkScheduleCreationDateField a ibim:FacadeField ; schema:identifier "CreationDate" ; ibim:fieldOrder 60 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcWorkScheduleCreatorsField a ibim:FacadeField ; schema:identifier "Creators" ; ibim:fieldOrder 70 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkSchedulePurposeField a ibim:FacadeField ; schema:identifier "Purpose" ; ibim:fieldOrder 80 ; ibim:fieldDatatype xsd:string .
+ibim:IfcWorkScheduleDurationField a ibim:FacadeField ; schema:identifier "Duration" ; ibim:fieldOrder 90 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcWorkScheduleTotalFloatField a ibim:FacadeField ; schema:identifier "TotalFloat" ; ibim:fieldOrder 100 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcWorkScheduleStartTimeField a ibim:FacadeField ; schema:identifier "StartTime" ; ibim:fieldOrder 110 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcWorkScheduleFinishTimeField a ibim:FacadeField ; schema:identifier "FinishTime" ; ibim:fieldOrder 120 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcWorkSchedulePredefinedTypeField a ibim:FacadeField ; schema:identifier "PredefinedType" ; ibim:fieldOrder 130 ; ibim:fieldDatatype xsd:string ; rdfs:comment "IfcWorkScheduleTypeEnum: ACTUAL, BASELINE, PLANNED, USERDEFINED, NOTDEFINED. PLANNED is the principal InfoBIM authoring schedule."@en .
+
+#################################################################
+# IFC Task facade
+#################################################################
+
+ibim:DefaultIfcTaskFacade
+    a ibim:IfcTaskFacade ;
+    ibim:targetsClass ifcowl:IfcTask ;
+    rdfs:label "Default IFC Task Facade"@en ;
+    ibim:hasFacadeField
+        ibim:IfcTaskGlobalIdField , ibim:IfcTaskIdentificationField , ibim:IfcTaskNameField , ibim:IfcTaskDescriptionField ,
+        ibim:IfcTaskLongDescriptionField , ibim:IfcTaskObjectTypeField , ibim:IfcTaskStatusField , ibim:IfcTaskWorkMethodField ,
+        ibim:IfcTaskIsMilestoneField , ibim:IfcTaskPriorityField , ibim:IfcTaskTaskTimeField , ibim:IfcTaskPredefinedTypeField .
+
+ibim:IfcTaskGlobalIdField a ibim:FacadeField ; schema:identifier "GlobalId" ; ibim:fieldOrder 10 ; ibim:fieldDatatype xsd:string ; ibim:isIdentifierField true .
+ibim:IfcTaskIdentificationField a ibim:FacadeField ; schema:identifier "Identification" ; ibim:fieldOrder 20 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskNameField a ibim:FacadeField ; schema:identifier "Name" ; ibim:fieldOrder 30 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskDescriptionField a ibim:FacadeField ; schema:identifier "Description" ; ibim:fieldOrder 40 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskLongDescriptionField a ibim:FacadeField ; schema:identifier "LongDescription" ; ibim:fieldOrder 50 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskObjectTypeField a ibim:FacadeField ; schema:identifier "ObjectType" ; ibim:fieldOrder 60 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskStatusField a ibim:FacadeField ; schema:identifier "Status" ; ibim:fieldOrder 70 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskWorkMethodField a ibim:FacadeField ; schema:identifier "WorkMethod" ; ibim:fieldOrder 80 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskIsMilestoneField a ibim:FacadeField ; schema:identifier "IsMilestone" ; ibim:fieldOrder 90 ; ibim:fieldDatatype xsd:boolean .
+ibim:IfcTaskPriorityField a ibim:FacadeField ; schema:identifier "Priority" ; ibim:fieldOrder 100 ; ibim:fieldDatatype xsd:integer .
+ibim:IfcTaskTaskTimeField a ibim:FacadeField ; schema:identifier "TaskTime" ; ibim:fieldOrder 110 ; ibim:fieldDatatype xsd:string ; rdfs:comment "Reference to the corresponding IfcTaskTime entity, not an embedded JSON payload."@en .
+ibim:IfcTaskPredefinedTypeField a ibim:FacadeField ; schema:identifier "PredefinedType" ; ibim:fieldOrder 120 ; ibim:fieldDatatype xsd:string .
+
+#################################################################
+# IFC Task Time facade
+#################################################################
+
+ibim:DefaultIfcTaskTimeFacade
+    a ibim:IfcTaskTimeFacade ;
+    ibim:targetsClass ifcowl:IfcTaskTime ;
+    rdfs:label "Default IFC Task Time Facade"@en ;
+    ibim:hasFacadeField
+        ibim:IfcTaskTimeNameField , ibim:IfcTaskTimeDataOriginField , ibim:IfcTaskTimeUserDefinedDataOriginField ,
+        ibim:IfcTaskTimeDurationTypeField , ibim:IfcTaskTimeScheduleDurationField , ibim:IfcTaskTimeScheduleStartField ,
+        ibim:IfcTaskTimeScheduleFinishField , ibim:IfcTaskTimeEarlyStartField , ibim:IfcTaskTimeEarlyFinishField ,
+        ibim:IfcTaskTimeLateStartField , ibim:IfcTaskTimeLateFinishField , ibim:IfcTaskTimeFreeFloatField ,
+        ibim:IfcTaskTimeTotalFloatField , ibim:IfcTaskTimeIsCriticalField , ibim:IfcTaskTimeStatusTimeField ,
+        ibim:IfcTaskTimeActualDurationField , ibim:IfcTaskTimeActualStartField , ibim:IfcTaskTimeActualFinishField ,
+        ibim:IfcTaskTimeRemainingTimeField , ibim:IfcTaskTimeCompletionField .
+
+ibim:IfcTaskTimeNameField a ibim:FacadeField ; schema:identifier "Name" ; ibim:fieldOrder 10 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskTimeDataOriginField a ibim:FacadeField ; schema:identifier "DataOrigin" ; ibim:fieldOrder 20 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskTimeUserDefinedDataOriginField a ibim:FacadeField ; schema:identifier "UserDefinedDataOrigin" ; ibim:fieldOrder 30 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskTimeDurationTypeField a ibim:FacadeField ; schema:identifier "DurationType" ; ibim:fieldOrder 40 ; ibim:fieldDatatype xsd:string .
+ibim:IfcTaskTimeScheduleDurationField a ibim:FacadeField ; schema:identifier "ScheduleDuration" ; ibim:fieldOrder 50 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcTaskTimeScheduleStartField a ibim:FacadeField ; schema:identifier "ScheduleStart" ; ibim:fieldOrder 60 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeScheduleFinishField a ibim:FacadeField ; schema:identifier "ScheduleFinish" ; ibim:fieldOrder 70 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeEarlyStartField a ibim:FacadeField ; schema:identifier "EarlyStart" ; ibim:fieldOrder 80 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeEarlyFinishField a ibim:FacadeField ; schema:identifier "EarlyFinish" ; ibim:fieldOrder 90 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeLateStartField a ibim:FacadeField ; schema:identifier "LateStart" ; ibim:fieldOrder 100 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeLateFinishField a ibim:FacadeField ; schema:identifier "LateFinish" ; ibim:fieldOrder 110 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeFreeFloatField a ibim:FacadeField ; schema:identifier "FreeFloat" ; ibim:fieldOrder 120 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcTaskTimeTotalFloatField a ibim:FacadeField ; schema:identifier "TotalFloat" ; ibim:fieldOrder 130 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcTaskTimeIsCriticalField a ibim:FacadeField ; schema:identifier "IsCritical" ; ibim:fieldOrder 140 ; ibim:fieldDatatype xsd:boolean .
+ibim:IfcTaskTimeStatusTimeField a ibim:FacadeField ; schema:identifier "StatusTime" ; ibim:fieldOrder 150 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeActualDurationField a ibim:FacadeField ; schema:identifier "ActualDuration" ; ibim:fieldOrder 160 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcTaskTimeActualStartField a ibim:FacadeField ; schema:identifier "ActualStart" ; ibim:fieldOrder 170 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeActualFinishField a ibim:FacadeField ; schema:identifier "ActualFinish" ; ibim:fieldOrder 180 ; ibim:fieldDatatype xsd:dateTime .
+ibim:IfcTaskTimeRemainingTimeField a ibim:FacadeField ; schema:identifier "RemainingTime" ; ibim:fieldOrder 190 ; ibim:fieldDatatype xsd:duration .
+ibim:IfcTaskTimeCompletionField a ibim:FacadeField ; schema:identifier "Completion" ; ibim:fieldOrder 200 ; ibim:fieldDatatype xsd:decimal .
+
+#################################################################
+# SHACL baseline
+#################################################################
+
+ibim:FacadeShape
+    a sh:NodeShape ;
+    sh:targetClass ibim:Facade ;
+    sh:property [ sh:path ibim:hasFacadeField ; sh:class ibim:FacadeField ; sh:minCount 1 ] ;
+    sh:property [ sh:path ibim:targetsClass ; sh:maxCount 1 ] .
+
+ibim:FacadeFieldShape
+    a sh:NodeShape ;
+    sh:targetClass ibim:FacadeField ;
+    sh:property [ sh:path ibim:defaultProperty ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ibim:fieldDatatype ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ibim:fieldOrder ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 0 ] ;
+    sh:property [ sh:path ibim:isIdentifierField ; sh:datatype xsd:boolean ; sh:maxCount 1 ] .
