@@ -54,9 +54,12 @@ jobs:
             --exclude=".git/" \
             --exclude=".github/" \
             --exclude="production/" \
+<<<<<<< HEAD
             --exclude="docs/" \
             --exclude="lab/" \
             --exclude="tests/" \
+=======
+>>>>>>> f252f94ae5d9e2e9427be7ba574900a5088834c3
             --exclude="reinstall.ps1" \
             --exclude="reinstall.sh" \
             ./ production/

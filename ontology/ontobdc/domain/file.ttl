@@ -1,0 +1,184 @@
+@prefix : <https://w3id.org/ontobdc/ontology/file#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ls: <https://standards.iso.org/iso/21597/-1/ed-1/en/Linkset#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/ontobdc/ontology/file>
+    a owl:Ontology ;
+    dcterms:title "OntoBDC File Ontology"@en ;
+    dcterms:description
+        "Declarative profiles controlling which catalogued files may appear in user-facing resource views, together with lifecycle states for resource suggestions and categorised display groups."@en .
+
+:FileDisplayProfile
+    a owl:Class ;
+    rdfs:label "File display profile"@en ;
+    rdfs:comment
+        "Allowlist profile assigning supported semantic types, MIME types, and filename extensions to one display category."@en .
+
+:PhotographicRecord
+    a owl:Class ;
+    rdfs:label "Photographic record"@en ;
+    rdfs:comment
+        "A photograph used as visual evidence of a project condition, activity, event, or result."@en .
+
+:displayCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "display category"@en .
+
+:requiredSemanticType
+    a owl:ObjectProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "required semantic type"@en ;
+    rdfs:comment
+        "Semantic type that a catalogued resource must declare to match this display profile."@en .
+
+:acceptedMimeType
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "accepted MIME type"@en .
+
+:acceptedExtension
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "accepted filename extension"@en ;
+    rdfs:comment
+        "Lowercase filename extension including the leading full stop."@en .
+
+:categoryLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "category label"@en ;
+    rdfs:comment
+        "Human readable label used on UI tiles for the display category. When absent consumers fall back to the raw displayCategory code."@en .
+
+:suggestionStatus
+    a owl:ObjectProperty ;
+    rdfs:domain ls:DirectedBinaryLink ;
+    rdfs:range :SuggestionStatus ;
+    rdfs:label "suggestion status"@en ;
+    rdfs:comment
+        "Lifecycle status of a dimension -> resource suggestion link persisted in WorkStreamSuggested.ttl."@en .
+
+:suggestionModifiedAt
+    a owl:DatatypeProperty ;
+    rdfs:domain ls:DirectedBinaryLink ;
+    rdfs:range xsd:dateTimeStamp ;
+    rdfs:label "suggestion modified at"@en ;
+    rdfs:comment
+        "UTC timestamp of the last suggestion status transition."@en .
+
+:SuggestionStatus
+    a owl:Class ;
+    rdfs:label "Suggestion status"@en .
+
+:Proposed
+    a owl:NamedIndividual, :SuggestionStatus ;
+    rdfs:label "Proposed"@en ;
+    rdfs:comment
+        "Suggestion candidate actively surfaced for curator review. Included in Suggested resource views."@en .
+
+:Rejected
+    a owl:NamedIndividual, :SuggestionStatus ;
+    rdfs:label "Rejected"@en ;
+    rdfs:comment
+        "Suggestion candidate explicitly discarded by a curator. Retained for audit but excluded from Suggested resource views."@en .
+
+:DrawingFiles
+    a :FileDisplayProfile ;
+    rdfs:label "Drawing files"@en ;
+    :displayCategory "drawings" ;
+    :categoryLabel "Pranchas"@pt ;
+    :acceptedMimeType
+        "application/acad" ,
+        "application/dwg" ,
+        "application/dxf" ,
+        "application/x-acad" ,
+        "application/x-autocad" ,
+        "application/x-dwg" ,
+        "application/x-dxf" ,
+        "image/vnd.dwg" ,
+        "image/vnd.dxf" ;
+    :acceptedExtension
+        ".dwg" ,
+        ".dxf" .
+
+:DocumentFiles
+    a :FileDisplayProfile ;
+    rdfs:label "Document files"@en ;
+    :displayCategory "documents" ;
+    :categoryLabel "Documentos"@pt ;
+    :acceptedMimeType
+        "application/json" ,
+        "application/msword" ,
+        "application/pdf" ,
+        "application/rtf" ,
+        "application/vnd.ms-excel" ,
+        "application/vnd.ms-powerpoint" ,
+        "application/vnd.oasis.opendocument.presentation" ,
+        "application/vnd.oasis.opendocument.spreadsheet" ,
+        "application/vnd.oasis.opendocument.text" ,
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" ,
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ,
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ,
+        "application/xml" ,
+        "text/csv" ,
+        "text/markdown" ,
+        "text/plain" ,
+        "text/turtle" ,
+        "text/xml" ;
+    :acceptedExtension
+        ".csv" ,
+        ".doc" ,
+        ".docx" ,
+        ".json" ,
+        ".md" ,
+        ".odp" ,
+        ".ods" ,
+        ".odt" ,
+        ".pdf" ,
+        ".ppt" ,
+        ".pptx" ,
+        ".rtf" ,
+        ".ttl" ,
+        ".txt" ,
+        ".xls" ,
+        ".xlsx" ,
+        ".xml" .
+
+:PhotographicFiles
+    a :FileDisplayProfile ;
+    rdfs:label "Photographic records"@en ;
+    :displayCategory "photos" ;
+    :categoryLabel "Fotos"@pt ;
+    :requiredSemanticType :PhotographicRecord ;
+    :acceptedMimeType
+        "image/heic" ,
+        "image/jpeg" ,
+        "image/png" ;
+    :acceptedExtension
+        ".heic" ,
+        ".jpeg" ,
+        ".jpg" ,
+        ".png" .
+
+:MessageFiles
+    a :FileDisplayProfile ;
+    rdfs:label "Message files"@en ;
+    :displayCategory "messages" ;
+    :categoryLabel "Comunicação"@pt ;
+    :acceptedMimeType
+        "application/vnd.ms-outlook" ,
+        "message/rfc822" ;
+    :acceptedExtension
+        ".eml" ,
+        ".msg" .
