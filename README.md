@@ -26,11 +26,4 @@ for resource in iter_ontology_files():
 
 These return `importlib.resources`-compatible `Traversable` objects, so callers never need to know where the package was installed.
 
-## Develop
-
-```bash
-python -m pip install -e ".[dev]"
-pytest
-```
-
 The resource API falls back to the repository-root `ontology/` tree during development, so files don't need to be duplicated under `src/`.
