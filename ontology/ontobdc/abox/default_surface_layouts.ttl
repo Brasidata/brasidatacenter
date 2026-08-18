@@ -75,22 +75,3 @@ default:OntoBDCSlogan
     schema:encodingFormat "text/plain" ;
     schema:text "Data with Brains"@en ;
     schema:inLanguage "en" .
-
-# InfoBIM branding assets.
-default:InfoBIMBrand
-    a owl:NamedIndividual, schema:Brand, schema:ImageObject ;
-    schema:name "InfoBIM" ;
-    prov:atLocation ".__infobim__/assets/InfoBIMBrand.svg" ;
-    schema:encodingFormat "image/svg+xml" ;
-    schema:logo default:InfoBIMLogotype ;
-    schema:slogan default:InfoBIMSlogan .
-
-default:InfoBIMLogotype
-    a owl:NamedIndividual, schema:ImageObject ;
-    prov:atLocation ".__infobim__/assets/InfoBIMLogotype.svg" ;
-    schema:encodingFormat "image/svg+xml" .
-
-default:InfoBIMSlogan
-    a owl:NamedIndividual, schema:TextObject ;
-    prov:atLocation ".__infobim__/assets/InfoBIMSlogan.txt" ;
-    schema:encodingFormat "text/plain" .
