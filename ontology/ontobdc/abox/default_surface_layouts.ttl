@@ -55,9 +55,7 @@ default:themePlacement
     view:hasAlignment view:EndAlignment ;
     view:placementOrder 20 .
 
-# OntoBDC branding assets. Brand and logotype are SVG-only resources. The
-# relative paths are resolved first inside the container and then against the
-# workspace by the Surface branding capability.
+# OntoBDC branding assets.
 default:OntoBDCBrand
     a owl:NamedIndividual, schema:Brand, schema:ImageObject ;
     schema:name "OntoBDC" ;
@@ -73,11 +71,12 @@ default:OntoBDCLogotype
 
 default:OntoBDCSlogan
     a owl:NamedIndividual, schema:TextObject ;
+    prov:atLocation ".__ontobdc__/asset/OntoBDCSlogan.txt" ;
+    schema:encodingFormat "text/plain" ;
     schema:text "Data with Brains"@en ;
     schema:inLanguage "en" .
 
-# InfoBIM branding assets. These are the InfoBIM counterparts of the OntoBDC
-# branding individuals and are resolved from InfoBIM's own hidden asset area.
+# InfoBIM branding assets.
 default:InfoBIMBrand
     a owl:NamedIndividual, schema:Brand, schema:ImageObject ;
     schema:name "InfoBIM" ;
@@ -93,5 +92,5 @@ default:InfoBIMLogotype
 
 default:InfoBIMSlogan
     a owl:NamedIndividual, schema:TextObject ;
-    schema:text "InfoBIM"@en ;
-    schema:inLanguage "en" .
+    prov:atLocation ".__infobim__/assets/InfoBIMSlogan.txt" ;
+    schema:encodingFormat "text/plain" .
