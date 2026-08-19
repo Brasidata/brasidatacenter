@@ -1,0 +1,650 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.2/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "datePublished": "2026-08-19T03:31:57+00:00",
+            "hasPart": [
+                {
+                    "@id": ".DS_Store"
+                },
+                {
+                    "@id": ".git"
+                },
+                {
+                    "@id": ".github/workflows/pypi-publish.yml"
+                },
+                {
+                    "@id": ".gitignore"
+                },
+                {
+                    "@id": "CHANGELOG.md"
+                },
+                {
+                    "@id": "CNAME"
+                },
+                {
+                    "@id": "LICENSE"
+                },
+                {
+                    "@id": "README.md"
+                },
+                {
+                    "@id": "ontology/bsi/element/ifc_work_schedule/facade.ttl"
+                },
+                {
+                    "@id": "ontology/bsi/element/ifc_work_schedule/type.ttl"
+                },
+                {
+                    "@id": "ontology/index.yaml"
+                },
+                {
+                    "@id": "ontology/infobim/domain/W3C.ttl"
+                },
+                {
+                    "@id": "ontology/infobim/domain/ns.ttl"
+                },
+                {
+                    "@id": "ontology/infobim/domain/presentation.ttl"
+                },
+                {
+                    "@id": "ontology/infobim/domain/tile.ttl"
+                },
+                {
+                    "@id": "ontology/infobim/domain/view.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/abox/default_surface_layouts.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/code.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/facade.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/file.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/ns.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/tile.ttl"
+                },
+                {
+                    "@id": "ontology/ontobdc/domain/view.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/document/facade.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/document/type.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/document/vector.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/enrichment_annotation/facade.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/enrichment_annotation/type.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/ns.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/thread/facade.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/thread/type.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/visual_representation_type/facade.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/visual_representation_type/type.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/work_stream/facade.ttl"
+                },
+                {
+                    "@id": "ontology/productivity/entity/work_stream/type.ttl"
+                },
+                {
+                    "@id": "ontology/sales/README.md"
+                },
+                {
+                    "@id": "ontology/sales/entity/sales_funnel/facade.ttl"
+                },
+                {
+                    "@id": "ontology/sales/entity/sales_funnel/type.ttl"
+                },
+                {
+                    "@id": "ontology/sales/entity/sales_opportunity/facade.ttl"
+                },
+                {
+                    "@id": "ontology/sales/entity/sales_opportunity/type.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/contact_point/facade.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/contact_point/type.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/document/facade.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/document/type.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/document/vector.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/ns.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/person/facade.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/person/type.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/weblink/facade.ttl"
+                },
+                {
+                    "@id": "ontology/social/entity/weblink/type.ttl"
+                },
+                {
+                    "@id": "pyproject.toml"
+                },
+                {
+                    "@id": "src/brasidatacenter/__init__.py"
+                },
+                {
+                    "@id": "src/brasidatacenter/resources.py"
+                }
+            ]
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.2"
+            }
+        },
+        {
+            "@id": ".DS_Store",
+            "@type": "File",
+            "contentSize": "6148",
+            "dateCreated": "2026-08-18T02:46:44.927015Z",
+            "dateModified": "2026-08-18T02:46:44.927335Z",
+            "name": ".DS_Store"
+        },
+        {
+            "@id": ".git",
+            "@type": "File",
+            "contentSize": "40",
+            "dateCreated": "2026-08-08T17:15:34.569644Z",
+            "dateModified": "2026-08-08T17:15:36.875510Z",
+            "name": ".git"
+        },
+        {
+            "@id": ".github/workflows/pypi-publish.yml",
+            "@type": "File",
+            "contentSize": "513",
+            "dateCreated": "2026-08-15T05:29:28.700528Z",
+            "dateModified": "2026-08-15T05:29:28.700865Z",
+            "name": "pypi-publish.yml"
+        },
+        {
+            "@id": ".gitignore",
+            "@type": "File",
+            "contentSize": "916",
+            "dateCreated": "2026-08-15T05:06:58.855355Z",
+            "dateModified": "2026-08-15T05:06:58.855526Z",
+            "name": ".gitignore"
+        },
+        {
+            "@id": "CHANGELOG.md",
+            "@type": "File",
+            "contentSize": "281",
+            "dateCreated": "2026-08-17T05:31:37.015930Z",
+            "dateModified": "2026-08-17T05:31:37.016230Z",
+            "encodingFormat": "text/markdown",
+            "name": "CHANGELOG.md"
+        },
+        {
+            "@id": "CNAME",
+            "@type": "File",
+            "contentSize": "17",
+            "dateCreated": "2026-08-11T22:33:11.401980Z",
+            "dateModified": "2026-08-11T22:33:11.402068Z",
+            "name": "CNAME"
+        },
+        {
+            "@id": "LICENSE",
+            "@type": "File",
+            "contentSize": "11357",
+            "dateCreated": "2026-08-11T22:53:17.195215Z",
+            "dateModified": "2026-08-11T22:53:17.195719Z",
+            "name": "LICENSE"
+        },
+        {
+            "@id": "README.md",
+            "@type": "File",
+            "contentSize": "1058",
+            "dateCreated": "2026-08-17T05:31:37.016622Z",
+            "dateModified": "2026-08-17T05:31:37.016890Z",
+            "encodingFormat": "text/markdown",
+            "name": "README.md"
+        },
+        {
+            "@id": "ontology/bsi/element/ifc_work_schedule/facade.ttl",
+            "@type": "File",
+            "contentSize": "13891",
+            "dateCreated": "2026-08-08T17:15:36.889852Z",
+            "dateModified": "2026-08-08T17:15:36.890083Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/bsi/element/ifc_work_schedule/type.ttl",
+            "@type": "File",
+            "contentSize": "28200",
+            "dateCreated": "2026-08-08T17:15:36.890131Z",
+            "dateModified": "2026-08-08T17:15:36.890236Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/index.yaml",
+            "@type": "File",
+            "contentSize": "5882",
+            "dateCreated": "2026-08-11T22:33:11.402515Z",
+            "dateModified": "2026-08-11T22:33:11.402845Z",
+            "name": "index.yaml"
+        },
+        {
+            "@id": "ontology/infobim/domain/W3C.ttl",
+            "@type": "File",
+            "contentSize": "4377",
+            "dateCreated": "2026-08-15T05:29:28.702340Z",
+            "dateModified": "2026-08-15T05:29:28.702468Z",
+            "encodingFormat": "text/turtle",
+            "name": "W3C.ttl"
+        },
+        {
+            "@id": "ontology/infobim/domain/ns.ttl",
+            "@type": "File",
+            "contentSize": "15268",
+            "dateCreated": "2026-08-15T05:29:28.702502Z",
+            "dateModified": "2026-08-15T05:29:28.702610Z",
+            "encodingFormat": "text/turtle",
+            "name": "ns.ttl"
+        },
+        {
+            "@id": "ontology/infobim/domain/presentation.ttl",
+            "@type": "File",
+            "contentSize": "6847",
+            "dateCreated": "2026-08-15T05:29:28.702641Z",
+            "dateModified": "2026-08-15T05:29:28.702796Z",
+            "encodingFormat": "text/turtle",
+            "name": "presentation.ttl"
+        },
+        {
+            "@id": "ontology/infobim/domain/tile.ttl",
+            "@type": "File",
+            "contentSize": "4580",
+            "dateCreated": "2026-08-15T05:29:28.702825Z",
+            "dateModified": "2026-08-15T05:29:28.702977Z",
+            "encodingFormat": "text/turtle",
+            "name": "tile.ttl"
+        },
+        {
+            "@id": "ontology/infobim/domain/view.ttl",
+            "@type": "File",
+            "contentSize": "15441",
+            "dateCreated": "2026-08-15T05:29:28.703006Z",
+            "dateModified": "2026-08-15T05:29:28.703100Z",
+            "encodingFormat": "text/turtle",
+            "name": "view.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/abox/default_surface_layouts.ttl",
+            "@type": "File",
+            "contentSize": "1813",
+            "dateCreated": "2026-08-15T05:06:58.855623Z",
+            "dateModified": "2026-08-15T05:06:58.855845Z",
+            "encodingFormat": "text/turtle",
+            "name": "default_surface_layouts.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/code.ttl",
+            "@type": "File",
+            "contentSize": "5438",
+            "dateCreated": "2026-08-11T22:33:11.403025Z",
+            "dateModified": "2026-08-11T22:33:11.403553Z",
+            "encodingFormat": "text/turtle",
+            "name": "code.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/facade.ttl",
+            "@type": "File",
+            "contentSize": "10071",
+            "dateCreated": "2026-08-11T22:33:11.403601Z",
+            "dateModified": "2026-08-11T22:33:11.403922Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/file.ttl",
+            "@type": "File",
+            "contentSize": "5854",
+            "dateCreated": "2026-08-15T05:29:28.703134Z",
+            "dateModified": "2026-08-15T05:29:28.703499Z",
+            "encodingFormat": "text/turtle",
+            "name": "file.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/ns.ttl",
+            "@type": "File",
+            "contentSize": "14734",
+            "dateCreated": "2026-08-15T05:29:28.703589Z",
+            "dateModified": "2026-08-15T05:29:28.703786Z",
+            "encodingFormat": "text/turtle",
+            "name": "ns.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/tile.ttl",
+            "@type": "File",
+            "contentSize": "22856",
+            "dateCreated": "2026-08-15T05:29:28.703819Z",
+            "dateModified": "2026-08-15T05:29:28.703912Z",
+            "encodingFormat": "text/turtle",
+            "name": "tile.ttl"
+        },
+        {
+            "@id": "ontology/ontobdc/domain/view.ttl",
+            "@type": "File",
+            "contentSize": "15914",
+            "dateCreated": "2026-08-15T05:30:18.471243Z",
+            "dateModified": "2026-08-15T05:30:18.471500Z",
+            "encodingFormat": "text/turtle",
+            "name": "view.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/document/facade.ttl",
+            "@type": "File",
+            "contentSize": "12923",
+            "dateCreated": "2026-08-08T17:15:36.890682Z",
+            "dateModified": "2026-08-08T17:15:36.890865Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/document/type.ttl",
+            "@type": "File",
+            "contentSize": "5988",
+            "dateCreated": "2026-08-08T17:15:36.890914Z",
+            "dateModified": "2026-08-08T17:15:36.891063Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/document/vector.ttl",
+            "@type": "File",
+            "contentSize": "6405",
+            "dateCreated": "2026-08-08T17:15:36.891107Z",
+            "dateModified": "2026-08-08T17:15:36.891188Z",
+            "encodingFormat": "text/turtle",
+            "name": "vector.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/enrichment_annotation/facade.ttl",
+            "@type": "File",
+            "contentSize": "5661",
+            "dateCreated": "2026-08-15T05:29:28.704181Z",
+            "dateModified": "2026-08-15T05:29:28.704333Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/enrichment_annotation/type.ttl",
+            "@type": "File",
+            "contentSize": "14319",
+            "dateCreated": "2026-08-08T17:15:36.891425Z",
+            "dateModified": "2026-08-08T17:15:36.891661Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/ns.ttl",
+            "@type": "File",
+            "contentSize": "5435",
+            "dateCreated": "2026-08-08T17:15:36.891709Z",
+            "dateModified": "2026-08-08T17:15:36.891780Z",
+            "encodingFormat": "text/turtle",
+            "name": "ns.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/thread/facade.ttl",
+            "@type": "File",
+            "contentSize": "2546",
+            "dateCreated": "2026-08-15T05:29:28.704413Z",
+            "dateModified": "2026-08-15T05:29:28.704467Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/thread/type.ttl",
+            "@type": "File",
+            "contentSize": "2046",
+            "dateCreated": "2026-08-15T05:29:28.704499Z",
+            "dateModified": "2026-08-15T05:29:28.704596Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/visual_representation_type/facade.ttl",
+            "@type": "File",
+            "contentSize": "7293",
+            "dateCreated": "2026-08-08T17:15:36.891901Z",
+            "dateModified": "2026-08-08T17:15:36.891998Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/visual_representation_type/type.ttl",
+            "@type": "File",
+            "contentSize": "17999",
+            "dateCreated": "2026-08-08T17:15:36.892043Z",
+            "dateModified": "2026-08-08T17:15:36.892129Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/work_stream/facade.ttl",
+            "@type": "File",
+            "contentSize": "5734",
+            "dateCreated": "2026-08-08T17:15:36.892250Z",
+            "dateModified": "2026-08-08T17:15:36.892338Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/productivity/entity/work_stream/type.ttl",
+            "@type": "File",
+            "contentSize": "6022",
+            "dateCreated": "2026-08-15T05:29:28.704674Z",
+            "dateModified": "2026-08-15T05:29:28.704818Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/sales/README.md",
+            "@type": "File",
+            "contentSize": "2982",
+            "dateCreated": "2026-08-08T17:15:36.892584Z",
+            "dateModified": "2026-08-08T17:15:36.892660Z",
+            "encodingFormat": "text/markdown",
+            "name": "README.md"
+        },
+        {
+            "@id": "ontology/sales/entity/sales_funnel/facade.ttl",
+            "@type": "File",
+            "contentSize": "3416",
+            "dateCreated": "2026-08-08T17:15:36.892823Z",
+            "dateModified": "2026-08-08T17:15:36.892897Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/sales/entity/sales_funnel/type.ttl",
+            "@type": "File",
+            "contentSize": "2709",
+            "dateCreated": "2026-08-08T17:15:36.892941Z",
+            "dateModified": "2026-08-08T17:15:36.893023Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/sales/entity/sales_opportunity/facade.ttl",
+            "@type": "File",
+            "contentSize": "7228",
+            "dateCreated": "2026-08-08T17:15:36.893121Z",
+            "dateModified": "2026-08-08T17:15:36.893183Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/sales/entity/sales_opportunity/type.ttl",
+            "@type": "File",
+            "contentSize": "5870",
+            "dateCreated": "2026-08-08T17:15:36.893223Z",
+            "dateModified": "2026-08-08T17:15:36.893286Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/contact_point/facade.ttl",
+            "@type": "File",
+            "contentSize": "4142",
+            "dateCreated": "2026-08-08T17:15:36.893509Z",
+            "dateModified": "2026-08-08T17:15:36.893637Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/contact_point/type.ttl",
+            "@type": "File",
+            "contentSize": "1144",
+            "dateCreated": "2026-08-08T17:15:36.893692Z",
+            "dateModified": "2026-08-08T17:15:36.893815Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/document/facade.ttl",
+            "@type": "File",
+            "contentSize": "10148",
+            "dateCreated": "2026-08-08T17:15:36.893920Z",
+            "dateModified": "2026-08-08T17:15:36.894119Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/document/type.ttl",
+            "@type": "File",
+            "contentSize": "2446",
+            "dateCreated": "2026-08-08T17:15:36.894192Z",
+            "dateModified": "2026-08-08T17:15:36.894279Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/document/vector.ttl",
+            "@type": "File",
+            "contentSize": "3044",
+            "dateCreated": "2026-08-08T17:15:36.894320Z",
+            "dateModified": "2026-08-08T17:15:36.894391Z",
+            "encodingFormat": "text/turtle",
+            "name": "vector.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/ns.ttl",
+            "@type": "File",
+            "contentSize": "9850",
+            "dateCreated": "2026-08-11T22:33:11.406137Z",
+            "dateModified": "2026-08-11T22:33:11.406351Z",
+            "encodingFormat": "text/turtle",
+            "name": "ns.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/person/facade.ttl",
+            "@type": "File",
+            "contentSize": "3795",
+            "dateCreated": "2026-08-08T17:15:36.894704Z",
+            "dateModified": "2026-08-08T17:15:36.894792Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/person/type.ttl",
+            "@type": "File",
+            "contentSize": "1046",
+            "dateCreated": "2026-08-08T17:15:36.894836Z",
+            "dateModified": "2026-08-08T17:15:36.894909Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/weblink/facade.ttl",
+            "@type": "File",
+            "contentSize": "3160",
+            "dateCreated": "2026-08-08T17:15:36.895021Z",
+            "dateModified": "2026-08-08T17:15:36.895081Z",
+            "encodingFormat": "text/turtle",
+            "name": "facade.ttl"
+        },
+        {
+            "@id": "ontology/social/entity/weblink/type.ttl",
+            "@type": "File",
+            "contentSize": "1060",
+            "dateCreated": "2026-08-08T17:15:36.895120Z",
+            "dateModified": "2026-08-08T17:15:36.895183Z",
+            "encodingFormat": "text/turtle",
+            "name": "type.ttl"
+        },
+        {
+            "@id": "pyproject.toml",
+            "@type": "File",
+            "contentSize": "1515",
+            "dateCreated": "2026-08-17T05:31:37.017165Z",
+            "dateModified": "2026-08-17T05:41:57.544345Z",
+            "name": "pyproject.toml"
+        },
+        {
+            "@id": "src/brasidatacenter/__init__.py",
+            "@type": "File",
+            "contentSize": "348",
+            "dateCreated": "2026-08-11T22:33:11.406634Z",
+            "dateModified": "2026-08-11T22:33:11.406699Z",
+            "encodingFormat": "text/x-python",
+            "name": "__init__.py"
+        },
+        {
+            "@id": "src/brasidatacenter/resources.py",
+            "@type": "File",
+            "contentSize": "1627",
+            "dateCreated": "2026-08-11T22:33:11.406743Z",
+            "dateModified": "2026-08-11T22:33:11.406815Z",
+            "encodingFormat": "text/x-python",
+            "name": "resources.py"
+        }
+    ]
+}
