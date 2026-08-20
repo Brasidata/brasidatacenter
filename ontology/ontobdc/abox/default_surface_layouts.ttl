@@ -1,5 +1,8 @@
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix default: <urn:ontobdc:view:default-surface-layout:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
 
 # Shipped fallback `view:DefaultSurfaceLayout` — used whenever a container
 # configures no `view.surfaceLayoutsPath` of its own (see claude2.md and
@@ -18,7 +21,7 @@ default:standard
 default:operation
     a view:OperationRegion ;
     view:scrollable false ;
-    view:hasComponentPlacement default:logoPlacement ;
+    view:hasComponentPlacement default:OntoBDCLogoPlacement ;
     view:hasComponentPlacement default:languagePlacement ;
     view:hasComponentPlacement default:themePlacement .
 
@@ -30,13 +33,13 @@ default:pinned
     a view:PinnedRegion ;
     view:scrollable false .
 
-default:logo a view:LogoTile .
+default:OntoBDCLogo a view:LogoTile .
 default:theme a view:ThemeTile .
 default:language a view:LanguageTile .
 
-default:logoPlacement
+default:OntoBDCLogoPlacement
     a view:ComponentPlacement ;
-    view:placesComponent default:logo ;
+    view:placesComponent default:OntoBDCLogo ;
     view:hasAlignment view:StartAlignment ;
     view:placementOrder 10 .
 
@@ -51,3 +54,24 @@ default:themePlacement
     view:placesComponent default:theme ;
     view:hasAlignment view:EndAlignment ;
     view:placementOrder 20 .
+
+# OntoBDC branding assets.
+default:OntoBDCBrand
+    a owl:NamedIndividual, schema:Brand, schema:ImageObject ;
+    schema:name "OntoBDC" ;
+    prov:atLocation ".__ontobdc__/asset/OntoBDCBrand.svg" ;
+    schema:encodingFormat "image/svg+xml" ;
+    schema:logo default:OntoBDCLogotype ;
+    schema:slogan default:OntoBDCSlogan .
+
+default:OntoBDCLogotype
+    a owl:NamedIndividual, schema:ImageObject ;
+    prov:atLocation ".__ontobdc__/asset/OntoBDCLogotype.svg" ;
+    schema:encodingFormat "image/svg+xml" .
+
+default:OntoBDCSlogan
+    a owl:NamedIndividual, schema:TextObject ;
+    prov:atLocation ".__ontobdc__/asset/OntoBDCSlogan.txt" ;
+    schema:encodingFormat "text/plain" ;
+    schema:text "Data with Brains"@en ;
+    schema:inLanguage "en" .
