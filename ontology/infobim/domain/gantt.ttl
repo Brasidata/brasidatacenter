@@ -1,0 +1,14 @@
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ibim:Gantt
+    a owl:Class ;
+    rdfs:subClassOf obdc:ProjectManagementFramework ;
+    schema:identifier "gantt" ;
+    rdfs:label "Gantt"@en ,
+               "Gantt"@pt-BR ;
+    rdfs:comment "Project management framework organizing scheduled activities as bars positioned on a time axis, with dependency arrows and milestone markers."@en .
