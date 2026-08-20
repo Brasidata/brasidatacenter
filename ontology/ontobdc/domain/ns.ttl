@@ -15,6 +15,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix function: <http://w3id.org/function/ontology#> .
 @prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix ibim: <https://infobim.org/ontology/ns#> .
 @base <http://ontobdc.org/ontology/domain/ns.ttl#> .
 
 <http://ontobdc.org/ontology/domain/ns.ttl> rdf:type owl:Ontology .
@@ -118,10 +119,13 @@ ontouml:name rdf:type owl:AnnotationProperty .
 
 ###  http://ontobdc.org/ontology/domain/ns.ttl#usesProjectManagementFramework
 :usesProjectManagementFramework rdf:type owl:ObjectProperty ;
-                                rdfs:domain ws:WorkStream ;
+                                rdfs:domain [
+                                    rdf:type owl:Class ;
+                                    owl:unionOf ( ws:WorkStream ibim:IfcWorkSchedule )
+                                ] ;
                                 rdfs:range :ProjectManagementFramework ;
                                 ontouml:name "Uses project management framework"@en ;
-                                rdfs:comment "Associates a Work Stream with a project management framework. The property is intentionally non-functional, allowing one Work Stream to use multiple frameworks."@en .
+                                rdfs:comment "Associates a Work Stream or IFC Work Schedule with a project management framework. The property is intentionally non-functional, allowing one entity to use multiple frameworks."@en .
 
 
 ###  http://purl.org/dc/terms/hasPart
