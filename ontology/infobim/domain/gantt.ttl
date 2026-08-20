@@ -1,0 +1,20 @@
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+<https://infobim.org/ontology/domain/gantt>
+    a owl:Ontology ;
+    rdfs:label "InfoBIM Gantt Framework Ontology"@en ;
+    rdfs:comment "Defines the Gantt project-management framework used to organize and represent IFC work schedules without changing their underlying IFC identity or schedule-control dimensions."@en ;
+    owl:imports <https://infobim.org/ontology/ns> ,
+        <http://ontobdc.org/ontology/domain/ns.ttl> .
+
+ibim:Gantt
+    a owl:Class ;
+    rdfs:subClassOf obdc:ProjectManagementFramework ;
+    rdfs:label "Gantt Chart"@en , "Diagrama de Gantt"@pt-BR ;
+    schema:identifier "gantt" ;
+    rdfs:comment "Project-management framework for representing and interpreting scheduled work along a time axis, using tasks, temporal information, milestones, progress, and sequence relationships while preserving the underlying IfcWorkSchedule semantics."@en ;
+    schema:description "A project-management framework applicable to InfoBIM IFC work schedules, intended as one methodology and representation among alternatives such as Kanban."@en .
