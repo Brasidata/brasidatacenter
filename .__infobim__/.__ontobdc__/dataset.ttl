@@ -1,0 +1,23 @@
+@prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<file:///Users/eliasmpjunior/Brasidata/07_Engenharia_e_Tecnologia/06_Solucoes_Reutilizaveis/OntoBDC/brasidatacenter/.__infobim__/.__ontobdc__/dataset.ttl> a owl:Ontology .
+
+<urn:ontobdc:storage/dataset/brasidatacenter/.__infobim__> a obdc:EntityDataset ;
+    obdc:belongsToDataContainer <urn:uuid:c2df1dd7-cfaf-4708-8433-406cd19d818a> ;
+    obdc:hasDataEntity <urn:ontobdc:storage/dataset/brasidatacenter/.__infobim__/52599bf082feee4f5b4b65ae2d56e123630f0fa8dc1a8c3fbf1179b535c2cdff> ;
+    dcterms:description "Storage dataset located at file:///Users/eliasmpjunior/Brasidata/07_Engenharia_e_Tecnologia/06_Solucoes_Reutilizaveis/OntoBDC/brasidatacenter/.__infobim__" ;
+    dcterms:identifier "urn:ontobdc:storage/dataset/brasidatacenter/.__infobim__" ;
+    dcterms:title "Storage Dataset: .__infobim__" ;
+    ct:creationDate "2026-08-19T00:31:57"^^xsd:dateTime ;
+    prov:atLocation <file:///Users/eliasmpjunior/Brasidata/07_Engenharia_e_Tecnologia/06_Solucoes_Reutilizaveis/OntoBDC/brasidatacenter/.__infobim__> .
+
+<urn:ontobdc:storage/dataset/brasidatacenter/.__infobim__/52599bf082feee4f5b4b65ae2d56e123630f0fa8dc1a8c3fbf1179b535c2cdff> a obdc:DataEntity,
+        <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#IfcProject> ;
+    dcterms:conformsTo <https://infobim.org/ontology/ns#IfcProjectFacade> ;
+    dcterms:title "brasidatacenter" .
+

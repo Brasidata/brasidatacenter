@@ -1,0 +1,22 @@
+@prefix : <http://datacenter.app.br/ontology/infobim/abox/default_surface_layouts.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
+
+:InfoBIMBrand
+    a owl:NamedIndividual, schema:Brand, schema:ImageObject ;
+    schema:name "InfoBIM" ;
+    prov:atLocation ".__infobim__/assets/InfoBIMBrand.svg" ;
+    schema:encodingFormat "image/svg+xml" ;
+    schema:logo :InfoBIMLogotype ;
+    schema:slogan :InfoBIMSlogan .
+
+:InfoBIMLogotype
+    a owl:NamedIndividual, schema:ImageObject ;
+    prov:atLocation ".__infobim__/assets/InfoBIMLogotype.svg" ;
+    schema:encodingFormat "image/svg+xml" .
+
+:InfoBIMSlogan
+    a owl:NamedIndividual, schema:TextObject ;
+    prov:atLocation ".__infobim__/assets/InfoBIMSlogan.txt" ;
+    schema:encodingFormat "text/plain" .

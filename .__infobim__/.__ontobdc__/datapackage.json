@@ -1,0 +1,49 @@
+{
+  "name": "infobim_project",
+  "resources": [
+    {
+      "dialect": {
+        "excel": {
+          "sheet": "IfcProject"
+        }
+      },
+      "entityIdentifier": "IfcProject",
+      "entityUri": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#IfcProject",
+      "facadeUri": "https://infobim.org/ontology/ns#IfcProjectFacade",
+      "format": "xlsx",
+      "instanceUriTemplate": "urn:ifc:IfcProject/{GlobalId}",
+      "mediatype": "application/vnd.ms-excel",
+      "name": "ifc_project",
+      "path": "../payload/document/IfcProject.xlsx",
+      "schema": {
+        "fields": [
+          {
+            "name": "GlobalId",
+            "type": "string"
+          },
+          {
+            "name": "Name",
+            "type": "string"
+          },
+          {
+            "name": "Description",
+            "type": "string"
+          },
+          {
+            "name": "LongName",
+            "type": "string"
+          },
+          {
+            "name": "Phase",
+            "type": "string"
+          }
+        ],
+        "primaryKey": [
+          "GlobalId"
+        ]
+      },
+      "scheme": "file",
+      "type": "table"
+    }
+  ]
+}
