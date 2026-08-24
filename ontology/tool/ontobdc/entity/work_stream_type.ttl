@@ -22,6 +22,7 @@
 
 :WorkStreamDimension rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity ;
+    owl:hasKey ( :dimensionOf :dimensionKind ) ;
     rdfs:label "Work Stream Dimension"@en ,
         "Dimensão da frente de trabalho"@pt-BR ;
     rdfs:comment "Identifiable, non-hierarchical contextual dimension belonging to one Work Stream."@en ;

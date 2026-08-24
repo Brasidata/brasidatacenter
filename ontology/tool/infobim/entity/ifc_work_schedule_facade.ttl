@@ -1,0 +1,384 @@
+@prefix : <https://infobim.org/ontology/entity/ifc_work_schedule/facade.ttl#> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <https://infobim.org/ontology/entity/ifc_work_schedule/facade.ttl#> .
+
+<https://infobim.org/ontology/entity/ifc_work_schedule/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/facade.ttl> ,
+        <https://infobim.org/ontology/entity/ifc_work_schedule/type.ttl> .
+
+#################################################################
+#    IFC Work Schedule facade properties
+#################################################################
+
+:mapsToDimensionKind rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf facade:mapsToResource ;
+    rdfs:domain facade:FacadeField ;
+    rdfs:range ibim:IfcWorkScheduleDimensionKind .
+
+:propertyOwnerClass rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain facade:FacadeField ;
+    rdfs:range owl:Class .
+
+:ifcAttributeName rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain facade:FacadeField ;
+    rdfs:range xsd:string .
+
+#################################################################
+#    IFC Work Schedule facade integrity
+#################################################################
+
+:DimensionMappedFieldShape rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :mapsToDimensionKind ;
+    sh:property [
+        sh:path :mapsToDimensionKind ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:equals facade:mapsToResource ;
+        sh:class ibim:IfcWorkScheduleDimensionKind
+    ] .
+
+:IfcAttributeMappedFieldShape rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :ifcAttributeName ;
+    sh:property
+        [
+            sh:path facade:mapsToProperty ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:equals facade:mapsToResource ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :propertyOwnerClass ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :ifcAttributeName ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] .
+
+#################################################################
+#    IFC Work Schedule facade
+#################################################################
+
+ibim:IfcWorkSchedule facade:hasDataEntityFacade :IfcWorkScheduleFacade .
+
+:IfcWorkScheduleFacade rdf:type owl:NamedIndividual ,
+        facade:DataEntityFacade ;
+    schema:identifier "ifc_work_schedule_facade" ;
+    schema:name "IFC Work Schedule Facade"@en ;
+    schema:description "Facade exposing canonical IFC attributes and control dimensions of an IFC Work Schedule."@en ;
+    facade:isFacadeOf ibim:IfcWorkSchedule ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :NameField ,
+        :DescriptionField ,
+        :ObjectTypeField ,
+        :IdentificationField ,
+        :CreationDateField ,
+        :CreatorsField ,
+        :PurposeField ,
+        :DurationField ,
+        :TotalFloatField ,
+        :StartTimeField ,
+        :FinishTimeField ,
+        :PredefinedTypeField ,
+        :ScopePlannedField ,
+        :ScopeActualField ,
+        :TimePlannedField ,
+        :TimeActualField ,
+        :TimeForecastField ,
+        :ProgressPlannedField ,
+        :ProgressActualField ,
+        :ProgressForecastField ,
+        :LaborPlannedField ,
+        :LaborActualField ,
+        :EquipmentPlannedField ,
+        :EquipmentActualField ,
+        :MaterialPlannedField ,
+        :MaterialActualField ,
+        :CostPlannedField ,
+        :CostActualField ,
+        :CostForecastField .
+
+#################################################################
+#    Canonical IFC attribute fields
+#################################################################
+
+:GlobalIdField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "GlobalId" ;
+    schema:name "GlobalId"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 10 ;
+    facade:mapsToResource ifcowl:globalId_IfcRoot ;
+    facade:mapsToProperty ifcowl:globalId_IfcRoot ;
+    :propertyOwnerClass ifcowl:IfcRoot ;
+    :ifcAttributeName "GlobalId" ;
+    facade:isRequired true ;
+    facade:isMultivalued false .
+
+:NameField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Name" ;
+    schema:name "Name"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 20 ;
+    facade:mapsToResource ifcowl:name_IfcRoot ;
+    facade:mapsToProperty ifcowl:name_IfcRoot ;
+    :propertyOwnerClass ifcowl:IfcRoot ;
+    :ifcAttributeName "Name" ;
+    facade:isRequired true ;
+    facade:isMultivalued false .
+
+:DescriptionField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Description" ;
+    schema:name "Description"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 30 ;
+    facade:mapsToResource ifcowl:description_IfcRoot ;
+    facade:mapsToProperty ifcowl:description_IfcRoot ;
+    :propertyOwnerClass ifcowl:IfcRoot ;
+    :ifcAttributeName "Description" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:ObjectTypeField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ObjectType" ;
+    schema:name "Object Type"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 40 ;
+    facade:mapsToResource ifcowl:objectType_IfcObject ;
+    facade:mapsToProperty ifcowl:objectType_IfcObject ;
+    :propertyOwnerClass ifcowl:IfcObject ;
+    :ifcAttributeName "ObjectType" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:IdentificationField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Identification" ;
+    schema:name "Identification"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 50 ;
+    facade:mapsToResource ifcowl:identification_IfcControl ;
+    facade:mapsToProperty ifcowl:identification_IfcControl ;
+    :propertyOwnerClass ifcowl:IfcControl ;
+    :ifcAttributeName "Identification" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:CreationDateField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "CreationDate" ;
+    schema:name "Creation Date"@en ;
+    facade:fieldDatatype xsd:dateTime ;
+    facade:fieldOrder 60 ;
+    facade:mapsToResource ifcowl:creationDate_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:creationDate_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "CreationDate" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:CreatorsField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Creators" ;
+    schema:name "Creators"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 70 ;
+    facade:mapsToResource ifcowl:creators_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:creators_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "Creators" ;
+    facade:isRequired false ;
+    facade:isMultivalued true .
+
+:PurposeField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Purpose" ;
+    schema:name "Purpose"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 80 ;
+    facade:mapsToResource ifcowl:purpose_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:purpose_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "Purpose" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:DurationField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "Duration" ;
+    schema:name "Duration"@en ;
+    facade:fieldDatatype xsd:duration ;
+    facade:fieldOrder 90 ;
+    facade:mapsToResource ifcowl:duration_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:duration_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "Duration" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:TotalFloatField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "TotalFloat" ;
+    schema:name "Total Float"@en ;
+    facade:fieldDatatype xsd:duration ;
+    facade:fieldOrder 100 ;
+    facade:mapsToResource ifcowl:totalFloat_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:totalFloat_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "TotalFloat" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:StartTimeField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "StartTime" ;
+    schema:name "Start Time"@en ;
+    facade:fieldDatatype xsd:dateTime ;
+    facade:fieldOrder 110 ;
+    facade:mapsToResource ifcowl:startTime_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:startTime_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "StartTime" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:FinishTimeField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "FinishTime" ;
+    schema:name "Finish Time"@en ;
+    facade:fieldDatatype xsd:dateTime ;
+    facade:fieldOrder 120 ;
+    facade:mapsToResource ifcowl:finishTime_IfcWorkControl ;
+    facade:mapsToProperty ifcowl:finishTime_IfcWorkControl ;
+    :propertyOwnerClass ifcowl:IfcWorkControl ;
+    :ifcAttributeName "FinishTime" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:PredefinedTypeField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "PredefinedType" ;
+    schema:name "Predefined Type"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 130 ;
+    facade:mapsToResource ifcowl:predefinedType_IfcWorkSchedule ;
+    facade:mapsToProperty ifcowl:predefinedType_IfcWorkSchedule ;
+    :propertyOwnerClass ifcowl:IfcWorkSchedule ;
+    :ifcAttributeName "PredefinedType" ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+#################################################################
+#    Control dimension fields
+#################################################################
+
+:ScopePlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ScopePlanned" ; schema:name "Planned Scope"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 140 ;
+    facade:mapsToResource ibim:ScopePlanned ; :mapsToDimensionKind ibim:ScopePlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:ScopeActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ScopeActual" ; schema:name "Actual Scope"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 150 ;
+    facade:mapsToResource ibim:ScopeActual ; :mapsToDimensionKind ibim:ScopeActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:TimePlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "TimePlanned" ; schema:name "Planned Time"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 160 ;
+    facade:mapsToResource ibim:TimePlanned ; :mapsToDimensionKind ibim:TimePlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:TimeActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "TimeActual" ; schema:name "Actual Time"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 170 ;
+    facade:mapsToResource ibim:TimeActual ; :mapsToDimensionKind ibim:TimeActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:TimeForecastField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "TimeForecast" ; schema:name "Forecast Time"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 180 ;
+    facade:mapsToResource ibim:TimeForecast ; :mapsToDimensionKind ibim:TimeForecast ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:ProgressPlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ProgressPlanned" ; schema:name "Planned Progress"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 190 ;
+    facade:mapsToResource ibim:ProgressPlanned ; :mapsToDimensionKind ibim:ProgressPlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:ProgressActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ProgressActual" ; schema:name "Actual Progress"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 200 ;
+    facade:mapsToResource ibim:ProgressActual ; :mapsToDimensionKind ibim:ProgressActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:ProgressForecastField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "ProgressForecast" ; schema:name "Forecast Progress"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 210 ;
+    facade:mapsToResource ibim:ProgressForecast ; :mapsToDimensionKind ibim:ProgressForecast ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:LaborPlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "LaborPlanned" ; schema:name "Planned Labor"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 220 ;
+    facade:mapsToResource ibim:LaborPlanned ; :mapsToDimensionKind ibim:LaborPlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:LaborActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "LaborActual" ; schema:name "Actual Labor"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 230 ;
+    facade:mapsToResource ibim:LaborActual ; :mapsToDimensionKind ibim:LaborActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:EquipmentPlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "EquipmentPlanned" ; schema:name "Planned Equipment"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 240 ;
+    facade:mapsToResource ibim:EquipmentPlanned ; :mapsToDimensionKind ibim:EquipmentPlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:EquipmentActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "EquipmentActual" ; schema:name "Actual Equipment"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 250 ;
+    facade:mapsToResource ibim:EquipmentActual ; :mapsToDimensionKind ibim:EquipmentActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:MaterialPlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "MaterialPlanned" ; schema:name "Planned Material"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 260 ;
+    facade:mapsToResource ibim:MaterialPlanned ; :mapsToDimensionKind ibim:MaterialPlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:MaterialActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "MaterialActual" ; schema:name "Actual Material"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 270 ;
+    facade:mapsToResource ibim:MaterialActual ; :mapsToDimensionKind ibim:MaterialActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:CostPlannedField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "CostPlanned" ; schema:name "Planned Cost"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 280 ;
+    facade:mapsToResource ibim:CostPlanned ; :mapsToDimensionKind ibim:CostPlanned ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:CostActualField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "CostActual" ; schema:name "Actual Cost"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 290 ;
+    facade:mapsToResource ibim:CostActual ; :mapsToDimensionKind ibim:CostActual ;
+    facade:isRequired false ; facade:isMultivalued false .
+
+:CostForecastField rdf:type owl:NamedIndividual , facade:FacadeField ;
+    schema:identifier "CostForecast" ; schema:name "Forecast Cost"@en ;
+    facade:fieldDatatype xsd:string ; facade:fieldOrder 300 ;
+    facade:mapsToResource ibim:CostForecast ; :mapsToDimensionKind ibim:CostForecast ;
+    facade:isRequired false ; facade:isMultivalued false .

@@ -4,7 +4,197 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ontobdc.org/ontology/domain/facade.ttl>
+    rdf:type owl:Ontology .
+
+#################################################################
+#    Data entity facades
+#################################################################
+
+:DataEntityFacade
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isFacadeOf ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasFacadeField ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Data Entity Facade"@en ,
+        "Fachada de entidade de dados"@pt-BR ;
+    schema:description "Tabular projection of an entity class."@en .
+
+:FacadeField
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldDatatype ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldOrder ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isRequired ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isMultivalued ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :mapsToResource ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Facade Field"@en ,
+        "Campo de fachada"@pt-BR ;
+    schema:description "A field exposed by a data entity facade."@en .
+
+:hasDataEntityFacade
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isFacadeOf ;
+    rdfs:domain owl:Class ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range owl:Class .
+
+:hasFacadeField
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToResource
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Resource .
+
+:mapsToProperty
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf :mapsToResource ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:fieldOrder
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:integer .
+
+:isRequired
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+#################################################################
+#    Facade integrity shapes
+#################################################################
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :DataEntityFacade ;
+    sh:property
+        [
+            sh:path :isFacadeOf ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasFacadeField ;
+            sh:minCount 1 ;
+            sh:class :FacadeField
+        ] .
+
+:FacadeFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :FacadeField ;
+    sh:property
+        [
+            sh:path schema:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] ,
+        [
+            sh:path :fieldDatatype ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :fieldOrder ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:minInclusive 0
+        ] ,
+        [
+            sh:path :isRequired ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isMultivalued ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :mapsToResource ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] .
+
+:PropertyMappedFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :mapsToProperty ;
+    sh:property [
+        sh:path :mapsToProperty ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:equals :mapsToResource ;
+        sh:nodeKind sh:IRI
+    ] .
+
+#################################################################
+#    Data representations
+#################################################################
 
 :DataRepresentation
     rdf:type owl:Class ,
