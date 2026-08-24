@@ -5,10 +5,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://ontobdc.org/ontology/domain/facade.ttl>
-    rdf:type owl:Ontology .
+    rdf:type owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> .
 
 #################################################################
 #    Data entity facades
@@ -81,6 +83,13 @@
     rdf:type owl:ObjectProperty ;
     rdfs:domain :DataEntityFacade ;
     rdfs:range :FacadeField .
+
+:hasStandaloneTile
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range view:ComponentPlacement ;
+    rdfs:label "has standalone tile"@en ;
+    rdfs:comment "Declares one Tile placement (view:ComponentPlacement / view:placesComponent / view:placementOrder, the same vocabulary the Presentation Surface itself uses) to render when this facade's entity is explored standalone as a single element, ordered by view:placementOrder. Optional: a facade with no hasStandaloneTile placement falls back to the default facade-projected field/value document."@en .
 
 :fieldDatatype
     rdf:type owl:ObjectProperty ,
