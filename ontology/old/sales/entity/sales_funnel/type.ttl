@@ -1,0 +1,73 @@
+@prefix : <http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl#> .
+
+<http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ;
+    dcterms:title "Sales Funnel Ontology"@en ;
+    dcterms:description
+        "Reusable ordered commercial processes and their stages."@en .
+
+#################################################################
+#    Classes
+#################################################################
+
+:SalesFunnel
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf schema:ItemList ;
+    rdfs:label "Sales Funnel"@en ,
+        "Funil de vendas"@pt-BR ;
+    rdfs:comment
+        "An identifiable, ordered, and reusable commercial process that defines the path followed by sales opportunities."@en ;
+    schema:identifier "sales_funnel" .
+
+:SalesFunnelStage
+    rdf:type owl:Class ;
+    rdfs:subClassOf schema:ListItem ;
+    rdfs:label "Sales Funnel Stage"@en ,
+        "Etapa do funil de vendas"@pt-BR ;
+    rdfs:comment
+        "An ordered stage belonging to a sales funnel, identified by its name, description, and position."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasStage
+    rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf schema:itemListElement ;
+    owl:inverseOf :stageOf ;
+    rdfs:domain :SalesFunnel ;
+    rdfs:range :SalesFunnelStage ;
+    rdfs:label "has stage"@en ,
+        "possui etapa"@pt-BR .
+
+:stageOf
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :SalesFunnelStage ;
+    rdfs:range :SalesFunnel ;
+    rdfs:label "stage of"@en ,
+        "etapa de"@pt-BR .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+:position
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf schema:position ;
+    rdfs:domain :SalesFunnelStage ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label "position"@en ,
+        "posição"@pt-BR ;
+    rdfs:comment
+        "One-based ordering position of the stage inside its sales funnel."@en .

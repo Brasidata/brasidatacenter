@@ -1,0 +1,172 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/work_stream/facade.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/work_stream/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/work_stream/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl> ,
+        <http://ontobdc.org/ontology/domain/facade.ttl> .
+
+:mapsToDimensionKind rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf facade:mapsToResource ;
+    rdfs:domain facade:FacadeField ;
+    rdfs:range type:WorkStreamDimensionKind .
+
+#################################################################
+#    WorkStream facade integrity
+#################################################################
+
+:DimensionMappedFieldShape rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :mapsToDimensionKind ;
+    sh:property [
+        sh:path :mapsToDimensionKind ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:equals facade:mapsToResource ;
+        sh:class type:WorkStreamDimensionKind
+    ] .
+
+#################################################################
+#    WorkStream Facade
+#################################################################
+
+type:WorkStream facade:hasDataEntityFacade :WorkStreamFacade .
+
+:WorkStreamFacade rdf:type owl:NamedIndividual ,
+        facade:DataEntityFacade ;
+    schema:identifier "work_stream_facade" ;
+    schema:name "WorkStream Facade"@en ;
+    schema:description "Workbook facade for all WorkStream instances registered in an InfoBIM project."@en ;
+    facade:isFacadeOf type:WorkStream ;
+    facade:hasFacadeField :GlobalIdField ,
+        :NameField ,
+        :DescriptionField ,
+        :WhatField ,
+        :WhyField ,
+        :WhoField ,
+        :WhereField ,
+        :WhenField ,
+        :HowField ,
+        :HowMuchField .
+
+:GlobalIdField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "GlobalId" ;
+    schema:name "GlobalId"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 10 ;
+    facade:mapsToResource schema:identifier ;
+    facade:mapsToProperty schema:identifier ;
+    facade:isRequired true ;
+    facade:isMultivalued false .
+
+:NameField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "Name" ;
+    schema:name "Name"@en ;
+    schema:description "Human-readable WorkStream title stored in the workbook."@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 20 ;
+    facade:mapsToResource dcterms:title ;
+    facade:mapsToProperty dcterms:title ;
+    facade:isRequired true ;
+    facade:isMultivalued false .
+
+:DescriptionField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "Description" ;
+    schema:name "Description"@en ;
+    schema:description "Free-text description of the work to be performed in the WorkStream."@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 30 ;
+    facade:mapsToResource dcterms:description ;
+    facade:mapsToProperty dcterms:description ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:WhatField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "What" ;
+    schema:name "What"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 40 ;
+    facade:mapsToResource type:What ;
+    :mapsToDimensionKind type:What ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:WhyField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "Why" ;
+    schema:name "Why"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 50 ;
+    facade:mapsToResource type:Why ;
+    :mapsToDimensionKind type:Why ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:WhoField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "Who" ;
+    schema:name "Who"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 60 ;
+    facade:mapsToResource type:Who ;
+    :mapsToDimensionKind type:Who ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:WhereField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "Where" ;
+    schema:name "Where"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 70 ;
+    facade:mapsToResource type:Where ;
+    :mapsToDimensionKind type:Where ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:WhenField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "When" ;
+    schema:name "When"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 80 ;
+    facade:mapsToResource type:When ;
+    :mapsToDimensionKind type:When ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:HowField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "How" ;
+    schema:name "How"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 90 ;
+    facade:mapsToResource type:How ;
+    :mapsToDimensionKind type:How ;
+    facade:isRequired false ;
+    facade:isMultivalued false .
+
+:HowMuchField rdf:type owl:NamedIndividual ,
+        facade:FacadeField ;
+    schema:identifier "HowMuch" ;
+    schema:name "How Much"@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 100 ;
+    facade:mapsToResource type:HowMuch ;
+    :mapsToDimensionKind type:HowMuch ;
+    facade:isRequired false ;
+    facade:isMultivalued false .

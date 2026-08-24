@@ -1,0 +1,57 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/document/type.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix ontouml: <http://w3id.org/ontouml#> .
+@prefix job: <http://datacenter.app.br/domain/social/ns/job.ttl#> .
+@base <http://datacenter.app.br/ontology/social/entity/document/type.ttl#> .
+
+<http://datacenter.app.br/ontology/social/entity/document/type.ttl> rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
+                <http://datacenter.app.br/domain/social/ns/job.ttl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://w3id.org/ontouml#name
+ontouml:name rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/identifier
+schema:identifier rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DataEntity
+obdc:DataEntity rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/social/entity/document/type.ttl#JobOffer
+:JobOffer rdf:type obdc:DataEntity ;
+    ontouml:name "Job Offer"@en ;
+    rdfs:comment "Document type data entity for job offer and job posting documents."@en ;
+    schema:description "Recruitment document describing a target job title, role summary, employment type, work location, requirements, skill groups, and achievements expected for a position."@en ;
+    schema:identifier "job_offer" ;
+    schema:about job:JobRequirement ,
+        job:MandatoryRequirement ,
+        job:DesirableRequirement ,
+        job:EmploymentTypeEnumValue ,
+        job:JobLocationTypeEnumValue ,
+        job:SkillGroup ;
+    schema:isBasedOn <http://datacenter.app.br/domain/social/ns/job.ttl> .

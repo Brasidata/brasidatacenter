@@ -1,0 +1,224 @@
+@prefix : <http://datacenter.app.br/ontology/sales/entity/sales_opportunity/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/sales/entity/sales_opportunity/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/sales/entity/sales_opportunity/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/sales/entity/sales_opportunity/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
+        <http://datacenter.app.br/ontology/sales/entity/sales_opportunity/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:SalesOpportunity :hasDataEntityFacade :SalesOpportunityFacade .
+
+:SalesOpportunityFacade
+    rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "sales_opportunity_facade" ;
+    schema:name "Sales Opportunity Facade"@en ;
+    schema:description
+        "Public workbook facade for concrete selling possibilities managed through sales funnels."@en ;
+    :isFacadeOf type:SalesOpportunity ;
+    :hasFacadeField :SalesOpportunityGlobalIdField ,
+        :SalesOpportunityNameField ,
+        :SalesOpportunityDescriptionField ,
+        :SalesOpportunityFunnelField ,
+        :SalesOpportunityCurrentStageField ,
+        :SalesOpportunityStateField ,
+        :SalesOpportunityProspectiveCustomerField ,
+        :SalesOpportunityContactsField ,
+        :SalesOpportunityOwnerField ,
+        :SalesOpportunityEstimatedValueField ,
+        :SalesOpportunityCurrencyField ,
+        :SalesOpportunityProbabilityField ,
+        :SalesOpportunityExpectedCloseDateField ,
+        :SalesOpportunityClosedAtField ,
+        :SalesOpportunityCloseReasonField .
+
+:SalesOpportunityGlobalIdField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesOpportunityNameField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesOpportunityDescriptionField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:description ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityFunnelField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "funnel" ;
+    schema:name "Funnel"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:usesFunnel ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesOpportunityCurrentStageField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "current_stage" ;
+    schema:name "Current Stage"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:currentStage ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesOpportunityStateField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "state" ;
+    schema:name "State"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:opportunityState ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesOpportunityProspectiveCustomerField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "prospective_customer" ;
+    schema:name "Prospective Customer"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:prospectiveCustomer ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityContactsField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "contacts" ;
+    schema:name "Contacts"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:contact ;
+    :isRequired false ;
+    :isMultivalued true .
+
+:SalesOpportunityOwnerField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "owner" ;
+    schema:name "Owner"@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:owner ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityEstimatedValueField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "estimated_value" ;
+    schema:name "Estimated Value"@en ;
+    :fieldDatatype xsd:decimal ;
+    :mapsToProperty type:estimatedValue ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityCurrencyField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "currency" ;
+    schema:name "Currency"@en ;
+    schema:description "Three-letter ISO 4217 currency code."@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty type:currency ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityProbabilityField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "probability" ;
+    schema:name "Probability"@en ;
+    schema:description "Decimal probability from zero to one."@en ;
+    :fieldDatatype xsd:decimal ;
+    :mapsToProperty type:probability ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityExpectedCloseDateField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "expected_close_date" ;
+    schema:name "Expected Close Date"@en ;
+    :fieldDatatype xsd:date ;
+    :mapsToProperty type:expectedCloseDate ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityClosedAtField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "closed_at" ;
+    schema:name "Closed At"@en ;
+    :fieldDatatype xsd:dateTime ;
+    :mapsToProperty type:closedAt ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesOpportunityCloseReasonField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "close_reason" ;
+    schema:name "Close Reason"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty type:closeReason ;
+    :isRequired false ;
+    :isMultivalued false .

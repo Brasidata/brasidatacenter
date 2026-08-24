@@ -1,0 +1,103 @@
+@prefix : <http://datacenter.app.br/ontology/sales/entity/sales_funnel/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/sales/entity/sales_funnel/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/sales/entity/sales_funnel/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
+        <http://datacenter.app.br/ontology/sales/entity/sales_funnel/type.ttl> .
+
+:DataEntityFacade rdf:type owl:Class .
+:FacadeField rdf:type owl:Class .
+
+:hasDataEntityFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:fieldDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:SalesFunnel :hasDataEntityFacade :SalesFunnelFacade .
+
+:SalesFunnelFacade
+    rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "sales_funnel_facade" ;
+    schema:name "Sales Funnel Facade"@en ;
+    schema:description
+        "Public workbook facade for reusable ordered commercial processes."@en ;
+    :isFacadeOf type:SalesFunnel ;
+    :hasFacadeField :SalesFunnelGlobalIdField ,
+        :SalesFunnelNameField ,
+        :SalesFunnelDescriptionField ,
+        :SalesFunnelStagesField .
+
+:SalesFunnelGlobalIdField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesFunnelNameField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:name ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:SalesFunnelDescriptionField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    :fieldDatatype xsd:string ;
+    :mapsToProperty schema:description ;
+    :isRequired false ;
+    :isMultivalued false .
+
+:SalesFunnelStagesField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "stages" ;
+    schema:name "Stages"@en ;
+    schema:description
+        "Ordered references to the stages that define the commercial path."@en ;
+    :fieldDatatype xsd:anyURI ;
+    :mapsToProperty type:hasStage ;
+    :isRequired true ;
+    :isMultivalued true .
