@@ -3,11 +3,11 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @base <http://datacenter.app.br/ontology/social/entity/person/type.ttl#> .
 
 <http://datacenter.app.br/ontology/social/entity/person/type.ttl> rdf:type owl:Ontology ;
-    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> .
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> .
 
 #################################################################
 #    Classes

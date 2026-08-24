@@ -1,5 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/ontobdc/domain/tile.ttl#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -15,7 +15,7 @@
   rdfs:label "OntoBDC Tile Presentation Ontology"@en ;
   rdfs:comment "Renderer-neutral semantic descriptions of OntoBDC Tiles."@en ;
   schema:description "Generic OntoBDC Tile contracts; domain extensions may define their own Tiles."@en ;
-  owl:imports <http://ontobdc.org/ontology/domain/ns.ttl>,
+  owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl>,
     <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl>,
     <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl> ;
   rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
@@ -55,7 +55,7 @@
     rdfs:label "OntoBDC Tile Presentation Ontology"@en ;
     rdfs:comment "Renderer-neutral semantic descriptions of the Tiles currently supplied by OntoBDC View. This ontology describes presentation intent and data requirements; HTML custom-element names and Flutter widget classes remain renderer implementation details."@en ;
     schema:description "Generic OntoBDC Tile contracts. Domain extensions such as InfoBIM must define their own Tiles in separate ontologies and may reuse these contracts without making OntoBDC depend on the extension."@en ;
-    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
                 <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> ;
     rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
 

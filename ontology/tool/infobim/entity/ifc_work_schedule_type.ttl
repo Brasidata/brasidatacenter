@@ -1,0 +1,201 @@
+@prefix : <https://infobim.org/ontology/ns#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@base <https://infobim.org/ontology/entity/ifc_work_schedule/type.ttl#> .
+
+<https://infobim.org/ontology/entity/ifc_work_schedule/type.ttl>
+    rdf:type owl:Ontology .
+
+#################################################################
+#    Classes
+#################################################################
+
+:IfcWorkSchedule rdf:type owl:Class ;
+    rdfs:subClassOf obdc:SurfaceableEntity ,
+        ifcowl:IfcWorkSchedule ;
+    rdfs:label "IFC Work Schedule"@en ,
+        "Cronograma IFC"@pt-BR ;
+    rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule for planning and production control."@en ;
+    schema:description "A surfaceable IFC work schedule organized through identifiable control dimensions."@en .
+
+:IfcWorkScheduleDimension rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ;
+    rdfs:label "IFC Work Schedule Dimension"@en ,
+        "Dimensão do cronograma IFC"@pt-BR ;
+    rdfs:comment "Identifiable, non-hierarchical control dimension belonging to one IFC Work Schedule."@en ;
+    schema:description "Semantic endpoint for one schedule-control kind, allowing planned, actual, and forecast information to remain explicitly classified."@en .
+
+:IfcWorkScheduleDimensionKind rdf:type owl:Class ;
+    rdfs:label "IFC Work Schedule Dimension Kind"@en ,
+        "Tipo de dimensão do cronograma IFC"@pt-BR ;
+    schema:description "Controlled classification of the production-control dimensions supported by an IFC Work Schedule."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+:hasDimension rdf:type owl:ObjectProperty ;
+    owl:inverseOf :dimensionOf ;
+    rdfs:domain :IfcWorkSchedule ;
+    rdfs:range :IfcWorkScheduleDimension ;
+    rdfs:label "has dimension"@en ,
+        "possui dimensão"@pt-BR ;
+    rdfs:comment "Associates an IFC Work Schedule with an identifiable production-control dimension."@en .
+
+:dimensionOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :IfcWorkScheduleDimension ;
+    rdfs:range :IfcWorkSchedule ;
+    rdfs:label "dimension of"@en ,
+        "dimensão de"@pt-BR .
+
+:dimensionKind rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :IfcWorkScheduleDimension ;
+    rdfs:range :IfcWorkScheduleDimensionKind ;
+    rdfs:label "dimension kind"@en ,
+        "tipo de dimensão"@pt-BR .
+
+#################################################################
+#    Project Management Frameworks
+#################################################################
+
+:Gantt rdf:type owl:Class ;
+    rdfs:subClassOf obdc:ProjectManagementFramework ;
+    rdfs:label "Gantt"@en ,
+        "Gantt"@pt-BR ;
+    schema:identifier "gantt" ;
+    schema:description "Project management framework organizing scheduled activities as bars positioned on a time axis, with dependency arrows and milestone markers."@en .
+
+#################################################################
+#    Dimension Kinds - Scope
+#################################################################
+
+:ScopePlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Scope"@en ,
+        "Escopo previsto"@pt-BR ;
+    schema:identifier "scope-planned" ;
+    schema:description "Activities, deliverables, quantities, and other work content expected to be executed."@en .
+
+:ScopeActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Scope"@en ,
+        "Escopo realizado"@pt-BR ;
+    schema:identifier "scope-actual" ;
+    schema:description "Activities, deliverables, quantities, and other work content evidenced as executed."@en .
+
+#################################################################
+#    Dimension Kinds - Time
+#################################################################
+
+:TimePlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Time"@en ,
+        "Tempo previsto"@pt-BR ;
+    schema:identifier "time-planned" ;
+    schema:description "Scheduled starts, finishes, durations, milestones, and temporal constraints."@en .
+
+:TimeActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Time"@en ,
+        "Tempo realizado"@pt-BR ;
+    schema:identifier "time-actual" ;
+    schema:description "Measured starts, finishes, durations, and temporal execution records."@en .
+
+:TimeForecast rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Forecast Time"@en ,
+        "Tempo projetado"@pt-BR ;
+    schema:identifier "time-forecast" ;
+    schema:description "Projected remaining time and completion dates based on the current schedule status."@en .
+
+#################################################################
+#    Dimension Kinds - Progress
+#################################################################
+
+:ProgressPlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Progress"@en ,
+        "Avanço previsto"@pt-BR ;
+    schema:identifier "progress-planned" ;
+    schema:description "Expected completion of scheduled work at the applicable status date."@en .
+
+:ProgressActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Progress"@en ,
+        "Avanço realizado"@pt-BR ;
+    schema:identifier "progress-actual" ;
+    schema:description "Measured completion of scheduled work at the applicable status date."@en .
+
+:ProgressForecast rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Forecast Progress"@en ,
+        "Avanço projetado"@pt-BR ;
+    schema:identifier "progress-forecast" ;
+    schema:description "Projected completion of scheduled work based on the current status."@en .
+
+#################################################################
+#    Dimension Kinds - Labor
+#################################################################
+
+:LaborPlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Labor"@en ,
+        "Mão de obra prevista"@pt-BR ;
+    schema:identifier "labor-planned" ;
+    schema:description "Human resources, roles, quantities, and work-hours planned for scheduled work."@en .
+
+:LaborActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Labor"@en ,
+        "Mão de obra realizada"@pt-BR ;
+    schema:identifier "labor-actual" ;
+    schema:description "Human resources, roles, quantities, and work-hours recorded for executed work."@en .
+
+#################################################################
+#    Dimension Kinds - Equipment
+#################################################################
+
+:EquipmentPlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Equipment"@en ,
+        "Equipamentos previstos"@pt-BR ;
+    schema:identifier "equipment-planned" ;
+    schema:description "Machinery, equipment, tools, and temporary means planned for scheduled work."@en .
+
+:EquipmentActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Equipment"@en ,
+        "Equipamentos utilizados"@pt-BR ;
+    schema:identifier "equipment-actual" ;
+    schema:description "Machinery, equipment, tools, and temporary means recorded for executed work."@en .
+
+#################################################################
+#    Dimension Kinds - Material
+#################################################################
+
+:MaterialPlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Material"@en ,
+        "Materiais previstos"@pt-BR ;
+    schema:identifier "material-planned" ;
+    schema:description "Materials and consumable inputs planned for scheduled work."@en .
+
+:MaterialActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Material"@en ,
+        "Materiais consumidos"@pt-BR ;
+    schema:identifier "material-actual" ;
+    schema:description "Materials and consumable inputs recorded for executed work."@en .
+
+#################################################################
+#    Dimension Kinds - Cost
+#################################################################
+
+:CostPlanned rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Planned Cost"@en ,
+        "Custo previsto"@pt-BR ;
+    schema:identifier "cost-planned" ;
+    schema:description "Financial value planned for scheduled work, resources, goods, and services."@en .
+
+:CostActual rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Actual Cost"@en ,
+        "Custo realizado"@pt-BR ;
+    schema:identifier "cost-actual" ;
+    schema:description "Financial value recorded for executed work, resources, goods, and services."@en .
+
+:CostForecast rdf:type :IfcWorkScheduleDimensionKind ;
+    rdfs:label "Forecast Cost"@en ,
+        "Custo projetado"@pt-BR ;
+    schema:identifier "cost-forecast" ;
+    schema:description "Projected total or remaining cost based on the current execution status."@en .

@@ -1,5 +1,5 @@
 @prefix ibim: <https://infobim.org/ontology/ns#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 @prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .

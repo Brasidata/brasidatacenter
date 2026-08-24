@@ -1,10 +1,9 @@
 @prefix : <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @base <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 
 <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl>
@@ -14,8 +13,8 @@
 #    Classes
 #################################################################
 
-:WorkStream rdf:type owl:Class ,
-        obdc:SurfaceableEntity ;
+:WorkStream rdf:type owl:Class ;
+    rdfs:subClassOf obdc:SurfaceableEntity ;
     rdfs:label "Work Stream"@en ,
         "Frente de trabalho"@pt-BR ;
     rdfs:comment "Coherent scope of coordinated work within a project."@en ;
@@ -28,7 +27,7 @@
     rdfs:comment "Identifiable, non-hierarchical contextual dimension belonging to one Work Stream."@en ;
     schema:description "Semantic endpoint for one 5W2H aspect. External datasets and resources may be linked to the dimension without becoming parts, children, or decompositions of the Work Stream."@en .
 
-:DimensionKind rdf:type owl:Class ;
+:WorkStreamDimensionKind rdf:type owl:Class ;
     rdfs:label "Work Stream Dimension Kind"@en ,
         "Tipo de dimensão da frente de trabalho"@pt-BR ;
     schema:description "Controlled classification of the seven 5W2H dimensions."@en .
@@ -54,60 +53,9 @@
 :dimensionKind rdf:type owl:ObjectProperty ,
         owl:FunctionalProperty ;
     rdfs:domain :WorkStreamDimension ;
-    rdfs:range :DimensionKind ;
+    rdfs:range :WorkStreamDimensionKind ;
     rdfs:label "dimension kind"@en ,
         "tipo de dimensão"@pt-BR .
-
-:who rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:label "who"@en ,
-        "quem"@pt-BR ;
-    schema:description "Person, organization, team, or role responsible for or involved in the work stream."@en .
-
-:where rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:label "where"@en ,
-        "onde"@pt-BR ;
-    schema:description "Place, facility, building, storey, zone, or other spatial context of the work stream."@en .
-
-#################################################################
-#    Data Properties
-#################################################################
-
-:what rdf:type owl:DatatypeProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:range xsd:string ;
-    rdfs:label "what"@en ,
-        "o que"@pt-BR ;
-    schema:description "Free-text definition of the scope to be executed."@en .
-
-:why rdf:type owl:DatatypeProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:range xsd:string ;
-    rdfs:label "why"@en ,
-        "por que"@pt-BR ;
-    schema:description "Purpose, need, or justification for executing the work stream."@en .
-
-:when rdf:type owl:DatatypeProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:range xsd:string ;
-    rdfs:label "when"@en ,
-        "quando"@pt-BR ;
-    schema:description "Free-text temporal context, milestone, period, or execution window."@en .
-
-:how rdf:type owl:DatatypeProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:range xsd:string ;
-    rdfs:label "how"@en ,
-        "como"@pt-BR ;
-    schema:description "Method, procedure, or execution strategy of the work stream within the applied project management framework."@en .
-
-:howMuch rdf:type owl:DatatypeProperty ;
-    rdfs:domain :WorkStream ;
-    rdfs:range xsd:string ;
-    rdfs:label "how much"@en ,
-        "quanto"@pt-BR ;
-    schema:description "Cost, quantity, effort, or other magnitude associated with the work stream."@en .
 
 #################################################################
 #    Project Management Frameworks
@@ -125,36 +73,50 @@
 #################################################################
 
 :What rdf:type
-        :DimensionKind ;
-    rdfs:label "What"@en ;
-    schema:identifier "what" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "What"@en ,
+        "O que"@pt-BR ;
+    schema:identifier "what" ;
+    schema:description "Definition of the scope to be executed."@en .
 
 :Why rdf:type
-        :DimensionKind ;
-    rdfs:label "Why"@en ;
-    schema:identifier "why" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "Why"@en ,
+        "Por que"@pt-BR ;
+    schema:identifier "why" ;
+    schema:description "Purpose, need, or justification for executing the work stream."@en .
 
 :Where rdf:type
-        :DimensionKind ;
-    rdfs:label "Where"@en ;
-    schema:identifier "where" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "Where"@en ,
+        "Onde"@pt-BR ;
+    schema:identifier "where" ;
+    schema:description "Place, facility, building, storey, zone, or other spatial context of the work stream."@en .
 
 :When rdf:type
-        :DimensionKind ;
-    rdfs:label "When"@en ;
-    schema:identifier "when" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "When"@en ,
+        "Quando"@pt-BR ;
+    schema:identifier "when" ;
+    schema:description "Temporal context, milestone, period, or execution window."@en .
 
 :Who rdf:type
-        :DimensionKind ;
-    rdfs:label "Who"@en ;
-    schema:identifier "who" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "Who"@en ,
+        "Quem"@pt-BR ;
+    schema:identifier "who" ;
+    schema:description "Person, organization, team, or role responsible for or involved in the work stream."@en .
 
 :How rdf:type
-        :DimensionKind ;
-    rdfs:label "How"@en ;
-    schema:identifier "how" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "How"@en ,
+        "Como"@pt-BR ;
+    schema:identifier "how" ;
+    schema:description "Method, procedure, or execution strategy of the work stream within the applied project management framework."@en .
 
 :HowMuch rdf:type
-        :DimensionKind ;
-    rdfs:label "How Much"@en ;
-    schema:identifier "how-much" .
+        :WorkStreamDimensionKind ;
+    rdfs:label "How Much"@en ,
+        "Quanto"@pt-BR ;
+    schema:identifier "how-much" ;
+    schema:description "Cost, quantity, effort, or other magnitude associated with the work stream."@en .

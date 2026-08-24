@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import asyncio
 
-from textual.widgets import Footer, Header, TabbedContent, TabPane
+from textual.widgets import Footer, Header, TabbedContent, TabPane, Tree
 
 from brasidatacenter.cli.adapter.application import CommandApplication
-from brasidatacenter.cli.domain.command import CommandResponse, CommandTab
+from brasidatacenter.cli.domain.command import (
+    CommandResponse,
+    CommandTab,
+    CommandTreeNode,
+)
 
 
 def test_application_has_one_fixed_header_and_footer_and_nested_tabs() -> None:
@@ -14,7 +18,17 @@ def test_application_has_one_fixed_header_and_footer_and_nested_tabs() -> None:
         tabs=(
             CommandTab(
                 title="primary",
-                children=(CommandTab(title="nested"),),
+                children=(
+                    CommandTab(
+                        title="nested",
+                        tree=(
+                            CommandTreeNode(
+                                label="schema.ttl",
+                                children=(CommandTreeNode(label="Entity"),),
+                            ),
+                        ),
+                    ),
+                ),
             ),
         ),
     )
@@ -31,5 +45,9 @@ def test_application_has_one_fixed_header_and_footer_and_nested_tabs() -> None:
                 "tab-0",
                 "tab-0-0",
             ]
+            trees = list(application.query(Tree))
+            assert len(trees) == 1
+            assert str(trees[0].root.children[0].label) == "schema.ttl"
+            assert str(trees[0].root.children[0].children[0].label) == "Entity"
 
     asyncio.run(inspect_application())

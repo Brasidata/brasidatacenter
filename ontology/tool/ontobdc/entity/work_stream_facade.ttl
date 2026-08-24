@@ -49,6 +49,10 @@
     rdfs:domain :FacadeField ;
     rdfs:range rdf:Property .
 
+:mapsToDimensionKind rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range type:WorkStreamDimensionKind .
+
 #################################################################
 #    Data Properties
 #################################################################
@@ -118,7 +122,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "What" ;
     schema:name "What"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:what ;
+    :mapsToDimensionKind type:What ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -127,7 +131,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "Why" ;
     schema:name "Why"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:why ;
+    :mapsToDimensionKind type:Why ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -136,7 +140,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "Who" ;
     schema:name "Who"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:who ;
+    :mapsToDimensionKind type:Who ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -145,7 +149,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "Where" ;
     schema:name "Where"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:where ;
+    :mapsToDimensionKind type:Where ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -154,7 +158,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "When" ;
     schema:name "When"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:when ;
+    :mapsToDimensionKind type:When ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -163,7 +167,7 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "How" ;
     schema:name "How"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:how ;
+    :mapsToDimensionKind type:How ;
     :isRequired false ;
     :isMultivalued false .
 
@@ -172,6 +176,6 @@ type:WorkStream :hasDataEntityFacade :WorkStreamFacade .
     schema:identifier "HowMuch" ;
     schema:name "How Much"@en ;
     :fieldDatatype xsd:string ;
-    :mapsToProperty type:howMuch ;
+    :mapsToDimensionKind type:HowMuch ;
     :isRequired false ;
     :isMultivalued false .

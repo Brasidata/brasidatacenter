@@ -52,7 +52,7 @@ class CommandBody(Vertical):
                         yield cls._make_tree(tab.tree, child_suffix)
                     else:
                         yield Static(
-                            "No subdirectories.",
+                            "No files.",
                             classes="empty-directory",
                         )
 

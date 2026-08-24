@@ -7,7 +7,9 @@ from importlib.resources.abc import Traversable
 from pathlib import PurePosixPath
 from urllib.parse import unquote, urlsplit
 
-from rdflib import Graph, URIRef
+from rdflib import BNode, Graph, URIRef
+from rdflib.exceptions import ParserError
+from rdflib.namespace import OWL, RDF, RDFS
 
 from brasidatacenter.cli.domain.command import (
     CommandMetadata,
@@ -75,13 +77,16 @@ class ToolCommand(CommandPort):
         return tuple(
             CommandTreeNode(
                 label=file.name,
-                children=cls._subject_nodes(file),
+                children=cls._class_property_nodes(file),
             )
             for file in files
         )
 
     @classmethod
-    def _subject_nodes(cls, resource: Traversable) -> tuple[CommandTreeNode, ...]:
+    def _class_property_nodes(
+        cls,
+        resource: Traversable,
+    ) -> tuple[CommandTreeNode, ...]:
         rdf_format = {
             ".json": "json-ld",
             ".jsonld": "json-ld",
@@ -97,28 +102,103 @@ class ToolCommand(CommandPort):
             return ()
 
         graph = Graph()
-        with resource.open("rb") as stream:
-            graph.parse(file=stream, format=rdf_format)
+        try:
+            with resource.open("rb") as stream:
+                graph.parse(file=stream, format=rdf_format)
+        except (ParserError, SyntaxError):
+            return ()
 
-        names = {
-            cls._subject_name(graph, subject)
-            for subject in graph.subjects()
+        classes = {
+            subject
+            for subject in graph.subjects(RDF.type, OWL.Class)
             if isinstance(subject, URIRef)
         }
+        property_types = (OWL.ObjectProperty, OWL.DatatypeProperty)
+        properties = {
+            subject
+            for property_type in property_types
+            for subject in graph.subjects(RDF.type, property_type)
+            if isinstance(subject, URIRef)
+        }
+
+        properties_by_domain: dict[URIRef, set[URIRef]] = {
+            class_subject: set() for class_subject in classes
+        }
+        orphan_properties: set[URIRef] = set()
+        for property_subject in properties:
+            named_class_domains = {
+                domain
+                for domain in graph.objects(property_subject, RDFS.domain)
+                if isinstance(domain, URIRef) and domain in classes
+            }
+            if named_class_domains:
+                for domain in named_class_domains:
+                    properties_by_domain[domain].add(property_subject)
+            else:
+                orphan_properties.add(property_subject)
+
+        class_nodes = tuple(
+            CommandTreeNode(
+                label=cls._term_name(graph, class_subject),
+                children=cls._property_nodes(
+                    graph,
+                    properties_by_domain[class_subject],
+                ),
+            )
+            for class_subject in sorted(
+                classes,
+                key=lambda subject: cls._term_name(graph, subject).casefold(),
+            )
+        )
+        if not orphan_properties:
+            return class_nodes
+
+        return (
+            *class_nodes,
+            CommandTreeNode(
+                label="Orphan",
+                children=cls._property_nodes(graph, orphan_properties),
+            ),
+        )
+
+    @classmethod
+    def _property_nodes(
+        cls,
+        graph: Graph,
+        properties: set[URIRef],
+    ) -> tuple[CommandTreeNode, ...]:
         return tuple(
-            CommandTreeNode(label=name)
-            for name in sorted(names, key=str.casefold)
+            CommandTreeNode(
+                label=cls._term_name(graph, property_subject),
+                children=tuple(
+                    CommandTreeNode(
+                        label=(
+                            "Anonymous range"
+                            if isinstance(range_value, BNode)
+                            else cls._term_name(graph, range_value)
+                        )
+                    )
+                    for range_value in sorted(
+                        set(graph.objects(property_subject, RDFS.range)),
+                        key=str,
+                    )
+                ),
+            )
+            for property_subject in sorted(
+                properties,
+                key=lambda subject: cls._term_name(graph, subject).casefold(),
+            )
         )
 
     @staticmethod
-    def _subject_name(graph: Graph, subject: URIRef) -> str:
+    def _term_name(graph: Graph, subject: URIRef) -> str:
         try:
             prefix, _, local_name = graph.namespace_manager.compute_qname(
                 subject,
                 generate=False,
             )
             return f"{prefix}:{local_name}" if prefix else local_name
-        except KeyError:
+        except (KeyError, ValueError):
             parsed = urlsplit(str(subject))
             fragment = unquote(parsed.fragment)
             if fragment:

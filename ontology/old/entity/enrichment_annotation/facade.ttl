@@ -1,5 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix oa: <http://www.w3.org/ns/oa#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -15,7 +15,7 @@
 <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/facade.ttl>
     rdf:type owl:Ontology ;
     owl:imports
-        <http://ontobdc.org/ontology/domain/ns.ttl> ,
+        <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
         <http://datacenter.app.br/ontology/productivity/entity/enrichment_annotation/type.ttl> ,
         <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl> ,
         <http://datacenter.app.br/ontology/productivity/entity/visual_representation_type/type.ttl> .

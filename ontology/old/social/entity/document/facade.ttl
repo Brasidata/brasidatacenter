@@ -3,7 +3,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix cv: <http://rdfs.org/resume-rdf/cv.rdfs#> .
@@ -12,7 +12,7 @@
 @base <http://datacenter.app.br/ontology/social/entity/document/facade.ttl#> .
 
 <http://datacenter.app.br/ontology/social/entity/document/facade.ttl> rdf:type owl:Ontology ;
-    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
                 <http://datacenter.app.br/ontology/social/entity/document/type.ttl> ,
                 <http://datacenter.app.br/domain/social/ns/job.ttl> .
 

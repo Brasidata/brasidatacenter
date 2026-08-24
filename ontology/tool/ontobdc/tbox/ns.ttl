@@ -1,4 +1,4 @@
-@prefix : <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix : <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
 @prefix cpms: <https://doi.org/10.2139/ssrn.2062696#> .
 @prefix err: <http://www.w3.org/2010/02/rdfa/errors#> .
@@ -16,15 +16,15 @@
 @prefix function: <http://w3id.org/function/ontology#> .
 @prefix ws: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
 @prefix ibim: <https://infobim.org/ontology/ns#> .
-@base <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@base <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 
-<http://ontobdc.org/ontology/domain/ns.ttl> rdf:type owl:Ontology .
+<http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> rdf:type owl:Ontology .
 
 #################################################################
 #    Annotation properties
 #################################################################
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#pythonType
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#pythonType
 :pythonType rdf:type owl:AnnotationProperty .
 
 
@@ -48,7 +48,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#belongsToDataContainer
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#belongsToDataContainer
 :belongsToDataContainer rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf dcterms:isPartOf ;
                         rdfs:domain :EntityDataset ;
@@ -57,7 +57,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                         rdfs:comment "The entity dataset belongs to the specified data container."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasDataContainer
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasDataContainer
 :hasDataContainer rdf:type owl:ObjectProperty ;
                   rdfs:domain :DataStorage ;
                   rdfs:range :DataContainer ;
@@ -65,7 +65,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   rdfs:comment "The data storage capability has the specified data container."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasDataEntity
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasDataEntity
 :hasDataEntity rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf prov:hadMember ;
                rdfs:domain :EntityDataset ;
@@ -74,7 +74,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                rdfs:comment "The dataset contains the specific data entity."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasDocumentType
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasDocumentType
 :hasDocumentType rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf schema:additionalType ;
                  rdfs:domain :DataEntity ;
@@ -83,7 +83,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                  rdfs:comment "Relates a data entity to its document type classification."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasEntityDataset
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasEntityDataset
 :hasEntityDataset rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf dcterms:hasPart ;
                   rdfs:domain :DataContainer ;
@@ -92,7 +92,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   rdfs:comment "The data container has the specified entity dataset."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasFileGroupingScheme
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasFileGroupingScheme
 :hasFileGroupingScheme rdf:type owl:ObjectProperty ;
                        rdfs:domain :ProjectManagementFramework ;
                        rdfs:range :FileGroupingScheme ;
@@ -100,7 +100,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                        rdfs:comment "Associates a project management framework application with a renderer-neutral scheme for grouping candidate files by semantic criteria."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#hasFileGroup
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#hasFileGroup
 :hasFileGroup rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf dcterms:hasPart ;
               rdfs:domain :FileGroupingScheme ;
@@ -109,7 +109,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
               rdfs:comment "Associates a file grouping scheme with one of its semantic file groups."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#matchesMediaType
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#matchesMediaType
 :matchesMediaType rdf:type owl:ObjectProperty ;
                   rdfs:domain :FileGroup ;
                   rdfs:range dcterms:MediaType ;
@@ -117,7 +117,7 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   rdfs:comment "Declares a media-type criterion for a file group. MIME detection and any filename-extension fallback are runtime concerns and are not part of this semantic contract."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#usesProjectManagementFramework
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#usesProjectManagementFramework
 :usesProjectManagementFramework rdf:type owl:ObjectProperty ;
                                 rdfs:domain [ a owl:Class ;
                                               owl:unionOf ( ws:WorkStream ibim:IfcWorkSchedule ) ] ;
@@ -146,7 +146,7 @@ prov:hadMember rdf:type owl:ObjectProperty .
 #    Data properties
 #################################################################
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#documentTypeVectorValue
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#documentTypeVectorValue
 :documentTypeVectorValue rdf:type owl:DatatypeProperty ;
                          rdfs:subPropertyOf schema:value ;
                          rdfs:domain :DocumentType ;
@@ -170,7 +170,7 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                          rdfs:comment "Management-technique dimension of the Construction Project Management System (CPMS) ontological framework."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#DataContainer
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DataContainer
 :DataContainer rdf:type owl:Class ,
                         :SurfaceableEntity ;
                rdfs:subClassOf ct:ContainerDescription ,
@@ -179,14 +179,14 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                rdfs:comment "A catalog or container that groups and organizes entity datasets."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#DataEntity
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DataEntity
 :DataEntity rdf:type owl:Class ;
             rdfs:subClassOf prov:Entity ;
             ontouml:name "Data entity"@en ;
             rdfs:comment "An individual data entity or resource."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#DataStorage
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DataStorage
 :DataStorage rdf:type owl:Class ;
              rdfs:subClassOf function:Function ,
                              dcat:DataService ;
@@ -194,14 +194,14 @@ cpms:ManagementTechnique rdf:type owl:Class ;
              rdfs:comment "The data storage capability that manages data containers and semantic storage."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#DocumentType
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DocumentType
 :DocumentType rdf:type owl:Class ;
               rdfs:subClassOf schema:DefinedTerm ;
               ontouml:name "Document type"@en ;
               rdfs:comment "A controlled document type used to classify data entities."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#EntityDataset
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#EntityDataset
 :EntityDataset rdf:type owl:Class ;
                rdfs:subClassOf ct:Folder ,
                                dcat:Dataset ;
@@ -209,32 +209,32 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                rdfs:comment "A dataset representing a collection of related data entities."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#FileGroupingScheme
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#FileGroupingScheme
 :FileGroupingScheme rdf:type owl:Class ;
                     ontouml:name "File grouping scheme"@en ;
                     rdfs:comment "Renderer-neutral scheme that organizes a finite candidate set of files into semantic groups for a project management framework application."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#FileGroup
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#FileGroup
 :FileGroup rdf:type owl:Class ;
            ontouml:name "File group"@en ;
            rdfs:comment "Semantic group within a file grouping scheme. Membership may be selected by one or more declared criteria such as media type."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#ResidualFileGroup
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#ResidualFileGroup
 :ResidualFileGroup rdf:type owl:Class ;
                    rdfs:subClassOf :FileGroup ;
                    ontouml:name "Residual file group"@en ;
                    rdfs:comment "Residual group whose members are candidate files not matched by any non-residual sibling FileGroup in the same FileGroupingScheme. Membership is evaluated over the finite candidate set by deterministic runtime logic and must not be interpreted as an OWL complement."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#ExecutionContext
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#ExecutionContext
 :ExecutionContext rdf:type owl:Class ;
                   ontouml:name "Execution context"@en ;
                   rdfs:comment "The execution context that stores runtime parameters for a CLI interaction."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#IncomingDatasetParameter
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#IncomingDatasetParameter
 :IncomingDatasetParameter rdf:type owl:Class ;
                           rdfs:subClassOf function:Parameter ;
                           dcterms:identifier "org.ontobdc.domain.storage.capability.incoming.dataset" ;
@@ -242,7 +242,7 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                           rdfs:comment "Dataset repository instance"@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#OutputSchema
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#OutputSchema
 :OutputSchema rdf:type owl:Class ;
               rdfs:subClassOf function:Output ;
               dcterms:identifier "ooutput_schema" ;
@@ -250,7 +250,7 @@ cpms:ManagementTechnique rdf:type owl:Class ;
               rdfs:comment "The schema of the output data produced by the query execution."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#ProjectManagementFramework
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#ProjectManagementFramework
 :ProjectManagementFramework rdf:type owl:Class ;
                             rdfs:subClassOf cpms:ManagementTechnique ;
                             ontouml:name "Project management framework"@en ;
@@ -258,7 +258,7 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                             rdfs:comment "A management technique or structured framework used to organize, guide, or support the management of project work."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#QueryCapability
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#QueryCapability
 :QueryCapability rdf:type owl:Class ;
                  rdfs:subClassOf schema:SoftwareApplication ,
                                  function:Function ;
@@ -267,13 +267,13 @@ cpms:ManagementTechnique rdf:type owl:Class ;
                  rdfs:comment "Executes a query over a declared data or semantic context."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#SurfaceableEntity
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#SurfaceableEntity
 :SurfaceableEntity rdf:type owl:Class ;
                    ontouml:name "Surfaceable entity"@en ;
                    rdfs:comment "Marks an entity class whose instances are eligible for a direct representation (a Tile) on an OntoBDC presentation surface."@en .
 
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#TransformationCapability
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#TransformationCapability
 :TransformationCapability rdf:type owl:Class ;
                           rdfs:subClassOf schema:SoftwareApplication ,
                                           function:Function ;
@@ -341,7 +341,7 @@ dcat:Dataset rdf:type owl:Class .
 ###  http://www.w3.org/ns/prov#Entity
 prov:Entity rdf:type owl:Class .
 
-###  http://ontobdc.org/ontology/domain/ns.ttl#entityAlias
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#entityAlias
 :entityAlias rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf skos:altLabel ,
                                 schema:alternateName ;

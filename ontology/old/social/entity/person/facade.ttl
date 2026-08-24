@@ -4,12 +4,12 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix obdc: <http://ontobdc.org/ontology/domain/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix type: <http://datacenter.app.br/ontology/social/entity/person/type.ttl#> .
 @base <http://datacenter.app.br/ontology/social/entity/person/facade.ttl#> .
 
 <http://datacenter.app.br/ontology/social/entity/person/facade.ttl> rdf:type owl:Ontology ;
-    owl:imports <http://ontobdc.org/ontology/domain/ns.ttl> ,
+    owl:imports <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
                 <http://datacenter.app.br/ontology/social/entity/person/type.ttl> .
 
 :DataEntityFacade rdf:type owl:Class .
