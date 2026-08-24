@@ -1,0 +1,493 @@
+@prefix : <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://ontobdc.org/ontology/domain/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> .
+
+#################################################################
+#    Data entity facades
+#################################################################
+
+:DataEntityFacade
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isFacadeOf ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasFacadeField ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Data Entity Facade"@en ,
+        "Fachada de entidade de dados"@pt-BR ;
+    schema:description "Tabular projection of an entity class."@en .
+
+:FacadeField
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldDatatype ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldOrder ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isRequired ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isMultivalued ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :mapsToResource ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Facade Field"@en ,
+        "Campo de fachada"@pt-BR ;
+    schema:description "A field exposed by a data entity facade."@en .
+
+:hasDataEntityFacade
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isFacadeOf ;
+    rdfs:domain owl:Class ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range owl:Class .
+
+:hasFacadeField
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:hasStandaloneTile
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range view:ComponentPlacement ;
+    rdfs:label "has standalone tile"@en ;
+    rdfs:comment "Declares one Tile placement (view:ComponentPlacement / view:placesComponent / view:placementOrder, the same vocabulary the Presentation Surface itself uses) to render when this facade's entity is explored standalone as a single element, ordered by view:placementOrder. Optional: a facade with no hasStandaloneTile placement falls back to the default facade-projected field/value document."@en .
+
+:fieldDatatype
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToResource
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Resource .
+
+:mapsToProperty
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf :mapsToResource ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:fieldOrder
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:integer .
+
+:isRequired
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+#################################################################
+#    Facade integrity shapes
+#################################################################
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :DataEntityFacade ;
+    sh:property
+        [
+            sh:path :isFacadeOf ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasFacadeField ;
+            sh:minCount 1 ;
+            sh:class :FacadeField
+        ] .
+
+:FacadeFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :FacadeField ;
+    sh:property
+        [
+            sh:path schema:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] ,
+        [
+            sh:path :fieldDatatype ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :fieldOrder ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:minInclusive 0
+        ] ,
+        [
+            sh:path :isRequired ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isMultivalued ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :mapsToResource ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] .
+
+:PropertyMappedFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :mapsToProperty ;
+    sh:property [
+        sh:path :mapsToProperty ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:equals :mapsToResource ;
+        sh:nodeKind sh:IRI
+    ] .
+
+#################################################################
+#    Data representations
+#################################################################
+
+:DataRepresentation
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:label
+        "Data Representation"@en ,
+        "Representação de dados"@pt-BR ;
+    schema:identifier "data_representation" .
+
+:WebPageRepresentation
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf :DataRepresentation ;
+    rdfs:label
+        "Web Page Representation"@en ,
+        "Representação em página web"@pt-BR ;
+    schema:identifier "web_page_representation" .
+
+:PdfFileRepresentation
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf :DataRepresentation ;
+    rdfs:label
+        "PDF File Representation"@en ,
+        "Representação em arquivo PDF"@pt-BR ;
+    schema:identifier "pdf_file_representation" .
+
+:ContainerIndexRepresentation
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:subClassOf :DataRepresentation ;
+    rdfs:label
+        "Container Index Representation"@en ,
+        "Representação de índice do container"@pt-BR ;
+    rdfs:comment
+        "A representation that presents the entry point, summary, and navigable contents of a data container."@en ,
+        "Representação que apresenta o ponto de entrada, o resumo e o conteúdo navegável de um container de dados."@pt-BR ;
+    schema:identifier "container_index_representation" .
+
+#################################################################
+#    Container index areas
+#################################################################
+
+:ContainerIndexArea
+    rdf:type owl:Class ,
+        obdc:DataEntity ;
+    rdfs:label
+        "Container Index Area"@en ,
+        "Área do índice do container"@pt-BR ;
+    rdfs:comment
+        "A concrete area occurrence within a container index representation. Position and reading-order relations are asserted between area instances, not between area-role classes."@en ,
+        "Uma ocorrência concreta de área em uma representação de índice do container. As relações de posição e ordem de leitura são declaradas entre instâncias de área, não entre classes de função."@pt-BR ;
+    schema:identifier "container_index_area" .
+
+:ContainerIndexAreaRole
+    rdf:type owl:Class ;
+    rdfs:label
+        "Container Index Area Role"@en ,
+        "Função da área do índice do container"@pt-BR ;
+    rdfs:comment
+        "The semantic function performed by an area. Multiple area instances may share the same role while occupying different positions."@en ,
+        "A função semântica desempenhada por uma área. Várias instâncias de área podem compartilhar a mesma função e ocupar posições diferentes."@pt-BR .
+
+#################################################################
+#    Area composition and role
+#################################################################
+
+:hasArea
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ContainerIndexRepresentation ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "has area"@en ,
+        "tem área"@pt-BR .
+
+:containsArea
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "contains area"@en ,
+        "contém área"@pt-BR .
+
+:areaRole
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexAreaRole ;
+    rdfs:label
+        "area role"@en ,
+        "função da área"@pt-BR .
+
+:areaOrder
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "area order"@en ,
+        "ordem da área"@pt-BR ;
+    rdfs:comment
+        "A deterministic linear order used when a renderer cannot preserve the declared spatial arrangement."@en ,
+        "Ordem linear determinística usada quando um renderizador não consegue preservar a disposição espacial declarada."@pt-BR .
+
+#################################################################
+#    Grid layout
+#################################################################
+
+:columnCount
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexRepresentation ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "column count"@en ,
+        "quantidade de colunas"@pt-BR ;
+    rdfs:comment
+        "Total number of proportional columns in the preferred abstract grid."@en ,
+        "Quantidade total de colunas proporcionais na grade abstrata preferencial."@pt-BR .
+
+:rowCount
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexRepresentation ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "row count"@en ,
+        "quantidade de linhas"@pt-BR ;
+    rdfs:comment
+        "Total number of proportional rows in the preferred abstract grid."@en ,
+        "Quantidade total de linhas proporcionais na grade abstrata preferencial."@pt-BR .
+
+:columnStart
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "column start"@en ,
+        "coluna inicial"@pt-BR ;
+    rdfs:comment
+        "One-based column in which the area begins."@en ,
+        "Coluna, contada a partir de um, em que a área começa."@pt-BR .
+
+:columnSpan
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "column span"@en ,
+        "quantidade de colunas ocupadas"@pt-BR ;
+    rdfs:comment
+        "Number of proportional grid columns occupied by the area."@en ,
+        "Quantidade de colunas proporcionais da grade ocupadas pela área."@pt-BR .
+
+:rowStart
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "row start"@en ,
+        "linha inicial"@pt-BR ;
+    rdfs:comment
+        "One-based row in which the area begins. Values greater than one identify later rows and do not by themselves imply an empty row; a gap exists only when no area occupies an intermediate row."@en ,
+        "Linha, contada a partir de um, em que a área começa. Valores maiores que um identificam linhas posteriores e não implicam, por si só, uma linha vazia; só existe lacuna quando nenhuma área ocupa uma linha intermediária."@pt-BR .
+
+:rowSpan
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range xsd:positiveInteger ;
+    rdfs:label
+        "row span"@en ,
+        "quantidade de linhas ocupadas"@pt-BR ;
+    rdfs:comment
+        "Number of proportional grid rows occupied by the area."@en ,
+        "Quantidade de linhas proporcionais da grade ocupadas pela área."@pt-BR .
+
+#################################################################
+#    Relative spatial position
+#################################################################
+
+:isAbove
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isBelow ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is above"@en ,
+        "está acima de"@pt-BR .
+
+:isBelow
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is below"@en ,
+        "está abaixo de"@pt-BR .
+
+:isLeftOf
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isRightOf ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is left of"@en ,
+        "está à esquerda de"@pt-BR .
+
+:isRightOf
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is right of"@en ,
+        "está à direita de"@pt-BR .
+
+#################################################################
+#    Relative reading order
+#################################################################
+
+:isBefore
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isAfter ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is before"@en ,
+        "vem antes de"@pt-BR ;
+    rdfs:comment
+        "Declares reading or traversal order independently of spatial position."@en ,
+        "Declara a ordem de leitura ou percurso independentemente da posição espacial."@pt-BR .
+
+:isAfter
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :ContainerIndexArea ;
+    rdfs:range :ContainerIndexArea ;
+    rdfs:label
+        "is after"@en ,
+        "vem depois de"@pt-BR .
+
+#################################################################
+#    Controlled area roles
+#################################################################
+
+:HeaderRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Header"@en ,
+        "Cabeçalho"@pt-BR ;
+    schema:identifier "header" .
+
+:SummaryRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Summary"@en ,
+        "Resumo"@pt-BR ;
+    schema:identifier "summary" .
+
+:NavigationRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Navigation"@en ,
+        "Navegação"@pt-BR ;
+    schema:identifier "navigation" .
+
+:ContentRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Content"@en ,
+        "Conteúdo"@pt-BR ;
+    schema:identifier "content" .
+
+:DetailsRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Details"@en ,
+        "Detalhes"@pt-BR ;
+    schema:identifier "details" .
+
+:FooterRole
+    rdf:type :ContainerIndexAreaRole ;
+    rdfs:label
+        "Footer"@en ,
+        "Rodapé"@pt-BR ;
+    schema:identifier "footer" .

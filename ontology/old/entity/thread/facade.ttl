@@ -1,0 +1,82 @@
+@prefix : <http://datacenter.app.br/ontology/productivity/entity/thread/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix type: <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/productivity/entity/thread/facade.ttl#> .
+
+<http://datacenter.app.br/ontology/productivity/entity/thread/facade.ttl>
+    a owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ,
+        <http://datacenter.app.br/ontology/productivity/entity/thread/type.ttl> .
+
+:DataEntityFacade a owl:Class .
+:FacadeField a owl:Class .
+
+:hasDataEntityFacade
+    a owl:ObjectProperty ;
+    rdfs:domain obdc:DataEntity ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    a owl:ObjectProperty ;
+    owl:inverseOf :hasDataEntityFacade ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range obdc:DataEntity .
+
+:hasFacadeField
+    a owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:mapsToProperty
+    a owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:fieldDatatype
+    a owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:isRequired
+    a owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    a owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+type:Thread :hasDataEntityFacade :ThreadFacade .
+
+:ThreadFacade
+    a owl:NamedIndividual, :DataEntityFacade ;
+    schema:identifier "thread_facade" ;
+    schema:name "Thread Facade"@en ;
+    schema:description "Public facade for a persistent OntoBDC Thread entity."@en ;
+    :isFacadeOf type:Thread ;
+    :hasFacadeField :ThreadTitleField, :ThreadDescriptionField .
+
+:ThreadTitleField
+    a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ;
+    :mapsToProperty type:title ;
+    :fieldDatatype xsd:string ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:ThreadDescriptionField
+    a owl:NamedIndividual, :FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    :mapsToProperty type:description ;
+    :fieldDatatype xsd:string ;
+    :isRequired false ;
+    :isMultivalued false .
