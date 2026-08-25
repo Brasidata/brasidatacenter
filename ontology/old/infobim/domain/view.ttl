@@ -48,6 +48,13 @@ ibim:hasFacadeField
     rdfs:range ibim:FacadeField ;
     rdfs:label "has facade field"@en .
 
+ibim:hasStandaloneTile
+    a owl:ObjectProperty ;
+    rdfs:domain ibim:Facade ;
+    rdfs:range view:ComponentPlacement ;
+    rdfs:label "has standalone tile"@en ;
+    rdfs:comment "Declares one Tile placement (view:ComponentPlacement / view:placesComponent / view:placementOrder, the vocabulary the Presentation Surface itself uses) to render when this facade's entity is explored standalone as a single element, ordered by view:placementOrder. Optional: a facade with no hasStandaloneTile placement falls back to the default facade-projected field/value document."@en .
+
 ibim:defaultProperty
     a owl:ObjectProperty ;
     owl:equivalentProperty ibim:mapsToProperty ;
