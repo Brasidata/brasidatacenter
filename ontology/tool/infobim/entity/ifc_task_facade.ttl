@@ -1,0 +1,148 @@
+@prefix : <https://infobim.org/ontology/entity/ifc_task/facade.ttl#> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <https://infobim.org/ontology/entity/ifc_task/facade.ttl#> .
+
+<https://infobim.org/ontology/entity/ifc_task/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://ontobdc.org/ontology/domain/facade.ttl> .
+
+#################################################################
+#    IFC source mapping
+#################################################################
+
+:propertyOwnerClass rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain facade:FacadeField ; rdfs:range owl:Class .
+
+:ifcAttributeName rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:domain facade:FacadeField ; rdfs:range xsd:string .
+
+:IfcAttributeMappedFieldShape rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :ifcAttributeName ;
+    sh:property
+        [ sh:path facade:mapsToProperty ; sh:minCount 1 ; sh:maxCount 1 ; sh:equals facade:mapsToResource ; sh:nodeKind sh:IRI ] ,
+        [ sh:path :propertyOwnerClass ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:IRI ] ,
+        [ sh:path :ifcAttributeName ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ] .
+
+#################################################################
+#    Unified IFC Task facade
+#################################################################
+
+ifcowl:IfcTask facade:hasDataEntityFacade :IfcTaskFacade .
+
+:IfcTaskFacade rdf:type owl:NamedIndividual , facade:DataEntityFacade ;
+    schema:identifier "ifc_task_facade" ;
+    schema:name "IFC Task Facade"@en ;
+    schema:description "Unified facade exposing an IFC Task together with its task-time duration data and sequence relationships."@en ;
+    facade:isFacadeOf ifcowl:IfcTask ;
+    facade:hasFacadeField
+        :GlobalIdField , :NameField , :DescriptionField , :ObjectTypeField ,
+        :IdentificationField , :LongDescriptionField , :StatusField ,
+        :WorkMethodField , :IsMilestoneField , :PriorityField ,
+        :PredefinedTypeField , :TaskTimeNameField , :DataOriginField ,
+        :UserDefinedDataOriginField , :DurationTypeField ,
+        :ScheduleDurationField , :ScheduleStartField , :ScheduleFinishField ,
+        :EarlyStartField , :EarlyFinishField , :LateStartField ,
+        :LateFinishField , :FreeFloatField , :TotalFloatField ,
+        :IsCriticalField , :StatusTimeField , :ActualDurationField ,
+        :ActualStartField , :ActualFinishField , :RemainingTimeField ,
+        :CompletionField , :RelationGlobalIdField , :RelationNameField ,
+        :RelationDescriptionField , :RelatingProcessField ,
+        :RelatedProcessField , :TimeLagField , :SequenceTypeField ,
+        :UserDefinedSequenceTypeField .
+
+#################################################################
+#    IfcTask fields
+#################################################################
+
+:GlobalIdField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "GlobalId" ; schema:name "GlobalId"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 10 ; facade:mapsToResource ifcowl:globalId_IfcRoot ; facade:mapsToProperty ifcowl:globalId_IfcRoot ; :propertyOwnerClass ifcowl:IfcRoot ; :ifcAttributeName "GlobalId" ; facade:isRequired true ; facade:isMultivalued false .
+
+:NameField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Name" ; schema:name "Name"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 20 ; facade:mapsToResource ifcowl:name_IfcRoot ; facade:mapsToProperty ifcowl:name_IfcRoot ; :propertyOwnerClass ifcowl:IfcRoot ; :ifcAttributeName "Name" ; facade:isRequired false ; facade:isMultivalued false .
+
+:DescriptionField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Description" ; schema:name "Description"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 30 ; facade:mapsToResource ifcowl:description_IfcRoot ; facade:mapsToProperty ifcowl:description_IfcRoot ; :propertyOwnerClass ifcowl:IfcRoot ; :ifcAttributeName "Description" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ObjectTypeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ObjectType" ; schema:name "Object Type"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 40 ; facade:mapsToResource ifcowl:objectType_IfcObject ; facade:mapsToProperty ifcowl:objectType_IfcObject ; :propertyOwnerClass ifcowl:IfcObject ; :ifcAttributeName "ObjectType" ; facade:isRequired false ; facade:isMultivalued false .
+
+:IdentificationField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Identification" ; schema:name "Identification"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 50 ; facade:mapsToResource ifcowl:identification_IfcProcess ; facade:mapsToProperty ifcowl:identification_IfcProcess ; :propertyOwnerClass ifcowl:IfcProcess ; :ifcAttributeName "Identification" ; facade:isRequired false ; facade:isMultivalued false .
+
+:LongDescriptionField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "LongDescription" ; schema:name "Long Description"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 60 ; facade:mapsToResource ifcowl:longDescription_IfcProcess ; facade:mapsToProperty ifcowl:longDescription_IfcProcess ; :propertyOwnerClass ifcowl:IfcProcess ; :ifcAttributeName "LongDescription" ; facade:isRequired false ; facade:isMultivalued false .
+
+:StatusField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Status" ; schema:name "Status"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 70 ; facade:mapsToResource ifcowl:status_IfcTask ; facade:mapsToProperty ifcowl:status_IfcTask ; :propertyOwnerClass ifcowl:IfcTask ; :ifcAttributeName "Status" ; facade:isRequired false ; facade:isMultivalued false .
+
+:WorkMethodField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "WorkMethod" ; schema:name "Work Method"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 80 ; facade:mapsToResource ifcowl:workMethod_IfcTask ; facade:mapsToProperty ifcowl:workMethod_IfcTask ; :propertyOwnerClass ifcowl:IfcTask ; :ifcAttributeName "WorkMethod" ; facade:isRequired false ; facade:isMultivalued false .
+
+:IsMilestoneField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "IsMilestone" ; schema:name "Is Milestone"@en ; facade:fieldDatatype xsd:boolean ; facade:fieldOrder 90 ; facade:mapsToResource ifcowl:isMilestone_IfcTask ; facade:mapsToProperty ifcowl:isMilestone_IfcTask ; :propertyOwnerClass ifcowl:IfcTask ; :ifcAttributeName "IsMilestone" ; facade:isRequired true ; facade:isMultivalued false .
+
+:PriorityField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Priority" ; schema:name "Priority"@en ; facade:fieldDatatype xsd:integer ; facade:fieldOrder 100 ; facade:mapsToResource ifcowl:priority_IfcTask ; facade:mapsToProperty ifcowl:priority_IfcTask ; :propertyOwnerClass ifcowl:IfcTask ; :ifcAttributeName "Priority" ; facade:isRequired false ; facade:isMultivalued false .
+
+:PredefinedTypeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "PredefinedType" ; schema:name "Predefined Type"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 110 ; facade:mapsToResource ifcowl:predefinedType_IfcTask ; facade:mapsToProperty ifcowl:predefinedType_IfcTask ; :propertyOwnerClass ifcowl:IfcTask ; :ifcAttributeName "PredefinedType" ; facade:isRequired false ; facade:isMultivalued false .
+
+#################################################################
+#    Flattened IfcTaskTime and IfcTaskDurationEnum fields
+#################################################################
+
+:TaskTimeNameField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "TaskTimeName" ; schema:name "Task Time Name"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 120 ; facade:mapsToResource ifcowl:name_IfcSchedulingTime ; facade:mapsToProperty ifcowl:name_IfcSchedulingTime ; :propertyOwnerClass ifcowl:IfcSchedulingTime ; :ifcAttributeName "Name" ; facade:isRequired false ; facade:isMultivalued false .
+
+:DataOriginField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "DataOrigin" ; schema:name "Data Origin"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 130 ; facade:mapsToResource ifcowl:dataOrigin_IfcSchedulingTime ; facade:mapsToProperty ifcowl:dataOrigin_IfcSchedulingTime ; :propertyOwnerClass ifcowl:IfcSchedulingTime ; :ifcAttributeName "DataOrigin" ; facade:isRequired false ; facade:isMultivalued false .
+
+:UserDefinedDataOriginField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "UserDefinedDataOrigin" ; schema:name "User-defined Data Origin"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 140 ; facade:mapsToResource ifcowl:userDefinedDataOrigin_IfcSchedulingTime ; facade:mapsToProperty ifcowl:userDefinedDataOrigin_IfcSchedulingTime ; :propertyOwnerClass ifcowl:IfcSchedulingTime ; :ifcAttributeName "UserDefinedDataOrigin" ; facade:isRequired false ; facade:isMultivalued false .
+
+:DurationTypeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "DurationType" ; schema:name "Duration Type"@en ; schema:description "IfcTaskDurationEnum value: ELAPSEDTIME, WORKTIME, or NOTDEFINED."@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 150 ; facade:mapsToResource ifcowl:durationType_IfcTaskTime ; facade:mapsToProperty ifcowl:durationType_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "DurationType" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ScheduleDurationField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ScheduleDuration" ; schema:name "Schedule Duration"@en ; facade:fieldDatatype xsd:duration ; facade:fieldOrder 160 ; facade:mapsToResource ifcowl:scheduleDuration_IfcTaskTime ; facade:mapsToProperty ifcowl:scheduleDuration_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ScheduleDuration" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ScheduleStartField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ScheduleStart" ; schema:name "Schedule Start"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 170 ; facade:mapsToResource ifcowl:scheduleStart_IfcTaskTime ; facade:mapsToProperty ifcowl:scheduleStart_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ScheduleStart" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ScheduleFinishField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ScheduleFinish" ; schema:name "Schedule Finish"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 180 ; facade:mapsToResource ifcowl:scheduleFinish_IfcTaskTime ; facade:mapsToProperty ifcowl:scheduleFinish_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ScheduleFinish" ; facade:isRequired false ; facade:isMultivalued false .
+
+:EarlyStartField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "EarlyStart" ; schema:name "Early Start"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 190 ; facade:mapsToResource ifcowl:earlyStart_IfcTaskTime ; facade:mapsToProperty ifcowl:earlyStart_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "EarlyStart" ; facade:isRequired false ; facade:isMultivalued false .
+
+:EarlyFinishField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "EarlyFinish" ; schema:name "Early Finish"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 200 ; facade:mapsToResource ifcowl:earlyFinish_IfcTaskTime ; facade:mapsToProperty ifcowl:earlyFinish_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "EarlyFinish" ; facade:isRequired false ; facade:isMultivalued false .
+
+:LateStartField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "LateStart" ; schema:name "Late Start"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 210 ; facade:mapsToResource ifcowl:lateStart_IfcTaskTime ; facade:mapsToProperty ifcowl:lateStart_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "LateStart" ; facade:isRequired false ; facade:isMultivalued false .
+
+:LateFinishField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "LateFinish" ; schema:name "Late Finish"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 220 ; facade:mapsToResource ifcowl:lateFinish_IfcTaskTime ; facade:mapsToProperty ifcowl:lateFinish_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "LateFinish" ; facade:isRequired false ; facade:isMultivalued false .
+
+:FreeFloatField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "FreeFloat" ; schema:name "Free Float"@en ; facade:fieldDatatype xsd:duration ; facade:fieldOrder 230 ; facade:mapsToResource ifcowl:freeFloat_IfcTaskTime ; facade:mapsToProperty ifcowl:freeFloat_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "FreeFloat" ; facade:isRequired false ; facade:isMultivalued false .
+
+:TotalFloatField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "TotalFloat" ; schema:name "Total Float"@en ; facade:fieldDatatype xsd:duration ; facade:fieldOrder 240 ; facade:mapsToResource ifcowl:totalFloat_IfcTaskTime ; facade:mapsToProperty ifcowl:totalFloat_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "TotalFloat" ; facade:isRequired false ; facade:isMultivalued false .
+
+:IsCriticalField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "IsCritical" ; schema:name "Is Critical"@en ; facade:fieldDatatype xsd:boolean ; facade:fieldOrder 250 ; facade:mapsToResource ifcowl:isCritical_IfcTaskTime ; facade:mapsToProperty ifcowl:isCritical_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "IsCritical" ; facade:isRequired false ; facade:isMultivalued false .
+
+:StatusTimeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "StatusTime" ; schema:name "Status Time"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 260 ; facade:mapsToResource ifcowl:statusTime_IfcTaskTime ; facade:mapsToProperty ifcowl:statusTime_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "StatusTime" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ActualDurationField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ActualDuration" ; schema:name "Actual Duration"@en ; facade:fieldDatatype xsd:duration ; facade:fieldOrder 270 ; facade:mapsToResource ifcowl:actualDuration_IfcTaskTime ; facade:mapsToProperty ifcowl:actualDuration_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ActualDuration" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ActualStartField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ActualStart" ; schema:name "Actual Start"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 280 ; facade:mapsToResource ifcowl:actualStart_IfcTaskTime ; facade:mapsToProperty ifcowl:actualStart_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ActualStart" ; facade:isRequired false ; facade:isMultivalued false .
+
+:ActualFinishField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "ActualFinish" ; schema:name "Actual Finish"@en ; facade:fieldDatatype xsd:dateTime ; facade:fieldOrder 290 ; facade:mapsToResource ifcowl:actualFinish_IfcTaskTime ; facade:mapsToProperty ifcowl:actualFinish_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "ActualFinish" ; facade:isRequired false ; facade:isMultivalued false .
+
+:RemainingTimeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RemainingTime" ; schema:name "Remaining Time"@en ; facade:fieldDatatype xsd:duration ; facade:fieldOrder 300 ; facade:mapsToResource ifcowl:remainingTime_IfcTaskTime ; facade:mapsToProperty ifcowl:remainingTime_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "RemainingTime" ; facade:isRequired false ; facade:isMultivalued false .
+
+:CompletionField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "Completion" ; schema:name "Completion"@en ; facade:fieldDatatype xsd:decimal ; facade:fieldOrder 310 ; facade:mapsToResource ifcowl:completion_IfcTaskTime ; facade:mapsToProperty ifcowl:completion_IfcTaskTime ; :propertyOwnerClass ifcowl:IfcTaskTime ; :ifcAttributeName "Completion" ; facade:isRequired false ; facade:isMultivalued false .
+
+#################################################################
+#    Flattened IfcRelSequence fields
+#################################################################
+
+:RelationGlobalIdField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RelationGlobalId" ; schema:name "Relation GlobalId"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 320 ; facade:mapsToResource ifcowl:globalId_IfcRoot ; facade:mapsToProperty ifcowl:globalId_IfcRoot ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "GlobalId" ; facade:isRequired false ; facade:isMultivalued true .
+
+:RelationNameField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RelationName" ; schema:name "Relation Name"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 330 ; facade:mapsToResource ifcowl:name_IfcRoot ; facade:mapsToProperty ifcowl:name_IfcRoot ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "Name" ; facade:isRequired false ; facade:isMultivalued true .
+
+:RelationDescriptionField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RelationDescription" ; schema:name "Relation Description"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 340 ; facade:mapsToResource ifcowl:description_IfcRoot ; facade:mapsToProperty ifcowl:description_IfcRoot ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "Description" ; facade:isRequired false ; facade:isMultivalued true .
+
+:RelatingProcessField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RelatingProcess" ; schema:name "Predecessor Process"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 350 ; facade:mapsToResource ifcowl:relatingProcess_IfcRelSequence ; facade:mapsToProperty ifcowl:relatingProcess_IfcRelSequence ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "RelatingProcess" ; facade:isRequired false ; facade:isMultivalued true .
+
+:RelatedProcessField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "RelatedProcess" ; schema:name "Successor Process"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 360 ; facade:mapsToResource ifcowl:relatedProcess_IfcRelSequence ; facade:mapsToProperty ifcowl:relatedProcess_IfcRelSequence ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "RelatedProcess" ; facade:isRequired false ; facade:isMultivalued true .
+
+:TimeLagField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "TimeLag" ; schema:name "Time Lag"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 370 ; facade:mapsToResource ifcowl:timeLag_IfcRelSequence ; facade:mapsToProperty ifcowl:timeLag_IfcRelSequence ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "TimeLag" ; facade:isRequired false ; facade:isMultivalued true .
+
+:SequenceTypeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "SequenceType" ; schema:name "Sequence Type"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 380 ; facade:mapsToResource ifcowl:sequenceType_IfcRelSequence ; facade:mapsToProperty ifcowl:sequenceType_IfcRelSequence ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "SequenceType" ; facade:isRequired false ; facade:isMultivalued true .
+
+:UserDefinedSequenceTypeField rdf:type owl:NamedIndividual , facade:FacadeField ; schema:identifier "UserDefinedSequenceType" ; schema:name "User-defined Sequence Type"@en ; facade:fieldDatatype xsd:string ; facade:fieldOrder 390 ; facade:mapsToResource ifcowl:userDefinedSequenceType_IfcRelSequence ; facade:mapsToProperty ifcowl:userDefinedSequenceType_IfcRelSequence ; :propertyOwnerClass ifcowl:IfcRelSequence ; :ifcAttributeName "UserDefinedSequenceType" ; facade:isRequired false ; facade:isMultivalued true .
