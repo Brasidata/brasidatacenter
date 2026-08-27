@@ -15,6 +15,15 @@
  ] .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+obdc:eventTarget rdf:type owl:ObjectProperty ;
+                 rdfs:domain obdc:Event ;
+                 rdfs:label "event target"@en ;
+                 rdfs:comment "Semantic target selected or affected by an event. Event-specific SHACL shapes constrain which targets are valid."@en .
+
+#################################################################
 #    Classes
 #################################################################
 
@@ -130,6 +139,11 @@ as:Remove rdf:type owl:Class .
 #   Recommended PROV inverse name for prov:wasDerivedFrom. It points forward
 #   from an event/resource to the event/resource derived from it, making the
 #   promotion/causal chain navigable in both directions.
+#
+# obdc:eventTarget
+#   Semantic target selected or affected by the event. Generic events only
+#   require an IRI when the property is present; specific event shapes narrow
+#   the allowed values.
 obdc:EventShape rdf:type sh:NodeShape ;
     sh:targetClass obdc:Event ;
     sh:property [
@@ -172,4 +186,11 @@ obdc:EventShape rdf:type sh:NodeShape ;
         sh:name "Had derivation"@en ;
         sh:description "Forward provenance relation to an event or semantic resource derived from this one. Recommended PROV inverse name of prov:wasDerivedFrom."@en ;
         sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path obdc:eventTarget ;
+        sh:name "Event target"@en ;
+        sh:description "Semantic target selected or affected by the event. Event-specific shapes may restrict the allowed target values."@en ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1
     ] .
