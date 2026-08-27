@@ -22,9 +22,6 @@ obdc:CapabilityEvent rdf:type owl:Class ;
                      rdfs:subClassOf obdc:Event ,
                                      prov:Activity .
 
-obdc:CommandEvent rdf:type owl:Class ;
-                  rdfs:subClassOf obdc:Event .
-
 obdc:ComponentEvent rdf:type owl:Class ;
                     rdfs:subClassOf obdc:Event ,
                                     prov:InstantaneousEvent .
