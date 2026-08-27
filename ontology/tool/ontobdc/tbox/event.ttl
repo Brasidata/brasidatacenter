@@ -73,8 +73,8 @@ obdc:EntityRelationRemoved rdf:type owl:Class ;
 obdc:Event rdf:type owl:Class ;
            rdfs:subClassOf sem:Event .
 
-obdc:ExternalEvent rdf:type owl:Class ;
-                   rdfs:subClassOf obdc:Event .
+obdc:GlobalEvent rdf:type owl:Class ;
+                 rdfs:subClassOf obdc:Event .
 
 obdc:InfraEvent rdf:type owl:Class ;
                 rdfs:subClassOf obdc:Event .
@@ -126,9 +126,13 @@ as:Remove rdf:type owl:Class .
 #
 # prov:wasDerivedFrom
 #   Previous event or semantic resource from which this event was derived.
-#   This is especially useful when promotion creates a new event identity,
-#   e.g. InfraEvent -> DockEvent -> ExternalEvent, while preserving the causal
-#   and provenance chain. Optional and may have more than one source.
+#   This preserves the backward provenance link across promotion, e.g.
+#   ComponentEvent -> SharedEvent -> GlobalEvent.
+#
+# prov:hadDerivation
+#   Recommended PROV inverse name for prov:wasDerivedFrom. It points forward
+#   from an event/resource to the event/resource derived from it, making the
+#   promotion/causal chain navigable in both directions.
 obdc:EventShape rdf:type sh:NodeShape ;
     sh:targetClass obdc:Event ;
     sh:property [
@@ -163,6 +167,12 @@ obdc:EventShape rdf:type sh:NodeShape ;
     sh:property [
         sh:path prov:wasDerivedFrom ;
         sh:name "Derived from"@en ;
-        sh:description "Previous event or semantic resource from which this event was derived, preserving provenance across transformations or event promotion."@en ;
+        sh:description "Previous event or semantic resource from which this event was derived, preserving backward provenance across transformations or event promotion."@en ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:hadDerivation ;
+        sh:name "Had derivation"@en ;
+        sh:description "Forward provenance relation to an event or semantic resource derived from this one. Recommended PROV inverse name of prov:wasDerivedFrom."@en ;
         sh:nodeKind sh:IRI
     ] .
