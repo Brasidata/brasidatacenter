@@ -1,0 +1,14 @@
+@prefix : <http://datacenter.app.br/ontology/social/entity/ns.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+<http://datacenter.app.br/ontology/social/entity/ns.ttl> a owl:Ontology ;
+    rdfs:label "Brasidata Social Entity Ontology"@en .
+
+:Language a owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , schema:Language ;
+    rdfs:label "Language"@en ;
+    rdfs:comment "A language represented as a social data entity in OntoBDC."@en .
