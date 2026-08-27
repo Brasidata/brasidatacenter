@@ -2,11 +2,45 @@
 @prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://ontobdc.org/ontology/domain/ontobdc/nid.ttl> rdf:type owl:Ontology .
+
+#################################################################
+#    OntoBDC supported languages
+#################################################################
+
+nid:English
+    rdf:type schema:Language ;
+    dcterms:identifier "en" ;
+    rdfs:label "English"@en .
+
+nid:Spanish
+    rdf:type schema:Language ;
+    dcterms:identifier "es" ;
+    rdfs:label "Spanish"@en ,
+               "Español"@es .
+
+nid:PortugueseBrazil
+    rdf:type schema:Language ;
+    dcterms:identifier "pt-BR" ;
+    rdfs:label "Brazilian Portuguese"@en ,
+               "Português do Brasil"@pt-BR .
+
+nid:PortuguesePortugal
+    rdf:type schema:Language ;
+    dcterms:identifier "pt-PT" ;
+    rdfs:label "European Portuguese"@en ,
+               "Português de Portugal"@pt-PT .
+
+#################################################################
+#    Language events
+#################################################################
 
 nid:LanguageSelectorTilePressed
     rdf:type obdc:ComponentEvent ;
@@ -27,6 +61,23 @@ nid:LanguageSet
     rdfs:comment "Global event indicating that the selected language has been established for propagation to all relevant consumers beyond the local presentation context."@en ;
     prov:wasDerivedFrom nid:LanguageChanged .
 
+nid:LanguageChangedShape
+    rdf:type sh:NodeShape ;
+    rdfs:comment "Reusable SHACL contract for LanguageChanged event payloads. The target must be one of the languages currently supported by OntoBDC View."@en ;
+    sh:property [
+        sh:path obdc:eventTarget ;
+        sh:name "Selected language"@en ;
+        sh:description "Language selected by the event. The value must be one of the canonical OntoBDC supported-language individuals."@en ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( nid:English nid:Spanish nid:PortugueseBrazil nid:PortuguesePortugal )
+    ] .
+
+#################################################################
+#    Color schemes
+#################################################################
+
 nid:DarkTheme
     rdf:type view:Theme ;
     rdfs:label "Dark theme"@en ,
@@ -40,3 +91,32 @@ nid:LightTheme
                "Tema claro"@pt-BR ;
     rdfs:comment "Presentation theme intended for light color-scheme rendering."@en ,
                  "Tema de apresentação destinado à renderização em esquema de cores claro."@pt-BR .
+
+#################################################################
+#    Color schema events
+#################################################################
+
+nid:ColorSchemaSelectorTilePressed
+    rdf:type obdc:ComponentEvent ;
+    rdfs:label "Color schema selector tile pressed"@en ;
+    rdfs:comment "Local component event indicating that the color-schema selector Tile was pressed."@en ;
+    prov:hadDerivation nid:ColorSchemaChanged .
+
+nid:ColorSchemaChanged
+    rdf:type obdc:SharedEvent ;
+    rdfs:label "Color schema changed"@en ;
+    rdfs:comment "Semantic shared event indicating that the active presentation color schema has changed within the current presentation/runtime context."@en ;
+    prov:wasDerivedFrom nid:ColorSchemaSelectorTilePressed .
+
+nid:ColorSchemaChangedShape
+    rdf:type sh:NodeShape ;
+    rdfs:comment "Reusable SHACL contract for ColorSchemaChanged event payloads. The target must be one of the color schemes supported by OntoBDC."@en ;
+    sh:property [
+        sh:path obdc:eventTarget ;
+        sh:name "Selected color schema"@en ;
+        sh:description "Color schema selected by the event. The value must be one of the canonical OntoBDC theme individuals."@en ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( nid:DarkTheme nid:LightTheme )
+    ] .
