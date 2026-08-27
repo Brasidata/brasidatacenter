@@ -1,12 +1,27 @@
 @prefix nid: <http://ontobdc.org/ontology/domain/ontobdc/nid.ttl#> .
 @prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://ontobdc.org/ontology/domain/ontobdc/nid.ttl> rdf:type owl:Ontology .
 
+nid:LanguageSelectorTilePressed
+    rdf:type obdc:ComponentEvent ;
+    rdfs:label "Language selector tile pressed"@en ;
+    rdfs:comment "Local component event indicating that the language selector Tile was pressed."@en ;
+    prov:hadDerivation nid:LanguageChanged .
+
 nid:LanguageChanged
     rdf:type obdc:SharedEvent ;
     rdfs:label "Language changed"@en ;
-    rdfs:comment "Semantic event individual indicating that the active presentation language has changed."@en .
+    rdfs:comment "Semantic shared event indicating that the active presentation language has changed within the current presentation/runtime context."@en ;
+    prov:wasDerivedFrom nid:LanguageSelectorTilePressed ;
+    prov:hadDerivation nid:LanguageSet .
+
+nid:LanguageSet
+    rdf:type obdc:GlobalEvent ;
+    rdfs:label "Language set"@en ;
+    rdfs:comment "Global event indicating that the selected language has been established for propagation to all relevant consumers beyond the local presentation context."@en ;
+    prov:wasDerivedFrom nid:LanguageChanged .
