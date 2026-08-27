@@ -33,3 +33,10 @@ nid:DarkTheme
                "Tema escuro"@pt-BR ;
     rdfs:comment "Presentation theme intended for dark color-scheme rendering."@en ,
                  "Tema de apresentação destinado à renderização em esquema de cores escuro."@pt-BR .
+
+nid:LightTheme
+    rdf:type view:Theme ;
+    rdfs:label "Light theme"@en ,
+               "Tema claro"@pt-BR ;
+    rdfs:comment "Presentation theme intended for light color-scheme rendering."@en ,
+                 "Tema de apresentação destinado à renderização em esquema de cores claro."@pt-BR .
