@@ -1,5 +1,6 @@
 @prefix nid: <http://ontobdc.org/ontology/domain/ontobdc/nid.ttl#> .
 @prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix social: <http://datacenter.app.br/ontology/social/entity/ns.ttl#> .
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -34,13 +35,13 @@ nid:LanguageSet
 
 nid:LanguageChangedShape
     rdf:type sh:NodeShape ;
-    rdfs:comment "Reusable SHACL contract for LanguageChanged event payloads. The target must be an OntoBDC Language DataEntity."@en ;
+    rdfs:comment "Reusable SHACL contract for LanguageChanged event payloads. The target must be a social Language DataEntity."@en ;
     sh:property [
         sh:path obdc:eventTarget ;
         sh:name "Selected language"@en ;
-        sh:description "Language selected by the event. The target must be an instance of the canonical OntoBDC Language class."@en ;
+        sh:description "Language selected by the event. The target must be an instance of the canonical social Language class."@en ;
         sh:nodeKind sh:IRI ;
-        sh:class obdc:Language ;
+        sh:class social:Language ;
         sh:minCount 1 ;
         sh:maxCount 1
     ] .
