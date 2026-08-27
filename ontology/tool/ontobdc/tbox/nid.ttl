@@ -1,5 +1,6 @@
 @prefix nid: <http://ontobdc.org/ontology/domain/ontobdc/nid.ttl#> .
 @prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -25,3 +26,10 @@ nid:LanguageSet
     rdfs:label "Language set"@en ;
     rdfs:comment "Global event indicating that the selected language has been established for propagation to all relevant consumers beyond the local presentation context."@en ;
     prov:wasDerivedFrom nid:LanguageChanged .
+
+nid:DarkTheme
+    rdf:type view:Theme ;
+    rdfs:label "Dark theme"@en ,
+               "Tema escuro"@pt-BR ;
+    rdfs:comment "Presentation theme intended for dark color-scheme rendering."@en ,
+                 "Tema de apresentação destinado à renderização em esquema de cores escuro."@pt-BR .
