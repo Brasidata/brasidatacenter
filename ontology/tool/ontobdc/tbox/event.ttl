@@ -1,0 +1,168 @@
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Classes
+#################################################################
+
+obdc:CapabilityEvent rdf:type owl:Class ;
+                     rdfs:subClassOf obdc:Event ,
+                                     prov:Activity .
+
+obdc:CommandEvent rdf:type owl:Class ;
+                  rdfs:subClassOf obdc:Event .
+
+obdc:ComponentEvent rdf:type owl:Class ;
+                    rdfs:subClassOf obdc:Event ,
+                                    prov:InstantaneousEvent .
+
+obdc:DockEvent rdf:type owl:Class ;
+               rdfs:subClassOf obdc:Event .
+
+obdc:EntityEvent rdf:type owl:Class ;
+                 rdfs:subClassOf obdc:Event ,
+                                 as:Activity .
+
+obdc:EntityCreated rdf:type owl:Class ;
+                   rdfs:subClassOf obdc:EntityEvent ,
+                                   prov:Generation ,
+                                   as:Create .
+
+obdc:EntityUpdated rdf:type owl:Class ;
+                   rdfs:subClassOf obdc:EntityEvent ,
+                                   as:Update .
+
+obdc:EntityDeleted rdf:type owl:Class ;
+                   rdfs:subClassOf obdc:EntityEvent ,
+                                   prov:Invalidation ,
+                                   as:Delete .
+
+obdc:EntityPropertyAdded rdf:type owl:Class ;
+                         rdfs:subClassOf obdc:EntityEvent ,
+                                         as:Add .
+
+obdc:EntityPropertyUpdated rdf:type owl:Class ;
+                           rdfs:subClassOf obdc:EntityEvent ,
+                                           as:Update .
+
+obdc:EntityPropertyRemoved rdf:type owl:Class ;
+                           rdfs:subClassOf obdc:EntityEvent ,
+                                           as:Remove .
+
+obdc:EntityRelationAdded rdf:type owl:Class ;
+                         rdfs:subClassOf obdc:EntityEvent ,
+                                         as:Add .
+
+obdc:EntityRelationRemoved rdf:type owl:Class ;
+                           rdfs:subClassOf obdc:EntityEvent ,
+                                           as:Remove .
+
+obdc:Event rdf:type owl:Class ;
+           rdfs:subClassOf sem:Event .
+
+obdc:ExternalEvent rdf:type owl:Class ;
+                   rdfs:subClassOf obdc:Event .
+
+obdc:InfraEvent rdf:type owl:Class ;
+                rdfs:subClassOf obdc:Event .
+
+obdc:SharedEvent rdf:type owl:Class ;
+                 rdfs:subClassOf obdc:Event .
+
+sem:Event rdf:type owl:Class .
+prov:Activity rdf:type owl:Class .
+prov:InstantaneousEvent rdf:type owl:Class .
+prov:Generation rdf:type owl:Class .
+prov:Invalidation rdf:type owl:Class .
+as:Activity rdf:type owl:Class .
+as:Create rdf:type owl:Class .
+as:Update rdf:type owl:Class .
+as:Delete rdf:type owl:Class .
+as:Add rdf:type owl:Class .
+as:Remove rdf:type owl:Class .
+
+#################################################################
+#    SHACL Shapes
+#################################################################
+
+# Generic contract for every OntoBDC Event and its subclasses.
+#
+# dcterms:identifier
+#   Stable identifier of this event occurrence. It distinguishes this event
+#   instance from every other occurrence, even when two events have the same
+#   type and payload. Required exactly once.
+#
+# prov:generatedAtTime
+#   Timestamp at which this event occurrence came into existence in the
+#   OntoBDC event flow. This is the event's own generation time, not
+#   necessarily the time at which a real-world phenomenon originally happened.
+#   Required exactly once.
+#
+# prov:wasGeneratedBy
+#   The Activity that directly produced this event, when there is one. For
+#   example, a Capability execution may generate a CapabilityEvent. Optional
+#   because some events originate as observations or external facts rather
+#   than from an OntoBDC Activity. At most one direct generating Activity is
+#   allowed by this generic shape.
+#
+# prov:wasAttributedTo
+#   Agent responsible for or attributable to the event. This answers a
+#   different question from wasGeneratedBy: an Activity may generate the
+#   event, while a person, software agent, device or organization may be the
+#   responsible/attributed Agent. Optional and may have more than one value.
+#
+# prov:wasDerivedFrom
+#   Previous event or semantic resource from which this event was derived.
+#   This is especially useful when promotion creates a new event identity,
+#   e.g. InfraEvent -> DockEvent -> ExternalEvent, while preserving the causal
+#   and provenance chain. Optional and may have more than one source.
+obdc:EventShape rdf:type sh:NodeShape ;
+    sh:targetClass obdc:Event ;
+    sh:property [
+        sh:path dcterms:identifier ;
+        sh:name "Event identifier"@en ;
+        sh:description "Stable identifier of this event occurrence. Distinguishes this event instance from other occurrences of the same event type."@en ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path prov:generatedAtTime ;
+        sh:name "Generated at time"@en ;
+        sh:description "Time at which this event occurrence was generated in the OntoBDC event flow. It is not necessarily the original real-world occurrence time."@en ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path prov:wasGeneratedBy ;
+        sh:name "Generated by"@en ;
+        sh:description "Activity that directly produced this event, such as a Capability execution. Optional for events that did not originate from an OntoBDC Activity."@en ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1
+    ] ;
+    sh:property [
+        sh:path prov:wasAttributedTo ;
+        sh:name "Attributed to"@en ;
+        sh:description "Agent responsible for or attributable to the event, such as a person, software agent, device or organization."@en ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:name "Derived from"@en ;
+        sh:description "Previous event or semantic resource from which this event was derived, preserving provenance across transformations or event promotion."@en ;
+        sh:nodeKind sh:IRI
+    ] .
