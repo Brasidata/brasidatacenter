@@ -11,7 +11,14 @@ event:PageLoaded
     a owl:NamedIndividual, view:SharedEvent .
 
 event:TileOpened
-    a owl:NamedIndividual, view:ComponentEvent .
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileReady, event:SurfaceAreaFilled .
+
+event:TileReady
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:SurfaceAreaFilled
+    a owl:NamedIndividual, view:SharedEvent .
 
 event:TileClosed
     a owl:NamedIndividual, view:ComponentEvent .
