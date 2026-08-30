@@ -158,6 +158,15 @@ schema:description rdf:type owl:AnnotationProperty .
              rdfs:label "presented in"@en .
 
 
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#promotesTo
+:promotesTo rdf:type owl:ObjectProperty ,
+                     owl:FunctionalProperty ;
+            rdfs:domain :PresentationEvent ;
+            rdfs:range :PresentationEvent ;
+            rdfs:comment "Relates a presentation event definition to the presentation event definition it may be promoted to."@en ;
+            rdfs:label "promotes to"@en .
+
+
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#usesTheme
 :usesTheme rdf:type owl:ObjectProperty ;
            rdfs:range :Theme ;
@@ -745,13 +754,13 @@ sh:NodeShape rdf:type owl:Class .
                                sh:maxCount 1 ;
                                sh:minCount 1 ;
                                sh:minInclusive 1 ;
-                               sh:path :allocatedColumns
+                               sh:path :allocatedRows
                              ] ,
                              [ sh:datatype xsd:integer ;
                                sh:maxCount 1 ;
                                sh:minCount 1 ;
                                sh:minInclusive 1 ;
-                               sh:path :allocatedRows
+                               sh:path :allocatedColumns
                              ] ,
                              [ sh:class :Component ;
                                sh:maxCount 1 ;
@@ -775,7 +784,12 @@ sh:NodeShape rdf:type owl:Class .
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ComponentPlacementShape
 :ComponentPlacementShape rdf:type owl:NamedIndividual ,
                                   sh:NodeShape ;
-                         sh:property [ sh:class :Component ;
+                         sh:property [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 0 ;
+                                       sh:path :placementOrder
+                                     ] ,
+                                     [ sh:class :Component ;
                                        sh:maxCount 1 ;
                                        sh:minCount 1 ;
                                        sh:path :placesComponent
@@ -783,11 +797,6 @@ sh:NodeShape rdf:type owl:Class .
                                      [ sh:class :PresentationAlignment ;
                                        sh:maxCount 1 ;
                                        sh:path :hasAlignment
-                                     ] ,
-                                     [ sh:datatype xsd:integer ;
-                                       sh:maxCount 1 ;
-                                       sh:minInclusive 0 ;
-                                       sh:path :placementOrder
                                      ] ;
                          sh:targetClass :ComponentPlacement .
 
@@ -797,7 +806,13 @@ sh:NodeShape rdf:type owl:Class .
                                     sh:NodeShape ;
                            sh:property [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
-                                         sh:path :layoutPriority
+                                         sh:minInclusive 1 ;
+                                         sh:path :minAvailableColumns
+                                       ] ,
+                                       [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:minInclusive 1 ;
+                                         sh:path :maxAvailableColumns
                                        ] ,
                                        [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
@@ -811,13 +826,7 @@ sh:NodeShape rdf:type owl:Class .
                                        ] ,
                                        [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
-                                         sh:minInclusive 1 ;
-                                         sh:path :minAvailableColumns
-                                       ] ,
-                                       [ sh:datatype xsd:integer ;
-                                         sh:maxCount 1 ;
-                                         sh:minInclusive 1 ;
-                                         sh:path :maxAvailableColumns
+                                         sh:path :layoutPriority
                                        ] ;
                            sh:targetClass :DefaultSurfaceLayout .
 
@@ -831,17 +840,22 @@ sh:NodeShape rdf:type owl:Class .
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationRegionShape
 :PresentationRegionShape rdf:type owl:NamedIndividual ,
                                   sh:NodeShape ;
-                         sh:property [ sh:datatype xsd:boolean ;
-                                       sh:maxCount 1 ;
-                                       sh:path :scrollable
-                                     ] ,
-                                     [ sh:class :ComponentPlacement ;
+                         sh:property [ sh:class :ComponentPlacement ;
                                        sh:path :hasComponentPlacement
                                      ] ,
                                      [ sh:datatype xsd:integer ;
                                        sh:maxCount 1 ;
                                        sh:minInclusive 1 ;
                                        sh:path :rowSpan
+                                     ] ,
+                                     [ sh:datatype xsd:boolean ;
+                                       sh:maxCount 1 ;
+                                       sh:path :scrollable
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :columnStart
                                      ] ,
                                      [ sh:datatype xsd:integer ;
                                        sh:maxCount 1 ;
@@ -852,11 +866,6 @@ sh:NodeShape rdf:type owl:Class .
                                        sh:maxCount 1 ;
                                        sh:minInclusive 1 ;
                                        sh:path :rowStart
-                                     ] ,
-                                     [ sh:datatype xsd:integer ;
-                                       sh:maxCount 1 ;
-                                       sh:minInclusive 1 ;
-                                       sh:path :columnStart
                                      ] ;
                          sh:targetClass :PresentationRegion .
 
@@ -866,7 +875,7 @@ sh:NodeShape rdf:type owl:Class .
                                           sh:NodeShape ;
                                  sh:property [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
-                                               sh:path :minColumns
+                                               sh:path :maxRows
                                              ] ,
                                              [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
@@ -878,7 +887,7 @@ sh:NodeShape rdf:type owl:Class .
                                              ] ,
                                              [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
-                                               sh:path :maxRows
+                                               sh:path :minColumns
                                              ] ;
                                  sh:targetClass :PresentationSupportProfile .
 
@@ -886,13 +895,10 @@ sh:NodeShape rdf:type owl:Class .
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSurfaceShape
 :PresentationSurfaceShape rdf:type owl:NamedIndividual ,
                                    sh:NodeShape ;
-                          sh:property [ sh:datatype xsd:decimal ;
+                          sh:property [ sh:datatype xsd:integer ;
                                         sh:maxCount 1 ;
-                                        sh:minInclusive 0 ;
-                                        sh:path :padding
-                                      ] ,
-                                      [ sh:class :PresentationRegion ;
-                                        sh:path :hasRegion
+                                        sh:minInclusive 1 ;
+                                        sh:path :columnCount
                                       ] ,
                                       [ sh:datatype xsd:integer ;
                                         sh:maxCount 1 ;
@@ -904,10 +910,13 @@ sh:NodeShape rdf:type owl:Class .
                                         sh:minInclusive 0 ;
                                         sh:path :gap
                                       ] ,
-                                      [ sh:datatype xsd:integer ;
+                                      [ sh:datatype xsd:decimal ;
                                         sh:maxCount 1 ;
-                                        sh:minInclusive 1 ;
-                                        sh:path :columnCount
+                                        sh:minInclusive 0 ;
+                                        sh:path :padding
+                                      ] ,
+                                      [ sh:class :PresentationRegion ;
+                                        sh:path :hasRegion
                                       ] ;
                           sh:targetClass :PresentationSurface .
 

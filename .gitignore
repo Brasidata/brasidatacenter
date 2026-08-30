@@ -86,3 +86,4 @@ data/
 venv/
 .venv/
 .env
+view.properties
