@@ -21,4 +21,11 @@ event:SurfaceAreaFilled
     a owl:NamedIndividual, view:SharedEvent .
 
 event:TileClosed
-    a owl:NamedIndividual, view:ComponentEvent .
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileStandby, event:SurfaceAreaEmptied .
+
+event:TileStandby
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:SurfaceAreaEmptied
+    a owl:NamedIndividual, view:SharedEvent .
