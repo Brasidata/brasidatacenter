@@ -7,6 +7,10 @@ event:SurfaceLoaded
     a owl:NamedIndividual, view:ComponentEvent ;
     view:promotesTo event:PageLoaded .
 
+event:EntityPageLoaded
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:PageLoaded .
+
 event:PageLoaded
     a owl:NamedIndividual, view:SharedEvent .
 
