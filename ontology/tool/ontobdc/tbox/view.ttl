@@ -1,132 +1,921 @@
 @prefix : <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix schema: <https://schema.org/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix aria: <http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#> .
-@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 @base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 
-<http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> a owl:Ontology ;
-  rdfs:label "OntoBDC View Ontology"@en ;
-  rdfs:comment "Ontology for presentation layers, presentation surfaces, regions, tiles, declarative layout, support profiles, requests and runtime allocation."@en ;
-  schema:description "Renderer-neutral semantic model for OntoBDC presentation composition. SHACL UI may be used inside semantic resource components, while this ontology governs surface composition."@en ;
-  rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> .
+<http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> rdf:type owl:Ontology ;
+                                                             rdfs:comment "Ontology for presentation layers, presentation surfaces, regions, tiles, declarative layout, support profiles, requests and runtime allocation."@en ;
+                                                             rdfs:label "OntoBDC View Ontology"@en ;
+                                                             rdfs:seeAlso <https://www.w3.org/TR/shacl12-ui/> ;
+                                                             schema:description "Renderer-neutral semantic model for OntoBDC presentation composition. SHACL UI may be used inside semantic resource components, while this ontology governs surface composition."@en .
 
-:PresentationLayer a owl:Class ; rdfs:subClassOf dul:Situation ; rdfs:label "Presentation Layer"@en .
-:PresentationSurface a owl:Class ; rdfs:subClassOf dul:Region ; rdfs:label "Presentation Surface"@en ; rdfs:comment "Allocatable presentation surface whose logical grid and regions may be declared independently of a concrete renderer."@en .
-:DefaultSurfaceLayout a owl:Class ; rdfs:subClassOf :PresentationSurface ; rdfs:label "Default Surface Layout"@en ; rdfs:comment "PresentationSurface eligible for automatic default selection when measured logical presentation capacity satisfies its applicability bounds. Selection is based on logical rows and columns, not device classes or CSS breakpoints."@en .
-:PresentationRegion a owl:Class ; rdfs:subClassOf dul:Region ; rdfs:label "Presentation Region"@en .
-:OperationRegion a owl:Class ; rdfs:subClassOf :PresentationRegion ; rdfs:label "Operation Region"@en .
-:ContentRegion a owl:Class ; rdfs:subClassOf :PresentationRegion ; rdfs:label "Content Region"@en ; rdfs:comment "Region containing contextual content whose ordering may change according to recency or another presentation policy."@en .
-:PinnedRegion a owl:Class ; rdfs:subClassOf :PresentationRegion ; rdfs:label "Pinned Region"@en ; rdfs:comment "Region containing tiles explicitly pinned or selected for persistent presentation. Pinned does not imply renderer-specific fixed or sticky positioning."@en .
-:Component a owl:Class ; rdfs:subClassOf dul:InformationObject ; rdfs:label "Presentation Component"@en .
-:Tile a owl:Class ; rdfs:subClassOf :Component ; rdfs:label "Tile"@en .
-:ComponentPlacement a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Component Placement"@en ; rdfs:comment "Declarative placement of one component inside a region; distinct from runtime Allocation."@en .
-:PresentationAlignment a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Presentation Alignment"@en .
-:PresentationSupportProfile a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Presentation Support Profile"@en ; rdfs:comment "Presentation envelope supported by a component; intentionally distinct from an executable OntoBDC Capability."@en .
-:PresentationRequest a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Presentation Request"@en .
-:Allocation a owl:Class ; rdfs:subClassOf dul:Situation ; rdfs:label "Allocation"@en ; rdfs:comment "Runtime result of negotiation between a presentation surface and a component."@en .
-:PresentationRole a owl:Class ; rdfs:subClassOf dul:Role ; rdfs:label "Presentation Role"@en .
-:Theme a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Theme"@en .
-:PresentationEvent a owl:Class ; rdfs:subClassOf dul:Event ; rdfs:label "Presentation Event"@en .
-:ComponentEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Component Event"@en .
-:SharedEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Shared Event"@en .
-:GlobalEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Global Event"@en .
+#################################################################
+#    Annotation properties
+#################################################################
 
-:StartAlignment a :PresentationAlignment ; rdfs:label "Start Alignment"@en .
-:CenterAlignment a :PresentationAlignment ; rdfs:label "Center Alignment"@en .
-:EndAlignment a :PresentationAlignment ; rdfs:label "End Alignment"@en .
+###  http://www.w3.org/ns/shacl#class
+sh:class rdf:type owl:AnnotationProperty .
 
-:BrowserComponent a owl:Class ; rdfs:subClassOf :Component ; rdfs:label "Browser Component"@en .
-:BrowserWidgetComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:widget ; rdfs:label "Browser Widget Component"@en .
-:BrowserButtonComponent a owl:Class ; rdfs:subClassOf :BrowserWidgetComponent, aria:button ; rdfs:label "Browser Button Component"@en .
-:BrowserImageComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:img ; rdfs:label "Browser Image Component"@en .
-:BrowserStatusComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:status ; rdfs:label "Browser Status Component"@en .
-:BrowserLogComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:log ; rdfs:label "Browser Log Component"@en .
-:BrowserTimerComponent a owl:Class ; rdfs:subClassOf :BrowserStatusComponent, aria:timer ; rdfs:label "Browser Timer Component"@en .
-:BrowserToolbarComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:toolbar ; rdfs:label "Browser Toolbar Component"@en .
-:BrowserRegionComponent a owl:Class ; rdfs:subClassOf :BrowserComponent, aria:region ; rdfs:label "Browser Region Component"@en .
 
-:ThemeTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserButtonComponent ; rdfs:label "Theme Tile"@en .
-:LanguageTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserButtonComponent ; rdfs:label "Language Tile"@en .
-:LogoTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserImageComponent ; rdfs:label "Logo Tile"@en .
-:PhotoTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserImageComponent ; rdfs:label "Photo Tile"@en .
-:FileSizeTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserStatusComponent ; rdfs:label "File Size Tile"@en .
-:GanttTile a owl:Class ; rdfs:subClassOf :Tile, :BrowserRegionComponent ; rdfs:label "Gantt Tile"@en ; rdfs:comment "Renders a schedule's tasks as a Gantt chart, one bar per task."@en .
-:PresentationSystemLog a owl:Class ; rdfs:subClassOf :BrowserLogComponent ; rdfs:label "Presentation System Log"@en .
+###  http://www.w3.org/ns/shacl#datatype
+sh:datatype rdf:type owl:AnnotationProperty .
 
-:hasSurface a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasRegion ; rdfs:domain :PresentationLayer ; rdfs:range :PresentationSurface ; rdfs:label "has surface"@en .
-:hasRegion a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasPart ; rdfs:domain :PresentationSurface ; rdfs:range :PresentationRegion ; rdfs:label "has region"@en .
-:hasComponentPlacement a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasPart ; rdfs:domain :PresentationRegion ; rdfs:range :ComponentPlacement ; rdfs:label "has component placement"@en .
-:placesComponent a owl:ObjectProperty ; rdfs:domain :ComponentPlacement ; rdfs:range :Component ; rdfs:label "places component"@en .
-:hasAlignment a owl:ObjectProperty ; rdfs:domain :ComponentPlacement ; rdfs:range :PresentationAlignment ; rdfs:label "has alignment"@en .
-:presentedIn a owl:ObjectProperty ; rdfs:domain :Component ; rdfs:range :PresentationSurface ; rdfs:label "presented in"@en .
-:placedInRegion a owl:ObjectProperty ; rdfs:domain :Component ; rdfs:range :PresentationRegion ; rdfs:label "placed in region"@en ; rdfs:comment "Runtime/materialized region relation; declarative composition should use ComponentPlacement."@en .
-:hasSupportProfile a owl:ObjectProperty ; rdfs:subPropertyOf dul:isDescribedBy ; rdfs:domain :Component ; rdfs:range :PresentationSupportProfile ; rdfs:label "has support profile"@en .
-:hasRequest a owl:ObjectProperty ; rdfs:subPropertyOf dul:isDescribedBy ; rdfs:domain :Component ; rdfs:range :PresentationRequest ; rdfs:label "has request"@en .
-:hasAllocation a owl:ObjectProperty ; rdfs:domain :Component ; rdfs:range :Allocation ; rdfs:label "has allocation"@en .
-:allocatedBy a owl:ObjectProperty ; rdfs:domain :Allocation ; rdfs:range :PresentationSurface ; rdfs:label "allocated by"@en .
-:allocationFor a owl:ObjectProperty ; rdfs:domain :Allocation ; rdfs:range :Component ; rdfs:label "allocation for"@en .
-:hasPresentationRole a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasRole ; rdfs:domain :Component ; rdfs:range :PresentationRole ; rdfs:label "has presentation role"@en .
-:usesTheme a owl:ObjectProperty ; rdfs:range :Theme ; rdfs:label "uses theme"@en .
 
-:slotTarget a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:decimal ; rdfs:label "slot target"@en .
-:slotSize a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:decimal ; rdfs:label "slot size"@en .
-:columnCount a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:integer ; rdfs:label "column count"@en .
-:rowCount a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:integer ; rdfs:label "row count"@en .
-:gap a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:decimal ; rdfs:label "gap"@en .
-:padding a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:decimal ; rdfs:label "padding"@en .
-:margin a owl:DatatypeProperty ; rdfs:range xsd:decimal ; rdfs:label "margin"@en .
+###  http://www.w3.org/ns/shacl#maxCount
+sh:maxCount rdf:type owl:AnnotationProperty .
 
-:minAvailableColumns a owl:DatatypeProperty ; rdfs:domain :DefaultSurfaceLayout ; rdfs:range xsd:integer ; rdfs:label "minimum available columns"@en ; rdfs:comment "Minimum measured logical column capacity for which this default layout is eligible."@en .
-:maxAvailableColumns a owl:DatatypeProperty ; rdfs:domain :DefaultSurfaceLayout ; rdfs:range xsd:integer ; rdfs:label "maximum available columns"@en ; rdfs:comment "Maximum measured logical column capacity for which this default layout is eligible."@en .
-:minAvailableRows a owl:DatatypeProperty ; rdfs:domain :DefaultSurfaceLayout ; rdfs:range xsd:integer ; rdfs:label "minimum available rows"@en .
-:maxAvailableRows a owl:DatatypeProperty ; rdfs:domain :DefaultSurfaceLayout ; rdfs:range xsd:integer ; rdfs:label "maximum available rows"@en .
-:layoutPriority a owl:DatatypeProperty ; rdfs:domain :DefaultSurfaceLayout ; rdfs:range xsd:integer ; rdfs:label "layout priority"@en ; rdfs:comment "Selection priority among simultaneously eligible default layouts; higher values win. Not visual stacking or placement order."@en .
 
-:rowStart a owl:DatatypeProperty ; rdfs:domain :PresentationRegion ; rdfs:range xsd:integer ; rdfs:label "row start"@en .
-:columnStart a owl:DatatypeProperty ; rdfs:domain :PresentationRegion ; rdfs:range xsd:integer ; rdfs:label "column start"@en .
-:rowSpan a owl:DatatypeProperty ; rdfs:domain :PresentationRegion ; rdfs:range xsd:integer ; rdfs:label "row span"@en .
-:columnSpan a owl:DatatypeProperty ; rdfs:domain :PresentationRegion ; rdfs:range xsd:integer ; rdfs:label "column span"@en .
-:scrollable a owl:DatatypeProperty ; rdfs:domain :PresentationRegion ; rdfs:range xsd:boolean ; rdfs:label "scrollable"@en ; rdfs:comment "Renderer-neutral indication that content exceeding the region extent may be navigated."@en .
-:placementOrder a owl:DatatypeProperty ; rdfs:domain :ComponentPlacement ; rdfs:range xsd:integer ; rdfs:label "placement order"@en .
+###  http://www.w3.org/ns/shacl#minCount
+sh:minCount rdf:type owl:AnnotationProperty .
 
-:minColumns a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "minimum columns"@en .
-:maxColumns a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "maximum columns"@en .
-:preferredColumns a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "preferred columns"@en .
-:minRows a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "minimum rows"@en .
-:maxRows a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "maximum rows"@en .
-:preferredRows a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:integer ; rdfs:label "preferred rows"@en .
-:supportsTransparentBackground a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:boolean ; rdfs:label "supports transparent background"@en .
-:supportsTheme a owl:DatatypeProperty ; rdfs:domain :PresentationSupportProfile ; rdfs:range xsd:boolean ; rdfs:label "supports theme"@en .
 
-:requestedColumns a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:integer ; rdfs:label "requested columns"@en .
-:requestedRows a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:integer ; rdfs:label "requested rows"@en .
-:allocatedColumns a owl:DatatypeProperty ; rdfs:domain :Allocation ; rdfs:range xsd:integer ; rdfs:label "allocated columns"@en .
-:allocatedRows a owl:DatatypeProperty ; rdfs:domain :Allocation ; rdfs:range xsd:integer ; rdfs:label "allocated rows"@en .
-:allocatedMargin a owl:DatatypeProperty ; rdfs:domain :Allocation ; rdfs:range xsd:decimal ; rdfs:label "allocated margin"@en .
-:language a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:language ; rdfs:label "language"@en .
-:transparentBackground a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:boolean ; rdfs:label "transparent background"@en .
-:borderWidth a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:decimal ; rdfs:label "border width"@en .
-:borderRadius a owl:DatatypeProperty ; rdfs:domain :PresentationRequest ; rdfs:range xsd:decimal ; rdfs:label "border radius"@en .
+###  http://www.w3.org/ns/shacl#minInclusive
+sh:minInclusive rdf:type owl:AnnotationProperty .
 
-:PresentationSupportProfileShape a sh:NodeShape ; sh:targetClass :PresentationSupportProfile ;
-  sh:property [ sh:path :minColumns ; sh:datatype xsd:integer ; sh:minInclusive 1 ], [ sh:path :maxColumns ; sh:datatype xsd:integer ; sh:minInclusive 1 ], [ sh:path :minRows ; sh:datatype xsd:integer ; sh:minInclusive 1 ], [ sh:path :maxRows ; sh:datatype xsd:integer ; sh:minInclusive 1 ] .
 
-:AllocationShape a sh:NodeShape ; sh:targetClass :Allocation ;
-  sh:property [ sh:path :allocatedColumns ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :allocatedRows ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :allocationFor ; sh:class :Component ; sh:minCount 1 ; sh:maxCount 1 ], [ sh:path :allocatedBy ; sh:class :PresentationSurface ; sh:minCount 1 ; sh:maxCount 1 ] .
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
 
-:PresentationSurfaceShape a sh:NodeShape ; sh:targetClass :PresentationSurface ;
-  sh:property [ sh:path :columnCount ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :rowCount ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :gap ; sh:datatype xsd:decimal ; sh:maxCount 1 ; sh:minInclusive 0 ], [ sh:path :padding ; sh:datatype xsd:decimal ; sh:maxCount 1 ; sh:minInclusive 0 ], [ sh:path :hasRegion ; sh:class :PresentationRegion ] .
 
-:PresentationRegionShape a sh:NodeShape ; sh:targetClass :PresentationRegion ;
-  sh:property [ sh:path :rowStart ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :columnStart ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :rowSpan ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :columnSpan ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :scrollable ; sh:datatype xsd:boolean ; sh:maxCount 1 ], [ sh:path :hasComponentPlacement ; sh:class :ComponentPlacement ] .
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
 
-:ComponentPlacementShape a sh:NodeShape ; sh:targetClass :ComponentPlacement ;
-  sh:property [ sh:path :placesComponent ; sh:class :Component ; sh:minCount 1 ; sh:maxCount 1 ], [ sh:path :hasAlignment ; sh:class :PresentationAlignment ; sh:maxCount 1 ], [ sh:path :placementOrder ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 0 ] .
 
-:DefaultSurfaceLayoutShape a sh:NodeShape ; sh:targetClass :DefaultSurfaceLayout ;
-  sh:property [ sh:path :minAvailableColumns ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :maxAvailableColumns ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :minAvailableRows ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :maxAvailableRows ; sh:datatype xsd:integer ; sh:maxCount 1 ; sh:minInclusive 1 ], [ sh:path :layoutPriority ; sh:datatype xsd:integer ; sh:maxCount 1 ] .
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+###  https://schema.org/description
+schema:description rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#allocatedBy
+:allocatedBy rdf:type owl:ObjectProperty ;
+             rdfs:domain :Allocation ;
+             rdfs:range :PresentationSurface ;
+             rdfs:label "allocated by"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#allocationFor
+:allocationFor rdf:type owl:ObjectProperty ;
+               rdfs:domain :Allocation ;
+               rdfs:range :Component ;
+               rdfs:label "allocation for"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasAlignment
+:hasAlignment rdf:type owl:ObjectProperty ;
+              rdfs:domain :ComponentPlacement ;
+              rdfs:range :PresentationAlignment ;
+              rdfs:label "has alignment"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasAllocation
+:hasAllocation rdf:type owl:ObjectProperty ;
+               rdfs:domain :Component ;
+               rdfs:range :Allocation ;
+               rdfs:label "has allocation"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasComponentPlacement
+:hasComponentPlacement rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf dul:hasPart ;
+                       rdfs:domain :PresentationRegion ;
+                       rdfs:range :ComponentPlacement ;
+                       rdfs:label "has component placement"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasPresentationRole
+:hasPresentationRole rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dul:hasRole ;
+                     rdfs:domain :Component ;
+                     rdfs:range :PresentationRole ;
+                     rdfs:label "has presentation role"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasRegion
+:hasRegion rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dul:hasPart ;
+           rdfs:domain :PresentationSurface ;
+           rdfs:range :PresentationRegion ;
+           rdfs:label "has region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasRequest
+:hasRequest rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf dul:isDescribedBy ;
+            rdfs:domain :Component ;
+            rdfs:range :PresentationRequest ;
+            rdfs:label "has request"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasSupportProfile
+:hasSupportProfile rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dul:isDescribedBy ;
+                   rdfs:domain :Component ;
+                   rdfs:range :PresentationSupportProfile ;
+                   rdfs:label "has support profile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#hasSurface
+:hasSurface rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf dul:hasRegion ;
+            rdfs:domain :PresentationLayer ;
+            rdfs:range :PresentationSurface ;
+            rdfs:label "has surface"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#placedInRegion
+:placedInRegion rdf:type owl:ObjectProperty ;
+                rdfs:domain :Component ;
+                rdfs:range :PresentationRegion ;
+                rdfs:comment "Runtime/materialized region relation; declarative composition should use ComponentPlacement."@en ;
+                rdfs:label "placed in region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#placesComponent
+:placesComponent rdf:type owl:ObjectProperty ;
+                 rdfs:domain :ComponentPlacement ;
+                 rdfs:range :Component ;
+                 rdfs:label "places component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#presentedIn
+:presentedIn rdf:type owl:ObjectProperty ;
+             rdfs:domain :Component ;
+             rdfs:range :PresentationSurface ;
+             rdfs:label "presented in"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#usesTheme
+:usesTheme rdf:type owl:ObjectProperty ;
+           rdfs:range :Theme ;
+           rdfs:label "uses theme"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart
+dul:hasPart rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRegion
+dul:hasRegion rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRole
+dul:hasRole rdf:type owl:ObjectProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy
+dul:isDescribedBy rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#allocatedColumns
+:allocatedColumns rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Allocation ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "allocated columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#allocatedMargin
+:allocatedMargin rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Allocation ;
+                 rdfs:range xsd:decimal ;
+                 rdfs:label "allocated margin"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#allocatedRows
+:allocatedRows rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Allocation ;
+               rdfs:range xsd:integer ;
+               rdfs:label "allocated rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#borderRadius
+:borderRadius rdf:type owl:DatatypeProperty ;
+              rdfs:domain :PresentationRequest ;
+              rdfs:range xsd:decimal ;
+              rdfs:label "border radius"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#borderWidth
+:borderWidth rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PresentationRequest ;
+             rdfs:range xsd:decimal ;
+             rdfs:label "border width"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#columnCount
+:columnCount rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PresentationSurface ;
+             rdfs:range xsd:integer ;
+             rdfs:label "column count"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#columnSpan
+:columnSpan rdf:type owl:DatatypeProperty ;
+            rdfs:domain :PresentationRegion ;
+            rdfs:range xsd:integer ;
+            rdfs:label "column span"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#columnStart
+:columnStart rdf:type owl:DatatypeProperty ;
+             rdfs:domain :PresentationRegion ;
+             rdfs:range xsd:integer ;
+             rdfs:label "column start"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#gap
+:gap rdf:type owl:DatatypeProperty ;
+     rdfs:domain :PresentationSurface ;
+     rdfs:range xsd:decimal ;
+     rdfs:label "gap"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#language
+:language rdf:type owl:DatatypeProperty ;
+          rdfs:domain :PresentationRequest ;
+          rdfs:range xsd:language ;
+          rdfs:label "language"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#layoutPriority
+:layoutPriority rdf:type owl:DatatypeProperty ;
+                rdfs:domain :DefaultSurfaceLayout ;
+                rdfs:range xsd:integer ;
+                rdfs:comment "Selection priority among simultaneously eligible default layouts; higher values win. Not visual stacking or placement order."@en ;
+                rdfs:label "layout priority"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#margin
+:margin rdf:type owl:DatatypeProperty ;
+        rdfs:range xsd:decimal ;
+        rdfs:label "margin"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#maxAvailableColumns
+:maxAvailableColumns rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :DefaultSurfaceLayout ;
+                     rdfs:range xsd:integer ;
+                     rdfs:comment "Maximum measured logical column capacity for which this default layout is eligible."@en ;
+                     rdfs:label "maximum available columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#maxAvailableRows
+:maxAvailableRows rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :DefaultSurfaceLayout ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "maximum available rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#maxColumns
+:maxColumns rdf:type owl:DatatypeProperty ;
+            rdfs:domain :PresentationSupportProfile ;
+            rdfs:range xsd:integer ;
+            rdfs:label "maximum columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#maxRows
+:maxRows rdf:type owl:DatatypeProperty ;
+         rdfs:domain :PresentationSupportProfile ;
+         rdfs:range xsd:integer ;
+         rdfs:label "maximum rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#minAvailableColumns
+:minAvailableColumns rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :DefaultSurfaceLayout ;
+                     rdfs:range xsd:integer ;
+                     rdfs:comment "Minimum measured logical column capacity for which this default layout is eligible."@en ;
+                     rdfs:label "minimum available columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#minAvailableRows
+:minAvailableRows rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :DefaultSurfaceLayout ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "minimum available rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#minColumns
+:minColumns rdf:type owl:DatatypeProperty ;
+            rdfs:domain :PresentationSupportProfile ;
+            rdfs:range xsd:integer ;
+            rdfs:label "minimum columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#minRows
+:minRows rdf:type owl:DatatypeProperty ;
+         rdfs:domain :PresentationSupportProfile ;
+         rdfs:range xsd:integer ;
+         rdfs:label "minimum rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#padding
+:padding rdf:type owl:DatatypeProperty ;
+         rdfs:domain :PresentationSurface ;
+         rdfs:range xsd:decimal ;
+         rdfs:label "padding"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#placementOrder
+:placementOrder rdf:type owl:DatatypeProperty ;
+                rdfs:domain :ComponentPlacement ;
+                rdfs:range xsd:integer ;
+                rdfs:label "placement order"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#preferredColumns
+:preferredColumns rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :PresentationSupportProfile ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "preferred columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#preferredRows
+:preferredRows rdf:type owl:DatatypeProperty ;
+               rdfs:domain :PresentationSupportProfile ;
+               rdfs:range xsd:integer ;
+               rdfs:label "preferred rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#requestedColumns
+:requestedColumns rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :PresentationRequest ;
+                  rdfs:range xsd:integer ;
+                  rdfs:label "requested columns"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#requestedRows
+:requestedRows rdf:type owl:DatatypeProperty ;
+               rdfs:domain :PresentationRequest ;
+               rdfs:range xsd:integer ;
+               rdfs:label "requested rows"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#rowCount
+:rowCount rdf:type owl:DatatypeProperty ;
+          rdfs:domain :PresentationSurface ;
+          rdfs:range xsd:integer ;
+          rdfs:label "row count"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#rowSpan
+:rowSpan rdf:type owl:DatatypeProperty ;
+         rdfs:domain :PresentationRegion ;
+         rdfs:range xsd:integer ;
+         rdfs:label "row span"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#rowStart
+:rowStart rdf:type owl:DatatypeProperty ;
+          rdfs:domain :PresentationRegion ;
+          rdfs:range xsd:integer ;
+          rdfs:label "row start"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#scrollable
+:scrollable rdf:type owl:DatatypeProperty ;
+            rdfs:domain :PresentationRegion ;
+            rdfs:range xsd:boolean ;
+            rdfs:comment "Renderer-neutral indication that content exceeding the region extent may be navigated."@en ;
+            rdfs:label "scrollable"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#slotSize
+:slotSize rdf:type owl:DatatypeProperty ;
+          rdfs:domain :PresentationSurface ;
+          rdfs:range xsd:decimal ;
+          rdfs:label "slot size"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#slotTarget
+:slotTarget rdf:type owl:DatatypeProperty ;
+            rdfs:domain :PresentationSurface ;
+            rdfs:range xsd:decimal ;
+            rdfs:label "slot target"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#supportsTheme
+:supportsTheme rdf:type owl:DatatypeProperty ;
+               rdfs:domain :PresentationSupportProfile ;
+               rdfs:range xsd:boolean ;
+               rdfs:label "supports theme"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#supportsTransparentBackground
+:supportsTransparentBackground rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :PresentationSupportProfile ;
+                               rdfs:range xsd:boolean ;
+                               rdfs:label "supports transparent background"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#transparentBackground
+:transparentBackground rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :PresentationRequest ;
+                       rdfs:range xsd:boolean ;
+                       rdfs:label "transparent background"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#Allocation
+:Allocation rdf:type owl:Class ;
+            rdfs:subClassOf dul:Situation ;
+            rdfs:comment "Runtime result of negotiation between a presentation surface and a component."@en ;
+            rdfs:label "Allocation"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserButtonComponent
+:BrowserButtonComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :BrowserWidgetComponent ,
+                                        aria:button ;
+                        rdfs:label "Browser Button Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserComponent
+:BrowserComponent rdf:type owl:Class ;
+                  rdfs:subClassOf :Component ;
+                  rdfs:label "Browser Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserImageComponent
+:BrowserImageComponent rdf:type owl:Class ;
+                       rdfs:subClassOf :BrowserComponent ,
+                                       aria:img ;
+                       rdfs:label "Browser Image Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserLogComponent
+:BrowserLogComponent rdf:type owl:Class ;
+                     rdfs:subClassOf :BrowserComponent ,
+                                     aria:log ;
+                     rdfs:label "Browser Log Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserRegionComponent
+:BrowserRegionComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :BrowserComponent ,
+                                        aria:region ;
+                        rdfs:label "Browser Region Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserStatusComponent
+:BrowserStatusComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :BrowserComponent ,
+                                        aria:status ;
+                        rdfs:label "Browser Status Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserTimerComponent
+:BrowserTimerComponent rdf:type owl:Class ;
+                       rdfs:subClassOf :BrowserStatusComponent ,
+                                       aria:timer ;
+                       rdfs:label "Browser Timer Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserToolbarComponent
+:BrowserToolbarComponent rdf:type owl:Class ;
+                         rdfs:subClassOf :BrowserComponent ,
+                                         aria:toolbar ;
+                         rdfs:label "Browser Toolbar Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#BrowserWidgetComponent
+:BrowserWidgetComponent rdf:type owl:Class ;
+                        rdfs:subClassOf :BrowserComponent ,
+                                        aria:widget ;
+                        rdfs:label "Browser Widget Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#Component
+:Component rdf:type owl:Class ;
+           rdfs:subClassOf dul:InformationObject ;
+           rdfs:label "Presentation Component"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ComponentEvent
+:ComponentEvent rdf:type owl:Class ;
+                rdfs:subClassOf :PresentationEvent ;
+                rdfs:label "Component Event"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ComponentPlacement
+:ComponentPlacement rdf:type owl:Class ;
+                    rdfs:subClassOf dul:Description ;
+                    rdfs:comment "Declarative placement of one component inside a region; distinct from runtime Allocation."@en ;
+                    rdfs:label "Component Placement"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ContentRegion
+:ContentRegion rdf:type owl:Class ;
+               rdfs:subClassOf :PresentationRegion ;
+               rdfs:comment "Region containing contextual content whose ordering may change according to recency or another presentation policy."@en ;
+               rdfs:label "Content Region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#DefaultSurfaceLayout
+:DefaultSurfaceLayout rdf:type owl:Class ;
+                      rdfs:subClassOf :PresentationSurface ;
+                      rdfs:comment "PresentationSurface eligible for automatic default selection when measured logical presentation capacity satisfies its applicability bounds. Selection is based on logical rows and columns, not device classes or CSS breakpoints."@en ;
+                      rdfs:label "Default Surface Layout"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#FileSizeTile
+:FileSizeTile rdf:type owl:Class ;
+              rdfs:subClassOf :BrowserStatusComponent ,
+                              :Tile ;
+              rdfs:label "File Size Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#GanttTile
+:GanttTile rdf:type owl:Class ;
+           rdfs:subClassOf :BrowserRegionComponent ,
+                           :Tile ;
+           rdfs:comment "Renders a schedule's tasks as a Gantt chart, one bar per task."@en ;
+           rdfs:label "Gantt Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#GlobalEvent
+:GlobalEvent rdf:type owl:Class ;
+             rdfs:subClassOf :PresentationEvent ;
+             rdfs:label "Global Event"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#LanguageTile
+:LanguageTile rdf:type owl:Class ;
+              rdfs:subClassOf :BrowserButtonComponent ,
+                              :Tile ;
+              rdfs:label "Language Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#LogoTile
+:LogoTile rdf:type owl:Class ;
+          rdfs:subClassOf :BrowserImageComponent ,
+                          :Tile ;
+          rdfs:label "Logo Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#OperationRegion
+:OperationRegion rdf:type owl:Class ;
+                 rdfs:subClassOf :PresentationRegion ;
+                 rdfs:label "Operation Region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PhotoTile
+:PhotoTile rdf:type owl:Class ;
+           rdfs:subClassOf :BrowserImageComponent ,
+                           :Tile ;
+           rdfs:label "Photo Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PinnedRegion
+:PinnedRegion rdf:type owl:Class ;
+              rdfs:subClassOf :PresentationRegion ;
+              rdfs:comment "Region containing tiles explicitly pinned or selected for persistent presentation. Pinned does not imply renderer-specific fixed or sticky positioning."@en ;
+              rdfs:label "Pinned Region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationAlignment
+:PresentationAlignment rdf:type owl:Class ;
+                       rdfs:subClassOf dul:Description ;
+                       rdfs:label "Presentation Alignment"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationEvent
+:PresentationEvent rdf:type owl:Class ;
+                   rdfs:subClassOf dul:Event ;
+                   rdfs:label "Presentation Event"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationLayer
+:PresentationLayer rdf:type owl:Class ;
+                   rdfs:subClassOf dul:Situation ;
+                   rdfs:label "Presentation Layer"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationRegion
+:PresentationRegion rdf:type owl:Class ;
+                    rdfs:subClassOf dul:Region ;
+                    rdfs:label "Presentation Region"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationRequest
+:PresentationRequest rdf:type owl:Class ;
+                     rdfs:subClassOf dul:Description ;
+                     rdfs:label "Presentation Request"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationRole
+:PresentationRole rdf:type owl:Class ;
+                  rdfs:subClassOf dul:Role ;
+                  rdfs:label "Presentation Role"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSupportProfile
+:PresentationSupportProfile rdf:type owl:Class ;
+                            rdfs:subClassOf dul:Description ;
+                            rdfs:comment "Presentation envelope supported by a component; intentionally distinct from an executable OntoBDC Capability."@en ;
+                            rdfs:label "Presentation Support Profile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSurface
+:PresentationSurface rdf:type owl:Class ;
+                     rdfs:subClassOf dul:Region ;
+                     rdfs:comment "Allocatable presentation surface whose logical grid and regions may be declared independently of a concrete renderer."@en ;
+                     rdfs:label "Presentation Surface"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSystemLog
+:PresentationSystemLog rdf:type owl:Class ;
+                       rdfs:subClassOf :BrowserLogComponent ;
+                       rdfs:label "Presentation System Log"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#SharedEvent
+:SharedEvent rdf:type owl:Class ;
+             rdfs:subClassOf :PresentationEvent ;
+             rdfs:label "Shared Event"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#Theme
+:Theme rdf:type owl:Class ;
+       rdfs:subClassOf dul:Description ;
+       rdfs:label "Theme"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ThemeTile
+:ThemeTile rdf:type owl:Class ;
+           rdfs:subClassOf :BrowserButtonComponent ,
+                           :Tile ;
+           rdfs:label "Theme Tile"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#Tile
+:Tile rdf:type owl:Class ;
+      rdfs:subClassOf :Component ;
+      rdfs:label "Tile"@en .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description
+dul:Description rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Event
+dul:Event rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#InformationObject
+dul:InformationObject rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Region
+dul:Region rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role
+dul:Role rdf:type owl:Class .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation
+dul:Situation rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#button
+aria:button rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#img
+aria:img rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#log
+aria:log rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#region
+aria:region rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#status
+aria:status rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#timer
+aria:timer rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#toolbar
+aria:toolbar rdf:type owl:Class .
+
+
+###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#widget
+aria:widget rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/shacl#NodeShape
+sh:NodeShape rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#AllocationShape
+:AllocationShape rdf:type owl:NamedIndividual ,
+                          sh:NodeShape ;
+                 sh:property [ sh:datatype xsd:integer ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:minInclusive 1 ;
+                               sh:path :allocatedColumns
+                             ] ,
+                             [ sh:datatype xsd:integer ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:minInclusive 1 ;
+                               sh:path :allocatedRows
+                             ] ,
+                             [ sh:class :Component ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:path :allocationFor
+                             ] ,
+                             [ sh:class :PresentationSurface ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:path :allocatedBy
+                             ] ;
+                 sh:targetClass :Allocation .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#CenterAlignment
+:CenterAlignment rdf:type owl:NamedIndividual ,
+                          :PresentationAlignment ;
+                 rdfs:label "Center Alignment"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ComponentPlacementShape
+:ComponentPlacementShape rdf:type owl:NamedIndividual ,
+                                  sh:NodeShape ;
+                         sh:property [ sh:class :Component ;
+                                       sh:maxCount 1 ;
+                                       sh:minCount 1 ;
+                                       sh:path :placesComponent
+                                     ] ,
+                                     [ sh:class :PresentationAlignment ;
+                                       sh:maxCount 1 ;
+                                       sh:path :hasAlignment
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 0 ;
+                                       sh:path :placementOrder
+                                     ] ;
+                         sh:targetClass :ComponentPlacement .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#DefaultSurfaceLayoutShape
+:DefaultSurfaceLayoutShape rdf:type owl:NamedIndividual ,
+                                    sh:NodeShape ;
+                           sh:property [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:path :layoutPriority
+                                       ] ,
+                                       [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:minInclusive 1 ;
+                                         sh:path :minAvailableRows
+                                       ] ,
+                                       [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:minInclusive 1 ;
+                                         sh:path :maxAvailableRows
+                                       ] ,
+                                       [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:minInclusive 1 ;
+                                         sh:path :minAvailableColumns
+                                       ] ,
+                                       [ sh:datatype xsd:integer ;
+                                         sh:maxCount 1 ;
+                                         sh:minInclusive 1 ;
+                                         sh:path :maxAvailableColumns
+                                       ] ;
+                           sh:targetClass :DefaultSurfaceLayout .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#EndAlignment
+:EndAlignment rdf:type owl:NamedIndividual ,
+                       :PresentationAlignment ;
+              rdfs:label "End Alignment"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationRegionShape
+:PresentationRegionShape rdf:type owl:NamedIndividual ,
+                                  sh:NodeShape ;
+                         sh:property [ sh:datatype xsd:boolean ;
+                                       sh:maxCount 1 ;
+                                       sh:path :scrollable
+                                     ] ,
+                                     [ sh:class :ComponentPlacement ;
+                                       sh:path :hasComponentPlacement
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :rowSpan
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :columnSpan
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :rowStart
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :columnStart
+                                     ] ;
+                         sh:targetClass :PresentationRegion .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSupportProfileShape
+:PresentationSupportProfileShape rdf:type owl:NamedIndividual ,
+                                          sh:NodeShape ;
+                                 sh:property [ sh:datatype xsd:integer ;
+                                               sh:minInclusive 1 ;
+                                               sh:path :minColumns
+                                             ] ,
+                                             [ sh:datatype xsd:integer ;
+                                               sh:minInclusive 1 ;
+                                               sh:path :maxColumns
+                                             ] ,
+                                             [ sh:datatype xsd:integer ;
+                                               sh:minInclusive 1 ;
+                                               sh:path :minRows
+                                             ] ,
+                                             [ sh:datatype xsd:integer ;
+                                               sh:minInclusive 1 ;
+                                               sh:path :maxRows
+                                             ] ;
+                                 sh:targetClass :PresentationSupportProfile .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#PresentationSurfaceShape
+:PresentationSurfaceShape rdf:type owl:NamedIndividual ,
+                                   sh:NodeShape ;
+                          sh:property [ sh:datatype xsd:decimal ;
+                                        sh:maxCount 1 ;
+                                        sh:minInclusive 0 ;
+                                        sh:path :padding
+                                      ] ,
+                                      [ sh:class :PresentationRegion ;
+                                        sh:path :hasRegion
+                                      ] ,
+                                      [ sh:datatype xsd:integer ;
+                                        sh:maxCount 1 ;
+                                        sh:minInclusive 1 ;
+                                        sh:path :rowCount
+                                      ] ,
+                                      [ sh:datatype xsd:decimal ;
+                                        sh:maxCount 1 ;
+                                        sh:minInclusive 0 ;
+                                        sh:path :gap
+                                      ] ,
+                                      [ sh:datatype xsd:integer ;
+                                        sh:maxCount 1 ;
+                                        sh:minInclusive 1 ;
+                                        sh:path :columnCount
+                                      ] ;
+                          sh:targetClass :PresentationSurface .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#StartAlignment
+:StartAlignment rdf:type owl:NamedIndividual ,
+                         :PresentationAlignment ;
+                rdfs:label "Start Alignment"@en .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
