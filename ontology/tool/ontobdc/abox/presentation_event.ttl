@@ -1,0 +1,70 @@
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix event: <http://datacenter.app.br/ontology/ontobdc/abox/presentation_event.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# Presentation event definitions shipped with OntoBDC View.
+event:SurfaceLoaded
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:PageLoaded .
+
+event:PageLoaded
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:TileOpened
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileReady, event:SurfaceAreaFilled .
+
+event:TileReady
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:SurfaceAreaFilled
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:TileClosed
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileStandby, event:SurfaceAreaEmptied .
+
+event:TileStandby
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:SurfaceAreaEmptied
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:TileExpanded
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileResized, event:SurfaceAreaFilled .
+
+event:TileCollapsed
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileResized, event:SurfaceAreaEmptied .
+
+event:TileFullSized
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:SurfaceObscured .
+
+event:SurfaceObscured
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:TileRestored
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:SurfaceRevealed .
+
+event:SurfaceRevealed
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:TileResized
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:EntityPageOpenRequested
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:EntityPageRequested .
+
+event:EntityPageRequested
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:EntityPageCloseRequested
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:EntityPageDismissRequested .
+
+event:EntityPageDismissRequested
+    a owl:NamedIndividual, view:SharedEvent .

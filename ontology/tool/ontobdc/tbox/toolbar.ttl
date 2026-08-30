@@ -1,0 +1,62 @@
+@prefix : <http://datacenter.app.br/ontology/ontobdc/domain/toolbar.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://datacenter.app.br/ontology/ontobdc/domain/toolbar.ttl> a owl:Ontology ;
+    rdfs:label "OntoBDC Toolbar Presentation Ontology"@en ;
+    rdfs:comment "Renderer-neutral semantic model for entity-page toolbars, their action buttons, alignment and item placement."@en ;
+    owl:imports <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> .
+
+:ToolbarAlignment a owl:Class ;
+    rdfs:subClassOf view:PresentationAlignment ;
+    rdfs:label "Toolbar Alignment"@en ;
+    rdfs:comment "Absolute horizontal alignment of a toolbar. Alignment does not redefine item numbering, which is always left-to-right."@en .
+
+:EntityPageToolbar a owl:Class ;
+    rdfs:subClassOf view:BrowserToolbarComponent ;
+    rdfs:label "Entity Page Toolbar"@en ;
+    rdfs:comment "Toolbar belonging to an entity page and grouping actions available for that page."@en .
+
+:EntityPageActionButton a owl:Class ;
+    rdfs:subClassOf view:BrowserButtonComponent ;
+    rdfs:label "Entity Page Action Button"@en ;
+    rdfs:comment "Button component representing an action available from an entity-page toolbar."@en .
+
+:OpenDataSourceButton a owl:Class ;
+    rdfs:subClassOf :EntityPageActionButton ;
+    rdfs:label "Open Data Source Button"@en ;
+    rdfs:comment "Entity-page action button whose purpose is to open the data source associated with the presented entity or page."@en .
+
+:OpenExcelDataSourceButton a owl:Class ;
+    rdfs:subClassOf :OpenDataSourceButton ;
+    rdfs:label "Open Excel Data Source Button"@en ;
+    rdfs:comment "Open-data-source button specialized for a data source opened through Microsoft Excel, with Excel-specific presentation and opening behavior."@en .
+
+:ToolbarItemPlacement a owl:Class ;
+    rdfs:subClassOf view:ComponentPlacement ;
+    rdfs:label "Toolbar Item Placement"@en ;
+    rdfs:comment "Placement of a component inside a toolbar. view:placementOrder is interpreted as an absolute left-to-right ordinal, independent of toolbar alignment. With right alignment, the highest placement order is anchored at the right edge and lower orders proceed leftward; with left or center alignment, the ordered sequence still remains left-to-right."@en .
+
+:LeftToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Left Toolbar Alignment"@en .
+
+:CenterToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Center Toolbar Alignment"@en .
+
+:RightToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Right Toolbar Alignment"@en .
+
+:hasToolbarItemPlacement a owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasPart ;
+    rdfs:domain :EntityPageToolbar ;
+    rdfs:range :ToolbarItemPlacement ;
+    rdfs:label "has toolbar item placement"@en ;
+    rdfs:comment "Relates an entity-page toolbar to the placements of its contained action components."@en .
+
+:hasToolbarAlignment a owl:ObjectProperty ;
+    rdfs:domain :EntityPageToolbar ;
+    rdfs:range :ToolbarAlignment ;
+    rdfs:label "has toolbar alignment"@en ;
+    rdfs:comment "Defines the toolbar's absolute horizontal alignment: left, center or right. Item numbering remains left-to-right in every case."@en .

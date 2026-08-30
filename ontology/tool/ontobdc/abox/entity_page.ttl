@@ -1,0 +1,30 @@
+@prefix toolbar: <http://datacenter.app.br/ontology/ontobdc/domain/toolbar.ttl#> .
+@prefix ui: <http://datacenter.app.br/ontology/ontobdc/abox/entity_page.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Entity-page toolbar definitions shipped with OntoBDC View.
+ui:WorkStreamToolbar
+    a owl:NamedIndividual, toolbar:EntityPageToolbar ;
+    rdfs:label "WorkStream Toolbar"@en .
+
+ui:WorkScheduleToolbar
+    a owl:NamedIndividual, toolbar:EntityPageToolbar ;
+    rdfs:label "WorkSchedule Toolbar"@en .
+
+ui:ConnectContainerButton
+    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    rdfs:label "Connect Container Button"@en .
+
+ui:AddRelatedEntityButton
+    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    rdfs:label "Add Related Entity Button"@en ;
+    rdfs:comment "Action button for creating an entity related to the entity presented by the current page, rather than creating another instance of the page's principal entity type."@en .
+
+ui:PrintButton
+    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    rdfs:label "Print Button"@en .
+
+ui:OpenExcelDataSourceButton
+    a owl:NamedIndividual, toolbar:OpenExcelDataSourceButton ;
+    rdfs:label "Open Excel Data Source Button"@en .

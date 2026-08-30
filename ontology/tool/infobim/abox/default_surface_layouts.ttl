@@ -1,4 +1,4 @@
-@prefix : <http://datacenter.app.br/ontology/infobim/abox/default_surface_layouts.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/infobim/abox/default_surface_layout.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix schema: <https://schema.org/> .

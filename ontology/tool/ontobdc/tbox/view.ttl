@@ -159,11 +159,10 @@ schema:description rdf:type owl:AnnotationProperty .
 
 
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#promotesTo
-:promotesTo rdf:type owl:ObjectProperty ,
-                     owl:FunctionalProperty ;
+:promotesTo rdf:type owl:ObjectProperty ;
             rdfs:domain :PresentationEvent ;
             rdfs:range :PresentationEvent ;
-            rdfs:comment "Relates a presentation event definition to the presentation event definition it may be promoted to."@en ;
+            rdfs:comment "Relates a presentation event definition to a presentation event definition it may be promoted to. A single source event may promote to more than one target event."@en ;
             rdfs:label "promotes to"@en .
 
 

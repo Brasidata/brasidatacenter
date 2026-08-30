@@ -1,5 +1,5 @@
 @prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
-@prefix default: <urn:ontobdc:view:default-surface-layout:> .
+@prefix default: <http://datacenter.app.br/ontology/ontobdc/abox/default_surface_layout.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix schema: <https://schema.org/> .
