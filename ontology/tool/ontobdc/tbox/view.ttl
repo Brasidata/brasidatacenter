@@ -71,6 +71,7 @@
 :allocatedBy a owl:ObjectProperty ; rdfs:domain :Allocation ; rdfs:range :PresentationSurface ; rdfs:label "allocated by"@en .
 :allocationFor a owl:ObjectProperty ; rdfs:domain :Allocation ; rdfs:range :Component ; rdfs:label "allocation for"@en .
 :hasPresentationRole a owl:ObjectProperty ; rdfs:subPropertyOf dul:hasRole ; rdfs:domain :Component ; rdfs:range :PresentationRole ; rdfs:label "has presentation role"@en .
+:promotesTo a owl:ObjectProperty ; rdfs:domain :PresentationEvent ; rdfs:range :PresentationEvent ; rdfs:label "promotes to"@en ; rdfs:comment "Relates a presentation event definition to the presentation event definition it may be promoted to."@en .
 :usesTheme a owl:ObjectProperty ; rdfs:range :Theme ; rdfs:label "uses theme"@en .
 
 :slotTarget a owl:DatatypeProperty ; rdfs:domain :PresentationSurface ; rdfs:range xsd:decimal ; rdfs:label "slot target"@en .
