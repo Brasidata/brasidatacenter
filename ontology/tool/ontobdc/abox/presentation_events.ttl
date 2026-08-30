@@ -1,0 +1,22 @@
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix event: <http://datacenter.app.br/ontology/ontobdc/abox/presentation_events.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Presentation-event promotion policy for the dDock Web runtime.
+#
+# The single source of truth for whether — and to what — a presentation
+# event is promoted. `ontobdc-web-dock`'s Listener reads `view:promotesTo`
+# from here; JavaScript never carries a promotion map.
+#
+# An event that declares no `view:promotesTo` is simply not promoted; that
+# is a normal outcome, not an omission.
+
+event:SurfaceLoaded
+    a owl:NamedIndividual, view:ComponentEvent ;
+    rdfs:label "Surface Loaded"@en ;
+    view:promotesTo event:PageLoaded .
+
+event:PageLoaded
+    a owl:NamedIndividual, view:SharedEvent ;
+    rdfs:label "Page Loaded"@en .
