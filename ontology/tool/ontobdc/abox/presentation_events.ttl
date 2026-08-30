@@ -45,5 +45,12 @@ event:TileFullSized
 event:SurfaceObscured
     a owl:NamedIndividual, view:SharedEvent .
 
+event:TileRestored
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:SurfaceRevealed .
+
+event:SurfaceRevealed
+    a owl:NamedIndividual, view:SharedEvent .
+
 event:TileResized
     a owl:NamedIndividual, view:SharedEvent .
