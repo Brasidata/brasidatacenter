@@ -1,0 +1,7 @@
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix event: <urn:ontobdc:view:event:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# Presentation event definitions shipped with OntoBDC View.
+event:SurfaceLoaded
+    a owl:NamedIndividual, view:ComponentEvent .
