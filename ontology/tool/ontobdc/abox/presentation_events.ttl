@@ -54,3 +54,17 @@ event:SurfaceRevealed
 
 event:TileResized
     a owl:NamedIndividual, view:SharedEvent .
+
+event:EntityPageOpenRequested
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:EntityPageRequested .
+
+event:EntityPageRequested
+    a owl:NamedIndividual, view:SharedEvent .
+
+event:EntityPageCloseRequested
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:EntityPageDismissRequested .
+
+event:EntityPageDismissRequested
+    a owl:NamedIndividual, view:SharedEvent .
