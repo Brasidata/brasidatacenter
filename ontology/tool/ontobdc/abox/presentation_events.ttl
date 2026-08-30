@@ -4,4 +4,8 @@
 
 # Presentation event definitions shipped with OntoBDC View.
 event:SurfaceLoaded
-    a owl:NamedIndividual, view:ComponentEvent .
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:PageLoaded .
+
+event:PageLoaded
+    a owl:NamedIndividual, view:SharedEvent .
