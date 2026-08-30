@@ -39,7 +39,11 @@ event:TileCollapsed
     view:promotesTo event:TileResized, event:SurfaceAreaEmptied .
 
 event:TileFullSized
-    a owl:NamedIndividual, view:ComponentEvent .
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:SurfaceObscured .
+
+event:SurfaceObscured
+    a owl:NamedIndividual, view:SharedEvent .
 
 event:TileResized
     a owl:NamedIndividual, view:SharedEvent .
