@@ -9,3 +9,9 @@ event:SurfaceLoaded
 
 event:PageLoaded
     a owl:NamedIndividual, view:SharedEvent .
+
+event:TileOpened
+    a owl:NamedIndividual, view:ComponentEvent .
+
+event:TileClosed
+    a owl:NamedIndividual, view:ComponentEvent .
