@@ -68,3 +68,13 @@ event:EntityPageCloseRequested
 
 event:EntityPageDismissRequested
     a owl:NamedIndividual, view:SharedEvent .
+
+event:ComponentFileSingleClick
+    a owl:NamedIndividual, view:ComponentEvent .
+
+event:ComponentFileDoubleClick
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:ComponentFileSelected .
+
+event:ComponentFileSelected
+    a owl:NamedIndividual, view:ComponentEvent .
