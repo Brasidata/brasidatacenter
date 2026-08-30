@@ -29,3 +29,10 @@ event:TileStandby
 
 event:SurfaceAreaEmptied
     a owl:NamedIndividual, view:SharedEvent .
+
+event:TileExpanded
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileResized, event:SurfaceAreaFilled .
+
+event:TileResized
+    a owl:NamedIndividual, view:SharedEvent .
