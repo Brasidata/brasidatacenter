@@ -34,5 +34,9 @@ event:TileExpanded
     a owl:NamedIndividual, view:ComponentEvent ;
     view:promotesTo event:TileResized, event:SurfaceAreaFilled .
 
+event:TileCollapsed
+    a owl:NamedIndividual, view:ComponentEvent ;
+    view:promotesTo event:TileResized, event:SurfaceAreaEmptied .
+
 event:TileResized
     a owl:NamedIndividual, view:SharedEvent .
