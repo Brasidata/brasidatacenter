@@ -32,6 +32,9 @@
 :PresentationRole a owl:Class ; rdfs:subClassOf dul:Role ; rdfs:label "Presentation Role"@en .
 :Theme a owl:Class ; rdfs:subClassOf dul:Description ; rdfs:label "Theme"@en .
 :PresentationEvent a owl:Class ; rdfs:subClassOf dul:Event ; rdfs:label "Presentation Event"@en .
+:ComponentEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Component Event"@en .
+:SharedEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Shared Event"@en .
+:GlobalEvent a owl:Class ; rdfs:subClassOf :PresentationEvent ; rdfs:label "Global Event"@en .
 
 :StartAlignment a :PresentationAlignment ; rdfs:label "Start Alignment"@en .
 :CenterAlignment a :PresentationAlignment ; rdfs:label "Center Alignment"@en .
