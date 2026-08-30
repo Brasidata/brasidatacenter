@@ -24,6 +24,16 @@
     rdfs:label "Entity Page Action Button"@en ;
     rdfs:comment "Button component representing an action available from an entity-page toolbar."@en .
 
+:OpenDataSourceButton a owl:Class ;
+    rdfs:subClassOf :EntityPageActionButton ;
+    rdfs:label "Open Data Source Button"@en ;
+    rdfs:comment "Entity-page action button whose purpose is to open the data source associated with the presented entity or page."@en .
+
+:OpenExcelDataSourceButton a owl:Class ;
+    rdfs:subClassOf :OpenDataSourceButton ;
+    rdfs:label "Open Excel Data Source Button"@en ;
+    rdfs:comment "Open-data-source button specialized for a data source opened through Microsoft Excel, with Excel-specific presentation and opening behavior."@en .
+
 :ToolbarItemPlacement a owl:Class ;
     rdfs:subClassOf view:ComponentPlacement ;
     rdfs:label "Toolbar Item Placement"@en ;
