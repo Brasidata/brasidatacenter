@@ -78,7 +78,4 @@ event:ComponentFileSingleClick
 
 event:ComponentFileDoubleClick
     a owl:NamedIndividual, view:ComponentEvent ;
-    view:promotesTo event:ComponentFileSelected .
-
-event:ComponentFileSelected
-    a owl:NamedIndividual, view:ComponentEvent .
+    view:promotesTo event:EntityPageRequested .
