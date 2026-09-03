@@ -18,20 +18,20 @@
     rdfs:subClassOf obdc:SurfaceableEntity ,
         ifcowl:IfcWorkSchedule ;
     rdfs:label "IFC Work Schedule"@en ,
-        "Cronograma IFC"@pt-BR ;
+        "Cronograma"@pt-BR ;
     rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule for planning and production control."@en ;
     schema:description "A surfaceable IFC work schedule organized through identifiable control dimensions."@en .
 
 :IfcWorkScheduleDimension rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity ;
     rdfs:label "IFC Work Schedule Dimension"@en ,
-        "Dimensão do cronograma IFC"@pt-BR ;
+        "Dimensão do cronograma"@pt-BR ;
     rdfs:comment "Identifiable, non-hierarchical control dimension belonging to one IFC Work Schedule."@en ;
     schema:description "Semantic endpoint for one schedule-control kind, allowing planned, actual, and forecast information to remain explicitly classified."@en .
 
 :IfcWorkScheduleDimensionKind rdf:type owl:Class ;
     rdfs:label "IFC Work Schedule Dimension Kind"@en ,
-        "Tipo de dimensão do cronograma IFC"@pt-BR ;
+        "Tipo de dimensão do cronograma"@pt-BR ;
     schema:description "Controlled classification of the production-control dimensions supported by an IFC Work Schedule."@en .
 
 #################################################################

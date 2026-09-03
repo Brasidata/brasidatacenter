@@ -6,6 +6,8 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix aria: <http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @base <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
@@ -158,6 +160,23 @@ schema:description rdf:type owl:AnnotationProperty .
              rdfs:label "presented in"@en .
 
 
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#presentsEntity
+:presentsEntity rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf schema:mainEntity ;
+                rdfs:domain :EntityPage ;
+                rdfs:range obdc:DataEntity ;
+                rdfs:comment "Relates an Entity Page to the OntoBDC DataEntity presented as its principal entity."@en ;
+                rdfs:label "presents entity"@en .
+
+
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#presentsEntityType
+:presentsEntityType rdf:type owl:ObjectProperty ;
+                    rdfs:domain :EntityPage ;
+                    rdfs:range owl:Class ;
+                    rdfs:comment "Relates a reusable Entity Page definition to the class of OntoBDC DataEntity instances it presents."@en ;
+                    rdfs:label "presents entity type"@en .
+
+
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#promotesTo
 :promotesTo rdf:type owl:ObjectProperty ;
             rdfs:domain :PresentationEvent ;
@@ -186,6 +205,10 @@ dul:hasRole rdf:type owl:ObjectProperty .
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDescribedBy
 dul:isDescribedBy rdf:type owl:ObjectProperty .
+
+
+###  https://schema.org/mainEntity
+schema:mainEntity rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -546,6 +569,13 @@ dul:isDescribedBy rdf:type owl:ObjectProperty .
                       rdfs:label "Default Surface Layout"@en .
 
 
+###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#EntityPage
+:EntityPage rdf:type owl:Class ;
+            rdfs:subClassOf schema:WebPage ;
+            rdfs:comment "Web page whose principal subject is an OntoBDC DataEntity."@en ;
+            rdfs:label "Entity Page"@en , "Página de Entidade"@pt-br.
+
+
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#FileSizeTile
 :FileSizeTile rdf:type owl:Class ;
               rdfs:subClassOf :BrowserStatusComponent ,
@@ -682,6 +712,10 @@ dul:isDescribedBy rdf:type owl:ObjectProperty .
       rdfs:label "Tile"@en .
 
 
+###  http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#DataEntity
+obdc:DataEntity rdf:type owl:Class .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Description
 dul:Description rdf:type owl:Class .
 
@@ -704,6 +738,10 @@ dul:Role rdf:type owl:Class .
 
 ###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Situation
 dul:Situation rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#Class
+owl:Class rdf:type owl:Class .
 
 
 ###  http://www.w3.org/WAI/ARIA/schemata/aria-1.rdf#button
@@ -742,6 +780,10 @@ aria:widget rdf:type owl:Class .
 sh:NodeShape rdf:type owl:Class .
 
 
+###  https://schema.org/WebPage
+schema:WebPage rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
@@ -753,23 +795,23 @@ sh:NodeShape rdf:type owl:Class .
                                sh:maxCount 1 ;
                                sh:minCount 1 ;
                                sh:minInclusive 1 ;
-                               sh:path :allocatedRows
+                               sh:path :allocatedColumns
                              ] ,
                              [ sh:datatype xsd:integer ;
                                sh:maxCount 1 ;
                                sh:minCount 1 ;
                                sh:minInclusive 1 ;
-                               sh:path :allocatedColumns
-                             ] ,
-                             [ sh:class :Component ;
-                               sh:maxCount 1 ;
-                               sh:minCount 1 ;
-                               sh:path :allocationFor
+                               sh:path :allocatedRows
                              ] ,
                              [ sh:class :PresentationSurface ;
                                sh:maxCount 1 ;
                                sh:minCount 1 ;
                                sh:path :allocatedBy
+                             ] ,
+                             [ sh:class :Component ;
+                               sh:maxCount 1 ;
+                               sh:minCount 1 ;
+                               sh:path :allocationFor
                              ] ;
                  sh:targetClass :Allocation .
 
@@ -783,15 +825,15 @@ sh:NodeShape rdf:type owl:Class .
 ###  http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#ComponentPlacementShape
 :ComponentPlacementShape rdf:type owl:NamedIndividual ,
                                   sh:NodeShape ;
-                         sh:property [ sh:datatype xsd:integer ;
-                                       sh:maxCount 1 ;
-                                       sh:minInclusive 0 ;
-                                       sh:path :placementOrder
-                                     ] ,
-                                     [ sh:class :Component ;
+                         sh:property [ sh:class :Component ;
                                        sh:maxCount 1 ;
                                        sh:minCount 1 ;
                                        sh:path :placesComponent
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 0 ;
+                                       sh:path :placementOrder
                                      ] ,
                                      [ sh:class :PresentationAlignment ;
                                        sh:maxCount 1 ;
@@ -806,7 +848,7 @@ sh:NodeShape rdf:type owl:Class .
                            sh:property [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
                                          sh:minInclusive 1 ;
-                                         sh:path :minAvailableColumns
+                                         sh:path :maxAvailableRows
                                        ] ,
                                        [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
@@ -820,12 +862,12 @@ sh:NodeShape rdf:type owl:Class .
                                        ] ,
                                        [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
-                                         sh:minInclusive 1 ;
-                                         sh:path :maxAvailableRows
+                                         sh:path :layoutPriority
                                        ] ,
                                        [ sh:datatype xsd:integer ;
                                          sh:maxCount 1 ;
-                                         sh:path :layoutPriority
+                                         sh:minInclusive 1 ;
+                                         sh:path :minAvailableColumns
                                        ] ;
                            sh:targetClass :DefaultSurfaceLayout .
 
@@ -842,11 +884,6 @@ sh:NodeShape rdf:type owl:Class .
                          sh:property [ sh:class :ComponentPlacement ;
                                        sh:path :hasComponentPlacement
                                      ] ,
-                                     [ sh:datatype xsd:integer ;
-                                       sh:maxCount 1 ;
-                                       sh:minInclusive 1 ;
-                                       sh:path :rowSpan
-                                     ] ,
                                      [ sh:datatype xsd:boolean ;
                                        sh:maxCount 1 ;
                                        sh:path :scrollable
@@ -854,12 +891,17 @@ sh:NodeShape rdf:type owl:Class .
                                      [ sh:datatype xsd:integer ;
                                        sh:maxCount 1 ;
                                        sh:minInclusive 1 ;
-                                       sh:path :columnStart
+                                       sh:path :rowSpan
                                      ] ,
                                      [ sh:datatype xsd:integer ;
                                        sh:maxCount 1 ;
                                        sh:minInclusive 1 ;
                                        sh:path :columnSpan
+                                     ] ,
+                                     [ sh:datatype xsd:integer ;
+                                       sh:maxCount 1 ;
+                                       sh:minInclusive 1 ;
+                                       sh:path :columnStart
                                      ] ,
                                      [ sh:datatype xsd:integer ;
                                        sh:maxCount 1 ;
@@ -874,11 +916,7 @@ sh:NodeShape rdf:type owl:Class .
                                           sh:NodeShape ;
                                  sh:property [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
-                                               sh:path :maxRows
-                                             ] ,
-                                             [ sh:datatype xsd:integer ;
-                                               sh:minInclusive 1 ;
-                                               sh:path :maxColumns
+                                               sh:path :minColumns
                                              ] ,
                                              [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
@@ -886,7 +924,11 @@ sh:NodeShape rdf:type owl:Class .
                                              ] ,
                                              [ sh:datatype xsd:integer ;
                                                sh:minInclusive 1 ;
-                                               sh:path :minColumns
+                                               sh:path :maxRows
+                                             ] ,
+                                             [ sh:datatype xsd:integer ;
+                                               sh:minInclusive 1 ;
+                                               sh:path :maxColumns
                                              ] ;
                                  sh:targetClass :PresentationSupportProfile .
 
@@ -897,22 +939,22 @@ sh:NodeShape rdf:type owl:Class .
                           sh:property [ sh:datatype xsd:integer ;
                                         sh:maxCount 1 ;
                                         sh:minInclusive 1 ;
-                                        sh:path :columnCount
+                                        sh:path :rowCount
                                       ] ,
                                       [ sh:datatype xsd:integer ;
                                         sh:maxCount 1 ;
                                         sh:minInclusive 1 ;
-                                        sh:path :rowCount
-                                      ] ,
-                                      [ sh:datatype xsd:decimal ;
-                                        sh:maxCount 1 ;
-                                        sh:minInclusive 0 ;
-                                        sh:path :gap
+                                        sh:path :columnCount
                                       ] ,
                                       [ sh:datatype xsd:decimal ;
                                         sh:maxCount 1 ;
                                         sh:minInclusive 0 ;
                                         sh:path :padding
+                                      ] ,
+                                      [ sh:datatype xsd:decimal ;
+                                        sh:maxCount 1 ;
+                                        sh:minInclusive 0 ;
+                                        sh:path :gap
                                       ] ,
                                       [ sh:class :PresentationRegion ;
                                         sh:path :hasRegion
@@ -927,3 +969,95 @@ sh:NodeShape rdf:type owl:Class .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
+
+
+:ToolbarAlignment rdf:type owl:Class ;
+    rdfs:subClassOf :PresentationAlignment ;
+    rdfs:label "Toolbar Alignment"@en ;
+    rdfs:comment "Absolute horizontal alignment of a toolbar. Alignment does not redefine item numbering, which is always left-to-right."@en .
+
+:EntityPageToolbar a owl:Class ;
+    rdfs:subClassOf :BrowserToolbarComponent ,
+        [ a owl:Restriction ;
+          owl:onProperty dcterms:isPartOf ;
+          owl:someValuesFrom :EntityPage
+        ] ;
+    rdfs:label "Entity Page Toolbar"@en ;
+    rdfs:comment "Toolbar belonging to an entity page and grouping actions available for that page."@en .
+
+:EntityPageActionButton a owl:Class ;
+    rdfs:subClassOf :BrowserButtonComponent ;
+    rdfs:label "Entity Page Action Button"@en ;
+    rdfs:comment "Button component representing an action available from an entity-page toolbar."@en .
+
+:OpenDataSourceButton a owl:Class ;
+    rdfs:subClassOf :EntityPageActionButton ;
+    rdfs:label "Open Data Source Button"@en ;
+    rdfs:comment "Entity-page action button whose purpose is to open the data source associated with the presented entity or page."@en .
+
+:OpenExcelDataSourceButton a owl:Class ;
+    rdfs:subClassOf :OpenDataSourceButton ;
+    rdfs:label "Open Excel Data Source Button"@en ;
+    rdfs:comment "Open-data-source button specialized for a data source opened through Microsoft Excel, with Excel-specific presentation and opening behavior."@en .
+
+:ToolbarItemPlacement a owl:Class ;
+    rdfs:subClassOf :ComponentPlacement ;
+    rdfs:label "Toolbar Item Placement"@en ;
+    rdfs:comment "Placement of a component inside a toolbar. :placementOrder is interpreted as an absolute left-to-right ordinal, independent of toolbar alignment. With right alignment, the highest placement order is anchored at the right edge and lower orders proceed leftward; with left or center alignment, the ordered sequence still remains left-to-right."@en .
+
+:LeftToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Left Toolbar Alignment"@en .
+
+:CenterToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Center Toolbar Alignment"@en .
+
+:RightToolbarAlignment a :ToolbarAlignment ;
+    rdfs:label "Right Toolbar Alignment"@en .
+
+:hasToolbarItemPlacement a owl:ObjectProperty ;
+    rdfs:subPropertyOf dul:hasPart ;
+    rdfs:domain :EntityPageToolbar ;
+    rdfs:range :ToolbarItemPlacement ;
+    rdfs:label "has toolbar item placement"@en ;
+    rdfs:comment "Relates an entity-page toolbar to the placements of its contained action components."@en .
+
+:hasToolbarAlignment a owl:ObjectProperty ;
+    rdfs:domain :EntityPageToolbar ;
+    rdfs:range :ToolbarAlignment ;
+    rdfs:label "has toolbar alignment"@en ;
+    rdfs:comment "Defines the toolbar's absolute horizontal alignment: left, center or right. Item numbering remains left-to-right in every case."@en .
+
+:cssClass a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:string ;
+    rdfs:label "CSS class"@en .
+
+:iconName a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:string ;
+    rdfs:label "icon name"@en .
+
+:i18nContentKey a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:string ;
+    rdfs:label "i18n content key"@en .
+
+:i18nTitleKey a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:string ;
+    rdfs:label "i18n title key"@en .
+
+:i18nAriaLabelKey a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:string ;
+    rdfs:label "i18n ARIA label key"@en .
+
+:initiallyDisabled a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "initially disabled"@en .
+
+:initiallyHidden a owl:DatatypeProperty ;
+    rdfs:domain :EntityPageActionButton ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "initially hidden"@en .

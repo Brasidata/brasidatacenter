@@ -1,0 +1,79 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ibim: <https://infobim.org/ontology/ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix ui: <https://infobim.org/ontology/abox/entity_page.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ui:IfcWorkSchedulePage
+    a owl:NamedIndividual, view:EntityPage ;
+    view:presentsEntityType ibim:IfcWorkSchedule ;
+    schema:identifier "ifc_work_schedule" ;
+    rdfs:label "IFC Work Schedule Page"@en .
+
+ui:IfcWorkScheduleToolbar
+    a owl:NamedIndividual, view:EntityPageToolbar ;
+    dcterms:isPartOf ui:IfcWorkSchedulePage ;
+    view:hasToolbarAlignment view:RightToolbarAlignment ;
+    view:hasToolbarItemPlacement
+        ui:ConnectPlacement,
+        ui:RefreshPlacement,
+        ui:WorkspacePlacement,
+        ui:FilterPlacement,
+        ui:AddTaskPlacement,
+        ui:PrintPlacement,
+        ui:OpenWorkbookPlacement,
+        ui:FullscreenPlacement ;
+    rdfs:label "IFC Work Schedule Toolbar"@en .
+
+ui:ConnectButton a view:EntityPageActionButton ;
+    view:cssClass "connect-btn" ;
+    view:i18nContentKey "connectFolder" ;
+    view:i18nTitleKey "connectFolderTitle" ;
+    view:i18nAriaLabelKey "connectFolder" .
+
+ui:RefreshButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn refresh-btn" ; view:iconName "refresh" ;
+    view:i18nTitleKey "refreshFromWorkbookTitle" ;
+    view:i18nAriaLabelKey "refreshFromWorkbook" ; view:initiallyDisabled true .
+
+ui:WorkspaceButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn workspace-btn" ; view:iconName "workspace" ;
+    view:i18nTitleKey "openAnnotationWorkspace" ;
+    view:i18nAriaLabelKey "openAnnotationWorkspace" ;
+    view:initiallyDisabled true ; view:initiallyHidden true .
+
+ui:FilterButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn gantt-filter-btn" ; view:iconName "filter" ;
+    view:i18nTitleKey "openGanttFilter" ;
+    view:i18nAriaLabelKey "openGanttFilter" ; view:initiallyDisabled true .
+
+ui:AddTaskButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn gantt-add-task-btn" ; view:iconName "add" ;
+    view:i18nTitleKey "addTaskTitle" ; view:i18nAriaLabelKey "addTask" ;
+    view:initiallyDisabled true .
+
+ui:PrintButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn gantt-print-btn" ; view:iconName "print" ;
+    view:i18nTitleKey "printGanttTitle" ; view:i18nAriaLabelKey "printGantt" ;
+    view:initiallyDisabled true .
+
+ui:OpenWorkbookButton a view:OpenExcelDataSourceButton ;
+    view:cssClass "icon-btn gantt-open-workbook-btn" ; view:iconName "excel" ;
+    view:i18nTitleKey "openWorkbookTitle" ;
+    view:i18nAriaLabelKey "openWorkbook" ; view:initiallyDisabled true .
+
+ui:FullscreenButton a view:EntityPageActionButton ;
+    view:cssClass "icon-btn gantt-fullscreen-btn" ; view:iconName "fullscreen" ;
+    view:i18nTitleKey "enterFullscreen" ;
+    view:i18nAriaLabelKey "enterFullscreen" ; view:initiallyDisabled true .
+
+ui:ConnectPlacement a view:ToolbarItemPlacement ; view:placementOrder 1 ; view:placesComponent ui:ConnectButton .
+ui:RefreshPlacement a view:ToolbarItemPlacement ; view:placementOrder 2 ; view:placesComponent ui:RefreshButton .
+ui:WorkspacePlacement a view:ToolbarItemPlacement ; view:placementOrder 3 ; view:placesComponent ui:WorkspaceButton .
+ui:FilterPlacement a view:ToolbarItemPlacement ; view:placementOrder 4 ; view:placesComponent ui:FilterButton .
+ui:AddTaskPlacement a view:ToolbarItemPlacement ; view:placementOrder 5 ; view:placesComponent ui:AddTaskButton .
+ui:PrintPlacement a view:ToolbarItemPlacement ; view:placementOrder 6 ; view:placesComponent ui:PrintButton .
+ui:OpenWorkbookPlacement a view:ToolbarItemPlacement ; view:placementOrder 7 ; view:placesComponent ui:OpenWorkbookButton .
+ui:FullscreenPlacement a view:ToolbarItemPlacement ; view:placementOrder 8 ; view:placesComponent ui:FullscreenButton .

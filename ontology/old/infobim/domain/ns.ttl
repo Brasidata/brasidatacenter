@@ -27,7 +27,7 @@ ibim:IfcWorkSchedule
     a owl:Class , obdc:SurfaceableEntity ;
     rdfs:subClassOf obdc:DataEntity , ifcowl:IfcWorkSchedule ;
     ibim:assignsRelatedClass ifcowl:IfcTask , ifcowl:IfcTaskTime ;
-    rdfs:label "IFC Work Schedule"@en , "Cronograma IFC"@pt-BR ;
+    rdfs:label "IFC Work Schedule"@en , "Cronograma"@pt-BR ;
     rdfs:comment "InfoBIM semantic specialization of IFC4 IfcWorkSchedule. It preserves the IFC identity of the schedule while exposing production-control dimensions that compare planned, actual, and where meaningful forecast conditions. Its operational entity context also includes IFC tasks and task-time records through ibim:assignsRelatedClass."@en ;
     schema:description "A surfaceable OntoBDC data entity for deterministic planning and production-control workflows over IFC work schedules."@en .
 

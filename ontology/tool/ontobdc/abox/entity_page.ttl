@@ -1,30 +1,84 @@
-@prefix toolbar: <http://datacenter.app.br/ontology/ontobdc/domain/toolbar.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ui: <http://datacenter.app.br/ontology/ontobdc/abox/entity_page.ttl#> .
+@prefix work_stream: <http://datacenter.app.br/ontology/productivity/entity/work_stream/type.ttl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 
 # Entity-page toolbar definitions shipped with OntoBDC View.
 ui:WorkStreamToolbar
-    a owl:NamedIndividual, toolbar:EntityPageToolbar ;
+    a owl:NamedIndividual, view:EntityPageToolbar ;
+    dcterms:isPartOf ui:WorkStreamPage ;
+    view:hasToolbarAlignment view:RightToolbarAlignment ;
+    view:hasToolbarItemPlacement
+        ui:WorkStreamRefreshPlacement,
+        ui:WorkStreamWorkspacePlacement,
+        ui:WorkStreamSubjectsPlacement ;
     rdfs:label "WorkStream Toolbar"@en .
 
-ui:WorkScheduleToolbar
-    a owl:NamedIndividual, toolbar:EntityPageToolbar ;
-    rdfs:label "WorkSchedule Toolbar"@en .
-
 ui:ConnectContainerButton
-    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    a owl:NamedIndividual, view:EntityPageActionButton ;
+    view:cssClass "connect-btn" ;
+    view:i18nContentKey "connectFolder" ;
+    view:i18nTitleKey "connectFolderTitle" ;
+    view:i18nAriaLabelKey "connectFolder" ;
     rdfs:label "Connect Container Button"@en .
 
+ui:RefreshWorkStreamButton
+    a owl:NamedIndividual, view:EntityPageActionButton ;
+    view:cssClass "icon-btn refresh-btn" ;
+    view:iconName "refresh" ;
+    view:i18nTitleKey "refreshPageTitle" ;
+    view:i18nAriaLabelKey "refreshPage" ;
+    rdfs:label "Refresh WorkStream Button"@en .
+
 ui:AddRelatedEntityButton
-    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    a owl:NamedIndividual, view:EntityPageActionButton ;
     rdfs:label "Add Related Entity Button"@en ;
     rdfs:comment "Action button for creating an entity related to the entity presented by the current page, rather than creating another instance of the page's principal entity type."@en .
 
 ui:PrintButton
-    a owl:NamedIndividual, toolbar:EntityPageActionButton ;
+    a owl:NamedIndividual, view:EntityPageActionButton ;
     rdfs:label "Print Button"@en .
 
 ui:OpenExcelDataSourceButton
-    a owl:NamedIndividual, toolbar:OpenExcelDataSourceButton ;
+    a owl:NamedIndividual, view:OpenExcelDataSourceButton ;
+    view:cssClass "icon-btn workstream-open-workbook-btn" ;
+    view:iconName "excel" ;
+    view:i18nTitleKey "openWorkbookTitle" ;
+    view:i18nAriaLabelKey "openWorkbook" ;
+    view:initiallyDisabled true ;
     rdfs:label "Open Excel Data Source Button"@en .
+
+ui:OpenAnnotationWorkspaceButton
+    a owl:NamedIndividual, view:EntityPageActionButton ;
+    view:cssClass "icon-btn workspace-btn" ;
+    view:iconName "workspace" ;
+    view:i18nTitleKey "openAnnotationWorkspace" ;
+    view:i18nAriaLabelKey "openAnnotationWorkspace" ;
+    view:initiallyDisabled true ;
+    view:initiallyHidden true ;
+    rdfs:label "Open Annotation Workspace Button"@en .
+
+ui:OpenSubjectsButton
+    a owl:NamedIndividual, view:EntityPageActionButton ;
+    view:cssClass "icon-btn subjects-btn" ;
+    view:iconName "subjects" ;
+    view:i18nTitleKey "openSubjectPage" ;
+    view:i18nAriaLabelKey "openSubjectPage" ;
+    view:initiallyDisabled true ;
+    rdfs:label "Open Subjects Button"@en .
+
+ui:WorkStreamConnectPlacement a view:ToolbarItemPlacement ; view:placementOrder 1 ; view:placesComponent ui:ConnectContainerButton .
+ui:WorkStreamRefreshPlacement a view:ToolbarItemPlacement ; view:placementOrder 2 ; view:placesComponent ui:RefreshWorkStreamButton .
+ui:WorkStreamOpenWorkbookPlacement a view:ToolbarItemPlacement ; view:placementOrder 3 ; view:placesComponent ui:OpenExcelDataSourceButton .
+ui:WorkStreamWorkspacePlacement a view:ToolbarItemPlacement ; view:placementOrder 4 ; view:placesComponent ui:OpenAnnotationWorkspaceButton .
+ui:WorkStreamSubjectsPlacement a view:ToolbarItemPlacement ; view:placementOrder 5 ; view:placesComponent ui:OpenSubjectsButton .
+
+
+ui:WorkStreamPage
+    a owl:NamedIndividual, view:EntityPage ;
+    view:presentsEntityType work_stream:WorkStream ;
+    schema:identifier "work_stream" ;
+    rdfs:label "Work Stream Page"@en .
