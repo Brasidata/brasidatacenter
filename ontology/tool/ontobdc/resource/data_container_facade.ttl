@@ -1,0 +1,97 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/resource/data_container_facade.ttl#> .
+@prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/resource/data_container_facade.ttl>
+    a owl:Ontology ;
+    owl:imports
+        <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl>,
+        <http://ontobdc.org/ontology/domain/facade.ttl> .
+
+# DataContainer is an infrastructure resource. Its facade does not classify it
+# as a data entity and does not specialize DataEntityFacade.
+obdc:DataContainer facade:hasResourceFacade :DataContainerFacade .
+
+:DataContainerFacade
+    a owl:NamedIndividual, facade:ResourceFacade ;
+    schema:identifier "data_container_facade" ;
+    schema:name "Data Container Facade"@en ;
+    schema:description "Public projection of the infrastructure storage container managed by OntoBDC."@en ;
+    facade:isFacadeOf obdc:DataContainer ;
+    facade:hasFacadeField
+        :IdField,
+        :TitleField,
+        :DescriptionField,
+        :LocationField,
+        :CreatedAtField .
+
+:IdField
+    a owl:NamedIndividual, facade:FacadeField ;
+    schema:identifier "id" ;
+    schema:name "Identifier"@en ;
+    schema:description "Persistent urn:uuid identifier stored in dcterms:identifier and also used as the container subject IRI."@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 10 ;
+    facade:mapsToResource dcterms:identifier ;
+    facade:mapsToProperty dcterms:identifier ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable false .
+
+:TitleField
+    a owl:NamedIndividual, facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ;
+    schema:description "Container title exposed as text. Preserve the source literal's language tag when writing RDF."@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 20 ;
+    facade:mapsToResource dcterms:title ;
+    facade:mapsToProperty dcterms:title ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true .
+
+:DescriptionField
+    a owl:NamedIndividual, facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ;
+    schema:description "Container description exposed as text. Preserve the source literal's language tag when writing RDF."@en ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 30 ;
+    facade:mapsToResource ct:description ;
+    facade:mapsToProperty ct:description ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true .
+
+:LocationField
+    a owl:NamedIndividual, facade:FacadeField ;
+    schema:identifier "location" ;
+    schema:name "Location"@en ;
+    schema:description "Container location projected as a URI value. The object of prov:atLocation in the source graph is an IRI, not an xsd:anyURI literal; preserve that node kind when writing RDF."@en ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 40 ;
+    facade:mapsToResource prov:atLocation ;
+    facade:mapsToProperty prov:atLocation ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable false .
+
+:CreatedAtField
+    a owl:NamedIndividual, facade:FacadeField ;
+    schema:identifier "created_at" ;
+    schema:name "Created At"@en ;
+    schema:description "Container creation timestamp stored as an xsd:dateTime literal."@en ;
+    facade:fieldDatatype xsd:dateTime ;
+    facade:fieldOrder 50 ;
+    facade:mapsToResource ct:creationDate ;
+    facade:mapsToProperty ct:creationDate ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable false .
