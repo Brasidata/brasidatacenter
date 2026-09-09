@@ -13,10 +13,10 @@
     owl:imports <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> .
 
 #################################################################
-#    Data entity facades
+#    Resource facades
 #################################################################
 
-:DataEntityFacade
+:ResourceFacade
     rdf:type owl:Class ;
     rdfs:subClassOf
         [
@@ -30,9 +30,17 @@
             owl:minCardinality "1"^^xsd:nonNegativeInteger
         ] ;
     rdfs:label
+        "Resource Facade"@en ,
+        "Fachada de recurso"@pt-BR ;
+    schema:description "Public projection of a resource class, including infrastructure resources and data entities."@en .
+
+:DataEntityFacade
+    rdf:type owl:Class ;
+    rdfs:subClassOf :ResourceFacade ;
+    rdfs:label
         "Data Entity Facade"@en ,
         "Fachada de entidade de dados"@pt-BR ;
-    schema:description "Tabular projection of an entity class."@en .
+    schema:description "Resource facade specialized for a data entity class."@en .
 
 :FacadeField
     rdf:type owl:Class ;
@@ -65,31 +73,37 @@
     rdfs:label
         "Facade Field"@en ,
         "Campo de fachada"@pt-BR ;
-    schema:description "A field exposed by a data entity facade."@en .
+    schema:description "A field exposed by a resource facade."@en .
+
+:hasResourceFacade
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isFacadeOf ;
+    rdfs:domain owl:Class ;
+    rdfs:range :ResourceFacade .
 
 :hasDataEntityFacade
     rdf:type owl:ObjectProperty ;
-    owl:inverseOf :isFacadeOf ;
+    rdfs:subPropertyOf :hasResourceFacade ;
     rdfs:domain owl:Class ;
     rdfs:range :DataEntityFacade .
 
 :isFacadeOf
     rdf:type owl:ObjectProperty ,
         owl:FunctionalProperty ;
-    rdfs:domain :DataEntityFacade ;
+    rdfs:domain :ResourceFacade ;
     rdfs:range owl:Class .
 
 :hasFacadeField
     rdf:type owl:ObjectProperty ;
-    rdfs:domain :DataEntityFacade ;
+    rdfs:domain :ResourceFacade ;
     rdfs:range :FacadeField .
 
 :hasStandaloneTile
     rdf:type owl:ObjectProperty ;
-    rdfs:domain :DataEntityFacade ;
+    rdfs:domain :ResourceFacade ;
     rdfs:range view:ComponentPlacement ;
     rdfs:label "has standalone tile"@en ;
-    rdfs:comment "Declares one Tile placement (view:ComponentPlacement / view:placesComponent / view:placementOrder, the same vocabulary the Presentation Surface itself uses) to render when this facade's entity is explored standalone as a single element, ordered by view:placementOrder. Optional: a facade with no hasStandaloneTile placement falls back to the default facade-projected field/value document."@en .
+    rdfs:comment "Declares one Tile placement (view:ComponentPlacement / view:placesComponent / view:placementOrder, the same vocabulary the Presentation Surface itself uses) to render when this facade's resource is explored standalone, ordered by view:placementOrder. Optional: a facade with no hasStandaloneTile placement falls back to the default facade-projected field/value document."@en .
 
 :fieldDatatype
     rdf:type owl:ObjectProperty ,
@@ -128,13 +142,21 @@
     rdfs:domain :FacadeField ;
     rdfs:range xsd:boolean .
 
+:isEditable
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is editable"@en ;
+    rdfs:comment "Whether the facade permits editing this public field. Optional metadata for existing facade contracts."@en .
+
 #################################################################
 #    Facade integrity shapes
 #################################################################
 
-:DataEntityFacadeShape
+:ResourceFacadeShape
     rdf:type sh:NodeShape ;
-    sh:targetClass :DataEntityFacade ;
+    sh:targetClass :ResourceFacade ;
     sh:property
         [
             sh:path :isFacadeOf ;
@@ -147,6 +169,11 @@
             sh:minCount 1 ;
             sh:class :FacadeField
         ] .
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :DataEntityFacade ;
+    sh:node :ResourceFacadeShape .
 
 :FacadeFieldShape
     rdf:type sh:NodeShape ;
@@ -180,6 +207,11 @@
         [
             sh:path :isMultivalued ;
             sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isEditable ;
             sh:maxCount 1 ;
             sh:datatype xsd:boolean
         ] ,
