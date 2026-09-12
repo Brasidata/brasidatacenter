@@ -21,10 +21,10 @@
 :Agregado a owl:Class ; dcterms:identifier "Agregado" ; skos:prefLabel "Agregado"@pt-BR ; skos:definition "Areia ou brita utilizada para fabricar o concreto."@pt-BR .
 :AguaDeUmaCobertura a owl:Class ; dcterms:identifier "AguaDeUmaCobertura" ; skos:prefLabel "Água de uma cobertura"@pt-BR ; skos:definition "Plano inclinado de um telhado."@pt-BR .
 :AguaFurtada a owl:Class ; dcterms:identifier "AguaFurtada" ; skos:prefLabel "Água-furtada"@pt-BR ; skos:definition "Vão entre as tesouras do telhado, semelhante a um sótão, com janelas que se abrem em um volume para fora do telhado."@pt-BR .
-:Alvenaria a owl:Class ; dcterms:identifier "Alvenaria" ; skos:prefLabel "Alvenaria"@pt-BR ; skos:definition "Estrutura constituída por tijolos, pedras naturais ou artificiais, em peças sobrepostas e ligadas ou não por argamassa, usada na construção de paredes, muros e alicerces."@pt-BR .
-:Andaime a owl:Class ; dcterms:identifier "Andaime" ; skos:prefLabel "Andaime"@pt-BR ; skos:definition "Plataforma provisória utilizada para que os profissionais da obra possam acessar elementos em alturas não alcançáveis do solo ou de outras plataformas preexistentes."@pt-BR .
+:Alvenaria a owl:Class ; dcterms:identifier "Alvenaria" ; skos:prefLabel "Alvenaria"@pt-BR ; skos:definition "Estrutura constituída por tijolos, pedras naturais ou artificiais, em peças sobrepostas e ligadas ou não por argamassa, usada na construção de paredes, muros e alicerces."@pt-BR ; owl:equivalentClass :Masonry ; skos:prefLabel "Masonry"@en .
+:Andaime a owl:Class ; dcterms:identifier "Andaime" ; skos:prefLabel "Andaime"@pt-BR ; skos:definition "Plataforma provisória utilizada para que os profissionais da obra possam acessar elementos em alturas não alcançáveis do solo ou de outras plataformas preexistentes."@pt-BR ; owl:equivalentClass :Scaffolding ; skos:prefLabel "Scaffolding"@en .
 :Alicerce a owl:Class ; dcterms:identifier "Alicerce" ; skos:prefLabel "Alicerce"@pt-BR ; skos:definition "Fundação ou base da edificação."@pt-BR ; owl:equivalentClass :Fundacao .
-:Argamassa a owl:Class ; dcterms:identifier "Argamassa" ; skos:prefLabel "Argamassa"@pt-BR ; skos:definition "Pasta de cimento e agregados, usada para assentamento de peças e para revestimentos."@pt-BR .
+:Argamassa a owl:Class ; dcterms:identifier "Argamassa" ; skos:prefLabel "Argamassa"@pt-BR ; skos:definition "Pasta de cimento e agregados, usada para assentamento de peças e para revestimentos."@pt-BR ; owl:equivalentClass :Mortar ; skos:prefLabel "Mortar"@en .
 :Amarracao a owl:Class ; dcterms:identifier "Amarracao" ; skos:prefLabel "Amarração"@pt-BR ; skos:definition "Parte da armadura destinada a transmitir os esforços de uma peça para outra."@pt-BR .
 :Armadura a owl:Class ; dcterms:identifier "Armadura" ; skos:prefLabel "Armadura"@pt-BR ; skos:definition "Estrutura feita com varões de aço, utilizada dentro das peças de concreto armado para suportar esforços."@pt-BR .
 :Baldrame a owl:Class ; dcterms:identifier "Baldrame" ; skos:prefLabel "Baldrame"@pt-BR ; skos:definition "Tipo de fundação para pequenas edificações, constituída por uma viga de alvenaria, concreto simples ou concreto armado, construída diretamente no solo em pequena vala e empregada em casos de cargas leves sobre solo firme."@pt-BR ; rdfs:subClassOf :Fundacao .
@@ -32,26 +32,26 @@
 :Beiral a owl:Class ; dcterms:identifier "Beiral" ; skos:prefLabel "Beiral"@pt-BR ; skos:definition "Prolongamento do telhado para além da parede externa, protegendo-a da ação das chuvas."@pt-BR .
 :BateEstacas a owl:Class ; dcterms:identifier "BateEstacas" ; skos:prefLabel "Bate-estacas"@pt-BR ; skos:definition "Equipamento de cravação de estacas por percussão."@pt-BR .
 :Betao a owl:Class ; dcterms:identifier "Betao" ; skos:prefLabel "Betão"@pt-PT ; skos:definition "Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes."@pt-PT ; owl:equivalentClass :Concreto .
-:Betoneira a owl:Class ; dcterms:identifier "Betoneira" ; skos:prefLabel "Betoneira"@pt-BR ; skos:definition "Máquina destinada a fabricar betão ou argamassa."@pt-BR .
+:Betoneira a owl:Class ; dcterms:identifier "Betoneira" ; skos:prefLabel "Betoneira"@pt-BR ; skos:definition "Máquina destinada a fabricar betão ou argamassa."@pt-BR ; owl:equivalentClass :ConcreteMixer ; skos:prefLabel "Concrete mixer"@en .
 :BlocoCeramico a owl:Class ; dcterms:identifier "BlocoCeramico" ; skos:prefLabel "Bloco Cerâmico"@pt-BR ; skos:definition "Elemento de alvenaria cozido, podendo ser classificado como de vedação ou estrutural."@pt-BR .
 :Brita a owl:Class ; dcterms:identifier "Brita" ; skos:prefLabel "Brita"@pt-BR ; skos:definition "Agregado de diâmetro médio superior a 2 mm."@pt-BR ; skos:altLabel "Pedra britada"@pt-BR .
-:Caixilho a owl:Class ; dcterms:identifier "Caixilho" ; skos:prefLabel "Caixilho"@pt-BR ; skos:definition "Parte da esquadria que sustenta os vidros e folhas de portas e janelas."@pt-BR .
+:Caixilho a owl:Class ; dcterms:identifier "Caixilho" ; skos:prefLabel "Caixilho"@pt-BR ; skos:definition "Parte da esquadria que sustenta os vidros e folhas de portas e janelas."@pt-BR ; owl:equivalentClass :WindowFrame ; skos:prefLabel "Window frame"@en .
 :CalExtinta a owl:Class ; dcterms:identifier "CalExtinta" ; skos:prefLabel "Cal Extinta"@pt-BR ; skos:definition "Hidróxido de cálcio (Ca(OH)2), obtido pela reação da cal virgem, óxido de cálcio (CaO), com água."@pt-BR .
 :CorpoDeProva a owl:Class ; dcterms:identifier "CorpoDeProva" ; skos:prefLabel "Corpo de Prova"@pt-BR ; skos:definition "Pequeno espécime retirado de uma peça ou do mesmo lote de material para sua caracterização mecânica; são comuns os corpos de prova de concreto usados para determinar resistência à compressão."@pt-BR .
 :Chapa a owl:Class ; dcterms:identifier "Chapa" ; skos:prefLabel "Chapa"@pt-BR ; skos:definition "Estrutura laminar sujeita a esforços em seu plano."@pt-BR .
-:Cimento a owl:Class ; dcterms:identifier "Cimento" ; skos:prefLabel "Cimento"@pt-BR ; skos:definition "Pó de cor cinza produzido a partir da moagem do clínquer juntamente com gesso e outros constituintes e aditivos."@pt-BR .
+:Cimento a owl:Class ; dcterms:identifier "Cimento" ; skos:prefLabel "Cimento"@pt-BR ; skos:definition "Pó de cor cinza produzido a partir da moagem do clínquer juntamente com gesso e outros constituintes e aditivos."@pt-BR ; owl:equivalentClass :Cement ; skos:prefLabel "Cement"@en .
 :Cobogo a owl:Class ; dcterms:identifier "Cobogo" ; skos:prefLabel "Cobogó"@pt-BR ; skos:definition "Elemento vazado utilizado para construção de paredes com função decorativa e não estrutural."@pt-BR .
-:Cobertura a owl:Class ; dcterms:identifier "Cobertura" ; skos:prefLabel "Cobertura"@pt-BR ; skos:definition "Parte do edifício destinada à proteção contra as intempéries."@pt-BR .
-:Concreto a owl:Class ; dcterms:identifier "Concreto" ; skos:prefLabel "Concreto"@pt-BR ; skos:definition "Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes."@pt-BR ; skos:altLabel "Betão"@pt-BR .
+:Cobertura a owl:Class ; dcterms:identifier "Cobertura" ; skos:prefLabel "Cobertura"@pt-BR ; skos:definition "Parte do edifício destinada à proteção contra as intempéries."@pt-BR ; owl:equivalentClass :Roof ; skos:prefLabel "Roof"@en .
+:Concreto a owl:Class ; dcterms:identifier "Concreto" ; skos:prefLabel "Concreto"@pt-BR ; skos:definition "Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes."@pt-BR ; skos:altLabel "Betão"@pt-BR ; owl:equivalentClass :Concrete ; skos:prefLabel "Concrete"@en .
 :ConcretoArmado a owl:Class ; dcterms:identifier "ConcretoArmado" ; skos:prefLabel "Concreto Armado"@pt-BR ; skos:altLabel "Betão Armado"@pt-PT ; skos:definition "Material composto por concreto e armadura, combinados para resistir aos esforços da estrutura."@pt-BR .
 :Consistencia a owl:Class ; dcterms:identifier "Consistencia" ; skos:prefLabel "Consistência"@pt-BR ; skos:definition "Propriedade de uma argamassa de apresentar maior ou menor resistência a uma dada deformação, podendo ser mais seca, plástica ou fluida."@pt-BR .
-:Compressao a owl:Class ; dcterms:identifier "Compressao" ; skos:prefLabel "Compressão"@pt-BR ; skos:definition "Esforço que tende a diminuir a dimensão de uma peça segundo seu eixo."@pt-BR .
-:Croqui a owl:Class ; dcterms:identifier "Croqui" ; skos:prefLabel "Croqui"@pt-BR ; skos:definition "Esboço usado pelos projetistas para representar ideias iniciais de um projeto."@pt-BR ; skos:altLabel "Croquis"@pt-BR .
+:Compressao a owl:Class ; dcterms:identifier "Compressao" ; skos:prefLabel "Compressão"@pt-BR ; skos:definition "Esforço que tende a diminuir a dimensão de uma peça segundo seu eixo."@pt-BR ; owl:equivalentClass :Compression ; skos:prefLabel "Compression"@en .
+:Croqui a owl:Class ; dcterms:identifier "Croqui" ; skos:prefLabel "Croqui"@pt-BR ; skos:definition "Esboço usado pelos projetistas para representar ideias iniciais de um projeto."@pt-BR ; skos:altLabel "Croquis"@pt-BR ; owl:equivalentClass :Sketch ; skos:altLabel "Rascunho"@pt-BR ; skos:prefLabel "Sketch"@en .
 :Cunhal a owl:Class ; dcterms:identifier "Cunhal" ; skos:prefLabel "Cunhal"@pt-BR ; skos:definition "Canto de um edifício onde duas paredes convergem, podendo ser marcado por um pilar ou pilastra de pedras lavradas."@pt-BR .
 :Demao a owl:Class ; dcterms:identifier "Demao" ; skos:prefLabel "Demão"@pt-BR ; skos:definition "Cada camada de tinta aplicada."@pt-BR .
 :Desmonte a owl:Class ; dcterms:identifier "Desmonte" ; skos:prefLabel "Desmonte"@pt-BR ; skos:definition "Processo usado para extrair rochas por meios manuais ou explosivos."@pt-BR .
 :Dilatacao a owl:Class ; dcterms:identifier "Dilatacao" ; skos:prefLabel "Dilatação"@pt-BR ; skos:definition "Processo de aumento das dimensões de um material."@pt-BR .
-:Drenagem a owl:Class ; dcterms:identifier "Drenagem" ; skos:prefLabel "Drenagem"@pt-BR ; skos:definition "Escoamento de águas através de drenos."@pt-BR .
+:Drenagem a owl:Class ; dcterms:identifier "Drenagem" ; skos:prefLabel "Drenagem"@pt-BR ; skos:definition "Escoamento de águas através de drenos."@pt-BR ; owl:equivalentClass :Drainage ; skos:prefLabel "Drainage"@en .
 :Drenos a owl:Class ; dcterms:identifier "Drenos" ; skos:prefLabel "Drenos"@pt-BR ; skos:definition "Estruturas, como tubos ou valas, destinadas a recolher e escoar águas."@pt-BR .
 :Drywall a owl:Class ; dcterms:identifier "Drywall" ; skos:prefLabel "Drywall"@pt-BR ; skos:definition "Sistema de paredes executadas com gesso acartonado."@pt-BR .
 :Duto a owl:Class ; dcterms:identifier "Duto" ; skos:prefLabel "Duto"@pt-BR ; skos:definition "Espaço que liga zonas do edifício e no qual se instalam tubos, cabos e outros componentes."@pt-BR .
@@ -62,25 +62,25 @@
 :EsforcosAxiais a owl:Class ; dcterms:identifier "EsforcosAxiais" ; skos:prefLabel "Esforços Axiais"@pt-BR ; skos:definition "Esforços de tração ou compressão gerados na peça segundo o seu eixo."@pt-BR .
 :EsforcosTransversos a owl:Class ; dcterms:identifier "EsforcosTransversos" ; skos:prefLabel "Esforços Transversos"@pt-BR ; skos:definition "Esforços gerados na peça segundo um plano perpendicular ao seu eixo."@pt-BR .
 :Estacas a owl:Class ; dcterms:identifier "Estacas" ; skos:prefLabel "Estacas"@pt-BR ; skos:definition "Tipo de fundação profunda utilizada para transmitir cargas a camadas resistentes do solo em maior profundidade."@pt-BR ; rdfs:subClassOf :Fundacao .
-:FioDePrumo a owl:Class ; dcterms:identifier "FioDePrumo" ; skos:prefLabel "Fio de Prumo"@pt-BR ; skos:definition "Dispositivo simples utilizado para verificar a verticalidade de uma superfície."@pt-BR .
+:FioDePrumo a owl:Class ; dcterms:identifier "FioDePrumo" ; skos:prefLabel "Fio de Prumo"@pt-BR ; skos:definition "Dispositivo simples utilizado para verificar a verticalidade de uma superfície."@pt-BR ; owl:equivalentClass :Plumbline ; skos:prefLabel "Plumbline"@en .
 :Flecha a owl:Class ; dcterms:identifier "Flecha" ; skos:prefLabel "Flecha"@pt-BR ; skos:definition "Distância entre a posição não deformada e a posição deformada de um ponto de uma laje ou viga."@pt-BR .
-:Flexao a owl:Class ; dcterms:identifier "Flexao" ; skos:prefLabel "Flexão"@pt-BR ; skos:definition "Esforço que tende a provocar compressão em uma região da seção da peça e tração na região oposta."@pt-BR .
+:Flexao a owl:Class ; dcterms:identifier "Flexao" ; skos:prefLabel "Flexão"@pt-BR ; skos:definition "Esforço que tende a provocar compressão em uma região da seção da peça e tração na região oposta."@pt-BR ; owl:equivalentClass :Bending ; skos:altLabel "flexure"@en ; skos:prefLabel "Bending"@en .
 :Fluencia a owl:Class ; dcterms:identifier "Fluencia" ; skos:prefLabel "Fluência"@pt-BR ; skos:definition "Aumento da deformação de uma peça ao longo do tempo sob carga constante."@pt-BR .
-:Fundacao a owl:Class ; dcterms:identifier "Fundacao" ; skos:prefLabel "Fundação"@pt-BR ; skos:definition "Infraestrutura direta ou indireta de uma construção que recebe os esforços da estrutura e os transmite ao solo."@pt-BR ; skos:altLabel "Alicerce"@pt-BR .
-:Gabarito a owl:Class ; dcterms:identifier "Gabarito" ; skos:prefLabel "Gabarito"@pt-BR ; skos:definition "Estrutura provisória, usualmente de madeira, implantada ao redor da obra para auxiliar na marcação e locação dos elementos da construção."@pt-BR .
+:Fundacao a owl:Class ; dcterms:identifier "Fundacao" ; skos:prefLabel "Fundação"@pt-BR ; skos:definition "Infraestrutura direta ou indireta de uma construção que recebe os esforços da estrutura e os transmite ao solo."@pt-BR ; skos:altLabel "Alicerce"@pt-BR ; owl:equivalentClass :Alicerce .
+:Gabarito a owl:Class ; dcterms:identifier "Gabarito" ; skos:prefLabel "Gabarito"@pt-BR ; skos:definition "Estrutura provisória, usualmente de madeira, implantada ao redor da obra para auxiliar na marcação e locação dos elementos da construção."@pt-BR ; owl:equivalentClass :Template ; skos:prefLabel "Template"@en .
 :Geminadas a owl:Class ; dcterms:identifier "Geminadas" ; skos:prefLabel "Geminadas"@pt-BR ; skos:altLabel "edificação geminada"@pt-BR ; skos:definition "Designação dada a duas edificações que compartilham uma parede, frequentemente formando unidades espelhadas."@pt-BR .
-:Gesso a owl:Class ; dcterms:identifier "Gesso" ; skos:prefLabel "Gesso"@pt-BR ; skos:definition "Material de construção obtido a partir de sulfato de cálcio e água."@pt-BR .
+:Gesso a owl:Class ; dcterms:identifier "Gesso" ; skos:prefLabel "Gesso"@pt-BR ; skos:definition "Material de construção obtido a partir de sulfato de cálcio e água."@pt-BR ; owl:equivalentClass :Plaster ; skos:prefLabel "Plaster"@en .
 :Granito a owl:Class ; dcterms:identifier "Granito" ; skos:prefLabel "Granito"@pt-BR ; skos:definition "Rocha ígnea constituída principalmente por quartzo, feldspato e micas, amplamente usada na construção civil."@pt-BR .
 :HabiteSe a owl:Class ; dcterms:identifier "HabiteSe" ; skos:prefLabel "Habite-se"@pt-BR ; skos:definition "Documento emitido pela autoridade municipal com a aprovação final de uma obra, permitindo sua ocupação."@pt-BR .
 :HallDeEntrada a owl:Class ; dcterms:identifier "HallDeEntrada" ; skos:prefLabel "Hall de Entrada"@pt-BR ; skos:definition "Espaço do edifício situado junto à entrada e que dá acesso aos demais ambientes."@pt-BR .
 :JuntaDeDilatacao a owl:Class ; dcterms:identifier "JuntaDeDilatacao" ; skos:prefLabel "Junta de dilatação"@pt-BR ; skos:definition "Espaço preenchido por materiais deformáveis destinado a absorver movimentos provocados por dilatações e retrações dos materiais envolvidos."@pt-BR .
-:Laje a owl:Class ; dcterms:identifier "Laje" ; skos:prefLabel "Laje"@pt-BR ; skos:definition "Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura."@pt-BR .
+:Laje a owl:Class ; dcterms:identifier "Laje" ; skos:prefLabel "Laje"@pt-BR ; skos:definition "Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura."@pt-BR ; owl:equivalentClass :Slab ; skos:prefLabel "Slab"@en .
 :Lambril a owl:Class ; dcterms:identifier "Lambril" ; skos:prefLabel "Lambril"@pt-BR ; skos:altLabel "rodapé"@pt-BR ; skos:definition "Faixa inferior das paredes junto ao pavimento, também designada rodapé em determinados usos."@pt-BR ; skos:altLabel "Lambris"@pt-BR .
 :MomentosFletores a owl:Class ; dcterms:identifier "MomentosFletores" ; skos:prefLabel "Momentos Fletores"@pt-BR ; skos:definition "Esforços internos gerados na seção transversal de uma peça devido à flexão."@pt-BR .
 :MomentosTorsores a owl:Class ; dcterms:identifier "MomentosTorsores" ; skos:prefLabel "Momentos Torsores"@pt-BR ; skos:definition "Esforços internos gerados na seção transversal de uma peça devido à torção."@pt-BR .
 :Montante a owl:Class ; dcterms:identifier "Montante" ; skos:prefLabel "Montante"@pt-BR ; skos:definition "Na hidráulica, direção correspondente ao sentido da nascente ou oposta ao sentido do fluxo."@pt-BR .
 :MuroDeSuporte a owl:Class ; dcterms:identifier "MuroDeSuporte" ; skos:prefLabel "Muro de suporte"@pt-BR ; skos:definition "Estrutura destinada à contenção de terras."@pt-BR .
-:Nivel a owl:Class ; dcterms:identifier "Nivel" ; skos:prefLabel "Nível"@pt-BR ; skos:definition "Instrumento utilizado para verificar a horizontalidade de uma superfície."@pt-BR .
+:Nivel a owl:Class ; dcterms:identifier "Nivel" ; skos:prefLabel "Nível"@pt-BR ; skos:definition "Instrumento utilizado para verificar a horizontalidade de uma superfície."@pt-BR ; owl:equivalentClass :Level ; skos:prefLabel "Level"@en .
 :Ombreira a owl:Class ; dcterms:identifier "Ombreira" ; skos:prefLabel "Ombreira"@pt-BR ; skos:definition "Peça colocada na face lateral da abertura de uma porta ou janela."@pt-BR ; skos:altLabel "Umbral"@pt-BR .
 :Ogival a owl:Class ; dcterms:identifier "Ogival" ; skos:prefLabel "Ogival"@pt-BR ; skos:definition "Forma característica de arco ou abóbada com perfil apontado, comum na arquitetura gótica."@pt-BR .
 :Platibanda a owl:Class ; dcterms:identifier "Platibanda" ; skos:prefLabel "Platibanda"@pt-BR ; skos:definition "Prolongamento ou faixa superior da parede externa de uma edificação, frequentemente usado para ocultar o telhado."@pt-BR .
@@ -91,29 +91,29 @@
 :PeitorilParapeito a owl:Class ; dcterms:identifier "PeitorilParapeito" ; skos:prefLabel "Peitoril"@pt-BR ; skos:altLabel "parapeito"@pt-BR , "guarda-corpo"@pt-BR ; skos:definition "Parte inferior ou elemento de proteção junto a janelas, varandas e terraços, aproximadamente à altura do peito."@pt-BR .
 :PerfilMetalico a owl:Class ; dcterms:identifier "PerfilMetalico" ; skos:prefLabel "Perfil Metálico"@pt-BR ; skos:definition "Barra metálica obtida por processo de conformação, como laminação."@pt-BR .
 :Permeabilidade a owl:Class ; dcterms:identifier "Permeabilidade" ; skos:prefLabel "Permeabilidade"@pt-BR ; skos:definition "Propriedade de um material de permitir a passagem de líquidos ou gases através de sua estrutura."@pt-BR .
-:Pilar a owl:Class ; dcterms:identifier "Pilar" ; skos:prefLabel "Pilar"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais."@pt-BR .
+:Pilar a owl:Class ; dcterms:identifier "Pilar" ; skos:prefLabel "Pilar"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais."@pt-BR ; owl:equivalentClass :Column ; skos:altLabel "Pillar"@en ; skos:prefLabel "Column"@en .
 :PisoAPiso a owl:Class ; dcterms:identifier "PisoAPiso" ; skos:prefLabel "Piso a piso"@pt-BR ; skos:altLabel "Piso a piso (Brasil)"@pt-BR ; skos:definition "Altura entre as faces superiores de pavimentos subsequentes."@pt-BR .
 :Placa a owl:Class ; dcterms:identifier "Placa" ; skos:prefLabel "Placa"@pt-BR ; skos:definition "Estrutura bidimensional plana disposta verticalmente e destinada a receber esforços predominantemente em seu plano."@pt-BR .
 :Plasticidade a owl:Class ; dcterms:identifier "Plasticidade" ; skos:prefLabel "Plasticidade"@pt-BR ; skos:definition "Propriedade que permite à argamassa deformar-se e reter parte das deformações após a redução das tensões impostas."@pt-BR .
 :Plato a owl:Class ; dcterms:identifier "Plato" ; skos:prefLabel "Platô"@pt-BR ; skos:definition "Área plana ou aproximadamente horizontal em relação ao terreno circundante."@pt-BR .
 :Quadriangulo a owl:Class ; dcterms:identifier "Quadriangulo" ; skos:prefLabel "Quadriângulo"@pt-BR ; skos:definition "Instrumento usado para retificação e verificação da esquadria de uma fundação ou de paredes em uma edificação."@pt-BR .
-:Reboco a owl:Class ; dcterms:identifier "Reboco" ; skos:prefLabel "Reboco"@pt-BR ; skos:definition "Revestimento de argamassa usado para alisar paredes e prepará-las para acabamento ou pintura."@pt-BR .
+:Reboco a owl:Class ; dcterms:identifier "Reboco" ; skos:prefLabel "Reboco"@pt-BR ; skos:definition "Revestimento de argamassa usado para alisar paredes e prepará-las para acabamento ou pintura."@pt-BR ; owl:equivalentClass :MortarRenderFinishing ; skos:prefLabel "Mortar render finishing"@en .
 :Retracao a owl:Class ; dcterms:identifier "Retracao" ; skos:prefLabel "Retração"@pt-BR ; skos:definition "Redução das dimensões de um material."@pt-BR .
 :Ripa a owl:Class ; dcterms:identifier "Ripa" ; skos:prefLabel "Ripa"@pt-BR ; skos:definition "Elemento da cobertura colocado sobre as varas ou caibros e destinado a apoiar as telhas."@pt-BR .
 :Rodape a owl:Class ; dcterms:identifier "Rodape" ; skos:prefLabel "Rodapé"@pt-BR ; skos:definition "Elemento situado na junção das paredes com o piso, destinado à proteção da parede e ao acabamento."@pt-BR ; skos:altLabel "Rodateto"@pt-BR , "Rodameio"@pt-BR .
 :RodaMeio a owl:Class ; dcterms:identifier "RodaMeio" ; skos:prefLabel "Roda-meio"@pt-BR ; skos:definition "Elemento de acabamento semelhante ao rodapé, situado aproximadamente à meia altura da parede."@pt-BR .
 :RodaTeto a owl:Class ; dcterms:identifier "RodaTeto" ; skos:prefLabel "Roda-teto"@pt-BR ; skos:definition "Elemento de acabamento semelhante ao rodapé, situado na junção do teto com as paredes."@pt-BR .
-:Sapata a owl:Class ; dcterms:identifier "Sapata" ; skos:prefLabel "Sapata"@pt-BR ; skos:definition "Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes."@pt-BR ; rdfs:subClassOf :Fundacao ; skos:altLabel "Sapatas"@pt-BR .
+:Sapata a owl:Class ; dcterms:identifier "Sapata" ; skos:prefLabel "Sapata"@pt-BR ; skos:definition "Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes."@pt-BR ; rdfs:subClassOf :Fundacao ; skos:altLabel "Sapatas"@pt-BR ; owl:equivalentClass :SpreadFooting ; skos:prefLabel "Spread footing"@en .
 :SecaoTransversal a owl:Class ; dcterms:identifier "SecaoTransversal" ; skos:prefLabel "Seção transversal"@pt-BR ; skos:altLabel "seção perpendicular"@pt-BR ; skos:definition "Seção obtida por corte segundo um plano perpendicular ao eixo da peça."@pt-BR .
-:Sifao a owl:Class ; dcterms:identifier "Sifao" ; skos:prefLabel "Sifão"@pt-BR ; skos:definition "Dispositivo hidráulico que conduz líquido entre níveis e, em instalações prediais, forma fecho hídrico para impedir o retorno de gases."@pt-BR .
-:Soleira a owl:Class ; dcterms:identifier "Soleira" ; skos:prefLabel "Soleira"@pt-BR ; skos:definition "Parte inferior do vão de uma porta, frequentemente executada como peça de acabamento e transição entre pisos."@pt-BR .
+:Sifao a owl:Class ; dcterms:identifier "Sifao" ; skos:prefLabel "Sifão"@pt-BR ; skos:definition "Dispositivo hidráulico que conduz líquido entre níveis e, em instalações prediais, forma fecho hídrico para impedir o retorno de gases."@pt-BR ; owl:equivalentClass :Siphon ; skos:altLabel "Trap"@en ; skos:prefLabel "Siphon"@en .
+:Soleira a owl:Class ; dcterms:identifier "Soleira" ; skos:prefLabel "Soleira"@pt-BR ; skos:definition "Parte inferior do vão de uma porta, frequentemente executada como peça de acabamento e transição entre pisos."@pt-BR ; owl:equivalentClass :Threshold ; skos:prefLabel "Threshold"@en .
 :Tavela a owl:Class ; dcterms:identifier "Tavela" ; skos:prefLabel "Tavela"@pt-BR ; skos:definition "Bloco cerâmico usado em lajes mistas, apoiado entre vigotas e normalmente sem função estrutural, atuando como elemento de preenchimento."@pt-BR .
-:Talude a owl:Class ; dcterms:identifier "Talude" ; skos:prefLabel "Talude"@pt-BR ; skos:definition "Plano inclinado que limita um corte ou aterro."@pt-BR .
+:Talude a owl:Class ; dcterms:identifier "Talude" ; skos:prefLabel "Talude"@pt-BR ; skos:definition "Plano inclinado que limita um corte ou aterro."@pt-BR ; owl:equivalentClass :Slope ; skos:prefLabel "Slope"@en .
 :Terca a owl:Class ; dcterms:identifier "Terca" ; skos:prefLabel "Terça"@pt-BR ; skos:definition "Elemento da cobertura que liga tesouras e apoia elementos secundários do telhado."@pt-BR .
 :Vao a owl:Class ; dcterms:identifier "Vao" ; skos:prefLabel "Vão"@pt-BR ; skos:definition "Espaço livre entre apoios ou sob um elemento estrutural."@pt-BR .
 :Vara a owl:Class ; dcterms:identifier "Vara" ; skos:prefLabel "Vara"@pt-BR ; skos:definition "Elemento da cobertura disposto sobre as terças e perpendicularmente a elas."@pt-BR .
 :Verga a owl:Class ; dcterms:identifier "Verga" ; skos:prefLabel "Verga"@pt-BR ; skos:definition "Elemento estrutural disposto sobre vãos de portas ou janelas para auxiliar na distribuição de cargas e tensões."@pt-BR .
-:Viga a owl:Class ; dcterms:identifier "Viga" ; skos:prefLabel "Viga"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão."@pt-BR .
+:Viga a owl:Class ; dcterms:identifier "Viga" ; skos:prefLabel "Viga"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão."@pt-BR ; owl:equivalentClass :Beam ; skos:prefLabel "Beam"@en .
 :Vigota a owl:Class ; dcterms:identifier "Vigota" ; skos:prefLabel "Vigota"@pt-BR ; skos:definition "Viga de pequena seção transversal, frequentemente pré-moldada ou protendida."@pt-BR ; rdfs:subClassOf :Viga .
 
 
@@ -128,7 +128,7 @@
 :AcaoDeRescisaoDeEmpreitada a owl:Class ; dcterms:identifier "AcaoDeRescisaoDeEmpreitada" ; skos:prefLabel "Ação de rescisão de empreitada"@pt-BR .
 :AcaoDeResgateDeAforamento a owl:Class ; dcterms:identifier "AcaoDeResgateDeAforamento" ; skos:prefLabel "Ação de resgate de aforamento"@pt-BR .
 :AcaoDeUsucapiao a owl:Class ; dcterms:identifier "AcaoDeUsucapiao" ; skos:prefLabel "Ação de usucapião"@pt-BR .
-:Acabamento a owl:Class ; dcterms:identifier "Acabamento" ; skos:prefLabel "Acabamento"@pt-BR .
+:Acabamento a owl:Class ; dcterms:identifier "Acabamento" ; skos:prefLabel "Acabamento"@pt-BR ; owl:equivalentClass :Finishing ; skos:prefLabel "Finishing"@en .
 :Acetinado a owl:Class ; dcterms:identifier "Acetinado" ; skos:prefLabel "Acetinado"@pt-BR .
 :Acesso a owl:Class ; dcterms:identifier "Acesso" ; skos:prefLabel "Acesso"@pt-BR .
 :Acidato a owl:Class ; dcterms:identifier "Acidato" ; skos:prefLabel "Acidato"@pt-BR .
@@ -173,7 +173,7 @@
 :Apicoado a owl:Class ; dcterms:identifier "Apicoado" ; skos:prefLabel "Apicoado"@pt-BR .
 :Aplique a owl:Class ; dcterms:identifier "Aplique" ; skos:prefLabel "Aplique"@pt-BR .
 :Aprumar a owl:Class ; dcterms:identifier "Aprumar" ; skos:prefLabel "Aprumar"@pt-BR .
-:AquecimentoCentral a owl:Class ; dcterms:identifier "AquecimentoCentral" ; skos:prefLabel "Aquecimento central"@pt-BR .
+:AquecimentoCentral a owl:Class ; dcterms:identifier "AquecimentoCentral" ; skos:prefLabel "Aquecimento central"@pt-BR ; owl:equivalentClass :CentralHeating ; skos:prefLabel "Central heating"@en .
 :Arara a owl:Class ; dcterms:identifier "Arara" ; skos:prefLabel "Arara"@pt-BR .
 :Arcada a owl:Class ; dcterms:identifier "Arcada" ; skos:prefLabel "Arcada"@pt-BR .
 :Arco a owl:Class ; dcterms:identifier "Arco" ; skos:prefLabel "Arco"@pt-BR .
@@ -197,7 +197,7 @@
 :Asa a owl:Class ; dcterms:identifier "Asa" ; skos:prefLabel "Asa"@pt-BR .
 :Asna a owl:Class ; dcterms:identifier "Asna" ; skos:prefLabel "Asna"@pt-BR .
 :Assentar a owl:Class ; dcterms:identifier "Assentar" ; skos:prefLabel "Assentar"@pt-BR .
-:Aterramento a owl:Class ; dcterms:identifier "Aterramento" ; skos:prefLabel "Aterramento"@pt-BR .
+:Aterramento a owl:Class ; dcterms:identifier "Aterramento" ; skos:prefLabel "Aterramento"@pt-BR ; owl:equivalentClass :ElectricalGrounding ; skos:prefLabel "Electrical grounding"@en .
 :Aterro a owl:Class ; dcterms:identifier "Aterro" ; skos:prefLabel "Aterro"@pt-BR .
 :AtravessadourosParticulares a owl:Class ; dcterms:identifier "AtravessadourosParticulares" ; skos:prefLabel "Atravessadouros particulares"@pt-BR .
 :Atrio a owl:Class ; dcterms:identifier "Atrio" ; skos:prefLabel "Átrio"@pt-BR .
@@ -218,15 +218,15 @@
 :BarraAntiPanico a owl:Class ; dcterms:identifier "BarraAntiPanico" ; skos:prefLabel "Barra anti-pânico"@pt-BR .
 :Barroco a owl:Class ; dcterms:identifier "Barroco" ; skos:prefLabel "Barroco"@pt-BR .
 :Basalto a owl:Class ; dcterms:identifier "Basalto" ; skos:prefLabel "Basalto"@pt-BR .
-:Basculante a owl:Class ; dcterms:identifier "Basculante" ; skos:prefLabel "Basculante"@pt-BR .
+:Basculante a owl:Class ; dcterms:identifier "Basculante" ; skos:prefLabel "Basculante"@pt-BR ; owl:equivalentClass :AwningWindow ; skos:prefLabel "Awning window"@en .
 :BayWindow a owl:Class ; dcterms:identifier "BayWindow" ; skos:prefLabel "Bay-Window"@pt-BR .
-:Batente a owl:Class ; dcterms:identifier "Batente" ; skos:prefLabel "Batente"@pt-BR .
+:Batente a owl:Class ; dcterms:identifier "Batente" ; skos:prefLabel "Batente"@pt-BR ; owl:equivalentClass :DoorJamb ; skos:prefLabel "Door jamb"@en .
 :BDI a owl:Class ; dcterms:identifier "BDI" ; skos:prefLabel "BDI"@pt-BR ; skos:altLabel "Beneficio de Despesas Indiretas"@pt-BR .
 :Benfeitorias a owl:Class ; dcterms:identifier "Benfeitorias" ; skos:prefLabel "Benfeitorias"@pt-BR .
 :BicaCorrida a owl:Class ; dcterms:identifier "BicaCorrida" ; skos:prefLabel "Bica corrida"@pt-BR .
 :Bit a owl:Class ; dcterms:identifier "Bit" ; skos:prefLabel "Bit"@pt-BR .
 :Bizotado a owl:Class ; dcterms:identifier "Bizotado" ; skos:prefLabel "Bizotado"@pt-BR .
-:Bloco a owl:Class ; dcterms:identifier "Bloco" ; skos:prefLabel "Bloco"@pt-BR .
+:Bloco a owl:Class ; dcterms:identifier "Bloco" ; skos:prefLabel "Bloco"@pt-BR ; owl:equivalentClass :Block ; skos:prefLabel "Block"@en .
 :BlocoDeConcreto a owl:Class ; dcterms:identifier "BlocoDeConcreto" ; skos:prefLabel "Bloco de concreto"@pt-BR .
 :BlocoDeGesso a owl:Class ; dcterms:identifier "BlocoDeGesso" ; skos:prefLabel "Bloco de gesso"@pt-BR .
 :BlocoDeVidro a owl:Class ; dcterms:identifier "BlocoDeVidro" ; skos:prefLabel "Bloco de vidro"@pt-BR .
@@ -262,36 +262,36 @@
 :CaixaDAgua a owl:Class ; dcterms:identifier "CaixaDAgua" ; skos:prefLabel "Caixa-d'água"@pt-BR .
 :CaixaDeEscada a owl:Class ; dcterms:identifier "CaixaDeEscada" ; skos:prefLabel "Caixa de escada"@pt-BR .
 :CaixaDeFogo a owl:Class ; dcterms:identifier "CaixaDeFogo" ; skos:prefLabel "Caixa de fogo"@pt-BR ; skos:altLabel "câmara de combustão"@pt-BR .
-:CaixaDeGordura a owl:Class ; dcterms:identifier "CaixaDeGordura" ; skos:prefLabel "Caixa de gordura"@pt-BR .
+:CaixaDeGordura a owl:Class ; dcterms:identifier "CaixaDeGordura" ; skos:prefLabel "Caixa de gordura"@pt-BR ; owl:equivalentClass :GreaseTrap ; skos:prefLabel "Grease trap"@en .
 :CaixaDeInspecao a owl:Class ; dcterms:identifier "CaixaDeInspecao" ; skos:prefLabel "Caixa de inspeção"@pt-BR .
-:CaixaDePassagem a owl:Class ; dcterms:identifier "CaixaDePassagem" ; skos:prefLabel "Caixa de passagem"@pt-BR .
+:CaixaDePassagem a owl:Class ; dcterms:identifier "CaixaDePassagem" ; skos:prefLabel "Caixa de passagem"@pt-BR ; owl:equivalentClass :JunctionBox ; skos:prefLabel "Junction Box"@en .
 :UneTubulacoesDiversasEletricas a owl:Class ; dcterms:identifier "UneTubulacoesDiversasEletricas" ; skos:prefLabel "Une tubulações diversas elétricas"@pt-BR ; skos:altLabel "hidráulicas"@pt-BR .
 :Caixilharia a owl:Class ; dcterms:identifier "Caixilharia" ; skos:prefLabel "Caixilharia"@pt-BR .
-:Cal a owl:Class ; dcterms:identifier "Cal" ; skos:prefLabel "Cal"@pt-BR .
+:Cal a owl:Class ; dcterms:identifier "Cal" ; skos:prefLabel "Cal"@pt-BR ; owl:equivalentClass :HydratedLime ; skos:prefLabel "Hydrated lime"@en .
 :Calafate a owl:Class ; dcterms:identifier "Calafate" ; skos:prefLabel "Calafate"@pt-BR .
 :Calafetar a owl:Class ; dcterms:identifier "Calafetar" ; skos:prefLabel "Calafetar"@pt-BR .
 :Calcetar a owl:Class ; dcterms:identifier "Calcetar" ; skos:prefLabel "Calcetar"@pt-BR .
 :CalculoEstrutural a owl:Class ; dcterms:identifier "CalculoEstrutural" ; skos:prefLabel "Cálculo estrutural"@pt-BR .
 :Calefacao a owl:Class ; dcterms:identifier "Calefacao" ; skos:prefLabel "Calefação"@pt-BR .
-:Calha a owl:Class ; dcterms:identifier "Calha" ; skos:prefLabel "Calha"@pt-BR .
+:Calha a owl:Class ; dcterms:identifier "Calha" ; skos:prefLabel "Calha"@pt-BR ; owl:equivalentClass :Gutter ; skos:prefLabel "Gutter"@en .
 :CamaraDeFumaca a owl:Class ; dcterms:identifier "CamaraDeFumaca" ; skos:prefLabel "Camara de fumaça"@pt-BR ; skos:altLabel "de fumo"@pt-BR .
 :Cambota a owl:Class ; dcterms:identifier "Cambota" ; skos:prefLabel "Cambota"@pt-BR .
 :Camurcar a owl:Class ; dcterms:identifier "Camurcar" ; skos:prefLabel "Camurçar"@pt-BR .
 :Candela a owl:Class ; dcterms:identifier "Candela" ; skos:prefLabel "Candela"@pt-BR .
 :Canalizador a owl:Class ; dcterms:identifier "Canalizador" ; skos:prefLabel "Canalizador"@pt-BR .
 :Cantaria a owl:Class ; dcterms:identifier "Cantaria" ; skos:prefLabel "Cantaria"@pt-BR .
-:CanteiroDeObra a owl:Class ; dcterms:identifier "CanteiroDeObra" ; skos:prefLabel "Canteiro de obra"@pt-BR .
+:CanteiroDeObra a owl:Class ; dcterms:identifier "CanteiroDeObra" ; skos:prefLabel "Canteiro de obra"@pt-BR ; owl:equivalentClass :BuildingSite ; skos:prefLabel "Building site"@en .
 :Cantoneira a owl:Class ; dcterms:identifier "Cantoneira" ; skos:prefLabel "Cantoneira"@pt-BR .
 :Capa a owl:Class ; dcterms:identifier "Capa" ; skos:prefLabel "Capa"@pt-BR .
 :Capialcado a owl:Class ; dcterms:identifier "Capialcado" ; skos:prefLabel "Capialçado"@pt-BR .
 :Capitel a owl:Class ; dcterms:identifier "Capitel" ; skos:prefLabel "Capitel"@pt-BR .
-:Casa a owl:Class ; dcterms:identifier "Casa" ; skos:prefLabel "Casa"@pt-BR .
+:Casa a owl:Class ; dcterms:identifier "Casa" ; skos:prefLabel "Casa"@pt-BR ; owl:equivalentClass :House ; skos:prefLabel "House"@en .
 :CasaDeHabitacao a owl:Class ; dcterms:identifier "CasaDeHabitacao" ; skos:prefLabel "Casa de habitação"@pt-BR .
 :CasaHabitada a owl:Class ; dcterms:identifier "CasaHabitada" ; skos:prefLabel "Casa habitada"@pt-BR .
 :CargasAcidentais a owl:Class ; dcterms:identifier "CargasAcidentais" ; skos:prefLabel "Cargas Acidentais"@pt-BR .
 :CargasPermanentes a owl:Class ; dcterms:identifier "CargasPermanentes" ; skos:prefLabel "Cargas Permanentes"@pt-BR .
 :Caramanchao a owl:Class ; dcterms:identifier "Caramanchao" ; skos:prefLabel "Caramanchão"@pt-BR .
-:CarpeteDeMadeira a owl:Class ; dcterms:identifier "CarpeteDeMadeira" ; skos:prefLabel "Carpete de Madeira"@pt-BR .
+:CarpeteDeMadeira a owl:Class ; dcterms:identifier "CarpeteDeMadeira" ; skos:prefLabel "Carpete de Madeira"@pt-BR ; owl:equivalentClass :WoodenCarpetFlooring ; skos:prefLabel "Wooden carpet flooring"@en .
 :Carpinteiro a owl:Class ; dcterms:identifier "Carpinteiro" ; skos:prefLabel "Carpinteiro"@pt-BR .
 :Cascalho a owl:Class ; dcterms:identifier "Cascalho" ; skos:prefLabel "Cascalho"@pt-BR .
 :Caulino a owl:Class ; dcterms:identifier "Caulino" ; skos:prefLabel "Caulino"@pt-BR ; skos:altLabel "caulim"@pt-BR .
@@ -348,7 +348,7 @@
 :Contrafrechal a owl:Class ; dcterms:identifier "Contrafrechal" ; skos:prefLabel "Contrafrechal"@pt-BR .
 :Contramarco a owl:Class ; dcterms:identifier "Contramarco" ; skos:prefLabel "Contramarco"@pt-BR .
 :Contrapiso a owl:Class ; dcterms:identifier "Contrapiso" ; skos:prefLabel "Contrapiso"@pt-BR .
-:Contraventamento a owl:Class ; dcterms:identifier "Contraventamento" ; skos:prefLabel "Contraventamento"@pt-BR .
+:Contraventamento a owl:Class ; dcterms:identifier "Contraventamento" ; skos:prefLabel "Contraventamento"@pt-BR ; owl:equivalentClass :Bracing ; skos:prefLabel "Bracing"@en .
 :Contraverga a owl:Class ; dcterms:identifier "Contraverga" ; skos:prefLabel "Contraverga"@pt-BR .
 :ControleTecnologico a owl:Class ; dcterms:identifier "ControleTecnologico" ; skos:prefLabel "Controle Tecnológico"@pt-BR .
 :Cordao a owl:Class ; dcterms:identifier "Cordao" ; skos:prefLabel "Cordão"@pt-BR .
@@ -372,7 +372,7 @@
 :Desgaste a owl:Class ; dcterms:identifier "Desgaste" ; skos:prefLabel "Desgaste"@pt-BR .
 :Desvao a owl:Class ; dcterms:identifier "Desvao" ; skos:prefLabel "Desvão"@pt-BR .
 :Divisoria a owl:Class ; dcterms:identifier "Divisoria" ; skos:prefLabel "Divisória"@pt-BR .
-:Domo a owl:Class ; dcterms:identifier "Domo" ; skos:prefLabel "Domo"@pt-BR .
+:Domo a owl:Class ; dcterms:identifier "Domo" ; skos:prefLabel "Domo"@pt-BR ; owl:equivalentClass :Dome ; skos:prefLabel "Dome"@en .
 :Dormer a owl:Class ; dcterms:identifier "Dormer" ; skos:prefLabel "Dormer"@pt-BR ; skos:altLabel "Window"@pt-BR .
 :DryWall a owl:Class ; dcterms:identifier "DryWall" ; skos:prefLabel "Dry-wall"@pt-BR .
 :Edificacao a owl:Class ; dcterms:identifier "Edificacao" ; skos:prefLabel "Edificação"@pt-BR .
@@ -393,9 +393,9 @@
 :Entablamento a owl:Class ; dcterms:identifier "Entablamento" ; skos:prefLabel "Entablamento"@pt-BR .
 :Enxaimel a owl:Class ; dcterms:identifier "Enxaimel" ; skos:prefLabel "Enxaimel"@pt-BR .
 :EPI a owl:Class ; dcterms:identifier "EPI" ; skos:prefLabel "EPI"@pt-BR .
-:Escada a owl:Class ; dcterms:identifier "Escada" ; skos:prefLabel "Escada"@pt-BR .
-:Escavacao a owl:Class ; dcterms:identifier "Escavacao" ; skos:prefLabel "Escavação"@pt-BR .
-:Esmalte a owl:Class ; dcterms:identifier "Esmalte" ; skos:prefLabel "Esmalte"@pt-BR .
+:Escada a owl:Class ; dcterms:identifier "Escada" ; skos:prefLabel "Escada"@pt-BR ; owl:equivalentClass :Ladder ; skos:prefLabel "Ladder"@en .
+:Escavacao a owl:Class ; dcterms:identifier "Escavacao" ; skos:prefLabel "Escavação"@pt-BR ; owl:equivalentClass :Excavation ; skos:prefLabel "Excavation"@en .
+:Esmalte a owl:Class ; dcterms:identifier "Esmalte" ; skos:prefLabel "Esmalte"@pt-BR ; owl:equivalentClass :EnamelPaint ; skos:prefLabel "Enamel paint"@en .
 :Espelhado a owl:Class ; dcterms:identifier "Espelhado" ; skos:prefLabel "Espelhado"@pt-BR .
 :Espelho a owl:Class ; dcterms:identifier "Espelho" ; skos:prefLabel "Espelho"@pt-BR .
 :EspelhoDAgua a owl:Class ; dcterms:identifier "EspelhoDAgua" ; skos:prefLabel "Espelho d'água"@pt-BR .
@@ -416,12 +416,12 @@
 :Esteio a owl:Class ; dcterms:identifier "Esteio" ; skos:prefLabel "Esteio"@pt-BR .
 :Estriado a owl:Class ; dcterms:identifier "Estriado" ; skos:prefLabel "Estriado"@pt-BR .
 :Estribo a owl:Class ; dcterms:identifier "Estribo" ; skos:prefLabel "Estribo"@pt-BR .
-:Estrutura a owl:Class ; dcterms:identifier "Estrutura" ; skos:prefLabel "Estrutura"@pt-BR .
+:Estrutura a owl:Class ; dcterms:identifier "Estrutura" ; skos:prefLabel "Estrutura"@pt-BR ; owl:equivalentClass :Structure ; skos:prefLabel "Structure"@en .
 :EstudoPreliminar a owl:Class ; dcterms:identifier "EstudoPreliminar" ; skos:prefLabel "Estudo preliminar"@pt-BR .
 :Estuque a owl:Class ; dcterms:identifier "Estuque" ; skos:prefLabel "Estuque"@pt-BR .
 :ETA a owl:Class ; dcterms:identifier "ETA" ; skos:prefLabel "ETA"@pt-BR .
 :ETE a owl:Class ; dcterms:identifier "ETE" ; skos:prefLabel "ETE"@pt-BR .
-:Fachada a owl:Class ; dcterms:identifier "Fachada" ; skos:prefLabel "Fachada"@pt-BR .
+:Fachada a owl:Class ; dcterms:identifier "Fachada" ; skos:prefLabel "Fachada"@pt-BR ; owl:equivalentClass :Facade ; skos:prefLabel "Facade"@en .
 :Ferreiro a owl:Class ; dcterms:identifier "Ferreiro" ; skos:prefLabel "Ferreiro"@pt-BR .
 :Flanco a owl:Class ; dcterms:identifier "Flanco" ; skos:prefLabel "Flanco"@pt-BR .
 :Fiada a owl:Class ; dcterms:identifier "Fiada" ; skos:prefLabel "Fiada"@pt-BR .
@@ -432,10 +432,10 @@
 :Filete a owl:Class ; dcterms:identifier "Filete" ; skos:prefLabel "Filete"@pt-BR .
 :Financiador a owl:Class ; dcterms:identifier "Financiador" ; skos:prefLabel "Financiador"@pt-BR .
 :Financiamento a owl:Class ; dcterms:identifier "Financiamento" ; skos:prefLabel "Financiamento"@pt-BR .
-:Fissura a owl:Class ; dcterms:identifier "Fissura" ; skos:prefLabel "Fissura"@pt-BR .
+:Fissura a owl:Class ; dcterms:identifier "Fissura" ; skos:prefLabel "Fissura"@pt-BR ; owl:equivalentClass :Fissure ; skos:prefLabel "Fissure"@en .
 :Flameado a owl:Class ; dcterms:identifier "Flameado" ; skos:prefLabel "Flameado"@pt-BR ; skos:altLabel "flamejado"@pt-BR .
 :Folha a owl:Class ; dcterms:identifier "Folha" ; skos:prefLabel "Folha"@pt-BR .
-:Forma a owl:Class ; dcterms:identifier "Forma" ; skos:prefLabel "Forma"@pt-BR .
+:Forma a owl:Class ; dcterms:identifier "Forma" ; skos:prefLabel "Forma"@pt-BR ; owl:equivalentClass :Formwork ; skos:prefLabel "Formwork"@en .
 :Forro a owl:Class ; dcterms:identifier "Forro" ; skos:prefLabel "Forro"@pt-BR .
 :ForroDeGessoAcartonado a owl:Class ; dcterms:identifier "ForroDeGessoAcartonado" ; skos:prefLabel "Forro de Gesso Acartonado"@pt-BR .
 :FossaSeptica a owl:Class ; dcterms:identifier "FossaSeptica" ; skos:prefLabel "Fossa séptica"@pt-BR .
@@ -459,7 +459,7 @@
 :Gazebo a owl:Class ; dcterms:identifier "Gazebo" ; skos:prefLabel "Gazebo"@pt-BR .
 :Gelosia a owl:Class ; dcterms:identifier "Gelosia" ; skos:prefLabel "Gelosia"@pt-BR .
 :Geminada a owl:Class ; dcterms:identifier "Geminada" ; skos:prefLabel "Geminada"@pt-BR .
-:GessoAcartonado a owl:Class ; dcterms:identifier "GessoAcartonado" ; skos:prefLabel "Gesso Acartonado"@pt-BR .
+:GessoAcartonado a owl:Class ; dcterms:identifier "GessoAcartonado" ; skos:prefLabel "Gesso Acartonado"@pt-BR ; owl:equivalentClass :Plasterboard ; skos:prefLabel "Plasterboard"@en .
 :Gofrado a owl:Class ; dcterms:identifier "Gofrado" ; skos:prefLabel "Gofrado"@pt-BR ; skos:altLabel "gofrato"@pt-BR .
 :Goiva a owl:Class ; dcterms:identifier "Goiva" ; skos:prefLabel "Goiva"@pt-BR .
 :Gotico a owl:Class ; dcterms:identifier "Gotico" ; skos:prefLabel "Gótico"@pt-BR .
@@ -473,15 +473,15 @@
 :Gretagem a owl:Class ; dcterms:identifier "Gretagem" ; skos:prefLabel "Gretagem"@pt-BR .
 :Guarnicao a owl:Class ; dcterms:identifier "Guarnicao" ; skos:prefLabel "Guarnição"@pt-BR .
 :GuardaCorpo a owl:Class ; dcterms:identifier "GuardaCorpo" ; skos:prefLabel "Guarda-corpo"@pt-BR .
-:Guia a owl:Class ; dcterms:identifier "Guia" ; skos:prefLabel "Guia"@pt-BR .
+:Guia a owl:Class ; dcterms:identifier "Guia" ; skos:prefLabel "Guia"@pt-BR ; owl:equivalentClass :RoadwayCurb ; skos:prefLabel "Roadway curb"@en .
 :Habitacao a owl:Class ; dcterms:identifier "Habitacao" ; skos:prefLabel "Habitação"@pt-BR .
-:Hidraulica a owl:Class ; dcterms:identifier "Hidraulica" ; skos:prefLabel "Hidráulica"@pt-BR .
+:Hidraulica a owl:Class ; dcterms:identifier "Hidraulica" ; skos:prefLabel "Hidráulica"@pt-BR ; owl:equivalentClass :Plumbing ; skos:prefLabel "Plumbing"@en .
 :Hidrofugo a owl:Class ; dcterms:identifier "Hidrofugo" ; skos:prefLabel "Hidrófugo"@pt-BR .
 :Hidromassagem a owl:Class ; dcterms:identifier "Hidromassagem" ; skos:prefLabel "Hidromassagem"@pt-BR .
 :HomeTheater a owl:Class ; dcterms:identifier "HomeTheater" ; skos:prefLabel "Home Theater"@pt-BR .
 :Iluminacao a owl:Class ; dcterms:identifier "Iluminacao" ; skos:prefLabel "Iluminação"@pt-BR ; skos:altLabel "Luminotécnica"@pt-BR .
 :Ilharga a owl:Class ; dcterms:identifier "Ilharga" ; skos:prefLabel "Ilharga"@pt-BR .
-:Impermeabilizacao a owl:Class ; dcterms:identifier "Impermeabilizacao" ; skos:prefLabel "Impermeabilização"@pt-BR .
+:Impermeabilizacao a owl:Class ; dcterms:identifier "Impermeabilizacao" ; skos:prefLabel "Impermeabilização"@pt-BR ; owl:equivalentClass :Waterproofing ; skos:prefLabel "Waterproofing"@en .
 :Implantacao a owl:Class ; dcterms:identifier "Implantacao" ; skos:prefLabel "Implantação"@pt-BR .
 :Impostos a owl:Class ; dcterms:identifier "Impostos" ; skos:prefLabel "Impostos"@pt-BR .
 :Inchamento a owl:Class ; dcterms:identifier "Inchamento" ; skos:prefLabel "Inchamento"@pt-BR .
@@ -494,7 +494,7 @@
 :Insolacao a owl:Class ; dcterms:identifier "Insolacao" ; skos:prefLabel "Insolação"@pt-BR .
 :Isolamento a owl:Class ; dcterms:identifier "Isolamento" ; skos:prefLabel "Isolamento"@pt-BR .
 :Instalacao a owl:Class ; dcterms:identifier "Instalacao" ; skos:prefLabel "Instalação"@pt-BR .
-:Janela a owl:Class ; dcterms:identifier "Janela" ; skos:prefLabel "Janela"@pt-BR .
+:Janela a owl:Class ; dcterms:identifier "Janela" ; skos:prefLabel "Janela"@pt-BR ; owl:equivalentClass :Window ; skos:prefLabel "Window"@en .
 :JanelaDeSacada a owl:Class ; dcterms:identifier "JanelaDeSacada" ; skos:prefLabel "Janela de sacada"@pt-BR .
 :Jirau a owl:Class ; dcterms:identifier "Jirau" ; skos:prefLabel "Jirau"@pt-BR .
 :Jorramento a owl:Class ; dcterms:identifier "Jorramento" ; skos:prefLabel "Jorramento"@pt-BR .
@@ -512,7 +512,7 @@
 :Lapidado a owl:Class ; dcterms:identifier "Lapidado" ; skos:prefLabel "Lapidado"@pt-BR .
 :Laudemio a owl:Class ; dcterms:identifier "Laudemio" ; skos:prefLabel "Laudêmio"@pt-BR .
 :LencolFreatico a owl:Class ; dcterms:identifier "LencolFreatico" ; skos:prefLabel "Lençol freático"@pt-BR .
-:LevantamentoTopografico a owl:Class ; dcterms:identifier "LevantamentoTopografico" ; skos:prefLabel "Levantamento topográfico"@pt-BR .
+:LevantamentoTopografico a owl:Class ; dcterms:identifier "LevantamentoTopografico" ; skos:prefLabel "Levantamento topográfico"@pt-BR ; owl:equivalentClass :TopographicalSurvey ; skos:prefLabel "Topographical survey"@en .
 :Levigado a owl:Class ; dcterms:identifier "Levigado" ; skos:prefLabel "Levigado"@pt-BR .
 :LicencasDeObra a owl:Class ; dcterms:identifier "LicencasDeObra" ; skos:prefLabel "Licenças de Obra"@pt-BR .
 :Living a owl:Class ; dcterms:identifier "Living" ; skos:prefLabel "Living"@pt-BR .
@@ -534,7 +534,7 @@
 :Marmore a owl:Class ; dcterms:identifier "Marmore" ; skos:prefLabel "Mármore"@pt-BR .
 :Marquise a owl:Class ; dcterms:identifier "Marquise" ; skos:prefLabel "Marquise"@pt-BR .
 :Massa a owl:Class ; dcterms:identifier "Massa" ; skos:prefLabel "Massa"@pt-BR .
-:MassaCorrida a owl:Class ; dcterms:identifier "MassaCorrida" ; skos:prefLabel "Massa Corrida"@pt-BR .
+:MassaCorrida a owl:Class ; dcterms:identifier "MassaCorrida" ; skos:prefLabel "Massa Corrida"@pt-BR ; owl:equivalentClass :SpacklingPaste ; skos:prefLabel "Spackling paste"@en .
 :MassaFina a owl:Class ; dcterms:identifier "MassaFina" ; skos:prefLabel "Massa Fina"@pt-BR .
 :MassaGrossa a owl:Class ; dcterms:identifier "MassaGrossa" ; skos:prefLabel "Massa Grossa"@pt-BR .
 :MassaTemporalIsolante a owl:Class ; dcterms:identifier "MassaTemporalIsolante" ; skos:prefLabel "Massa Temporal Isolante"@pt-BR .
@@ -553,7 +553,7 @@
 :MontaCarga a owl:Class ; dcterms:identifier "MontaCarga" ; skos:prefLabel "Monta-carga"@pt-BR .
 :Mosaico a owl:Class ; dcterms:identifier "Mosaico" ; skos:prefLabel "Mosaico"@pt-BR .
 :MosaicoPortugues a owl:Class ; dcterms:identifier "MosaicoPortugues" ; skos:prefLabel "Mosaico Português"@pt-BR ; skos:altLabel "Pedra Portuguêsa"@pt-BR .
-:MuroDeArrimo a owl:Class ; dcterms:identifier "MuroDeArrimo" ; skos:prefLabel "Muro de arrimo"@pt-BR .
+:MuroDeArrimo a owl:Class ; dcterms:identifier "MuroDeArrimo" ; skos:prefLabel "Muro de arrimo"@pt-BR ; owl:equivalentClass :RetainingWall ; skos:prefLabel "Retaining wall"@en .
 :MuroDeContencao a owl:Class ; dcterms:identifier "MuroDeContencao" ; skos:prefLabel "Muro de contenção"@pt-BR .
 :MuroDeTesta a owl:Class ; dcterms:identifier "MuroDeTesta" ; skos:prefLabel "Muro de testa"@pt-BR .
 :Nailon a owl:Class ; dcterms:identifier "Nailon" ; skos:prefLabel "Náilon"@pt-BR .
@@ -574,7 +574,7 @@
 :Oxidacao a owl:Class ; dcterms:identifier "Oxidacao" ; skos:prefLabel "Oxidação"@pt-BR .
 :Padrao a owl:Class ; dcterms:identifier "Padrao" ; skos:prefLabel "Padrão"@pt-BR .
 :Painel a owl:Class ; dcterms:identifier "Painel" ; skos:prefLabel "Painel"@pt-BR .
-:Paisagismo a owl:Class ; dcterms:identifier "Paisagismo" ; skos:prefLabel "Paisagismo"@pt-BR .
+:Paisagismo a owl:Class ; dcterms:identifier "Paisagismo" ; skos:prefLabel "Paisagismo"@pt-BR ; owl:equivalentClass :Landscaping ; skos:prefLabel "Landscaping"@en .
 :ParedeDeGessoAcartonado a owl:Class ; dcterms:identifier "ParedeDeGessoAcartonado" ; skos:prefLabel "Parede de Gesso Acartonado"@pt-BR .
 :ParedeSolteira a owl:Class ; dcterms:identifier "ParedeSolteira" ; skos:prefLabel "Parede Solteira"@pt-BR .
 :Parquet a owl:Class ; dcterms:identifier "Parquet" ; skos:prefLabel "Parquet"@pt-BR .
@@ -585,11 +585,11 @@
 :Patina a owl:Class ; dcterms:identifier "Patina" ; skos:prefLabel "Patina"@pt-BR ; skos:altLabel "Patima"@pt-BR .
 :Patio a owl:Class ; dcterms:identifier "Patio" ; skos:prefLabel "Pátio"@pt-BR .
 :Paviflex a owl:Class ; dcterms:identifier "Paviflex" ; skos:prefLabel "Paviflex"@pt-BR .
-:Pavimento a owl:Class ; dcterms:identifier "Pavimento" ; skos:prefLabel "Pavimento"@pt-BR .
+:Pavimento a owl:Class ; dcterms:identifier "Pavimento" ; skos:prefLabel "Pavimento"@pt-BR ; owl:equivalentClass :Floor ; skos:prefLabel "Floor"@en .
 :PCMAT a owl:Class ; dcterms:identifier "PCMAT" ; skos:prefLabel "PCMAT"@pt-BR ; skos:altLabel "Seconci"@pt-BR .
 :Peanha a owl:Class ; dcterms:identifier "Peanha" ; skos:prefLabel "Peanha"@pt-BR .
 :PeDeMoleque a owl:Class ; dcterms:identifier "PeDeMoleque" ; skos:prefLabel "Pé de moleque"@pt-BR .
-:Pedra a owl:Class ; dcterms:identifier "Pedra" ; skos:prefLabel "Pedra"@pt-BR .
+:Pedra a owl:Class ; dcterms:identifier "Pedra" ; skos:prefLabel "Pedra"@pt-BR ; owl:equivalentClass :Stone ; skos:prefLabel "Stone"@en .
 :PedraAmarroada a owl:Class ; dcterms:identifier "PedraAmarroada" ; skos:prefLabel "Pedra amarroada"@pt-BR .
 :Pedreiro a owl:Class ; dcterms:identifier "Pedreiro" ; skos:prefLabel "Pedreiro"@pt-BR .
 :Pedrisco a owl:Class ; dcterms:identifier "Pedrisco" ; skos:prefLabel "Pedrisco"@pt-BR .
@@ -610,7 +610,7 @@
 :PipeRack a owl:Class ; dcterms:identifier "PipeRack" ; skos:prefLabel "Pipe-Rack"@pt-BR .
 :Piso a owl:Class ; dcterms:identifier "Piso" ; skos:prefLabel "Piso"@pt-BR .
 :PisoEmborrachado a owl:Class ; dcterms:identifier "PisoEmborrachado" ; skos:prefLabel "Piso Emborrachado"@pt-BR .
-:PisoVinilico a owl:Class ; dcterms:identifier "PisoVinilico" ; skos:prefLabel "Piso Vinílico"@pt-BR .
+:PisoVinilico a owl:Class ; dcterms:identifier "PisoVinilico" ; skos:prefLabel "Piso Vinílico"@pt-BR ; owl:equivalentClass :VinylFlooring ; skos:prefLabel "Vinyl flooring"@en .
 :Pivotante a owl:Class ; dcterms:identifier "Pivotante" ; skos:prefLabel "Pivotante"@pt-BR .
 :PlacasDeObra a owl:Class ; dcterms:identifier "PlacasDeObra" ; skos:prefLabel "Placas de Obra"@pt-BR .
 :Plaina a owl:Class ; dcterms:identifier "Plaina" ; skos:prefLabel "Plaina"@pt-BR .
@@ -625,7 +625,7 @@
 :Policarbonato a owl:Class ; dcterms:identifier "Policarbonato" ; skos:prefLabel "Policarbonato"@pt-BR .
 :Polir a owl:Class ; dcterms:identifier "Polir" ; skos:prefLabel "Polir"@pt-BR .
 :Porcelanato a owl:Class ; dcterms:identifier "Porcelanato" ; skos:prefLabel "Porcelanato"@pt-BR .
-:Porta a owl:Class ; dcterms:identifier "Porta" ; skos:prefLabel "Porta"@pt-BR .
+:Porta a owl:Class ; dcterms:identifier "Porta" ; skos:prefLabel "Porta"@pt-BR ; owl:equivalentClass :Door ; skos:prefLabel "Door"@en .
 :PostForming a owl:Class ; dcterms:identifier "PostForming" ; skos:prefLabel "Post forming"@pt-BR .
 :Postigo a owl:Class ; dcterms:identifier "Postigo" ; skos:prefLabel "Postigo"@pt-BR .
 :PrecoJusto a owl:Class ; dcterms:identifier "PrecoJusto" ; skos:prefLabel "Preço justo"@pt-BR .
@@ -644,7 +644,7 @@
 :Rebarba a owl:Class ; dcterms:identifier "Rebarba" ; skos:prefLabel "Rebarba"@pt-BR .
 :RebaixamentoDoFreatico a owl:Class ; dcterms:identifier "RebaixamentoDoFreatico" ; skos:prefLabel "Rebaixamento do Freático"@pt-BR .
 :Refratario a owl:Class ; dcterms:identifier "Refratario" ; skos:prefLabel "Refratário"@pt-BR .
-:Regua a owl:Class ; dcterms:identifier "Regua" ; skos:prefLabel "Régua"@pt-BR .
+:Regua a owl:Class ; dcterms:identifier "Regua" ; skos:prefLabel "Régua"@pt-BR ; owl:equivalentClass :Ruler ; skos:prefLabel "Ruler"@en .
 :Rejunte a owl:Class ; dcterms:identifier "Rejunte" ; skos:prefLabel "Rejunte"@pt-BR .
 :Respaldar a owl:Class ; dcterms:identifier "Respaldar" ; skos:prefLabel "Respaldar"@pt-BR .
 :Respaldo a owl:Class ; dcterms:identifier "Respaldo" ; skos:prefLabel "Respaldo"@pt-BR .
@@ -654,17 +654,17 @@
 :Revestimento a owl:Class ; dcterms:identifier "Revestimento" ; skos:prefLabel "Revestimento"@pt-BR .
 :Rincao a owl:Class ; dcterms:identifier "Rincao" ; skos:prefLabel "Rincão"@pt-BR .
 :Rufo a owl:Class ; dcterms:identifier "Rufo" ; skos:prefLabel "Rufo"@pt-BR ; skos:altLabel "contrarufo"@pt-BR .
-:Sacada a owl:Class ; dcterms:identifier "Sacada" ; skos:prefLabel "Sacada"@pt-BR .
+:Sacada a owl:Class ; dcterms:identifier "Sacada" ; skos:prefLabel "Sacada"@pt-BR ; owl:equivalentClass :Balcony ; skos:prefLabel "Balcony"@en .
 :Saguao a owl:Class ; dcterms:identifier "Saguao" ; skos:prefLabel "Saguão"@pt-BR .
 :Saibro a owl:Class ; dcterms:identifier "Saibro" ; skos:prefLabel "Saibro"@pt-BR .
 :Sanca a owl:Class ; dcterms:identifier "Sanca" ; skos:prefLabel "Sanca"@pt-BR .
-:Sarjeta a owl:Class ; dcterms:identifier "Sarjeta" ; skos:prefLabel "Sarjeta"@pt-BR .
+:Sarjeta a owl:Class ; dcterms:identifier "Sarjeta" ; skos:prefLabel "Sarjeta"@pt-BR ; owl:equivalentClass :Gutter ; skos:prefLabel "Gutter"@en .
 :Sarrafear a owl:Class ; dcterms:identifier "Sarrafear" ; skos:prefLabel "Sarrafear"@pt-BR .
 :Sarrafo a owl:Class ; dcterms:identifier "Sarrafo" ; skos:prefLabel "Sarrafo"@pt-BR .
 :SeguroDeResponsabilidadeCivil a owl:Class ; dcterms:identifier "SeguroDeResponsabilidadeCivil" ; skos:prefLabel "Seguro de responsabilidade civil"@pt-BR .
 :SeguroDeVidaEmGrupo a owl:Class ; dcterms:identifier "SeguroDeVidaEmGrupo" ; skos:prefLabel "Seguro de Vida em grupo"@pt-BR .
 :SeguroPerformanceBond a owl:Class ; dcterms:identifier "SeguroPerformanceBond" ; skos:prefLabel "Seguro Performance Bond"@pt-BR .
-:Selador a owl:Class ; dcterms:identifier "Selador" ; skos:prefLabel "Selador"@pt-BR .
+:Selador a owl:Class ; dcterms:identifier "Selador" ; skos:prefLabel "Selador"@pt-BR ; owl:equivalentClass :Sealant ; skos:prefLabel "Sealant"@en .
 :Selatrinca a owl:Class ; dcterms:identifier "Selatrinca" ; skos:prefLabel "Selatrinca"@pt-BR .
 :Servente a owl:Class ; dcterms:identifier "Servente" ; skos:prefLabel "Servente"@pt-BR .
 :Servidao a owl:Class ; dcterms:identifier "Servidao" ; skos:prefLabel "Servidão"@pt-BR .
@@ -673,7 +673,7 @@
 :Shaft a owl:Class ; dcterms:identifier "Shaft" ; skos:prefLabel "Shaft"@pt-BR .
 :Shed a owl:Class ; dcterms:identifier "Shed" ; skos:prefLabel "Shed"@pt-BR .
 :Shingle a owl:Class ; dcterms:identifier "Shingle" ; skos:prefLabel "Shingle"@pt-BR .
-:Silicone a owl:Class ; dcterms:identifier "Silicone" ; skos:prefLabel "Silicone"@pt-BR .
+:Silicone a owl:Class ; dcterms:identifier "Silicone" ; skos:prefLabel "Silicone"@pt-BR ; skos:altLabel "Silicone"@pt-BR ; skos:prefLabel "Silicone"@en .
 :SistemaFinanceiroDaHabitacao a owl:Class ; dcterms:identifier "SistemaFinanceiroDaHabitacao" ; skos:prefLabel "Sistema Financeiro da Habitação"@pt-BR .
 :Soalho a owl:Class ; dcterms:identifier "Soalho" ; skos:prefLabel "Soalho"@pt-BR .
 :Sobejo a owl:Class ; dcterms:identifier "Sobejo" ; skos:prefLabel "Sobejo"@pt-BR .
@@ -681,17 +681,17 @@
 :Solario a owl:Class ; dcterms:identifier "Solario" ; skos:prefLabel "Solário"@pt-BR .
 :Sondagem a owl:Class ; dcterms:identifier "Sondagem" ; skos:prefLabel "Sondagem"@pt-BR .
 :Sonex a owl:Class ; dcterms:identifier "Sonex" ; skos:prefLabel "Sonex"@pt-BR .
-:Sotao a owl:Class ; dcterms:identifier "Sotao" ; skos:prefLabel "Sótão"@pt-BR .
+:Sotao a owl:Class ; dcterms:identifier "Sotao" ; skos:prefLabel "Sótão"@pt-BR ; owl:equivalentClass :Attic ; skos:prefLabel "Attic"@en .
 :StruturalGlazing a owl:Class ; dcterms:identifier "StruturalGlazing" ; skos:prefLabel "Strutural glazing"@pt-BR .
-:Tabeira a owl:Class ; dcterms:identifier "Tabeira" ; skos:prefLabel "Tabeira"@pt-BR .
+:Tabeira a owl:Class ; dcterms:identifier "Tabeira" ; skos:prefLabel "Tabeira"@pt-BR ; owl:equivalentClass :Fascia ; skos:prefLabel "Fascia"@en .
 :Tabua a owl:Class ; dcterms:identifier "Tabua" ; skos:prefLabel "Tábua"@pt-BR .
 :TabuaCorrida a owl:Class ; dcterms:identifier "TabuaCorrida" ; skos:prefLabel "Tábua corrida"@pt-BR .
 :Taco a owl:Class ; dcterms:identifier "Taco" ; skos:prefLabel "Taco"@pt-BR .
 :Tapume a owl:Class ; dcterms:identifier "Tapume" ; skos:prefLabel "Tapume"@pt-BR .
-:Telhado a owl:Class ; dcterms:identifier "Telhado" ; skos:prefLabel "Telhado"@pt-BR .
+:Telhado a owl:Class ; dcterms:identifier "Telhado" ; skos:prefLabel "Telhado"@pt-BR ; owl:equivalentClass :Roof ; skos:prefLabel "Roof"@en .
 :Telha a owl:Class ; dcterms:identifier "Telha" ; skos:prefLabel "Telha"@pt-BR .
 :Temperado a owl:Class ; dcterms:identifier "Temperado" ; skos:prefLabel "Temperado"@pt-BR .
-:Terraco a owl:Class ; dcterms:identifier "Terraco" ; skos:prefLabel "Terraço"@pt-BR .
+:Terraco a owl:Class ; dcterms:identifier "Terraco" ; skos:prefLabel "Terraço"@pt-BR ; owl:equivalentClass :Terrace ; skos:prefLabel "Terrace"@en .
 :Terracota a owl:Class ; dcterms:identifier "Terracota" ; skos:prefLabel "Terracota"@pt-BR .
 :Terracor a owl:Class ; dcterms:identifier "Terracor" ; skos:prefLabel "Terracor"@pt-BR ; skos:altLabel "terracal"@pt-BR .
 :Terraplanagem a owl:Class ; dcterms:identifier "Terraplanagem" ; skos:prefLabel "Terraplanagem"@pt-BR .
@@ -699,18 +699,18 @@
 :Terreno a owl:Class ; dcterms:identifier "Terreno" ; skos:prefLabel "Terreno"@pt-BR .
 :TerrenoEdificado a owl:Class ; dcterms:identifier "TerrenoEdificado" ; skos:prefLabel "Terreno edificado"@pt-BR .
 :TerrenoComConstrucao a owl:Class ; dcterms:identifier "TerrenoComConstrucao" ; skos:prefLabel "Terreno com construção"@pt-BR .
-:Tesoura a owl:Class ; dcterms:identifier "Tesoura" ; skos:prefLabel "Tesoura"@pt-BR .
+:Tesoura a owl:Class ; dcterms:identifier "Tesoura" ; skos:prefLabel "Tesoura"@pt-BR ; owl:equivalentClass :RoofTruss ; skos:prefLabel "Roof truss"@en .
 :Testada a owl:Class ; dcterms:identifier "Testada" ; skos:prefLabel "Testada"@pt-BR .
 :Textura a owl:Class ; dcterms:identifier "Textura" ; skos:prefLabel "Textura"@pt-BR .
 :Tijolo a owl:Class ; dcterms:identifier "Tijolo" ; skos:prefLabel "Tijolo"@pt-BR .
 :TijoloDeEspelho a owl:Class ; dcterms:identifier "TijoloDeEspelho" ; skos:prefLabel "Tijolo de espelho"@pt-BR .
-:Tirante a owl:Class ; dcterms:identifier "Tirante" ; skos:prefLabel "Tirante"@pt-BR .
+:Tirante a owl:Class ; dcterms:identifier "Tirante" ; skos:prefLabel "Tirante"@pt-BR ; owl:equivalentClass :Anchor ; skos:altLabel "tie rod"@en ; skos:prefLabel "Anchor"@en .
 :Topografia a owl:Class ; dcterms:identifier "Topografia" ; skos:prefLabel "Topografia"@pt-BR .
 :Topografo a owl:Class ; dcterms:identifier "Topografo" ; skos:prefLabel "Topógrafo"@pt-BR .
 :Tosco a owl:Class ; dcterms:identifier "Tosco" ; skos:prefLabel "Tosco"@pt-BR .
 :TrabalhoDoMaterial a owl:Class ; dcterms:identifier "TrabalhoDoMaterial" ; skos:prefLabel "Trabalho do material"@pt-BR .
 :Trelica a owl:Class ; dcterms:identifier "Trelica" ; skos:prefLabel "Treliça"@pt-BR .
-:Trena a owl:Class ; dcterms:identifier "Trena" ; skos:prefLabel "Trena"@pt-BR .
+:Trena a owl:Class ; dcterms:identifier "Trena" ; skos:prefLabel "Trena"@pt-BR ; owl:equivalentClass :TapeMeasure ; skos:prefLabel "Tape measure"@en .
 :TurnKey a owl:Class ; dcterms:identifier "TurnKey" ; skos:prefLabel "Turn Key"@pt-BR .
 :UmTijolo a owl:Class ; dcterms:identifier "UmTijolo" ; skos:prefLabel "Um Tijolo"@pt-BR .
 :Urbanismo a owl:Class ; dcterms:identifier "Urbanismo" ; skos:prefLabel "Urbanismo"@pt-BR .
@@ -724,10 +724,10 @@
 :Vala a owl:Class ; dcterms:identifier "Vala" ; skos:prefLabel "Vala"@pt-BR .
 :ValorVenal a owl:Class ; dcterms:identifier "ValorVenal" ; skos:prefLabel "Valor venal"@pt-BR .
 :VaoLivre a owl:Class ; dcterms:identifier "VaoLivre" ; skos:prefLabel "Vão Livre"@pt-BR .
-:Varanda a owl:Class ; dcterms:identifier "Varanda" ; skos:prefLabel "Varanda"@pt-BR .
+:Varanda a owl:Class ; dcterms:identifier "Varanda" ; skos:prefLabel "Varanda"@pt-BR ; owl:equivalentClass :Porch ; skos:prefLabel "Porch"@en .
 :Vedacao a owl:Class ; dcterms:identifier "Vedacao" ; skos:prefLabel "Vedação"@pt-BR .
 :Vermiculita a owl:Class ; dcterms:identifier "Vermiculita" ; skos:prefLabel "Vermiculita"@pt-BR .
-:Verniz a owl:Class ; dcterms:identifier "Verniz" ; skos:prefLabel "Verniz"@pt-BR .
+:Verniz a owl:Class ; dcterms:identifier "Verniz" ; skos:prefLabel "Verniz"@pt-BR ; owl:equivalentClass :VarnishPaint ; skos:prefLabel "Varnish paint"@en .
 :VernizABoneca a owl:Class ; dcterms:identifier "VernizABoneca" ; skos:prefLabel "Verniz à Boneca"@pt-BR .
 :Viabilidade a owl:Class ; dcterms:identifier "Viabilidade" ; skos:prefLabel "Viabilidade"@pt-BR .
 :VidroAcidato a owl:Class ; dcterms:identifier "VidroAcidato" ; skos:prefLabel "Vidro acidato"@pt-BR .
@@ -747,4 +747,569 @@
 :Zigurate a owl:Class ; dcterms:identifier "Zigurate" ; skos:prefLabel "Zigurate"@pt-BR .
 :Zoneamento a owl:Class ; dcterms:identifier "Zoneamento" ; skos:prefLabel "Zoneamento"@pt-BR .
 :Zincado a owl:Class ; dcterms:identifier "Zincado" ; skos:prefLabel "Zincado"@pt-BR .
+
+
+:Aeroporto a owl:Class ; dcterms:identifier "Aeroporto" ; skos:prefLabel "Aeroporto"@pt-BR ; skos:prefLabel "Airport"@en ; owl:equivalentClass :Airport .
+:Barragem a owl:Class ; dcterms:identifier "Barragem" ; skos:prefLabel "Barragem"@pt-BR ; skos:prefLabel "Dam"@en ; owl:equivalentClass :Dam .
+:ConstrucaoPesada a owl:Class ; dcterms:identifier "ConstrucaoPesada" ; skos:prefLabel "Construção pesada"@pt-BR ; skos:prefLabel "Heavy civil"@en ; owl:equivalentClass :HeavyCivil .
+:Estrada a owl:Class ; dcterms:identifier "Estrada" ; skos:prefLabel "Estrada"@pt-BR ; skos:prefLabel "Road"@en ; owl:equivalentClass :Road .
+:Ferrovia a owl:Class ; dcterms:identifier "Ferrovia" ; skos:prefLabel "Ferrovia"@pt-BR ; skos:prefLabel "Railroad"@en ; owl:equivalentClass :Railroad .
+:Ponte a owl:Class ; dcterms:identifier "Ponte" ; skos:prefLabel "Ponte"@pt-BR ; skos:prefLabel "Bridge"@en ; owl:equivalentClass :Bridge .
+:Tunel a owl:Class ; dcterms:identifier "Tunel" ; skos:prefLabel "Túnel"@pt-BR ; skos:prefLabel "Tunnel"@en ; owl:equivalentClass :Tunnel .
+:Cronograma a owl:Class ; dcterms:identifier "Cronograma" ; skos:prefLabel "Cronograma"@pt-BR ; skos:prefLabel "Schedule"@en ; owl:equivalentClass :Schedule .
+:DiarioDeObra a owl:Class ; dcterms:identifier "DiarioDeObra" ; skos:prefLabel "Diário de obra"@pt-BR ; skos:prefLabel "Daily field reports"@en ; owl:equivalentClass :DailyFieldReports .
+:EstouroDeCusto a owl:Class ; dcterms:identifier "EstouroDeCusto" ; skos:prefLabel "Estouro de custo"@pt-BR ; skos:prefLabel "Cost overrun"@en ; owl:equivalentClass :CostOverrun .
+:EstudosDeViabilidade a owl:Class ; dcterms:identifier "EstudosDeViabilidade" ; skos:prefLabel "Estudos de viabilidade"@pt-BR ; skos:prefLabel "Feasibility studies"@en ; owl:equivalentClass :FeasibilityStudies .
+:GarantiaParaExecutarOContrato a owl:Class ; dcterms:identifier "GarantiaParaExecutarOContrato" ; skos:prefLabel "Garantia para Executar o Contrato"@pt-BR ; skos:prefLabel "Performance Bond"@en ; owl:equivalentClass :PerformanceBond .
+:GarantiaParaLicitar a owl:Class ; dcterms:identifier "GarantiaParaLicitar" ; skos:prefLabel "Garantia para Licitar"@pt-BR ; skos:prefLabel "Bid Bond"@en ; owl:equivalentClass :BidBond .
+:OrcamentoProposta a owl:Class ; dcterms:identifier "OrcamentoProposta" ; skos:prefLabel "Orçamento (proposta)"@pt-BR ; skos:prefLabel "Bid"@en ; owl:equivalentClass :Bid .
+:OrcamentoVerba a owl:Class ; dcterms:identifier "OrcamentoVerba" ; skos:prefLabel "Orçamento (verba)"@pt-BR ; skos:prefLabel "Budget"@en ; owl:equivalentClass :Budget .
+:OrcamentoDeCustos a owl:Class ; dcterms:identifier "OrcamentoDeCustos" ; skos:prefLabel "Orçamento de custos"@pt-BR ; skos:prefLabel "Cost estimating"@en ; owl:equivalentClass :CostEstimating .
+:Planejamento a owl:Class ; dcterms:identifier "Planejamento" ; skos:prefLabel "Planejamento"@pt-BR ; skos:prefLabel "Planning"@en ; owl:equivalentClass :Planning .
+:ArranhaCeu a owl:Class ; dcterms:identifier "ArranhaCeu" ; skos:prefLabel "Arranha-céu"@pt-BR ; skos:prefLabel "Skyscraper"@en ; owl:equivalentClass :Skyscraper .
+:Banheiro a owl:Class ; dcterms:identifier "Banheiro" ; skos:prefLabel "Banheiro"@pt-BR ; skos:prefLabel "Toilet"@en ; owl:equivalentClass :Toilet .
+:Corredor a owl:Class ; dcterms:identifier "Corredor" ; skos:prefLabel "Corredor"@pt-BR ; skos:prefLabel "Corridor"@en ; owl:equivalentClass :Corridor .
+:Cozinha a owl:Class ; dcterms:identifier "Cozinha" ; skos:prefLabel "Cozinha"@pt-BR ; skos:prefLabel "Kitchen"@en ; owl:equivalentClass :Kitchen .
+:Dormitorio a owl:Class ; dcterms:identifier "Dormitorio" ; skos:prefLabel "Dormitório"@pt-BR ; skos:prefLabel "Bedroom"@en ; owl:equivalentClass :Bedroom .
+:Entrada a owl:Class ; dcterms:identifier "Entrada" ; skos:prefLabel "Entrada"@pt-BR ; skos:prefLabel "Entrance"@en ; owl:equivalentClass :Entrance .
+:Garagem a owl:Class ; dcterms:identifier "Garagem" ; skos:prefLabel "Garagem"@pt-BR ; skos:prefLabel "Garage"@en ; owl:equivalentClass :Garage .
+:Lareira a owl:Class ; dcterms:identifier "Lareira" ; skos:prefLabel "Lareira"@pt-BR ; skos:prefLabel "Fireplace"@en ; owl:equivalentClass :Fireplace .
+:Lavabo a owl:Class ; dcterms:identifier "Lavabo" ; skos:prefLabel "Lavabo"@pt-BR ; skos:prefLabel "Restroom"@en ; owl:equivalentClass :Restroom .
+:Lavanderia a owl:Class ; dcterms:identifier "Lavanderia" ; skos:prefLabel "Lavanderia"@pt-BR ; skos:prefLabel "Laundry"@en ; owl:equivalentClass :Laundry .
+:Parede a owl:Class ; dcterms:identifier "Parede" ; skos:prefLabel "Parede"@pt-BR ; skos:prefLabel "Wall"@en ; owl:equivalentClass :Wall .
+:Piscina a owl:Class ; dcterms:identifier "Piscina" ; skos:prefLabel "Piscina"@pt-BR ; skos:prefLabel "Swimming pool"@en ; owl:equivalentClass :SwimmingPool .
+:PlantaProjeto a owl:Class ; dcterms:identifier "PlantaProjeto" ; skos:prefLabel "Planta (projeto)"@pt-BR ; skos:prefLabel "Plan"@en ; owl:equivalentClass :Plan .
+:Porao a owl:Class ; dcterms:identifier "Porao" ; skos:prefLabel "Porão"@pt-BR ; skos:prefLabel "Cellar"@en ; owl:equivalentClass :Cellar .
+:Predio a owl:Class ; dcterms:identifier "Predio" ; skos:prefLabel "Prédio"@pt-BR ; skos:altLabel "Edifício"@pt-BR ; skos:prefLabel "Building"@en ; owl:equivalentClass :Building .
+:Sala a owl:Class ; dcterms:identifier "Sala" ; skos:prefLabel "Sala"@pt-BR ; skos:prefLabel "Room"@en ; owl:equivalentClass :Room .
+:SalaDeEstar a owl:Class ; dcterms:identifier "SalaDeEstar" ; skos:prefLabel "Sala de estar"@pt-BR ; skos:prefLabel "Living room"@en ; owl:equivalentClass :LivingRoom .
+:SalaDeJantar a owl:Class ; dcterms:identifier "SalaDeJantar" ; skos:prefLabel "Sala de jantar"@pt-BR ; skos:prefLabel "Dining room"@en ; owl:equivalentClass :DiningRoom .
+:Subsolo a owl:Class ; dcterms:identifier "Subsolo" ; skos:prefLabel "Subsolo"@pt-BR ; skos:prefLabel "Basement"@en ; owl:equivalentClass :Basement .
+:Terreo a owl:Class ; dcterms:identifier "Terreo" ; skos:prefLabel "Térreo"@pt-BR ; skos:prefLabel "Ground floor"@en ; owl:equivalentClass :GroundFloor .
+:Teto a owl:Class ; dcterms:identifier "Teto" ; skos:prefLabel "Teto"@pt-BR ; skos:prefLabel "Ceiling"@en ; owl:equivalentClass :Ceiling .
+:Urbanizacao a owl:Class ; dcterms:identifier "Urbanizacao" ; skos:prefLabel "Urbanização"@pt-BR ; skos:prefLabel "Urban development"@en ; owl:equivalentClass :UrbanDevelopment .
+:Asfalto a owl:Class ; dcterms:identifier "Asfalto" ; skos:prefLabel "Asfalto"@pt-BR ; skos:prefLabel "Asphalt"@en ; owl:equivalentClass :Asphalt .
+:BlocoDeConcretoIntertravado a owl:Class ; dcterms:identifier "BlocoDeConcretoIntertravado" ; skos:prefLabel "Bloco de concreto intertravado"@pt-BR ; skos:prefLabel "Interlocking concrete paving blocks"@en ; owl:equivalentClass :InterlockingConcretePavingBlocks .
+:Calcada a owl:Class ; dcterms:identifier "Calcada" ; skos:prefLabel "Calçada"@pt-BR ; skos:prefLabel "Sidewalk"@en ; owl:equivalentClass :Sidewalk .
+:Passeio a owl:Class ; dcterms:identifier "Passeio" ; skos:prefLabel "Passeio"@pt-BR ; skos:prefLabel "Travel lane"@en ; owl:equivalentClass :TravelLane .
+:Pavimentacao a owl:Class ; dcterms:identifier "Pavimentacao" ; skos:prefLabel "Pavimentação"@pt-BR ; skos:prefLabel "Paving"@en ; owl:equivalentClass :Paving .
+:PavimentoAsfaltico a owl:Class ; dcterms:identifier "PavimentoAsfaltico" ; skos:prefLabel "Pavimento asfáltico"@pt-BR ; skos:prefLabel "Asphalt paving"@en ; owl:equivalentClass :AsphaltPaving .
+:Aco a owl:Class ; dcterms:identifier "Aco" ; skos:prefLabel "Aço"@pt-BR ; skos:prefLabel "Steel"@en ; owl:equivalentClass :Steel .
+:Aditivo a owl:Class ; dcterms:identifier "Aditivo" ; skos:prefLabel "Aditivo"@pt-BR ; skos:prefLabel "Additive"@en ; owl:equivalentClass :Additive .
+:Areia a owl:Class ; dcterms:identifier "Areia" ; skos:prefLabel "Areia"@pt-BR ; skos:prefLabel "Sand"@en ; owl:equivalentClass :Sand .
+:AreiaFina a owl:Class ; dcterms:identifier "AreiaFina" ; skos:prefLabel "Areia fina"@pt-BR ; skos:prefLabel "Plastering sand"@en ; owl:equivalentClass :PlasteringSand .
+:AreiaGrossa a owl:Class ; dcterms:identifier "AreiaGrossa" ; skos:prefLabel "Areia grossa"@pt-BR ; skos:prefLabel "Sharp sand"@en ; owl:equivalentClass :SharpSand .
+:ConcretoUsinado a owl:Class ; dcterms:identifier "ConcretoUsinado" ; skos:prefLabel "Concreto Usinado"@pt-BR ; skos:prefLabel "Ready Mixed Concrete"@en ; owl:equivalentClass :ReadyMixedConcrete .
+:FibraDeVidro a owl:Class ; dcterms:identifier "FibraDeVidro" ; skos:prefLabel "Fibra de vidro"@pt-BR ; skos:prefLabel "Fiberglass"@en ; owl:equivalentClass :Fiberglass .
+:Madeira a owl:Class ; dcterms:identifier "Madeira" ; skos:prefLabel "Madeira"@pt-BR ; skos:prefLabel "Timber"@en ; owl:equivalentClass :Timber .
+:MeioBloco a owl:Class ; dcterms:identifier "MeioBloco" ; skos:prefLabel "Meio Bloco"@pt-BR ; skos:prefLabel "Bat"@en ; owl:equivalentClass :Bat .
+:NataDeCimento a owl:Class ; dcterms:identifier "NataDeCimento" ; skos:prefLabel "Nata de cimento"@pt-BR ; skos:prefLabel "Cement slurry"@en ; owl:equivalentClass :CementSlurry .
+:Vergalhao a owl:Class ; dcterms:identifier "Vergalhao" ; skos:prefLabel "Vergalhão"@pt-BR ; skos:prefLabel "Rebar"@en ; owl:equivalentClass :Rebar .
+:Alicate a owl:Class ; dcterms:identifier "Alicate" ; skos:prefLabel "Alicate"@pt-BR ; skos:prefLabel "Plier"@en ; owl:equivalentClass :Plier .
+:Argamassadeira a owl:Class ; dcterms:identifier "Argamassadeira" ; skos:prefLabel "Argamassadeira"@pt-BR ; skos:prefLabel "Mortar mixer"@en ; owl:equivalentClass :MortarMixer .
+:CarrinhoDeMao a owl:Class ; dcterms:identifier "CarrinhoDeMao" ; skos:prefLabel "Carrinho de mão"@pt-BR ; skos:prefLabel "Wheelbarrow"@en ; owl:equivalentClass :Wheelbarrow .
+:ChaveDeFenda a owl:Class ; dcterms:identifier "ChaveDeFenda" ; skos:prefLabel "Chave de fenda"@pt-BR ; skos:prefLabel "Screwdriver"@en ; owl:equivalentClass :Screwdriver .
+:ChaveInglesa a owl:Class ; dcterms:identifier "ChaveInglesa" ; skos:prefLabel "Chave inglesa"@pt-BR ; skos:prefLabel "Wrench"@en ; owl:equivalentClass :Wrench .
+:ColherDePedreiro a owl:Class ; dcterms:identifier "ColherDePedreiro" ; skos:prefLabel "Colher de pedreiro"@pt-BR ; skos:prefLabel "Trowel"@en ; owl:equivalentClass :Trowel .
+:Enxada a owl:Class ; dcterms:identifier "Enxada" ; skos:prefLabel "Enxada"@pt-BR ; skos:prefLabel "Hoe"@en ; owl:equivalentClass :Hoe .
+:Esquadro a owl:Class ; dcterms:identifier "Esquadro" ; skos:prefLabel "Esquadro"@pt-BR ; skos:prefLabel "Set-square"@en ; owl:equivalentClass :SetSquare .
+:EstacaoTotal a owl:Class ; dcterms:identifier "EstacaoTotal" ; skos:prefLabel "Estação total"@pt-BR ; skos:prefLabel "Total station"@en ; owl:equivalentClass :TotalStation .
+:Ferramenta a owl:Class ; dcterms:identifier "Ferramenta" ; skos:prefLabel "Ferramenta"@pt-BR ; skos:prefLabel "Tool"@en ; owl:equivalentClass :Tool .
+:FioTracante a owl:Class ; dcterms:identifier "FioTracante" ; skos:prefLabel "Fio traçante"@pt-BR ; skos:prefLabel "Chalk line"@en ; owl:equivalentClass :ChalkLine .
+:Furadeira a owl:Class ; dcterms:identifier "Furadeira" ; skos:prefLabel "Furadeira"@pt-BR ; skos:prefLabel "Drill"@en ; owl:equivalentClass :Drill .
+:LinhaDeNailon a owl:Class ; dcterms:identifier "LinhaDeNailon" ; skos:prefLabel "Linha de náilon"@pt-BR ; skos:prefLabel "Nylon line"@en ; owl:equivalentClass :NylonLine .
+:Lixadeira a owl:Class ; dcterms:identifier "Lixadeira" ; skos:prefLabel "Lixadeira"@pt-BR ; skos:prefLabel "Grinder"@en ; owl:equivalentClass :Grinder .
+:Machado a owl:Class ; dcterms:identifier "Machado" ; skos:prefLabel "Machado"@pt-BR ; skos:prefLabel "Axe"@en ; owl:equivalentClass :Axe .
+:Marreta a owl:Class ; dcterms:identifier "Marreta" ; skos:prefLabel "Marreta"@pt-BR ; skos:prefLabel "Sledgehammer"@en ; owl:equivalentClass :Sledgehammer .
+:Martelo a owl:Class ; dcterms:identifier "Martelo" ; skos:prefLabel "Martelo"@pt-BR ; skos:prefLabel "Hammer"@en ; owl:equivalentClass :Hammer .
+:Pa a owl:Class ; dcterms:identifier "Pa" ; skos:prefLabel "Pá"@pt-BR ; skos:prefLabel "Shovel"@en ; owl:equivalentClass :Shovel .
+:Parafusadeira a owl:Class ; dcterms:identifier "Parafusadeira" ; skos:prefLabel "Parafusadeira"@pt-BR ; skos:prefLabel "Screw gun"@en ; owl:equivalentClass :ScrewGun .
+:Pincel a owl:Class ; dcterms:identifier "Pincel" ; skos:prefLabel "Pincel"@pt-BR ; skos:prefLabel "Paintbrush"@en ; owl:equivalentClass :Paintbrush .
+:RoloDePintura a owl:Class ; dcterms:identifier "RoloDePintura" ; skos:prefLabel "Rolo de pintura"@pt-BR ; skos:prefLabel "Paint roller"@en ; owl:equivalentClass :PaintRoller .
+:SerraCircular a owl:Class ; dcterms:identifier "SerraCircular" ; skos:prefLabel "Serra circular"@pt-BR ; skos:prefLabel "Circular saw"@en ; owl:equivalentClass :CircularSaw .
+:Serrote a owl:Class ; dcterms:identifier "Serrote" ; skos:prefLabel "Serrote"@pt-BR ; skos:prefLabel "Saw"@en ; owl:equivalentClass :Saw .
+:LimpezaDoTerreno a owl:Class ; dcterms:identifier "LimpezaDoTerreno" ; skos:prefLabel "Limpeza do terreno"@pt-BR ; skos:prefLabel "Construction site cleanup services"@en ; owl:equivalentClass :ConstructionSiteCleanupServices .
+:Demolicao a owl:Class ; dcterms:identifier "Demolicao" ; skos:prefLabel "Demolição"@pt-BR ; skos:prefLabel "Demolition"@en ; owl:equivalentClass :Demolition .
+:DesmonteDeRocha a owl:Class ; dcterms:identifier "DesmonteDeRocha" ; skos:prefLabel "Desmonte de rocha"@pt-BR ; skos:prefLabel "Rock blasting"@en ; owl:equivalentClass :RockBlasting .
+:Explosivo a owl:Class ; dcterms:identifier "Explosivo" ; skos:prefLabel "Explosivo"@pt-BR ; skos:prefLabel "Explosive"@en ; owl:equivalentClass :Explosive .
+:Argila a owl:Class ; dcterms:identifier "Argila" ; skos:prefLabel "Argila"@pt-BR ; skos:prefLabel "Clay"@en ; owl:equivalentClass :Clay .
+:AtritoLateral a owl:Class ; dcterms:identifier "AtritoLateral" ; skos:prefLabel "Atrito lateral"@pt-BR ; skos:prefLabel "Lateral friction"@en ; owl:equivalentClass :LateralFriction .
+:Compactacao a owl:Class ; dcterms:identifier "Compactacao" ; skos:prefLabel "Compactação"@pt-BR ; skos:prefLabel "Soil compaction"@en ; owl:equivalentClass :SoilCompaction .
+:ConcretoProjetado a owl:Class ; dcterms:identifier "ConcretoProjetado" ; skos:prefLabel "Concreto projetado"@pt-BR ; skos:prefLabel "Shotcrete"@en ; owl:equivalentClass :Shotcrete .
+:ContencaoComPerfisMetalicosEPranchoes a owl:Class ; dcterms:identifier "ContencaoComPerfisMetalicosEPranchoes" ; skos:prefLabel "Contenção com perfis metálicos e pranchões"@pt-BR ; skos:prefLabel "Soldier Pile Wall"@en ; owl:equivalentClass :SoldierPileWall .
+:ContencaoDefinitiva a owl:Class ; dcterms:identifier "ContencaoDefinitiva" ; skos:prefLabel "Contenção definitiva"@pt-BR ; skos:prefLabel "Permanent retaining wall"@en ; owl:equivalentClass :PermanentRetainingWall .
+:ContencaoProvisoria a owl:Class ; dcterms:identifier "ContencaoProvisoria" ; skos:prefLabel "Contenção provisória"@pt-BR ; skos:prefLabel "Temporary retaining wall"@en ; owl:equivalentClass :TemporaryRetainingWall .
+:CorteEAterro a owl:Class ; dcterms:identifier "CorteEAterro" ; skos:prefLabel "Corte e aterro"@pt-BR ; skos:prefLabel "Cut and fill"@en ; owl:equivalentClass :CutAndFill .
+:CortinaAtirantada a owl:Class ; dcterms:identifier "CortinaAtirantada" ; skos:prefLabel "Cortina atirantada"@pt-BR ; skos:prefLabel "Anchored wall"@en ; owl:equivalentClass :AnchoredWall .
+:EstacaDeConcretoPreMoldada a owl:Class ; dcterms:identifier "EstacaDeConcretoPreMoldada" ; skos:prefLabel "Estaca de concreto pré-moldada"@pt-BR ; skos:prefLabel "Concrete drive pile"@en ; owl:equivalentClass :ConcreteDrivePile .
+:EstacaEscavada a owl:Class ; dcterms:identifier "EstacaEscavada" ; skos:prefLabel "Estaca escavada"@pt-BR ; skos:prefLabel "Drilled pile"@en ; owl:equivalentClass :DrilledPile .
+:EstacaFranki a owl:Class ; dcterms:identifier "EstacaFranki" ; skos:prefLabel "Estaca Franki"@pt-BR ; skos:prefLabel "Franki pile"@en ; owl:equivalentClass :FrankiPile .
+:EstacaHeliceContinua a owl:Class ; dcterms:identifier "EstacaHeliceContinua" ; skos:prefLabel "Estaca hélice contínua"@pt-BR ; skos:prefLabel "Augercast pile"@en ; owl:equivalentClass :AugercastPile .
+:EstacaMetalica a owl:Class ; dcterms:identifier "EstacaMetalica" ; skos:prefLabel "Estaca metálica"@pt-BR ; skos:prefLabel "Steel pile"@en ; owl:equivalentClass :SteelPile .
+:EstacaRaiz a owl:Class ; dcterms:identifier "EstacaRaiz" ; skos:prefLabel "Estaca raiz"@pt-BR ; skos:prefLabel "Micropile"@en ; owl:equivalentClass :Micropile .
+:Estacao a owl:Class ; dcterms:identifier "Estacao" ; skos:prefLabel "Estacão"@pt-BR ; skos:altLabel "Estaca barrete"@pt-BR ; skos:prefLabel "Barrette pile"@en ; owl:equivalentClass :BarrettePile .
+:EstacasJustapostas a owl:Class ; dcterms:identifier "EstacasJustapostas" ; skos:prefLabel "Estacas justapostas"@pt-BR ; skos:prefLabel "Pile wall"@en ; owl:equivalentClass :PileWall .
+:EstacasPranchaMetalicas a owl:Class ; dcterms:identifier "EstacasPranchaMetalicas" ; skos:prefLabel "Estacas-prancha metálicas"@pt-BR ; skos:prefLabel "Sheet pile wall"@en ; owl:equivalentClass :SheetPileWall .
+:FundacaoDireta a owl:Class ; dcterms:identifier "FundacaoDireta" ; skos:prefLabel "Fundação direta"@pt-BR ; skos:prefLabel "Shallow foundation"@en ; owl:equivalentClass :ShallowFoundation .
+:FundacaoProfunda a owl:Class ; dcterms:identifier "FundacaoProfunda" ; skos:prefLabel "Fundação profunda"@pt-BR ; skos:prefLabel "Deep foundation"@en ; owl:equivalentClass :DeepFoundation .
+:Geotecnia a owl:Class ; dcterms:identifier "Geotecnia" ; skos:prefLabel "Geotecnia"@pt-BR ; skos:prefLabel "Geotechnical engineering"@en ; owl:equivalentClass :GeotechnicalEngineering .
+:Geotextil a owl:Class ; dcterms:identifier "Geotextil" ; skos:prefLabel "Geotêxtil"@pt-BR ; skos:prefLabel "Geotextile"@en ; owl:equivalentClass :Geotextile .
+:LamaBentonitica a owl:Class ; dcterms:identifier "LamaBentonitica" ; skos:prefLabel "Lama bentonítica"@pt-BR ; skos:prefLabel "Drilling mud"@en ; owl:equivalentClass :DrillingMud .
+:LeitoRochoso a owl:Class ; dcterms:identifier "LeitoRochoso" ; skos:prefLabel "Leito rochoso"@pt-BR ; skos:prefLabel "Bedrock"@en ; owl:equivalentClass :Bedrock .
+:MovimentoDeTerra a owl:Class ; dcterms:identifier "MovimentoDeTerra" ; skos:prefLabel "Movimento de terra"@pt-BR ; skos:prefLabel "Earthwork"@en ; owl:equivalentClass :Earthwork .
+:MuroDeContrafortes a owl:Class ; dcterms:identifier "MuroDeContrafortes" ; skos:prefLabel "Muro de contrafortes"@pt-BR ; skos:prefLabel "Counterfort wall"@en ; owl:equivalentClass :CounterfortWall .
+:MuroDeFlexao a owl:Class ; dcterms:identifier "MuroDeFlexao" ; skos:prefLabel "Muro de flexão"@pt-BR ; skos:prefLabel "Cantilever wall"@en ; owl:equivalentClass :CantileverWall .
+:MuroDeGabiao a owl:Class ; dcterms:identifier "MuroDeGabiao" ; skos:prefLabel "Muro de gabião"@pt-BR ; skos:prefLabel "Gabion"@en ; owl:equivalentClass :Gabion .
+:MuroDeGravidade a owl:Class ; dcterms:identifier "MuroDeGravidade" ; skos:prefLabel "Muro de gravidade"@pt-BR ; skos:prefLabel "Gravity wall"@en ; owl:equivalentClass :GravityWall .
+:ParedeDiafragma a owl:Class ; dcterms:identifier "ParedeDiafragma" ; skos:prefLabel "Parede diafragma"@pt-BR ; skos:prefLabel "Diaphragm wall"@en ; owl:equivalentClass :DiaphragmWall .
+:Pedregulho a owl:Class ; dcterms:identifier "Pedregulho" ; skos:prefLabel "Pedregulho"@pt-BR ; skos:prefLabel "Gravel"@en ; owl:equivalentClass :Gravel .
+:PesoEspecifico a owl:Class ; dcterms:identifier "PesoEspecifico" ; skos:prefLabel "Peso específico"@pt-BR ; skos:prefLabel "Unit weight"@en ; owl:equivalentClass :UnitWeight .
+:ProtecaoDeTaludes a owl:Class ; dcterms:identifier "ProtecaoDeTaludes" ; skos:prefLabel "Proteção de taludes"@pt-BR ; skos:prefLabel "Slope protection"@en ; owl:equivalentClass :SlopeProtection .
+:Radier a owl:Class ; dcterms:identifier "Radier" ; skos:prefLabel "Radier"@pt-BR ; skos:prefLabel "Slab-on-grade"@en ; owl:equivalentClass :SlabOnGrade .
+:Reaterro a owl:Class ; dcterms:identifier "Reaterro" ; skos:prefLabel "Reaterro"@pt-BR ; skos:prefLabel "Backfill"@en ; owl:equivalentClass :Backfill .
+:Rocha a owl:Class ; dcterms:identifier "Rocha" ; skos:prefLabel "Rocha"@pt-BR ; skos:prefLabel "Rock"@en ; owl:equivalentClass :Rock .
+:SapataCorrida a owl:Class ; dcterms:identifier "SapataCorrida" ; skos:prefLabel "Sapata corrida"@pt-BR ; skos:prefLabel "Strip footing"@en ; owl:equivalentClass :StripFooting .
+:Silte a owl:Class ; dcterms:identifier "Silte" ; skos:prefLabel "Silte"@pt-BR ; skos:prefLabel "Silt"@en ; owl:equivalentClass :Silt .
+:SoloGrampeado a owl:Class ; dcterms:identifier "SoloGrampeado" ; skos:prefLabel "Solo grampeado"@pt-BR ; skos:prefLabel "Soil nailing"@en ; owl:equivalentClass :SoilNailing .
+:AlvenariaEstrutural a owl:Class ; dcterms:identifier "AlvenariaEstrutural" ; skos:prefLabel "Alvenaria estrutural"@pt-BR ; skos:prefLabel "Structural masonry"@en ; owl:equivalentClass :StructuralMasonry .
+:BlocoDeFundacao a owl:Class ; dcterms:identifier "BlocoDeFundacao" ; skos:prefLabel "Bloco de fundação"@pt-BR ; skos:prefLabel "Pile cap"@en ; owl:equivalentClass :PileCap .
+:CargaAcidental a owl:Class ; dcterms:identifier "CargaAcidental" ; skos:prefLabel "Carga acidental"@pt-BR ; skos:prefLabel "Accidental load"@en ; owl:equivalentClass :AccidentalLoad .
+:CargaDeProjeto a owl:Class ; dcterms:identifier "CargaDeProjeto" ; skos:prefLabel "Carga de projeto"@pt-BR ; skos:prefLabel "Design load"@en ; owl:equivalentClass :DesignLoad .
+:CargaDeRuptura a owl:Class ; dcterms:identifier "CargaDeRuptura" ; skos:prefLabel "Carga de ruptura"@pt-BR ; skos:prefLabel "Failure load"@en ; owl:equivalentClass :FailureLoad .
+:Carregamento a owl:Class ; dcterms:identifier "Carregamento" ; skos:prefLabel "Carregamento"@pt-BR ; skos:prefLabel "Bearing"@en ; owl:equivalentClass :Bearing .
+:CoeficienteDeSeguranca a owl:Class ; dcterms:identifier "CoeficienteDeSeguranca" ; skos:prefLabel "Coeficiente de segurança"@pt-BR ; skos:prefLabel "Factor of safety"@en ; owl:equivalentClass :FactorOfSafety .
+:Corrosao a owl:Class ; dcterms:identifier "Corrosao" ; skos:prefLabel "Corrosão"@pt-BR ; skos:prefLabel "Corrosion"@en ; owl:equivalentClass :Corrosion .
+:Escoramento a owl:Class ; dcterms:identifier "Escoramento" ; skos:prefLabel "Escoramento"@pt-BR ; skos:prefLabel "Shoring"@en ; owl:equivalentClass :Shoring .
+:EstruturaDeAco a owl:Class ; dcterms:identifier "EstruturaDeAco" ; skos:prefLabel "Estrutura de aço"@pt-BR ; skos:prefLabel "Steel structure"@en ; owl:equivalentClass :SteelStructure .
+:EstruturaDeAluminio a owl:Class ; dcterms:identifier "EstruturaDeAluminio" ; skos:prefLabel "Estrutura de alumínio"@pt-BR ; skos:prefLabel "Aluminum structure"@en ; owl:equivalentClass :AluminumStructure .
+:EstruturaDeConcretoMoldadaInLoco a owl:Class ; dcterms:identifier "EstruturaDeConcretoMoldadaInLoco" ; skos:prefLabel "Estrutura de concreto moldada in-loco"@pt-BR ; skos:prefLabel "Cast-in-place concrete structure"@en ; owl:equivalentClass :CastInPlaceConcreteStructure .
+:EstruturaDeConcretoPreMoldada a owl:Class ; dcterms:identifier "EstruturaDeConcretoPreMoldada" ; skos:prefLabel "Estrutura de concreto pré-moldada"@pt-BR ; skos:prefLabel "Precast concrete structure"@en ; owl:equivalentClass :PrecastConcreteStructure .
+:EstruturaDeMadeira a owl:Class ; dcterms:identifier "EstruturaDeMadeira" ; skos:prefLabel "Estrutura de madeira"@pt-BR ; skos:prefLabel "Timber structure"@en ; owl:equivalentClass :TimberStructure .
+:EstruturaMetalica a owl:Class ; dcterms:identifier "EstruturaMetalica" ; skos:prefLabel "Estrutura metálica"@pt-BR ; skos:prefLabel "Metal structure"@en ; owl:equivalentClass :MetalStructure .
+:ForcaCortante a owl:Class ; dcterms:identifier "ForcaCortante" ; skos:prefLabel "Força cortante"@pt-BR ; skos:prefLabel "Shear force"@en ; owl:equivalentClass :ShearForce .
+:Grelha a owl:Class ; dcterms:identifier "Grelha" ; skos:prefLabel "Grelha"@pt-BR ; skos:prefLabel "Grating"@en ; owl:equivalentClass :Grating .
+:LajeCogumelo a owl:Class ; dcterms:identifier "LajeCogumelo" ; skos:prefLabel "Laje cogumelo"@pt-BR ; skos:prefLabel "Mushroom slab"@en ; owl:equivalentClass :MushroomSlab .
+:MomentoDeInercia a owl:Class ; dcterms:identifier "MomentoDeInercia" ; skos:prefLabel "Momento de inércia"@pt-BR ; skos:prefLabel "Moment of inertia"@en ; owl:equivalentClass :MomentOfInertia .
+:MomentoFletor a owl:Class ; dcterms:identifier "MomentoFletor" ; skos:prefLabel "Momento fletor"@pt-BR ; skos:prefLabel "Bending moment"@en ; owl:equivalentClass :BendingMoment .
+:ParedeEstrutural a owl:Class ; dcterms:identifier "ParedeEstrutural" ; skos:prefLabel "Parede Estrutural"@pt-BR ; skos:prefLabel "Bearing wall"@en ; owl:equivalentClass :BearingWall .
+:PesoProprio a owl:Class ; dcterms:identifier "PesoProprio" ; skos:prefLabel "Peso próprio"@pt-BR ; skos:prefLabel "Self-weight"@en ; owl:equivalentClass :SelfWeight .
+:Resistencia a owl:Class ; dcterms:identifier "Resistencia" ; skos:prefLabel "Resistência"@pt-BR ; skos:prefLabel "Strength"@en ; owl:equivalentClass :Strength .
+:Secao a owl:Class ; dcterms:identifier "Secao" ; skos:prefLabel "Seção"@pt-BR ; skos:prefLabel "Section"@en ; owl:equivalentClass :Section .
+:Torcao a owl:Class ; dcterms:identifier "Torcao" ; skos:prefLabel "Torção"@pt-BR ; skos:prefLabel "Torsion"@en ; owl:equivalentClass :Torsion .
+:Tracao a owl:Class ; dcterms:identifier "Tracao" ; skos:prefLabel "Tração"@pt-BR ; skos:prefLabel "Tension"@en ; owl:equivalentClass :Tension .
+:Trinca a owl:Class ; dcterms:identifier "Trinca" ; skos:prefLabel "Trinca"@pt-BR ; skos:prefLabel "Crack"@en ; owl:equivalentClass :Crack .
+:VigaDeTravamento a owl:Class ; dcterms:identifier "VigaDeTravamento" ; skos:prefLabel "Viga de travamento"@pt-BR ; skos:prefLabel "Strap beam"@en ; owl:equivalentClass :StrapBeam .
+:DivisoriaDeMadeira a owl:Class ; dcterms:identifier "DivisoriaDeMadeira" ; skos:prefLabel "Divisória de madeira"@pt-BR ; skos:prefLabel "Wooden partition"@en ; owl:equivalentClass :WoodenPartition .
+:DivisoriaDeMdf a owl:Class ; dcterms:identifier "DivisoriaDeMdf" ; skos:prefLabel "Divisória de MDF"@pt-BR ; skos:prefLabel "MDF board partition"@en ; owl:equivalentClass :MdfBoardPartition .
+:DivisoriaDeVidro a owl:Class ; dcterms:identifier "DivisoriaDeVidro" ; skos:prefLabel "Divisória de vidro"@pt-BR ; skos:prefLabel "Glass partition"@en ; owl:equivalentClass :GlassPartition .
+:AguaDeReuso a owl:Class ; dcterms:identifier "AguaDeReuso" ; skos:prefLabel "Água de reúso"@pt-BR ; skos:prefLabel "Reclaimed water"@en ; owl:equivalentClass :ReclaimedWater .
+:AguaFria a owl:Class ; dcterms:identifier "AguaFria" ; skos:prefLabel "Água fria"@pt-BR ; skos:prefLabel "Cold water"@en ; owl:equivalentClass :ColdWater .
+:AguaPluvial a owl:Class ; dcterms:identifier "AguaPluvial" ; skos:prefLabel "Água pluvial"@pt-BR ; skos:prefLabel "Stormwater"@en ; owl:equivalentClass :Stormwater .
+:AguaQuente a owl:Class ; dcterms:identifier "AguaQuente" ; skos:prefLabel "Água quente"@pt-BR ; skos:prefLabel "Hot water"@en ; owl:equivalentClass :HotWater .
+:BombaHidraulica a owl:Class ; dcterms:identifier "BombaHidraulica" ; skos:prefLabel "Bomba hidráulica"@pt-BR ; skos:prefLabel "Pump"@en ; owl:equivalentClass :Pump .
+:Conexao a owl:Class ; dcterms:identifier "Conexao" ; skos:prefLabel "Conexão"@pt-BR ; skos:prefLabel "Fitting"@en ; owl:equivalentClass :Fitting .
+:Cotovelo a owl:Class ; dcterms:identifier "Cotovelo" ; skos:prefLabel "Cotovelo"@pt-BR ; skos:prefLabel "Elbow"@en ; owl:equivalentClass :Elbow .
+:EstacaoDeTratamentoDeAgua a owl:Class ; dcterms:identifier "EstacaoDeTratamentoDeAgua" ; skos:prefLabel "Estação de tratamento de água"@pt-BR ; skos:prefLabel "Water treatment plant"@en ; owl:equivalentClass :WaterTreatmentPlant .
+:EstacaoDeTratamentoDeEsgoto a owl:Class ; dcterms:identifier "EstacaoDeTratamentoDeEsgoto" ; skos:prefLabel "Estação de tratamento de esgoto"@pt-BR ; skos:prefLabel "Wastewater treatment plant"@en ; owl:equivalentClass :WastewaterTreatmentPlant .
+:Reservatorio a owl:Class ; dcterms:identifier "Reservatorio" ; skos:prefLabel "Reservatório"@pt-BR ; skos:prefLabel "Tank"@en ; owl:equivalentClass :Tank .
+:Te a owl:Class ; dcterms:identifier "Te" ; skos:prefLabel "Tê"@pt-BR ; skos:prefLabel "Tee"@en ; owl:equivalentClass :Tee .
+:Tubo a owl:Class ; dcterms:identifier "Tubo" ; skos:prefLabel "Tubo"@pt-BR ; skos:prefLabel "Pipe"@en ; owl:equivalentClass :Pipe .
+:PocoDeVisita a owl:Class ; dcterms:identifier "PocoDeVisita" ; skos:prefLabel "Poço de visita"@pt-BR ; skos:prefLabel "Manhole"@en ; owl:equivalentClass :Manhole .
+:Ralo a owl:Class ; dcterms:identifier "Ralo" ; skos:prefLabel "Ralo"@pt-BR ; skos:prefLabel "Drain"@en ; owl:equivalentClass :Drain .
+:RedeDeDrenagem a owl:Class ; dcterms:identifier "RedeDeDrenagem" ; skos:prefLabel "Rede de drenagem"@pt-BR ; skos:prefLabel "Storm sewer"@en ; owl:equivalentClass :StormSewer .
+:RedeDeEsgoto a owl:Class ; dcterms:identifier "RedeDeEsgoto" ; skos:prefLabel "Rede de esgoto"@pt-BR ; skos:prefLabel "Sanitary sewer"@en ; owl:equivalentClass :SanitarySewer .
+:TuboDeEsgoto a owl:Class ; dcterms:identifier "TuboDeEsgoto" ; skos:prefLabel "Tubo de esgoto"@pt-BR ; skos:prefLabel "Waste pipe"@en ; owl:equivalentClass :WastePipe .
+:Cabo a owl:Class ; dcterms:identifier "Cabo" ; skos:prefLabel "Cabo"@pt-BR ; skos:prefLabel "Wire"@en ; owl:equivalentClass :Wire .
+:Circuito a owl:Class ; dcterms:identifier "Circuito" ; skos:prefLabel "Circuito"@pt-BR ; skos:prefLabel "Circuit"@en ; owl:equivalentClass :Circuit .
+:CircuitoFechadoDeTvCftv a owl:Class ; dcterms:identifier "CircuitoFechadoDeTvCftv" ; skos:prefLabel "Circuito fechado de TV (CFTV)"@pt-BR ; skos:prefLabel "Closed-circuit television (CCTV)"@en ; owl:equivalentClass :ClosedCircuitTelevisionCctv .
+:Conduite a owl:Class ; dcterms:identifier "Conduite" ; skos:prefLabel "Conduíte"@pt-BR ; skos:prefLabel "Electrical conduit"@en ; owl:equivalentClass :ElectricalConduit .
+:Disjuntor a owl:Class ; dcterms:identifier "Disjuntor" ; skos:prefLabel "Disjuntor"@pt-BR ; skos:prefLabel "Circuit breaker"@en ; owl:equivalentClass :CircuitBreaker .
+:Eletrica a owl:Class ; dcterms:identifier "Eletrica" ; skos:prefLabel "Elétrica"@pt-BR ; skos:prefLabel "Electric"@en ; owl:equivalentClass :Electric .
+:EntradaDeEnergia a owl:Class ; dcterms:identifier "EntradaDeEnergia" ; skos:prefLabel "Entrada de energia"@pt-BR ; skos:prefLabel "Service entrance"@en ; owl:equivalentClass :ServiceEntrance .
+:EspelhoDaTomada a owl:Class ; dcterms:identifier "EspelhoDaTomada" ; skos:prefLabel "Espelho da tomada"@pt-BR ; skos:prefLabel "Outlet cover"@en ; owl:equivalentClass :OutletCover .
+:EspelhoDoInterruptor a owl:Class ; dcterms:identifier "EspelhoDoInterruptor" ; skos:prefLabel "Espelho do interruptor"@pt-BR ; skos:prefLabel "Switch cover"@en ; owl:equivalentClass :SwitchCover .
+:FioTerra a owl:Class ; dcterms:identifier "FioTerra" ; skos:prefLabel "Fio terra"@pt-BR ; skos:prefLabel "Earth cable"@en ; owl:equivalentClass :EarthCable .
+:FitaIsolante a owl:Class ; dcterms:identifier "FitaIsolante" ; skos:prefLabel "Fita isolante"@pt-BR ; skos:prefLabel "Electrical tape"@en ; owl:equivalentClass :ElectricalTape .
+:Gerador a owl:Class ; dcterms:identifier "Gerador" ; skos:prefLabel "Gerador"@pt-BR ; skos:prefLabel "Generator"@en ; owl:equivalentClass :Generator .
+:InstalacaoEletrica a owl:Class ; dcterms:identifier "InstalacaoEletrica" ; skos:prefLabel "Instalação elétrica"@pt-BR ; skos:prefLabel "Building wiring"@en ; owl:equivalentClass :BuildingWiring .
+:Interruptor a owl:Class ; dcterms:identifier "Interruptor" ; skos:prefLabel "Interruptor"@pt-BR ; skos:prefLabel "Switch"@en ; owl:equivalentClass :Switch .
+:Lampada a owl:Class ; dcterms:identifier "Lampada" ; skos:prefLabel "Lâmpada"@pt-BR ; skos:prefLabel "Light bulb"@en ; owl:equivalentClass :LightBulb .
+:Luminotecnica a owl:Class ; dcterms:identifier "Luminotecnica" ; skos:prefLabel "Luminotécnica"@pt-BR ; skos:prefLabel "Lighting design"@en ; owl:equivalentClass :LightingDesign .
+:ParaRaio a owl:Class ; dcterms:identifier "ParaRaio" ; skos:prefLabel "Pára raio"@pt-BR ; skos:prefLabel "Lightning rod"@en ; owl:equivalentClass :LightningRod .
+:Tomada a owl:Class ; dcterms:identifier "Tomada" ; skos:prefLabel "Tomada"@pt-BR ; skos:prefLabel "Outlet"@en ; owl:equivalentClass :Outlet .
+:ArgamassaImpermeavel a owl:Class ; dcterms:identifier "ArgamassaImpermeavel" ; skos:prefLabel "Argamassa impermeável"@pt-BR ; skos:prefLabel "Waterproof mortar"@en ; owl:equivalentClass :WaterproofMortar .
+:MantaAsfaltica a owl:Class ; dcterms:identifier "MantaAsfaltica" ; skos:prefLabel "Manta asfáltica"@pt-BR ; skos:prefLabel "Bituminous waterproofing membrane"@en ; owl:equivalentClass :BituminousWaterproofingMembrane .
+:FachadaCortina a owl:Class ; dcterms:identifier "FachadaCortina" ; skos:prefLabel "Fachada cortina"@pt-BR ; skos:prefLabel "Curtain wall"@en ; owl:equivalentClass :CurtainWall .
+:ForroDeMadeira a owl:Class ; dcterms:identifier "ForroDeMadeira" ; skos:prefLabel "Forro de madeira"@pt-BR ; skos:prefLabel "Wood ceiling"@en ; owl:equivalentClass :WoodCeiling .
+:ForroDePlacasDeGesso a owl:Class ; dcterms:identifier "ForroDePlacasDeGesso" ; skos:prefLabel "Forro de placas de gesso"@pt-BR ; skos:prefLabel "Plasterboard ceiling"@en ; owl:equivalentClass :PlasterboardCeiling .
+:ForroDePvc a owl:Class ; dcterms:identifier "ForroDePvc" ; skos:prefLabel "Forro de PVC"@pt-BR ; skos:prefLabel "PVC ceiling"@en ; owl:equivalentClass :PvcCeiling .
+:ForroMetalico a owl:Class ; dcterms:identifier "ForroMetalico" ; skos:prefLabel "Forro metálico"@pt-BR ; skos:prefLabel "Metal ceiling"@en ; owl:equivalentClass :MetalCeiling .
+:ForroMineral a owl:Class ; dcterms:identifier "ForroMineral" ; skos:prefLabel "Forro mineral"@pt-BR ; skos:prefLabel "Mineral Fiber Ceiling"@en ; owl:equivalentClass :MineralFiberCeiling .
+:GessoLiso a owl:Class ; dcterms:identifier "GessoLiso" ; skos:prefLabel "Gesso liso"@pt-BR ; skos:prefLabel "Plaster"@en ; owl:equivalentClass :Plaster .
+:IsolamentoAcustico a owl:Class ; dcterms:identifier "IsolamentoAcustico" ; skos:prefLabel "Isolamento acústico"@pt-BR ; skos:prefLabel "Soundproofing"@en ; owl:equivalentClass :Soundproofing .
+:IsolamentoTermico a owl:Class ; dcterms:identifier "IsolamentoTermico" ; skos:prefLabel "Isolamento térmico"@pt-BR ; skos:prefLabel "Insulation"@en ; owl:equivalentClass :Insulation .
+:AssoalhoDeMadeira a owl:Class ; dcterms:identifier "AssoalhoDeMadeira" ; skos:prefLabel "Assoalho de madeira"@pt-BR ; skos:prefLabel "Wood floor"@en ; owl:equivalentClass :WoodFloor .
+:Carpete a owl:Class ; dcterms:identifier "Carpete" ; skos:prefLabel "Carpete"@pt-BR ; skos:prefLabel "Carpet"@en ; owl:equivalentClass :Carpet .
+:PisoCeramico a owl:Class ; dcterms:identifier "PisoCeramico" ; skos:prefLabel "Piso cerâmico"@pt-BR ; skos:prefLabel "Ceramic floor"@en ; owl:equivalentClass :CeramicFloor .
+:PisoCimentado a owl:Class ; dcterms:identifier "PisoCimentado" ; skos:prefLabel "Piso cimentado"@pt-BR ; skos:prefLabel "Concrete floors"@en ; owl:equivalentClass :ConcreteFloors .
+:PisoElevado a owl:Class ; dcterms:identifier "PisoElevado" ; skos:prefLabel "Piso elevado"@pt-BR ; skos:prefLabel "Raised flooring"@en ; owl:equivalentClass :RaisedFlooring .
+:PisoIndustrialEmConcreto a owl:Class ; dcterms:identifier "PisoIndustrialEmConcreto" ; skos:prefLabel "Piso industrial em concreto"@pt-BR ; skos:prefLabel "Industrial concrete floors"@en ; owl:equivalentClass :IndustrialConcreteFloors .
+:TacoDeMadeira a owl:Class ; dcterms:identifier "TacoDeMadeira" ; skos:prefLabel "Taco de madeira"@pt-BR ; skos:prefLabel "Hardwood Flooring"@en ; owl:equivalentClass :HardwoodFlooring .
+:Epoxi a owl:Class ; dcterms:identifier "Epoxi" ; skos:prefLabel "Epóxi"@pt-BR ; skos:prefLabel "Epoxy"@en ; owl:equivalentClass :Epoxy .
+:PinturaHidrofugante a owl:Class ; dcterms:identifier "PinturaHidrofugante" ; skos:prefLabel "Pintura hidrofugante"@pt-BR ; skos:prefLabel "Waterproof paint"@en ; owl:equivalentClass :WaterproofPaint .
+:TexturaAcrilica a owl:Class ; dcterms:identifier "TexturaAcrilica" ; skos:prefLabel "Textura acrílica"@pt-BR ; skos:prefLabel "Acrylic texture paint"@en ; owl:equivalentClass :AcrylicTexturePaint .
+:TintaLatex a owl:Class ; dcterms:identifier "TintaLatex" ; skos:prefLabel "Tinta látex"@pt-BR ; skos:prefLabel "Latex paint"@en ; owl:equivalentClass :LatexPaint .
+:AlarmeDeIncendio a owl:Class ; dcterms:identifier "AlarmeDeIncendio" ; skos:prefLabel "Alarme de incêndio"@pt-BR ; skos:prefLabel "Fire detection system"@en ; owl:equivalentClass :FireDetectionSystem .
+:ArCondicionado a owl:Class ; dcterms:identifier "ArCondicionado" ; skos:prefLabel "Ar condicionado"@pt-BR ; skos:prefLabel "Air conditioning system"@en ; owl:equivalentClass :AirConditioningSystem .
+:InstalacoesDeIncendio a owl:Class ; dcterms:identifier "InstalacoesDeIncendio" ; skos:prefLabel "Instalações de incêndio"@pt-BR ; skos:prefLabel "Fire protection system"@en ; owl:equivalentClass :FireProtectionSystem .
+:RedeLogica a owl:Class ; dcterms:identifier "RedeLogica" ; skos:prefLabel "Rede lógica"@pt-BR ; skos:prefLabel "Communication lines"@en ; owl:equivalentClass :CommunicationLines .
+:SistemaDeGasNatural a owl:Class ; dcterms:identifier "SistemaDeGasNatural" ; skos:prefLabel "Sistema de gás natural"@pt-BR ; skos:prefLabel "Gas piping system"@en ; owl:equivalentClass :GasPipingSystem .
+:Ventilacao a owl:Class ; dcterms:identifier "Ventilacao" ; skos:prefLabel "Ventilação"@pt-BR ; skos:prefLabel "Ventilation"@en ; owl:equivalentClass :Ventilation .
+:Elevador a owl:Class ; dcterms:identifier "Elevador" ; skos:prefLabel "Elevador"@pt-BR ; skos:prefLabel "Elevator"@en ; owl:equivalentClass :Elevator .
+:ElevadorCremalheira a owl:Class ; dcterms:identifier "ElevadorCremalheira" ; skos:prefLabel "Elevador cremalheira"@pt-BR ; skos:prefLabel "Pinion elevator"@en ; owl:equivalentClass :PinionElevator .
+:EscadasRolantes a owl:Class ; dcterms:identifier "EscadasRolantes" ; skos:prefLabel "Escadas rolantes"@pt-BR ; skos:prefLabel "Escalator"@en ; owl:equivalentClass :Escalator .
+:Grua a owl:Class ; dcterms:identifier "Grua" ; skos:prefLabel "Grua"@pt-BR ; skos:prefLabel "Tower crane"@en ; owl:equivalentClass :TowerCrane .
+:Guindaste a owl:Class ; dcterms:identifier "Guindaste" ; skos:prefLabel "Guindaste"@pt-BR ; skos:prefLabel "Crane"@en ; owl:equivalentClass :Crane .
+:Dobradica a owl:Class ; dcterms:identifier "Dobradica" ; skos:prefLabel "Dobradiça"@pt-BR ; skos:prefLabel "Hinge"@en ; owl:equivalentClass :Hinge .
+:Fechadura a owl:Class ; dcterms:identifier "Fechadura" ; skos:prefLabel "Fechadura"@pt-BR ; skos:prefLabel "Lockset"@en ; owl:equivalentClass :Lockset .
+:FolhaPorta a owl:Class ; dcterms:identifier "FolhaPorta" ; skos:prefLabel "Folha (porta)"@pt-BR ; skos:prefLabel "Panel"@en ; owl:equivalentClass :Panel .
+:GuarnicaoDePorta a owl:Class ; dcterms:identifier "GuarnicaoDePorta" ; skos:prefLabel "Guarnição (de porta)"@pt-BR ; skos:prefLabel "Door casing"@en ; owl:equivalentClass :DoorCasing .
+:Macaneta a owl:Class ; dcterms:identifier "Macaneta" ; skos:prefLabel "Maçaneta"@pt-BR ; skos:prefLabel "Knob"@en ; owl:equivalentClass :Knob .
+:PerfilDeAluminio a owl:Class ; dcterms:identifier "PerfilDeAluminio" ; skos:prefLabel "Perfil de alumínio"@pt-BR ; skos:prefLabel "Aluminum profile"@en ; owl:equivalentClass :AluminumProfile .
+:PortaDeCorrer a owl:Class ; dcterms:identifier "PortaDeCorrer" ; skos:prefLabel "Porta de correr"@pt-BR ; skos:prefLabel "By pass door"@en ; owl:equivalentClass :ByPassDoor .
+:Portao a owl:Class ; dcterms:identifier "Portao" ; skos:prefLabel "Portão"@pt-BR ; skos:prefLabel "Gate"@en ; owl:equivalentClass :Gate .
+:Vidro a owl:Class ; dcterms:identifier "Vidro" ; skos:prefLabel "Vidro"@pt-BR ; skos:prefLabel "Glass"@en ; owl:equivalentClass :Glass .
+:Bacia a owl:Class ; dcterms:identifier "Bacia" ; skos:prefLabel "Bacia"@pt-BR ; skos:prefLabel "Basin"@en ; owl:equivalentClass :Basin .
+:Bancada a owl:Class ; dcterms:identifier "Bancada" ; skos:prefLabel "Bancada"@pt-BR ; skos:prefLabel "Countertop"@en ; owl:equivalentClass :Countertop .
+:Banheira a owl:Class ; dcterms:identifier "Banheira" ; skos:prefLabel "Banheira"@pt-BR ; skos:prefLabel "Bathtub"@en ; owl:equivalentClass :Bathtub .
+:DuchaHigienica a owl:Class ; dcterms:identifier "DuchaHigienica" ; skos:prefLabel "Ducha higiênica"@pt-BR ; skos:prefLabel "Hygienic shower"@en ; owl:equivalentClass :HygienicShower .
+:Lavatorio a owl:Class ; dcterms:identifier "Lavatorio" ; skos:prefLabel "Lavatório"@pt-BR ; skos:prefLabel "Washbasin"@en ; owl:equivalentClass :Washbasin .
+:Pia a owl:Class ; dcterms:identifier "Pia" ; skos:prefLabel "Pia"@pt-BR ; skos:prefLabel "Sink"@en ; owl:equivalentClass :Sink .
+:Privada a owl:Class ; dcterms:identifier "Privada" ; skos:prefLabel "Privada"@pt-BR ; skos:prefLabel "Toilet"@en ; owl:equivalentClass :Toilet .
+:Torneira a owl:Class ; dcterms:identifier "Torneira" ; skos:prefLabel "Torneira"@pt-BR ; skos:prefLabel "Tap"@en ; owl:equivalentClass :Tap .
+:Condutor a owl:Class ; dcterms:identifier "Condutor" ; skos:prefLabel "Condutor"@pt-BR ; skos:prefLabel "Downpipe"@en ; owl:equivalentClass :Downpipe .
+:TelhaCeramica a owl:Class ; dcterms:identifier "TelhaCeramica" ; skos:prefLabel "Telha cerâmica"@pt-BR ; skos:prefLabel "Tile"@en ; owl:equivalentClass :Tile .
+:TelhaDeAcrilico a owl:Class ; dcterms:identifier "TelhaDeAcrilico" ; skos:prefLabel "Telha de acrílico"@pt-BR ; skos:prefLabel "Acrylic Roof"@en ; owl:equivalentClass :AcrylicRoof .
+:TelhaDeAluminio a owl:Class ; dcterms:identifier "TelhaDeAluminio" ; skos:prefLabel "Telha de alumínio"@pt-BR ; skos:prefLabel "Aluminum roofing sheet"@en ; owl:equivalentClass :AluminumRoofingSheet .
+:TelhaDeConcreto a owl:Class ; dcterms:identifier "TelhaDeConcreto" ; skos:prefLabel "Telha de concreto"@pt-BR ; skos:prefLabel "Concrete roof tile"@en ; owl:equivalentClass :ConcreteRoofTile .
+:TelhaDeVidro a owl:Class ; dcterms:identifier "TelhaDeVidro" ; skos:prefLabel "Telha de vidro"@pt-BR ; skos:prefLabel "Glass roof tile"@en ; owl:equivalentClass :GlassRoofTile .
+:TelhaFibrocimento a owl:Class ; dcterms:identifier "TelhaFibrocimento" ; skos:prefLabel "Telha fibrocimento"@pt-BR ; skos:prefLabel "Fibre cement roof sheet"@en ; owl:equivalentClass :FibreCementRoofSheet .
+:TelhaTrapezoidal a owl:Class ; dcterms:identifier "TelhaTrapezoidal" ; skos:prefLabel "Telha trapezoidal"@pt-BR ; skos:prefLabel "Trapezoid profile roofing sheet"@en ; owl:equivalentClass :TrapezoidProfileRoofingSheet .
+:TelhaTrapezoidalSanduiche a owl:Class ; dcterms:identifier "TelhaTrapezoidalSanduiche" ; skos:prefLabel "Telha trapezoidal sanduíche"@pt-BR ; skos:prefLabel "Sandwich roofing sheet"@en ; owl:equivalentClass :SandwichRoofingSheet .
+
+:Airport a owl:Class ; dcterms:identifier "Airport" ; skos:prefLabel "Airport"@en ; owl:equivalentClass :Aeroporto .
+:Dam a owl:Class ; dcterms:identifier "Dam" ; skos:prefLabel "Dam"@en ; owl:equivalentClass :Barragem .
+:HeavyCivil a owl:Class ; dcterms:identifier "HeavyCivil" ; skos:prefLabel "Heavy civil"@en ; owl:equivalentClass :ConstrucaoPesada .
+:Road a owl:Class ; dcterms:identifier "Road" ; skos:prefLabel "Road"@en ; owl:equivalentClass :Estrada .
+:Railroad a owl:Class ; dcterms:identifier "Railroad" ; skos:prefLabel "Railroad"@en ; owl:equivalentClass :Ferrovia .
+:Bridge a owl:Class ; dcterms:identifier "Bridge" ; skos:prefLabel "Bridge"@en ; owl:equivalentClass :Ponte .
+:Tunnel a owl:Class ; dcterms:identifier "Tunnel" ; skos:prefLabel "Tunnel"@en ; owl:equivalentClass :Tunel .
+:Schedule a owl:Class ; dcterms:identifier "Schedule" ; skos:prefLabel "Schedule"@en ; owl:equivalentClass :Cronograma .
+:DailyFieldReports a owl:Class ; dcterms:identifier "DailyFieldReports" ; skos:prefLabel "Daily field reports"@en ; owl:equivalentClass :DiarioDeObra .
+:CostOverrun a owl:Class ; dcterms:identifier "CostOverrun" ; skos:prefLabel "Cost overrun"@en ; owl:equivalentClass :EstouroDeCusto .
+:FeasibilityStudies a owl:Class ; dcterms:identifier "FeasibilityStudies" ; skos:prefLabel "Feasibility studies"@en ; owl:equivalentClass :EstudosDeViabilidade .
+:PerformanceBond a owl:Class ; dcterms:identifier "PerformanceBond" ; skos:prefLabel "Performance Bond"@en ; owl:equivalentClass :GarantiaParaExecutarOContrato .
+:BidBond a owl:Class ; dcterms:identifier "BidBond" ; skos:prefLabel "Bid Bond"@en ; owl:equivalentClass :GarantiaParaLicitar .
+:Bid a owl:Class ; dcterms:identifier "Bid" ; skos:prefLabel "Bid"@en ; owl:equivalentClass :OrcamentoProposta .
+:Budget a owl:Class ; dcterms:identifier "Budget" ; skos:prefLabel "Budget"@en ; owl:equivalentClass :OrcamentoVerba .
+:CostEstimating a owl:Class ; dcterms:identifier "CostEstimating" ; skos:prefLabel "Cost estimating"@en ; owl:equivalentClass :OrcamentoDeCustos .
+:Planning a owl:Class ; dcterms:identifier "Planning" ; skos:prefLabel "Planning"@en ; owl:equivalentClass :Planejamento .
+:Skyscraper a owl:Class ; dcterms:identifier "Skyscraper" ; skos:prefLabel "Skyscraper"@en ; owl:equivalentClass :ArranhaCeu .
+:Toilet a owl:Class ; dcterms:identifier "Toilet" ; skos:prefLabel "Toilet"@en ; skos:altLabel "Bathroom"@en ; owl:equivalentClass :Banheiro ; owl:equivalentClass :Privada .
+:House a owl:Class ; dcterms:identifier "House" ; skos:prefLabel "House"@en ; owl:equivalentClass :Casa .
+:Corridor a owl:Class ; dcterms:identifier "Corridor" ; skos:prefLabel "Corridor"@en ; owl:equivalentClass :Corredor .
+:Kitchen a owl:Class ; dcterms:identifier "Kitchen" ; skos:prefLabel "Kitchen"@en ; owl:equivalentClass :Cozinha .
+:Sketch a owl:Class ; dcterms:identifier "Sketch" ; skos:prefLabel "Sketch"@en ; owl:equivalentClass :Croqui .
+:Bedroom a owl:Class ; dcterms:identifier "Bedroom" ; skos:prefLabel "Bedroom"@en ; owl:equivalentClass :Dormitorio .
+:Entrance a owl:Class ; dcterms:identifier "Entrance" ; skos:prefLabel "Entrance"@en ; owl:equivalentClass :Entrada .
+:Facade a owl:Class ; dcterms:identifier "Facade" ; skos:prefLabel "Facade"@en ; owl:equivalentClass :Fachada .
+:Garage a owl:Class ; dcterms:identifier "Garage" ; skos:prefLabel "Garage"@en ; owl:equivalentClass :Garagem .
+:Fireplace a owl:Class ; dcterms:identifier "Fireplace" ; skos:prefLabel "Fireplace"@en ; owl:equivalentClass :Lareira .
+:Restroom a owl:Class ; dcterms:identifier "Restroom" ; skos:prefLabel "Restroom"@en ; owl:equivalentClass :Lavabo .
+:Laundry a owl:Class ; dcterms:identifier "Laundry" ; skos:prefLabel "Laundry"@en ; owl:equivalentClass :Lavanderia .
+:Wall a owl:Class ; dcterms:identifier "Wall" ; skos:prefLabel "Wall"@en ; owl:equivalentClass :Parede .
+:Floor a owl:Class ; dcterms:identifier "Floor" ; skos:prefLabel "Floor"@en ; owl:equivalentClass :Pavimento .
+:SwimmingPool a owl:Class ; dcterms:identifier "SwimmingPool" ; skos:prefLabel "Swimming pool"@en ; owl:equivalentClass :Piscina .
+:Plan a owl:Class ; dcterms:identifier "Plan" ; skos:prefLabel "Plan"@en ; owl:equivalentClass :PlantaProjeto .
+:Cellar a owl:Class ; dcterms:identifier "Cellar" ; skos:prefLabel "Cellar"@en ; owl:equivalentClass :Porao .
+:Building a owl:Class ; dcterms:identifier "Building" ; skos:prefLabel "Building"@en ; owl:equivalentClass :Predio .
+:Balcony a owl:Class ; dcterms:identifier "Balcony" ; skos:prefLabel "Balcony"@en ; owl:equivalentClass :Sacada .
+:Room a owl:Class ; dcterms:identifier "Room" ; skos:prefLabel "Room"@en ; owl:equivalentClass :Sala .
+:LivingRoom a owl:Class ; dcterms:identifier "LivingRoom" ; skos:prefLabel "Living room"@en ; owl:equivalentClass :SalaDeEstar .
+:DiningRoom a owl:Class ; dcterms:identifier "DiningRoom" ; skos:prefLabel "Dining room"@en ; owl:equivalentClass :SalaDeJantar .
+:Attic a owl:Class ; dcterms:identifier "Attic" ; skos:prefLabel "Attic"@en ; owl:equivalentClass :Sotao .
+:Basement a owl:Class ; dcterms:identifier "Basement" ; skos:prefLabel "Basement"@en ; owl:equivalentClass :Subsolo .
+:Terrace a owl:Class ; dcterms:identifier "Terrace" ; skos:prefLabel "Terrace"@en ; owl:equivalentClass :Terraco .
+:GroundFloor a owl:Class ; dcterms:identifier "GroundFloor" ; skos:prefLabel "Ground floor"@en ; owl:equivalentClass :Terreo .
+:Ceiling a owl:Class ; dcterms:identifier "Ceiling" ; skos:prefLabel "Ceiling"@en ; owl:equivalentClass :Teto .
+:Porch a owl:Class ; dcterms:identifier "Porch" ; skos:prefLabel "Porch"@en ; owl:equivalentClass :Varanda .
+:UrbanDevelopment a owl:Class ; dcterms:identifier "UrbanDevelopment" ; skos:prefLabel "Urban development"@en ; owl:equivalentClass :Urbanizacao .
+:Asphalt a owl:Class ; dcterms:identifier "Asphalt" ; skos:prefLabel "Asphalt"@en ; owl:equivalentClass :Asfalto .
+:InterlockingConcretePavingBlocks a owl:Class ; dcterms:identifier "InterlockingConcretePavingBlocks" ; skos:prefLabel "Interlocking concrete paving blocks"@en ; owl:equivalentClass :BlocoDeConcretoIntertravado .
+:Sidewalk a owl:Class ; dcterms:identifier "Sidewalk" ; skos:prefLabel "Sidewalk"@en ; owl:equivalentClass :Calcada .
+:RoadwayCurb a owl:Class ; dcterms:identifier "RoadwayCurb" ; skos:prefLabel "Roadway curb"@en ; owl:equivalentClass :Guia .
+:Landscaping a owl:Class ; dcterms:identifier "Landscaping" ; skos:prefLabel "Landscaping"@en ; owl:equivalentClass :Paisagismo .
+:TravelLane a owl:Class ; dcterms:identifier "TravelLane" ; skos:prefLabel "Travel lane"@en ; owl:equivalentClass :Passeio .
+:Paving a owl:Class ; dcterms:identifier "Paving" ; skos:prefLabel "Paving"@en ; owl:equivalentClass :Pavimentacao .
+:AsphaltPaving a owl:Class ; dcterms:identifier "AsphaltPaving" ; skos:prefLabel "Asphalt paving"@en ; owl:equivalentClass :PavimentoAsfaltico .
+:Gutter a owl:Class ; dcterms:identifier "Gutter" ; skos:prefLabel "Gutter"@en ; owl:equivalentClass :Sarjeta ; owl:equivalentClass :Calha .
+:Steel a owl:Class ; dcterms:identifier "Steel" ; skos:prefLabel "Steel"@en ; owl:equivalentClass :Aco .
+:Additive a owl:Class ; dcterms:identifier "Additive" ; skos:prefLabel "Additive"@en ; owl:equivalentClass :Aditivo .
+:Sand a owl:Class ; dcterms:identifier "Sand" ; skos:prefLabel "Sand"@en ; owl:equivalentClass :Areia .
+:PlasteringSand a owl:Class ; dcterms:identifier "PlasteringSand" ; skos:prefLabel "Plastering sand"@en ; owl:equivalentClass :AreiaFina .
+:SharpSand a owl:Class ; dcterms:identifier "SharpSand" ; skos:prefLabel "Sharp sand"@en ; owl:equivalentClass :AreiaGrossa .
+:Block a owl:Class ; dcterms:identifier "Block" ; skos:prefLabel "Block"@en ; owl:equivalentClass :Bloco .
+:HydratedLime a owl:Class ; dcterms:identifier "HydratedLime" ; skos:prefLabel "Hydrated lime"@en ; owl:equivalentClass :Cal .
+:Cement a owl:Class ; dcterms:identifier "Cement" ; skos:prefLabel "Cement"@en ; owl:equivalentClass :Cimento .
+:Concrete a owl:Class ; dcterms:identifier "Concrete" ; skos:prefLabel "Concrete"@en ; owl:equivalentClass :Concreto .
+:ReadyMixedConcrete a owl:Class ; dcterms:identifier "ReadyMixedConcrete" ; skos:prefLabel "Ready Mixed Concrete"@en ; owl:equivalentClass :ConcretoUsinado .
+:Fiberglass a owl:Class ; dcterms:identifier "Fiberglass" ; skos:prefLabel "Fiberglass"@en ; owl:equivalentClass :FibraDeVidro .
+:Plaster a owl:Class ; dcterms:identifier "Plaster" ; skos:prefLabel "Plaster"@en ; owl:equivalentClass :Gesso ; owl:equivalentClass :GessoLiso .
+:Plasterboard a owl:Class ; dcterms:identifier "Plasterboard" ; skos:prefLabel "Plasterboard"@en ; owl:equivalentClass :GessoAcartonado .
+:Timber a owl:Class ; dcterms:identifier "Timber" ; skos:prefLabel "Timber"@en ; owl:equivalentClass :Madeira .
+:Bat a owl:Class ; dcterms:identifier "Bat" ; skos:prefLabel "Bat"@en ; owl:equivalentClass :MeioBloco .
+:CementSlurry a owl:Class ; dcterms:identifier "CementSlurry" ; skos:prefLabel "Cement slurry"@en ; owl:equivalentClass :NataDeCimento .
+:Rebar a owl:Class ; dcterms:identifier "Rebar" ; skos:prefLabel "Rebar"@en ; skos:altLabel "Reinforcing bar"@en ; owl:equivalentClass :Vergalhao .
+:Plier a owl:Class ; dcterms:identifier "Plier" ; skos:prefLabel "Plier"@en ; owl:equivalentClass :Alicate .
+:Scaffolding a owl:Class ; dcterms:identifier "Scaffolding" ; skos:prefLabel "Scaffolding"@en ; owl:equivalentClass :Andaime .
+:MortarMixer a owl:Class ; dcterms:identifier "MortarMixer" ; skos:prefLabel "Mortar mixer"@en ; owl:equivalentClass :Argamassadeira .
+:ConcreteMixer a owl:Class ; dcterms:identifier "ConcreteMixer" ; skos:prefLabel "Concrete mixer"@en ; owl:equivalentClass :Betoneira .
+:Wheelbarrow a owl:Class ; dcterms:identifier "Wheelbarrow" ; skos:prefLabel "Wheelbarrow"@en ; owl:equivalentClass :CarrinhoDeMao .
+:Screwdriver a owl:Class ; dcterms:identifier "Screwdriver" ; skos:prefLabel "Screwdriver"@en ; owl:equivalentClass :ChaveDeFenda .
+:Wrench a owl:Class ; dcterms:identifier "Wrench" ; skos:prefLabel "Wrench"@en ; owl:equivalentClass :ChaveInglesa .
+:Trowel a owl:Class ; dcterms:identifier "Trowel" ; skos:prefLabel "Trowel"@en ; owl:equivalentClass :ColherDePedreiro .
+:Hoe a owl:Class ; dcterms:identifier "Hoe" ; skos:prefLabel "Hoe"@en ; owl:equivalentClass :Enxada .
+:Ladder a owl:Class ; dcterms:identifier "Ladder" ; skos:prefLabel "Ladder"@en ; owl:equivalentClass :Escada .
+:SetSquare a owl:Class ; dcterms:identifier "SetSquare" ; skos:prefLabel "Set-square"@en ; owl:equivalentClass :Esquadro .
+:TotalStation a owl:Class ; dcterms:identifier "TotalStation" ; skos:prefLabel "Total station"@en ; owl:equivalentClass :EstacaoTotal .
+:Tool a owl:Class ; dcterms:identifier "Tool" ; skos:prefLabel "Tool"@en ; owl:equivalentClass :Ferramenta .
+:Plumbline a owl:Class ; dcterms:identifier "Plumbline" ; skos:prefLabel "Plumbline"@en ; owl:equivalentClass :FioDePrumo .
+:ChalkLine a owl:Class ; dcterms:identifier "ChalkLine" ; skos:prefLabel "Chalk line"@en ; owl:equivalentClass :FioTracante .
+:Drill a owl:Class ; dcterms:identifier "Drill" ; skos:prefLabel "Drill"@en ; owl:equivalentClass :Furadeira .
+:NylonLine a owl:Class ; dcterms:identifier "NylonLine" ; skos:prefLabel "Nylon line"@en ; owl:equivalentClass :LinhaDeNailon .
+:Grinder a owl:Class ; dcterms:identifier "Grinder" ; skos:prefLabel "Grinder"@en ; owl:equivalentClass :Lixadeira .
+:Axe a owl:Class ; dcterms:identifier "Axe" ; skos:prefLabel "Axe"@en ; owl:equivalentClass :Machado .
+:Sledgehammer a owl:Class ; dcterms:identifier "Sledgehammer" ; skos:prefLabel "Sledgehammer"@en ; skos:altLabel "Mallet"@en ; owl:equivalentClass :Marreta .
+:Hammer a owl:Class ; dcterms:identifier "Hammer" ; skos:prefLabel "Hammer"@en ; owl:equivalentClass :Martelo .
+:Level a owl:Class ; dcterms:identifier "Level" ; skos:prefLabel "Level"@en ; owl:equivalentClass :Nivel .
+:Shovel a owl:Class ; dcterms:identifier "Shovel" ; skos:prefLabel "Shovel"@en ; owl:equivalentClass :Pa .
+:ScrewGun a owl:Class ; dcterms:identifier "ScrewGun" ; skos:prefLabel "Screw gun"@en ; owl:equivalentClass :Parafusadeira .
+:Paintbrush a owl:Class ; dcterms:identifier "Paintbrush" ; skos:prefLabel "Paintbrush"@en ; owl:equivalentClass :Pincel .
+:Ruler a owl:Class ; dcterms:identifier "Ruler" ; skos:prefLabel "Ruler"@en ; owl:equivalentClass :Regua .
+:PaintRoller a owl:Class ; dcterms:identifier "PaintRoller" ; skos:prefLabel "Paint roller"@en ; owl:equivalentClass :RoloDePintura .
+:CircularSaw a owl:Class ; dcterms:identifier "CircularSaw" ; skos:prefLabel "Circular saw"@en ; owl:equivalentClass :SerraCircular .
+:Saw a owl:Class ; dcterms:identifier "Saw" ; skos:prefLabel "Saw"@en ; owl:equivalentClass :Serrote .
+:TapeMeasure a owl:Class ; dcterms:identifier "TapeMeasure" ; skos:prefLabel "Tape measure"@en ; owl:equivalentClass :Trena .
+:BuildingSite a owl:Class ; dcterms:identifier "BuildingSite" ; skos:prefLabel "Building site"@en ; owl:equivalentClass :CanteiroDeObra .
+:TopographicalSurvey a owl:Class ; dcterms:identifier "TopographicalSurvey" ; skos:prefLabel "Topographical survey"@en ; owl:equivalentClass :LevantamentoTopografico .
+:ConstructionSiteCleanupServices a owl:Class ; dcterms:identifier "ConstructionSiteCleanupServices" ; skos:prefLabel "Construction site cleanup services"@en ; owl:equivalentClass :LimpezaDoTerreno .
+:Demolition a owl:Class ; dcterms:identifier "Demolition" ; skos:prefLabel "Demolition"@en ; owl:equivalentClass :Demolicao .
+:RockBlasting a owl:Class ; dcterms:identifier "RockBlasting" ; skos:prefLabel "Rock blasting"@en ; owl:equivalentClass :DesmonteDeRocha .
+:Explosive a owl:Class ; dcterms:identifier "Explosive" ; skos:prefLabel "Explosive"@en ; owl:equivalentClass :Explosivo .
+:Clay a owl:Class ; dcterms:identifier "Clay" ; skos:prefLabel "Clay"@en ; owl:equivalentClass :Argila .
+:LateralFriction a owl:Class ; dcterms:identifier "LateralFriction" ; skos:prefLabel "Lateral friction"@en ; owl:equivalentClass :AtritoLateral .
+:SoilCompaction a owl:Class ; dcterms:identifier "SoilCompaction" ; skos:prefLabel "Soil compaction"@en ; owl:equivalentClass :Compactacao .
+:Shotcrete a owl:Class ; dcterms:identifier "Shotcrete" ; skos:prefLabel "Shotcrete"@en ; owl:equivalentClass :ConcretoProjetado .
+:SoldierPileWall a owl:Class ; dcterms:identifier "SoldierPileWall" ; skos:prefLabel "Soldier Pile Wall"@en ; owl:equivalentClass :ContencaoComPerfisMetalicosEPranchoes .
+:PermanentRetainingWall a owl:Class ; dcterms:identifier "PermanentRetainingWall" ; skos:prefLabel "Permanent retaining wall"@en ; owl:equivalentClass :ContencaoDefinitiva .
+:TemporaryRetainingWall a owl:Class ; dcterms:identifier "TemporaryRetainingWall" ; skos:prefLabel "Temporary retaining wall"@en ; owl:equivalentClass :ContencaoProvisoria .
+:CutAndFill a owl:Class ; dcterms:identifier "CutAndFill" ; skos:prefLabel "Cut and fill"@en ; owl:equivalentClass :CorteEAterro .
+:AnchoredWall a owl:Class ; dcterms:identifier "AnchoredWall" ; skos:prefLabel "Anchored wall"@en ; owl:equivalentClass :CortinaAtirantada .
+:Excavation a owl:Class ; dcterms:identifier "Excavation" ; skos:prefLabel "Excavation"@en ; owl:equivalentClass :Escavacao .
+:ConcreteDrivePile a owl:Class ; dcterms:identifier "ConcreteDrivePile" ; skos:prefLabel "Concrete drive pile"@en ; owl:equivalentClass :EstacaDeConcretoPreMoldada .
+:DrilledPile a owl:Class ; dcterms:identifier "DrilledPile" ; skos:prefLabel "Drilled pile"@en ; owl:equivalentClass :EstacaEscavada .
+:FrankiPile a owl:Class ; dcterms:identifier "FrankiPile" ; skos:prefLabel "Franki pile"@en ; owl:equivalentClass :EstacaFranki .
+:AugercastPile a owl:Class ; dcterms:identifier "AugercastPile" ; skos:prefLabel "Augercast pile"@en ; owl:equivalentClass :EstacaHeliceContinua .
+:SteelPile a owl:Class ; dcterms:identifier "SteelPile" ; skos:prefLabel "Steel pile"@en ; owl:equivalentClass :EstacaMetalica .
+:Micropile a owl:Class ; dcterms:identifier "Micropile" ; skos:prefLabel "Micropile"@en ; owl:equivalentClass :EstacaRaiz .
+:BarrettePile a owl:Class ; dcterms:identifier "BarrettePile" ; skos:prefLabel "Barrette pile"@en ; owl:equivalentClass :Estacao .
+:PileWall a owl:Class ; dcterms:identifier "PileWall" ; skos:prefLabel "Pile wall"@en ; owl:equivalentClass :EstacasJustapostas .
+:SheetPileWall a owl:Class ; dcterms:identifier "SheetPileWall" ; skos:prefLabel "Sheet pile wall"@en ; owl:equivalentClass :EstacasPranchaMetalicas .
+:ShallowFoundation a owl:Class ; dcterms:identifier "ShallowFoundation" ; skos:prefLabel "Shallow foundation"@en ; owl:equivalentClass :FundacaoDireta .
+:DeepFoundation a owl:Class ; dcterms:identifier "DeepFoundation" ; skos:prefLabel "Deep foundation"@en ; owl:equivalentClass :FundacaoProfunda .
+:GeotechnicalEngineering a owl:Class ; dcterms:identifier "GeotechnicalEngineering" ; skos:prefLabel "Geotechnical engineering"@en ; owl:equivalentClass :Geotecnia .
+:Geotextile a owl:Class ; dcterms:identifier "Geotextile" ; skos:prefLabel "Geotextile"@en ; owl:equivalentClass :Geotextil .
+:DrillingMud a owl:Class ; dcterms:identifier "DrillingMud" ; skos:prefLabel "Drilling mud"@en ; skos:altLabel "Bentonite"@en ; owl:equivalentClass :LamaBentonitica .
+:Bedrock a owl:Class ; dcterms:identifier "Bedrock" ; skos:prefLabel "Bedrock"@en ; owl:equivalentClass :LeitoRochoso .
+:Earthwork a owl:Class ; dcterms:identifier "Earthwork" ; skos:prefLabel "Earthwork"@en ; owl:equivalentClass :MovimentoDeTerra .
+:RetainingWall a owl:Class ; dcterms:identifier "RetainingWall" ; skos:prefLabel "Retaining wall"@en ; owl:equivalentClass :MuroDeArrimo .
+:CounterfortWall a owl:Class ; dcterms:identifier "CounterfortWall" ; skos:prefLabel "Counterfort wall"@en ; owl:equivalentClass :MuroDeContrafortes .
+:CantileverWall a owl:Class ; dcterms:identifier "CantileverWall" ; skos:prefLabel "Cantilever wall"@en ; owl:equivalentClass :MuroDeFlexao .
+:Gabion a owl:Class ; dcterms:identifier "Gabion" ; skos:prefLabel "Gabion"@en ; owl:equivalentClass :MuroDeGabiao .
+:GravityWall a owl:Class ; dcterms:identifier "GravityWall" ; skos:prefLabel "Gravity wall"@en ; owl:equivalentClass :MuroDeGravidade .
+:DiaphragmWall a owl:Class ; dcterms:identifier "DiaphragmWall" ; skos:prefLabel "Diaphragm wall"@en ; owl:equivalentClass :ParedeDiafragma .
+:Stone a owl:Class ; dcterms:identifier "Stone" ; skos:prefLabel "Stone"@en ; owl:equivalentClass :Pedra .
+:Gravel a owl:Class ; dcterms:identifier "Gravel" ; skos:prefLabel "Gravel"@en ; owl:equivalentClass :Pedregulho .
+:UnitWeight a owl:Class ; dcterms:identifier "UnitWeight" ; skos:prefLabel "Unit weight"@en ; owl:equivalentClass :PesoEspecifico .
+:SlopeProtection a owl:Class ; dcterms:identifier "SlopeProtection" ; skos:prefLabel "Slope protection"@en ; owl:equivalentClass :ProtecaoDeTaludes .
+:SlabOnGrade a owl:Class ; dcterms:identifier "SlabOnGrade" ; skos:prefLabel "Slab-on-grade"@en ; skos:altLabel "floating slab"@en ; owl:equivalentClass :Radier .
+:Backfill a owl:Class ; dcterms:identifier "Backfill" ; skos:prefLabel "Backfill"@en ; owl:equivalentClass :Reaterro .
+:Rock a owl:Class ; dcterms:identifier "Rock" ; skos:prefLabel "Rock"@en ; owl:equivalentClass :Rocha .
+:SpreadFooting a owl:Class ; dcterms:identifier "SpreadFooting" ; skos:prefLabel "Spread footing"@en ; owl:equivalentClass :Sapata .
+:StripFooting a owl:Class ; dcterms:identifier "StripFooting" ; skos:prefLabel "Strip footing"@en ; owl:equivalentClass :SapataCorrida .
+:Silt a owl:Class ; dcterms:identifier "Silt" ; skos:prefLabel "Silt"@en ; owl:equivalentClass :Silte .
+:SoilNailing a owl:Class ; dcterms:identifier "SoilNailing" ; skos:prefLabel "Soil nailing"@en ; owl:equivalentClass :SoloGrampeado .
+:Slope a owl:Class ; dcterms:identifier "Slope" ; skos:prefLabel "Slope"@en ; owl:equivalentClass :Talude .
+:Anchor a owl:Class ; dcterms:identifier "Anchor" ; skos:prefLabel "Anchor"@en ; skos:altLabel "tie rod"@en ; owl:equivalentClass :Tirante .
+:StructuralMasonry a owl:Class ; dcterms:identifier "StructuralMasonry" ; skos:prefLabel "Structural masonry"@en ; owl:equivalentClass :AlvenariaEstrutural .
+:PileCap a owl:Class ; dcterms:identifier "PileCap" ; skos:prefLabel "Pile cap"@en ; owl:equivalentClass :BlocoDeFundacao .
+:AccidentalLoad a owl:Class ; dcterms:identifier "AccidentalLoad" ; skos:prefLabel "Accidental load"@en ; owl:equivalentClass :CargaAcidental .
+:DesignLoad a owl:Class ; dcterms:identifier "DesignLoad" ; skos:prefLabel "Design load"@en ; owl:equivalentClass :CargaDeProjeto .
+:FailureLoad a owl:Class ; dcterms:identifier "FailureLoad" ; skos:prefLabel "Failure load"@en ; owl:equivalentClass :CargaDeRuptura .
+:Bearing a owl:Class ; dcterms:identifier "Bearing" ; skos:prefLabel "Bearing"@en ; owl:equivalentClass :Carregamento .
+:FactorOfSafety a owl:Class ; dcterms:identifier "FactorOfSafety" ; skos:prefLabel "Factor of safety"@en ; skos:altLabel "safety factor"@en ; owl:equivalentClass :CoeficienteDeSeguranca .
+:Compression a owl:Class ; dcterms:identifier "Compression" ; skos:prefLabel "Compression"@en ; owl:equivalentClass :Compressao .
+:Bracing a owl:Class ; dcterms:identifier "Bracing" ; skos:prefLabel "Bracing"@en ; owl:equivalentClass :Contraventamento .
+:Corrosion a owl:Class ; dcterms:identifier "Corrosion" ; skos:prefLabel "Corrosion"@en ; owl:equivalentClass :Corrosao .
+:Dome a owl:Class ; dcterms:identifier "Dome" ; skos:prefLabel "Dome"@en ; owl:equivalentClass :Domo .
+:Shoring a owl:Class ; dcterms:identifier "Shoring" ; skos:prefLabel "Shoring"@en ; owl:equivalentClass :Escoramento .
+:Structure a owl:Class ; dcterms:identifier "Structure" ; skos:prefLabel "Structure"@en ; owl:equivalentClass :Estrutura .
+:SteelStructure a owl:Class ; dcterms:identifier "SteelStructure" ; skos:prefLabel "Steel structure"@en ; owl:equivalentClass :EstruturaDeAco .
+:AluminumStructure a owl:Class ; dcterms:identifier "AluminumStructure" ; skos:prefLabel "Aluminum structure"@en ; owl:equivalentClass :EstruturaDeAluminio .
+:CastInPlaceConcreteStructure a owl:Class ; dcterms:identifier "CastInPlaceConcreteStructure" ; skos:prefLabel "Cast-in-place concrete structure"@en ; owl:equivalentClass :EstruturaDeConcretoMoldadaInLoco .
+:PrecastConcreteStructure a owl:Class ; dcterms:identifier "PrecastConcreteStructure" ; skos:prefLabel "Precast concrete structure"@en ; owl:equivalentClass :EstruturaDeConcretoPreMoldada .
+:TimberStructure a owl:Class ; dcterms:identifier "TimberStructure" ; skos:prefLabel "Timber structure"@en ; owl:equivalentClass :EstruturaDeMadeira .
+:MetalStructure a owl:Class ; dcterms:identifier "MetalStructure" ; skos:prefLabel "Metal structure"@en ; owl:equivalentClass :EstruturaMetalica .
+:Fissure a owl:Class ; dcterms:identifier "Fissure" ; skos:prefLabel "Fissure"@en ; owl:equivalentClass :Fissura .
+:Bending a owl:Class ; dcterms:identifier "Bending" ; skos:prefLabel "Bending"@en ; skos:altLabel "flexure"@en ; owl:equivalentClass :Flexao .
+:ShearForce a owl:Class ; dcterms:identifier "ShearForce" ; skos:prefLabel "Shear force"@en ; owl:equivalentClass :ForcaCortante .
+:Formwork a owl:Class ; dcterms:identifier "Formwork" ; skos:prefLabel "Formwork"@en ; owl:equivalentClass :Forma .
+:Grating a owl:Class ; dcterms:identifier "Grating" ; skos:prefLabel "Grating"@en ; owl:equivalentClass :Grelha .
+:Slab a owl:Class ; dcterms:identifier "Slab" ; skos:prefLabel "Slab"@en ; owl:equivalentClass :Laje .
+:MushroomSlab a owl:Class ; dcterms:identifier "MushroomSlab" ; skos:prefLabel "Mushroom slab"@en ; owl:equivalentClass :LajeCogumelo .
+:MomentOfInertia a owl:Class ; dcterms:identifier "MomentOfInertia" ; skos:prefLabel "Moment of inertia"@en ; owl:equivalentClass :MomentoDeInercia .
+:BendingMoment a owl:Class ; dcterms:identifier "BendingMoment" ; skos:prefLabel "Bending moment"@en ; owl:equivalentClass :MomentoFletor .
+:BearingWall a owl:Class ; dcterms:identifier "BearingWall" ; skos:prefLabel "Bearing wall"@en ; owl:equivalentClass :ParedeEstrutural .
+:SelfWeight a owl:Class ; dcterms:identifier "SelfWeight" ; skos:prefLabel "Self-weight"@en ; owl:equivalentClass :PesoProprio .
+:Column a owl:Class ; dcterms:identifier "Column" ; skos:prefLabel "Column"@en ; skos:altLabel "Pillar"@en ; owl:equivalentClass :Pilar .
+:Strength a owl:Class ; dcterms:identifier "Strength" ; skos:prefLabel "Strength"@en ; owl:equivalentClass :Resistencia .
+:Section a owl:Class ; dcterms:identifier "Section" ; skos:prefLabel "Section"@en ; owl:equivalentClass :Secao .
+:Torsion a owl:Class ; dcterms:identifier "Torsion" ; skos:prefLabel "Torsion"@en ; owl:equivalentClass :Torcao .
+:Tension a owl:Class ; dcterms:identifier "Tension" ; skos:prefLabel "Tension"@en ; owl:equivalentClass :Tracao .
+:Crack a owl:Class ; dcterms:identifier "Crack" ; skos:prefLabel "Crack"@en ; owl:equivalentClass :Trinca .
+:Beam a owl:Class ; dcterms:identifier "Beam" ; skos:prefLabel "Beam"@en ; owl:equivalentClass :Viga .
+:StrapBeam a owl:Class ; dcterms:identifier "StrapBeam" ; skos:prefLabel "Strap beam"@en ; owl:equivalentClass :VigaDeTravamento .
+:Masonry a owl:Class ; dcterms:identifier "Masonry" ; skos:prefLabel "Masonry"@en ; owl:equivalentClass :Alvenaria .
+:WoodenPartition a owl:Class ; dcterms:identifier "WoodenPartition" ; skos:prefLabel "Wooden partition"@en ; owl:equivalentClass :DivisoriaDeMadeira .
+:MdfBoardPartition a owl:Class ; dcterms:identifier "MdfBoardPartition" ; skos:prefLabel "MDF board partition"@en ; owl:equivalentClass :DivisoriaDeMdf .
+:GlassPartition a owl:Class ; dcterms:identifier "GlassPartition" ; skos:prefLabel "Glass partition"@en ; owl:equivalentClass :DivisoriaDeVidro .
+:ReclaimedWater a owl:Class ; dcterms:identifier "ReclaimedWater" ; skos:prefLabel "Reclaimed water"@en ; owl:equivalentClass :AguaDeReuso .
+:ColdWater a owl:Class ; dcterms:identifier "ColdWater" ; skos:prefLabel "Cold water"@en ; owl:equivalentClass :AguaFria .
+:Stormwater a owl:Class ; dcterms:identifier "Stormwater" ; skos:prefLabel "Stormwater"@en ; owl:equivalentClass :AguaPluvial .
+:HotWater a owl:Class ; dcterms:identifier "HotWater" ; skos:prefLabel "Hot water"@en ; owl:equivalentClass :AguaQuente .
+:Pump a owl:Class ; dcterms:identifier "Pump" ; skos:prefLabel "Pump"@en ; owl:equivalentClass :BombaHidraulica .
+:Fitting a owl:Class ; dcterms:identifier "Fitting" ; skos:prefLabel "Fitting"@en ; owl:equivalentClass :Conexao .
+:Elbow a owl:Class ; dcterms:identifier "Elbow" ; skos:prefLabel "Elbow"@en ; owl:equivalentClass :Cotovelo .
+:WaterTreatmentPlant a owl:Class ; dcterms:identifier "WaterTreatmentPlant" ; skos:prefLabel "Water treatment plant"@en ; owl:equivalentClass :EstacaoDeTratamentoDeAgua .
+:WastewaterTreatmentPlant a owl:Class ; dcterms:identifier "WastewaterTreatmentPlant" ; skos:prefLabel "Wastewater treatment plant"@en ; owl:equivalentClass :EstacaoDeTratamentoDeEsgoto .
+:Plumbing a owl:Class ; dcterms:identifier "Plumbing" ; skos:prefLabel "Plumbing"@en ; owl:equivalentClass :Hidraulica .
+:Tank a owl:Class ; dcterms:identifier "Tank" ; skos:prefLabel "Tank"@en ; owl:equivalentClass :Reservatorio .
+:Tee a owl:Class ; dcterms:identifier "Tee" ; skos:prefLabel "Tee"@en ; owl:equivalentClass :Te .
+:Pipe a owl:Class ; dcterms:identifier "Pipe" ; skos:prefLabel "Pipe"@en ; owl:equivalentClass :Tubo .
+:GreaseTrap a owl:Class ; dcterms:identifier "GreaseTrap" ; skos:prefLabel "Grease trap"@en ; owl:equivalentClass :CaixaDeGordura .
+:Manhole a owl:Class ; dcterms:identifier "Manhole" ; skos:prefLabel "Manhole"@en ; owl:equivalentClass :PocoDeVisita .
+:Drain a owl:Class ; dcterms:identifier "Drain" ; skos:prefLabel "Drain"@en ; owl:equivalentClass :Ralo .
+:StormSewer a owl:Class ; dcterms:identifier "StormSewer" ; skos:prefLabel "Storm sewer"@en ; owl:equivalentClass :RedeDeDrenagem .
+:SanitarySewer a owl:Class ; dcterms:identifier "SanitarySewer" ; skos:prefLabel "Sanitary sewer"@en ; owl:equivalentClass :RedeDeEsgoto .
+:Siphon a owl:Class ; dcterms:identifier "Siphon" ; skos:prefLabel "Siphon"@en ; skos:altLabel "Trap"@en ; owl:equivalentClass :Sifao .
+:WastePipe a owl:Class ; dcterms:identifier "WastePipe" ; skos:prefLabel "Waste pipe"@en ; owl:equivalentClass :TuboDeEsgoto .
+:ElectricalGrounding a owl:Class ; dcterms:identifier "ElectricalGrounding" ; skos:prefLabel "Electrical grounding"@en ; owl:equivalentClass :Aterramento .
+:Wire a owl:Class ; dcterms:identifier "Wire" ; skos:prefLabel "Wire"@en ; skos:altLabel "Cable"@en ; owl:equivalentClass :Cabo .
+:JunctionBox a owl:Class ; dcterms:identifier "JunctionBox" ; skos:prefLabel "Junction Box"@en ; owl:equivalentClass :CaixaDePassagem .
+:Circuit a owl:Class ; dcterms:identifier "Circuit" ; skos:prefLabel "Circuit"@en ; owl:equivalentClass :Circuito .
+:ClosedCircuitTelevisionCctv a owl:Class ; dcterms:identifier "ClosedCircuitTelevisionCctv" ; skos:prefLabel "Closed-circuit television (CCTV)"@en ; owl:equivalentClass :CircuitoFechadoDeTvCftv .
+:ElectricalConduit a owl:Class ; dcterms:identifier "ElectricalConduit" ; skos:prefLabel "Electrical conduit"@en ; owl:equivalentClass :Conduite .
+:CircuitBreaker a owl:Class ; dcterms:identifier "CircuitBreaker" ; skos:prefLabel "Circuit breaker"@en ; owl:equivalentClass :Disjuntor .
+:Electric a owl:Class ; dcterms:identifier "Electric" ; skos:prefLabel "Electric"@en ; owl:equivalentClass :Eletrica .
+:ServiceEntrance a owl:Class ; dcterms:identifier "ServiceEntrance" ; skos:prefLabel "Service entrance"@en ; owl:equivalentClass :EntradaDeEnergia .
+:OutletCover a owl:Class ; dcterms:identifier "OutletCover" ; skos:prefLabel "Outlet cover"@en ; owl:equivalentClass :EspelhoDaTomada .
+:SwitchCover a owl:Class ; dcterms:identifier "SwitchCover" ; skos:prefLabel "Switch cover"@en ; owl:equivalentClass :EspelhoDoInterruptor .
+:EarthCable a owl:Class ; dcterms:identifier "EarthCable" ; skos:prefLabel "Earth cable"@en ; owl:equivalentClass :FioTerra .
+:ElectricalTape a owl:Class ; dcterms:identifier "ElectricalTape" ; skos:prefLabel "Electrical tape"@en ; owl:equivalentClass :FitaIsolante .
+:Generator a owl:Class ; dcterms:identifier "Generator" ; skos:prefLabel "Generator"@en ; owl:equivalentClass :Gerador .
+:BuildingWiring a owl:Class ; dcterms:identifier "BuildingWiring" ; skos:prefLabel "Building wiring"@en ; owl:equivalentClass :InstalacaoEletrica .
+:Switch a owl:Class ; dcterms:identifier "Switch" ; skos:prefLabel "Switch"@en ; owl:equivalentClass :Interruptor .
+:LightBulb a owl:Class ; dcterms:identifier "LightBulb" ; skos:prefLabel "Light bulb"@en ; owl:equivalentClass :Lampada .
+:LightingDesign a owl:Class ; dcterms:identifier "LightingDesign" ; skos:prefLabel "Lighting design"@en ; owl:equivalentClass :Luminotecnica .
+:LightningRod a owl:Class ; dcterms:identifier "LightningRod" ; skos:prefLabel "Lightning rod"@en ; owl:equivalentClass :ParaRaio .
+:Outlet a owl:Class ; dcterms:identifier "Outlet" ; skos:prefLabel "Outlet"@en ; owl:equivalentClass :Tomada .
+:WaterproofMortar a owl:Class ; dcterms:identifier "WaterproofMortar" ; skos:prefLabel "Waterproof mortar"@en ; owl:equivalentClass :ArgamassaImpermeavel .
+:Waterproofing a owl:Class ; dcterms:identifier "Waterproofing" ; skos:prefLabel "Waterproofing"@en ; owl:equivalentClass :Impermeabilizacao .
+:BituminousWaterproofingMembrane a owl:Class ; dcterms:identifier "BituminousWaterproofingMembrane" ; skos:prefLabel "Bituminous waterproofing membrane"@en ; owl:equivalentClass :MantaAsfaltica .
+:Mortar a owl:Class ; dcterms:identifier "Mortar" ; skos:prefLabel "Mortar"@en ; owl:equivalentClass :Argamassa .
+:CurtainWall a owl:Class ; dcterms:identifier "CurtainWall" ; skos:prefLabel "Curtain wall"@en ; owl:equivalentClass :FachadaCortina .
+:WoodCeiling a owl:Class ; dcterms:identifier "WoodCeiling" ; skos:prefLabel "Wood ceiling"@en ; owl:equivalentClass :ForroDeMadeira .
+:PlasterboardCeiling a owl:Class ; dcterms:identifier "PlasterboardCeiling" ; skos:prefLabel "Plasterboard ceiling"@en ; owl:equivalentClass :ForroDePlacasDeGesso .
+:PvcCeiling a owl:Class ; dcterms:identifier "PvcCeiling" ; skos:prefLabel "PVC ceiling"@en ; owl:equivalentClass :ForroDePvc .
+:MetalCeiling a owl:Class ; dcterms:identifier "MetalCeiling" ; skos:prefLabel "Metal ceiling"@en ; owl:equivalentClass :ForroMetalico .
+:MineralFiberCeiling a owl:Class ; dcterms:identifier "MineralFiberCeiling" ; skos:prefLabel "Mineral Fiber Ceiling"@en ; owl:equivalentClass :ForroMineral .
+:Soundproofing a owl:Class ; dcterms:identifier "Soundproofing" ; skos:prefLabel "Soundproofing"@en ; owl:equivalentClass :IsolamentoAcustico .
+:Insulation a owl:Class ; dcterms:identifier "Insulation" ; skos:prefLabel "Insulation"@en ; owl:equivalentClass :IsolamentoTermico .
+:MortarRenderFinishing a owl:Class ; dcterms:identifier "MortarRenderFinishing" ; skos:prefLabel "Mortar render finishing"@en ; owl:equivalentClass :Reboco .
+:WoodFloor a owl:Class ; dcterms:identifier "WoodFloor" ; skos:prefLabel "Wood floor"@en ; owl:equivalentClass :AssoalhoDeMadeira .
+:Carpet a owl:Class ; dcterms:identifier "Carpet" ; skos:prefLabel "Carpet"@en ; owl:equivalentClass :Carpete .
+:WoodenCarpetFlooring a owl:Class ; dcterms:identifier "WoodenCarpetFlooring" ; skos:prefLabel "Wooden carpet flooring"@en ; owl:equivalentClass :CarpeteDeMadeira .
+:CeramicFloor a owl:Class ; dcterms:identifier "CeramicFloor" ; skos:prefLabel "Ceramic floor"@en ; owl:equivalentClass :PisoCeramico .
+:ConcreteFloors a owl:Class ; dcterms:identifier "ConcreteFloors" ; skos:prefLabel "Concrete floors"@en ; owl:equivalentClass :PisoCimentado .
+:RaisedFlooring a owl:Class ; dcterms:identifier "RaisedFlooring" ; skos:prefLabel "Raised flooring"@en ; owl:equivalentClass :PisoElevado .
+:IndustrialConcreteFloors a owl:Class ; dcterms:identifier "IndustrialConcreteFloors" ; skos:prefLabel "Industrial concrete floors"@en ; owl:equivalentClass :PisoIndustrialEmConcreto .
+:VinylFlooring a owl:Class ; dcterms:identifier "VinylFlooring" ; skos:prefLabel "Vinyl flooring"@en ; owl:equivalentClass :PisoVinilico .
+:Threshold a owl:Class ; dcterms:identifier "Threshold" ; skos:prefLabel "Threshold"@en ; owl:equivalentClass :Soleira .
+:HardwoodFlooring a owl:Class ; dcterms:identifier "HardwoodFlooring" ; skos:prefLabel "Hardwood Flooring"@en ; owl:equivalentClass :TacoDeMadeira .
+:Epoxy a owl:Class ; dcterms:identifier "Epoxy" ; skos:prefLabel "Epoxy"@en ; owl:equivalentClass :Epoxi .
+:EnamelPaint a owl:Class ; dcterms:identifier "EnamelPaint" ; skos:prefLabel "Enamel paint"@en ; owl:equivalentClass :Esmalte .
+:SpacklingPaste a owl:Class ; dcterms:identifier "SpacklingPaste" ; skos:prefLabel "Spackling paste"@en ; owl:equivalentClass :MassaCorrida .
+:WaterproofPaint a owl:Class ; dcterms:identifier "WaterproofPaint" ; skos:prefLabel "Waterproof paint"@en ; owl:equivalentClass :PinturaHidrofugante .
+:AcrylicTexturePaint a owl:Class ; dcterms:identifier "AcrylicTexturePaint" ; skos:prefLabel "Acrylic texture paint"@en ; owl:equivalentClass :TexturaAcrilica .
+:LatexPaint a owl:Class ; dcterms:identifier "LatexPaint" ; skos:prefLabel "Latex paint"@en ; owl:equivalentClass :TintaLatex .
+:VarnishPaint a owl:Class ; dcterms:identifier "VarnishPaint" ; skos:prefLabel "Varnish paint"@en ; owl:equivalentClass :Verniz .
+:FireDetectionSystem a owl:Class ; dcterms:identifier "FireDetectionSystem" ; skos:prefLabel "Fire detection system"@en ; owl:equivalentClass :AlarmeDeIncendio .
+:CentralHeating a owl:Class ; dcterms:identifier "CentralHeating" ; skos:prefLabel "Central heating"@en ; owl:equivalentClass :AquecimentoCentral .
+:AirConditioningSystem a owl:Class ; dcterms:identifier "AirConditioningSystem" ; skos:prefLabel "Air conditioning system"@en ; owl:equivalentClass :ArCondicionado .
+:Drainage a owl:Class ; dcterms:identifier "Drainage" ; skos:prefLabel "Drainage"@en ; owl:equivalentClass :Drenagem .
+:FireProtectionSystem a owl:Class ; dcterms:identifier "FireProtectionSystem" ; skos:prefLabel "Fire protection system"@en ; owl:equivalentClass :InstalacoesDeIncendio .
+:CommunicationLines a owl:Class ; dcterms:identifier "CommunicationLines" ; skos:prefLabel "Communication lines"@en ; skos:altLabel "IT networks"@en ; owl:equivalentClass :RedeLogica .
+:GasPipingSystem a owl:Class ; dcterms:identifier "GasPipingSystem" ; skos:prefLabel "Gas piping system"@en ; owl:equivalentClass :SistemaDeGasNatural .
+:Ventilation a owl:Class ; dcterms:identifier "Ventilation" ; skos:prefLabel "Ventilation"@en ; owl:equivalentClass :Ventilacao .
+:Elevator a owl:Class ; dcterms:identifier "Elevator" ; skos:prefLabel "Elevator"@en ; skos:altLabel "Lift"@en ; owl:equivalentClass :Elevador .
+:PinionElevator a owl:Class ; dcterms:identifier "PinionElevator" ; skos:prefLabel "Pinion elevator"@en ; owl:equivalentClass :ElevadorCremalheira .
+:Escalator a owl:Class ; dcterms:identifier "Escalator" ; skos:prefLabel "Escalator"@en ; owl:equivalentClass :EscadasRolantes .
+:TowerCrane a owl:Class ; dcterms:identifier "TowerCrane" ; skos:prefLabel "Tower crane"@en ; owl:equivalentClass :Grua .
+:Crane a owl:Class ; dcterms:identifier "Crane" ; skos:prefLabel "Crane"@en ; owl:equivalentClass :Guindaste .
+:AwningWindow a owl:Class ; dcterms:identifier "AwningWindow" ; skos:prefLabel "Awning window"@en ; owl:equivalentClass :Basculante .
+:DoorJamb a owl:Class ; dcterms:identifier "DoorJamb" ; skos:prefLabel "Door jamb"@en ; owl:equivalentClass :Batente .
+:WindowFrame a owl:Class ; dcterms:identifier "WindowFrame" ; skos:prefLabel "Window frame"@en ; owl:equivalentClass :Caixilho .
+:Hinge a owl:Class ; dcterms:identifier "Hinge" ; skos:prefLabel "Hinge"@en ; owl:equivalentClass :Dobradica .
+:Lockset a owl:Class ; dcterms:identifier "Lockset" ; skos:prefLabel "Lockset"@en ; owl:equivalentClass :Fechadura .
+:Panel a owl:Class ; dcterms:identifier "Panel" ; skos:prefLabel "Panel"@en ; owl:equivalentClass :FolhaPorta .
+:Template a owl:Class ; dcterms:identifier "Template" ; skos:prefLabel "Template"@en ; owl:equivalentClass :Gabarito .
+:DoorCasing a owl:Class ; dcterms:identifier "DoorCasing" ; skos:prefLabel "Door casing"@en ; owl:equivalentClass :GuarnicaoDePorta .
+:Window a owl:Class ; dcterms:identifier "Window" ; skos:prefLabel "Window"@en ; owl:equivalentClass :Janela .
+:Knob a owl:Class ; dcterms:identifier "Knob" ; skos:prefLabel "Knob"@en ; skos:altLabel "Door handle"@en ; owl:equivalentClass :Macaneta .
+:AluminumProfile a owl:Class ; dcterms:identifier "AluminumProfile" ; skos:prefLabel "Aluminum profile"@en ; owl:equivalentClass :PerfilDeAluminio .
+:Door a owl:Class ; dcterms:identifier "Door" ; skos:prefLabel "Door"@en ; owl:equivalentClass :Porta .
+:ByPassDoor a owl:Class ; dcterms:identifier "ByPassDoor" ; skos:prefLabel "By pass door"@en ; owl:equivalentClass :PortaDeCorrer .
+:Gate a owl:Class ; dcterms:identifier "Gate" ; skos:prefLabel "Gate"@en ; owl:equivalentClass :Portao .
+:Sealant a owl:Class ; dcterms:identifier "Sealant" ; skos:prefLabel "Sealant"@en ; owl:equivalentClass :Selador .
+:Glass a owl:Class ; dcterms:identifier "Glass" ; skos:prefLabel "Glass"@en ; owl:equivalentClass :Vidro .
+:Finishing a owl:Class ; dcterms:identifier "Finishing" ; skos:prefLabel "Finishing"@en ; owl:equivalentClass :Acabamento .
+:Basin a owl:Class ; dcterms:identifier "Basin" ; skos:prefLabel "Basin"@en ; owl:equivalentClass :Bacia .
+:Countertop a owl:Class ; dcterms:identifier "Countertop" ; skos:prefLabel "Countertop"@en ; owl:equivalentClass :Bancada .
+:Bathtub a owl:Class ; dcterms:identifier "Bathtub" ; skos:prefLabel "Bathtub"@en ; owl:equivalentClass :Banheira .
+:HygienicShower a owl:Class ; dcterms:identifier "HygienicShower" ; skos:prefLabel "Hygienic shower"@en ; owl:equivalentClass :DuchaHigienica .
+:Washbasin a owl:Class ; dcterms:identifier "Washbasin" ; skos:prefLabel "Washbasin"@en ; owl:equivalentClass :Lavatorio .
+:Sink a owl:Class ; dcterms:identifier "Sink" ; skos:prefLabel "Sink"@en ; owl:equivalentClass :Pia .
+:Tap a owl:Class ; dcterms:identifier "Tap" ; skos:prefLabel "Tap"@en ; owl:equivalentClass :Torneira .
+:Roof a owl:Class ; dcterms:identifier "Roof" ; skos:prefLabel "Roof"@en ; owl:equivalentClass :Telhado ; owl:equivalentClass :Cobertura .
+:Downpipe a owl:Class ; dcterms:identifier "Downpipe" ; skos:prefLabel "Downpipe"@en ; owl:equivalentClass :Condutor .
+:Fascia a owl:Class ; dcterms:identifier "Fascia" ; skos:prefLabel "Fascia"@en ; owl:equivalentClass :Tabeira .
+:Tile a owl:Class ; dcterms:identifier "Tile" ; skos:prefLabel "Tile"@en ; owl:equivalentClass :TelhaCeramica .
+:AcrylicRoof a owl:Class ; dcterms:identifier "AcrylicRoof" ; skos:prefLabel "Acrylic Roof"@en ; owl:equivalentClass :TelhaDeAcrilico .
+:AluminumRoofingSheet a owl:Class ; dcterms:identifier "AluminumRoofingSheet" ; skos:prefLabel "Aluminum roofing sheet"@en ; owl:equivalentClass :TelhaDeAluminio .
+:ConcreteRoofTile a owl:Class ; dcterms:identifier "ConcreteRoofTile" ; skos:prefLabel "Concrete roof tile"@en ; owl:equivalentClass :TelhaDeConcreto .
+:GlassRoofTile a owl:Class ; dcterms:identifier "GlassRoofTile" ; skos:prefLabel "Glass roof tile"@en ; owl:equivalentClass :TelhaDeVidro .
+:FibreCementRoofSheet a owl:Class ; dcterms:identifier "FibreCementRoofSheet" ; skos:prefLabel "Fibre cement roof sheet"@en ; owl:equivalentClass :TelhaFibrocimento .
+:TrapezoidProfileRoofingSheet a owl:Class ; dcterms:identifier "TrapezoidProfileRoofingSheet" ; skos:prefLabel "Trapezoid profile roofing sheet"@en ; owl:equivalentClass :TelhaTrapezoidal .
+:SandwichRoofingSheet a owl:Class ; dcterms:identifier "SandwichRoofingSheet" ; skos:prefLabel "Sandwich roofing sheet"@en ; owl:equivalentClass :TelhaTrapezoidalSanduiche .
+:RoofTruss a owl:Class ; dcterms:identifier "RoofTruss" ; skos:prefLabel "Roof truss"@en ; owl:equivalentClass :Tesoura .
 
