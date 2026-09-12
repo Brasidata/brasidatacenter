@@ -1,5 +1,16 @@
 @prefix : <http://datacenter.app.br/ontology/tool/ontobdc/abox/file_typification.ttl#> .
+@prefix typ: <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
 
-:EgineeringDrawing a ArtifactType ;
+<http://datacenter.app.br/ontology/tool/ontobdc/abox/file_typification.ttl>
+    a owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl> ;
+    rdfs:label "OntoBDC File Typification Vocabulary"@en .
 
-
+:EngineeringDrawing
+    a typ:ArtifactType ;
+    rdfs:label "Engineering drawing"@en , "Desenho de engenharia"@pt-BR ;
+    schema:identifier "engineering-drawing" ;
+    rdfs:comment "An information artifact whose primary semantic role is to communicate engineering information through a drawing, independently of whether it is stored as DWG, DXF, PDF, or another representation."@en .

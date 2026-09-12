@@ -1,5 +1,19 @@
 @prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-:ArtifactType a owlClass ;
+<http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl>
+    a owl:Ontology ;
+    rdfs:label "OntoBDC Typification Ontology"@en ;
+    rdfs:comment "Vocabulary for classifying the semantic type of information artifacts independently of their storage format."@en .
 
+:ArtifactType
+    a owl:Class ;
+    rdfs:label "Artifact type"@en , "Tipo de artefato"@pt-BR ;
+    rdfs:comment "Controlled classification describing what an information artifact is in the project domain, independently of file extension, MIME type, or serialization format."@en .
 
+:artifactType
+    a owl:ObjectProperty ;
+    rdfs:range :ArtifactType ;
+    rdfs:label "artifact type"@en , "tipo de artefato"@pt-BR ;
+    rdfs:comment "Assigns an information resource to an artifact type."@en .
