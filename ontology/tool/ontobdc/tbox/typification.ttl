@@ -54,3 +54,21 @@
     rdfs:label "Photograph"@en , "Fotografia"@pt-BR ;
     schema:identifier "photograph" ;
     rdfs:comment "An information artifact whose primary role is to provide photographic evidence or visual documentation."@en .
+
+:Document
+    a :ArtifactType ;
+    rdfs:label "Document"@en , "Documento"@pt-BR ;
+    schema:identifier "document" ;
+    rdfs:comment "A generic textual information artifact whose specific role — specification, report, correspondence, or another — is not determined by this classification alone."@en .
+
+:Spreadsheet
+    a :ArtifactType ;
+    rdfs:label "Spreadsheet"@en , "Planilha"@pt-BR ;
+    schema:identifier "spreadsheet" ;
+    rdfs:comment "An information artifact organizing data in tabular, calculated, or otherwise structured rows and columns."@en .
+
+:Image
+    a :ArtifactType ;
+    rdfs:label "Image"@en , "Imagem"@pt-BR ;
+    schema:identifier "image" ;
+    rdfs:comment "A generic visual information artifact whose specific role — photographic evidence, a scanned document, a diagram, or another — is not determined by this classification alone."@en .
