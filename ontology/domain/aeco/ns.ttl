@@ -1,162 +1,117 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
-@prefix bsdd: <http://bsdd.buildingsmart.org/def#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 @base <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 
-<http://datacenter.app.br/ontology/domain/aeco/ns.ttl>
-    rdf:type owl:Ontology ;
-    rdfs:label "AECO Ontology"@en ,
-        "Ontologia AECO"@pt-BR .
+<http://datacenter.app.br/ontology/domain/aeco/ns.ttl> a owl:Ontology ;
+    rdfs:label "AECO Ontology"@en , "Ontologia AECO"@pt-BR .
 
-:PadFooting
-    rdf:type owl:Class , bsdd:Classification ;
-    bsdd:code "pad-footing" ;
-    bsdd:classificationType "CLASS" ;
-    bsdd:name "Pad footing"@en ,
-        "Sapata isolada"@pt-BR ;
-    bsdd:definition "A shallow foundation element that transfers the concentrated load of a column, or a small group of columns, to the ground."@en ,
-        "Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares."@pt-BR ;
-    bsdd:synonym "isolated footing"@en ,
-        "fundação em sapata"@pt-BR ,
-        "fundação por sapata"@pt-BR ;
-    bsdd:relatedIfcEntityName "IfcFooting" .
+:PadFooting a owl:Class ;
+    dcterms:identifier "PadFooting" ;
+    skos:prefLabel "Pad footing"@en , "Sapata isolada"@pt-BR ;
+    skos:definition "A shallow foundation element that transfers the concentrated load of a column, or a small group of columns, to the ground."@en , "Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares."@pt-BR ;
+    skos:altLabel "isolated footing"@en , "fundação em sapata"@pt-BR , "fundação por sapata"@pt-BR ;
+    rdfs:subClassOf :Sapata .
 
-
-
-
-Adobe – tijolo maciço realizado com argila crua e não cozida.
-Agregado – areia ou brita utilizada para fabricar o concreto.
-Água de uma cobertura – plano inclinado de um telhado.
-Água-furtada: como é chamado o vão entre as tesouras do telhado, como um sótão, com janelas que se abrem num volume para fora do telhado.
-Alvenaria – estrutura constituída por tijolos, pedras naturais ou artificiais, em peças sobrepostas e ligadas ou não por uma argamassa, usadas na construção de paredes, muros e alicerces.
-Andaime – plataforma provisória utilizada para que os profissionais da obra possam acessar elementos em alturas não alcançáveis do solo ou de outras plataformas pré-existentes.
-Alicerce – a fundação, a base da edificação.
-Argamassa – pasta de cimento e agregados, usada para assentamento de peças e para revestimentos.
-Amarração – parte da armadura destinada a transmitir os esforços dessa peça para outra.
-Armadura – estrutura feita com varões de aço, utilizada dentro das peças de concreto armado, de modo a suportar certos esforços.
-termos construção civil
-Foto de Josue Isai Ramos Figueroa na Unsplash
-
-Baldrame – tipo comum de fundação para pequenas edificações, constituída de uma viga, que pode ser de alvenaria, de concreto simples ou armado construída diretamente no solo, dentro de uma pequena vala, e que é mais empregada em casos de cargas leves, como de residência construídas sobre solo firme.
-Barrote – elemento prismático de madeira bastante usado em construção civil.
-Beiral – prolongamento do telhado para além da parede externa, protegendo-a da ação das chuvas.
-Bate-estacas – equipamento de cravação de estacas por percussão.
-Betão – o velho e conhecido concreto, material de construção composto por cimento, areia, brita e possivelmente adjuvantes.
-Betoneira – máquina destinada a fabricar betão ou argamassa.
-Bloco Cerâmico – elemento de alvenaria cozido, podendo ser classificado como de vedação ou estrutural.
-Brita – agregado de diâmetro médio superior a 2mm.
-termos construção civil
-Imagem de Alicja por Pixabay
-Veja Também: Razões para engenheiro ter proficiência em inglês [+ lista de termos técnicos no idioma] ObterOrçamentos Obras
-
-Caixilho – parte da esquadria que sustenta os vidros e folhas de portas e janelas.
-Cal Extinta – nome dado ao Hidróxido de Cálcio (Ca(OH)2), material que é obtido pela junção da Cal Virgem – ao Óxido de Cálcio (CaO) – com água.
-Corpo de Prova – pequeno espécime retirado de uma peça ou do mesmo “lote” de dado material do qual a peça a ser estudada foi feita, visando a sua caracterização mecânica; os mais comuns são os corpos de prova de concreto, utilizados para determinar a sua resistência à compressão.
-Chapa – nome que é dado às estruturas laminares que estão sujeitas a esforços em seu plano.
-Cimento – pó de cor cinza produzido a partir da moagem do Clínquer, juntamente com gesso, constituído por calcário, argila e gesso, entre outros aditivos; aliás CPN é a sigla para Cimento Portland Normal.
-Cobogó – elemento vazado utilizado para construção de paredes com função decorativa, não estrutural.
-Cobertura – parte do edifício destinada à sua protecção contra as intempéries.
-Concreto – o mesmo que Betão.
-Concreto Armado – o mesmo que Betão Armado.
-Consistência – propriedade de uma argamassa ter maior ou menor resistência a uma dada deformação, sendo mais seca, plástica ou fluida,
-Compressão – esforço que faz a peça tende a diminuir sua a dimensão segundo o eixo.
-Croqui – esboço que os projetistas usam para representar suas primeiras ideias de um projeto.
-Cunhal – canto de um edifício, onde duas paredes convergem, podendo estar marcado por um pilar ou pilastra de pedras lavradas.
-
-Demão – nome dado a cada camada de tinta aplicada.
-Desmonte – processo usado para extrair rochas por meios manuais ou explosivos.
-Dilatação – diz-se do processo de aumento das dimensões de um material.
-Drenagem – escoamento de águas através de drenos.
-Drenos – estruturas, como tubos ou valas, destinadas a recolher e escoar águas.
-Drywall – paredes executadas com gesso acartonado.
-Duto – pequeno espaço que liga várias zonas do edifício onde se instalam tubos, cabos, entre outros.
-termos construção civil
-Foto de Olek Buzunov na Unsplash
-
-Eixo – nome da linha em torno da qual um objeto roda.
-Emboço – é o revestimento da parede, feito com massa grossa.
-Emulsão – é uma mistura heterogênea de dois ou mais líquidos, os quais normalmente não se dissolvem um no outro, mas, quando são mantidos em suspensão por agitação ou, mais freqüentemente, por pequenas quantidades de substâncias conhecidas como emulsificantes, formam uma mistura estável.
-Escora – barra sujeita essencialmente a esforços axiais de compressão ou elemento de sustentação provisório, metálico ou de madeira, disposto sob as lajes e vigas, das estruturas de concreto, durante o seu processo de amadurecimento.
-Esforços Axiais – esforços de tração ou compressão, que se geram na peça segundo o seu eixo.
-Esforços Transversos – esforços que se geram na peça segundo um plano perpendicular ao seu eixo.
-Estacas – um tipo de função usada em terrenos onde a resistência do solo é boa um locais muito profundo.
-
-Fio de Prumo – dispositivo simples utilizado para verificar a verticalidade de uma superfície.
-Flecha – distância entre o ponto em que uma laje ou viga não sofre deformação ideial e o ponto em que naturalmente ela sofre a deformação.
-Flexão- esforço que faz tender a peça a comprimir-se acima do seu eixo e a estender-se abaixo ou vice-versa.
-Fluência – aumento da deformação de uma peça ao longo do tempo, quando se aplica uma carga constante.
-Fundação – infra-estrutura, direta ou indireta, de uma  construção que recebe os esforços da estrutura e transmite-os ao solo.
-
-Gabarito – traves de madeira implantadas ao redor da obra nas suas limitações, para auxílio da marcação e locação de elementos da construção.
-Geminadas – designação dada a duas casas que têm uma parede comum ou igual, contudo, espelhada.
-Gesso – material de construção obtido por junção de Sulfato de Cálcio moído com água.
-Granito – rocha ígnea de várias cores constituída por quartzo, feldspato e micas, largamente usado na  construção civil.
-termos construção civil
-Imagem de Frauke Riether por Pixabay
-Veja Também: Vai construir? Saiba o que levar em conta na etapa de planejamento [e evite os erros] ObterMateriais Didáticos
-
-Habite-se – documento emitido pela prefeitura com a aprovação final de uma obra, permitindo ser habitada.
-Hall de Entrada – pequena divisão do edifício situado à entrada e que dá acesso às demais divisões.
-
-Junta de dilatação – espaço preenchido por materiais elásticos, destinado a absorver os movimentos provocados por dilatações e retrações dos materiais envolventes.
-
-Laje – estrutura bidimensional plana destinada a receber esforços preferencialmente perpendicularmente ao seu plano, usada como pavimentação de pisos ou como cobertura.
-Lambril – faixa inferior das paredes, na sua interface com o pavimento, também designado de rodapé.
-
-Momentos Fletores – esforços que se geram na seção transversal da peça devido à sua flexão.
-Momentos Torsores – esforços que se geram na seção transversal da peça devido à sua torção.
-Montante – na hidráulica, no sentido da nascente ou direção oposta ao sentido do fluxo.
-Muro de suporte – estrutura de contenção de terras.
-
-Nível – aparelho utilizado para verificar a horizontalidade de uma superfície.
-termos construção civil
-Foto de Scott Blake na Unsplash
-
-Ombreira – peças colocadas nas faces laterais da abertura da porta, que sustentam a cadeira.
-Ogival – forma das abóbadas góticas.
-Veja Também: Time da construção: conheça as 5 equipes de profissionais que atuam em canteiros de obras SolicitaOrçamentos Obras
-
-Platibanda – acabamento superior das edificações, formado pelo prolongamento das paredes externas, acima do forro.
-Palafita – colunas de madeira onde se constroem casas a distância do solo
-Pé-direito – altura, medida pelo interior, entre o pavimento e a cobertura de um piso.
-Pé direito duplo – pé-direito com altura próxima ou igual a 2x a altura do pé direito adotado como padrão da edificação.
-Peitoril – base inferior de abertura de janelas, usualmente em mármores ou granitos, e geralmente assentados com a função de acabamento e impermeabilização.
-Peitoril – também chamado de parapeito ou guarda corpo, parte inferior do vão de uma janela parede ou grade de proteção com medida até a altura do peito, à borda de janelas, varandas e terraços.
-Perfil Metálico – nome dado às barras metálicas obtidas por laminação.
-Permeabilidade – é a propriedade de um material de se deixar atravessar por líquidos e gases, controlando pela quantidade e tipo de aglomerante empregado.
-Pilar – elemento de eixo vertical que submetido essencialmente esforços axiais.
-Piso a piso (Brasil) – Altura, entre faces superiores, de pavimentos subsequentes
-Placa – nome dado na gíria às lajes, estrutura bidimensional colocada na vertical e destinadas a receber esforços no seu plano.
-Platibanda – faixa horizontal que emoldura a parte superior de uma edificação, com a função de esconder o telhado.
-Plasticidade – é a propriedade que permite à argamassa deformar-se e reter certas deformações após a redução das tensões que lhe foram impostas; esta propriedade está ligada diretamente à coesão, consistência e retenção de água.
-Platô – planície ou área plana em relação ao eixo horizontal.
-
-Quadriângulo – instrumento usado para retificação e verificação da esquadria de uma fundação e/ou paredes numa edificação.
-
-Reboco – é um tipo de argamassa com que se alisam a paredes, preparando-a para receber a cal ou a pintura
-Retração – quando um material tende a diminuir as suas dimensões.
-Ripa – elemento colocado sobre as varas, onde apoiam as telhas da cobertura.
-Rodapé – ornamento situado à junção das paredes com o piso, geralmente do mesmo material deste, cuja finalidade é a de proteger da água as paredes, além da função estética.
-Roda-meio – semelhante ao rodapé, só que situado à cota média da parede.
-Roda-teto – semelhante ao rodapé, situa-se à junção do teto com as paredes.
-termos construção civil
-Imagem de upklyak em Freepik
-
-Sapata – estrutura contínua ou isolada, de interface entre os pilares ou paredes e a fundação.
-Seção transversal ou seção perpendicular – representação da seção obtida por um corte segundo um plano perpendicular ao eixo da peça.
-Sifão – dispositivo muito utilizado em lavatórios, para transportar um líquido de uma altura para outra mais baixa, passando por um ponto mais alto.
-Soleira – parte inferior do vão de uma porta.
-Veja Também: Por dentro da lei: saiba quais são as 6 responsabilidades técnicas envolvendo obras de construção civil EncomendarMateriais Construção
-
-Tavela – tijolo cerâmico utilizado na fabricação de lages mistas, normalmente é apoiado entre as vigotas e não tem função estrutural, apenas de preenchimento.
-Talude – plano inclinado que limita um aterro
-Terça – elemento da cobertura que liga as tesouras.
-
-Vão – espaço livre sob uma viga ou outro qualquer elemento estrutural.
-Vara – elemento da cobertura colocado sobre as terças e perpendicularmente a estas.
-Verga – juntamente da contraverga, elemento estrutura que auxiliam na distribuição de carga e tensões em uma  construção, normalmente em portas e janelas.
-Viga – elemento estrutural de eixo horizontal submetido essencialmente à flexão.
-Vigota – viga de pequena secção transversal, normalmente pré-esforçada.
+:Adobe a owl:Class ; dcterms:identifier "Adobe" ; skos:prefLabel "Adobe"@pt-BR ; skos:definition "Tijolo maciço realizado com argila crua e não cozida."@pt-BR .
+:Agregado a owl:Class ; dcterms:identifier "Agregado" ; skos:prefLabel "Agregado"@pt-BR ; skos:definition "Areia ou brita utilizada para fabricar o concreto."@pt-BR .
+:AguaDeUmaCobertura a owl:Class ; dcterms:identifier "AguaDeUmaCobertura" ; skos:prefLabel "Água de uma cobertura"@pt-BR ; skos:definition "Plano inclinado de um telhado."@pt-BR .
+:AguaFurtada a owl:Class ; dcterms:identifier "AguaFurtada" ; skos:prefLabel "Água-furtada"@pt-BR ; skos:definition "Vão entre as tesouras do telhado, semelhante a um sótão, com janelas que se abrem em um volume para fora do telhado."@pt-BR .
+:Alvenaria a owl:Class ; dcterms:identifier "Alvenaria" ; skos:prefLabel "Alvenaria"@pt-BR ; skos:definition "Estrutura constituída por tijolos, pedras naturais ou artificiais, em peças sobrepostas e ligadas ou não por argamassa, usada na construção de paredes, muros e alicerces."@pt-BR .
+:Andaime a owl:Class ; dcterms:identifier "Andaime" ; skos:prefLabel "Andaime"@pt-BR ; skos:definition "Plataforma provisória utilizada para que os profissionais da obra possam acessar elementos em alturas não alcançáveis do solo ou de outras plataformas preexistentes."@pt-BR .
+:Alicerce a owl:Class ; dcterms:identifier "Alicerce" ; skos:prefLabel "Alicerce"@pt-BR ; skos:definition "Fundação ou base da edificação."@pt-BR ; owl:equivalentClass :Fundacao .
+:Argamassa a owl:Class ; dcterms:identifier "Argamassa" ; skos:prefLabel "Argamassa"@pt-BR ; skos:definition "Pasta de cimento e agregados, usada para assentamento de peças e para revestimentos."@pt-BR .
+:Amarracao a owl:Class ; dcterms:identifier "Amarracao" ; skos:prefLabel "Amarração"@pt-BR ; skos:definition "Parte da armadura destinada a transmitir os esforços de uma peça para outra."@pt-BR .
+:Armadura a owl:Class ; dcterms:identifier "Armadura" ; skos:prefLabel "Armadura"@pt-BR ; skos:definition "Estrutura feita com varões de aço, utilizada dentro das peças de concreto armado para suportar esforços."@pt-BR .
+:Baldrame a owl:Class ; dcterms:identifier "Baldrame" ; skos:prefLabel "Baldrame"@pt-BR ; skos:definition "Tipo de fundação para pequenas edificações, constituída por uma viga de alvenaria, concreto simples ou concreto armado, construída diretamente no solo em pequena vala e empregada em casos de cargas leves sobre solo firme."@pt-BR ; rdfs:subClassOf :Fundacao .
+:Barrote a owl:Class ; dcterms:identifier "Barrote" ; skos:prefLabel "Barrote"@pt-BR ; skos:definition "Elemento prismático de madeira usado em construção civil."@pt-BR .
+:Beiral a owl:Class ; dcterms:identifier "Beiral" ; skos:prefLabel "Beiral"@pt-BR ; skos:definition "Prolongamento do telhado para além da parede externa, protegendo-a da ação das chuvas."@pt-BR .
+:BateEstacas a owl:Class ; dcterms:identifier "BateEstacas" ; skos:prefLabel "Bate-estacas"@pt-BR ; skos:definition "Equipamento de cravação de estacas por percussão."@pt-BR .
+:Betao a owl:Class ; dcterms:identifier "Betao" ; skos:prefLabel "Betão"@pt-PT ; skos:definition "Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes."@pt-PT ; owl:equivalentClass :Concreto .
+:Betoneira a owl:Class ; dcterms:identifier "Betoneira" ; skos:prefLabel "Betoneira"@pt-BR ; skos:definition "Máquina destinada a fabricar betão ou argamassa."@pt-BR .
+:BlocoCeramico a owl:Class ; dcterms:identifier "BlocoCeramico" ; skos:prefLabel "Bloco Cerâmico"@pt-BR ; skos:definition "Elemento de alvenaria cozido, podendo ser classificado como de vedação ou estrutural."@pt-BR .
+:Brita a owl:Class ; dcterms:identifier "Brita" ; skos:prefLabel "Brita"@pt-BR ; skos:definition "Agregado de diâmetro médio superior a 2 mm."@pt-BR .
+:Caixilho a owl:Class ; dcterms:identifier "Caixilho" ; skos:prefLabel "Caixilho"@pt-BR ; skos:definition "Parte da esquadria que sustenta os vidros e folhas de portas e janelas."@pt-BR .
+:CalExtinta a owl:Class ; dcterms:identifier "CalExtinta" ; skos:prefLabel "Cal Extinta"@pt-BR ; skos:definition "Hidróxido de cálcio (Ca(OH)2), obtido pela reação da cal virgem, óxido de cálcio (CaO), com água."@pt-BR .
+:CorpoDeProva a owl:Class ; dcterms:identifier "CorpoDeProva" ; skos:prefLabel "Corpo de Prova"@pt-BR ; skos:definition "Pequeno espécime retirado de uma peça ou do mesmo lote de material para sua caracterização mecânica; são comuns os corpos de prova de concreto usados para determinar resistência à compressão."@pt-BR .
+:Chapa a owl:Class ; dcterms:identifier "Chapa" ; skos:prefLabel "Chapa"@pt-BR ; skos:definition "Estrutura laminar sujeita a esforços em seu plano."@pt-BR .
+:Cimento a owl:Class ; dcterms:identifier "Cimento" ; skos:prefLabel "Cimento"@pt-BR ; skos:definition "Pó de cor cinza produzido a partir da moagem do clínquer juntamente com gesso e outros constituintes e aditivos."@pt-BR .
+:Cobogo a owl:Class ; dcterms:identifier "Cobogo" ; skos:prefLabel "Cobogó"@pt-BR ; skos:definition "Elemento vazado utilizado para construção de paredes com função decorativa e não estrutural."@pt-BR .
+:Cobertura a owl:Class ; dcterms:identifier "Cobertura" ; skos:prefLabel "Cobertura"@pt-BR ; skos:definition "Parte do edifício destinada à proteção contra as intempéries."@pt-BR .
+:Concreto a owl:Class ; dcterms:identifier "Concreto" ; skos:prefLabel "Concreto"@pt-BR ; skos:definition "Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes."@pt-BR .
+:ConcretoArmado a owl:Class ; dcterms:identifier "ConcretoArmado" ; skos:prefLabel "Concreto Armado"@pt-BR ; skos:altLabel "Betão Armado"@pt-PT ; skos:definition "Material composto por concreto e armadura, combinados para resistir aos esforços da estrutura."@pt-BR .
+:Consistencia a owl:Class ; dcterms:identifier "Consistencia" ; skos:prefLabel "Consistência"@pt-BR ; skos:definition "Propriedade de uma argamassa de apresentar maior ou menor resistência a uma dada deformação, podendo ser mais seca, plástica ou fluida."@pt-BR .
+:Compressao a owl:Class ; dcterms:identifier "Compressao" ; skos:prefLabel "Compressão"@pt-BR ; skos:definition "Esforço que tende a diminuir a dimensão de uma peça segundo seu eixo."@pt-BR .
+:Croqui a owl:Class ; dcterms:identifier "Croqui" ; skos:prefLabel "Croqui"@pt-BR ; skos:definition "Esboço usado pelos projetistas para representar ideias iniciais de um projeto."@pt-BR .
+:Cunhal a owl:Class ; dcterms:identifier "Cunhal" ; skos:prefLabel "Cunhal"@pt-BR ; skos:definition "Canto de um edifício onde duas paredes convergem, podendo ser marcado por um pilar ou pilastra de pedras lavradas."@pt-BR .
+:Demao a owl:Class ; dcterms:identifier "Demao" ; skos:prefLabel "Demão"@pt-BR ; skos:definition "Cada camada de tinta aplicada."@pt-BR .
+:Desmonte a owl:Class ; dcterms:identifier "Desmonte" ; skos:prefLabel "Desmonte"@pt-BR ; skos:definition "Processo usado para extrair rochas por meios manuais ou explosivos."@pt-BR .
+:Dilatacao a owl:Class ; dcterms:identifier "Dilatacao" ; skos:prefLabel "Dilatação"@pt-BR ; skos:definition "Processo de aumento das dimensões de um material."@pt-BR .
+:Drenagem a owl:Class ; dcterms:identifier "Drenagem" ; skos:prefLabel "Drenagem"@pt-BR ; skos:definition "Escoamento de águas através de drenos."@pt-BR .
+:Drenos a owl:Class ; dcterms:identifier "Drenos" ; skos:prefLabel "Drenos"@pt-BR ; skos:definition "Estruturas, como tubos ou valas, destinadas a recolher e escoar águas."@pt-BR .
+:Drywall a owl:Class ; dcterms:identifier "Drywall" ; skos:prefLabel "Drywall"@pt-BR ; skos:definition "Sistema de paredes executadas com gesso acartonado."@pt-BR .
+:Duto a owl:Class ; dcterms:identifier "Duto" ; skos:prefLabel "Duto"@pt-BR ; skos:definition "Espaço que liga zonas do edifício e no qual se instalam tubos, cabos e outros componentes."@pt-BR .
+:Eixo a owl:Class ; dcterms:identifier "Eixo" ; skos:prefLabel "Eixo"@pt-BR ; skos:definition "Linha em torno da qual um objeto gira."@pt-BR .
+:Emboco a owl:Class ; dcterms:identifier "Emboco" ; skos:prefLabel "Emboço"@pt-BR ; skos:definition "Revestimento de parede feito com argamassa de massa grossa."@pt-BR .
+:Emulsao a owl:Class ; dcterms:identifier "Emulsao" ; skos:prefLabel "Emulsão"@pt-BR ; skos:definition "Mistura heterogênea de dois ou mais líquidos normalmente imiscíveis, mantidos em suspensão por agitação ou por substâncias emulsificantes."@pt-BR .
+:Escora a owl:Class ; dcterms:identifier "Escora" ; skos:prefLabel "Escora"@pt-BR ; skos:definition "Barra sujeita essencialmente a esforços axiais de compressão ou elemento provisório de sustentação, metálico ou de madeira, disposto sob lajes e vigas durante o amadurecimento do concreto."@pt-BR .
+:EsforcosAxiais a owl:Class ; dcterms:identifier "EsforcosAxiais" ; skos:prefLabel "Esforços Axiais"@pt-BR ; skos:definition "Esforços de tração ou compressão gerados na peça segundo o seu eixo."@pt-BR .
+:EsforcosTransversos a owl:Class ; dcterms:identifier "EsforcosTransversos" ; skos:prefLabel "Esforços Transversos"@pt-BR ; skos:definition "Esforços gerados na peça segundo um plano perpendicular ao seu eixo."@pt-BR .
+:Estacas a owl:Class ; dcterms:identifier "Estacas" ; skos:prefLabel "Estacas"@pt-BR ; skos:definition "Tipo de fundação profunda utilizada para transmitir cargas a camadas resistentes do solo em maior profundidade."@pt-BR ; rdfs:subClassOf :Fundacao .
+:FioDePrumo a owl:Class ; dcterms:identifier "FioDePrumo" ; skos:prefLabel "Fio de Prumo"@pt-BR ; skos:definition "Dispositivo simples utilizado para verificar a verticalidade de uma superfície."@pt-BR .
+:Flecha a owl:Class ; dcterms:identifier "Flecha" ; skos:prefLabel "Flecha"@pt-BR ; skos:definition "Distância entre a posição não deformada e a posição deformada de um ponto de uma laje ou viga."@pt-BR .
+:Flexao a owl:Class ; dcterms:identifier "Flexao" ; skos:prefLabel "Flexão"@pt-BR ; skos:definition "Esforço que tende a provocar compressão em uma região da seção da peça e tração na região oposta."@pt-BR .
+:Fluencia a owl:Class ; dcterms:identifier "Fluencia" ; skos:prefLabel "Fluência"@pt-BR ; skos:definition "Aumento da deformação de uma peça ao longo do tempo sob carga constante."@pt-BR .
+:Fundacao a owl:Class ; dcterms:identifier "Fundacao" ; skos:prefLabel "Fundação"@pt-BR ; skos:definition "Infraestrutura direta ou indireta de uma construção que recebe os esforços da estrutura e os transmite ao solo."@pt-BR .
+:Gabarito a owl:Class ; dcterms:identifier "Gabarito" ; skos:prefLabel "Gabarito"@pt-BR ; skos:definition "Estrutura provisória, usualmente de madeira, implantada ao redor da obra para auxiliar na marcação e locação dos elementos da construção."@pt-BR .
+:Geminadas a owl:Class ; dcterms:identifier "Geminadas" ; skos:prefLabel "Geminadas"@pt-BR ; skos:altLabel "edificação geminada"@pt-BR ; skos:definition "Designação dada a duas edificações que compartilham uma parede, frequentemente formando unidades espelhadas."@pt-BR .
+:Gesso a owl:Class ; dcterms:identifier "Gesso" ; skos:prefLabel "Gesso"@pt-BR ; skos:definition "Material de construção obtido a partir de sulfato de cálcio e água."@pt-BR .
+:Granito a owl:Class ; dcterms:identifier "Granito" ; skos:prefLabel "Granito"@pt-BR ; skos:definition "Rocha ígnea constituída principalmente por quartzo, feldspato e micas, amplamente usada na construção civil."@pt-BR .
+:HabiteSe a owl:Class ; dcterms:identifier "HabiteSe" ; skos:prefLabel "Habite-se"@pt-BR ; skos:definition "Documento emitido pela autoridade municipal com a aprovação final de uma obra, permitindo sua ocupação."@pt-BR .
+:HallDeEntrada a owl:Class ; dcterms:identifier "HallDeEntrada" ; skos:prefLabel "Hall de Entrada"@pt-BR ; skos:definition "Espaço do edifício situado junto à entrada e que dá acesso aos demais ambientes."@pt-BR .
+:JuntaDeDilatacao a owl:Class ; dcterms:identifier "JuntaDeDilatacao" ; skos:prefLabel "Junta de dilatação"@pt-BR ; skos:definition "Espaço preenchido por materiais deformáveis destinado a absorver movimentos provocados por dilatações e retrações dos materiais envolvidos."@pt-BR .
+:Laje a owl:Class ; dcterms:identifier "Laje" ; skos:prefLabel "Laje"@pt-BR ; skos:definition "Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura."@pt-BR .
+:Lambril a owl:Class ; dcterms:identifier "Lambril" ; skos:prefLabel "Lambril"@pt-BR ; skos:altLabel "rodapé"@pt-BR ; skos:definition "Faixa inferior das paredes junto ao pavimento, também designada rodapé em determinados usos."@pt-BR .
+:MomentosFletores a owl:Class ; dcterms:identifier "MomentosFletores" ; skos:prefLabel "Momentos Fletores"@pt-BR ; skos:definition "Esforços internos gerados na seção transversal de uma peça devido à flexão."@pt-BR .
+:MomentosTorsores a owl:Class ; dcterms:identifier "MomentosTorsores" ; skos:prefLabel "Momentos Torsores"@pt-BR ; skos:definition "Esforços internos gerados na seção transversal de uma peça devido à torção."@pt-BR .
+:Montante a owl:Class ; dcterms:identifier "Montante" ; skos:prefLabel "Montante"@pt-BR ; skos:definition "Na hidráulica, direção correspondente ao sentido da nascente ou oposta ao sentido do fluxo."@pt-BR .
+:MuroDeSuporte a owl:Class ; dcterms:identifier "MuroDeSuporte" ; skos:prefLabel "Muro de suporte"@pt-BR ; skos:definition "Estrutura destinada à contenção de terras."@pt-BR .
+:Nivel a owl:Class ; dcterms:identifier "Nivel" ; skos:prefLabel "Nível"@pt-BR ; skos:definition "Instrumento utilizado para verificar a horizontalidade de uma superfície."@pt-BR .
+:Ombreira a owl:Class ; dcterms:identifier "Ombreira" ; skos:prefLabel "Ombreira"@pt-BR ; skos:definition "Peça colocada na face lateral da abertura de uma porta ou janela."@pt-BR .
+:Ogival a owl:Class ; dcterms:identifier "Ogival" ; skos:prefLabel "Ogival"@pt-BR ; skos:definition "Forma característica de arco ou abóbada com perfil apontado, comum na arquitetura gótica."@pt-BR .
+:Platibanda a owl:Class ; dcterms:identifier "Platibanda" ; skos:prefLabel "Platibanda"@pt-BR ; skos:definition "Prolongamento ou faixa superior da parede externa de uma edificação, frequentemente usado para ocultar o telhado."@pt-BR .
+:Palafita a owl:Class ; dcterms:identifier "Palafita" ; skos:prefLabel "Palafita"@pt-BR ; skos:definition "Estrutura elevada sobre estacas ou colunas, frequentemente de madeira, que mantém a edificação afastada do solo ou da água."@pt-BR .
+:PeDireito a owl:Class ; dcterms:identifier "PeDireito" ; skos:prefLabel "Pé-direito"@pt-BR ; skos:definition "Altura interna entre o pavimento e o teto ou cobertura de um piso."@pt-BR .
+:PeDireitoDuplo a owl:Class ; dcterms:identifier "PeDireitoDuplo" ; skos:prefLabel "Pé direito duplo"@pt-BR ; skos:definition "Pé-direito com altura próxima ou igual ao dobro da altura adotada como padrão na edificação."@pt-BR ; rdfs:subClassOf :PeDireito .
+:PeitorilJanela a owl:Class ; dcterms:identifier "PeitorilJanela" ; skos:prefLabel "Peitoril"@pt-BR ; skos:definition "Base inferior do vão de uma janela, usualmente executada em mármore, granito ou outro material de acabamento e proteção."@pt-BR .
+:PeitorilParapeito a owl:Class ; dcterms:identifier "PeitorilParapeito" ; skos:prefLabel "Peitoril"@pt-BR ; skos:altLabel "parapeito"@pt-BR , "guarda-corpo"@pt-BR ; skos:definition "Parte inferior ou elemento de proteção junto a janelas, varandas e terraços, aproximadamente à altura do peito."@pt-BR .
+:PerfilMetalico a owl:Class ; dcterms:identifier "PerfilMetalico" ; skos:prefLabel "Perfil Metálico"@pt-BR ; skos:definition "Barra metálica obtida por processo de conformação, como laminação."@pt-BR .
+:Permeabilidade a owl:Class ; dcterms:identifier "Permeabilidade" ; skos:prefLabel "Permeabilidade"@pt-BR ; skos:definition "Propriedade de um material de permitir a passagem de líquidos ou gases através de sua estrutura."@pt-BR .
+:Pilar a owl:Class ; dcterms:identifier "Pilar" ; skos:prefLabel "Pilar"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais."@pt-BR .
+:PisoAPiso a owl:Class ; dcterms:identifier "PisoAPiso" ; skos:prefLabel "Piso a piso"@pt-BR ; skos:altLabel "Piso a piso (Brasil)"@pt-BR ; skos:definition "Altura entre as faces superiores de pavimentos subsequentes."@pt-BR .
+:Placa a owl:Class ; dcterms:identifier "Placa" ; skos:prefLabel "Placa"@pt-BR ; skos:definition "Estrutura bidimensional plana disposta verticalmente e destinada a receber esforços predominantemente em seu plano."@pt-BR .
+:Plasticidade a owl:Class ; dcterms:identifier "Plasticidade" ; skos:prefLabel "Plasticidade"@pt-BR ; skos:definition "Propriedade que permite à argamassa deformar-se e reter parte das deformações após a redução das tensões impostas."@pt-BR .
+:Plato a owl:Class ; dcterms:identifier "Plato" ; skos:prefLabel "Platô"@pt-BR ; skos:definition "Área plana ou aproximadamente horizontal em relação ao terreno circundante."@pt-BR .
+:Quadriangulo a owl:Class ; dcterms:identifier "Quadriangulo" ; skos:prefLabel "Quadriângulo"@pt-BR ; skos:definition "Instrumento usado para retificação e verificação da esquadria de uma fundação ou de paredes em uma edificação."@pt-BR .
+:Reboco a owl:Class ; dcterms:identifier "Reboco" ; skos:prefLabel "Reboco"@pt-BR ; skos:definition "Revestimento de argamassa usado para alisar paredes e prepará-las para acabamento ou pintura."@pt-BR .
+:Retracao a owl:Class ; dcterms:identifier "Retracao" ; skos:prefLabel "Retração"@pt-BR ; skos:definition "Redução das dimensões de um material."@pt-BR .
+:Ripa a owl:Class ; dcterms:identifier "Ripa" ; skos:prefLabel "Ripa"@pt-BR ; skos:definition "Elemento da cobertura colocado sobre as varas ou caibros e destinado a apoiar as telhas."@pt-BR .
+:Rodape a owl:Class ; dcterms:identifier "Rodape" ; skos:prefLabel "Rodapé"@pt-BR ; skos:definition "Elemento situado na junção das paredes com o piso, destinado à proteção da parede e ao acabamento."@pt-BR .
+:RodaMeio a owl:Class ; dcterms:identifier "RodaMeio" ; skos:prefLabel "Roda-meio"@pt-BR ; skos:definition "Elemento de acabamento semelhante ao rodapé, situado aproximadamente à meia altura da parede."@pt-BR .
+:RodaTeto a owl:Class ; dcterms:identifier "RodaTeto" ; skos:prefLabel "Roda-teto"@pt-BR ; skos:definition "Elemento de acabamento semelhante ao rodapé, situado na junção do teto com as paredes."@pt-BR .
+:Sapata a owl:Class ; dcterms:identifier "Sapata" ; skos:prefLabel "Sapata"@pt-BR ; skos:definition "Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes."@pt-BR ; rdfs:subClassOf :Fundacao .
+:SecaoTransversal a owl:Class ; dcterms:identifier "SecaoTransversal" ; skos:prefLabel "Seção transversal"@pt-BR ; skos:altLabel "seção perpendicular"@pt-BR ; skos:definition "Seção obtida por corte segundo um plano perpendicular ao eixo da peça."@pt-BR .
+:Sifao a owl:Class ; dcterms:identifier "Sifao" ; skos:prefLabel "Sifão"@pt-BR ; skos:definition "Dispositivo hidráulico que conduz líquido entre níveis e, em instalações prediais, forma fecho hídrico para impedir o retorno de gases."@pt-BR .
+:Soleira a owl:Class ; dcterms:identifier "Soleira" ; skos:prefLabel "Soleira"@pt-BR ; skos:definition "Parte inferior do vão de uma porta, frequentemente executada como peça de acabamento e transição entre pisos."@pt-BR .
+:Tavela a owl:Class ; dcterms:identifier "Tavela" ; skos:prefLabel "Tavela"@pt-BR ; skos:definition "Bloco cerâmico usado em lajes mistas, apoiado entre vigotas e normalmente sem função estrutural, atuando como elemento de preenchimento."@pt-BR .
+:Talude a owl:Class ; dcterms:identifier "Talude" ; skos:prefLabel "Talude"@pt-BR ; skos:definition "Plano inclinado que limita um corte ou aterro."@pt-BR .
+:Terca a owl:Class ; dcterms:identifier "Terca" ; skos:prefLabel "Terça"@pt-BR ; skos:definition "Elemento da cobertura que liga tesouras e apoia elementos secundários do telhado."@pt-BR .
+:Vao a owl:Class ; dcterms:identifier "Vao" ; skos:prefLabel "Vão"@pt-BR ; skos:definition "Espaço livre entre apoios ou sob um elemento estrutural."@pt-BR .
+:Vara a owl:Class ; dcterms:identifier "Vara" ; skos:prefLabel "Vara"@pt-BR ; skos:definition "Elemento da cobertura disposto sobre as terças e perpendicularmente a elas."@pt-BR .
+:Verga a owl:Class ; dcterms:identifier "Verga" ; skos:prefLabel "Verga"@pt-BR ; skos:definition "Elemento estrutural disposto sobre vãos de portas ou janelas para auxiliar na distribuição de cargas e tensões."@pt-BR .
+:Viga a owl:Class ; dcterms:identifier "Viga" ; skos:prefLabel "Viga"@pt-BR ; skos:definition "Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão."@pt-BR .
+:Vigota a owl:Class ; dcterms:identifier "Vigota" ; skos:prefLabel "Vigota"@pt-BR ; skos:definition "Viga de pequena seção transversal, frequentemente pré-moldada ou protendida."@pt-BR ; rdfs:subClassOf :Viga .
