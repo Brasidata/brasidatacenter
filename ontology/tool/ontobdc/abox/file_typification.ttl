@@ -1,5 +1,0 @@
-@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/abox/file_typification.ttl#> .
-
-:EgineeringDrawing a ArtifactType ;
-
-

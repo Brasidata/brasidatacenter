@@ -1,0 +1,100 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/abox/typification.ttl#> .
+@prefix typ: <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/abox/typification.ttl>
+    a owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl> ;
+    rdfs:label "OntoBDC File Typification Vocabulary"@en .
+
+:AutodeskAutoCADDWG
+    a owl:NamedIndividual ;
+    rdfs:label "Autodesk AutoCAD DWG"@en ;
+    schema:identifier "dwg" ;
+    typ:isTypeOf typ:EngineeringDrawing .
+
+:AutodeskAutoCADDXF
+    a owl:NamedIndividual ;
+    rdfs:label "Autodesk AutoCAD DXF"@en ;
+    schema:identifier "dxf" ;
+    typ:isTypeOf typ:EngineeringDrawing .
+
+:BuildingSMARTIFC
+    a owl:NamedIndividual ;
+    rdfs:label "buildingSMART IFC"@en ;
+    schema:identifier "ifc" ;
+    typ:isTypeOf typ:ConstructionModel .
+
+:AutodeskRevitRVT
+    a owl:NamedIndividual ;
+    rdfs:label "Autodesk Revit RVT"@en ;
+    schema:identifier "rvt" ;
+    typ:isTypeOf typ:ConstructionModel .
+
+:TrimbleSketchUpSKP
+    a owl:NamedIndividual ;
+    rdfs:label "Trimble SketchUp SKP"@en ;
+    schema:identifier "skp" ;
+    typ:isTypeOf typ:ConstructionModel .
+
+:AdobePDF
+    a owl:NamedIndividual ;
+    rdfs:label "Adobe PDF"@en ;
+    schema:identifier "pdf" ;
+    typ:isTypeOf typ:Document .
+
+:MicrosoftWordDOC
+    a owl:NamedIndividual ;
+    rdfs:label "Microsoft Word DOC"@en ;
+    schema:identifier "doc" ;
+    typ:isTypeOf typ:Document .
+
+:MicrosoftWordDOCX
+    a owl:NamedIndividual ;
+    rdfs:label "Microsoft Word DOCX"@en ;
+    schema:identifier "docx" ;
+    typ:isTypeOf typ:Document .
+
+:OpenDocumentODT
+    a owl:NamedIndividual ;
+    rdfs:label "OpenDocument Text ODT"@en ;
+    schema:identifier "odt" ;
+    typ:isTypeOf typ:Document .
+
+:MicrosoftExcelXLS
+    a owl:NamedIndividual ;
+    rdfs:label "Microsoft Excel XLS"@en ;
+    schema:identifier "xls" ;
+    typ:isTypeOf typ:Spreadsheet .
+
+:MicrosoftExcelXLSX
+    a owl:NamedIndividual ;
+    rdfs:label "Microsoft Excel XLSX"@en ;
+    schema:identifier "xlsx" ;
+    typ:isTypeOf typ:Spreadsheet .
+
+:CommaSeparatedValuesCSV
+    a owl:NamedIndividual ;
+    rdfs:label "Comma-Separated Values CSV"@en ;
+    schema:identifier "csv" ;
+    typ:isTypeOf typ:Spreadsheet .
+
+:JPEGImage
+    a owl:NamedIndividual ;
+    rdfs:label "JPEG"@en ;
+    schema:identifier "jpg" , "jpeg" ;
+    typ:isTypeOf typ:Image .
+
+:PNGImage
+    a owl:NamedIndividual ;
+    rdfs:label "PNG"@en ;
+    schema:identifier "png" ;
+    typ:isTypeOf typ:Image .
+
+:TIFFImage
+    a owl:NamedIndividual ;
+    rdfs:label "TIFF"@en ;
+    schema:identifier "tif" , "tiff" ;
+    typ:isTypeOf typ:Image .
