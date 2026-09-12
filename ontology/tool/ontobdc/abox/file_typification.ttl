@@ -15,11 +15,11 @@
     schema:identifier "engineering-drawing" ;
     rdfs:comment "An information artifact whose primary semantic role is to communicate engineering information through a drawing, independently of whether it is stored as DWG, DXF, PDF, or another representation."@en .
 
-:Model
+:ConstructionModel
     a typ:ArtifactType ;
-    rdfs:label "Model"@en , "Modelo"@pt-BR ;
-    schema:identifier "model" ;
-    rdfs:comment "An information artifact representing a system, asset, facility, component, or other project subject as a model."@en .
+    rdfs:label "Construction model"@en , "Modelo de construção"@pt-BR ;
+    schema:identifier "construction-model" ;
+    rdfs:comment "An information artifact that represents a construction project, asset, facility, system, element, or assembly as a model, independently of its authoring software or exchange format."@en .
 
 :Schedule
     a typ:ArtifactType ;
