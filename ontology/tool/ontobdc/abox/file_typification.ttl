@@ -14,3 +14,51 @@
     rdfs:label "Engineering drawing"@en , "Desenho de engenharia"@pt-BR ;
     schema:identifier "engineering-drawing" ;
     rdfs:comment "An information artifact whose primary semantic role is to communicate engineering information through a drawing, independently of whether it is stored as DWG, DXF, PDF, or another representation."@en .
+
+:Model
+    a typ:ArtifactType ;
+    rdfs:label "Model"@en , "Modelo"@pt-BR ;
+    schema:identifier "model" ;
+    rdfs:comment "An information artifact representing a system, asset, facility, component, or other project subject as a model."@en .
+
+:Schedule
+    a typ:ArtifactType ;
+    rdfs:label "Schedule"@en , "Cronograma"@pt-BR ;
+    schema:identifier "schedule" ;
+    rdfs:comment "An information artifact describing planned, actual, or forecast activities and their temporal relationships."@en .
+
+:Specification
+    a typ:ArtifactType ;
+    rdfs:label "Specification"@en , "Especificação"@pt-BR ;
+    schema:identifier "specification" ;
+    rdfs:comment "An information artifact defining technical requirements, criteria, materials, products, workmanship, or performance."@en .
+
+:Report
+    a typ:ArtifactType ;
+    rdfs:label "Report"@en , "Relatório"@pt-BR ;
+    schema:identifier "report" ;
+    rdfs:comment "An information artifact presenting findings, status, analysis, observations, or recorded results."@en .
+
+:Calculation
+    a typ:ArtifactType ;
+    rdfs:label "Calculation"@en , "Memória de cálculo"@pt-BR ;
+    schema:identifier "calculation" ;
+    rdfs:comment "An information artifact containing engineering, technical, commercial, or project calculations and their supporting assumptions."@en .
+
+:Photograph
+    a typ:ArtifactType ;
+    rdfs:label "Photograph"@en , "Fotografia"@pt-BR ;
+    schema:identifier "photograph" ;
+    rdfs:comment "An information artifact whose primary role is to provide photographic evidence or visual documentation."@en .
+
+:Correspondence
+    a typ:ArtifactType ;
+    rdfs:label "Correspondence"@en , "Correspondência"@pt-BR ;
+    schema:identifier "correspondence" ;
+    rdfs:comment "An information artifact whose primary role is formal or informal communication between project participants."@en .
+
+:Dataset
+    a typ:ArtifactType ;
+    rdfs:label "Dataset"@en , "Conjunto de dados"@pt-BR ;
+    schema:identifier "dataset" ;
+    rdfs:comment "An information artifact primarily intended to provide structured or semi-structured data for processing, exchange, analysis, or reference."@en .
