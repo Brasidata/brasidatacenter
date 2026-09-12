@@ -1,0 +1,25 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix bsdd: <http://bsdd.buildingsmart.org/def#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@base <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/ns.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Ontology"@en ,
+        "Ontologia AECO"@pt-BR .
+
+:PadFooting
+    rdf:type owl:Class , bsdd:Classification ;
+    bsdd:code "pad-footing" ;
+    bsdd:classificationType "CLASS" ;
+    bsdd:name "Pad footing"@en ,
+        "Sapata isolada"@pt-BR ;
+    bsdd:definition "A shallow foundation element that transfers the concentrated load of a column, or a small group of columns, to the ground."@en ,
+        "Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares."@pt-BR ;
+    bsdd:synonym "isolated footing"@en ,
+        "fundação em sapata"@pt-BR ,
+        "fundação por sapata"@pt-BR ;
+    bsdd:relatedIfcEntityName "IfcFooting" .
