@@ -1,0 +1,334 @@
+@prefix : <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix view: <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://ontobdc.org/ontology/domain/facade.ttl#> .
+
+<http://ontobdc.org/ontology/domain/facade.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports
+        <http://datacenter.app.br/ontology/ontobdc/domain/view.ttl> ,
+        <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl> ;
+    rdfs:label
+        "OntoBDC Facade Ontology"@en ,
+        "Ontologia de fachadas OntoBDC"@pt-BR ;
+    schema:description "Semantic contract and integrity shapes for dataset and data entity facades."@en .
+
+#################################################################
+#    Dataset facades
+#################################################################
+
+obdc:EntityDataset :hasDataEntityFacade :DatasetFacade .
+
+:DatasetFacade
+    rdf:type owl:NamedIndividual ,
+        :DataEntityFacade ;
+    schema:identifier "dataset_facade" ;
+    schema:name
+        "Dataset Facade"@en ,
+        "Fachada de dataset"@pt-BR ;
+    schema:description "Public projection of the metadata and relationships of an OntoBDC entity dataset."@en ;
+    :isFacadeOf obdc:EntityDataset ;
+    :hasFacadeField
+        :DatasetIdentifierField ,
+        :DatasetTitleField ,
+        :DatasetDescriptionField ,
+        :DatasetCreationDateField ,
+        :DatasetLocationField ,
+        :DatasetContainerField ,
+        :DatasetDataEntityField .
+
+:DatasetIdentifierField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Identifier" ;
+    schema:name
+        "Identifier"@en ,
+        "Identificador"@pt-BR ;
+    :fieldDatatype xsd:string ;
+    :fieldOrder 10 ;
+    :mapsToResource dcterms:identifier ;
+    :mapsToProperty dcterms:identifier ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetTitleField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Title" ;
+    schema:name
+        "Title"@en ,
+        "Título"@pt-BR ;
+    :fieldDatatype xsd:string ;
+    :fieldOrder 20 ;
+    :mapsToResource dcterms:title ;
+    :mapsToProperty dcterms:title ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetDescriptionField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Description" ;
+    schema:name
+        "Description"@en ,
+        "Descrição"@pt-BR ;
+    :fieldDatatype xsd:string ;
+    :fieldOrder 30 ;
+    :mapsToResource dcterms:description ;
+    :mapsToProperty dcterms:description ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetCreationDateField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "CreationDate" ;
+    schema:name
+        "Creation Date"@en ,
+        "Data de criação"@pt-BR ;
+    :fieldDatatype xsd:dateTime ;
+    :fieldOrder 40 ;
+    :mapsToResource ct:creationDate ;
+    :mapsToProperty ct:creationDate ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetLocationField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Location" ;
+    schema:name
+        "Location"@en ,
+        "Localização"@pt-BR ;
+    :fieldDatatype xsd:anyURI ;
+    :fieldOrder 50 ;
+    :mapsToResource prov:atLocation ;
+    :mapsToProperty prov:atLocation ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetContainerField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "Container" ;
+    schema:name
+        "Container"@en ,
+        "Container"@pt-BR ;
+    :fieldDatatype xsd:anyURI ;
+    :fieldOrder 60 ;
+    :mapsToResource obdc:belongsToDataContainer ;
+    :mapsToProperty obdc:belongsToDataContainer ;
+    :isRequired true ;
+    :isMultivalued false .
+
+:DatasetDataEntityField
+    rdf:type owl:NamedIndividual ,
+        :FacadeField ;
+    schema:identifier "DataEntity" ;
+    schema:name
+        "Data Entity"@en ,
+        "Entidade de dados"@pt-BR ;
+    :fieldDatatype xsd:anyURI ;
+    :fieldOrder 70 ;
+    :mapsToResource obdc:hasDataEntity ;
+    :mapsToProperty obdc:hasDataEntity ;
+    :isRequired true ;
+    :isMultivalued true .
+
+#################################################################
+#    Data entity facades
+#################################################################
+
+:DataEntityFacade
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isFacadeOf ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :hasFacadeField ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Data Entity Facade"@en ,
+        "Fachada de entidade de dados"@pt-BR ;
+    schema:description "Tabular projection of an entity class."@en .
+
+:FacadeField
+    rdf:type owl:Class ;
+    rdfs:subClassOf
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldDatatype ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :fieldOrder ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isRequired ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :isMultivalued ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty :mapsToResource ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger
+        ] ;
+    rdfs:label
+        "Facade Field"@en ,
+        "Campo de fachada"@pt-BR ;
+    schema:description "A field exposed by a data entity facade."@en .
+
+:hasDataEntityFacade
+    rdf:type owl:ObjectProperty ;
+    owl:inverseOf :isFacadeOf ;
+    rdfs:domain owl:Class ;
+    rdfs:range :DataEntityFacade .
+
+:isFacadeOf
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range owl:Class .
+
+:hasFacadeField
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :FacadeField .
+
+:hasStandaloneTile
+    rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range view:ComponentPlacement ;
+    rdfs:label "has standalone tile"@en ;
+    rdfs:comment "Declares a tile placement to render when this facade's entity is explored standalone. A facade without a standalone tile falls back to the default field/value document."@en .
+
+:fieldDatatype
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Datatype .
+
+:mapsToResource
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Resource .
+
+:mapsToProperty
+    rdf:type owl:ObjectProperty ,
+        owl:FunctionalProperty ;
+    rdfs:subPropertyOf :mapsToResource ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdf:Property .
+
+:fieldOrder
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:integer .
+
+:isRequired
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+:isMultivalued
+    rdf:type owl:DatatypeProperty ,
+        owl:FunctionalProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean .
+
+#################################################################
+#    Facade integrity shapes
+#################################################################
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :DataEntityFacade ;
+    sh:property
+        [
+            sh:path :isFacadeOf ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasFacadeField ;
+            sh:minCount 1 ;
+            sh:class :FacadeField
+        ] .
+
+:FacadeFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :FacadeField ;
+    sh:property
+        [
+            sh:path schema:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] ,
+        [
+            sh:path :fieldDatatype ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :fieldOrder ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:minInclusive 0
+        ] ,
+        [
+            sh:path :isRequired ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isMultivalued ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :mapsToResource ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] .
+
+:PropertyMappedFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetSubjectsOf :mapsToProperty ;
+    sh:property [
+        sh:path :mapsToProperty ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:equals :mapsToResource ;
+        sh:nodeKind sh:IRI
+    ] .

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from rdflib import Graph, Namespace
 from rdflib.collection import Collection
-from rdflib.namespace import OWL, RDF, RDFS, SDO
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SDO
 
 from brasidatacenter.resources import ontology_path
 
@@ -24,7 +24,7 @@ def _parse(name: str) -> Graph:
 
 
 def _parse_facade_ontology() -> Graph:
-    resource = ontology_path("old", "ontobdc", "domain", "facade.ttl")
+    resource = ontology_path("tool", "ontobdc", "tbox", "facade.ttl")
     with resource.open("rb") as stream:
         return Graph().parse(file=stream, format="turtle")
 
@@ -70,6 +70,54 @@ def test_facade_contract_is_defined_in_the_shared_facade_ontology() -> None:
         RDF.type,
         SH.NodeShape,
     ) in graph
+
+
+def test_dataset_facade_exposes_dataset_metadata_fields() -> None:
+    graph = _parse_facade_ontology()
+    expected_mappings = {
+        "DatasetIdentifierField": DCTERMS.identifier,
+        "DatasetTitleField": DCTERMS.title,
+        "DatasetDescriptionField": DCTERMS.description,
+        "DatasetCreationDateField": Namespace(
+            "http://standards.iso.org/iso/21597/-1/ed-1/en/Container#"
+        ).creationDate,
+        "DatasetLocationField": Namespace("http://www.w3.org/ns/prov#").atLocation,
+        "DatasetContainerField": OBDC.belongsToDataContainer,
+        "DatasetDataEntityField": OBDC.hasDataEntity,
+    }
+
+    assert (
+        OBDC.EntityDataset,
+        FACADE_ONTOLOGY.hasDataEntityFacade,
+        FACADE_ONTOLOGY.DatasetFacade,
+    ) in graph
+    assert (
+        FACADE_ONTOLOGY.DatasetFacade,
+        RDF.type,
+        FACADE_ONTOLOGY.DataEntityFacade,
+    ) in graph
+
+    fields = set(
+        graph.objects(
+            FACADE_ONTOLOGY.DatasetFacade,
+            FACADE_ONTOLOGY.hasFacadeField,
+        )
+    )
+    assert fields == {
+        FACADE_ONTOLOGY[field_name] for field_name in expected_mappings
+    }
+
+    for field_name, mapped_property in expected_mappings.items():
+        field = FACADE_ONTOLOGY[field_name]
+        assert (
+            field,
+            FACADE_ONTOLOGY.mapsToProperty,
+            mapped_property,
+        ) in graph
+        assert graph.value(
+            field,
+            FACADE_ONTOLOGY.isRequired,
+        ).toPython() is True
 
 
 def test_facade_fields_map_to_dimension_kinds() -> None:

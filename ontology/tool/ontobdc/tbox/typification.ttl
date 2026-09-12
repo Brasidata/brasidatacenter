@@ -1,0 +1,5 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
+
+:ArtifactType a owlClass ;
+
+
