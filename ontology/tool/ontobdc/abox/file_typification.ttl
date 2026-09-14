@@ -1,68 +1,64 @@
-@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/abox/file_typification.ttl#> .
+@prefix typ: <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 
-<http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl>
+<http://datacenter.app.br/ontology/tool/ontobdc/abox/file_typification.ttl>
     a owl:Ontology ;
-    rdfs:label "OntoBDC Typification Ontology"@en ;
-    rdfs:comment "Vocabulary for classifying the semantic type of information artifacts independently of their storage format."@en .
-
-:ArtifactType
-    a owl:Class ;
-    rdfs:label "Artifact type"@en , "Tipo de artefato"@pt-BR ;
-    rdfs:comment "Controlled classification describing what an information artifact is in the project domain, independently of file extension, MIME type, or serialization format."@en .
+    owl:imports <http://datacenter.app.br/ontology/tool/ontobdc/tbox/typification.ttl> ;
+    rdfs:label "OntoBDC File Typification Vocabulary"@en .
 
 :EngineeringDrawing
-    a :ArtifactType ;
+    a typ:ArtifactType ;
     rdfs:label "Engineering drawing"@en , "Desenho de engenharia"@pt-BR ;
     schema:identifier "engineering-drawing" ;
     rdfs:comment "An information artifact whose primary semantic role is to communicate engineering information through a drawing, independently of whether it is stored as DWG, DXF, PDF, or another representation."@en .
 
 :ConstructionModel
-    a :ArtifactType ;
+    a typ:ArtifactType ;
     rdfs:label "Construction model"@en , "Modelo de construção"@pt-BR ;
     schema:identifier "construction-model" ;
     rdfs:comment "An information artifact that represents a construction project, asset, facility, system, element, or assembly as a model, independently of its authoring software or exchange format."@en .
 
 :Schedule
-    a :ArtifactType ;
+    a typ:ArtifactType ;
     rdfs:label "Schedule"@en , "Cronograma"@pt-BR ;
     schema:identifier "schedule" ;
     rdfs:comment "An information artifact describing planned, actual, or forecast activities and their temporal relationships."@en .
 
-:TechnicalSpecification
-    a :ArtifactType ;
+:Specification
+    a typ:ArtifactType ;
     rdfs:label "Specification"@en , "Especificação"@pt-BR ;
-    schema:identifier "technical-specification" ;
+    schema:identifier "specification" ;
     rdfs:comment "An information artifact defining technical requirements, criteria, materials, products, workmanship, or performance."@en .
 
 :Report
-    a :ArtifactType ;
+    a typ:ArtifactType ;
     rdfs:label "Report"@en , "Relatório"@pt-BR ;
     schema:identifier "report" ;
     rdfs:comment "An information artifact presenting findings, status, analysis, observations, or recorded results."@en .
 
+:Calculation
+    a typ:ArtifactType ;
+    rdfs:label "Calculation"@en , "Memória de cálculo"@pt-BR ;
+    schema:identifier "calculation" ;
+    rdfs:comment "An information artifact containing engineering, technical, commercial, or project calculations and their supporting assumptions."@en .
+
 :Photograph
-    a :ArtifactType ;
+    a typ:ArtifactType ;
     rdfs:label "Photograph"@en , "Fotografia"@pt-BR ;
     schema:identifier "photograph" ;
     rdfs:comment "An information artifact whose primary role is to provide photographic evidence or visual documentation."@en .
 
-:Document
-    a :ArtifactType ;
-    rdfs:label "Document"@en , "Documento"@pt-BR ;
-    schema:identifier "document" ;
-    rdfs:comment "A generic textual information artifact whose specific role — specification, report, correspondence, or another — is not determined by this classification alone."@en .
+:Correspondence
+    a typ:ArtifactType ;
+    rdfs:label "Correspondence"@en , "Correspondência"@pt-BR ;
+    schema:identifier "correspondence" ;
+    rdfs:comment "An information artifact whose primary role is formal or informal communication between project participants."@en .
 
-:Spreadsheet
-    a :ArtifactType ;
-    rdfs:label "Spreadsheet"@en , "Planilha"@pt-BR ;
-    schema:identifier "spreadsheet" ;
-    rdfs:comment "An information artifact organizing data in tabular, calculated, or otherwise structured rows and columns."@en .
-
-:Image
-    a :ArtifactType ;
-    rdfs:label "Image"@en , "Imagem"@pt-BR ;
-    schema:identifier "image" ;
-    rdfs:comment "A generic visual information artifact whose specific role — photographic evidence, a scanned document, a diagram, or another — is not determined by this classification alone."@en .
+:Dataset
+    a typ:ArtifactType ;
+    rdfs:label "Dataset"@en , "Conjunto de dados"@pt-BR ;
+    schema:identifier "dataset" ;
+    rdfs:comment "An information artifact primarily intended to provide structured or semi-structured data for processing, exchange, analysis, or reference."@en .
