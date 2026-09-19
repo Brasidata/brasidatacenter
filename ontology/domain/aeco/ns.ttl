@@ -954,12 +954,11 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#BaciaSanitaria
 :BaciaSanitaria rdf:type owl:Class ;
-       owl:equivalentClass :Basin ;
+       owl:equivalentClass :ToiletPan ;
        dcterms:identifier "BaciaSanitaria" ;
        skos:prefLabel "Bacia sanitária"@pt-br ,
                       "Toilet"@en .
 
-.
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Backfill
 :Backfill rdf:type owl:Class ;
           owl:equivalentClass :Reaterro ;
@@ -1137,7 +1136,7 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
        owl:equivalentClass :BaciaSanitaria ;
        dcterms:identifier "ToiletPan" ;
        skos:prefLabel "Toilet pan"@en ;
-       skos:altLabel "Toilet bowl".
+       skos:altLabel "Toilet bowl"@en .
 
 
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Bat
