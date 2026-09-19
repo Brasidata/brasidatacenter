@@ -952,14 +952,14 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
      skos:prefLabel "BTU"@pt-br .
 
 
-###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Bacia
-:Bacia rdf:type owl:Class ;
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#BaciaSanitaria
+:BaciaSanitaria rdf:type owl:Class ;
        owl:equivalentClass :Basin ;
-       dcterms:identifier "Bacia" ;
-       skos:prefLabel "Bacia"@pt-br ,
-                      "Basin"@en .
+       dcterms:identifier "BaciaSanitaria" ;
+       skos:prefLabel "Bacia sanitária"@pt-br ,
+                      "Toilet"@en .
 
-
+.
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Backfill
 :Backfill rdf:type owl:Class ;
           owl:equivalentClass :Reaterro ;
@@ -1132,10 +1132,12 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
           skos:prefLabel "Basement"@en .
 
 
-###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Basin
-:Basin rdf:type owl:Class ;
-       dcterms:identifier "Basin" ;
-       skos:prefLabel "Basin"@en .
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#ToiletPan
+:ToiletPan rdf:type owl:Class ;
+       owl:equivalentClass :BaciaSanitaria ;
+       dcterms:identifier "ToiletPan" ;
+       skos:prefLabel "Toilet pan"@en ;
+       skos:altLabel "Toilet bowl".
 
 
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Bat
@@ -8603,5 +8605,79 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
             dcterms:identifier "Zoneamento" ;
             skos:prefLabel "Zoneamento"@pt-br .
 
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#ComodoContiguo
+:ComodoContiguo rdf:type owl:Class ;
+                dcterms:identifier "ComodoContiguo" ;
+                skos:altLabel "ambiente contíguo"@pt-br ;
+                skos:definition "Cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede, sem que seja necessária a existência de porta ou passagem direta entre ambos."@pt-br ,
+                                "A room immediately adjacent to another, sharing a physical boundary with it, typically a wall, without requiring a direct doorway or passage between them."@en ;
+                skos:prefLabel "Adjacent room"@en ,
+                               "Cômodo contíguo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#NovoComodo
+:NovoComodo rdf:type owl:Class ;
+            dcterms:identifier "NovoComodo" ;
+            skos:definition "Cômodo criado por construção, ampliação ou reconfiguração de uma edificação existente."@pt-br ;
+            skos:prefLabel "Novo cômodo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#NovoComodoContiguo
+:NovoComodoContiguo rdf:type owl:Class ;
+                    rdfs:subClassOf :ComodoContiguo ,
+                                    :NovoComodo ;
+                    dcterms:identifier "NovoComodoContiguo" ;
+                    skos:definition "Novo cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede."@pt-br ;
+                    skos:prefLabel "Novo cômodo contíguo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#PocoDeVentilacao
+:PocoDeVentilacao rdf:type owl:Class ;
+                  dcterms:identifier "PocoDeVentilacao" ;
+                  skos:definition "Espaço vertical ou vazio construtivo destinado a promover a ventilação natural de ambientes internos e a renovação do ar."@pt-br ;
+                  skos:prefLabel "Poço de ventilação"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#RecomposicaoEstrutural
+:RecomposicaoEstrutural rdf:type owl:Class ;
+                        dcterms:identifier "RecomposicaoEstrutural" ;
+                        skos:definition "Intervenção destinada a restabelecer a integridade, a geometria ou a capacidade resistente de um elemento ou sistema estrutural afetado por dano, deterioração, remoção ou alteração."@pt-br ;
+                        skos:prefLabel "Recomposição estrutural"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#RecomposicaoEstruturalComodo
+:RecomposicaoEstruturalComodo rdf:type owl:Class ;
+                              rdfs:subClassOf :RecomposicaoEstrutural ;
+                              dcterms:identifier "RecomposicaoEstruturalComodo" ;
+                              skos:definition "Intervenção de recomposição estrutural executada em elementos que compõem ou delimitam um cômodo."@pt-br ;
+                              skos:prefLabel "Recomposição estrutural cômodo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#AdequacaoDeComodo
+:AdequacaoDeComodo rdf:type owl:Class ;
+                   dcterms:identifier "AdequacaoDeComodo" ;
+                   skos:definition "Intervenção que modifica um cômodo existente para atender novos requisitos de uso, desempenho, acessibilidade, instalações, segurança ou conformidade."@pt-br ;
+                   skos:prefLabel "Adequação de cômodo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#AmpliacaoEAdequacao
+:AmpliacaoEAdequacao rdf:type owl:Class ;
+                     dcterms:identifier "AmpliacaoEAdequacao" ;
+                     skos:definition "Intervenção que combina aumento de área, capacidade ou extensão com a adequação de uma construção ou parte dela."@pt-br ;
+                     skos:prefLabel "Ampliação e adequação"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#AmpliacaoEAdequacaoDeComodo
+:AmpliacaoEAdequacaoDeComodo rdf:type owl:Class ;
+                             rdfs:subClassOf :AmpliacaoEAdequacao ;
+                             dcterms:identifier "AmpliacaoEAdequacaoDeComodo" ;
+                             skos:definition "Intervenção que combina a ampliação de um cômodo com sua adequação a novos requisitos de uso ou desempenho."@pt-br ;
+                             skos:prefLabel "Ampliação e adequação de cômodo"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#ConstrucaoAmpliacaoEAdequacao
+:ConstrucaoAmpliacaoEAdequacao rdf:type owl:Class ;
+                               dcterms:identifier "ConstrucaoAmpliacaoEAdequacao" ;
+                               skos:definition "Intervenção que reúne atividades de construção, ampliação e adequação em uma edificação ou parte dela."@pt-br ;
+                               skos:prefLabel "Construção ampliação e adequação"@pt-br .
+
+###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#ConstrucaoAmpliacaoEAdequacaoDeComodo
+:ConstrucaoAmpliacaoEAdequacaoDeComodo rdf:type owl:Class ;
+                                       rdfs:subClassOf :ConstrucaoAmpliacaoEAdequacao ;
+                                       dcterms:identifier "ConstrucaoAmpliacaoEAdequacaoDeComodo" ;
+                                       skos:definition "Intervenção aplicada a um cômodo que reúne atividades de construção, ampliação e adequação."@pt-br ;
+                                       skos:prefLabel "Construção ampliação e adequação de cômodo"@pt-br .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
