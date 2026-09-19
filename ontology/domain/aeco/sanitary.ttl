@@ -8,6 +8,8 @@
 <http://datacenter.app.br/ontology/domain/aeco/sanitary.ttl>
     rdf:type owl:Ontology .
 
+aeco:CaixaDeInspecao owl:equivalentClass aeco:CaixaDePassagem .
+
 aeco:Chuveiro rdf:type owl:Class ;
     owl:equivalentClass aeco:Shower ;
     dcterms:identifier "Chuveiro" ;
