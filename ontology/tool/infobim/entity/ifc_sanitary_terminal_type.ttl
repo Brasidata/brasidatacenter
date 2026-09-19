@@ -1,5 +1,6 @@
 @prefix : <https://infobim.org/ontology/tool/entity/ifc_sanitary_terminal_type.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix dicl: <https://w3id.org/digitalconstruction/0.5/Lifecycle#> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix omg: <https://w3id.org/omg#> .
@@ -19,12 +20,10 @@
 
 :LoD1 rdf:type dicl:LODLevel .
 
-
 #################################################################
 #    Classes
 #################################################################
 
-# Draft geometric description for the simplified LOD 1 toilet pan.
 :ToiletPanCylinderGeometry rdf:type owl:Class ;
     rdfs:subClassOf x3do:Cylinder ,
         [
@@ -37,7 +36,6 @@
             owl:onProperty x3do:height ;
             owl:hasValue "0.35"^^xsd:decimal
         ] .
-
 
 :ToiletPan3DRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ModelElement3DRepresentation ,
@@ -53,10 +51,26 @@
             owl:someValuesFrom :ToiletPanCylinderGeometry
         ] .
 
+:WashHandBasin3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
+        omg:Geometry .
+
+:Shower3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
+        omg:Geometry .
+
+:KitchenSink3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
+        omg:Geometry .
 
 :ToiletPanRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:ToiletPan ,
+    rdfs:subClassOf crm:E36_Visual_Item ,
         ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:ToiletPan
+        ] ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
@@ -67,3 +81,92 @@
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom :ToiletPan3DRepresentation
         ] .
+
+:WashHandBasinRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:Lavatorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:WASHHANDBASIN
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :WashHandBasin3DRepresentation
+        ] .
+
+:ShowerRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:Chuveiro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:SHOWER
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :Shower3DRepresentation
+        ] .
+
+:KitchenSinkRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:PiaDeCozinha
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:SINK
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :KitchenSink3DRepresentation
+        ] .
+
+#################################################################
+#    Representation inverse relations
+#################################################################
+
+aeco:ToiletPan rdfs:subClassOf
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty crm:P138i_has_representation ;
+        owl:someValuesFrom :ToiletPanRepresentation
+    ] .
+
+aeco:Lavatorio rdfs:subClassOf
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty crm:P138i_has_representation ;
+        owl:someValuesFrom :WashHandBasinRepresentation
+    ] .
+
+aeco:Chuveiro rdfs:subClassOf
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty crm:P138i_has_representation ;
+        owl:someValuesFrom :ShowerRepresentation
+    ] .
+
+aeco:PiaDeCozinha rdfs:subClassOf
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty crm:P138i_has_representation ;
+        owl:someValuesFrom :KitchenSinkRepresentation
+    ] .
