@@ -14,8 +14,7 @@
 #################################################################
 
 :ToiletPan3DRepresentation rdf:type owl:Class ;
-rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-
+    rdfs:subClassOf aeco:ModelElement3DRepresentation .
 
 
 :ToiletPanRepresentation rdf:type owl:Class ;
