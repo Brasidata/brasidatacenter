@@ -1,0 +1,70 @@
+name: Patch AECO toilet ontology
+
+on:
+  push:
+    branches:
+      - noah-release
+    paths:
+      - .github/workflows/patch-aeco-toilet.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: noah-release
+          fetch-depth: 0
+
+      - name: Repair AECO ontology
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('ontology/domain/aeco/ns.ttl')
+          text = path.read_text(encoding='utf-8')
+
+          old_equivalence = '       owl:equivalentClass :Basin ;'
+          new_equivalence = '       owl:equivalentClass :ToiletPan ;'
+          if text.count(old_equivalence) != 1:
+              raise SystemExit(f'Expected exactly one stale Basin equivalence, found {text.count(old_equivalence)}')
+          text = text.replace(old_equivalence, new_equivalence, 1)
+
+          stray = '\n\n.\n###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Backfill'
+          repaired = '\n\n###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#Backfill'
+          if text.count(stray) != 1:
+              raise SystemExit(f'Expected exactly one stray Turtle dot, found {text.count(stray)}')
+          text = text.replace(stray, repaired, 1)
+
+          old_alt = '       skos:altLabel "Toilet bowl".'
+          new_alt = '       skos:altLabel "Toilet bowl"@en .'
+          if text.count(old_alt) != 1:
+              raise SystemExit(f'Expected exactly one Toilet bowl altLabel, found {text.count(old_alt)}')
+          text = text.replace(old_alt, new_alt, 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Validate Turtle
+        shell: bash
+        run: |
+          python -m pip install --quiet rdflib
+          python - <<'PY'
+          from rdflib import Graph
+          Graph().parse('ontology/domain/aeco/ns.ttl', format='turtle')
+          Graph().parse('ontology/tool/infobim/entity/ifc_sanitary_terminal_type.ttl', format='turtle')
+          print('Turtle validation passed')
+          PY
+
+      - name: Commit repair
+        shell: bash
+        run: |
+          git config user.name "ChatGPT"
+          git config user.email "noreply@openai.com"
+          git add ontology/domain/aeco/ns.ttl
+          git commit -m "fix(aeco): repair toilet pan concept"
+          git push origin HEAD:noah-release
