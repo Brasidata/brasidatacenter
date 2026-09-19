@@ -1,18 +1,51 @@
 @prefix : <https://infobim.org/ontology/tool/entity/ifc_distribution_chamber_element_type.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dicl: <https://w3id.org/digitalconstruction/0.5/Lifecycle#> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix omg: <https://w3id.org/omg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix x3do: <https://www.web3d.org/specifications/X3dOntology4.0#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://infobim.org/ontology/tool/entity/ifc_distribution_chamber_element_type.ttl>
     rdf:type owl:Ontology .
 
+:LoD1 rdf:type dicl:LODLevel .
+
+:InspectionChamberBoxGeometry rdf:type owl:Class ;
+    rdfs:subClassOf x3do:Box ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:x_length ;
+            owl:hasValue "0.6"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:y_length ;
+            owl:hasValue "0.6"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:z_length ;
+            owl:hasValue "1.0"^^xsd:decimal
+        ] .
+
 :InspectionChamber3DRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+        omg:Geometry ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty dicl:hasLODLevel ;
+            owl:hasValue :LoD1
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasComplexGeometryDescription ;
+            owl:someValuesFrom :InspectionChamberBoxGeometry
+        ] .
 
 :InspectionChamberRepresentation rdf:type owl:Class ;
     rdfs:subClassOf crm:E36_Visual_Item ,

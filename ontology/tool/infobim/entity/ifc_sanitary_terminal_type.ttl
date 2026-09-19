@@ -51,17 +51,101 @@
             owl:someValuesFrom :ToiletPanCylinderGeometry
         ] .
 
+:WashHandBasinBoxGeometry rdf:type owl:Class ;
+    rdfs:subClassOf x3do:Box ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:x_length ;
+            owl:hasValue "0.5"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:y_length ;
+            owl:hasValue "0.4"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:z_length ;
+            owl:hasValue "0.15"^^xsd:decimal
+        ] .
+
 :WashHandBasin3DRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+        omg:Geometry ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty dicl:hasLODLevel ;
+            owl:hasValue :LoD1
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasComplexGeometryDescription ;
+            owl:someValuesFrom :WashHandBasinBoxGeometry
+        ] .
+
+:ShowerBoxGeometry rdf:type owl:Class ;
+    rdfs:subClassOf x3do:Box ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:x_length ;
+            owl:hasValue "1.0"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:y_length ;
+            owl:hasValue "1.0"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:z_length ;
+            owl:hasValue "2.0"^^xsd:decimal
+        ] .
 
 :Shower3DRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+        omg:Geometry ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty dicl:hasLODLevel ;
+            owl:hasValue :LoD1
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasComplexGeometryDescription ;
+            owl:someValuesFrom :ShowerBoxGeometry
+        ] .
+
+:KitchenSinkBoxGeometry rdf:type owl:Class ;
+    rdfs:subClassOf x3do:Box ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:x_length ;
+            owl:hasValue "0.6"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:y_length ;
+            owl:hasValue "0.5"^^xsd:decimal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty x3do:z_length ;
+            owl:hasValue "0.2"^^xsd:decimal
+        ] .
 
 :KitchenSink3DRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+        omg:Geometry ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty dicl:hasLODLevel ;
+            owl:hasValue :LoD1
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasComplexGeometryDescription ;
+            owl:someValuesFrom :KitchenSinkBoxGeometry
+        ] .
 
 :ToiletPanRepresentation rdf:type owl:Class ;
     rdfs:subClassOf crm:E36_Visual_Item ,
