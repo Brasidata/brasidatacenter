@@ -1,7 +1,7 @@
 @prefix : <https://infobim.org/ontology/tool/entity/ifc_sanitary_terminal_type.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix dicl: <https://w3id.org/digitalconstruction/0.5/Lifecycle#> .
-@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix omg: <https://w3id.org/omg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -17,7 +17,7 @@
 #    Individuals
 #################################################################
 
-:LOD1 rdf:type dicl:LODLevel .
+:LoD1 rdf:type dicl:LODLevel .
 
 
 #################################################################
@@ -45,7 +45,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty dicl:hasLODLevel ;
-            owl:hasValue :LOD1
+            owl:hasValue :LoD1
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -56,11 +56,11 @@
 
 :ToiletPanRepresentation rdf:type owl:Class ;
     rdfs:subClassOf aeco:ToiletPan ,
-        ifcowl:IfcSanitaryTerminal ,
+        ifc4owl:IfcSanitaryTerminal ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifcowl:predefinedType_IfcSanitaryTerminal ;
-            owl:hasValue ifcowl:TOILETPAN
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:TOILETPAN
         ] ,
         [
             rdf:type owl:Restriction ;
