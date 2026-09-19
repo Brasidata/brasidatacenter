@@ -1,0 +1,41 @@
+@prefix : <https://infobim.org/ontology/tool/entity/ifc_distribution_chamber_element_type.ttl#> .
+@prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix omg: <https://w3id.org/omg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://infobim.org/ontology/tool/entity/ifc_distribution_chamber_element_type.ttl>
+    rdf:type owl:Ontology .
+
+:InspectionChamber3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
+        omg:Geometry .
+
+:InspectionChamberRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcDistributionChamberElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:CaixaDeInspecao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDistributionChamberElement ;
+            owl:hasValue ifc4owl:INSPECTIONCHAMBER
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :InspectionChamber3DRepresentation
+        ] .
+
+aeco:CaixaDeInspecao rdfs:subClassOf
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty crm:P138i_has_representation ;
+        owl:someValuesFrom :InspectionChamberRepresentation
+    ] .
