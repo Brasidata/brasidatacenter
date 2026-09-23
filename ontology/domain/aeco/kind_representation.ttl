@@ -1,25 +1,20 @@
+@prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix omg: <https://w3id.org/omg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix waste: <https://infobim.org/ontology/tool/entity/ifc_waste_terminal_type.ttl#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/kind_representation.ttl>
+    rdf:type owl:Ontology .
 
 
-:FloorWasteRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf crm:E36_Visual_Item ,
-        ifc4owl:IfcWasteTerminal ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty crm:P138_represents ;
-            owl:someValuesFrom aeco:RaloSeco
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
-            owl:hasValue ifc4owl:FLOORWASTE
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom :FloorWaste3DRepresentation
-        ] .
+# Kind representations
+# -----------------------------------------------------------------------------
 
-:FloorTrapRepresentation rdf:type owl:Class ;
+waste:FloorTrapRepresentation rdf:type owl:Class ;
     rdfs:subClassOf crm:E36_Visual_Item ,
         ifc4owl:IfcWasteTerminal ,
         [
@@ -35,5 +30,24 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom :FloorTrap3DRepresentation
+            owl:someValuesFrom aeco:FloorTrap3DRepresentation
+        ] .
+
+waste:FloorWasteRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:RaloSeco
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORWASTE
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:FloorWaste3DRepresentation
         ] .
