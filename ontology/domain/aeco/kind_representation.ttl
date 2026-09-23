@@ -1,5 +1,5 @@
 @prefix kind: <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
-@prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/kind_representation.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .

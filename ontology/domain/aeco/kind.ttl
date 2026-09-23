@@ -1,3 +1,4 @@
+@prefix representation: <http://datacenter.app.br/ontology/domain/aeco/kind_representation.ttl#> .
 # AECO kinds: one declaration per concept, ordered alphabetically.
 # Alternate labels include canonical forms used by kind resolution.
 # Existing concept URIs, relationships and language tags are preserved.
@@ -9878,7 +9879,7 @@ skos:prefLabel
     rdfs:subClassOf [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
-        owl:someValuesFrom aeco:PipeRepresentation
+        owl:someValuesFrom representation:PipeRepresentation
     ] ;
     dcterms:identifier "Tubo" ;
     skos:prefLabel "Pipe"@en,
