@@ -1,3 +1,4 @@
+@prefix kind: <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
@@ -20,7 +21,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty crm:P138_represents ;
-            owl:someValuesFrom aeco:RaloSifonado
+            owl:someValuesFrom kind:RaloSifonado
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -39,7 +40,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty crm:P138_represents ;
-            owl:someValuesFrom aeco:RaloSeco
+            owl:someValuesFrom kind:RaloSeco
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -58,5 +59,5 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty crm:P138_represents ;
-            owl:someValuesFrom aeco:Tubo
+            owl:someValuesFrom kind:Tubo
         ] .

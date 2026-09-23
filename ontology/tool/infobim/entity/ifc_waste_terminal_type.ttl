@@ -1,3 +1,4 @@
+@prefix kind: <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
 @prefix : <https://infobim.org/ontology/tool/entity/ifc_waste_terminal_type.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
@@ -11,14 +12,14 @@
     rdf:type owl:Ontology .
 
 
-aeco:RaloSeco rdfs:subClassOf
+kind:RaloSeco rdfs:subClassOf
     [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
         owl:someValuesFrom :FloorWasteRepresentation
     ] .
 
-aeco:RaloSifonado rdfs:subClassOf
+kind:RaloSifonado rdfs:subClassOf
     [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;

@@ -2,7 +2,8 @@
 # Alternate labels include canonical forms used by kind resolution.
 # Existing concept URIs, relationships and language tags are preserved.
 
-@prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
+@prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -14,7 +15,7 @@
 # Ontology declarations
 # ---------------------------------------------------------------
 
-<http://datacenter.app.br/ontology/domain/aeco/ns.ttl>
+<http://datacenter.app.br/ontology/domain/aeco/kind.ttl>
     rdf:type owl:Ontology ;
     rdfs:label "AECO Ontology"@en,
         "Ontologia do setor AECO"@pt-br .
@@ -9877,7 +9878,7 @@ skos:prefLabel
     rdfs:subClassOf [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
-        owl:someValuesFrom :PipeRepresentation
+        owl:someValuesFrom aeco:PipeRepresentation
     ] ;
     dcterms:identifier "Tubo" ;
     skos:prefLabel "Pipe"@en,
