@@ -1,0 +1,39 @@
+
+
+:FloorWasteRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:RaloSeco
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORWASTE
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :FloorWaste3DRepresentation
+        ] .
+
+:FloorTrapRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty crm:P138_represents ;
+            owl:someValuesFrom aeco:RaloSifonado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORTRAP
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom :FloorTrap3DRepresentation
+        ] .
