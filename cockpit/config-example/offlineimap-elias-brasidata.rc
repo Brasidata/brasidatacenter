@@ -1,0 +1,47 @@
+# OfflineIMAP configuration for elias@brasidata.com.
+# Managed by the cockpit mail command.  Do not edit by hand unless you know
+# exactly what you are doing.
+#
+# Secrets (OAuth2 client id, client secret, refresh token) are resolved at
+# runtime via the pythonfile below and the macOS Keychain (via keyring).
+# They are NEVER stored in plaintext inside this file.
+
+[general]
+accounts = EliasBrasidata
+maxsyncaccounts = 1
+pythonfile = /Users/eliasmpjunior/.config/cockpit/offlineimap-elias-brasidata.py
+socktimeout = 60
+ui = TTY.TTYUI
+
+[Account EliasBrasidata]
+localrepository = Local-Elias-Brasidata
+remoterepository = Remote-Elias-Brasidata
+autorefresh = 0
+quick = 10
+
+[Repository Local-Elias-Brasidata]
+type = Maildir
+localfolders = /Users/eliasmpjunior/Documents/Brasidata/E-mail/GMail/Elias
+sep = .
+restoreatime = no
+
+[Repository Remote-Elias-Brasidata]
+type = Gmail
+remotehost = imap.gmail.com
+remoteuser = elias@brasidata.com
+remoteport = 993
+ssl = yes
+sslcacertfile = /etc/ssl/cert.pem
+auth_mechanisms = XOAUTH2
+
+oauth2_client_id_eval = get_elias_oauth2_client_id()
+oauth2_client_secret_eval = get_elias_oauth2_client_secret()
+oauth2_refresh_token_eval = get_elias_oauth2_refresh_token()
+
+# Gmail defaults: sync [Gmail]/All Mail, Important, Sent, Drafts, Starred but
+# skip the virtual spam/trash folders to keep the local Maildir tidy.
+folderfilter = lambda foldername: foldername not in [
+    "[Gmail]/Spam",
+    "[Gmail]/Trash",
+]
+createfolders = False
