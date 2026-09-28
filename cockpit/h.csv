@@ -1,0 +1,992 @@
+kind,descricao,tem_representacao_geometrica,ifc_class,ifc_predefined_type,primitive
+AbaCorrida,Aba ou saliência contínua ao longo de uma fachada ou de um elemento construtivo.,true,,,SolidBox3DRepresentation
+Abaular,Ação de dar forma convexa ou arqueada a uma superfície ou peça.,false,,,
+Abertura,"Vão executado em um elemento construtivo, como parede ou laje, para passagem, iluminação ou ventilação.",true,IfcOpeningElement,OPENING,SolidBox3DRepresentation
+AberturaDeValas,"Serviço de escavação de valas no terreno para assentamento de tubulações, fundações ou cabos.",false,,,
+Abobada,"Cobertura ou teto em forma arqueada, gerada pelo prolongamento ou rotação de um arco.",true,,,
+Abracadeira,"Peça de fixação em forma de anel ou cinta usada para prender tubos, cabos ou outros elementos.",true,,,HollowCylindrical3DRepresentation
+Abrasao,Desgaste de uma superfície por atrito.,false,,,
+Abrigo,"Construção ou compartimento destinado a proteger pessoas, equipamentos ou materiais contra intempéries.",true,,,HollowBox3DRepresentation
+Acabamento,Etapa ou camada final de execução que confere aspecto e proteção às superfícies.,false,,,
+AcaoDeRescisaoDeEmpreitada,Ação judicial destinada a rescindir um contrato de empreitada.,false,,,
+AcaoDeResgateDeAforamento,Ação judicial destinada ao resgate de um aforamento (enfiteuse).,false,,,
+AcaoDeUsucapiao,Ação judicial para declaração de aquisição de propriedade por usucapião.,false,,,
+Acesso,"Meio ou caminho que permite chegar a um imóvel, ambiente ou local.",false,,,
+Acetinado,"Tipo de acabamento de superfície com brilho suave, intermediário entre o fosco e o brilhante.",false,,,
+Acidato,Tratamento superficial obtido pela aplicação de ácido sobre pedras ou vidros.,false,,,
+Aclive,Inclinação ascendente do terreno.,false,,,
+ACM,"Material composto de alumínio, em chapas formadas por duas lâminas de alumínio e núcleo polimérico.",false,,,
+Aco,"Liga metálica de ferro e carbono empregada em estruturas, armaduras e componentes construtivos.",false,,,
+AcoCarbono,"Aço cuja principal liga é o carbono, sem adição significativa de outros elementos.",false,,,
+AcoInoxidavel,Aço com adição de cromo que lhe confere resistência à corrosão.,false,,,
+Acustica,Área técnica que trata do controle e do comportamento do som nas edificações.,false,,,
+Adam,Estilo arquitetônico neoclássico britânico associado aos irmãos Adam.,false,,,
+Adega,Cômodo destinado à guarda e conservação de vinhos.,true,IfcSpace,,SolidBox3DRepresentation
+AdequacaoDeComodo,"Intervenção que modifica um cômodo existente para atender novos requisitos de uso, desempenho, acessibilidade, instalações, segurança ou conformidade.",false,,,
+Aditivo,Produto adicionado a concretos ou argamassas para modificar suas propriedades.,false,,,
+Adobe,Tijolo maciço realizado com argila crua e não cozida.,true,,,SolidBox3DRepresentation
+Adocar,Ação de suavizar arestas ou superfícies.,false,,,
+AdquiridoPorUsucapiaoBensUsucapidos,Bens ou direitos cuja propriedade foi adquirida por usucapião.,false,,,
+AdquirirPorUsucapiao,Ato de adquirir a propriedade de um bem por usucapião.,false,,,
+Adro,Espaço aberto situado em frente ou ao redor de uma igreja.,true,IfcSpace,EXTERNAL,
+Adsorcao,Fenômeno de retenção de moléculas na superfície de um sólido.,false,,,
+Aducao,Condução de água da captação até o tratamento ou a distribuição.,false,,,
+Aduela,Peça que forma o marco ou batente de portas e janelas; também cada peça em cunha de um arco.,true,,,SolidBox3DRepresentation
+Aeroporto,"Complexo de edificações e áreas destinado ao pouso, decolagem e operação de aeronaves.",true,,,
+Afastamento,Distância mínima exigida entre a edificação e os limites do lote.,false,,,
+Aglomerado,Painel de partículas de madeira aglutinadas com resina.,false,,,
+Agregado,Areia ou brita utilizada para fabricar o concreto.,false,,,
+AgregadoLeve,Agregado de baixa massa específica usado em concretos leves.,false,,,
+Agrimensura,Atividade técnica de medição e demarcação de terrenos.,false,,,
+AguaDeReuso,Água reaproveitada após tratamento para usos não potáveis.,false,,,
+AguaDeUmaCobertura,Plano inclinado de um telhado.,true,IfcSlab,ROOF,SolidBox3DRepresentation
+AguaDoTelhado,Plano inclinado de um telhado.,true,IfcSlab,ROOF,SolidBox3DRepresentation
+AguaFria,Água distribuída na temperatura ambiente pela instalação predial.,false,,,
+AguaFurtada,"Vão entre as tesouras do telhado, semelhante a um sótão, com janelas que se abrem em um volume para fora do telhado.",true,IfcSpace,,SolidBox3DRepresentation
+AguaMestra,"Água principal de um telhado, de maior extensão.",true,IfcSlab,ROOF,SolidBox3DRepresentation
+AguaPluvial,Água proveniente das chuvas.,false,,,
+AguaQuente,Água aquecida distribuída pela instalação predial.,false,,,
+Alambrado,Cerca formada por tela metálica fixada em montantes.,true,,,SolidBox3DRepresentation
+AlarmeDeIncendio,Sistema de detecção e alarme de incêndio.,false,,,
+Alcapao,Porta horizontal instalada em piso ou forro para acesso a outro nível.,true,IfcDoor,TRAPDOOR,SolidBox3DRepresentation
+Alcar,Ação de elevar ou levantar um elemento.,false,,,
+Alcova,"Pequeno cômodo ou recesso, geralmente destinado ao repouso.",true,IfcSpace,,SolidBox3DRepresentation
+Aldrava,Peça metálica de porta usada como batedor ou como tranca.,true,,,
+Alfaia,"Utensílio, peça de mobiliário ou objeto de adorno.",false,,,
+Alicate,Ferramenta manual de preensão e corte.,false,,,
+Alicerce,Fundação ou base da edificação.,true,IfcFooting,,SolidBox3DRepresentation
+Alisar,Guarnição que arremata o encontro entre o marco de portas ou janelas e a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Alma,"Parte central de um perfil estrutural que liga as mesas, ou núcleo de uma peça.",false,,,
+Almofada,"Painel saliente ou rebaixado que decora portas, paredes ou forros.",true,,,SolidBox3DRepresentation
+Alpendre,"Área coberta junto à entrada de uma edificação, aberta lateralmente.",true,IfcSpace,,SolidBox3DRepresentation
+AlteracaoDeLimites,Modificação das divisas de um imóvel.,false,,,
+AltoRelevo,Técnica escultórica em que as figuras se destacam fortemente do plano de fundo.,false,,,
+Alucobond,Marca comercial de painel de material composto de alumínio.,false,,,
+AlvaraDeConstrucao,Licença municipal que autoriza a execução de uma obra.,false,,,
+Alvenaria,"Estrutura constituída por tijolos, pedras naturais ou artificiais, em peças sobrepostas e ligadas ou não por argamassa, usada na construção de paredes, muros e alicerces.",false,,,
+AlvenariaEstrutural,Sistema construtivo em que as paredes de alvenaria desempenham função estrutural.,false,,,
+Amarracao,Parte da armadura destinada a transmitir os esforços de uma peça para outra.,true,IfcReinforcingBar,,SolidCylindrical3DRepresentation
+Amianto,Mineral fibroso antigamente usado em telhas e caixas-d'água.,false,,,
+AmpliacaoEAdequacao,"Intervenção que combina aumento de área, capacidade ou extensão com a adequação de uma construção ou parte dela.",false,,,
+AmpliacaoEAdequacaoDeComodo,Intervenção que combina a ampliação de um cômodo com sua adequação a novos requisitos de uso ou desempenho.,false,,,
+Anaerobica,Qualificação de processo que ocorre na ausência de oxigênio.,false,,,
+Andaime,Plataforma provisória utilizada para que os profissionais da obra possam acessar elementos em alturas não alcançáveis do solo ou de outras plataformas preexistentes.,false,,,
+Anfiteatro,Edificação ou espaço com assentos dispostos em arco ou em degraus em torno de uma área central.,true,,,
+Anodizacao,Tratamento eletroquímico que forma camada protetora de óxido sobre o alumínio.,false,,,
+AnteProjeto,Etapa de projeto que antecede o projeto executivo.,false,,,
+AnteSala,Cômodo que antecede uma sala principal.,true,IfcSpace,,SolidBox3DRepresentation
+Apicoado,Acabamento de pedra ou concreto com superfície áspera obtida por golpes de ferramenta.,false,,,
+Aplique,Luminária fixada em parede.,true,IfcLightFixture,,SolidBox3DRepresentation
+Aprumar,"Ação de colocar um elemento no prumo, na vertical.",false,,,
+AquecimentoCentral,Sistema que aquece diversos ambientes a partir de uma fonte central.,false,,,
+Arara,Estrutura com barra para pendurar roupas ou objetos.,true,IfcFurniture,,
+Arcada,Sequência de arcos apoiados em colunas ou pilares.,true,,,
+Arco,Elemento estrutural curvo que vence um vão transmitindo cargas aos apoios.,true,IfcElementAssembly,ARCH,
+ArCondicionado,Sistema de condicionamento de ar.,false,,,
+AreaPrivativa,Área de uso exclusivo de uma unidade autônoma.,false,,,
+AreaUtil,"Área efetivamente utilizável de um imóvel, descontadas as paredes.",false,,,
+Areia,Agregado miúdo natural resultante da desagregação de rochas.,false,,,
+AreiaFina,Areia de grãos finos usada em rebocos e acabamentos.,false,,,
+AreiaGrossa,Areia de grãos grossos usada em concretos e argamassas de assentamento.,false,,,
+Arenito,Rocha sedimentar formada por grãos de areia cimentados.,false,,,
+Argamassa,"Pasta de cimento e agregados, usada para assentamento de peças e para revestimentos.",false,,,
+Argamassadeira,Máquina para preparo de argamassa.,false,,,
+ArgamassaImpermeavel,Argamassa com aditivo que reduz a permeabilidade à água.,false,,,
+Argila,Material natural de granulação fina e plástico quando úmido.,false,,,
+ArgilaExpandida,Agregado leve obtido pela expansão da argila em altas temperaturas.,false,,,
+Armadura,"Estrutura feita com varões de aço, utilizada dentro das peças de concreto armado para suportar esforços.",true,IfcElementAssembly,REINFORCEMENT_UNIT,
+ArmaduraEstrutural,Conjunto de barras de aço que confere resistência às peças de concreto armado.,true,IfcElementAssembly,REINFORCEMENT_UNIT,
+Arquiteto,Profissional habilitado para projetar edificações e espaços.,false,,,
+Arquitetura,Arte e técnica de projetar e construir edificações e espaços.,false,,,
+Arquitrave,"Viga horizontal apoiada sobre colunas, parte inferior do entablamento.",true,IfcBeam,,SolidBox3DRepresentation
+Arquivolta,Moldura decorativa que acompanha a curvatura de um arco.,true,IfcCovering,MOLDING,
+ArranhaCeu,"Edifício muito alto, com grande número de pavimentos.",true,IfcBuilding,,SolidBox3DRepresentation
+Arranque,"Trecho inicial de um elemento construtivo, como a armadura de espera de um pilar ou o início de uma escada.",false,,,
+Arrasamento,Corte do topo de estacas até a cota de projeto.,false,,,
+Arremate,Peça ou serviço que dá acabamento a encontros e bordas.,false,,,
+Arrimar,Ação de apoiar ou conter um maciço de terra.,false,,,
+Art,"Anotação de Responsabilidade Técnica, documento que registra o responsável técnico por um serviço.",false,,,
+ArtDeco,Estilo artístico e arquitetônico das décadas de 1920 e 1930.,false,,,
+ArtNouveau,"Estilo artístico e arquitetônico da virada do século XIX para o XX, de formas orgânicas.",false,,,
+Asa,Ala ou corpo lateral de uma edificação.,true,,,SolidBox3DRepresentation
+AsBuild,Documentação que registra a obra como efetivamente construída.,false,,,
+Asfalto,Material betuminoso usado em pavimentação e impermeabilização.,false,,,
+Asna,Estrutura triangulada que sustenta a cobertura (tesoura).,true,IfcElementAssembly,TRUSS,
+Assentar,"Ação de colocar e fixar peças, como tijolos ou revestimentos, em sua posição.",false,,,
+AssoalhoDeMadeira,Piso formado por tábuas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Aterramento,Sistema de ligação elétrica à terra.,false,,,
+Aterro,Serviço ou volume de terra lançado para elevar ou nivelar um terreno.,false,,,
+AtravessadourosParticulares,"Passagens particulares por terrenos alheios, reguladas pelo direito civil.",false,,,
+Atrio,Espaço de entrada ou pátio interno de uma edificação.,true,IfcSpace,,SolidBox3DRepresentation
+AtritoLateral,Resistência por atrito entre a superfície lateral de uma estaca e o solo.,false,,,
+AutoCAD,Software de desenho assistido por computador.,false,,,
+Azulejo,Placa cerâmica vidrada usada no revestimento de paredes.,true,IfcCovering,,SolidBox3DRepresentation
+BaciaSanitaria,"Aparelho sanitário para recepção de dejetos, com descarga de água.",true,IfcSanitaryTerminal,TOILETPAN,SolidBox3DRepresentation
+Baguete,Perfil fino usado para fixar vidros ou arrematar juntas.,true,,,SolidBox3DRepresentation
+BaixoRelevo,Técnica escultórica em que as figuras se destacam pouco do plano de fundo.,false,,,
+Balanco,Condição de um elemento estrutural que se projeta além de seu apoio.,false,,,
+Balaustre,Pequena coluna que sustenta o corrimão de uma balaustrada.,true,,,SolidCylindrical3DRepresentation
+Balcao,"Plataforma saliente da fachada protegida por guarda-corpo, ou bancada de atendimento, conforme o contexto.",true,,,SolidBox3DRepresentation
+Baldrame,"Tipo de fundação para pequenas edificações, constituída por uma viga de alvenaria, concreto simples ou concreto armado, construída diretamente no solo em pequena vala e empregada em casos de cargas leves sobre solo firme.",true,IfcFooting,FOOTING_BEAM,SolidBox3DRepresentation
+Bancada,"Superfície horizontal de trabalho, como a de cozinhas e banheiros.",true,,,SolidBox3DRepresentation
+BancoNacionalDaHabitacao,Antigo banco público federal de financiamento habitacional.,false,,,
+Bandeira,Caixilho fixo ou basculante situado acima de uma porta ou janela.,true,IfcWindow,,SolidBox3DRepresentation
+Bangalo,"Casa térrea pequena, geralmente com varanda.",true,IfcBuilding,,SolidBox3DRepresentation
+Banheira,Aparelho sanitário para banho de imersão.,true,IfcSanitaryTerminal,BATH,HollowBox3DRepresentation
+Banheiro,"Cômodo destinado à higiene pessoal, com aparelhos sanitários.",true,IfcSpace,,SolidBox3DRepresentation
+Banner,Peça de comunicação visual impressa.,false,,,
+Banzo,Barra longitudinal superior ou inferior de uma treliça.,true,IfcMember,CHORD,SolidBox3DRepresentation
+BarraAntiPanico,Barra horizontal de acionamento de portas de emergência.,true,,,SolidCylindrical3DRepresentation
+Barracao,"Construção simples, geralmente provisória ou destinada a depósito.",true,IfcBuilding,,SolidBox3DRepresentation
+Barrado,Faixa de revestimento na parte inferior de uma parede.,true,IfcCovering,,SolidBox3DRepresentation
+Barragem,Estrutura construída para represar águas.,true,,,
+Barroco,Estilo artístico e arquitetônico dos séculos XVII e XVIII.,false,,,
+Barrote,Elemento prismático de madeira usado em construção civil.,true,IfcMember,,SolidBox3DRepresentation
+Basalto,Rocha vulcânica de granulação fina.,false,,,
+Basculante,Janela com folha que gira em torno de um eixo horizontal.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+BateEstacas,Equipamento de cravação de estacas por percussão.,false,,,
+Batente,Peça fixa do vão onde a folha da porta ou janela se apoia ao fechar.,true,,,SolidBox3DRepresentation
+BayWindow,Janela que se projeta para fora do plano da fachada.,true,IfcWindow,,SolidBox3DRepresentation
+BDI,"Benefícios e Despesas Indiretas, taxa aplicada ao custo direto de uma obra.",false,,,
+Beiral,"Prolongamento do telhado para além da parede externa, protegendo-a da ação das chuvas.",true,,,SolidBox3DRepresentation
+Benfeitorias,Obras ou melhorias realizadas em um imóvel.,false,,,
+Betoneira,Máquina destinada a fabricar betão ou argamassa.,false,,,
+BicaCorrida,Pedra britada sem classificação granulométrica.,false,,,
+Bit,"Ponta intercambiável de ferramenta, como broca ou ponteira de parafusadeira.",false,,,
+Bizotado,Acabamento chanfrado nas bordas de vidros ou espelhos.,false,,,
+Bloco,Peça pré-moldada de alvenaria.,true,,,SolidBox3DRepresentation
+BlocoCeramico,"Elemento de alvenaria cozido, podendo ser classificado como de vedação ou estrutural.",true,,,SolidBox3DRepresentation
+BlocoDeConcreto,Peça pré-moldada de concreto para alvenaria.,true,,,SolidBox3DRepresentation
+BlocoDeConcretoIntertravado,Peça de concreto para pavimentação que se encaixa às adjacentes.,true,,,SolidBox3DRepresentation
+BlocoDeFundacao,Elemento de concreto que transmite às estacas as cargas dos pilares.,true,IfcFooting,PILE_CAP,SolidBox3DRepresentation
+BlocoDeGesso,Peça de gesso para execução de paredes internas.,true,,,SolidBox3DRepresentation
+BlocoDeVidro,Peça de vidro para alvenaria translúcida.,true,,,SolidBox3DRepresentation
+BlocoSilicoCalcario,Peça de alvenaria de areia e cal curada em autoclave.,true,,,SolidBox3DRepresentation
+Bloquete,Peça de concreto para pavimentação.,true,,,SolidBox3DRepresentation
+Bocel,Moldura de seção arredondada.,true,IfcCovering,MOLDING,
+Boiler,Reservatório térmico para armazenamento de água quente.,true,IfcTank,,HollowCylindrical3DRepresentation
+Boiserie,Revestimento decorativo de parede em painéis de madeira.,true,IfcCovering,,SolidBox3DRepresentation
+Boleado,Acabamento de aresta arredondada.,false,,,
+Bolsa,Extremidade alargada de um tubo que recebe a ponta de outro.,false,,,
+Bomba,Equipamento que movimenta fluidos.,true,IfcPump,,SolidBox3DRepresentation
+BombaAspirante,Bomba que eleva líquidos por sucção.,true,IfcPump,,SolidBox3DRepresentation
+BombaCentrifuga,Bomba que movimenta líquidos pela ação da força centrífuga de um rotor.,true,IfcPump,,SolidBox3DRepresentation
+BombaHidraulica,Equipamento que movimenta ou pressuriza água em uma instalação.,true,IfcPump,,SolidBox3DRepresentation
+Boneca,Pequeno trecho de parede entre um vão e um canto ou outra parede.,true,,,SolidBox3DRepresentation
+Boqueta,Pequena abertura ou bocal em um elemento construtivo.,false,,,
+BorrachaDeNivel,Mangueira transparente com água usada para transferir níveis na obra.,false,,,
+BotaFora,Remoção e descarte do material excedente de escavação ou demolição.,false,,,
+Botareu,"Contraforte, geralmente em arco, que escora uma parede.",true,,,SolidBox3DRepresentation
+BowWindow,Janela saliente em forma curva em relação ao plano da fachada.,true,IfcWindow,,
+Bracadeira,"Peça de fixação em forma de anel ou cinta usada para prender tubos, cabos ou outros elementos.",true,,,HollowCylindrical3DRepresentation
+Brise,Elemento de proteção solar formado por lâminas instaladas junto a fachadas ou aberturas.,true,IfcShadingDevice,,SolidBox3DRepresentation
+Brita,Agregado de diâmetro médio superior a 2 mm.,false,,,
+BritaCorrida,Brita sem separação por faixa granulométrica.,false,,,
+Broca,Ferramenta de perfuração; na construção também designa a estaca escavada de pequeno diâmetro.,false,,,
+Broxa,Pincel largo usado para caiação e pintura.,false,,,
+BTU,"Unidade de medida de energia térmica, usada para a capacidade de climatizadores.",false,,,
+Bueiro,Conduto ou abertura para escoamento de águas pluviais sob vias ou terrenos.,true,IfcPipeSegment,CULVERT,HollowCylindrical3DRepresentation
+Bundoril,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Cabo,Condutor elétrico formado por um ou mais fios isolados.,true,IfcCableSegment,CABLESEGMENT,SolidCylindrical3DRepresentation
+Cabochao,Peça pequena de revestimento inserida entre os cantos de peças maiores de piso.,true,,,SolidBox3DRepresentation
+Cachorro,"Peça saliente que apoia beirais, balcões ou cornijas.",true,,,SolidBox3DRepresentation
+CadernoDeEncargos,Documento que reúne as condições e exigências técnicas para execução de uma obra.,false,,,
+Caiar,Ação de pintar com cal.,false,,,
+Caibro,Peça de madeira inclinada que apoia as ripas do telhado.,true,IfcMember,RAFTER,SolidBox3DRepresentation
+CaixaDAgua,Reservatório para armazenamento de água da edificação.,true,IfcTank,STORAGE,HollowBox3DRepresentation
+CaixaDeEscada,Espaço vertical que abriga a escada de uma edificação.,true,IfcSpace,,SolidBox3DRepresentation
+CaixaDeFogo,"Câmara de combustão de lareiras, fornos ou caldeiras.",true,,,HollowBox3DRepresentation
+CaixaDeGordura,Caixa que retém gorduras do esgoto de cozinhas antes do lançamento na rede.,true,IfcInterceptor,GREASE,HollowBox3DRepresentation
+CaixaDeInspecao,Caixa enterrada que permite acesso para inspeção e limpeza de tubulações.,true,IfcDistributionChamberElement,INSPECTIONCHAMBER,HollowBox3DRepresentation
+CaixaDePassagem,Caixa que abriga derivações e passagens de condutores ou tubulações.,true,IfcJunctionBox,,HollowBox3DRepresentation
+Caixilharia,Conjunto de caixilhos e esquadrias de uma edificação.,false,,,
+Caixilho,Parte da esquadria que sustenta os vidros e folhas de portas e janelas.,true,,,SolidBox3DRepresentation
+Cal,Aglomerante obtido pela calcinação de rochas calcárias.,false,,,
+Calafate,Profissional ou material empregado na vedação de juntas e frestas.,false,,,
+Calafetar,Ação de vedar juntas e frestas.,false,,,
+Calcada,Faixa pavimentada destinada à circulação de pedestres.,true,,,SolidBox3DRepresentation
+Calcetar,Ação de pavimentar com pedras.,false,,,
+CalculoEstrutural,Dimensionamento dos elementos estruturais de uma construção.,false,,,
+Calefacao,Aquecimento de ambientes.,false,,,
+CalExtinta,"Hidróxido de cálcio (Ca(OH)2), obtido pela reação da cal virgem, óxido de cálcio (CaO), com água.",false,,,
+Calha,Canal que recolhe e conduz as águas pluviais da cobertura.,true,IfcPipeSegment,GUTTER,
+CamaraDeFumaca,Câmara situada entre a lareira e a chaminé que conduz os gases da combustão.,true,,,HollowBox3DRepresentation
+Cambota,Molde provisório curvo que sustenta arcos e abóbadas durante a execução.,false,,,
+Camurcar,Ação de dar à superfície acabamento semelhante à camurça.,false,,,
+Canalizador,Profissional que executa instalações hidráulicas.,false,,,
+Candela,Unidade de medida de intensidade luminosa.,false,,,
+Cantaria,Técnica de lavrar e assentar pedras em formas regulares.,false,,,
+CanteiroDeObra,Área destinada às instalações de apoio e à execução de uma obra.,true,,,
+Cantoneira,"Perfil de seção em L usado para reforço, arremate ou proteção de cantos.",true,,,SolidBox3DRepresentation
+Capa,Camada ou peça de cobertura e proteção de um elemento.,false,,,
+Capialcado,Arco ou verga com intradorso elevado que coroa um vão.,true,,,
+Capitel,"Parte superior de uma coluna, entre o fuste e o entablamento.",true,,,SolidBox3DRepresentation
+Caramanchao,"Estrutura leve de jardim, com treliça ou ripado, que sustenta trepadeiras.",true,,,
+CargaAcidental,Carga variável que atua sobre a estrutura em função do uso.,false,,,
+CargaDeProjeto,Carga considerada no dimensionamento de uma estrutura.,false,,,
+CargaDeRuptura,Carga que provoca a ruptura de uma peça ou material.,false,,,
+CargasAcidentais,Cargas variáveis que atuam sobre a estrutura em função do uso.,false,,,
+CargasPermanentes,"Cargas que atuam de forma constante sobre a estrutura, como o peso próprio.",false,,,
+Carpete,Revestimento têxtil de piso.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+CarpeteDeMadeira,Revestimento de piso em réguas finas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Carpinteiro,Profissional que executa trabalhos em madeira.,false,,,
+Carregamento,Conjunto de cargas aplicadas a uma estrutura.,false,,,
+CarrinhoDeMao,Ferramenta de uma roda para transporte manual de materiais.,false,,,
+Casa,Edificação destinada à moradia.,true,IfcBuilding,,SolidBox3DRepresentation
+CasaDeHabitacao,Edificação destinada à moradia.,true,IfcBuilding,,SolidBox3DRepresentation
+CasaHabitada,Casa efetivamente ocupada como moradia.,true,IfcBuilding,,SolidBox3DRepresentation
+Cascalho,Fragmentos de rocha de pequenas dimensões.,false,,,
+Caulino,Argila branca usada na fabricação de cerâmicas e tintas.,false,,,
+Cava,Escavação aberta no terreno.,false,,,
+Cavilha,Pino de madeira ou metal usado para unir peças.,true,IfcMechanicalFastener,DOWEL,SolidCylindrical3DRepresentation
+Celotex,Marca comercial de painel de fibras.,false,,,
+Cepilho,Plaina de carpinteiro.,false,,,
+Cepo,Bloco de madeira usado como apoio ou calço.,false,,,
+Ceramica,Material obtido pela queima de argila.,false,,,
+CercaViva,Cerca formada por vegetação.,true,,,SolidBox3DRepresentation
+Cerne,Parte central e mais resistente do tronco da árvore.,false,,,
+Chale,"Casa de estilo campestre, geralmente em madeira e com telhado inclinado.",true,IfcBuilding,,SolidBox3DRepresentation
+Chamine,Conduto vertical que expele fumaça e gases para o exterior.,true,IfcChimney,,SolidBox3DRepresentation
+Chanfrar,Ação de cortar obliquamente uma aresta.,false,,,
+Chapa,Estrutura laminar sujeita a esforços em seu plano.,true,IfcPlate,,SolidBox3DRepresentation
+Chapeu,"Peça de cobertura no topo de chaminés, tubos ou muros.",false,,,
+Chapim,Coroamento do topo de muros e platibandas que protege contra a água.,true,,,SolidBox3DRepresentation
+Chapiscar,Ação de aplicar chapisco.,false,,,
+ChaveDeFenda,Ferramenta manual para apertar ou soltar parafusos.,false,,,
+ChaveInglesa,Ferramenta manual de abertura regulável para porcas e parafusos.,false,,,
+Chodopac,Termo comercial sem definição registrada na ontologia; significado a confirmar.,false,,,
+Chumbar,Ação de fixar uma peça com argamassa ou chumbador.,false,,,
+Chuveiro,Aparelho que distribui água em jato para banho.,true,IfcSanitaryTerminal,SHOWER,SolidCylindrical3DRepresentation
+CienciaTecnica,Conjunto de conhecimentos técnicos aplicados às construções civis.,false,,,
+Cimalha,Moldura saliente que arremata o topo de uma parede ou fachada.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Cimbre,"Escoramento provisório de fôrmas, arcos e lajes durante a execução.",false,,,
+Cimeira,Parte mais alta ou coroamento de um elemento.,false,,,
+CimentadoALaser,Piso cimentado nivelado com auxílio de equipamento a laser.,false,,,
+Cimento,Pó de cor cinza produzido a partir da moagem do clínquer juntamente com gesso e outros constituintes e aditivos.,false,,,
+CimentoAmianto,Material de cimento reforçado com fibras de amianto.,false,,,
+CimentoARI,Cimento Portland de alta resistência inicial.,false,,,
+Cinasita,Nome comercial de argila expandida.,false,,,
+Cinta,Viga que amarra paredes de alvenaria.,true,IfcBeam,,SolidBox3DRepresentation
+Cinzel,Ferramenta de corte e desbaste.,false,,,
+Circuito,Conjunto de condutores e dispositivos alimentados por uma mesma proteção.,false,,,
+CircuitoFechadoDeTvCftv,Sistema de câmeras de vigilância com transmissão restrita.,false,,,
+Cisterna,"Reservatório, geralmente enterrado, para armazenamento de água.",true,IfcTank,STORAGE,HollowBox3DRepresentation
+ClapboardSiding,Revestimento de fachada em tábuas horizontais sobrepostas.,true,IfcCovering,CLADDING,SolidBox3DRepresentation
+Claraboia,Abertura envidraçada na cobertura para iluminação natural.,true,IfcWindow,SKYLIGHT,SolidBox3DRepresentation
+Classico,Estilo arquitetônico baseado na arquitetura greco-romana.,false,,,
+Closet,Pequeno cômodo destinado à guarda de roupas.,true,IfcSpace,,SolidBox3DRepresentation
+Cobertura,Parte do edifício destinada à proteção contra as intempéries.,true,IfcRoof,,
+Cobogo,Elemento vazado utilizado para construção de paredes com função decorativa e não estrutural.,true,,,SolidBox3DRepresentation
+CodigoDeObras,Legislação municipal que regula as construções.,false,,,
+CoeficienteDeAbsorcaoSonora,Razão entre a energia sonora absorvida e a incidente em uma superfície.,false,,,
+CoeficienteDeCondutividadeTermica,Grandeza que expressa a capacidade de um material conduzir calor.,false,,,
+CoeficienteDeIsolamentoAcustico,Grandeza que expressa a capacidade de um elemento reduzir a transmissão sonora.,false,,,
+CoeficienteDeSeguranca,Fator aplicado no dimensionamento para garantir margem de segurança.,false,,,
+CoeficienteDeSombreamento,Razão que expressa a redução do ganho solar por um elemento de sombreamento.,false,,,
+ColetorDeEnergiaSolar,Equipamento que capta a energia solar para aquecimento de água.,true,IfcSolarDevice,SOLARCOLLECTOR,SolidBox3DRepresentation
+ColherDePedreiro,Ferramenta manual para aplicar argamassa.,false,,,
+Colonial,Estilo arquitetônico do período colonial.,false,,,
+ColonialAmericano,Estilo arquitetônico colonial norte-americano.,false,,,
+ColonialBrasileiro,Estilo arquitetônico do período colonial brasileiro.,false,,,
+Coluna,Elemento estrutural vertical que transmite cargas às fundações.,true,IfcColumn,COLUMN,SolidCylindrical3DRepresentation
+Colunata,Série de colunas dispostas em fila.,true,,,
+Combogo,Elemento vazado utilizado em paredes com função decorativa e de ventilação.,true,,,SolidBox3DRepresentation
+ComodoContiguo,"Cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede, sem que seja necessária a existência de porta ou passagem direta entre ambos.",true,IfcSpace,,SolidBox3DRepresentation
+Compactacao,Processo de adensamento do solo por meios mecânicos.,false,,,
+Compressao,Esforço que tende a diminuir a dimensão de uma peça segundo seu eixo.,false,,,
+ComunicacaoVisual,Conjunto de elementos gráficos de sinalização e identificação.,false,,,
+Concreto,"Material de construção composto por cimento, areia, brita e, possivelmente, adjuvantes.",false,,,
+ConcretoArmado,"Material composto por concreto e armadura, combinados para resistir aos esforços da estrutura.",false,,,
+ConcretoCelularAutoclavado,"Concreto leve com bolhas de ar, curado em autoclave.",false,,,
+ConcretoProjetado,Concreto lançado por projeção pneumática sobre uma superfície.,false,,,
+ConcretoUsinado,Concreto dosado e misturado em central e entregue na obra.,false,,,
+Conduite,Tubo que protege e conduz condutores elétricos.,true,IfcCableCarrierSegment,CONDUITSEGMENT,HollowCylindrical3DRepresentation
+Condutor,Tubo vertical que conduz as águas pluviais da calha ao solo.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+Conexao,Peça que une trechos de tubulação.,true,IfcPipeFitting,,
+Consistencia,"Propriedade de uma argamassa de apresentar maior ou menor resistência a uma dada deformação, podendo ser mais seca, plástica ou fluida.",false,,,
+Console,Peça saliente que apoia um elemento em balanço.,true,,,SolidBox3DRepresentation
+ConsolidacaoDaServidao,Efetivação jurídica de uma servidão.,false,,,
+ConstrucaoAmpliacaoEAdequacao,"Intervenção que reúne atividades de construção, ampliação e adequação em uma edificação ou parte dela.",false,,,
+ConstrucaoAmpliacaoEAdequacaoDeComodo,"Intervenção aplicada a um cômodo que reúne atividades de construção, ampliação e adequação.",false,,,
+ConstrucaoPesada,Segmento da construção dedicado a obras de infraestrutura de grande porte.,false,,,
+Consultor,Profissional que presta assessoria técnica.,false,,,
+ContencaoComPerfisMetalicosEPranchoes,Contenção de solo formada por perfis metálicos cravados e pranchões entre eles.,true,,,SolidBox3DRepresentation
+ContencaoDefinitiva,Estrutura permanente de contenção de solo.,true,IfcWall,,SolidBox3DRepresentation
+ContencaoProvisoria,Estrutura temporária de contenção de solo.,true,IfcWall,,SolidBox3DRepresentation
+ContraAbside,Abside situada na extremidade oposta da abside principal de uma igreja.,true,,,
+Contraforte,Pilar ou massa saliente que reforça uma parede contra esforços laterais.,true,,,SolidBox3DRepresentation
+Contrafrechal,Peça horizontal que reforça ou complementa o frechal.,true,IfcBeam,,SolidBox3DRepresentation
+Contramarco,Quadro fixado no vão que recebe o marco da esquadria.,true,,,SolidBox3DRepresentation
+Contrapiso,Camada de argamassa que regulariza a base para o piso.,true,IfcCovering,,SolidBox3DRepresentation
+Contraventamento,Peças que travam uma estrutura contra esforços laterais.,true,IfcMember,BRACE,SolidBox3DRepresentation
+Contraverga,Peça estrutural sob o peitoril de janelas que distribui tensões na alvenaria.,true,IfcBeam,,SolidBox3DRepresentation
+ControleTecnologico,Ensaios e verificações de qualidade dos materiais e serviços de uma obra.,false,,,
+CooperativaHabitacional,Associação voltada à construção ou aquisição de moradias para os cooperados.,false,,,
+Cordao,Faixa ou fiada saliente em forma de cordão ao longo de uma fachada.,false,,,
+Corian,Marca comercial de material sólido de superfície.,false,,,
+Cornija,Moldura saliente que coroa uma fachada ou parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+CorpoDeProva,Pequeno espécime retirado de uma peça ou do mesmo lote de material para sua caracterização mecânica; são comuns os corpos de prova de concreto usados para determinar resistência à compressão.,false,,,
+Corredor,Espaço de circulação que liga cômodos.,true,IfcSpace,,SolidBox3DRepresentation
+Corrimao,Barra de apoio para as mãos ao longo de escadas e rampas.,true,IfcRailing,HANDRAIL,SolidCylindrical3DRepresentation
+Corrosao,Deterioração de um material por reação química ou eletroquímica.,false,,,
+Corte,"Representação gráfica de uma seção, ou remoção de terra de um terreno.",false,,,
+CorteEAterro,Movimentação de terra com remoção e lançamento de solo.,false,,,
+CortinaAtirantada,Parede de contenção ancorada no solo por tirantes.,true,IfcWall,,SolidBox3DRepresentation
+Costela,Nervura que reforça abóbadas e cúpulas.,true,,,
+Cota,Medida indicada em desenho ou nível altimétrico.,false,,,
+Cotovelo,Conexão que muda a direção de uma tubulação.,true,IfcPipeFitting,BEND,
+Cozinha,Cômodo destinado ao preparo de alimentos.,true,IfcSpace,,SolidBox3DRepresentation
+Cromado,Acabamento com camada de cromo.,false,,,
+Cronograma,Programação das atividades de uma obra no tempo.,false,,,
+Croqui,Esboço usado pelos projetistas para representar ideias iniciais de um projeto.,false,,,
+Cruzeta,Peça em forma de cruz usada para travamento ou conexão.,false,,,
+CUB,Custo Unitário Básico da construção civil.,false,,,
+Cumeeira,"Linha mais alta do telhado, onde se encontram as águas.",true,,,SolidBox3DRepresentation
+Cunhal,"Canto de um edifício onde duas paredes convergem, podendo ser marcado por um pilar ou pilastra de pedras lavradas.",false,,,
+Cupula,Cobertura em forma de semiesfera.,true,IfcRoof,DOME_ROOF,HollowSpherical3DRepresentation
+Deck,"Plataforma, geralmente de madeira, em área externa.",true,,,SolidBox3DRepresentation
+Declive,Inclinação descendente do terreno.,false,,,
+Demao,Cada camada de tinta aplicada.,false,,,
+Demolicao,Serviço de desmonte e remoção de uma construção.,false,,,
+Desaterro,Remoção de terra para rebaixar um terreno.,false,,,
+Descimbramento,Retirada do escoramento de uma estrutura.,false,,,
+Desempenadeira,Ferramenta usada para alisar argamassas.,false,,,
+Desgaste,Perda de material de uma superfície pelo uso.,false,,,
+Desmonte,Processo usado para extrair rochas por meios manuais ou explosivos.,false,,,
+DesmonteDeRocha,Remoção de rocha por meios mecânicos ou explosivos.,false,,,
+Desvao,Espaço entre o forro e o telhado.,true,IfcSpace,,SolidBox3DRepresentation
+DiarioDeObra,Registro diário das atividades de uma obra.,false,,,
+Dilatacao,Processo de aumento das dimensões de um material.,false,,,
+Disjuntor,Dispositivo que interrompe o circuito elétrico em caso de sobrecarga ou curto-circuito.,true,IfcProtectiveDevice,CIRCUITBREAKER,SolidBox3DRepresentation
+Divisoria,Parede leve de separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+DivisoriaDeMadeira,Parede leve de madeira para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+DivisoriaDeMdf,Parede leve de MDF para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+DivisoriaDeVidro,Parede leve de vidro para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+Dobradica,Ferragem articulada que permite o giro de portas e janelas.,true,,,
+Domo,Cobertura em forma de cúpula.,true,IfcRoof,DOME_ROOF,HollowSpherical3DRepresentation
+Dormer,Estrutura saliente do telhado que abriga uma janela.,true,IfcWindow,,SolidBox3DRepresentation
+Dormitorio,Cômodo destinado ao repouso.,true,IfcSpace,,SolidBox3DRepresentation
+Drenagem,Escoamento de águas através de drenos.,false,,,
+Drenos,"Estruturas, como tubos ou valas, destinadas a recolher e escoar águas.",true,,,
+DryWall,Parede executada com placas de gesso acartonado sobre estrutura metálica.,true,IfcWall,,SolidBox3DRepresentation
+Drywall,Sistema de paredes executadas com gesso acartonado.,true,IfcWall,,SolidBox3DRepresentation
+DuchaHigienica,Ducha de mão instalada junto à bacia sanitária para higiene íntima.,true,IfcSanitaryTerminal,,
+Duto,"Espaço que liga zonas do edifício e no qual se instalam tubos, cabos e outros componentes.",true,,,SolidBox3DRepresentation
+Edicula,Construção secundária situada nos fundos do lote.,true,IfcBuilding,,SolidBox3DRepresentation
+Edificacao,Construção destinada a abrigar atividades humanas.,true,IfcBuilding,,SolidBox3DRepresentation
+Eixo,Linha em torno da qual um objeto gira.,false,,,
+ElementoVazado,Peça com aberturas usada em paredes para ventilação e iluminação.,true,,,SolidBox3DRepresentation
+Eletrica,Área técnica das instalações elétricas.,false,,,
+Eletricista,Profissional que executa instalações elétricas.,false,,,
+Elevacao,Representação gráfica de uma fachada ou vista vertical.,false,,,
+Elevador,Equipamento de transporte vertical de pessoas ou cargas.,true,IfcTransportElement,ELEVATOR,SolidBox3DRepresentation
+ElevadorCremalheira,Elevador de obra acionado por sistema de pinhão e cremalheira.,false,,,
+EmbargoDeObra,Ato administrativo ou judicial que paralisa uma obra.,false,,,
+Emboco,Revestimento de parede feito com argamassa de massa grossa.,false,,,
+Empena,"Parede lateral de uma edificação, geralmente sem aberturas, que acompanha o caimento do telhado.",true,IfcWall,,SolidBox3DRepresentation
+Empreitada,Contrato de execução de obra por preço ajustado.,false,,,
+Emulsao,"Mistura heterogênea de dois ou mais líquidos normalmente imiscíveis, mantidos em suspensão por agitação ou por substâncias emulsificantes.",false,,,
+Encaixilhar,Ação de colocar em caixilho.,false,,,
+EncargosSociais,Tributos e contribuições incidentes sobre a folha de pagamento.,false,,,
+Engastado,Condição de vinculação rígida de um elemento estrutural a seu apoio.,false,,,
+Engenharia,Aplicação de conhecimentos técnicos e científicos ao projeto e à construção.,false,,,
+EngenheiroCivil,Profissional habilitado em engenharia civil.,false,,,
+EngenheiroEletrico,Profissional habilitado em engenharia elétrica.,false,,,
+Entablamento,"Conjunto horizontal de arquitrave, friso e cornija sobre colunas.",true,,,SolidBox3DRepresentation
+Entrada,Acesso principal a uma edificação ou ambiente.,false,,,
+EntradaDeEnergia,Conjunto de instalações que recebe a energia da concessionária.,false,,,
+Enxada,Ferramenta manual para cavar e misturar.,false,,,
+Enxaimel,Técnica construtiva de estrutura de madeira aparente preenchida com alvenaria.,false,,,
+EPI,Equipamento de proteção individual.,false,,,
+Epoxi,"Resina sintética usada em pisos, adesivos e revestimentos.",false,,,
+Escada,Elemento construtivo formado por degraus que liga níveis diferentes.,true,IfcStair,,SolidBox3DRepresentation
+EscadasRolantes,Escada mecânica de degraus móveis para transporte de pessoas.,true,IfcTransportElement,ESCALATOR,SolidBox3DRepresentation
+Escavacao,Remoção de solo ou rocha do terreno.,false,,,
+Escora,"Barra sujeita essencialmente a esforços axiais de compressão ou elemento provisório de sustentação, metálico ou de madeira, disposto sob lajes e vigas durante o amadurecimento do concreto.",true,IfcMember,STRUT,SolidBox3DRepresentation
+Escoramento,Conjunto de escoras provisórias que sustenta fôrmas e estruturas durante a execução.,false,,,
+EsforcosAxiais,Esforços de tração ou compressão gerados na peça segundo o seu eixo.,false,,,
+EsforcosTransversos,Esforços gerados na peça segundo um plano perpendicular ao seu eixo.,false,,,
+Esmalte,Tinta de acabamento brilhante e resistente.,false,,,
+Espelhado,Acabamento com aspecto refletivo.,false,,,
+Espelho,Superfície refletora ou peça vertical que fecha a face frontal de um degrau ou de uma caixa.,false,,,
+EspelhoDAgua,Lâmina de água rasa em tanque decorativo.,true,,,HollowBox3DRepresentation
+EspelhoDaTomada,Placa de acabamento que cobre a caixa de uma tomada.,true,,,SolidBox3DRepresentation
+EspelhoDoInterruptor,Placa de acabamento que cobre a caixa de um interruptor.,true,,,SolidBox3DRepresentation
+Espera,Trecho de armadura ou tubulação deixado para ligação posterior.,false,,,
+Espigao,Aresta saliente formada pelo encontro de duas águas do telhado.,true,,,SolidBox3DRepresentation
+Esponjado,Acabamento de pintura aplicado com esponja.,false,,,
+Esquadrejar,Ação de dar esquadro a uma peça ou ambiente.,false,,,
+Esquadria,"Conjunto de caixilho, folhas e ferragens que compõe portas e janelas.",true,,,SolidBox3DRepresentation
+Esquadro,Instrumento para traçar e verificar ângulos retos.,false,,,
+Estaca,"Elemento de fundação profunda, esbelto, que transmite cargas ao solo.",true,IfcPile,,SolidCylindrical3DRepresentation
+EstacaBroca,"Estaca escavada manualmente com trado, de pequeno diâmetro, moldada no local.",true,IfcPile,BORED,SolidCylindrical3DRepresentation
+EstacaDeConcretoPreMoldada,Estaca de concreto fabricada previamente e cravada no solo.,true,IfcPile,DRIVEN,SolidBox3DRepresentation
+EstacaEscavada,Estaca moldada no local após escavação do solo.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+EstacaFlutuante,Estaca que transmite a carga principalmente por atrito lateral.,true,IfcPile,FRICTION,SolidCylindrical3DRepresentation
+EstacaFranki,"Estaca moldada no local com base alargada, executada por cravação de tubo.",true,IfcPile,DRIVEN,SolidCylindrical3DRepresentation
+EstacaHeliceContinua,Estaca moldada no local executada com trado helicoidal contínuo.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+EstacaInteira,"Estaca executada em peça única, sem emendas.",true,IfcPile,,SolidCylindrical3DRepresentation
+EstacaIntermediaria,Estaca posicionada entre outras estacas de um conjunto.,true,IfcPile,,SolidCylindrical3DRepresentation
+EstacaMetalica,Estaca formada por perfis ou tubos de aço.,true,IfcPile,,
+Estacao,Estaca escavada de seção retangular (estaca barrete).,true,IfcPile,BORED,SolidBox3DRepresentation
+EstacaoDeTratamentoDeAgua,Instalação que trata a água bruta para torná-la potável.,true,,,
+EstacaoDeTratamentoDeEsgoto,Instalação que trata o esgoto antes do lançamento no meio ambiente.,true,,,
+EstacaoTotal,Instrumento topográfico eletrônico de medição de ângulos e distâncias.,false,,,
+EstacaPirulito,Tipo de estaca usada em fundações ou contenções.,true,IfcPile,,SolidCylindrical3DRepresentation
+EstacaRaiz,"Estaca escavada de pequeno diâmetro, injetada com argamassa e armada.",true,IfcPile,BORED,SolidCylindrical3DRepresentation
+Estacas,Tipo de fundação profunda utilizada para transmitir cargas a camadas resistentes do solo em maior profundidade.,true,IfcPile,,SolidCylindrical3DRepresentation
+EstacasJustapostas,Contenção formada por estacas executadas lado a lado.,true,,,
+EstacasPranchaMetalicas,Contenção formada por perfis metálicos cravados e encaixados entre si.,true,,,SolidBox3DRepresentation
+EstacaStrauss,Estaca moldada no local executada com tubo de revestimento e soquete.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+EstacaZero,Ponto inicial de referência de um levantamento ou traçado.,false,,,
+Estaiar,Ação de sustentar com cabos ou estais.,false,,,
+Esteio,Peça vertical que escora ou sustenta um elemento.,true,,,SolidCylindrical3DRepresentation
+EstouroDeCusto,Excesso do custo real sobre o orçado.,false,,,
+Estrada,Via destinada ao tráfego de veículos.,true,,,
+Estriado,Acabamento com sulcos paralelos.,false,,,
+Estribo,Barra de armadura transversal que envolve as barras longitudinais.,true,IfcReinforcingBar,LIGATURE,
+Estrutura,Conjunto de elementos que sustenta uma construção.,false,,,
+EstruturaDeAco,Sistema estrutural composto por elementos de aço.,false,,,
+EstruturaDeAluminio,Sistema estrutural composto por elementos de alumínio.,false,,,
+EstruturaDeConcretoMoldadaInLoco,Sistema estrutural de concreto moldado no local.,false,,,
+EstruturaDeConcretoPreMoldada,Sistema estrutural de peças de concreto pré-fabricadas.,false,,,
+EstruturaDeMadeira,Sistema estrutural composto por elementos de madeira.,false,,,
+EstruturaMetalica,Sistema estrutural composto por elementos metálicos.,false,,,
+EstudoPreliminar,Etapa inicial de projeto que define a concepção geral.,false,,,
+EstudosDeViabilidade,Análises técnicas e econômicas que avaliam a viabilidade de um empreendimento.,false,,,
+Estuque,Revestimento ou ornato de argamassa de gesso e cal.,false,,,
+ETA,Estação de tratamento de água.,true,,,
+ETE,Estação de tratamento de esgoto.,true,,,
+Explosivo,Material usado em desmonte de rocha.,false,,,
+Fachada,Face externa de uma edificação.,true,,,
+FachadaCortina,"Fachada leve não estrutural, geralmente de vidro e perfis metálicos.",true,IfcCurtainWall,,SolidBox3DRepresentation
+Fechadura,Mecanismo de trancamento de portas.,true,,,SolidBox3DRepresentation
+Ferramenta,Instrumento usado na execução de trabalhos.,false,,,
+Ferreiro,Profissional que trabalha com metais forjados.,false,,,
+Ferrovia,Via de trilhos para circulação de trens.,true,,,
+Fiada,Camada horizontal de tijolos ou blocos em uma alvenaria.,false,,,
+FibraDeCarbono,Material de fibras de carbono usado em reforços estruturais.,false,,,
+FibraDeVidro,Material de fibras de vidro usado em reforços e isolamentos.,false,,,
+FibraOtica,Fibra transparente que transmite sinais por luz.,false,,,
+Fibrocimento,Material de cimento reforçado com fibras.,false,,,
+FichaDeUmaEstaca,Comprimento de uma estaca cravado no solo.,false,,,
+Filete,Moldura estreita e delgada usada como arremate ou ornamento.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Financiador,Agente que provê recursos financeiros a um empreendimento.,false,,,
+Financiamento,Operação de crédito para aquisição ou construção.,false,,,
+FioDePrumo,Dispositivo simples utilizado para verificar a verticalidade de uma superfície.,false,,,
+FioTerra,Condutor de proteção ligado ao aterramento.,false,,,
+FioTracante,Linha impregnada de pó usada para marcar retas.,false,,,
+Fissura,Abertura fina em um material ou elemento construtivo.,false,,,
+FitaIsolante,Fita adesiva para isolamento elétrico.,false,,,
+Flameado,Acabamento de pedra obtido por aplicação de chama.,false,,,
+Flanco,Face lateral de um elemento.,false,,,
+Flecha,Distância entre a posição não deformada e a posição deformada de um ponto de uma laje ou viga.,false,,,
+Flexao,Esforço que tende a provocar compressão em uma região da seção da peça e tração na região oposta.,false,,,
+Fluencia,Aumento da deformação de uma peça ao longo do tempo sob carga constante.,false,,,
+Folha,Parte móvel de uma porta ou janela.,true,,,SolidBox3DRepresentation
+FolhaPorta,Parte móvel de uma porta.,true,,,SolidBox3DRepresentation
+ForcaCortante,Esforço interno perpendicular ao eixo de uma peça.,false,,,
+Forma,Molde provisório que dá forma ao concreto.,false,,,
+Forro,Revestimento da face inferior de lajes ou coberturas.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroDeGessoAcartonado,Forro de placas de gesso acartonado.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroDeMadeira,Forro de peças de madeira.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroDePlacasDeGesso,Forro de placas de gesso.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroDePvc,Forro de réguas de PVC.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroMetalico,Forro de placas ou réguas metálicas.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+ForroMineral,Forro de placas de fibra mineral.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+FossaSeptica,Tanque enterrado que trata o esgoto por decantação e digestão.,true,IfcTank,,HollowBox3DRepresentation
+FracaoAutonoma,Unidade independente de um condomínio.,false,,,
+FracaoIdeal,Parte do terreno e das áreas comuns atribuída a cada unidade de um condomínio.,false,,,
+Freatico,Relativo ao lençol de água subterrânea.,false,,,
+Frechal,Viga de madeira sobre a parede que recebe a estrutura do telhado.,true,IfcBeam,,SolidBox3DRepresentation
+Fresar,Ação de usinar com fresa.,false,,,
+Fresco,Pintura mural sobre argamassa úmida.,false,,,
+Friso,Faixa ou moldura decorativa horizontal.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Frontao,"Coroamento triangular ou curvo sobre fachadas, portas ou janelas.",true,,,
+Frontispicio,Fachada principal de uma edificação.,true,,,
+Fundacao,Infraestrutura direta ou indireta de uma construção que recebe os esforços da estrutura e os transmite ao solo.,true,,,
+FundacaoDireta,"Fundação que transmite as cargas ao solo pela base, em pequena profundidade.",true,IfcFooting,,SolidBox3DRepresentation
+FundacaoProfunda,Fundação que transmite as cargas a camadas profundas do solo.,true,,,
+Fungicida,Produto que combate fungos.,false,,,
+Furadeira,Ferramenta elétrica de perfuração.,false,,,
+Fuste,"Corpo principal de uma coluna, entre a base e o capitel.",true,,,SolidCylindrical3DRepresentation
+Gabarito,"Estrutura provisória, usualmente de madeira, implantada ao redor da obra para auxiliar na marcação e locação dos elementos da construção.",false,,,
+Galgar,Ação de nivelar ou medir a altura de peças.,false,,,
+Galpao,"Edificação ampla, geralmente térrea, usada para depósito ou indústria.",true,IfcBuilding,,SolidBox3DRepresentation
+Galvanizar,Ação de revestir o aço com zinco.,false,,,
+Gambiarras,Instalações elétricas improvisadas.,false,,,
+GambrelRoof,Telhado de duas águas com duas inclinações em cada lado.,true,IfcRoof,GAMBREL_ROOF,
+Garagem,Local destinado à guarda de veículos.,true,IfcSpace,PARKING,SolidBox3DRepresentation
+GarantiaParaExecutarOContrato,Garantia de cumprimento do contrato de obra.,false,,,
+GarantiaParaLicitar,Garantia exigida para participação em licitação.,false,,,
+Gargula,Bica ornamental que lança as águas pluviais para longe da fachada.,true,,,
+Gazebo,"Pequena construção de jardim, aberta e coberta.",true,,,
+Gelosia,Grade de ripas cruzadas que protege janelas.,true,IfcShadingDevice,JALOUSIE,SolidBox3DRepresentation
+Geminada,Edificação que compartilha parede com outra.,true,IfcBuilding,,SolidBox3DRepresentation
+Geminadas,"Designação dada a duas edificações que compartilham uma parede, frequentemente formando unidades espelhadas.",true,IfcBuilding,,SolidBox3DRepresentation
+Geotecnia,Área da engenharia que estuda solos e rochas.,false,,,
+Geotextil,"Manta sintética usada em drenagem, separação e reforço de solos.",false,,,
+Gerador,Equipamento que produz energia elétrica.,true,IfcElectricGenerator,,SolidBox3DRepresentation
+Gesso,Material de construção obtido a partir de sulfato de cálcio e água.,false,,,
+GessoAcartonado,Placa de gesso revestida por papel cartão.,false,,,
+GessoLiso,Material de construção obtido a partir de sulfato de cálcio e água.,false,,,
+Gofrado,Acabamento em relevo.,false,,,
+Goiva,Ferramenta de corte de lâmina curva.,false,,,
+Gonzo,Pino ou eixo de dobradiça.,true,,,SolidCylindrical3DRepresentation
+Gotico,Estilo arquitetônico medieval europeu.,false,,,
+Grafiato,Revestimento texturizado com sulcos.,false,,,
+Granilite,Revestimento de cimento com grãos de mármore ou granito.,false,,,
+Granito,"Rocha ígnea constituída principalmente por quartzo, feldspato e micas, amplamente usada na construção civil.",false,,,
+Granzepe,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Grauteamento,Preenchimento de vazios com graute.,false,,,
+Grega,Ornamento em faixa com linhas retas entrelaçadas.,false,,,
+Grelha,"Peça vazada que cobre ralos, canaletas ou aberturas.",true,,,SolidBox3DRepresentation
+Gres,Cerâmica de baixa absorção de água.,false,,,
+Gretagem,Fissuração fina do esmalte de peças cerâmicas.,false,,,
+Grua,Guindaste de torre usado em obras.,false,,,
+GuardaCorpo,Barreira de proteção contra quedas.,true,IfcRailing,GUARDRAIL,SolidBox3DRepresentation
+Guarnicao,Moldura que arremata o encontro de esquadrias com a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+GuarnicaoDePorta,Moldura que arremata o encontro do marco da porta com a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Guia,Peça que delimita a pista de rolamento e a calçada (meio-fio).,true,,,SolidBox3DRepresentation
+Guindaste,Equipamento para içamento de cargas.,false,,,
+Habitacao,Moradia ou lugar de residência.,false,,,
+HabiteSe,"Documento emitido pela autoridade municipal com a aprovação final de uma obra, permitindo sua ocupação.",false,,,
+HallDeEntrada,Espaço do edifício situado junto à entrada e que dá acesso aos demais ambientes.,true,IfcSpace,,SolidBox3DRepresentation
+Hidraulica,Área técnica das instalações hidráulicas.,false,,,
+Hidrofugo,Produto que repele a água.,false,,,
+Hidromassagem,Banheira dotada de jatos de água.,true,IfcSanitaryTerminal,BATH,HollowBox3DRepresentation
+HomeTheater,Ambiente destinado à exibição de filmes e áudio.,true,IfcSpace,,SolidBox3DRepresentation
+Ilharga,Face lateral de um vão ou elemento.,false,,,
+Iluminacao,Provimento de luz natural ou artificial.,false,,,
+Impermeabilizacao,Proteção contra a passagem de água.,false,,,
+Implantacao,Disposição da edificação no terreno.,false,,,
+Impostos,"Tributos incidentes sobre bens, serviços ou atividades.",false,,,
+Inchamento,"Aumento de volume de um material, como a areia úmida.",false,,,
+Inclinacao,Grau de desvio de uma superfície ou linha em relação à horizontal.,false,,,
+Incorporador,Agente que promove um empreendimento imobiliário.,false,,,
+Incrustacao,Ornamento embutido em uma superfície.,false,,,
+Infiltracao,Penetração indesejada de água em um elemento construtivo.,false,,,
+InLoco,No local da obra.,false,,,
+Inoxidavel,Que não sofre oxidação.,false,,,
+Insolacao,Exposição à radiação solar.,false,,,
+Instalacao,"Conjunto de sistemas prediais, como elétrica e hidráulica.",false,,,
+InstalacaoEletrica,Conjunto de condutores e dispositivos elétricos de uma edificação.,false,,,
+InstalacoesDeIncendio,Sistema de prevenção e combate a incêndio.,false,,,
+Interruptor,Dispositivo que liga e desliga circuitos elétricos.,true,IfcSwitchingDevice,,SolidBox3DRepresentation
+Isolamento,"Proteção contra a transmissão de calor, som ou eletricidade.",false,,,
+IsolamentoAcustico,Redução da transmissão de som.,false,,,
+IsolamentoTermico,Redução da transmissão de calor.,false,,,
+Janela,Abertura com caixilho para iluminação e ventilação.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+JanelaDeSacada,Janela que se estende até o piso e dá acesso a uma sacada.,true,IfcWindow,,SolidBox3DRepresentation
+Jirau,Piso intermediário construído no interior de um ambiente de pé-direito alto.,true,,,SolidBox3DRepresentation
+Jorramento,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Junta,Espaço entre peças ou elementos adjacentes.,false,,,
+JuntaDeDilatacao,Espaço preenchido por materiais deformáveis destinado a absorver movimentos provocados por dilatações e retrações dos materiais envolvidos.,false,,,
+Kitchenette,Pequena unidade residencial com cozinha integrada.,true,IfcSpace,,SolidBox3DRepresentation
+LaDeRocha,Isolante de fibras obtidas de rochas basálticas.,false,,,
+LaDeVidro,Isolante de fibras de vidro.,false,,,
+Ladrao,Tubo extravasor que escoa o excesso de água de um reservatório.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+Ladrilho,Placa de revestimento de piso.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+LadrilhoHidraulico,Placa de cimento prensada e colorida usada em pisos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Laje,"Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura.",true,IfcSlab,,SolidBox3DRepresentation
+LajeCogumelo,"Laje apoiada diretamente sobre pilares, sem vigas.",true,IfcSlab,,SolidBox3DRepresentation
+LamaBentonitica,Suspensão de bentonita que estabiliza escavações.,false,,,
+Lambrequim,Ornamento recortado na borda de beirais.,true,,,SolidBox3DRepresentation
+Lambril,"Faixa inferior das paredes junto ao pavimento, também designada rodapé em determinados usos.",true,IfcCovering,SKIRTINGBOARD,SolidBox3DRepresentation
+Laminado,Material formado por lâminas prensadas.,false,,,
+LaminadoMelaminico,Revestimento de papel impregnado com resina melamínica.,false,,,
+Lampada,Dispositivo que produz luz artificial.,true,IfcLamp,,SolidSpherical3DRepresentation
+Lanternim,Elevação na cumeeira do telhado para ventilação e iluminação.,true,,,SolidBox3DRepresentation
+Lapidado,Acabamento polido de pedras ou vidros.,false,,,
+Lareira,Recinto para queima de lenha no interior de um ambiente.,true,,,HollowBox3DRepresentation
+Laudemio,Taxa devida em transferência de imóveis foreiros.,false,,,
+Lavabo,"Pequeno banheiro social, sem chuveiro.",true,IfcSpace,,SolidBox3DRepresentation
+Lavanderia,Cômodo destinado à lavagem de roupas.,true,IfcSpace,,SolidBox3DRepresentation
+Lavatorio,Aparelho sanitário para lavar as mãos.,true,IfcSanitaryTerminal,WASHHANDBASIN,HollowBox3DRepresentation
+LeitoRochoso,Camada de rocha sob o solo.,false,,,
+LencolFreatico,Camada de água subterrânea.,false,,,
+LevantamentoTopografico,Medição e representação do relevo de um terreno.,false,,,
+Levigado,Acabamento polido de pedras.,false,,,
+LicencasDeObra,Autorizações necessárias para executar uma obra.,false,,,
+LimpezaDoTerreno,Remoção de vegetação e entulho do terreno.,false,,,
+LinhaDeNailon,Linha usada para alinhamento na obra.,false,,,
+Living,Sala de estar.,true,IfcSpace,,SolidBox3DRepresentation
+Lixadeira,Ferramenta elétrica de lixamento.,false,,,
+Longarina,Viga longitudinal principal de uma estrutura.,true,IfcBeam,,SolidBox3DRepresentation
+Lote,Parcela de terreno com frente para via pública.,true,IfcSite,,
+Lugar,Espaço ou local ocupado por algo.,false,,,
+LugarPublico,Local de uso comum do povo.,false,,,
+Luminotecnica,Projeto da iluminação artificial.,false,,,
+Luminotecnico,Relativo à luminotécnica.,false,,,
+Luneta,Abertura ou janela semicircular.,true,,,
+Macaneta,Peça de acionamento da fechadura de uma porta.,true,,,
+Machado,Ferramenta de corte.,false,,,
+MachoFemea,Sistema de encaixe entre peças por saliência e rebaixo.,false,,,
+Madeira,Material obtido do tronco das árvores.,false,,,
+Mainel,Elemento vertical que divide os caixilhos de uma esquadria.,true,IfcMember,MULLION,SolidBox3DRepresentation
+Manilha,Tubo de concreto ou cerâmica para esgoto ou águas pluviais.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+Mansarda,"Telhado com duas inclinações em cada água, cuja parte inferior é mais íngreme.",true,IfcRoof,MANSARD_ROOF,
+MantaAsfaltica,Membrana betuminosa usada em impermeabilização.,false,,,
+MaoFrancesa,Peça inclinada que apoia um elemento em balanço.,true,IfcMember,BRACE,SolidBox3DRepresentation
+Maquete,Modelo físico em escala de um projeto.,false,,,
+Marcacao,Transferência das medidas do projeto para o terreno.,false,,,
+Marceneiro,Profissional que fabrica móveis e peças de madeira.,false,,,
+Marco,Quadro fixo no vão onde a folha da porta ou janela se apoia.,true,,,SolidBox3DRepresentation
+Marmore,Rocha metamórfica usada em revestimentos.,false,,,
+Marquise,Cobertura em balanço sobre entradas ou passeios.,true,IfcSlab,,SolidBox3DRepresentation
+Marreta,Martelo pesado.,false,,,
+Martelo,Ferramenta de percussão.,false,,,
+Massa,Mistura pastosa usada em acabamentos.,false,,,
+MassaCorrida,Massa para regularizar superfícies antes da pintura.,false,,,
+MassaFina,Argamassa fina para acabamento de reboco.,false,,,
+MassaGrossa,Argamassa de regularização de base para revestimentos.,false,,,
+MassaTemporalIsolante,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Matacao,Bloco de rocha arredondado imerso no solo.,false,,,
+MaximAir,Janela com folha que se projeta para fora girando em torno de eixo horizontal superior.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+MeiaAgua,Telhado de uma só água.,true,IfcRoof,SHED_ROOF,
+MeiaCana,Moldura côncava de seção semicircular.,true,IfcCovering,MOLDING,
+MeiaEsquadria,Corte em 45 graus para união de peças em ângulo reto.,false,,,
+MeiaParede,Parede de altura parcial.,true,IfcWall,,SolidBox3DRepresentation
+MeioBloco,Bloco de alvenaria com metade do comprimento padrão.,true,,,SolidBox3DRepresentation
+MeioFio,Peça que separa a pista de rolamento da calçada.,true,,,SolidBox3DRepresentation
+MeioTijolo,Designação de alvenaria com espessura correspondente à largura de um tijolo.,false,,,
+MemoriaDescritiva,Documento que descreve as soluções de um projeto.,false,,,
+MestreDeObras,Profissional que coordena as equipes de execução de uma obra.,false,,,
+Mezanino,Piso intermediário parcial entre dois pavimentos.,true,,,SolidBox3DRepresentation
+Microasfalto,Revestimento asfáltico delgado.,false,,,
+MomentoDeInercia,Propriedade geométrica da seção que expressa sua resistência à flexão.,false,,,
+MomentoFletor,Esforço interno que provoca flexão em uma peça.,false,,,
+MomentosFletores,Esforços internos gerados na seção transversal de uma peça devido à flexão.,false,,,
+MomentosTorsores,Esforços internos gerados na seção transversal de uma peça devido à torção.,false,,,
+MontaCarga,Elevador destinado ao transporte de cargas.,true,IfcTransportElement,ELEVATOR,SolidBox3DRepresentation
+Montante,"Na hidráulica, direção correspondente ao sentido da nascente ou oposta ao sentido do fluxo.",false,,,
+Mosaico,Revestimento composto por pequenas peças justapostas.,false,,,
+MosaicoPortugues,Pavimentação de pedras calcárias pequenas formando desenhos.,false,,,
+MovimentoDeTerra,"Conjunto de serviços de escavação, transporte e aterro.",false,,,
+MuroDeArrimo,Muro que contém maciços de terra.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeContencao,Muro que contém maciços de terra.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeContrafortes,Muro de contenção reforçado por contrafortes.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeFlexao,Muro de contenção em balanço que resiste por flexão.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeGabiao,Muro de contenção formado por gaiolas metálicas preenchidas com pedras.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeGravidade,Muro de contenção que resiste pelo peso próprio.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeSuporte,Estrutura destinada à contenção de terras.,true,IfcWall,,SolidBox3DRepresentation
+MuroDeTesta,Muro na extremidade de bueiros ou galerias que contém o aterro.,true,IfcWall,,SolidBox3DRepresentation
+Nailon,Poliamida sintética.,false,,,
+NataDeCimento,Mistura fluida de cimento e água.,false,,,
+Nembo,Trecho de parede entre dois vãos.,true,,,SolidBox3DRepresentation
+Nicho,Reentrância em parede.,true,IfcOpeningElement,RECESS,SolidBox3DRepresentation
+Nivel,Instrumento utilizado para verificar a horizontalidade de uma superfície.,false,,,
+Nivelar,Ação de colocar uma superfície na horizontal.,false,,,
+NivelDeReferencia,Cota adotada como referência altimétrica.,false,,,
+NonAedificandi,Faixa de terreno em que é proibido construir.,false,,,
+NormaTecnica,Documento que estabelece requisitos técnicos.,false,,,
+NovoComodo,"Cômodo criado por construção, ampliação ou reconfiguração de uma edificação existente.",true,IfcSpace,,SolidBox3DRepresentation
+NovoComodoContiguo,"Novo cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede.",true,IfcSpace,,SolidBox3DRepresentation
+ObraBranca,Conjunto de serviços de acabamento de uma obra.,false,,,
+ObraTipo,"Regime de contratação de obra, como empreitada ou administração.",false,,,
+Ogiva,Forma de arco apontado.,false,,,
+Ogival,"Forma característica de arco ou abóbada com perfil apontado, comum na arquitetura gótica.",false,,,
+Oitao,"Parede lateral da edificação, junto à divisa do lote.",true,IfcWall,,SolidBox3DRepresentation
+Ombreira,Peça colocada na face lateral da abertura de uma porta ou janela.,true,,,SolidBox3DRepresentation
+OrcamentoDeCustos,Estimativa dos custos de uma obra.,false,,,
+OrcamentoDeObra,Documento que quantifica e precifica os serviços de uma obra.,false,,,
+OrcamentoParametrico,Estimativa de custo baseada em parâmetros de obras semelhantes.,false,,,
+OrcamentoProposta,Proposta de preço apresentada para execução de uma obra.,false,,,
+OrcamentoVerba,Montante de recursos destinado a uma obra.,false,,,
+Orientacao,Posição da edificação em relação aos pontos cardeais.,false,,,
+Ornato,Elemento decorativo aplicado a uma construção.,false,,,
+Oxidacao,Reação química de um material com o oxigênio.,false,,,
+Pa,Ferramenta manual para cavar e mover materiais.,false,,,
+PadFooting,Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares.,true,IfcFooting,PAD_FOOTING,SolidBox3DRepresentation
+Padrao,Modelo ou referência de qualidade.,false,,,
+Painel,Placa ou conjunto de placas que forma uma superfície.,true,,,SolidBox3DRepresentation
+Paisagismo,Projeto e execução de áreas verdes.,false,,,
+Palafita,"Estrutura elevada sobre estacas ou colunas, frequentemente de madeira, que mantém a edificação afastada do solo ou da água.",true,,,
+Parafusadeira,Ferramenta elétrica para apertar parafusos.,false,,,
+ParaRaio,Haste metálica que capta descargas atmosféricas.,true,,,SolidCylindrical3DRepresentation
+Parede,Elemento vertical de vedação ou divisão de ambientes.,true,IfcWall,,SolidBox3DRepresentation
+ParedeDeGessoAcartonado,Parede de placas de gesso acartonado sobre estrutura metálica.,true,IfcWall,,SolidBox3DRepresentation
+ParedeDiafragma,Parede de concreto moldada no solo para contenção.,true,IfcWall,,SolidBox3DRepresentation
+ParedeEstrutural,Parede que suporta cargas da estrutura.,true,IfcWall,,SolidBox3DRepresentation
+ParedeSolteira,"Parede isolada, sem ligação com outras.",true,IfcWall,,SolidBox3DRepresentation
+Parquet,Piso de tacos de madeira dispostos em padrões.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Partido,Concepção geral adotada em um projeto de arquitetura.,false,,,
+Passadico,Passagem elevada que liga edificações ou pontos.,true,,,SolidBox3DRepresentation
+Passeio,Parte da via destinada à circulação de pedestres.,true,,,SolidBox3DRepresentation
+Pastilha,Pequena peça de revestimento cerâmico ou de vidro.,true,IfcCovering,,SolidBox3DRepresentation
+Patamar,Plataforma entre lances de escada.,true,IfcSlab,LANDING,SolidBox3DRepresentation
+Patina,Camada superficial formada pelo envelhecimento de um material.,false,,,
+Patio,Área descoberta cercada por construções.,true,IfcSpace,EXTERNAL,
+Paviflex,Marca comercial de piso vinílico.,false,,,
+Pavimentacao,Execução de revestimento de pisos ou vias.,false,,,
+Pavimento,Cada um dos níveis ou andares de uma edificação.,true,IfcBuildingStorey,,SolidBox3DRepresentation
+PavimentoAsfaltico,Revestimento de vias com mistura asfáltica.,true,,,SolidBox3DRepresentation
+PCMAT,Programa de Condições e Meio Ambiente de Trabalho na Indústria da Construção.,false,,,
+Peanha,Pequeno pedestal para imagens ou objetos decorativos.,true,,,SolidBox3DRepresentation
+PeDeMoleque,Calçamento de pedras irregulares.,false,,,
+PeDireito,Altura interna entre o pavimento e o teto ou cobertura de um piso.,false,,,
+PeDireitoDuplo,Pé-direito com altura próxima ou igual ao dobro da altura adotada como padrão na edificação.,false,,,
+Pedra,Material rochoso usado em construção.,false,,,
+PedraAmarroada,Pedra bruta desbastada com marreta.,false,,,
+Pedregulho,Fragmentos de rocha de dimensões intermediárias.,false,,,
+Pedreiro,Profissional que executa alvenarias e revestimentos.,false,,,
+Pedrisco,Brita de pequena dimensão.,false,,,
+PeitorilJanela,"Base inferior do vão de uma janela, usualmente executada em mármore, granito ou outro material de acabamento e proteção.",true,,,SolidBox3DRepresentation
+PeitorilParapeito,"Parte inferior ou elemento de proteção junto a janelas, varandas e terraços, aproximadamente à altura do peito.",true,,,SolidBox3DRepresentation
+PeleDeVidro,Fachada envidraçada contínua sobre estrutura metálica.,true,IfcCurtainWall,,SolidBox3DRepresentation
+Peliculas,Filmes aplicados sobre vidros.,false,,,
+Pendiculo,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+PerfilDeAluminio,Barra de alumínio extrudado com seção definida.,false,,,
+PerfilMetalico,"Barra metálica obtida por processo de conformação, como laminação.",false,,,
+Pergola,"Estrutura de vigas espaçadas sobre colunas, em áreas externas.",true,,,
+Permeabilidade,Propriedade de um material de permitir a passagem de líquidos ou gases através de sua estrutura.,false,,,
+Persiana,Dispositivo de lâminas que controla a entrada de luz em janelas.,true,IfcShadingDevice,,SolidBox3DRepresentation
+Perspectiva,Representação gráfica tridimensional.,false,,,
+PesoEspecifico,Peso por unidade de volume de um material.,false,,,
+PesoProprio,Carga devida ao peso do próprio elemento.,false,,,
+Pestana,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+PexDoBrasil,Marca comercial de tubos de polietileno reticulado.,false,,,
+PH,Medida de acidez ou alcalinidade.,false,,,
+Pia,Cuba com torneira para lavagem.,true,IfcSanitaryTerminal,SINK,HollowBox3DRepresentation
+PiaDeCozinha,Cuba de cozinha para lavagem de utensílios.,true,IfcSanitaryTerminal,SINK,HollowBox3DRepresentation
+Piche,Material betuminoso.,false,,,
+Pilar,Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais.,true,IfcColumn,COLUMN,SolidBox3DRepresentation
+Pilastra,"Pilar embutido na parede, com uma face saliente.",true,IfcColumn,PILASTER,SolidBox3DRepresentation
+Pilotis,"Conjunto de pilares que eleva a edificação, liberando o térreo.",true,,,
+Pinaculo,Remate pontiagudo no alto de torres ou contrafortes.,true,,,
+Pincel,Ferramenta de pintura.,false,,,
+Pintor,Profissional que executa pinturas.,false,,,
+PinturaHidrofugante,Pintura que repele a água.,false,,,
+PipeRack,Estrutura que sustenta tubulações.,true,,,
+Piscina,Tanque para natação ou lazer aquático.,true,,,HollowBox3DRepresentation
+Piso,Revestimento da superfície de pavimentos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+PisoAPiso,Altura entre as faces superiores de pavimentos subsequentes.,false,,,
+PisoCeramico,Piso revestido com placas cerâmicas.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+PisoCimentado,Piso com acabamento de argamassa de cimento.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+PisoElevado,Piso sobre suportes que cria espaço para instalações.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+PisoEmborrachado,Piso revestido com borracha.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+PisoIndustrialEmConcreto,Piso de concreto para uso industrial com alta resistência.,true,IfcSlab,,SolidBox3DRepresentation
+PisoVinilico,Piso revestido com material vinílico.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Pivotante,Tipo de abertura que gira em torno de eixo vertical ou horizontal.,false,,,
+Placa,Estrutura bidimensional plana disposta verticalmente e destinada a receber esforços predominantemente em seu plano.,true,IfcPlate,,SolidBox3DRepresentation
+PlacasDeObra,Placas de identificação obrigatórias exibidas na obra.,false,,,
+Plaina,Ferramenta para aplainar madeira.,false,,,
+Planejamento,"Definição de atividades, prazos e recursos.",false,,,
+PlanoDiretorMunicipal,Lei municipal que orienta o desenvolvimento urbano.,false,,,
+PlanoInclinado,Superfície plana inclinada.,false,,,
+Planta,Desenho que representa a vista horizontal de uma edificação.,false,,,
+PlantaIsometrica,Representação gráfica em perspectiva isométrica.,false,,,
+PlantaProjeto,Desenho de projeto.,false,,,
+Plasticidade,Propriedade que permite à argamassa deformar-se e reter parte das deformações após a redução das tensões impostas.,false,,,
+Platibanda,"Prolongamento ou faixa superior da parede externa de uma edificação, frequentemente usado para ocultar o telhado.",true,IfcWall,PARAPET,SolidBox3DRepresentation
+Plato,Área plana ou aproximadamente horizontal em relação ao terreno circundante.,false,,,
+PocoArtesiano,Poço profundo que capta água de aquífero confinado.,true,,,HollowCylindrical3DRepresentation
+PocoDeVentilacao,Espaço vertical ou vazio construtivo destinado a promover a ventilação natural de ambientes internos e a renovação do ar.,true,IfcSpace,,SolidBox3DRepresentation
+PocoDeVisita,Câmara que dá acesso a redes subterrâneas para inspeção e manutenção.,true,IfcDistributionChamberElement,MANHOLE,HollowCylindrical3DRepresentation
+PocoRomano,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+PoDePedra,Resíduo fino da britagem de rochas.,false,,,
+PointList,Lista de pontos pendentes de uma obra.,false,,,
+Policarbonato,Plástico transparente resistente usado em coberturas.,false,,,
+Polir,Ação de dar brilho a uma superfície.,false,,,
+Ponte,Estrutura que transpõe um obstáculo.,true,,,
+Porao,Espaço sob o pavimento térreo.,true,IfcSpace,,SolidBox3DRepresentation
+Porcelanato,Revestimento cerâmico de baixíssima absorção.,false,,,
+Porta,Elemento que fecha um vão de passagem.,true,IfcDoor,DOOR,SolidBox3DRepresentation
+PortaDeCorrer,Porta cuja folha desliza lateralmente.,true,IfcDoor,DOOR,SolidBox3DRepresentation
+Portao,Porta de acesso a terrenos ou garagens.,true,IfcDoor,GATE,SolidBox3DRepresentation
+PostForming,Laminado curvado a quente para bordas arredondadas.,false,,,
+Postigo,Pequena abertura com folha em uma porta ou janela.,true,,,SolidBox3DRepresentation
+PrecoJusto,Preço compatível com os custos e o mercado.,false,,,
+PrecoMeta,Preço máximo estabelecido como meta.,false,,,
+PrecoTurnKey,Preço global para entrega da obra pronta para uso.,false,,,
+Predio,Edificação de vários pavimentos.,true,IfcBuilding,,SolidBox3DRepresentation
+PreFabricado,Produzido previamente fora do local de montagem.,false,,,
+PREO,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Preparo,Preparação de materiais ou superfícies.,false,,,
+Privada,Aparelho sanitário para recepção de dejetos (bacia sanitária).,true,IfcSanitaryTerminal,TOILETPAN,SolidBox3DRepresentation
+ProfundidadeEquivalente,Profundidade de cálculo equivalente para fundações.,false,,,
+Programa,Relação de ambientes e necessidades de um projeto.,false,,,
+Projeto,Conjunto de documentos que define uma construção.,false,,,
+ProtecaoDeItensProntos,Proteção de elementos já concluídos durante a obra.,false,,,
+ProtecaoDeTaludes,Serviços de proteção de taludes contra erosão.,false,,,
+ProvaDeCarga,Ensaio para verificar a capacidade de carga.,false,,,
+Prumada,Linha vertical de tubulações ou instalações.,false,,,
+Quadriangulo,Instrumento usado para retificação e verificação da esquadria de uma fundação ou de paredes em uma edificação.,false,,,
+Quiosque,Pequena construção isolada para comércio ou lazer.,true,IfcBuilding,,SolidBox3DRepresentation
+Radier,Fundação em laje contínua sobre o solo.,true,IfcSlab,BASESLAB,SolidBox3DRepresentation
+Ralo,Dispositivo que recebe águas de pisos e as conduz à tubulação.,true,IfcWasteTerminal,,SolidBox3DRepresentation
+RaloSeco,Ralo sem fecho hídrico.,true,IfcWasteTerminal,FLOORWASTE,SolidBox3DRepresentation
+RaloSifonado,Ralo dotado de fecho hídrico que impede o retorno de gases.,true,IfcWasteTerminal,FLOORTRAP,SolidBox3DRepresentation
+Reaterro,Preenchimento de valas com terra após a execução.,false,,,
+RebaixamentoDoFreatico,Redução do nível da água subterrânea para execução de obras.,false,,,
+Rebarba,Excesso de material em bordas de peças.,false,,,
+Reboco,Revestimento de argamassa usado para alisar paredes e prepará-las para acabamento ou pintura.,false,,,
+RecomposicaoEstrutural,"Intervenção destinada a restabelecer a integridade, a geometria ou a capacidade resistente de um elemento ou sistema estrutural afetado por dano, deterioração, remoção ou alteração.",false,,,
+RecomposicaoEstruturalComodo,Intervenção de recomposição estrutural executada em elementos que compõem ou delimitam um cômodo.,false,,,
+RedeDeDrenagem,Rede de coleta de águas pluviais.,false,,,
+RedeDeEsgoto,Rede de coleta de esgoto.,false,,,
+RedeLogica,Rede de cabeamento de dados.,false,,,
+ReforcoDeMuro,Intervenção que aumenta a resistência de um muro.,false,,,
+Refratario,Material resistente a altas temperaturas.,false,,,
+Regua,Instrumento para traçar e medir retas.,false,,,
+Rejunte,Material que preenche juntas de revestimentos.,false,,,
+Reservatorio,Recipiente para armazenamento de água ou outros fluidos.,true,IfcTank,STORAGE,HollowBox3DRepresentation
+ResidenciasEmSerie,Residências construídas lado a lado em sequência.,true,IfcBuilding,,SolidBox3DRepresentation
+ResidenciasGeminadas,Residências que compartilham parede.,true,IfcBuilding,,SolidBox3DRepresentation
+Resistencia,Capacidade de suportar esforços.,false,,,
+Respaldar,Ação de nivelar o topo de uma alvenaria.,false,,,
+Respaldo,Nivelamento do topo de uma alvenaria.,false,,,
+Respiro,Tubo de ventilação da instalação de esgoto.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+Retracao,Redução das dimensões de um material.,false,,,
+Revestimento,Camada aplicada sobre superfícies para proteção e acabamento.,true,IfcCovering,,SolidBox3DRepresentation
+Rincao,Encontro côncavo de duas águas do telhado.,true,,,
+Ripa,Elemento da cobertura colocado sobre as varas ou caibros e destinado a apoiar as telhas.,true,IfcMember,,SolidBox3DRepresentation
+Rocha,Material mineral sólido.,false,,,
+RodaMeio,"Elemento de acabamento semelhante ao rodapé, situado aproximadamente à meia altura da parede.",true,IfcCovering,MOLDING,SolidBox3DRepresentation
+Rodape,"Elemento situado na junção das paredes com o piso, destinado à proteção da parede e ao acabamento.",true,IfcCovering,SKIRTINGBOARD,SolidBox3DRepresentation
+RodaTeto,"Elemento de acabamento semelhante ao rodapé, situado na junção do teto com as paredes.",true,IfcCovering,MOLDING,SolidBox3DRepresentation
+RoloDePintura,Ferramenta de pintura com cilindro.,false,,,
+Rufo,Peça que veda o encontro do telhado com paredes.,true,,,SolidBox3DRepresentation
+Sacada,Plataforma saliente da fachada protegida por guarda-corpo.,true,,,SolidBox3DRepresentation
+Saguao,Espaço de entrada e circulação.,true,IfcSpace,,SolidBox3DRepresentation
+Saibro,Solo arenoso argiloso.,false,,,
+Sala,Cômodo de uso geral.,true,IfcSpace,,SolidBox3DRepresentation
+SalaDeEstar,Cômodo de convivência.,true,IfcSpace,,SolidBox3DRepresentation
+SalaDeJantar,Cômodo destinado às refeições.,true,IfcSpace,,SolidBox3DRepresentation
+Sanca,"Moldura ou rebaixo de forro junto às paredes, frequentemente com iluminação embutida.",true,IfcCovering,,SolidBox3DRepresentation
+Sapata,Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes.,true,IfcFooting,,SolidBox3DRepresentation
+SapataCorrida,Sapata contínua sob paredes.,true,IfcFooting,STRIP_FOOTING,SolidBox3DRepresentation
+Sarjeta,Canal junto ao meio-fio que conduz as águas pluviais da via.,true,,,SolidBox3DRepresentation
+Sarrafear,Ação de regularizar argamassa com sarrafo.,false,,,
+Sarrafo,Peça fina e estreita de madeira.,true,IfcMember,,SolidBox3DRepresentation
+Secao,Corte ou divisão de uma peça.,false,,,
+SecaoTransversal,Seção obtida por corte segundo um plano perpendicular ao eixo da peça.,false,,,
+SeguroDeResponsabilidadeCivil,Seguro contra danos causados a terceiros.,false,,,
+SeguroDeVidaEmGrupo,Seguro de vida para os trabalhadores.,false,,,
+SeguroPerformanceBond,Seguro de garantia do cumprimento do contrato.,false,,,
+SeixoRolado,Pedra arredondada pela ação da água.,false,,,
+Selador,Produto que prepara superfícies para pintura.,false,,,
+Selatrinca,Produto para vedar trincas.,false,,,
+SerraCircular,Ferramenta de corte com disco dentado.,false,,,
+Serrote,Ferramenta manual de corte.,false,,,
+Servente,Auxiliar de obra.,false,,,
+Servidao,Direito real sobre imóvel alheio.,false,,,
+Shaft,Espaço vertical para passagem de instalações.,true,IfcSpace,,SolidBox3DRepresentation
+Shaker,Estilo de mobiliário e arquitetura de linhas simples.,false,,,
+Shed,Cobertura em dentes de serra com faces envidraçadas.,true,IfcRoof,,
+Shingle,Telha asfáltica.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+Sifao,"Dispositivo hidráulico que conduz líquido entre níveis e, em instalações prediais, forma fecho hídrico para impedir o retorno de gases.",true,IfcWasteTerminal,WASTETRAP,
+Silicone,Material selante elástico.,false,,,
+Silte,Solo de granulação intermediária.,false,,,
+SistemaDeGasNatural,Sistema de tubulações de gás natural.,false,,,
+SistemaFinanceiroDaHabitacao,Sistema de financiamento habitacional instituído pelo governo federal.,false,,,
+Soalho,Piso de tábuas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Sobejo,Material excedente ou sobra.,false,,,
+Socolo,Base ou embasamento saliente na parte inferior de paredes ou pedestais.,true,,,SolidBox3DRepresentation
+Solario,Espaço destinado a banhos de sol.,true,IfcSpace,,SolidBox3DRepresentation
+Soleira,"Parte inferior do vão de uma porta, frequentemente executada como peça de acabamento e transição entre pisos.",true,,,SolidBox3DRepresentation
+SoloGrampeado,Técnica de contenção de solo com grampos e revestimento de concreto projetado.,false,,,
+Sondagem,Investigação do subsolo por perfurações.,false,,,
+Sonex,Marca comercial de espuma para tratamento acústico.,false,,,
+Sotao,Espaço entre o forro do último pavimento e o telhado.,true,IfcSpace,,SolidBox3DRepresentation
+StruturalGlazing,Sistema de fachada com vidros colados à estrutura sem caixilho aparente.,true,IfcCurtainWall,,SolidBox3DRepresentation
+Subsolo,Pavimento situado abaixo do nível do terreno.,true,IfcBuildingStorey,,SolidBox3DRepresentation
+Tabeira,Tábua que arremata a borda do beiral.,true,,,SolidBox3DRepresentation
+Tabua,"Peça de madeira serrada, larga e pouco espessa.",false,,,
+TabuaCorrida,Piso de tábuas longas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Taco,Peça pequena de madeira para pisos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+TacoDeMadeira,Piso de pequenas peças de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+Talude,Plano inclinado que limita um corte ou aterro.,true,,,
+Tapume,Vedação provisória que isola o canteiro de obras.,false,,,
+Tavela,"Bloco cerâmico usado em lajes mistas, apoiado entre vigotas e normalmente sem função estrutural, atuando como elemento de preenchimento.",true,,,SolidBox3DRepresentation
+Te,Conexão em forma de T que deriva uma tubulação.,true,IfcPipeFitting,JUNCTION,
+Telha,Peça de cobertura que protege contra a chuva.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaCeramica,Telha de argila cozida.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaDeAcrilico,Telha de acrílico translúcido.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaDeAluminio,Telha de chapa de alumínio.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaDeConcreto,Telha de concreto.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaDeVidro,Telha de vidro para iluminação.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+Telhado,Cobertura inclinada formada por estrutura e telhas.,true,IfcRoof,,
+TelhaFibrocimento,Telha ondulada de fibrocimento.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaTrapezoidal,Telha metálica de perfil trapezoidal.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+TelhaTrapezoidalSanduiche,Telha trapezoidal com isolante entre duas chapas.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+Temperado,Submetido a tratamento térmico de têmpera.,false,,,
+Terca,Elemento da cobertura que liga tesouras e apoia elementos secundários do telhado.,true,IfcMember,PURLIN,SolidBox3DRepresentation
+Terraco,Área descoberta sobre edificação ou junto a ela.,true,IfcSpace,EXTERNAL,
+Terracor,Termo do glossário de construção sem definição registrada na ontologia; significado a confirmar.,false,,,
+Terracota,Argila cozida.,false,,,
+Terraplanagem,Movimentação de terra para conformar o terreno.,false,,,
+Terraplenar,Ação de executar terraplenagem.,false,,,
+Terreno,Porção de terra delimitada.,true,IfcSite,,
+TerrenoComConstrucao,Terreno que contém construção.,true,IfcSite,,
+TerrenoEdificado,Terreno que contém edificação.,true,IfcSite,,
+Terreo,Pavimento ao nível do terreno.,true,IfcBuildingStorey,,SolidBox3DRepresentation
+Tesoura,Estrutura triangulada que sustenta o telhado.,true,IfcElementAssembly,TRUSS,
+Testada,Medida da frente do lote.,false,,,
+Teto,Face inferior da cobertura ou laje de um ambiente.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+Textura,Revestimento de acabamento com relevo.,false,,,
+TexturaAcrilica,Revestimento texturizado à base de resina acrílica.,false,,,
+Tijolo,Peça de argila cozida para alvenaria.,true,,,SolidBox3DRepresentation
+TijoloDeEspelho,Tijolo assentado com a face maior aparente.,true,,,SolidBox3DRepresentation
+TintaLatex,Tinta à base de água.,false,,,
+Tirante,Elemento que trabalha à tração ancorando estruturas.,true,,,SolidCylindrical3DRepresentation
+Tomada,Ponto de conexão de aparelhos à rede elétrica.,true,IfcOutlet,POWEROUTLET,SolidBox3DRepresentation
+Topografia,Descrição e representação do relevo de um terreno.,false,,,
+Topografo,Profissional que realiza levantamentos topográficos.,false,,,
+Torcao,Esforço que provoca giro em torno do eixo de uma peça.,false,,,
+Torneira,Dispositivo de abertura e fechamento de água.,true,IfcValve,FAUCET,
+Tosco,Sem acabamento.,false,,,
+TrabalhoDoMaterial,Movimentação de um material por variação de temperatura ou umidade.,false,,,
+Tracao,Esforço que tende a alongar uma peça.,false,,,
+Trelica,Estrutura formada por barras em triângulos.,true,IfcElementAssembly,TRUSS,
+Trena,Instrumento de medição de comprimento.,false,,,
+Trinca,Abertura em um material ou elemento construtivo.,false,,,
+Tubo,Elemento tubular destinado à condução de fluidos.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+TuboDeAguaFria,Tubo para condução de água fria.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+TuboDeEsgoto,Tubo para condução de esgoto.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+Tunel,Passagem subterrânea.,true,,,HollowCylindrical3DRepresentation
+TurnKey,Modalidade de contrato com entrega da obra pronta para uso.,false,,,
+UmTijolo,Designação de alvenaria com espessura correspondente ao comprimento de um tijolo.,false,,,
+UneTubulacoesDiversasEletricas,Designação de elemento que une tubulações elétricas ou hidráulicas diversas.,false,,,
+Urbanismo,Planejamento das cidades.,false,,,
+Urbanizacao,Implantação de infraestrutura urbana.,false,,,
+Usucapiao,Aquisição da propriedade pela posse prolongada.,false,,,
+Usucapido,Bem adquirido por usucapião.,false,,,
+Usucapiendo,Bem em processo de aquisição por usucapião.,false,,,
+Usucapiente,Pessoa que adquire bem por usucapião.,false,,,
+Usucapir,Ação de adquirir por usucapião.,false,,,
+Vala,Escavação longa e estreita.,false,,,
+ValorVenal,Valor de mercado estimado de um imóvel para fins fiscais.,false,,,
+Vao,Espaço livre entre apoios ou sob um elemento estrutural.,false,,,
+VaoLivre,Distância livre entre apoios.,false,,,
+Vara,Elemento da cobertura disposto sobre as terças e perpendicularmente a elas.,true,IfcMember,,SolidBox3DRepresentation
+Varanda,Área coberta aberta junto à edificação.,true,IfcSpace,,SolidBox3DRepresentation
+Vedacao,Fechamento de vãos e espaços.,false,,,
+Ventilacao,Renovação do ar.,false,,,
+Verga,Elemento estrutural disposto sobre vãos de portas ou janelas para auxiliar na distribuição de cargas e tensões.,true,IfcBeam,LINTEL,SolidBox3DRepresentation
+Vergalhao,Barra de aço para concreto armado.,true,IfcReinforcingBar,,SolidCylindrical3DRepresentation
+Vermiculita,Mineral expandido usado como isolante.,false,,,
+Verniz,Revestimento transparente de proteção.,false,,,
+VernizABoneca,Técnica de envernizamento com boneca de pano.,false,,,
+Viabilidade,Condição de ser executável técnica e economicamente.,false,,,
+Vidro,Material transparente e rígido.,false,,,
+VidroAcidato,Vidro com acabamento fosco obtido por ácido.,false,,,
+VidroAramado,Vidro com tela metálica embutida.,false,,,
+VidroBizotado,Vidro com bordas chanfradas.,false,,,
+VidroJateado,Vidro fosco obtido por jato de areia.,false,,,
+VidroLaminado,Vidro de lâminas unidas por película plástica.,false,,,
+VidroLapidado,Vidro com bordas polidas.,false,,,
+VidroTemperado,Vidro submetido a têmpera.,false,,,
+Viga,Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão.,true,IfcBeam,BEAM,SolidBox3DRepresentation
+VigaDeTravamento,Viga que liga elementos de fundação.,true,IfcBeam,,SolidBox3DRepresentation
+Vigota,"Viga de pequena seção transversal, frequentemente pré-moldada ou protendida.",true,IfcBeam,JOIST,SolidBox3DRepresentation
+Vinil,Material plástico.,false,,,
+Vitrificado,Com acabamento vítreo.,false,,,
+Volumetria,Composição dos volumes de uma edificação.,false,,,
+Voluta,Ornamento em espiral.,true,,,
+Xadrez,Padrão quadriculado.,false,,,
+Zarcao,Tinta anticorrosiva.,false,,,
+Zenital,Relativo à iluminação vinda do alto.,false,,,
+Zigurate,Edificação em plataformas escalonadas.,true,IfcBuilding,,
+Zincado,Revestido com zinco.,false,,,
+Zoneamento,Divisão do território em zonas de uso.,false,,,

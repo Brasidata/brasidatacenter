@@ -1,3 +1,4 @@
+@prefix kind: <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
 @prefix : <https://infobim.org/ontology/tool/entity/ifc_distribution_chamber_element_type.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
@@ -53,7 +54,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty crm:P138_represents ;
-            owl:someValuesFrom aeco:CaixaDeInspecao
+            owl:someValuesFrom kind:CaixaDeInspecao
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -66,7 +67,7 @@
             owl:someValuesFrom :InspectionChamber3DRepresentation
         ] .
 
-aeco:CaixaDeInspecao rdfs:subClassOf
+kind:CaixaDeInspecao rdfs:subClassOf
     [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
