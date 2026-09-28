@@ -1874,6 +1874,17 @@ skos:prefLabel
     skos:altLabel "CadernoDeEncargo"@pt-br,
         "CadernoDeEncargos" .
 
+:CadeiraDeEscritorio
+    rdf:type owl:Class ;
+    owl:equivalentClass :OfficeChair ;
+    dcterms:identifier "CadeiraDeEscritorio" ;
+    skos:prefLabel "Office chair"@en,
+        "Cadeira de escritório"@pt-br ;
+    skos:altLabel "CadeiraDeEscritorio",
+        "CadeiraDeEscritorio"@pt-br,
+        "OfficeChair"@en ;
+    skos:definition "Assento com encosto e, geralmente, rodas, destinado ao uso em estações de trabalho e escritórios."@pt-br .
+
 :Caiar
     rdf:type owl:Class ;
     dcterms:identifier "Caiar" ;
@@ -2028,6 +2039,17 @@ skos:prefLabel
     skos:altLabel "Calha",
         "Calha"@pt-br,
         "Gutter"@en .
+
+:Cama
+    rdf:type owl:Class ;
+    owl:equivalentClass :Bed ;
+    dcterms:identifier "Cama" ;
+    skos:prefLabel "Bed"@en,
+        "Cama"@pt-br ;
+    skos:altLabel "Bed"@en,
+        "Cama",
+        "Cama"@pt-br ;
+    skos:definition "Mobiliário destinado ao repouso e sono humano, composta geralmente por base estrado, colchão e cabeceira."@pt-br .
 
 :CamaraDeFumaca
     rdf:type owl:Class ;
@@ -5889,13 +5911,15 @@ skos:prefLabel
 
 :Janela
     rdf:type owl:Class ;
+    rdfs:subClassOf :Abertura ;
     owl:equivalentClass :Window ;
     dcterms:identifier "Janela" ;
     skos:prefLabel "Janela"@pt-br,
         "Window"@en ;
     skos:altLabel "Janela",
         "Janela"@pt-br,
-        "Window"@en .
+        "Window"@en ;
+    skos:definition "Abertura em paredes, telhados ou pisos destinada à iluminação natural, ventilação e visual para o exterior."@pt-br .
 
 :JanelaDeSacada
     rdf:type owl:Class ;
@@ -6639,6 +6663,18 @@ skos:prefLabel
     skos:prefLabel "Mezanino"@pt-br ;
     skos:altLabel "Mezanino",
         "Mezanino"@pt-br .
+
+:MesaDeEscritorio
+    rdf:type owl:Class ;
+    owl:equivalentClass :OfficeDesk ;
+    dcterms:identifier "MesaDeEscritorio" ;
+    skos:prefLabel "Office desk"@en,
+        "Mesa de escritório"@pt-br ;
+    skos:altLabel "Desk"@en,
+        "MesaDeEscritorio",
+        "MesaDeEscritorio"@pt-br,
+        "OfficeDesk"@en ;
+    skos:definition "Mobiliário com tampo plano e altura adequada para atividades de escrita, leitura e trabalho intelectual em ambiente de escritório."@pt-br .
 
 :Microasfalto
     rdf:type owl:Class ;
@@ -7978,12 +8014,15 @@ skos:prefLabel
 
 :Porta
     rdf:type owl:Class ;
+    rdfs:subClassOf :Abertura ;
+    owl:equivalentClass :Door ;
     dcterms:identifier "Porta" ;
     skos:prefLabel "Door"@en,
         "Porta"@pt-br ;
     skos:altLabel "Door"@en,
         "Porta",
-        "Porta"@pt-br .
+        "Porta"@pt-br ;
+    skos:definition "Elemento de abertura que permite ou bloqueia o acesso a ambientes, compartimentos ou áreas externas."@pt-br .
 
 :PortaDeCorrer
     rdf:type owl:Class ;
@@ -8669,6 +8708,19 @@ skos:prefLabel
     skos:altLabel "SapataCorrida",
         "SapataCorrida"@pt-br,
         "StripFooting"@en .
+
+:SapataDeConcreto
+    rdf:type owl:Class ;
+    rdfs:subClassOf :Sapata ;
+    owl:equivalentClass :ConcreteSpreadFooting ;
+    dcterms:identifier "SapataDeConcreto" ;
+    skos:prefLabel "Concrete spread footing"@en,
+        "Sapata de concreto"@pt-br ;
+    skos:altLabel "ConcreteFooting"@en,
+        "ConcreteSpreadFooting"@en,
+        "SapataDeConcreto",
+        "SapataDeConcreto"@pt-br ;
+    skos:definition "Sapata executada em concreto simples ou armado, destinada a distribuir cargas concentradas de pilares ao solo de fundação."@pt-br .
 
 :Sarjeta
     rdf:type owl:Class ;
@@ -9461,12 +9513,15 @@ skos:prefLabel
 
 :Telhado
     rdf:type owl:Class ;
+    rdfs:subClassOf :Cobertura ;
+    owl:equivalentClass :Roof ;
     dcterms:identifier "Telhado" ;
     skos:prefLabel "Roof"@en,
         "Telhado"@pt-br ;
     skos:altLabel "Roof"@en,
         "Telhado",
-        "Telhado"@pt-br .
+        "Telhado"@pt-br ;
+    skos:definition "Estrutura de cobertura de uma edificação, geralmente inclinada, destinada a proteger os ambientes internos contra intempéries (chuva, sol, vento)."@pt-br .
 
 :TelhaFibrocimento
     rdf:type owl:Class ;
