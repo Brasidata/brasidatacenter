@@ -30,7 +30,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:Cylindrical3DRepresentation
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
         ] .
 
 :FloorWasteRepresentation rdf:type owl:Class ;
@@ -49,7 +49,7 @@
         [
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:Cylindrical3DRepresentation
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
         ] .
 
 :PipeRepresentation rdf:type owl:Class ;
@@ -59,4 +59,9 @@
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:Tubo
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:HollowCylindrical3DRepresentation
         ] .
