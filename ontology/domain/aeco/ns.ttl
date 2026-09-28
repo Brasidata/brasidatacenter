@@ -1,5 +1,6 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix omg: <https://w3id.org/omg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -145,7 +146,10 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
 :IFCRepresentation rdf:type owl:Class ;
     rdfs:subClassOf crm:E36_Visual_Item ;
     rdfs:label "IFC representation"@en ,
-               "Representação ifc"@pt-br .
+               "Representação ifc"@pt-br ;
+    rdfs:comment
+        "Visual-only representation of an IFC-related kind: shape, geometry, visual appearance. For semantic mapping to IFC element types, predefined types, material associations and other non-visual engineering attributes, use aeco:IfcElementBinding (DUL Description)."@pt-br ,
+        "Representação estritamente visual de um kind vinculado a IFC: forma, geometria, aparência visual. Para mapeamento semântico a tipos de elemento IFC, tipos predefinidos, associações de materiais e demais atributos de engenharia não visuais, usar aeco:IfcElementBinding (DUL Description)."@pt-br .
 
 :isIFCRepresentationOf rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf crm:P138_represents ;
@@ -156,3 +160,30 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
     rdfs:subPropertyOf crm:P138i_has_representation ;
     rdfs:label "has ifc representation"@en ,
                "tem representação ifc"@pt-br .
+
+
+#################################################################
+#    IFC element bindings (DUL-based, non-visual semantics)
+#################################################################
+
+:IfcElementBinding rdf:type owl:Class ;
+    rdfs:subClassOf dul:Description ;
+    rdfs:label "IFC element binding"@en ,
+               "Vinculação de elemento IFC"@pt-br ;
+    skos:definition "Declarative mapping from an AECO domain kind to an IFC4/FINAL element type, including non-visual engineering attributes such as predefined type, material associations, quantity take-off rules and composition relationships. Classified as a DUL Description because it is a conceptual specification (blueprint) of a kind, not a visual item."@en ,
+                    "Mapeamento declarativo de um kind do domínio AECO para um tipo de elemento IFC4/FINAL, incluindo atributos de engenharia não visuais como tipo predefinido, associações de material, regras de levantamento quantitativo e relações de composição. Classificado como DUL Description por ser uma especificação conceitual (blueprint) de um kind, não um item visual."@pt-br .
+
+:bindsIfcElementFor rdf:type owl:ObjectProperty ;
+    rdfs:domain :IfcElementBinding ;
+    rdfs:label "binds IFC element for"@en ,
+               "vincula elemento IFC para"@pt-br ;
+    owl:inverseOf :hasIfcElementBinding ;
+    skos:definition "Links an IfcElementBinding (the DUL Description) to the AECO kind that it semantically binds to an IFC element type. Not a visual relation: no subPropertyOf crm:P138_represents."@en ,
+                    "Liga um IfcElementBinding (a Description DUL) ao kind do AECO que ele semanticamente vincula a um tipo de elemento IFC. Não é uma relação visual: não há subPropertyOf crm:P138_represents."@pt-br .
+
+:hasIfcElementBinding rdf:type owl:ObjectProperty ;
+    rdfs:range :IfcElementBinding ;
+    rdfs:label "has IFC element binding"@en ,
+               "tem vinculação de elemento IFC"@pt-br ;
+    skos:definition "Links an AECO kind to the declarative IFC element binding (DUL Description) that specifies its IFC element type, predefined type, material associations and other non-visual engineering attributes."@en ,
+                    "Liga um kind do AECO à vinculação declarativa de elemento IFC (DUL Description) que especifica seu tipo de elemento IFC, tipo predefinido, associações de material e demais atributos de engenharia não visuais."@pt-br .

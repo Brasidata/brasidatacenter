@@ -17,12 +17,22 @@ kind:RaloSeco rdfs:subClassOf
     [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
-        owl:someValuesFrom representation:FloorWasteRepresentation
+        owl:someValuesFrom representation:FloorWasteVisual
+    ] ,
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty aeco:hasIfcElementBinding ;
+        owl:someValuesFrom representation:FloorWasteIfcBinding
     ] .
 
 kind:RaloSifonado rdfs:subClassOf
     [
         rdf:type owl:Restriction ;
         owl:onProperty crm:P138i_has_representation ;
-        owl:someValuesFrom representation:FloorTrapRepresentation
+        owl:someValuesFrom representation:FloorTrapVisual
+    ] ,
+    [
+        rdf:type owl:Restriction ;
+        owl:onProperty aeco:hasIfcElementBinding ;
+        owl:someValuesFrom representation:FloorTrapIfcBinding
     ] .

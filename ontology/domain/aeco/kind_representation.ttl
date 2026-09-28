@@ -13,10 +13,22 @@
 
 # Kind representations
 # -----------------------------------------------------------------------------
+#
+# Each kind has two parallel and independent declarations:
+#   1. VISUAL side  (suffix ...Visual) — subClassOf aeco:IFCRepresentation (crm:E36_Visual_Item)
+#      linked via aeco:isVisualRepresentationOf (subPropertyOf crm:P138_represents).
+#      Restricted here to geometry / visual aspects only.
+#   2. SEMANTIC side (suffix ...IfcBinding) — subClassOf aeco:IfcElementBinding (dul:Description)
+#      linked via aeco:bindsIfcElementFor (owl:inverseOf aeco:hasIfcElementBinding).
+#      Carries the non-visual engineering mapping: IFC element class, predefined type,
+#      material associations, quantity take-off rules and composition relations.
 
-:FloorTrapRepresentation rdf:type owl:Class ;
+
+# Ralo Sifonado (Floor Trap)
+# -----------------------------------------------------------------------------
+
+:FloorTrapVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcWasteTerminal ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -24,18 +36,30 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
-            owl:hasValue ifc4owl:FLOORTRAP
-        ] ,
-        [
-            rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
         ] .
 
-:FloorWasteRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:IFCRepresentation ,
+:FloorTrapIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
         ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RaloSifonado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORTRAP
+        ] .
+
+
+# Ralo Seco (Floor Waste)
+# -----------------------------------------------------------------------------
+
+:FloorWasteVisual rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IFCRepresentation ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -43,18 +67,30 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
-            owl:hasValue ifc4owl:FLOORWASTE
-        ] ,
-        [
-            rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
         ] .
 
-:PipeRepresentation rdf:type owl:Class ;
+:FloorWasteIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RaloSeco
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORWASTE
+        ] .
+
+
+# Tubo (Pipe)
+# -----------------------------------------------------------------------------
+
+:PipeVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcPipeSegment ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -66,9 +102,21 @@
             owl:someValuesFrom aeco:HollowCylindrical3DRepresentation
         ] .
 
-:VigaDeConcretoRepresentation rdf:type owl:Class ;
+:PipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Tubo
+        ] .
+
+
+# Viga de Concreto (Concrete Beam)
+# -----------------------------------------------------------------------------
+
+:VigaDeConcretoVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcBeam ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -76,13 +124,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
-            owl:hasValue ifc4owl:BEAM
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:VigaDeConcretoIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:VigaDeConcreto
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:BEAM
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -97,9 +154,12 @@
             ]
         ] .
 
-:CamaRepresentation rdf:type owl:Class ;
+
+# Cama (Bed)
+# -----------------------------------------------------------------------------
+
+:CamaVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcFurniture ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -107,13 +167,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
-            owl:hasValue ifc4owl:BED
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:CamaIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cama
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
+            owl:hasValue ifc4owl:BED
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -128,9 +197,12 @@
             ]
         ] .
 
-:CadeiraDeEscritorioRepresentation rdf:type owl:Class ;
+
+# Cadeira de Escritório (Office Chair)
+# -----------------------------------------------------------------------------
+
+:CadeiraDeEscritorioVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcFurniture ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -138,13 +210,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
-            owl:hasValue ifc4owl:CHAIR
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:CadeiraDeEscritorioIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CadeiraDeEscritorio
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
+            owl:hasValue ifc4owl:CHAIR
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -159,9 +240,12 @@
             ]
         ] .
 
-:JanelaRepresentation rdf:type owl:Class ;
+
+# Janela (Window)
+# -----------------------------------------------------------------------------
+
+:JanelaVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcWindow ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -169,13 +253,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
-            owl:hasValue ifc4owl:WINDOW
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:JanelaIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Janela
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:WINDOW
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -190,13 +283,30 @@
             ]
         ] .
 
-:MesaDeEscritorioRepresentation rdf:type owl:Class ;
+
+# Mesa de Escritório (Office Desk)
+# -----------------------------------------------------------------------------
+
+:MesaDeEscritorioVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcFurniture ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:MesaDeEscritorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:MesaDeEscritorioIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MesaDeEscritorio
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -205,11 +315,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
-        ] ,
-        [
-            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -221,13 +326,30 @@
             ]
         ] .
 
-:PortaRepresentation rdf:type owl:Class ;
+
+# Porta (Door)
+# -----------------------------------------------------------------------------
+
+:PortaVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcDoor ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:Porta
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:PortaIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDoor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Porta
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -236,11 +358,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
-        ] ,
-        [
-            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -252,9 +369,12 @@
             ]
         ] .
 
-:SapataDeConcretoRepresentation rdf:type owl:Class ;
+
+# Sapata de Concreto (Concrete Spread Footing)
+# -----------------------------------------------------------------------------
+
+:SapataDeConcretoVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcFooting ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -262,13 +382,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
-            owl:hasValue ifc4owl:FOOTING_PAD
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:SapataDeConcretoIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:SapataDeConcreto
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:FOOTING_PAD
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -283,9 +412,12 @@
             ]
         ] .
 
-:TelhadoRepresentation rdf:type owl:Class ;
+
+# Telhado (Roof)
+# -----------------------------------------------------------------------------
+
+:TelhadoVisual rdf:type owl:Class ;
     rdfs:subClassOf aeco:IFCRepresentation ,
-        ifc4owl:IfcRoof ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:isVisualRepresentationOf ;
@@ -293,13 +425,22 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcRoof ;
-            owl:hasValue ifc4owl:ROOF_NOTDEFINED
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
+
+:TelhadoIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRoof ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Telhado
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty omg:hasGeometry ;
-            owl:someValuesFrom aeco:SolidBox3DRepresentation
+            owl:onProperty ifc4owl:predefinedType_IfcRoof ;
+            owl:hasValue ifc4owl:ROOF_NOTDEFINED
         ] ,
         [
             rdf:type owl:Restriction ;
