@@ -15,7 +15,7 @@
 # -----------------------------------------------------------------------------
 
 :FloorTrapRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:VisualRepresentation ,
+    rdfs:subClassOf aeco:IFCRepresentation ,
         ifc4owl:IfcWasteTerminal ,
         [
             rdf:type owl:Restriction ;
@@ -34,7 +34,7 @@
         ] .
 
 :FloorWasteRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:VisualRepresentation ,
+    rdfs:subClassOf aeco:IFCRepresentation ,
         ifc4owl:IfcWasteTerminal ,
         [
             rdf:type owl:Restriction ;
@@ -53,7 +53,7 @@
         ] .
 
 :PipeRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:VisualRepresentation ,
+    rdfs:subClassOf aeco:IFCRepresentation ,
         ifc4owl:IfcPipeSegment ,
         [
             rdf:type owl:Restriction ;
@@ -83,4 +83,16 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
+                        "Concrete"@en
+                ]
+            ]
         ] .
