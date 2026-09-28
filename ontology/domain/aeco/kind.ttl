@@ -10204,6 +10204,18 @@ skos:prefLabel
         "Viga"@pt-br ;
     skos:definition "Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão."@pt-br .
 
+:VigaDeConcreto
+    rdf:type owl:Class ;
+    rdfs:subClassOf :Viga ;
+    dcterms:identifier "VigaDeConcreto" ;
+    skos:prefLabel "Concrete beam"@en,
+        "Viga de concreto"@pt-br ;
+    skos:altLabel "ConcreteBeam"@en,
+        "VigaConcreto"@pt-br,
+        "VigaDeConcreto",
+        "VigaDeConcreto"@pt-br ;
+    skos:definition "Viga fabricada com concreto simples, armado ou protendido, utilizada como elemento estrutural horizontal para suportar e distribuir cargas."@pt-br .
+
 :VigaDeTravamento
     rdf:type owl:Class ;
     dcterms:identifier "VigaDeTravamento" ;

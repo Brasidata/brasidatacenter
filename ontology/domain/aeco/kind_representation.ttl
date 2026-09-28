@@ -65,3 +65,22 @@
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:HollowCylindrical3DRepresentation
         ] .
+
+:VigaDeConcretoRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf aeco:VisualRepresentation ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:isVisualRepresentationOf ;
+            owl:someValuesFrom kind:VigaDeConcreto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:BEAM
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty omg:hasGeometry ;
+            owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] .
