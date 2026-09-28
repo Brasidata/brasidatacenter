@@ -34,6 +34,67 @@ skos:definition rdf:type owl:AnnotationProperty .
 skos:prefLabel rdf:type owl:AnnotationProperty .
 
 
+
+#################################################################
+#    Primitive geometry parameters
+#################################################################
+
+:xLength rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "X length"@en ,
+               "Comprimento X"@pt-br ;
+    skos:definition "Default or suggested extent of a primitive geometry along the X axis, expressed in metres."@en ,
+                    "Extensão padrão ou sugerida de uma geometria primitiva ao longo do eixo X, expressa em metros."@pt-br .
+
+:yLength rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Y length"@en ,
+               "Comprimento Y"@pt-br ;
+    skos:definition "Default or suggested extent of a primitive geometry along the Y axis, expressed in metres."@en ,
+                    "Extensão padrão ou sugerida de uma geometria primitiva ao longo do eixo Y, expressa em metros."@pt-br .
+
+:zLength rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Z length"@en ,
+               "Comprimento Z"@pt-br ;
+    skos:definition "Default or suggested extent of a primitive geometry along the Z axis, expressed in metres."@en ,
+                    "Extensão padrão ou sugerida de uma geometria primitiva ao longo do eixo Z, expressa em metros."@pt-br .
+
+:radius rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Radius"@en ,
+               "Raio"@pt-br ;
+    skos:definition "Default or suggested radius of a primitive geometry, expressed in metres."@en ,
+                    "Raio padrão ou sugerido de uma geometria primitiva, expresso em metros."@pt-br .
+
+:height rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Height"@en ,
+               "Altura"@pt-br ;
+    skos:definition "Default or suggested height of a primitive geometry, expressed in metres."@en ,
+                    "Altura padrão ou sugerida de uma geometria primitiva, expressa em metros."@pt-br .
+
+:directionX rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Direction X"@en ,
+               "Direção X"@pt-br ;
+    skos:definition "X component of a direction vector."@en ,
+                    "Componente X de um vetor de direção."@pt-br .
+
+:directionY rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Direction Y"@en ,
+               "Direção Y"@pt-br ;
+    skos:definition "Y component of a direction vector."@en ,
+                    "Componente Y de um vetor de direção."@pt-br .
+
+:directionZ rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "Direction Z"@en ,
+               "Direção Z"@pt-br ;
+    skos:definition "Z component of a direction vector."@en ,
+                    "Componente Z de um vetor de direção."@pt-br .
+
 #################################################################
 #    Visual representations
 #################################################################
