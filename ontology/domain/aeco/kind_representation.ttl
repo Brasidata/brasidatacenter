@@ -1,7 +1,6 @@
 @prefix kind: <http://datacenter.app.br/ontology/domain/aeco/kind.ttl#> .
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/kind_representation.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
-@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix omg: <https://w3id.org/omg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -16,11 +15,11 @@
 # -----------------------------------------------------------------------------
 
 :FloorTrapRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf crm:E36_Visual_Item ,
+    rdfs:subClassOf aeco:VisualRepresentation ,
         ifc4owl:IfcWasteTerminal ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty crm:P138_represents ;
+            owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:RaloSifonado
         ] ,
         [
@@ -35,11 +34,11 @@
         ] .
 
 :FloorWasteRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf crm:E36_Visual_Item ,
+    rdfs:subClassOf aeco:VisualRepresentation ,
         ifc4owl:IfcWasteTerminal ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty crm:P138_represents ;
+            owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:RaloSeco
         ] ,
         [
@@ -54,10 +53,10 @@
         ] .
 
 :PipeRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf crm:E36_Visual_Item ,
+    rdfs:subClassOf aeco:VisualRepresentation ,
         ifc4owl:IfcPipeSegment ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty crm:P138_represents ;
+            owl:onProperty aeco:isVisualRepresentationOf ;
             owl:someValuesFrom kind:Tubo
         ] .

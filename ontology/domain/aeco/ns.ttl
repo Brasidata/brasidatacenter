@@ -1,4 +1,6 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix omg: <https://w3id.org/omg#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -32,13 +34,112 @@ skos:definition rdf:type owl:AnnotationProperty .
 skos:prefLabel rdf:type owl:AnnotationProperty .
 
 
-:FloorWaste3DRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+#################################################################
+#    Visual representations
+#################################################################
 
-:FloorTrap3DRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:ModelElement3DRepresentation ,
-        omg:Geometry .
+:VisualRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf crm:E36_Visual_Item ;
+    rdfs:label "Visual representation"@en ,
+               "Representação visual"@pt-br .
+
+:isVisualRepresentationOf rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf crm:P138_represents ;
+    rdfs:label "is visual representation of"@en ,
+               "é representação visual de"@pt-br .
+
+:hasVisualRepresentation rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf crm:P138i_has_representation ;
+    rdfs:label "has visual representation"@en ,
+               "tem representação visual"@pt-br .
+
+
+#################################################################
+#    3D representations
+#################################################################
+
+:ModelElement3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf omg:Geometry ;
+    rdfs:label "Model element 3D representation"@en ,
+               "Representação 3D de elemento do modelo"@pt-br .
+
+:SolidPrimitive3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :ModelElement3DRepresentation ;
+    rdfs:label "Solid primitive 3D representation"@en ,
+               "Representação 3D por primitiva sólida"@pt-br .
+
+
+#################################################################
+#    Primitive geometries
+#################################################################
+
+:Box3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :SolidPrimitive3DRepresentation ;
+    rdfs:label "Box geometry"@en ,
+               "Geometria de caixa"@pt-br ;
+    skos:definition "Rectangular box delimited by six rectangular faces."@en ,
+                    "Paralelepípedo retangular delimitado por seis faces retangulares."@pt-br .
+
+:Spherical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :SolidPrimitive3DRepresentation ;
+    rdfs:label "Spherical geometry"@en ,
+               "Geometria esférica"@pt-br ;
+    skos:definition "Sphere defined by its center and radius."@en ,
+                    "Esfera definida pelo centro e pelo raio."@pt-br .
+
+:Cylindrical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :SolidPrimitive3DRepresentation ;
+    rdfs:label "Cylindrical geometry"@en ,
+               "Geometria cilíndrica"@pt-br ;
+    skos:definition "Right circular cylinder defined by its radius and height."@en ,
+                    "Cilindro circular reto definido pelo raio e pela altura."@pt-br .
+
+
+#################################################################
+#    Solid and hollow variants
+#################################################################
+
+:SolidBox3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Box3DRepresentation ;
+    rdfs:label "Solid box"@en ,
+               "Caixa maciça"@pt-br ;
+    skos:definition "Box whose whole volume is filled with material."@en ,
+                    "Caixa cujo volume é inteiramente preenchido por material."@pt-br .
+
+:HollowBox3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Box3DRepresentation ;
+    rdfs:label "Hollow box"@en ,
+               "Caixa oca"@pt-br ;
+    skos:definition "Box whose material is limited to a boundary wall of given thickness around an empty interior."@en ,
+                    "Caixa cujo material se limita a uma parede de fronteira com espessura, em torno de um interior vazio."@pt-br .
+
+:SolidSpherical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Spherical3DRepresentation ;
+    rdfs:label "Solid sphere"@en ,
+               "Esfera maciça"@pt-br ;
+    skos:definition "Sphere whose whole volume is filled with material."@en ,
+                    "Esfera cujo volume é inteiramente preenchido por material."@pt-br .
+
+:HollowSpherical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Spherical3DRepresentation ;
+    rdfs:label "Hollow sphere"@en ,
+               "Esfera oca"@pt-br ;
+    skos:definition "Sphere whose material is limited to a boundary wall of given thickness around an empty interior."@en ,
+                    "Esfera cujo material se limita a uma parede de fronteira com espessura, em torno de um interior vazio."@pt-br .
+
+:SolidCylindrical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Cylindrical3DRepresentation ;
+    rdfs:label "Solid cylinder"@en ,
+               "Cilindro maciço"@pt-br ;
+    skos:definition "Cylinder whose whole volume is filled with material."@en ,
+                    "Cilindro cujo volume é inteiramente preenchido por material."@pt-br .
+
+:HollowCylindrical3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :Cylindrical3DRepresentation ;
+    rdfs:label "Hollow cylinder"@en ,
+               "Cilindro oco"@pt-br ;
+    skos:definition "Cylinder whose material is limited to a boundary wall of given thickness around an empty interior, as in a pipe."@en ,
+                    "Cilindro cujo material se limita a uma parede de fronteira com espessura, em torno de um interior vazio, como em um tubo."@pt-br .
 
 ###  http://datacenter.app.br/ontology/domain/aeco/ns.ttl#ComodoContiguo
 :ComodoContiguo rdf:type owl:Class ;
