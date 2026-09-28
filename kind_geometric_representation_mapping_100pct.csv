@@ -1,0 +1,232 @@
+linha,kind,descricao,tem_representacao_geometrica,ifc_class,ifc_predefined_type,primitive
+4,Abertura,"Vão executado em um elemento construtivo, como parede ou laje, para passagem, iluminação ou ventilação.",true,IfcOpeningElement,OPENING,SolidBox3DRepresentation
+24,Adega,Cômodo destinado à guarda e conservação de vinhos.,true,IfcSpace,,SolidBox3DRepresentation
+42,AguaDeUmaCobertura,Plano inclinado de um telhado.,true,IfcSlab,ROOF,SolidBox3DRepresentation
+43,AguaDoTelhado,Plano inclinado de um telhado.,true,IfcSlab,ROOF,SolidBox3DRepresentation
+45,AguaFurtada,"Vão entre as tesouras do telhado, semelhante a um sótão, com janelas que se abrem em um volume para fora do telhado.",true,IfcSpace,,SolidBox3DRepresentation
+46,AguaMestra,"Água principal de um telhado, de maior extensão.",true,IfcSlab,ROOF,SolidBox3DRepresentation
+51,Alcapao,Porta horizontal instalada em piso ou forro para acesso a outro nível.,true,IfcDoor,TRAPDOOR,SolidBox3DRepresentation
+53,Alcova,"Pequeno cômodo ou recesso, geralmente destinado ao repouso.",true,IfcSpace,,SolidBox3DRepresentation
+57,Alicerce,Fundação ou base da edificação.,true,IfcFooting,,SolidBox3DRepresentation
+58,Alisar,Guarnição que arremata o encontro entre o marco de portas ou janelas e a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+61,Alpendre,"Área coberta junto à entrada de uma edificação, aberta lateralmente.",true,IfcSpace,,SolidBox3DRepresentation
+68,Amarracao,Parte da armadura destinada a transmitir os esforços de uma peça para outra.,true,IfcReinforcingBar,,SolidCylindrical3DRepresentation
+77,AnteSala,Cômodo que antecede uma sala principal.,true,IfcSpace,,SolidBox3DRepresentation
+79,Aplique,Luminária fixada em parede.,true,IfcLightFixture,,SolidBox3DRepresentation
+101,Arquitrave,"Viga horizontal apoiada sobre colunas, parte inferior do entablamento.",true,IfcBeam,,SolidBox3DRepresentation
+116,AssoalhoDeMadeira,Piso formado por tábuas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+120,Atrio,Espaço de entrada ou pátio interno de uma edificação.,true,IfcSpace,,SolidBox3DRepresentation
+123,Azulejo,Placa cerâmica vidrada usada no revestimento de paredes.,true,IfcCovering,,SolidBox3DRepresentation
+124,BaciaSanitaria,"Aparelho sanitário para recepção de dejetos, com descarga de água.",true,IfcSanitaryTerminal,TOILETPAN,SolidBox3DRepresentation
+130,Baldrame,"Tipo de fundação para pequenas edificações, constituída por uma viga de alvenaria, concreto simples ou concreto armado, construída diretamente no solo em pequena vala e empregada em casos de cargas leves sobre solo firme.",true,IfcFooting,FOOTING_BEAM,SolidBox3DRepresentation
+133,Bandeira,Caixilho fixo ou basculante situado acima de uma porta ou janela.,true,IfcWindow,,SolidBox3DRepresentation
+135,Banheira,Aparelho sanitário para banho de imersão.,true,IfcSanitaryTerminal,BATH,HollowBox3DRepresentation
+136,Banheiro,"Cômodo destinado à higiene pessoal, com aparelhos sanitários.",true,IfcSpace,,SolidBox3DRepresentation
+138,Banzo,Barra longitudinal superior ou inferior de uma treliça.,true,IfcMember,CHORD,SolidBox3DRepresentation
+141,Barrado,Faixa de revestimento na parte inferior de uma parede.,true,IfcCovering,,SolidBox3DRepresentation
+144,Barrote,Elemento prismático de madeira usado em construção civil.,true,IfcMember,,SolidBox3DRepresentation
+146,Basculante,Janela com folha que gira em torno de um eixo horizontal.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+149,BayWindow,Janela que se projeta para fora do plano da fachada.,true,IfcWindow,,SolidBox3DRepresentation
+161,BlocoDeFundacao,Elemento de concreto que transmite às estacas as cargas dos pilares.,true,IfcFooting,PILE_CAP,SolidBox3DRepresentation
+167,Boiler,Reservatório térmico para armazenamento de água quente.,true,IfcTank,,HollowCylindrical3DRepresentation
+168,Boiserie,Revestimento decorativo de parede em painéis de madeira.,true,IfcCovering,,SolidBox3DRepresentation
+171,Bomba,Equipamento que movimenta fluidos.,true,IfcPump,,SolidBox3DRepresentation
+172,BombaAspirante,Bomba que eleva líquidos por sucção.,true,IfcPump,,SolidBox3DRepresentation
+173,BombaCentrifuga,Bomba que movimenta líquidos pela ação da força centrífuga de um rotor.,true,IfcPump,,SolidBox3DRepresentation
+174,BombaHidraulica,Equipamento que movimenta ou pressuriza água em uma instalação.,true,IfcPump,,SolidBox3DRepresentation
+182,Brise,Elemento de proteção solar formado por lâminas instaladas junto a fachadas ou aberturas.,true,IfcShadingDevice,,SolidBox3DRepresentation
+190,Cabo,Condutor elétrico formado por um ou mais fios isolados.,true,IfcCableSegment,CABLESEGMENT,SolidCylindrical3DRepresentation
+195,Caibro,Peça de madeira inclinada que apoia as ripas do telhado.,true,IfcMember,RAFTER,SolidBox3DRepresentation
+196,CaixaDAgua,Reservatório para armazenamento de água da edificação.,true,IfcTank,STORAGE,HollowBox3DRepresentation
+197,CaixaDeEscada,Espaço vertical que abriga a escada de uma edificação.,true,IfcSpace,,SolidBox3DRepresentation
+199,CaixaDeGordura,Caixa que retém gorduras do esgoto de cozinhas antes do lançamento na rede.,true,IfcInterceptor,GREASE,HollowBox3DRepresentation
+200,CaixaDeInspecao,Caixa enterrada que permite acesso para inspeção e limpeza de tubulações.,true,IfcDistributionChamberElement,INSPECTIONCHAMBER,HollowBox3DRepresentation
+201,CaixaDePassagem,Caixa que abriga derivações e passagens de condutores ou tubulações.,true,IfcJunctionBox,,HollowBox3DRepresentation
+230,Carpete,Revestimento têxtil de piso.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+231,CarpeteDeMadeira,Revestimento de piso em réguas finas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+241,Cavilha,Pino de madeira ou metal usado para unir peças.,true,IfcMechanicalFastener,DOWEL,SolidCylindrical3DRepresentation
+249,Chamine,Conduto vertical que expele fumaça e gases para o exterior.,true,IfcChimney,,SolidBox3DRepresentation
+251,Chapa,Estrutura laminar sujeita a esforços em seu plano.,true,IfcPlate,,SolidBox3DRepresentation
+259,Chuveiro,Aparelho que distribui água em jato para banho.,true,IfcSanitaryTerminal,SHOWER,SolidCylindrical3DRepresentation
+261,Cimalha,Moldura saliente que arremata o topo de uma parede ou fachada.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+269,Cinta,Viga que amarra paredes de alvenaria.,true,IfcBeam,,SolidBox3DRepresentation
+273,Cisterna,"Reservatório, geralmente enterrado, para armazenamento de água.",true,IfcTank,STORAGE,HollowBox3DRepresentation
+274,ClapboardSiding,Revestimento de fachada em tábuas horizontais sobrepostas.,true,IfcCovering,CLADDING,SolidBox3DRepresentation
+275,Claraboia,Abertura envidraçada na cobertura para iluminação natural.,true,IfcWindow,SKYLIGHT,SolidBox3DRepresentation
+277,Closet,Pequeno cômodo destinado à guarda de roupas.,true,IfcSpace,,SolidBox3DRepresentation
+286,ColetorDeEnergiaSolar,Equipamento que capta a energia solar para aquecimento de água.,true,IfcSolarDevice,SOLARCOLLECTOR,SolidBox3DRepresentation
+294,ComodoContiguo,"Cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede, sem que seja necessária a existência de porta ou passagem direta entre ambos.",true,IfcSpace,,SolidBox3DRepresentation
+303,Conduite,Tubo que protege e conduz condutores elétricos.,true,IfcCableCarrierSegment,CONDUITSEGMENT,HollowCylindrical3DRepresentation
+304,Condutor,Tubo vertical que conduz as águas pluviais da calha ao solo.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+314,ContencaoDefinitiva,Estrutura permanente de contenção de solo.,true,IfcWall,,SolidBox3DRepresentation
+315,ContencaoProvisoria,Estrutura temporária de contenção de solo.,true,IfcWall,,SolidBox3DRepresentation
+318,Contrafrechal,Peça horizontal que reforça ou complementa o frechal.,true,IfcBeam,,SolidBox3DRepresentation
+320,Contrapiso,Camada de argamassa que regulariza a base para o piso.,true,IfcCovering,,SolidBox3DRepresentation
+321,Contraventamento,Peças que travam uma estrutura contra esforços laterais.,true,IfcMember,BRACE,SolidBox3DRepresentation
+322,Contraverga,Peça estrutural sob o peitoril de janelas que distribui tensões na alvenaria.,true,IfcBeam,,SolidBox3DRepresentation
+327,Cornija,Moldura saliente que coroa uma fachada ou parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+329,Corredor,Espaço de circulação que liga cômodos.,true,IfcSpace,,SolidBox3DRepresentation
+330,Corrimao,Barra de apoio para as mãos ao longo de escadas e rampas.,true,IfcRailing,HANDRAIL,SolidCylindrical3DRepresentation
+334,CortinaAtirantada,Parede de contenção ancorada no solo por tirantes.,true,IfcWall,,SolidBox3DRepresentation
+338,Cozinha,Cômodo destinado ao preparo de alimentos.,true,IfcSpace,,SolidBox3DRepresentation
+346,Cupula,Cobertura em forma de semiesfera.,true,IfcRoof,DOME_ROOF,HollowSpherical3DRepresentation
+357,Desvao,Espaço entre o forro e o telhado.,true,IfcSpace,,SolidBox3DRepresentation
+360,Disjuntor,Dispositivo que interrompe o circuito elétrico em caso de sobrecarga ou curto-circuito.,true,IfcProtectiveDevice,CIRCUITBREAKER,SolidBox3DRepresentation
+361,Divisoria,Parede leve de separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+362,DivisoriaDeMadeira,Parede leve de madeira para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+363,DivisoriaDeMdf,Parede leve de MDF para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+364,DivisoriaDeVidro,Parede leve de vidro para separação de ambientes.,true,IfcWall,PARTITIONING,SolidBox3DRepresentation
+366,Domo,Cobertura em forma de cúpula.,true,IfcRoof,DOME_ROOF,HollowSpherical3DRepresentation
+367,Dormer,Estrutura saliente do telhado que abriga uma janela.,true,IfcWindow,,SolidBox3DRepresentation
+368,Dormitorio,Cômodo destinado ao repouso.,true,IfcSpace,,SolidBox3DRepresentation
+371,DryWall,Parede executada com placas de gesso acartonado sobre estrutura metálica.,true,IfcWall,,SolidBox3DRepresentation
+372,Drywall,Sistema de paredes executadas com gesso acartonado.,true,IfcWall,,SolidBox3DRepresentation
+382,Elevador,Equipamento de transporte vertical de pessoas ou cargas.,true,IfcTransportElement,ELEVATOR,SolidBox3DRepresentation
+386,Empena,"Parede lateral de uma edificação, geralmente sem aberturas, que acompanha o caimento do telhado.",true,IfcWall,,SolidBox3DRepresentation
+402,Escada,Elemento construtivo formado por degraus que liga níveis diferentes.,true,IfcStair,,SolidBox3DRepresentation
+403,EscadasRolantes,Escada mecânica de degraus móveis para transporte de pessoas.,true,IfcTransportElement,ESCALATOR,SolidBox3DRepresentation
+405,Escora,"Barra sujeita essencialmente a esforços axiais de compressão ou elemento provisório de sustentação, metálico ou de madeira, disposto sob lajes e vigas durante o amadurecimento do concreto.",true,IfcMember,STRUT,SolidBox3DRepresentation
+421,Estaca,"Elemento de fundação profunda, esbelto, que transmite cargas ao solo.",true,IfcPile,,SolidCylindrical3DRepresentation
+422,EstacaBroca,"Estaca escavada manualmente com trado, de pequeno diâmetro, moldada no local.",true,IfcPile,BORED,SolidCylindrical3DRepresentation
+423,EstacaDeConcretoPreMoldada,Estaca de concreto fabricada previamente e cravada no solo.,true,IfcPile,DRIVEN,SolidBox3DRepresentation
+424,EstacaEscavada,Estaca moldada no local após escavação do solo.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+425,EstacaFlutuante,Estaca que transmite a carga principalmente por atrito lateral.,true,IfcPile,FRICTION,SolidCylindrical3DRepresentation
+426,EstacaFranki,"Estaca moldada no local com base alargada, executada por cravação de tubo.",true,IfcPile,DRIVEN,SolidCylindrical3DRepresentation
+427,EstacaHeliceContinua,Estaca moldada no local executada com trado helicoidal contínuo.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+428,EstacaInteira,"Estaca executada em peça única, sem emendas.",true,IfcPile,,SolidCylindrical3DRepresentation
+429,EstacaIntermediaria,Estaca posicionada entre outras estacas de um conjunto.,true,IfcPile,,SolidCylindrical3DRepresentation
+431,Estacao,Estaca escavada de seção retangular (estaca barrete).,true,IfcPile,BORED,SolidBox3DRepresentation
+435,EstacaPirulito,Tipo de estaca usada em fundações ou contenções.,true,IfcPile,,SolidCylindrical3DRepresentation
+436,EstacaRaiz,"Estaca escavada de pequeno diâmetro, injetada com argamassa e armada.",true,IfcPile,BORED,SolidCylindrical3DRepresentation
+437,Estacas,Tipo de fundação profunda utilizada para transmitir cargas a camadas resistentes do solo em maior profundidade.,true,IfcPile,,SolidCylindrical3DRepresentation
+440,EstacaStrauss,Estaca moldada no local executada com tubo de revestimento e soquete.,true,IfcPile,BORED,SolidCylindrical3DRepresentation
+462,FachadaCortina,"Fachada leve não estrutural, geralmente de vidro e perfis metálicos.",true,IfcCurtainWall,,SolidBox3DRepresentation
+473,Filete,Moldura estreita e delgada usada como arremate ou ornamento.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+490,Forro,Revestimento da face inferior de lajes ou coberturas.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+491,ForroDeGessoAcartonado,Forro de placas de gesso acartonado.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+492,ForroDeMadeira,Forro de peças de madeira.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+493,ForroDePlacasDeGesso,Forro de placas de gesso.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+494,ForroDePvc,Forro de réguas de PVC.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+495,ForroMetalico,Forro de placas ou réguas metálicas.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+496,ForroMineral,Forro de placas de fibra mineral.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+497,FossaSeptica,Tanque enterrado que trata o esgoto por decantação e digestão.,true,IfcTank,,HollowBox3DRepresentation
+501,Frechal,Viga de madeira sobre a parede que recebe a estrutura do telhado.,true,IfcBeam,,SolidBox3DRepresentation
+504,Friso,Faixa ou moldura decorativa horizontal.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+508,FundacaoDireta,"Fundação que transmite as cargas ao solo pela base, em pequena profundidade.",true,IfcFooting,,SolidBox3DRepresentation
+524,Gelosia,Grade de ripas cruzadas que protege janelas.,true,IfcShadingDevice,JALOUSIE,SolidBox3DRepresentation
+529,Gerador,Equipamento que produz energia elétrica.,true,IfcElectricGenerator,,SolidBox3DRepresentation
+547,GuardaCorpo,Barreira de proteção contra quedas.,true,IfcRailing,GUARDRAIL,SolidBox3DRepresentation
+548,Guarnicao,Moldura que arremata o encontro de esquadrias com a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+549,GuarnicaoDePorta,Moldura que arremata o encontro do marco da porta com a parede.,true,IfcCovering,MOLDING,SolidBox3DRepresentation
+554,HallDeEntrada,Espaço do edifício situado junto à entrada e que dá acesso aos demais ambientes.,true,IfcSpace,,SolidBox3DRepresentation
+557,Hidromassagem,Banheira dotada de jatos de água.,true,IfcSanitaryTerminal,BATH,HollowBox3DRepresentation
+558,HomeTheater,Ambiente destinado à exibição de filmes e áudio.,true,IfcSpace,,SolidBox3DRepresentation
+579,Janela,Abertura com caixilho para iluminação e ventilação.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+580,JanelaDeSacada,Janela que se estende até o piso e dá acesso a uma sacada.,true,IfcWindow,,SolidBox3DRepresentation
+585,Kitchenette,Pequena unidade residencial com cozinha integrada.,true,IfcSpace,,SolidBox3DRepresentation
+588,Ladrao,Tubo extravasor que escoa o excesso de água de um reservatório.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+589,Ladrilho,Placa de revestimento de piso.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+590,LadrilhoHidraulico,Placa de cimento prensada e colorida usada em pisos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+591,Laje,"Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura.",true,IfcSlab,,SolidBox3DRepresentation
+592,LajeCogumelo,"Laje apoiada diretamente sobre pilares, sem vigas.",true,IfcSlab,,SolidBox3DRepresentation
+595,Lambril,"Faixa inferior das paredes junto ao pavimento, também designada rodapé em determinados usos.",true,IfcCovering,SKIRTINGBOARD,SolidBox3DRepresentation
+603,Lavabo,"Pequeno banheiro social, sem chuveiro.",true,IfcSpace,,SolidBox3DRepresentation
+604,Lavanderia,Cômodo destinado à lavagem de roupas.,true,IfcSpace,,SolidBox3DRepresentation
+605,Lavatorio,Aparelho sanitário para lavar as mãos.,true,IfcSanitaryTerminal,WASHHANDBASIN,HollowBox3DRepresentation
+613,Living,Sala de estar.,true,IfcSpace,,SolidBox3DRepresentation
+615,Longarina,Viga longitudinal principal de uma estrutura.,true,IfcBeam,,SolidBox3DRepresentation
+626,Mainel,Elemento vertical que divide os caixilhos de uma esquadria.,true,IfcMember,MULLION,SolidBox3DRepresentation
+627,Manilha,Tubo de concreto ou cerâmica para esgoto ou águas pluviais.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+630,MaoFrancesa,Peça inclinada que apoia um elemento em balanço.,true,IfcMember,BRACE,SolidBox3DRepresentation
+636,Marquise,Cobertura em balanço sobre entradas ou passeios.,true,IfcSlab,,SolidBox3DRepresentation
+645,MaximAir,Janela com folha que se projeta para fora girando em torno de eixo horizontal superior.,true,IfcWindow,WINDOW,SolidBox3DRepresentation
+649,MeiaParede,Parede de altura parcial.,true,IfcWall,,SolidBox3DRepresentation
+661,MontaCarga,Elevador destinado ao transporte de cargas.,true,IfcTransportElement,ELEVATOR,SolidBox3DRepresentation
+666,MuroDeArrimo,Muro que contém maciços de terra.,true,IfcWall,,SolidBox3DRepresentation
+667,MuroDeContencao,Muro que contém maciços de terra.,true,IfcWall,,SolidBox3DRepresentation
+668,MuroDeContrafortes,Muro de contenção reforçado por contrafortes.,true,IfcWall,,SolidBox3DRepresentation
+669,MuroDeFlexao,Muro de contenção em balanço que resiste por flexão.,true,IfcWall,,SolidBox3DRepresentation
+670,MuroDeGabiao,Muro de contenção formado por gaiolas metálicas preenchidas com pedras.,true,IfcWall,,SolidBox3DRepresentation
+671,MuroDeGravidade,Muro de contenção que resiste pelo peso próprio.,true,IfcWall,,SolidBox3DRepresentation
+672,MuroDeSuporte,Estrutura destinada à contenção de terras.,true,IfcWall,,SolidBox3DRepresentation
+673,MuroDeTesta,Muro na extremidade de bueiros ou galerias que contém o aterro.,true,IfcWall,,SolidBox3DRepresentation
+677,Nicho,Reentrância em parede.,true,IfcOpeningElement,RECESS,SolidBox3DRepresentation
+683,NovoComodo,"Cômodo criado por construção, ampliação ou reconfiguração de uma edificação existente.",true,IfcSpace,,SolidBox3DRepresentation
+684,NovoComodoContiguo,"Novo cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede.",true,IfcSpace,,SolidBox3DRepresentation
+689,Oitao,"Parede lateral da edificação, junto à divisa do lote.",true,IfcWall,,SolidBox3DRepresentation
+700,PadFooting,Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares.,true,IfcFooting,PAD_FOOTING,SolidBox3DRepresentation
+707,Parede,Elemento vertical de vedação ou divisão de ambientes.,true,IfcWall,,SolidBox3DRepresentation
+708,ParedeDeGessoAcartonado,Parede de placas de gesso acartonado sobre estrutura metálica.,true,IfcWall,,SolidBox3DRepresentation
+709,ParedeDiafragma,Parede de concreto moldada no solo para contenção.,true,IfcWall,,SolidBox3DRepresentation
+710,ParedeEstrutural,Parede que suporta cargas da estrutura.,true,IfcWall,,SolidBox3DRepresentation
+711,ParedeSolteira,"Parede isolada, sem ligação com outras.",true,IfcWall,,SolidBox3DRepresentation
+712,Parquet,Piso de tacos de madeira dispostos em padrões.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+716,Pastilha,Pequena peça de revestimento cerâmico ou de vidro.,true,IfcCovering,,SolidBox3DRepresentation
+717,Patamar,Plataforma entre lances de escada.,true,IfcSlab,LANDING,SolidBox3DRepresentation
+736,PeleDeVidro,Fachada envidraçada contínua sobre estrutura metálica.,true,IfcCurtainWall,,SolidBox3DRepresentation
+743,Persiana,Dispositivo de lâminas que controla a entrada de luz em janelas.,true,IfcShadingDevice,,SolidBox3DRepresentation
+750,Pia,Cuba com torneira para lavagem.,true,IfcSanitaryTerminal,SINK,HollowBox3DRepresentation
+751,PiaDeCozinha,Cuba de cozinha para lavagem de utensílios.,true,IfcSanitaryTerminal,SINK,HollowBox3DRepresentation
+753,Pilar,Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais.,true,IfcColumn,COLUMN,SolidBox3DRepresentation
+754,Pilastra,"Pilar embutido na parede, com uma face saliente.",true,IfcColumn,PILASTER,SolidBox3DRepresentation
+762,Piso,Revestimento da superfície de pavimentos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+764,PisoCeramico,Piso revestido com placas cerâmicas.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+765,PisoCimentado,Piso com acabamento de argamassa de cimento.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+766,PisoElevado,Piso sobre suportes que cria espaço para instalações.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+767,PisoEmborrachado,Piso revestido com borracha.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+768,PisoIndustrialEmConcreto,Piso de concreto para uso industrial com alta resistência.,true,IfcSlab,,SolidBox3DRepresentation
+769,PisoVinilico,Piso revestido com material vinílico.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+771,Placa,Estrutura bidimensional plana disposta verticalmente e destinada a receber esforços predominantemente em seu plano.,true,IfcPlate,,SolidBox3DRepresentation
+784,PocoDeVentilacao,Espaço vertical ou vazio construtivo destinado a promover a ventilação natural de ambientes internos e a renovação do ar.,true,IfcSpace,,SolidBox3DRepresentation
+785,PocoDeVisita,Câmara que dá acesso a redes subterrâneas para inspeção e manutenção.,true,IfcDistributionChamberElement,MANHOLE,HollowCylindrical3DRepresentation
+792,Porao,Espaço sob o pavimento térreo.,true,IfcSpace,,SolidBox3DRepresentation
+794,Porta,Elemento que fecha um vão de passagem.,true,IfcDoor,DOOR,SolidBox3DRepresentation
+795,PortaDeCorrer,Porta cuja folha desliza lateralmente.,true,IfcDoor,DOOR,SolidBox3DRepresentation
+796,Portao,Porta de acesso a terrenos ou garagens.,true,IfcDoor,GATE,SolidBox3DRepresentation
+806,Privada,Aparelho sanitário para recepção de dejetos (bacia sanitária).,true,IfcSanitaryTerminal,TOILETPAN,SolidBox3DRepresentation
+816,Radier,Fundação em laje contínua sobre o solo.,true,IfcSlab,BASESLAB,SolidBox3DRepresentation
+833,Reservatorio,Recipiente para armazenamento de água ou outros fluidos.,true,IfcTank,STORAGE,HollowBox3DRepresentation
+839,Respiro,Tubo de ventilação da instalação de esgoto.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+841,Revestimento,Camada aplicada sobre superfícies para proteção e acabamento.,true,IfcCovering,,SolidBox3DRepresentation
+843,Ripa,Elemento da cobertura colocado sobre as varas ou caibros e destinado a apoiar as telhas.,true,IfcMember,,SolidBox3DRepresentation
+845,RodaMeio,"Elemento de acabamento semelhante ao rodapé, situado aproximadamente à meia altura da parede.",true,IfcCovering,MOLDING,SolidBox3DRepresentation
+846,Rodape,"Elemento situado na junção das paredes com o piso, destinado à proteção da parede e ao acabamento.",true,IfcCovering,SKIRTINGBOARD,SolidBox3DRepresentation
+847,RodaTeto,"Elemento de acabamento semelhante ao rodapé, situado na junção do teto com as paredes.",true,IfcCovering,MOLDING,SolidBox3DRepresentation
+851,Saguao,Espaço de entrada e circulação.,true,IfcSpace,,SolidBox3DRepresentation
+853,Sala,Cômodo de uso geral.,true,IfcSpace,,SolidBox3DRepresentation
+854,SalaDeEstar,Cômodo de convivência.,true,IfcSpace,,SolidBox3DRepresentation
+855,SalaDeJantar,Cômodo destinado às refeições.,true,IfcSpace,,SolidBox3DRepresentation
+856,Sanca,"Moldura ou rebaixo de forro junto às paredes, frequentemente com iluminação embutida.",true,IfcCovering,,SolidBox3DRepresentation
+857,Sapata,Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes.,true,IfcFooting,,SolidBox3DRepresentation
+858,SapataCorrida,Sapata contínua sob paredes.,true,IfcFooting,STRIP_FOOTING,SolidBox3DRepresentation
+861,Sarrafo,Peça fina e estreita de madeira.,true,IfcMember,,SolidBox3DRepresentation
+874,Shaft,Espaço vertical para passagem de instalações.,true,IfcSpace,,SolidBox3DRepresentation
+877,Shingle,Telha asfáltica.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+883,Soalho,Piso de tábuas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+886,Solario,Espaço destinado a banhos de sol.,true,IfcSpace,,SolidBox3DRepresentation
+891,Sotao,Espaço entre o forro do último pavimento e o telhado.,true,IfcSpace,,SolidBox3DRepresentation
+892,StruturalGlazing,Sistema de fachada com vidros colados à estrutura sem caixilho aparente.,true,IfcCurtainWall,,SolidBox3DRepresentation
+896,TabuaCorrida,Piso de tábuas longas de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+897,Taco,Peça pequena de madeira para pisos.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+898,TacoDeMadeira,Piso de pequenas peças de madeira.,true,IfcCovering,FLOORING,SolidBox3DRepresentation
+903,Telha,Peça de cobertura que protege contra a chuva.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+904,TelhaCeramica,Telha de argila cozida.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+905,TelhaDeAcrilico,Telha de acrílico translúcido.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+906,TelhaDeAluminio,Telha de chapa de alumínio.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+907,TelhaDeConcreto,Telha de concreto.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+908,TelhaDeVidro,Telha de vidro para iluminação.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+910,TelhaFibrocimento,Telha ondulada de fibrocimento.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+911,TelhaTrapezoidal,Telha metálica de perfil trapezoidal.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+912,TelhaTrapezoidalSanduiche,Telha trapezoidal com isolante entre duas chapas.,true,IfcCovering,ROOFING,SolidBox3DRepresentation
+914,Terca,Elemento da cobertura que liga tesouras e apoia elementos secundários do telhado.,true,IfcMember,PURLIN,SolidBox3DRepresentation
+926,Teto,Face inferior da cobertura ou laje de um ambiente.,true,IfcCovering,CEILING,SolidBox3DRepresentation
+944,Tubo,Elemento tubular destinado à condução de fluidos.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+945,TuboDeAguaFria,Tubo para condução de água fria.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+946,TuboDeEsgoto,Tubo para condução de esgoto.,true,IfcPipeSegment,,HollowCylindrical3DRepresentation
+962,Vara,Elemento da cobertura disposto sobre as terças e perpendicularmente a elas.,true,IfcMember,,SolidBox3DRepresentation
+963,Varanda,Área coberta aberta junto à edificação.,true,IfcSpace,,SolidBox3DRepresentation
+966,Verga,Elemento estrutural disposto sobre vãos de portas ou janelas para auxiliar na distribuição de cargas e tensões.,true,IfcBeam,LINTEL,SolidBox3DRepresentation
+967,Vergalhao,Barra de aço para concreto armado.,true,IfcReinforcingBar,,SolidCylindrical3DRepresentation
+980,Viga,Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão.,true,IfcBeam,BEAM,SolidBox3DRepresentation
+981,VigaDeTravamento,Viga que liga elementos de fundação.,true,IfcBeam,,SolidBox3DRepresentation
+982,Vigota,"Viga de pequena seção transversal, frequentemente pré-moldada ou protendida.",true,IfcBeam,JOIST,SolidBox3DRepresentation
