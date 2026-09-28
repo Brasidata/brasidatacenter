@@ -8,4 +8,4 @@
     rdf:type owl:Ontology .
 
 aeco:ModelElement3DRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf crm:E36_Visual_Item .
+    rdfs:subClassOf crm:E36_Visual_Item, omg:Geometry .
