@@ -6,12 +6,14 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/aeco/kind_representation.ttl>
     rdf:type owl:Ontology .
 
 
 # Kind representations
+# Primitive dimensions below are default/suggested values expressed in metres.
 # -----------------------------------------------------------------------------
 
 :FloorTrapRepresentation rdf:type owl:Class ;
@@ -31,6 +33,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.15"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.15"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.10"^^xsd:double
         ] .
 
 :FloorWasteRepresentation rdf:type owl:Class ;
@@ -50,6 +67,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.10"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.10"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.05"^^xsd:double
         ] .
 
 :PipeRepresentation rdf:type owl:Class ;
@@ -86,6 +118,21 @@
         ] ,
         [
             rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "3.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.40"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -114,6 +161,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.90"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.40"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -148,6 +210,21 @@
         ] ,
         [
             rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -176,6 +253,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.05"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "1.20"^^xsd:double
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -210,6 +302,21 @@
         ] ,
         [
             rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.75"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -238,6 +345,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.80"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.05"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "2.10"^^xsd:double
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -272,6 +394,21 @@
         ] ,
         [
             rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
             owl:onProperty ifc4owl:hasMaterialAssociations ;
             owl:someValuesFrom [
                 rdf:type ifc4owl:IfcRelAssociatesMaterial ;
@@ -300,6 +437,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.20"^^xsd:double
         ] ,
         [
             rdf:type owl:Restriction ;
