@@ -67,7 +67,7 @@
         ] .
 
 :VigaDeConcretoRepresentation rdf:type owl:Class ;
-    rdfs:subClassOf aeco:VisualRepresentation ,
+    rdfs:subClassOf aeco:IFCRepresentation ,
         ifc4owl:IfcBeam ,
         [
             rdf:type owl:Restriction ;
