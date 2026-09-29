@@ -13,7 +13,6 @@
 
 
 # Kind representations
-# Primitive dimensions below are default/suggested values expressed in metres.
 # -----------------------------------------------------------------------------
 #
 # Each kind has two parallel and independent declarations:
@@ -564,6 +563,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.90"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.40"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
         ] .
 
 :BedIfcBinding rdf:type owl:Class ;
@@ -1245,6 +1259,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "3.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.40"^^xsd:double
         ] .
 
 :ConcreteBeamIfcBinding rdf:type owl:Class ;
@@ -1289,6 +1318,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
         ] .
 
 :ConcretePadFootingIfcBinding rdf:type owl:Class ;
@@ -1768,6 +1812,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.80"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.05"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "2.10"^^xsd:double
         ] .
 
 :DoorIfcBinding rdf:type owl:Class ;
@@ -2304,6 +2363,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.15"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.15"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.10"^^xsd:double
         ] .
 
 :FloorTrapIfcBinding rdf:type owl:Class ;
@@ -2336,6 +2410,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.10"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.10"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.05"^^xsd:double
         ] .
 
 :FloorWasteIfcBinding rdf:type owl:Class ;
@@ -2368,6 +2457,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
         ] .
 
 :FootingIfcBinding rdf:type owl:Class ;
@@ -4085,6 +4189,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "1.00"^^xsd:double
         ] .
 
 :OfficeChairIfcBinding rdf:type owl:Class ;
@@ -4129,6 +4248,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.75"^^xsd:double
         ] .
 
 :OfficeDeskIfcBinding rdf:type owl:Class ;
@@ -4941,6 +5075,21 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.20"^^xsd:double
         ] .
 
 :RoofIfcBinding rdf:type owl:Class ;
@@ -6496,21 +6645,6 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "0.15"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.15"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.10"^^xsd:double
         ] .
 
 :WainscotingIfcBinding rdf:type owl:Class ;
@@ -6537,21 +6671,6 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "0.10"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.10"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.05"^^xsd:double
         ] .
 
 :WalkInClosetIfcBinding rdf:type owl:Class ;
@@ -6611,30 +6730,6 @@
         ifc4owl:IfcCovering ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "3.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.20"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.40"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
-                        "Concrete"@en
-                ]
-            ]
             owl:onProperty aeco:bindsIfcElementFor ;
             owl:hasValue kind:Revestimento
         ] .
@@ -6687,30 +6782,6 @@
         ifc4owl:IfcCovering ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "1.90"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "1.40"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.50"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
-                        "Wood"@en
-                ]
-            ]
             owl:onProperty aeco:bindsIfcElementFor ;
             owl:hasValue kind:Azulejo
         ] .
@@ -6768,30 +6839,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "0.60"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.60"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "1.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Estofado"@pt-br,
-                        "Upholstered"@en
-                ]
-            ]
             owl:onProperty ifc4owl:predefinedType_IfcTank ;
             owl:hasValue ifc4owl:STORAGE
         ] .
@@ -6811,20 +6858,6 @@
             rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
-        ] .
-
-:WindowIfcBinding rdf:type owl:Class ;
-    rdfs:subClassOf aeco:IfcElementBinding ,
-        ifc4owl:IfcWindow ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:bindsIfcElementFor ;
-            owl:hasValue kind:Janela
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
-            owl:hasValue ifc4owl:WINDOW
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -6840,6 +6873,20 @@
             rdf:type owl:Restriction ;
             owl:onProperty aeco:zLength ;
             owl:hasValue "1.20"^^xsd:double
+        ] .
+
+:WindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Janela
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:WINDOW
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -6908,30 +6955,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "1.20"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.60"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.75"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
-                        "Wood"@en
-                ]
-            ]
             owl:onProperty ifc4owl:predefinedType_IfcCovering ;
             owl:hasValue ifc4owl:FLOORING
         ] .
@@ -6963,30 +6986,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "0.80"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "0.05"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "2.10"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
-                        "Wood"@en
-                ]
-            ]
             owl:onProperty ifc4owl:predefinedType_IfcCovering ;
             owl:hasValue ifc4owl:CEILING
         ] .
@@ -7018,30 +7017,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "1.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "1.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.50"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
-                        "Concrete"@en
-                ]
-            ]
             owl:onProperty ifc4owl:predefinedType_IfcCovering ;
             owl:hasValue ifc4owl:FLOORING
         ] .
@@ -7104,30 +7079,6 @@
         ] ,
         [
             rdf:type owl:Restriction ;
-            owl:onProperty aeco:xLength ;
-            owl:hasValue "10.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:yLength ;
-            owl:hasValue "10.00"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty aeco:zLength ;
-            owl:hasValue "0.20"^^xsd:double
-        ] ,
-        [
-            rdf:type owl:Restriction ;
-            owl:onProperty ifc4owl:hasMaterialAssociations ;
-            owl:someValuesFrom [
-                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
-                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
-                    rdf:type ifc4owl:IfcMaterial ;
-                    ifc4owl:name_IfcMaterial "Telha"@pt-br,
-                        "Roof tile"@en
-                ]
-            ]
             owl:onProperty ifc4owl:predefinedType_IfcWall ;
             owl:hasValue ifc4owl:PARTITIONING
         ] .
