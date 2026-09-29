@@ -1,0 +1,129 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/tool/shacl.ttl#> .
+@prefix ct: <https://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix ls: <https://standards.iso.org/iso/21597/-1/ed-1/en/Linkset#> .
+@prefix step: <https://example.org/stp2owl/ap242#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/tool/shacl.ttl>
+    a owl:Ontology ;
+    rdfs:label "AECO SHACL shapes"@en ,
+               "Shapes SHACL AECO"@pt-br .
+
+#################################################################
+# ICDD Container
+#################################################################
+
+:InternalDocumentShape
+    a sh:NodeShape ;
+    sh:targetClass ct:InternalDocument ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path ct:filename ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "An ICDD InternalDocument must have exactly one non-empty filename."@en ;
+        sh:message "Um InternalDocument ICDD deve possuir exatamente um filename não vazio."@pt-br
+    ] .
+
+#################################################################
+# ICDD Linkset
+#################################################################
+
+:LinkElementShape
+    a sh:NodeShape ;
+    sh:targetClass ls:LinkElement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path ls:hasDocument ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class ct:InternalDocument ;
+        sh:nodeKind sh:IRI ;
+        sh:message "A LinkElement must point to exactly one ICDD InternalDocument."@en ;
+        sh:message "Um LinkElement deve apontar para exatamente um InternalDocument ICDD."@pt-br
+    ] .
+
+:DirectedBinaryLinkShape
+    a sh:NodeShape ;
+    sh:targetClass ls:DirectedBinaryLink ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path ls:hasFromLinkElement ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class ls:LinkElement ;
+        sh:nodeKind sh:IRI ;
+        sh:disjoint ls:hasToLinkElement ;
+        sh:message "A DirectedBinaryLink must have exactly one source LinkElement, distinct from its target."@en ;
+        sh:message "Um DirectedBinaryLink deve possuir exatamente um LinkElement de origem, distinto do destino."@pt-br
+    ] ;
+    sh:property [
+        sh:path ls:hasToLinkElement ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class ls:LinkElement ;
+        sh:nodeKind sh:IRI ;
+        sh:message "A DirectedBinaryLink must have exactly one target LinkElement."@en ;
+        sh:message "Um DirectedBinaryLink deve possuir exatamente um LinkElement de destino."@pt-br
+    ] .
+
+#################################################################
+# OntoSTEP / STP2OWL drawing presentation
+#################################################################
+
+:PresentationAreaShape
+    a sh:NodeShape ;
+    sh:targetClass step:presentation_area ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path step:name ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "A presentation_area must have exactly one non-empty name."@en ;
+        sh:message "Uma presentation_area deve possuir exatamente um name não vazio."@pt-br
+    ] .
+
+:PresentationViewShape
+    a sh:NodeShape ;
+    sh:targetClass step:presentation_view ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path step:name ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:minLength 1 ;
+        sh:message "A presentation_view must have exactly one non-empty name."@en ;
+        sh:message "Uma presentation_view deve possuir exatamente um name não vazio."@pt-br
+    ] .
+
+:RepresentationRelationshipShape
+    a sh:NodeShape ;
+    sh:targetClass step:representation_relationship ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path step:rep_1 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class step:presentation_area ;
+        sh:nodeKind sh:IRI ;
+        sh:disjoint step:rep_2 ;
+        sh:message "A drawing representation_relationship must have exactly one presentation_area as rep_1, distinct from rep_2."@en ;
+        sh:message "Um representation_relationship de desenho deve possuir exatamente uma presentation_area em rep_1, distinta de rep_2."@pt-br
+    ] ;
+    sh:property [
+        sh:path step:rep_2 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class step:presentation_view ;
+        sh:nodeKind sh:IRI ;
+        sh:message "A drawing representation_relationship must have exactly one presentation_view as rep_2."@en ;
+        sh:message "Um representation_relationship de desenho deve possuir exatamente uma presentation_view em rep_2."@pt-br
+    ] .
