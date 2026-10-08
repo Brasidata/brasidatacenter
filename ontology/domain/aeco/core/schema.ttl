@@ -1,4 +1,4 @@
-@prefix : <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix omg: <https://w3id.org/omg#> .
@@ -9,9 +9,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <http://datacenter.app.br/ontology/domain/aeco/ns.ttl#> .
+@base <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl#> .
 
-<http://datacenter.app.br/ontology/domain/aeco/ns.ttl> rdf:type owl:Ontology ;
+<http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> rdf:type owl:Ontology ;
                                                         rdfs:label "AECO Ontology"@en ,
                                                                    "Ontologia do setor AECO"@pt-br .
 
@@ -229,3 +229,31 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                "tem vinculação de elemento IFC"@pt-br ;
     skos:definition "Links an AECO kind to the declarative IFC element binding (DUL Description) that specifies its IFC element type, predefined type, material associations and other non-visual engineering attributes."@en ,
                     "Liga um kind do AECO à vinculação declarativa de elemento IFC (DUL Description) que especifica seu tipo de elemento IFC, tipo predefinido, associações de material e demais atributos de engenharia não visuais."@pt-br .
+
+
+#################################################################
+#    File encodings
+#################################################################
+
+:FileEncoding rdf:type owl:Class ;
+    rdfs:subClassOf dcterms:MediaType ;
+    rdfs:label "File encoding"@en ,
+               "Codificação de arquivo"@pt-br ;
+    skos:definition "A way AECO information is encoded in a file (e.g. IFC in a STEP physical file, a DXF drawing), identified by its file extension and described by its media type."@en ,
+                    "Forma como a informação AECO é codificada em um arquivo (ex.: IFC em arquivo físico STEP, desenho DXF), identificada pela extensão do arquivo e descrita pelo seu tipo de mídia."@pt-br .
+
+:fileExtension rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FileEncoding ;
+    rdfs:range xsd:string ;
+    rdfs:label "file extension"@en ,
+               "extensão de arquivo"@pt-br ;
+    skos:definition "File name extension that identifies the encoding, in lower case and without the leading dot (e.g. \"ifc\")."@en ,
+                    "Extensão do nome do arquivo que identifica a codificação, em minúsculas e sem o ponto inicial (ex.: \"ifc\")."@pt-br .
+
+:mediaType rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FileEncoding ;
+    rdfs:range xsd:string ;
+    rdfs:label "media type"@en ,
+               "tipo de mídia"@pt-br ;
+    skos:definition "Media type (type/subtype, as in RFC 6838) recorded for files of this encoding, e.g. as the encodingFormat of a file in an RO-Crate."@en ,
+                    "Tipo de mídia (tipo/subtipo, como na RFC 6838) registrado para arquivos desta codificação, por exemplo como o encodingFormat de um arquivo em um RO-Crate."@pt-br .

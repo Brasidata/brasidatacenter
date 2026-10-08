@@ -1,0 +1,156 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/annotation_facade.ttl#> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix annotation: <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/tbox/annotation_facade.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "Annotation Facade"@en ,
+        "Fachada de Anotação"@pt-br ,
+        "Fachada de anotación"@es ;
+    schema:description "The public fields of an annotation, one row of the annotation data source: each is the column a person reads and the property it is written to."@en ,
+        "Os campos públicos de uma anotação, uma linha da fonte de dados de anotações: cada um é a coluna que uma pessoa lê e a propriedade em que é gravado."@pt-br ,
+        "Los campos públicos de una anotación, una fila de la fuente de datos de anotaciones: cada uno es la columna que una persona lee y la propiedad en la que se escribe."@es .
+
+:AnnotationFacade
+    rdf:type facade:DataEntityFacade ;
+    schema:identifier "annotation" ;
+    schema:name "Annotation"@en ,
+        "Anotação"@pt-br ,
+        "Anotación"@es ;
+    facade:isFacadeOf annotation:Annotation ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :AnnotationTypeField ,
+        :TitleField ,
+        :TextField ,
+        :GeometryField ,
+        :SourceDocumentField ,
+        :AuthorField ,
+        :CreatedAtField ,
+        :RelatedDocumentsField .
+
+:GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:identifier .
+
+:AnnotationTypeField
+    rdf:type facade:FacadeField ;
+    schema:identifier "annotation_type" ;
+    schema:name "Type"@en ,
+        "Tipo"@pt-br ,
+        "Tipo"@es ;
+    schema:description "The identifier of the annotation type (dcterms:identifier of a subclass of Annotation), such as note or issue."@en ,
+        "O identificador do tipo de anotação (dcterms:identifier de uma subclasse de Annotation), como note ou issue."@pt-br ,
+        "El identificador del tipo de anotación (dcterms:identifier de una subclase de Annotation), como note o issue."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource rdf:type .
+
+:TitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:title .
+
+:TextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "text" ;
+    schema:name "Text"@en ,
+        "Texto"@pt-br ,
+        "Texto"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource schema:text .
+
+:GeometryField
+    rdf:type facade:FacadeField ;
+    schema:identifier "geometry" ;
+    schema:name "Geometry"@en ,
+        "Geometria"@pt-br ,
+        "Geometría"@es ;
+    schema:description "Well-known text of the captured points, in click order: a POINT for one, a LINESTRING for more. Absent when the annotation is not placed at any point."@en ,
+        "Well-known text dos pontos capturados, na ordem do clique: um POINT para um, um LINESTRING para mais. Ausente quando a anotação não está em nenhum ponto."@pt-br ,
+        "Well-Known Text de los puntos capturados, en el orden de los clics: un POINT para uno, un LINESTRING para más. Ausente cuando la anotación no está situada en ningún punto."@es ;
+    facade:fieldDatatype geo:wktLiteral ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource geo:asWKT .
+
+:SourceDocumentField
+    rdf:type facade:FacadeField ;
+    schema:identifier "source_document" ;
+    schema:name "Source document"@en ,
+        "Documento de origem"@pt-br ,
+        "Documento de origen"@es ;
+    schema:description "The IRI, in the container graph, of the document the annotation was made on, when it was made on one."@en ,
+        "O IRI, no grafo do container, do documento sobre o qual a anotação foi feita, quando foi feita sobre um."@pt-br ,
+        "El IRI, en el grafo del contenedor, del documento sobre el que se realizó la anotación, cuando se realizó sobre uno."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 5 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:source .
+
+:AuthorField
+    rdf:type facade:FacadeField ;
+    schema:identifier "author" ;
+    schema:name "Author"@en ,
+        "Autor"@pt-br ,
+        "Autor"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 6 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:creator .
+
+:CreatedAtField
+    rdf:type facade:FacadeField ;
+    schema:identifier "created_at" ;
+    schema:name "Created at"@en ,
+        "Criada em"@pt-br ,
+        "Creada el"@es ;
+    facade:fieldDatatype xsd:dateTime ;
+    facade:fieldOrder 7 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:created .
+
+:RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the other documents the annotation refers to, separated by a vertical bar. The document it was made on is the source document, not one of these."@en ,
+        "Os IRIs, no grafo do container, dos outros documentos a que a anotação se refere, separados por uma barra vertical. O documento sobre o qual foi feita é o documento de origem, e não um destes."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los otros documentos a los que se refiere la anotación, separados por una barra vertical. El documento sobre el que se realizó es el documento de origen, no uno de estos."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 8 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:mapsToResource dcterms:relation .

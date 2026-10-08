@@ -1,0 +1,92 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/facade.ttl#> .
+@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix obdc: <http://ontobdc.org/ontology/domain/ontobdc/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/tbox/facade.ttl>
+    rdf:type owl:Ontology .
+
+#################################################################
+#    Facade integrity shapes
+#################################################################
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass facade:DataEntityFacade ;
+    sh:property
+        [
+            sh:path facade:isFacadeOf ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path facade:hasFacadeField ;
+            sh:minCount 1 ;
+            sh:class facade:FacadeField
+        ] .
+
+:FacadeFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass facade:FacadeField ;
+    sh:property
+        [
+            sh:path schema:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] ,
+        [
+            sh:path facade:fieldDatatype ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path facade:fieldOrder ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:minInclusive 0
+        ] ,
+        [
+            sh:path facade:isRequired ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path facade:isMultivalued ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path facade:mapsToResource ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] .
+
+#################################################################
+#    Canonical dataset facade
+#################################################################
+
+:DatasetFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isFacadeOf obdc:EntityDataset ;
+    facade:hasFacadeField :DatasetTitleField .
+
+:DatasetTitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:title .

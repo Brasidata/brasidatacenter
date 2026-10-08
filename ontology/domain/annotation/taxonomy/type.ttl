@@ -1,0 +1,51 @@
+@prefix : <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Annotation Types"@en ,
+        "Tipos de Anotação"@pt-br ;
+    rdfs:comment "The concrete categories an annotation is persisted as: each is a subclass of :Annotation."@en ,
+        "As categorias concretas em que uma anotação é persistida: cada uma é subclasse de :Annotation."@pt-br .
+
+:Annotation rdf:type owl:Class ;
+    rdfs:label "Annotation"@en ,
+        "Anotação"@pt-br ;
+    skos:definition "Something said about a target, in one of the concrete categories that are its subclasses."@en ,
+        "Algo dito sobre um alvo, em uma das categorias concretas que são suas subclasses."@pt-br .
+
+:Note rdf:type owl:Class ;
+    rdfs:subClassOf :Annotation ;
+    dcterms:identifier "note" ;
+    skos:prefLabel "Note"@en ,
+        "Nota"@pt-br ;
+    skos:definition "Contextual explanation."@en ,
+        "Explicação contextual."@pt-br .
+
+:Issue rdf:type owl:Class ;
+    rdfs:subClassOf :Annotation ;
+    dcterms:identifier "issue" ;
+    skos:prefLabel "Issue"@en ,
+        "Alerta"@pt-br ;
+    skos:definition "Problem with a lifecycle."@en ,
+        "Problema com ciclo de vida."@pt-br .
+
+:Question rdf:type owl:Class ;
+    rdfs:subClassOf :Annotation ;
+    dcterms:identifier "question" ;
+    skos:prefLabel "Question"@en ,
+        "Dúvida"@pt-br ;
+    skos:definition "Question that awaits an answer."@en ,
+        "Dúvida que aguarda resposta."@pt-br .
+
+:Location rdf:type owl:Class ;
+    rdfs:subClassOf :Annotation ;
+    dcterms:identifier "location" ;
+    skos:prefLabel "Location"@en ,
+        "Localização"@pt-br ;
+    skos:definition "Representation, geospatial, relative or positional location."@en ,
+        "Localização de representação, geoespacial, relativa ou posicional."@pt-br .
