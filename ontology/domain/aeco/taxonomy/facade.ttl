@@ -1,0 +1,143 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/facade.ttl#> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix ifc43owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/facade.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "AECO Facades"@en ,
+        "Fachadas AECO"@pt-br ;
+    schema:description "The public fields of the IFC classes that are data entities. One facade per IFC schema, because each schema names its terms in its own ifcOWL namespace."@en ,
+        "Os campos públicos das classes IFC que são entidades de dados. Uma fachada por esquema IFC, porque cada esquema nomeia seus termos em seu próprio espaço de nomes ifcOWL."@pt-br .
+
+# ---------------------------------------------------------------
+# IfcProject, IFC4
+# ---------------------------------------------------------------
+
+:IfcProjectIfc4Facade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable false ;
+    schema:identifier "ifc_project" ;
+    schema:name "IFC Project"@en ,
+        "Projeto IFC"@pt-br ,
+        "Proyecto IFC"@es ;
+    facade:isFacadeOf ifc4owl:IfcProject ;
+    facade:hasFacadeField
+        :IfcProjectIfc4GlobalIdField ,
+        :IfcProjectIfc4NameField ,
+        :IfcProjectIfc4DescriptionField .
+
+:IfcProjectIfc4GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    schema:description "The globally unique identifier of the project (IfcRoot.GlobalId)."@en ,
+        "O identificador globalmente único do projeto (IfcRoot.GlobalId)."@pt-br ,
+        "El identificador globalmente único del proyecto (IfcRoot.GlobalId)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource ifc4owl:globalId_IfcRoot .
+
+:IfcProjectIfc4NameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ,
+        "Nome"@pt-br ,
+        "Nombre"@es ;
+    schema:description "The name of the project (IfcRoot.Name)."@en ,
+        "O nome do projeto (IfcRoot.Name)."@pt-br ,
+        "El nombre del proyecto (IfcRoot.Name)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:name_IfcRoot .
+
+:IfcProjectIfc4DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    schema:description "The description of the project (IfcRoot.Description)."@en ,
+        "A descrição do projeto (IfcRoot.Description)."@pt-br ,
+        "La descripción del proyecto (IfcRoot.Description)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:description_IfcRoot .
+
+# ---------------------------------------------------------------
+# IfcProject, IFC4.3
+# ---------------------------------------------------------------
+
+:IfcProjectIfc43Facade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable false ;
+    schema:identifier "ifc_project" ;
+    schema:name "IFC Project"@en ,
+        "Projeto IFC"@pt-br ,
+        "Proyecto IFC"@es ;
+    facade:isFacadeOf ifc43owl:IfcProject ;
+    facade:hasFacadeField
+        :IfcProjectIfc43GlobalIdField ,
+        :IfcProjectIfc43NameField ,
+        :IfcProjectIfc43DescriptionField .
+
+:IfcProjectIfc43GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    schema:description "The globally unique identifier of the project (IfcRoot.GlobalId)."@en ,
+        "O identificador globalmente único do projeto (IfcRoot.GlobalId)."@pt-br ,
+        "El identificador globalmente único del proyecto (IfcRoot.GlobalId)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource ifc43owl:globalId_IfcRoot .
+
+:IfcProjectIfc43NameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ,
+        "Nome"@pt-br ,
+        "Nombre"@es ;
+    schema:description "The name of the project (IfcRoot.Name)."@en ,
+        "O nome do projeto (IfcRoot.Name)."@pt-br ,
+        "El nombre del proyecto (IfcRoot.Name)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc43owl:name_IfcRoot .
+
+:IfcProjectIfc43DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    schema:description "The description of the project (IfcRoot.Description)."@en ,
+        "A descrição do projeto (IfcRoot.Description)."@pt-br ,
+        "La descripción del proyecto (IfcRoot.Description)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc43owl:description_IfcRoot .

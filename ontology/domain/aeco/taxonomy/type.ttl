@@ -1,0 +1,20 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/type.ttl#> .
+@prefix ifc43owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
+@prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/type.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Entity Types"@en ,
+        "Tipos de entidade AECO"@pt-br ;
+    rdfs:comment "The IFC classes that are data entities of OntoBDC datasets."@en ,
+        "As classes IFC que são entidades de dados dos datasets OntoBDC."@pt-br .
+
+ifcowl:IfcProject rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity .
+
+ifc43owl:IfcProject rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity .

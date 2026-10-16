@@ -1,0 +1,312 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#> .
+@prefix ewe: <http://gsi.upm.es/ontologies/ewe/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sem: <http://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix feat: <http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix convo: <https://ontology.inferal.com/modules/conversation/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix co: <http://purl.org/co/> .
+@base <http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl> rdf:type owl:Ontology ;
+                                                                   owl:versionIRI <http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl/0.1.0> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/sioc/ns#container_of
+sioc:container_of rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/sioc/ns#has_parent
+sioc:has_parent rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/sioc/ns#has_subscriber
+sioc:has_subscriber rdf:type owl:AnnotationProperty .
+
+
+###  http://rdfs.org/sioc/ns#subscriber_of
+sioc:subscriber_of rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://gsi.upm.es/ontologies/ewe/ns#generatesEvent
+ewe:generatesEvent rdf:type owl:ObjectProperty ;
+                   rdfs:domain ewe:Channel ;
+                   rdfs:range ewe:Event .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#DigitalAssistantPanel
+feat:DigitalAssistantPanel rdf:type owl:Class .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#DigitalDock
+feat:DigitalDock rdf:type owl:Class .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#OntoAssistant
+feat:OntoAssistant rdf:type owl:Class .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#PresentationEvent
+feat:PresentationEvent rdf:type owl:Class .
+
+
+###  http://gsi.upm.es/ontologies/ewe/ns#Channel
+ewe:Channel rdf:type owl:Class .
+
+
+###  http://gsi.upm.es/ontologies/ewe/ns#Event
+ewe:Event rdf:type owl:Class .
+
+
+###  http://rdfs.org/sioc/ns#Container
+sioc:Container rdf:type owl:Class .
+
+
+###  http://rdfs.org/sioc/ns#UserAccount
+sioc:UserAccount rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#AIAssistantPanel
+:AIAssistantPanel rdf:type owl:NamedIndividual ,
+                            feat:DigitalAssistantPanel ;
+                   sioc:container_of :AssistantTab .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#AssistantTab
+:AssistantTab rdf:type owl:NamedIndividual ,
+                       feat:OntoAssistant ,
+                       sioc:UserAccount ;
+              sioc:has_parent :AIAssistantPanel ;
+              sioc:subscriber_of :LayoutLoadedEvent .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#DigitalDockPresentation
+:DigitalDockPresentation rdf:type owl:NamedIndividual ,
+                                  feat:DigitalDock ;
+                         ewe:generatesEvent :LayoutLoadedEvent .
+
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#LayoutLoadedEvent
+:LayoutLoadedEvent rdf:type owl:NamedIndividual ,
+                            feat:PresentationEvent ,
+                            sioc:Container ;
+                   dcterms:identifier "presentation.main.layout.loaded" ;
+                   sioc:has_subscriber :AssistantTab .
+
+
+:NoProjectLoaded a dul:Description .
+
+:Desktop a dul:Concept .
+
+:Mobile a dul:Concept .
+
+:Browser a dul:Concept .
+
+:NativeApp a dul:Concept .
+
+:InitialDesktopBrowserPresentationContext a dul:Situation ;
+    dul:satisfies :NoProjectLoaded ;
+    dul:isClassifiedBy :Desktop , :Browser ;
+    dul:isSettingFor :DesktopWelcomeConversation .
+
+:InitialMobileBrowserPresentationContext a dul:Situation ;
+    dul:satisfies :NoProjectLoaded ;
+    dul:isClassifiedBy :Mobile , :Browser ;
+    dul:isSettingFor :MobileWelcomeConversation .
+
+:DesktopWelcomeConversation a convo:Conversation, co:List;
+    co:firstItem :DesktopWelcomeMessage;
+    dul:hasSetting :InitialDesktopBrowserPresentationContext .
+
+:MobileWelcomeConversation a convo:Conversation, co:List ;
+   co:firstItem :MobileWelcomeMessage; dul:hasSetting :InitialMobileBrowserPresentationContext .
+
+:DesktopWelcomeMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnLayoutLoaded ;
+    convo:contributionOf :DesktopWelcomeConversation ;
+    convo:authoredBy :AssistantTab ;
+    convo:text "Seja bem-vindo ao InfoBIM! Você ainda não tem um projeto aberto. Selecione uma das opções ao lado para começar."@pt-BR ,
+               "Welcome to InfoBIM! You don't have a project open yet. Select one of the options to the side to get started."@en ,
+               "¡Bienvenido a InfoBIM! Todavía no tienes ningún proyecto abierto. Selecciona una de las opciones al lado para comenzar."@es .
+
+:MobileWelcomeMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnLayoutLoaded ;
+    convo:contributionOf :MobileWelcomeConversation ;
+    convo:authoredBy :AssistantTab ;
+    convo:text "Seja bem-vindo ao InfoBIM! Você ainda não tem um projeto aberto. Conecte-se a um projeto remoto para começar."@pt-BR ,
+               "Welcome to InfoBIM! You don't have a project open yet. Connect to a remote project to get started."@en ,
+               "¡Bienvenido a InfoBIM! Todavía no tienes ningún proyecto abierto. Conéctate a un proyecto remoto para comenzar."@es .
+
+:OnLayoutLoaded a ewe:Rule, convo:Thread;
+    ewe:triggeredBy :LayoutLoadedEvent ;
+    ewe:uses :DigitalDockPresentation ;
+    dul:associatedWith :InitialDesktopBrowserPresentationContext ,
+                       :InitialMobileBrowserPresentationContext .
+
+
+# Project opened event ------------------------------------------------------
+
+:ProjectOpenedEvent rdf:type owl:NamedIndividual ,
+                             feat:PresentationEvent ,
+                             sioc:Container ;
+                    dcterms:identifier "presentation.project.opened" ;
+                    sioc:has_subscriber :AssistantTab .
+
+:WithDescription a dul:Concept .
+
+:WithoutDescription a dul:Concept .
+
+:ProjectOpenedDesktopBrowserWithDescriptionContext a dul:Situation ;
+    dul:isClassifiedBy :Desktop , :Browser , :WithDescription ;
+    dul:isSettingFor :ProjectOpenedDesktopBrowserWithDescriptionConversation .
+
+:ProjectOpenedDesktopBrowserWithoutDescriptionContext a dul:Situation ;
+    dul:isClassifiedBy :Desktop , :Browser , :WithoutDescription ;
+    dul:isSettingFor :ProjectOpenedDesktopBrowserWithoutDescriptionConversation .
+
+:ProjectOpenedMobileBrowserWithDescriptionContext a dul:Situation ;
+    dul:isClassifiedBy :Mobile , :Browser , :WithDescription ;
+    dul:isSettingFor :ProjectOpenedMobileBrowserWithDescriptionConversation .
+
+:ProjectOpenedMobileBrowserWithoutDescriptionContext a dul:Situation ;
+    dul:isClassifiedBy :Mobile , :Browser , :WithoutDescription ;
+    dul:isSettingFor :ProjectOpenedMobileBrowserWithoutDescriptionConversation .
+
+:ProjectOpenedDesktopBrowserWithDescriptionConversation a convo:Conversation, co:List ;
+    co:firstItem :ProjectOpenedDesktopBrowserWithDescriptionTitleMessage ;
+    dul:hasSetting :ProjectOpenedDesktopBrowserWithDescriptionContext .
+
+:ProjectOpenedDesktopBrowserWithoutDescriptionConversation a convo:Conversation, co:List ;
+    co:firstItem :ProjectOpenedDesktopBrowserWithoutDescriptionTitleMessage ;
+    dul:hasSetting :ProjectOpenedDesktopBrowserWithoutDescriptionContext .
+
+:ProjectOpenedMobileBrowserWithDescriptionConversation a convo:Conversation, co:List ;
+    co:firstItem :ProjectOpenedMobileBrowserWithDescriptionTitleMessage ;
+    dul:hasSetting :ProjectOpenedMobileBrowserWithDescriptionContext .
+
+:ProjectOpenedMobileBrowserWithoutDescriptionConversation a convo:Conversation, co:List ;
+    co:firstItem :ProjectOpenedMobileBrowserWithoutDescriptionTitleMessage ;
+    dul:hasSetting :ProjectOpenedMobileBrowserWithoutDescriptionContext .
+
+:ProjectAccessParam a feat:MessageParameter ;
+    feat:parameterName "access" .
+
+:ProjectNameParam a feat:MessageParameter ;
+    feat:parameterName "name" .
+
+:ProjectDescriptionParam a feat:MessageParameter ;
+    feat:parameterName "description" .
+
+:ProjectOpenedDesktopBrowserWithDescriptionTitleMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedDesktopBrowserWithDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 1 ;
+    dul:hasParameter :ProjectAccessParam , :ProjectNameParam ;
+    convo:text "O projeto {access} {name} foi aberto no seu navegador."@pt-BR ,
+               "The {access} project {name} has been opened in your browser."@en ,
+               "El proyecto {access} {name} se ha abierto en tu navegador."@es .
+
+:ProjectOpenedDesktopBrowserWithDescriptionMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedDesktopBrowserWithDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 2 ;
+    dul:hasParameter :ProjectDescriptionParam ;
+    convo:text "**Descrição**\n{description}"@pt-BR ,
+               "**Description**\n{description}"@en ,
+               "**Descripción**\n{description}"@es .
+
+:ProjectOpenedDesktopBrowserWithoutDescriptionTitleMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedDesktopBrowserWithoutDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 1 ;
+    dul:hasParameter :ProjectAccessParam , :ProjectNameParam ;
+    convo:text "O projeto {access} {name} foi aberto no seu navegador."@pt-BR ,
+               "The {access} project {name} has been opened in your browser."@en ,
+               "El proyecto {access} {name} se ha abierto en tu navegador."@es .
+
+:ProjectOpenedDesktopBrowserWithoutDescriptionMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedDesktopBrowserWithoutDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 2 ;
+    convo:text "Não há descrição associada a este projeto."@pt-BR ,
+               "There is no description associated with this project."@en ,
+               "No hay una descripción asociada a este proyecto."@es .
+
+:ProjectOpenedMobileBrowserWithDescriptionTitleMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedMobileBrowserWithDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 1 ;
+    dul:hasParameter :ProjectAccessParam , :ProjectNameParam ;
+    convo:text "O projeto {access} {name} foi aberto no seu navegador."@pt-BR ,
+               "The {access} project {name} has been opened in your browser."@en ,
+               "El proyecto {access} {name} se ha abierto en tu navegador."@es .
+
+:ProjectOpenedMobileBrowserWithDescriptionMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedMobileBrowserWithDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 2 ;
+    dul:hasParameter :ProjectDescriptionParam ;
+    convo:text "**Descrição**\n{description}"@pt-BR ,
+               "**Description**\n{description}"@en ,
+               "**Descripción**\n{description}"@es .
+
+:ProjectOpenedMobileBrowserWithoutDescriptionTitleMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedMobileBrowserWithoutDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 1 ;
+    dul:hasParameter :ProjectAccessParam , :ProjectNameParam ;
+    convo:text "O projeto {access} {name} foi aberto no seu navegador."@pt-BR ,
+               "The {access} project {name} has been opened in your browser."@en ,
+               "El proyecto {access} {name} se ha abierto en tu navegador."@es .
+
+:ProjectOpenedMobileBrowserWithoutDescriptionMessage a co:ListItem, convo:Message ;
+    convo:inThread :OnProjectOpened ;
+    convo:contributionOf :ProjectOpenedMobileBrowserWithoutDescriptionConversation ;
+    convo:authoredBy :AssistantTab ;
+    co:index 2 ;
+    convo:text "Não há descrição associada a este projeto."@pt-BR ,
+               "There is no description associated with this project."@en ,
+               "No hay una descripción asociada a este proyecto."@es .
+
+:OnProjectOpened a ewe:Rule, convo:Thread ;
+    ewe:triggeredBy :ProjectOpenedEvent ;
+    ewe:uses :DigitalDockPresentation ;
+    dul:associatedWith :ProjectOpenedDesktopBrowserWithDescriptionContext ,
+                       :ProjectOpenedDesktopBrowserWithoutDescriptionContext ,
+                       :ProjectOpenedMobileBrowserWithDescriptionContext ,
+                       :ProjectOpenedMobileBrowserWithoutDescriptionContext .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

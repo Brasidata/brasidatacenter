@@ -1,0 +1,371 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Facade Ontology"@en ,
+        "Ontologia de Fachadas"@pt-br ;
+    skos:definition "Declares the facade vocabulary (classes and properties that describe a facade), the integrity shapes for facades and facade fields, and the canonical dataset facade."@en ,
+        "Declara o vocabulário de fachadas (classes e propriedades que descrevem uma fachada), as shapes de integridade para fachadas e campos de fachada, e a fachada canônica de dataset."@pt-br .
+
+#################################################################
+#    Facade vocabulary
+#################################################################
+
+:Facade rdf:type owl:Class ;
+    rdfs:label "Facade"@en ,
+        "Fachada"@pt-br ;
+    skos:definition "A public projection of a resource or data entity, exposing named fields that map to graph properties."@en ,
+        "Uma projeção pública de um recurso ou entidade de dados, expondo campos nomeados que mapeiam para propriedades do grafo."@pt-br .
+
+:ResourceFacade rdf:type owl:Class ;
+    rdfs:subClassOf :Facade ;
+    rdfs:label "Resource facade"@en ,
+        "Fachada de recurso"@pt-br ;
+    skos:definition "A facade of an infrastructure resource (such as the storage container) that is not classified as a data entity."@en ,
+        "Uma fachada de um recurso de infraestrutura (como o contêiner de armazenamento) que não é classificado como uma entidade de dados."@pt-br .
+
+:DataEntityFacade rdf:type owl:Class ;
+    rdfs:subClassOf :Facade ;
+    rdfs:label "Data entity facade"@en ,
+        "Fachada de entidade de dados"@pt-br ;
+    skos:definition "A facade of a data entity: the contract between what a user names and what the graph stores."@en ,
+        "Uma fachada de uma entidade de dados: o contrato entre o que um usuário nomeia e o que o grafo armazena."@pt-br .
+
+:FacadeField rdf:type owl:Class ;
+    rdfs:label "Facade field"@en ,
+        "Campo de fachada"@pt-br ;
+    skos:definition "A single field of a facade: the identifier a person types, the label an input shows, and the property the value is written to."@en ,
+        "Um único campo de uma fachada: o identificador que uma pessoa digita, o rótulo que uma entrada mostra e a propriedade na qual o valor é gravado."@pt-br .
+
+:isFacadeOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :Facade ;
+    rdfs:label "is facade of"@en ,
+        "é fachada de"@pt-br ;
+    skos:definition "Links a facade to the resource or data entity it projects."@en ,
+        "Vincula uma fachada ao recurso ou entidade de dados que ela projeta."@pt-br .
+
+:hasFacadeField rdf:type owl:ObjectProperty ;
+    rdfs:domain :Facade ;
+    rdfs:range :FacadeField ;
+    rdfs:label "has facade field"@en ,
+        "tem campo de fachada"@pt-br ;
+    skos:definition "Links a facade to the fields it exposes."@en ,
+        "Vincula uma fachada aos campos que ela expõe."@pt-br .
+
+:hasResourceFacade rdf:type owl:ObjectProperty ;
+    rdfs:range :ResourceFacade ;
+    rdfs:label "has resource facade"@en ,
+        "tem fachada de recurso"@pt-br ;
+    skos:definition "Links a resource to the facade that projects it."@en ,
+        "Vincula um recurso à fachada que o projeta."@pt-br .
+
+:Visualization rdf:type owl:Class ;
+    rdfs:label "Visualization"@en ,
+        "Visualização"@pt-br ,
+        "Visualización"@es ;
+    skos:definition "A way of showing the values of a facade field other than as plain text, such as a carousel of images."@en ,
+        "Uma forma de mostrar os valores de um campo de fachada diferente de texto simples, como um carrossel de imagens."@pt-br ,
+        "Una forma de mostrar los valores de un campo de fachada distinta del texto simple, como un carrusel de imágenes."@es .
+
+:ImageCarousel rdf:type owl:Class ;
+    rdfs:subClassOf :Visualization , schema:ImageGallery ;
+    rdfs:label "Image carousel"@en ,
+        "Carrossel de imagens"@pt-br ,
+        "Carrusel de imágenes"@es ;
+    skos:definition "A visualization that shows the image files a field points to, one after the other. The files it shows are the ones the photographic file profile accepts."@en ,
+        "Uma visualização que mostra, uma depois da outra, as imagens para as quais um campo aponta. Os arquivos que ela mostra são os que o perfil de arquivos fotográficos aceita."@pt-br ,
+        "Una visualización que muestra, una tras otra, las imágenes a las que apunta un campo. Los archivos que muestra son los que acepta el perfil de archivos fotográficos."@es ;
+    :acceptsFileProfile obdc:PhotographicFile .
+
+:hasAlternativeVisualization rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range :Visualization ;
+    rdfs:label "has alternative visualization"@en ,
+        "tem visualização alternativa"@pt-br ,
+        "tiene visualización alternativa"@es ;
+    skos:definition "Links a facade field to a visualization that shows its values in place of plain text."@en ,
+        "Vincula um campo de fachada a uma visualização que mostra seus valores no lugar do texto simples."@pt-br ,
+        "Vincula un campo de fachada a una visualización que muestra sus valores en lugar del texto simple."@es .
+
+:acceptsFileProfile rdf:type owl:ObjectProperty ;
+    rdfs:domain :Visualization ;
+    rdfs:range obdc:FileDisplayProfile ;
+    rdfs:label "accepts file profile"@en ,
+        "aceita perfil de arquivo"@pt-br ,
+        "acepta perfil de archivo"@es ;
+    skos:definition "The file display profile whose files a visualization shows: a file takes part in it when its MIME type or extension is accepted by the profile."@en ,
+        "O perfil de exibição de arquivos cujos arquivos uma visualização mostra: um arquivo participa dela quando seu tipo MIME ou sua extensão é aceito pelo perfil."@pt-br ,
+        "El perfil de visualización de archivos cuyos archivos muestra una visualización: un archivo participa en ella cuando su tipo MIME o su extensión es aceptado por el perfil."@es .
+
+:mapsToResource rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:label "maps to resource"@en ,
+        "mapeia para recurso"@pt-br ;
+    skos:definition "The resource property a facade field reads its value from."@en ,
+        "A propriedade do recurso da qual um campo de fachada lê seu valor."@pt-br .
+
+:mapsToProperty rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:label "maps to property"@en ,
+        "mapeia para propriedade"@pt-br ;
+    skos:definition "The graph property a facade field writes its value to."@en ,
+        "A propriedade do grafo na qual um campo de fachada grava seu valor."@pt-br .
+
+:fieldDatatype rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:label "field datatype"@en ,
+        "tipo de dado do campo"@pt-br ;
+    skos:definition "The datatype a facade field expects for its value."@en ,
+        "O tipo de dado que um campo de fachada espera para seu valor."@pt-br .
+
+:fieldOrder rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:integer ;
+    rdfs:label "field order"@en ,
+        "ordem do campo"@pt-br ;
+    skos:definition "The display order of a facade field, ascending from zero."@en ,
+        "A ordem de exibição de um campo de fachada, crescente a partir de zero."@pt-br .
+
+:isRequired rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is required"@en ,
+        "é obrigatório"@pt-br ;
+    skos:definition "Whether a facade field must have a value."@en ,
+        "Se um campo de fachada deve ter um valor."@pt-br .
+
+:isMultivalued rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is multivalued"@en ,
+        "é multivalorado"@pt-br ;
+    skos:definition "Whether a facade field may hold more than one value."@en ,
+        "Se um campo de fachada pode conter mais de um valor."@pt-br .
+
+:isDeletable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is deletable"@en ,
+        "é apagável"@pt-br ,
+        "es eliminable"@es ;
+    skos:definition "Whether an instance of the entity the facade projects can be deleted by a user. A facade that does not declare it describes an entity whose instances cannot be deleted."@en ,
+        "Se uma instância da entidade que a fachada projeta pode ser apagada por um usuário. Uma fachada que não o declara descreve uma entidade cujas instâncias não podem ser apagadas."@pt-br ,
+        "Si una instancia de la entidad que proyecta la fachada puede ser eliminada por un usuario. Una fachada que no lo declara describe una entidad cuyas instancias no pueden eliminarse."@es .
+
+:isEditable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is editable"@en ,
+        "é editável"@pt-br ;
+    skos:definition "Whether a facade field value can be changed by a user. A field that does not declare it is not editable; an entity is editable when at least one of its facade fields is."@en ,
+        "Se o valor de um campo de fachada pode ser alterado por um usuário. Um campo que não o declara não é editável; uma entidade é editável quando ao menos um dos campos de sua fachada é."@pt-br .
+
+:isCreatable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is creatable"@en ,
+        "é criável"@pt-br ,
+        "es creable"@es ;
+    skos:definition "Whether an instance of the entity the facade projects can be created by a user. A facade that does not declare it describes an entity whose instances cannot be created."@en ,
+        "Se uma instância da entidade que a fachada projeta pode ser criada por um usuário. Uma fachada que não o declara descreve uma entidade cujas instâncias não podem ser criadas."@pt-br ,
+        "Si una instancia de la entidad que proyecta la fachada puede ser creada por un usuario. Una fachada que no lo declara describe una entidad cuyas instancias no pueden crearse."@es .
+
+:ValueGenerator rdf:type owl:Class ;
+    rdfs:label "value generator"@en ,
+        "gerador de valor"@pt-br ,
+        "generador de valor"@es ;
+    skos:definition "A way of producing a value for a field when an instance is created and none was given. It is a concept: what runs it is the system that creates the instance."@en ,
+        "Uma forma de produzir o valor de um campo quando uma instância é criada e nenhum foi informado. É um conceito: quem o executa é o sistema que cria a instância."@pt-br ,
+        "Una forma de producir el valor de un campo cuando se crea una instancia y no se dio ninguno. Es un concepto: quien lo ejecuta es el sistema que crea la instancia."@es .
+
+:generatesDatatype rdf:type owl:ObjectProperty ;
+    rdfs:domain :ValueGenerator ;
+    rdfs:range rdfs:Datatype ;
+    rdfs:label "generates datatype"@en ,
+        "gera o tipo de dado"@pt-br ;
+    skos:definition "The datatype of the values a value generator produces."@en ,
+        "O tipo de dado dos valores que um gerador de valor produz."@pt-br .
+
+:hasValuesFromSubclassesOf rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range owl:Class ;
+    rdfs:label "has values from subclasses of"@en ,
+        "tem valores das subclasses de"@pt-br ,
+        "tiene valores de las subclases de"@es ;
+    skos:definition "The values the field takes are the identifiers (dcterms:identifier) of the direct subclasses of this class, each named by its skos:prefLabel. A field that declares it is chosen from that list."@en ,
+        "Os valores que o campo aceita são os identificadores (dcterms:identifier) das subclasses diretas desta classe, cada uma nomeada por seu skos:prefLabel. Um campo que o declara é escolhido nessa lista."@pt-br ,
+        "Los valores que acepta el campo son los identificadores (dcterms:identifier) de las subclases directas de esta clase, cada una nombrada por su skos:prefLabel. Un campo que lo declara se elige de esa lista."@es .
+
+:hasDefault rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range :ValueGenerator ;
+    rdfs:label "has default"@en ,
+        "tem padrão"@pt-br ,
+        "tiene valor predeterminado"@es ;
+    skos:definition "The value generator that gives a facade field its value when an instance is created and the value was not given. A given value always prevails; editing an instance never uses it. A field that is required and has a default does not have to be given."@en ,
+        "O gerador de valor que dá a um campo de fachada o seu valor quando uma instância é criada e o valor não foi informado. Um valor informado sempre prevalece; editar uma instância nunca o usa. Um campo obrigatório que tem padrão não precisa ser informado."@pt-br ,
+        "El generador de valor que da a un campo de fachada su valor cuando se crea una instancia y no se informó. Un valor informado siempre prevalece; editar una instancia nunca lo usa. Un campo obligatorio que tiene valor predeterminado no necesita informarse."@es .
+
+:UuidGenerator rdf:type :ValueGenerator ;
+    rdfs:label "UUID generator"@en ,
+        "gerador de UUID"@pt-br ,
+        "generador de UUID"@es ;
+    skos:definition "Produces a random universally unique identifier (RFC 4122, version 4), written as text."@en ,
+        "Produz um identificador único universal aleatório (RFC 4122, versão 4), escrito como texto."@pt-br ;
+    :generatesDatatype xsd:string ;
+    rdfs:seeAlso <https://www.rfc-editor.org/rfc/rfc4122> ,
+        <https://www.w3.org/TR/sparql11-query/#func-struuid> ;
+    skos:closeMatch <https://www.w3.org/TR/sparql11-query/#func-uuid> .
+
+:CurrentDateTimeGenerator rdf:type :ValueGenerator ;
+    rdfs:label "current date and time generator"@en ,
+        "gerador de data e hora atual"@pt-br ,
+        "generador de fecha y hora actual"@es ;
+    skos:definition "Produces the date and time of the moment the instance is created."@en ,
+        "Produz a data e a hora do momento em que a instância é criada."@pt-br ;
+    :generatesDatatype xsd:dateTime ;
+    rdfs:seeAlso <https://www.w3.org/TR/sparql11-query/#func-now> ;
+    skos:closeMatch <http://www.w3.org/2005/xpath-functions#current-dateTime> .
+
+#################################################################
+#    Facade integrity shapes
+#################################################################
+
+:DataEntityFacadeShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :DataEntityFacade ;
+    sh:property
+        [
+            sh:path :isFacadeOf ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasFacadeField ;
+            sh:minCount 1 ;
+            sh:class :FacadeField
+        ] ,
+        [
+            sh:path :isDeletable ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isCreatable ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] .
+
+:FacadeFieldShape
+    rdf:type sh:NodeShape ;
+    sh:targetClass :FacadeField ;
+    sh:property
+        [
+            sh:path schema:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string
+        ] ,
+        [
+            sh:path :fieldDatatype ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :fieldOrder ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:integer ;
+            sh:minInclusive 0
+        ] ,
+        [
+            sh:path :isRequired ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isMultivalued ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path csvw:format ;
+            sh:datatype rdf:langString
+        ] ,
+        [
+            sh:path :hasAlternativeVisualization ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :isEditable ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :hasDefault ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasValuesFromSubclassesOf ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :mapsToResource ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ;
+    sh:sparql [
+        rdf:type sh:SPARQLConstraint ;
+        sh:message "The value generator of the default produces a datatype other than the datatype of the field."@en ;
+        sh:select """
+            SELECT $this ?value
+            WHERE {
+                $this <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#hasDefault> ?value .
+                ?value <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#generatesDatatype> ?generated .
+                $this <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#fieldDatatype> ?declared .
+                FILTER (?generated != ?declared)
+            }
+        """
+    ] .
+
+#################################################################
+#    Canonical dataset facade
+#################################################################
+
+:DatasetFacade
+    rdf:type :DataEntityFacade ;
+    schema:identifier "dataset" ;
+    schema:name "Dataset"@en ,
+        "Dataset"@pt-br ,
+        "Dataset"@es ;
+    :isFacadeOf obdc:EntityDataset ;
+    :hasFacadeField :DatasetTitleField .
+
+:DatasetTitleField
+    rdf:type :FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    :fieldDatatype xsd:string ;
+    :fieldOrder 0 ;
+    :isRequired true ;
+    :isMultivalued false ;
+    :mapsToResource dcterms:title .

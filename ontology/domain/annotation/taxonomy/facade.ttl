@@ -1,6 +1,8 @@
-@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/tbox/annotation_facade.ttl#> .
-@prefix facade: <http://ontobdc.org/ontology/domain/facade.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/domain/annotation/taxonomy/facade.ttl#> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix annotation: <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -8,7 +10,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://datacenter.app.br/ontology/tool/ontobdc/tbox/annotation_facade.ttl>
+<http://datacenter.app.br/ontology/domain/annotation/taxonomy/facade.ttl>
     rdf:type owl:Ontology ;
     schema:name "Annotation Facade"@en ,
         "Fachada de Anotação"@pt-br ,
@@ -19,6 +21,8 @@
 
 :AnnotationFacade
     rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
     schema:identifier "annotation" ;
     schema:name "Annotation"@en ,
         "Anotação"@pt-br ,
@@ -33,6 +37,7 @@
         :SourceDocumentField ,
         :AuthorField ,
         :CreatedAtField ,
+        :CompletedAtField ,
         :RelatedDocumentsField .
 
 :GlobalIdField
@@ -45,6 +50,7 @@
     facade:fieldOrder 0 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
+    facade:hasDefault facade:UuidGenerator ;
     facade:mapsToResource dcterms:identifier .
 
 :AnnotationTypeField
@@ -60,6 +66,7 @@
     facade:fieldOrder 1 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
+    facade:hasValuesFromSubclassesOf annotation:Annotation ;
     facade:mapsToResource rdf:type .
 
 :TitleField
@@ -72,6 +79,7 @@
     facade:fieldOrder 2 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
+    facade:isEditable true ;
     facade:mapsToResource dcterms:title .
 
 :TextField
@@ -84,6 +92,7 @@
     facade:fieldOrder 3 ;
     facade:isRequired false ;
     facade:isMultivalued false ;
+    facade:isEditable true ;
     facade:mapsToResource schema:text .
 
 :GeometryField
@@ -135,10 +144,33 @@
         "Criada em"@pt-br ,
         "Creada el"@es ;
     facade:fieldDatatype xsd:dateTime ;
+    csvw:format "M/d/yyyy h:mm a"@en ,
+        "dd/MM/yyyy HH:mm"@pt-br ,
+        "d/M/yyyy H:mm"@es ;
     facade:fieldOrder 7 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
+    facade:hasDefault facade:CurrentDateTimeGenerator ;
     facade:mapsToResource dcterms:created .
+
+:CompletedAtField
+    rdf:type facade:FacadeField ;
+    schema:identifier "completed_at" ;
+    schema:name "Closed at"@en ,
+        "Fechada em"@pt-br ,
+        "Cerrada el"@es ;
+    schema:description "The date and time the annotation was completed. Absent while it remains open."@en ,
+        "Data e hora em que a anotação foi concluída. Ausente enquanto estiver em aberto."@pt-br ,
+        "Fecha y hora en que se completó la anotación. Ausente mientras permanece abierta."@es ;
+    facade:fieldDatatype xsd:dateTime ;
+    csvw:format "M/d/yyyy h:mm a"@en ,
+        "dd/MM/yyyy HH:mm"@pt-br ,
+        "d/M/yyyy H:mm"@es ;
+    facade:fieldOrder 8 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource annotation:completedAt .
 
 :RelatedDocumentsField
     rdf:type facade:FacadeField ;
@@ -150,7 +182,16 @@
         "Os IRIs, no grafo do container, dos outros documentos a que a anotação se refere, separados por uma barra vertical. O documento sobre o qual foi feita é o documento de origem, e não um destes."@pt-br ,
         "Los IRI, en el grafo del contenedor, de los otros documentos a los que se refiere la anotación, separados por una barra vertical. El documento sobre el que se realizó es el documento de origen, no uno de estos."@es ;
     facade:fieldDatatype xsd:anyURI ;
-    facade:fieldOrder 8 ;
+    facade:fieldOrder 9 ;
     facade:isRequired false ;
     facade:isMultivalued true ;
-    facade:mapsToResource dcterms:relation .
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :RelatedDocumentFacade ;
+    facade:hasAlternativeVisualization facade:ImageCarousel .
+
+:RelatedDocumentFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:FileDisplayProfile  ;
+    facade:hasFacadeField
+        :TitleField  .

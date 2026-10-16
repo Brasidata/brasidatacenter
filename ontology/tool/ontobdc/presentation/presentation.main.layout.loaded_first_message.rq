@@ -1,0 +1,40 @@
+# First message of a presentation context.
+#
+# Given the identifier of an event, the device (:Desktop or :Mobile), the
+# runtime environment (:Browser or :NativeApp) and a language tag (e.g. "pt-BR",
+# "en", "es"), follows the path
+#   event -> rule it triggers -> associated situation -> conversation -> first message
+# and returns the message with its text in that language. A language without
+# subtag (e.g. "pt") also matches its regional variants (e.g. "pt-BR").
+#
+# Parameters are the single row of the VALUES block below.
+
+PREFIX :        <http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ewe:     <http://gsi.upm.es/ontologies/ewe/ns#>
+PREFIX dul:     <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX co:      <http://purl.org/co/>
+PREFIX convo:   <https://ontology.inferal.com/modules/conversation/>
+
+SELECT ?message ?text
+WHERE {
+  VALUES (?identifier ?device ?environment ?language) {
+    ("presentation.main.layout.loaded" :Desktop :Browser "pt-BR")
+  }
+
+  # Event -> rule it triggers -> associated initial situation
+  ?event      dcterms:identifier ?identifier .
+  ?rule       ewe:triggeredBy    ?event ;
+              dul:associatedWith ?situation .
+
+  # The situation must be classified by both the device and the environment
+  ?situation  a dul:Situation ;
+              dul:isClassifiedBy ?device , ?environment ;
+              dul:isSettingFor   ?conversation .
+
+  # Conversation -> first message -> text
+  ?conversation a convo:Conversation ;
+                co:firstItem ?message .
+  ?message      convo:text   ?text .
+  FILTER(LANGMATCHES(LANG(?text), ?language))
+}

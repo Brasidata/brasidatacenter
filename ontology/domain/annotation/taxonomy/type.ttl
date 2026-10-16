@@ -1,9 +1,11 @@
 @prefix : <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl>
     rdf:type owl:Ontology ;
@@ -13,10 +15,21 @@
         "As categorias concretas em que uma anotação é persistida: cada uma é subclasse de :Annotation."@pt-br .
 
 :Annotation rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity ;
     rdfs:label "Annotation"@en ,
         "Anotação"@pt-br ;
     skos:definition "Something said about a target, in one of the concrete categories that are its subclasses."@en ,
         "Algo dito sobre um alvo, em uma das categorias concretas que são suas subclasses."@pt-br .
+
+:completedAt rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Annotation ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "Completed at"@en ,
+        "Data de conclusão"@pt-br ,
+        "Fecha de finalización"@es ;
+    skos:definition "Date and time at which an annotation was completed; absent for an open annotation."@en ,
+        "Data e hora de conclusão da anotação; ausente para uma anotação em aberto."@pt-br ,
+        "Fecha y hora de finalización de la anotación; ausente para una anotación abierta."@es .
 
 :Note rdf:type owl:Class ;
     rdfs:subClassOf :Annotation ;
