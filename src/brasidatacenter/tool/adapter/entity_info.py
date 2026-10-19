@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from rdflib import Graph, Literal, URIRef
+from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import RDF, RDFS, XSD, Namespace
 from rdflib.util import guess_format
 
@@ -15,6 +15,7 @@ _SCHEMA = Namespace("https://schema.org/")
 _CSVW = Namespace("http://www.w3.org/ns/csvw#")
 _DCTERMS = Namespace("http://purl.org/dc/terms/")
 _SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
+_SH = Namespace("http://www.w3.org/ns/shacl#")
 _OBDC = Namespace("http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#")
 _DATA_ENTITY = URIRef("http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataEntity")
 
@@ -51,6 +52,80 @@ def entity_info(entity_id: str | None = None) -> dict[str, Any] | list[dict[str,
             return _read(graph, subject, entity_id)
 
     return None
+
+
+def _tree_children(graph: Graph, subject: URIRef) -> list[dict[str, Any]]:
+    """
+    What a facade says about the children of its entity in a tree view
+    (``facade:hasTreeViewChild``): for each, the facade of the children, the
+    class of entity that facade is of, and the SHACL property path that
+    leads from an instance of the parent to its children. Empty for a facade
+    that declares none: its entity is a leaf of the tree.
+
+    Raises:
+        ValueError: a child declares no facade or no path, or its path uses a
+            SHACL construct this adapter does not read.
+    """
+    children: list[dict[str, Any]] = []
+    for child in graph.objects(subject, _FACADE.hasTreeViewChild):
+        facade = graph.value(child, _FACADE.childFacade)
+        path = graph.value(child, _FACADE.childPath)
+        if not isinstance(facade, URIRef) or path is None:
+            raise ValueError(f"The tree-view child of {subject} declares no child facade or no child path.")
+
+        entity = graph.value(facade, _FACADE.isFacadeOf)
+        if entity is None:
+            entity = _find(facade, _FACADE.isFacadeOf)
+        children.append(
+            {
+                "facade_iri": str(facade),
+                "entity_iri": str(entity) if entity is not None else None,
+                "path": _property_path(graph, path),
+            }
+        )
+
+    return sorted(children, key=lambda declared: (declared["facade_iri"], str(declared["path"])))
+
+
+def _property_path(graph: Graph, node: Any) -> dict[str, Any]:
+    """
+    A SHACL property path as plain data: ``{"predicate": iri}``, or one of
+    ``inverse``, ``sequence``, ``alternative``, ``zeroOrMore``, ``oneOrMore``
+    and ``zeroOrOne`` holding the path or paths they apply to.
+    """
+    if isinstance(node, URIRef):
+        return {"predicate": str(node)}
+
+    if not isinstance(node, BNode):
+        raise ValueError(f"A property path is an IRI or a blank node, not {node!r}.")
+
+    for key, predicate in (
+        ("inverse", _SH.inversePath),
+        ("zeroOrMore", _SH.zeroOrMorePath),
+        ("oneOrMore", _SH.oneOrMorePath),
+        ("zeroOrOne", _SH.zeroOrOnePath),
+    ):
+        inner = graph.value(node, predicate)
+        if inner is not None:
+            return {key: _property_path(graph, inner)}
+
+    alternatives = graph.value(node, _SH.alternativePath)
+    if alternatives is not None:
+        return {"alternative": [_property_path(graph, step) for step in _list_items(graph, alternatives)]}
+
+    if graph.value(node, RDF.first) is not None:
+        return {"sequence": [_property_path(graph, step) for step in _list_items(graph, node)]}
+
+    raise ValueError(f"The property path {node} uses a SHACL construct this adapter does not read.")
+
+
+def _list_items(graph: Graph, head: Any) -> list[Any]:
+    items: list[Any] = []
+    while head is not None and head != RDF.nil:
+        items.append(graph.value(head, RDF.first))
+        head = graph.value(head, RDF.rest)
+
+    return items
 
 
 def _data_entity_types() -> list[str]:
@@ -100,6 +175,7 @@ def _read(graph: Graph, subject: URIRef, entity_iri: str) -> dict[str, Any]:
         "deletable": _deletable(graph, subject),
         "creatable": _creatable(graph, subject),
         "entity_iri": entity_iri,
+        "tree_children": _tree_children(graph, subject),
         "fields": sorted(fields, key=lambda declared: declared["order"]),
     }
 

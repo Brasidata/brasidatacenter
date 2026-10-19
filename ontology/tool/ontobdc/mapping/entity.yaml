@@ -1,0 +1,14 @@
+ontology:
+  annotation: http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#Annotation
+  anotação: http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#Annotation
+  anotacao: http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#Annotation
+  dataset: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#EntityDataset
+  entitydataset: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#EntityDataset
+  entity_dataset: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#EntityDataset
+  datacontainer: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataContainer
+  data_container: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataContainer
+  task: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Task
+  step: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Step
+  plan: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Plan
+  milestone: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Milestone
+  goal: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Goal

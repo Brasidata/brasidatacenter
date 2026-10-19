@@ -1,0 +1,343 @@
+@prefix : <http://datacenter.app.br/ontology/domain/productivity/taxonomy/facade.ttl#> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix productivity: <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/productivity/taxonomy/facade.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "Productivity Facade"@en ,
+        "Fachada de Produtividade"@pt-br ,
+        "Fachada de productividad"@es ;
+    schema:description "The public fields of a task, a milestone and a goal, one row of each data source: each is the column a person reads and the property it is written to."@en ,
+        "Os campos públicos de uma tarefa, de um marco e de um objetivo, uma linha de cada fonte de dados: cada um é a coluna que uma pessoa lê e a propriedade em que é gravado."@pt-br ,
+        "Los campos públicos de una tarea, de un hito y de un objetivo, una fila de cada fuente de datos: cada uno es la columna que una persona lee y la propiedad en la que se escribe."@es .
+
+#################################################################
+# Facades
+#################################################################
+
+:TaskFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "task" ;
+    schema:name "Task"@en ,
+        "Tarefa"@pt-br ,
+        "Tarea"@es ;
+    facade:isFacadeOf productivity:Task ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :RelatedDocumentsField ,
+        :DependsOnField ,
+        :PlannedStartField ,
+        :PlannedFinishField ,
+        :ActualStartField ,
+        :ActualFinishField ,
+        :CompletionPercentField .
+
+:StepFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "step" ;
+    schema:name "Step"@en ,
+        "Etapa"@pt-br ,
+        "Etapa"@es ;
+    facade:isFacadeOf productivity:Step ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :RelatedDocumentsField .
+
+:MilestoneFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "milestone" ;
+    schema:name "Milestone"@en ,
+        "Marco"@pt-br ,
+        "Hito"@es ;
+    facade:isFacadeOf productivity:Milestone ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField .
+
+:GoalFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "goal" ;
+    schema:name "Goal"@en ,
+        "Objetivo"@pt-br ,
+        "Objetivo"@es ;
+    facade:isFacadeOf productivity:Goal ;
+    facade:hasTreeViewChild [
+        rdf:type facade:TreeViewChild ;
+        facade:childFacade :PlanFacade ;
+        facade:childPath productivity:hasPlan
+    ] ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :RelatedDocumentsField .
+
+:PlanFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "plan" ;
+    schema:name "Plan"@en ,
+        "Plano"@pt-br ,
+        "Plan"@es ;
+    facade:isFacadeOf productivity:Plan ;
+    facade:hasTreeViewChild [
+        rdf:type facade:TreeViewChild ;
+        facade:childFacade :StepFacade ;
+        facade:childPath productivity:hasStep
+    ] ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :RelatedDocumentsField .
+
+:TaskConstraintFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "task_constraint" ;
+    schema:name "Task constraint"@en ,
+        "Restrição de tarefa"@pt-br ,
+        "Restricción de tarea"@es ;
+    facade:isFacadeOf productivity:TaskConstraint ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :ConstraintTypeField ,
+        :PredecessorTaskField .
+
+#################################################################
+# Fields
+#################################################################
+
+:GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:UuidGenerator ;
+    facade:mapsToResource dcterms:identifier .
+
+:TitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:title .
+
+:DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:description .
+
+:CreatedAtField
+    rdf:type facade:FacadeField ;
+    schema:identifier "created_at" ;
+    schema:name "Created at"@en ,
+        "Criada em"@pt-br ,
+        "Creada el"@es ;
+    facade:fieldDatatype xsd:dateTime ;
+    csvw:format "M/d/yyyy h:mm a"@en ,
+        "dd/MM/yyyy HH:mm"@pt-br ,
+        "d/M/yyyy H:mm"@es ;
+    facade:fieldOrder 3 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:CurrentDateTimeGenerator ;
+    facade:mapsToResource dcterms:created .
+
+:RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the documents the task or goal refers to, separated by a vertical bar."@en ,
+        "Os IRIs, no grafo do container, dos documentos a que a tarefa ou o objetivo se refere, separados por uma barra vertical."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los documentos a los que se refiere la tarea o el objetivo, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :RelatedDocumentFacade ;
+    facade:hasAlternativeVisualization facade:ImageCarousel .
+
+:ConstraintTypeField
+    rdf:type facade:FacadeField ;
+    schema:identifier "constraint_type" ;
+    schema:name "Type"@en ,
+        "Tipo"@pt-br ,
+        "Tipo"@es ;
+    schema:description "The identifier of the constraint type (dcterms:identifier of a subclass of TaskConstraint), such as finish_to_start_task_constraint."@en ,
+        "O identificador do tipo de restrição (dcterms:identifier de uma subclasse de TaskConstraint), como finish_to_start_task_constraint."@pt-br ,
+        "El identificador del tipo de restricción (dcterms:identifier de una subclase de TaskConstraint), como finish_to_start_task_constraint."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasValuesFromSubclassesOf productivity:TaskConstraint ;
+    facade:mapsToResource rdf:type .
+
+:PredecessorTaskField
+    rdf:type facade:FacadeField ;
+    schema:identifier "predecessor_task" ;
+    schema:name "Predecessor task"@en ,
+        "Tarefa predecessora"@pt-br ,
+        "Tarea predecesora"@es ;
+    schema:description "The IRI, in the container graph, of the task the dependent task depends on."@en ,
+        "O IRI, no grafo do container, da tarefa de que a tarefa dependente depende."@pt-br ,
+        "El IRI, en el grafo del contenedor, de la tarea de la que depende la tarea dependiente."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 2 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:predecessorTask ;
+    facade:hasResourceFacade :PredecessorTaskReferenceFacade .
+
+:DependsOnField
+    rdf:type facade:FacadeField ;
+    schema:identifier "depends_on" ;
+    schema:name "Depends on"@en ,
+        "Depende de"@pt-br ,
+        "Depende de"@es ;
+    schema:description "The IRIs, in the container graph, of the task constraints that define what this task depends on, separated by a vertical bar. The type of each constraint and its predecessor task are stated by the constraint, not by this field."@en ,
+        "Os IRIs, no grafo do container, das restrições de tarefa que definem de que esta tarefa depende, separados por uma barra vertical. O tipo de cada restrição e sua tarefa predecessora são ditos pela restrição, e não por este campo."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de las restricciones de tarea que definen de qué depende esta tarea, separados por una barra vertical. El tipo de cada restricción y su tarea predecesora los indica la restricción, no este campo."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 5 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:dependsOn ;
+    facade:hasResourceFacade :TaskConstraintReferenceFacade .
+
+:TaskConstraintReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf productivity:TaskConstraint ;
+    facade:hasFacadeField
+        :ConstraintTypeField ,
+        :PredecessorTaskField .
+
+:PredecessorTaskReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf productivity:Task ;
+    facade:hasFacadeField
+        :TitleField .
+
+:RelatedDocumentFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:FileDisplayProfile  ;
+    facade:hasFacadeField
+        :TitleField  .
+
+:PlannedStartField
+    rdf:type facade:FacadeField ;
+    schema:identifier "planned_start" ;
+    schema:name "Planned start"@en ,
+        "Início planejado"@pt-br ,
+        "Inicio planificado"@es ;
+    facade:fieldDatatype xsd:date ;
+    facade:fieldOrder 6 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:plannedStart .
+
+:PlannedFinishField
+    rdf:type facade:FacadeField ;
+    schema:identifier "planned_finish" ;
+    schema:name "Planned finish"@en ,
+        "Término planejado"@pt-br ,
+        "Fin planificado"@es ;
+    facade:fieldDatatype xsd:date ;
+    facade:fieldOrder 7 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:plannedFinish .
+
+:ActualStartField
+    rdf:type facade:FacadeField ;
+    schema:identifier "actual_start" ;
+    schema:name "Actual start"@en ,
+        "Início real"@pt-br ,
+        "Inicio real"@es ;
+    facade:fieldDatatype xsd:date ;
+    facade:fieldOrder 8 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:actualStart .
+
+:ActualFinishField
+    rdf:type facade:FacadeField ;
+    schema:identifier "actual_finish" ;
+    schema:name "Actual finish"@en ,
+        "Término real"@pt-br ,
+        "Fin real"@es ;
+    facade:fieldDatatype xsd:date ;
+    facade:fieldOrder 9 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:actualFinish .
+
+:CompletionPercentField
+    rdf:type facade:FacadeField ;
+    schema:identifier "completion_percent" ;
+    schema:name "Completion percentage"@en ,
+        "Percentual de conclusão"@pt-br ,
+        "Porcentaje de finalización"@es ;
+    facade:fieldDatatype xsd:integer ;
+    facade:fieldOrder 10 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:completionPercent .

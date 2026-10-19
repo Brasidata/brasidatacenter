@@ -369,3 +369,50 @@
     :isRequired true ;
     :isMultivalued false ;
     :mapsToResource dcterms:title .
+
+:TreeViewChild rdf:type owl:Class ;
+    rdfs:label "Tree-view child"@en ,
+        "Filho da visualização em árvore"@pt-br ,
+        "Hijo de la vista de árbol"@es ;
+    skos:definition
+        "A tree-view relationship that specifies a child facade and the RDF property path connecting the parent entity to its children."@en ,
+        "Relação de uma visualização em árvore que especifica a fachada dos filhos e o caminho RDF que conecta a entidade pai aos seus filhos."@pt-br ,
+        "Relación de una vista de árbol que especifica la fachada de los hijos y la ruta RDF que conecta la entidad padre con sus hijos."@es .
+
+:hasTreeViewChild rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range :TreeViewChild ;
+    rdfs:label "Has tree-view child"@en ,
+        "Tem filho na visualização em árvore"@pt-br ,
+        "Tiene hijo en la vista de árbol"@es ;
+    skos:definition
+        "Specifies a child relationship to display under an entity in a tree view."@en ,
+        "Especifica uma relação de filhos para exibição abaixo de uma entidade em uma visualização em árvore."@pt-br ,
+        "Especifica una relación de hijos para mostrar debajo de una entidad en una vista de árbol."@es .
+
+:childFacade rdf:type owl:ObjectProperty ;
+    rdfs:domain :TreeViewChild ;
+    rdfs:range :DataEntityFacade ;
+    rdfs:label "Child facade"@en ,
+        "Fachada dos filhos"@pt-br ,
+        "Fachada de los hijos"@es ;
+    skos:definition
+        "The facade of the child entities displayed by this tree-view relationship."@en ,
+        "A fachada das entidades filhas exibidas por esta relação da visualização em árvore."@pt-br ,
+        "La fachada de las entidades hijas mostradas por esta relación de la vista de árbol."@es .
+
+:childPath rdf:type owl:ObjectProperty ;
+    rdfs:domain :TreeViewChild ;
+    rdfs:label "Child path"@en ,
+        "Caminho para os filhos"@pt-br ,
+        "Ruta a los hijos"@es ;
+    skos:definition
+        "The SHACL property path evaluated from the parent entity to retrieve its children."@en ,
+        "O caminho de propriedades SHACL avaliado a partir da entidade pai para recuperar seus filhos."@pt-br ,
+        "La ruta de propiedades SHACL evaluada desde la entidad padre para recuperar sus hijos."@es .
+
+:TreeViewChildShape rdf:type sh:NodeShape ;
+    sh:targetClass :TreeViewChild ;
+    sh:property
+        [ sh:path :childFacade ; sh:minCount 1 ; sh:maxCount 1 ; sh:class :DataEntityFacade ] ,
+        [ sh:path :childPath ; sh:minCount 1 ; sh:maxCount 1 ; sh:nodeKind sh:BlankNodeOrIRI ] .
