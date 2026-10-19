@@ -1,0 +1,170 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/catalog.ttl#> .
+@prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl#> .
+@prefix aeco_kind: <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl#> .
+@prefix aeco_material: <http://datacenter.app.br/ontology/domain/aeco/taxonomy/material.ttl#> .
+@prefix aeco_geom_repr: <http://datacenter.app.br/ontology/domain/aeco/representation/geometry.ttl#> .
+@prefix aeco_ifc_repr: <http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl#> .
+
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix omg: <https://w3id.org/omg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+# Catalog ontology declaration
+# ---------------------------------------------------------------
+
+<http://datacenter.app.br/ontology/domain/aeco/catalog.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Ontology Catalog"@en ,
+        "Catálogo de Ontologias do AECO"@pt-br ;
+    rdfs:comment "Central registry of every internal and external ontology used across the AECO domain."@en ,
+        "Registro central de todas as ontologias internas e externas utilizadas no domínio AECO."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/material.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/representation/geometry.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/representation/encoding.ttl> .
+
+
+# Internal ontologies — AECO domain
+# ---------------------------------------------------------------
+
+<http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Core Schema"@en ,
+        "Esquema Central do AECO"@pt-br ;
+    rdfs:comment "Core TBox: annotation properties, datatype properties (xLength/yLength/zLength), object properties (isVisualRepresentationOf, bindsIfcElementFor, hasIfcElementBinding, hasGeometry), taxonomy roots (Kind, VisualRepresentation, IfcElementBinding), geometry primitive classes and file encodings (FileEncoding, fileExtension, mediaType)."@en ,
+        "TBox central: propriedades de anotação, propriedades de datatype (xLength/yLength/zLength), propriedades de objeto (isVisualRepresentationOf, bindsIfcElementFor, hasIfcElementBinding, hasGeometry), raízes da taxonomia (Kind, VisualRepresentation, IfcElementBinding), classes de primitivas geométricas e codificações de arquivo (FileEncoding, fileExtension, mediaType)."@pt-br .
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Kind Taxonomy"@en ,
+        "Taxonomia de Tipos do AECO"@pt-br ;
+    rdfs:comment "Taxonomy TBox: every Kind subclass (Parede, Viga, Coluna, Telha, Janela, Porta etc.) with multilingual labels and definitions via SKOS/DCTERMS annotation properties."@en ,
+        "TBox de taxonomia: toda a hierarquia de subclasses de Kind (Parede, Viga, Coluna, Telha, Janela, Porta etc.) com rótulos multilíngues e definições via propriedades de anotação SKOS/DCTERMS."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> .
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/material.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Material Taxonomy"@en ,
+        "Taxonomia de Materiais do AECO"@pt-br ;
+    rdfs:comment "Material taxonomy: classification and hierarchical relationships between building materials (Concreto, Madeira, Aço, Vidro etc.)."@en ,
+        "Taxonomia de materiais: classificação e relações hierárquicas entre materiais de construção (Concreto, Madeira, Aço, Vidro etc.)."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> .
+
+<http://datacenter.app.br/ontology/domain/aeco/representation/geometry.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Geometry Representations"@en ,
+        "Representações Geométricas do AECO"@pt-br ;
+    rdfs:comment "Visual representation layer (*Visual classes): subClassOf VisualRepresentation / crm:E36_Visual_Item, with omg:hasGeometry restrictions to primitive geometry (SolidBox3D, HollowCylindrical3D etc.) and default xLength/yLength/zLength datatype values."@en ,
+        "Camada de representação visual (classes *Visual): subClassOf VisualRepresentation / crm:E36_Visual_Item, com restrições omg:hasGeometry para primitivas geométricas (SolidBox3D, HollowCylindrical3D etc.) e valores padrão de datatype xLength/yLength/zLength."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl> .
+
+<http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO IFC4 Element Bindings"@en ,
+        "Vinculações IFC4 do AECO"@pt-br ;
+    rdfs:comment "IFC semantic binding layer (*IfcBinding classes): subClassOf IfcElementBinding / dul:Description, with ifc4owl:IfcXxx specialization, predefinedType restrictions, hasMaterialAssociations to IfcRelAssociatesMaterial/IfcMaterial and bindsIfcElementFor restrictions to Kind individuals."@en ,
+        "Camada de vinculação semântica IFC (classes *IfcBinding): subClassOf IfcElementBinding / dul:Description, com especialização ifc4owl:IfcXxx, restrições de predefinedType, hasMaterialAssociations para IfcRelAssociatesMaterial/IfcMaterial e restrições bindsIfcElementFor para indivíduos de Kind."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/material.ttl> .
+
+<http://datacenter.app.br/ontology/domain/aeco/representation/encoding.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO File Encodings"@en ,
+        "Codificações de Arquivo do AECO"@pt-br ;
+    rdfs:comment "File encoding layer: aeco:FileEncoding individuals (IFC STEP physical file, DXF) with the aeco:fileExtension that identifies each one and the aeco:mediaType recorded for its files."@en ,
+        "Camada de codificação de arquivos: indivíduos aeco:FileEncoding (arquivo físico STEP do IFC, DXF) com a aeco:fileExtension que identifica cada um e o aeco:mediaType registrado para seus arquivos."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> .
+
+
+# External ontologies — standard vocabularies
+# ---------------------------------------------------------------
+
+<http://www.cidoc-crm.org/cidoc-crm/>
+    rdf:type owl:Ontology ;
+    rdfs:label "CIDOC Conceptual Reference Model (CRM)"@en ,
+        "Modelo de Referência Conceitual CIDOC (CRM)"@pt-br ;
+    rdfs:comment "ISO 21127 standard ontology for cultural heritage and museum documentation. Used via crm:E36_Visual_Item and crm:P138_represents / crm:P138i_has_representation for the visual representation layer."@en ,
+        "Ontologia padrão ISO 21127 para documentação de patrimônio cultural e museus. Utilizada via crm:E36_Visual_Item e crm:P138_represents / crm:P138i_has_representation para a camada de representação visual."@pt-br .
+
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl>
+    rdf:type owl:Ontology ;
+    rdfs:label "DOLCE UltraLite (DUL)"@en ,
+        "DOLCE UltraLite (DUL)"@pt-br ;
+    rdfs:comment "Lightweight foundational ontology (upper-level) from the Ontology Design Patterns (ODP) collection. Used via dul:Description as the superclass of aeco:IfcElementBinding to describe non-visual semantic/engineering information."@en ,
+        "Ontologia fundacional (alto nível) leve da coleção Ontology Design Patterns (ODP). Utilizada via dul:Description como superclasse de aeco:IfcElementBinding para descrever informação semântica/engenharia não visual."@pt-br .
+
+<https://w3id.org/omg>
+    rdf:type owl:Ontology ;
+    rdfs:label "OMG Architecture Standard Metamodel (ASM)"@en ,
+        "Metamodelo Padrão de Arquitetura OMG (ASM)"@pt-br ;
+    rdfs:comment "Object Management Group (OMG) Architecture Standard Metamodel namespace. Used via omg:hasGeometry object property to link a VisualRepresentation to its geometry primitive (SolidBox3D, HollowCylindrical3D etc.)."@en ,
+        "Namespace do Metamodelo Padrão de Arquitetura (ASM) do Object Management Group (OMG). Utilizada via propriedade de objeto omg:hasGeometry para ligar uma VisualRepresentation à sua primitiva geométrica (SolidBox3D, HollowCylindrical3D etc.)."@pt-br .
+
+<https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL>
+    rdf:type owl:Ontology ;
+    rdfs:label "Industry Foundation Classes 4 (IFC4) OWL"@en ,
+        "Industry Foundation Classes 4 (IFC4) OWL"@pt-br ;
+    rdfs:comment "Official BuildingSMART IFC4 FINAL OWL serialization. Used for AECO ↔ IFC4 semantic bindings: ifc4owl:IfcBeam, ifc4owl:IfcColumn, ifc4owl:IfcWall, predefinedType_IfcXxx restrictions, ifc4owl:IfcRelAssociatesMaterial and ifc4owl:IfcMaterial for material associations."@en ,
+        "Serialização OWL oficial do IFC4 FINAL da BuildingSMART. Utilizada para vinculações semânticas AECO ↔ IFC4: ifc4owl:IfcBeam, ifc4owl:IfcColumn, ifc4owl:IfcWall, restrições predefinedType_IfcXxx, ifc4owl:IfcRelAssociatesMaterial e ifc4owl:IfcMaterial para associações de material."@pt-br .
+
+<http://www.w3.org/2002/07/owl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Web Ontology Language (OWL 2)"@en ,
+        "Web Ontology Language (OWL 2)"@pt-br ;
+    rdfs:comment "W3C OWL 2 — the ontology language used to declare classes (owl:Class), restrictions (owl:Restriction), properties (owl:ObjectProperty, owl:DatatypeProperty, owl:AnnotationProperty), and logical axioms (owl:subClassOf, owl:someValuesFrom, owl:hasValue, owl:hasValueFrom)."@en ,
+        "OWL 2 do W3C — a linguagem de ontologia utilizada para declarar classes (owl:Class), restrições (owl:Restriction), propriedades (owl:ObjectProperty, owl:DatatypeProperty, owl:AnnotationProperty) e axiomas lógicos (owl:subClassOf, owl:someValuesFrom, owl:hasValue, owl:hasValueFrom)."@pt-br .
+
+<http://www.w3.org/1999/02/22-rdf-syntax-ns>
+    rdf:type owl:Ontology ;
+    rdfs:label "Resource Description Framework (RDF)"@en ,
+        "Resource Description Framework (RDF)"@pt-br ;
+    rdfs:comment "W3C RDF — the base data model. Used via rdf:type to declare instance membership and the structural skeleton of every triple in the ontology graph."@en ,
+        "RDF do W3C — o modelo de dados base. Utilizado via rdf:type para declarar a pertinência de instâncias e o esqueleto estrutural de cada tripla no grafo de ontologia."@pt-br .
+
+<http://www.w3.org/2000/01/rdf-schema>
+    rdf:type owl:Ontology ;
+    rdfs:label "RDF Schema (RDFS)"@en ,
+        "RDF Schema (RDFS)"@pt-br ;
+    rdfs:comment "W3C RDF Schema — light-weight vocabulary for class hierarchies and property typing. Used via rdfs:subClassOf, rdfs:subPropertyOf, rdfs:label, rdfs:comment, rdfs:range, rdfs:domain."@en ,
+        "RDF Schema do W3C — vocabulário leve para hierarquias de classes e tipagem de propriedades. Utilizado via rdfs:subClassOf, rdfs:subPropertyOf, rdfs:label, rdfs:comment, rdfs:range, rdfs:domain."@pt-br .
+
+<http://www.w3.org/2001/XMLSchema>
+    rdf:type owl:Ontology ;
+    rdfs:label "XML Schema Definition (XSD)"@en ,
+        "Definição de Esquema XML (XSD)"@pt-br ;
+    rdfs:comment "W3C XML Schema — datatype vocabulary. Used via xsd:double for default/suggested primitive extents (xLength/yLength/zLength) and as the range for every datatype property."@en ,
+        "XML Schema do W3C — vocabulário de datatypes. Utilizado via xsd:double para extensões padrão/sugeridas de primitivas (xLength/yLength/zLength) e como domínio de cada propriedade de datatype."@pt-br .
+
+<http://www.w3.org/2004/02/skos/core>
+    rdf:type owl:Ontology ;
+    rdfs:label "Simple Knowledge Organization System (SKOS)"@en ,
+        "Sistema Simples de Organização de Conhecimento (SKOS)"@pt-br ;
+    rdfs:comment "W3C SKOS — vocabulary for thesauri, taxonomies and classification schemes. Used via skos:prefLabel, skos:altLabel and skos:definition to attach multilingual documentation to each Kind."@en ,
+        "SKOS do W3C — vocabulário para tesauros, taxonomias e esquemas de classificação. Utilizado via skos:prefLabel, skos:altLabel e skos:definition para anexar documentação multilíngue a cada Kind."@pt-br .
+
+<http://purl.org/dc/terms>
+    rdf:type owl:Ontology ;
+    rdfs:label "Dublin Core Terms (DCTERMS)"@en ,
+        "Termos Dublin Core (DCTERMS)"@pt-br ;
+    rdfs:comment "DCMI Metadata Terms (DCTERMS) — standard metadata vocabulary. Used via dcterms:identifier to attach a canonical local identifier to each Kind instance."@en ,
+        "DCMI Metadata Terms (DCTERMS) — vocabulário padrão de metadados. Utilizado via dcterms:identifier para anexar um identificador local canônico a cada instância de Kind."@pt-br .
+
+<http://www.w3.org/XML/1998/namespace>
+    rdf:type owl:Ontology ;
+    rdfs:label "XML Namespace (xml:)"@en ,
+        "Namespace XML (xml:)"@pt-br ;
+    rdfs:comment "W3C XML namespace — reserved prefix for XML built-in constructs (xml:base, xml:lang). Used implicitly for language-tagged literals (@pt-br, @en)."@en ,
+        "Namespace XML do W3C — prefixo reservado para construções nativas do XML (xml:base, xml:lang). Utilizado implicitamente para literais com tag de idioma (@pt-br, @en)."@pt-br .

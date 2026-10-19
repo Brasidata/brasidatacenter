@@ -7,6 +7,11 @@ from typing import Iterable, Iterator
 
 _DEFAULT_SUFFIXES = (".ttl", ".owl", ".rdf", ".jsonld", ".json")
 
+#: Where the ontologies of this package are published (the GitHub Pages
+#: site of the production repository): the IRI of an ontology is this base
+#: followed by the path of its file under ``ontology/``.
+ONTOLOGY_BASE_IRI = "http://datacenter.app.br/ontology/"
+
 
 def ontology_root() -> Traversable:
     """Return the root of the ontology tree.
@@ -31,6 +36,26 @@ def ontology_path(*parts: str) -> Traversable:
     resource = ontology_root()
     for part in parts:
         resource = resource.joinpath(part)
+    return resource
+
+
+def ontology_path_for_iri(iri: str) -> Traversable:
+    """Return the file of the ontology published at ``iri``.
+
+    The IRI of an ontology, or of any term in it (``...#Term``), names its
+    file: ``ONTOLOGY_BASE_IRI`` followed by the file's path under
+    ``ontology/``.
+
+    Raises:
+        ValueError: ``iri`` is not under ``ONTOLOGY_BASE_IRI``.
+        FileNotFoundError: this package has no file for ``iri``.
+    """
+    if not iri.startswith(ONTOLOGY_BASE_IRI):
+        raise ValueError(f"{iri} is not a BrasidataCenter ontology IRI (they start with {ONTOLOGY_BASE_IRI}).")
+    relative = iri[len(ONTOLOGY_BASE_IRI):].split("#", 1)[0]
+    resource = ontology_path(*relative.split("/"))
+    if not resource.is_file():
+        raise FileNotFoundError(f"This brasidatacenter package has no ontology file for {iri} (ontology/{relative}).")
     return resource
 
 

@@ -1,0 +1,317 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ontouml: <http://w3id.org/ontouml#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+
+# Entity modeling of OntoBDC, restored from the OntoBDC core ontology of the
+# lost-release repository (brasidatacenter/brasidatacenter/tool/ontobdc/tbox/ns.ttl)
+# and published in the namespace of this file.
+#
+# How it is used:
+#   - An entity TYPE is a class. It is declared as a subclass of :DataEntity
+#     (for example the dimension types) or of :SurfaceableEntity (for example
+#     WorkStream and IfcWorkSchedule).
+#   - An ELEMENT is an individual of that class. In the metadata file of the
+#     dataset (dataset.ttl) it is also asserted as `a :DataEntity`, and the
+#     dataset points to it with :hasDataEntity. Its dcterms:identifier is its
+#     GlobalId; the subject IRI is not.
+
+<http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:AnnotationProperty .
+
+###  http://w3id.org/ontouml#name
+ontouml:name rdf:type owl:AnnotationProperty .
+
+#################################################################
+#    Object properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#belongsToDataContainer
+:belongsToDataContainer rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf dcterms:isPartOf ;
+                        rdfs:domain :EntityDataset ;
+                        rdfs:range :DataContainer ;
+                        ontouml:name "Belongs to data container"@en ;
+                        rdfs:comment "The entity dataset belongs to the specified data container."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasEntityDataset
+:hasEntityDataset rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf dcterms:hasPart ;
+                  rdfs:domain :DataContainer ;
+                  rdfs:range :EntityDataset ;
+                  ontouml:name "Has entity dataset"@en ;
+                  rdfs:comment "The data container has the specified entity dataset."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasDataEntity
+:hasDataEntity rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf prov:hadMember ;
+               rdfs:domain :EntityDataset ;
+               rdfs:range :DataEntity ;
+               ontouml:name "Has data entity"@en ;
+               rdfs:comment "The dataset contains the specific data entity."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasDocumentType
+:hasDocumentType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf schema:additionalType ;
+                 rdfs:domain :DataEntity ;
+                 rdfs:range :DocumentType ;
+                 ontouml:name "Has document type"@en ;
+                 rdfs:comment "Relates a data entity to its document type classification."@en .
+
+###  http://purl.org/dc/terms/hasPart
+dcterms:hasPart rdf:type owl:ObjectProperty .
+
+###  http://purl.org/dc/terms/isPartOf
+dcterms:isPartOf rdf:type owl:ObjectProperty .
+
+###  http://schema.org/additionalType
+schema:additionalType rdf:type owl:ObjectProperty .
+
+###  http://www.w3.org/ns/prov#hadMember
+prov:hadMember rdf:type owl:ObjectProperty .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#documentTypeVectorValue
+:documentTypeVectorValue rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf schema:value ;
+                         rdfs:domain :DocumentType ;
+                         rdfs:range xsd:string ;
+                         ontouml:name "Document type vector value"@en ;
+                         rdfs:comment "Serialized vector value used to represent a document type profile."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#entityAlias
+:entityAlias rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf skos:altLabel ,
+                                schema:alternateName ;
+             rdfs:domain :DataEntity ;
+             rdfs:range xsd:string ;
+             ontouml:name "Entity alias"@en ;
+             rdfs:comment "A short name or common alias for the data entity."@en .
+
+###  http://schema.org/value
+schema:value rdf:type owl:DatatypeProperty .
+
+###  http://schema.org/alternateName
+schema:alternateName rdf:type owl:DatatypeProperty .
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataEntity
+:DataEntity rdf:type owl:Class ;
+            rdfs:subClassOf prov:Entity ;
+            ontouml:name "Data entity"@en ;
+            rdfs:comment "An individual data entity or resource."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#EntityDataset
+:EntityDataset rdf:type owl:Class ;
+               rdfs:subClassOf ct:Folder ,
+                               dcat:Dataset ;
+               ontouml:name "Entity dataset"@en ;
+               rdfs:comment "A dataset representing a collection of related data entities."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataContainer
+:DataContainer rdf:type owl:Class ,
+                        :SurfaceableEntity ;
+               rdfs:subClassOf ct:ContainerDescription ,
+                               dcat:Catalog ;
+               ontouml:name "Data container"@en ;
+               rdfs:comment "A catalog or container that groups and organizes entity datasets."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#SurfaceableEntity
+:SurfaceableEntity rdf:type owl:Class ;
+                   ontouml:name "Surfaceable entity"@en ;
+                   rdfs:comment "Marks an entity class whose instances are eligible for a direct representation (a Tile) on an OntoBDC presentation surface."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DocumentType
+:DocumentType rdf:type owl:Class ;
+              rdfs:subClassOf schema:DefinedTerm ;
+              ontouml:name "Document type"@en ;
+              rdfs:comment "A controlled document type used to classify data entities."@en .
+
+###  http://schema.org/DefinedTerm
+schema:DefinedTerm rdf:type owl:Class .
+
+###  http://standards.iso.org/iso/21597/-1/ed-1/en/Container#ContainerDescription
+ct:ContainerDescription rdf:type owl:Class .
+
+###  http://standards.iso.org/iso/21597/-1/ed-1/en/Container#Folder
+ct:Folder rdf:type owl:Class .
+
+###  http://www.w3.org/ns/dcat#Catalog
+dcat:Catalog rdf:type owl:Class .
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdf:type owl:Class .
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class .
+
+#################################################################
+#    Files
+#
+#    Brought from the file ontology of the lost-release repository
+#    (https://w3id.org/ontobdc/ontology/file), keeping its namespace.
+#    A display profile says which files appear in one category of a
+#    user-facing view: by semantic type, MIME type and filename extension.
+#################################################################
+
+:FileDisplayProfile
+    a owl:Class ;
+    rdfs:label "File display profile"@en ;
+    rdfs:comment
+        "Allowlist profile assigning supported semantic types, MIME types, and filename extensions to one display category."@en .
+
+:PhotographicRecord
+    a owl:Class ;
+    rdfs:label "Photographic record"@en ;
+    rdfs:comment
+        "A photograph used as visual evidence of a project condition, activity, event, or result."@en .
+
+:displayCategory
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "display category"@en .
+
+:requiredSemanticType
+    a owl:ObjectProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "required semantic type"@en ;
+    rdfs:comment
+        "Semantic type that a catalogued resource must declare to match this display profile."@en .
+
+:acceptedMimeType
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "accepted MIME type"@en .
+
+:acceptedExtension
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "accepted filename extension"@en ;
+    rdfs:comment
+        "Lowercase filename extension including the leading full stop."@en .
+
+:categoryLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileDisplayProfile ;
+    rdfs:range xsd:string ;
+    rdfs:label "category label"@en ;
+    rdfs:comment
+        "Human readable label used on UI tiles for the display category. When absent consumers fall back to the raw displayCategory code."@en .
+
+:DrawingFile
+    a :FileDisplayProfile ;
+    rdfs:label "Drawing files"@en ;
+    :displayCategory "drawings" ;
+    :categoryLabel "Pranchas"@pt ;
+    :acceptedMimeType
+        "application/acad" ,
+        "application/dwg" ,
+        "application/dxf" ,
+        "application/x-acad" ,
+        "application/x-autocad" ,
+        "application/x-dwg" ,
+        "application/x-dxf" ,
+        "image/vnd.dwg" ,
+        "image/vnd.dxf" ;
+    :acceptedExtension
+        ".dwg" ,
+        ".dxf" .
+
+:DocumentFile
+    a :FileDisplayProfile ;
+    rdfs:label "Document files"@en ;
+    :displayCategory "documents" ;
+    :categoryLabel "Documentos"@pt ;
+    :acceptedMimeType
+        "application/json" ,
+        "application/msword" ,
+        "application/pdf" ,
+        "application/rtf" ,
+        "application/vnd.ms-excel" ,
+        "application/vnd.ms-powerpoint" ,
+        "application/vnd.oasis.opendocument.presentation" ,
+        "application/vnd.oasis.opendocument.spreadsheet" ,
+        "application/vnd.oasis.opendocument.text" ,
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation" ,
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ,
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ,
+        "application/xml" ,
+        "text/csv" ,
+        "text/markdown" ,
+        "text/plain" ,
+        "text/turtle" ,
+        "text/xml" ;
+    :acceptedExtension
+        ".csv" ,
+        ".doc" ,
+        ".docx" ,
+        ".json" ,
+        ".md" ,
+        ".odp" ,
+        ".ods" ,
+        ".odt" ,
+        ".pdf" ,
+        ".ppt" ,
+        ".pptx" ,
+        ".rtf" ,
+        ".ttl" ,
+        ".txt" ,
+        ".xls" ,
+        ".xlsx" ,
+        ".xml" .
+
+:PhotographicFile
+    a :FileDisplayProfile ;
+    rdfs:label "Photographic records"@en ;
+    :displayCategory "photos" ;
+    :categoryLabel "Fotos"@pt ;
+    :requiredSemanticType :PhotographicRecord ;
+    :acceptedMimeType
+        "image/heic" ,
+        "image/jpeg" ,
+        "image/png" ;
+    :acceptedExtension
+        ".heic" ,
+        ".jpeg" ,
+        ".jpg" ,
+        ".png" .
+
+:MessageFile
+    a :FileDisplayProfile ;
+    rdfs:label "Message files"@en ;
+    :displayCategory "messages" ;
+    :categoryLabel "Comunicação"@pt ;
+    :acceptedMimeType
+        "application/vnd.ms-outlook" ,
+        "message/rfc822" ;
+    :acceptedExtension
+        ".eml" ,
+        ".msg" .

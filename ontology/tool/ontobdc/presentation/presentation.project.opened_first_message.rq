@@ -1,0 +1,56 @@
+# First messages of a project-opened conversation.
+#
+# Given the identifier of an event, the device (:Desktop or :Mobile), the
+# runtime environment (:Browser or :NativeApp), a language tag (e.g. "pt-BR",
+# "en", "es") and whether the project has a description (true/false), follows
+# the path
+#   event -> rule it triggers -> associated situation -> conversation -> messages
+# and returns every message of the conversation ordered by co:index, with its
+# text template and the comma-separated names of the placeholders it declares.
+# A language without subtag (e.g. "pt") also matches its regional variants
+# (e.g. "pt-BR").
+#
+# Parameters are the single row of the VALUES block below.
+
+PREFIX :        <http://datacenter.app.br/ontology/tool/ontobdc/presentation/event.ttl#>
+PREFIX feat:    <http://datacenter.app.br/ontology/tool/ontobdc/presentation/ns.ttl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ewe:     <http://gsi.upm.es/ontologies/ewe/ns#>
+PREFIX dul:     <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX co:      <http://purl.org/co/>
+PREFIX convo:   <https://ontology.inferal.com/modules/conversation/>
+
+SELECT ?index ?text (GROUP_CONCAT(?paramName; separator=",") AS ?parameters)
+WHERE {
+  VALUES (?identifier ?device ?environment ?language ?hasDescription) {
+    ("presentation.project.opened" :Desktop :Browser "pt-BR" true)
+  }
+
+  # Event -> rule it triggers -> associated situation
+  ?event      dcterms:identifier ?identifier .
+  ?rule       ewe:triggeredBy    ?event ;
+              dul:associatedWith ?situation .
+
+  # The situation is classified by the device, the environment and the
+  # description-state concept that matches ?hasDescription.
+  ?situation  a dul:Situation ;
+              dul:isClassifiedBy ?device , ?environment , ?descriptionState ;
+              dul:isSettingFor   ?conversation .
+  ?descriptionState a dul:Concept .
+  FILTER((?hasDescription && ?descriptionState = :WithDescription) ||
+         (!?hasDescription && ?descriptionState = :WithoutDescription))
+
+  # Conversation -> messages ordered by index -> text template
+  ?message convo:contributionOf ?conversation ;
+           co:index ?index ;
+           convo:text ?text .
+
+  # Optional declared placeholders for this message
+  OPTIONAL {
+    ?message dul:hasParameter ?param .
+    ?param   feat:parameterName ?paramName .
+  }
+  FILTER(LANGMATCHES(LANG(?text), ?language))
+}
+GROUP BY ?index ?text
+ORDER BY ?index

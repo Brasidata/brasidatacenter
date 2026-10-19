@@ -1,0 +1,261 @@
+
+@prefix : <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix ilap: <http://data.posccaesar.org/ilap/> .
+@prefix pplan: <http://purl.org/net/p-plan#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Productivity Types"@en ,
+        "Tipos de Produtividade"@pt-br .
+
+#################################################################
+# Classes
+#################################################################
+
+:Task rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , dul:Task ;
+    dcterms:identifier "task" ;
+    rdfs:label "Task"@en ,
+        "Tarefa"@pt-br ;
+    skos:definition
+        "A defined unit of work that can be planned, executed and tracked."@en ,
+        "Unidade de trabalho definida que pode ser planejada, executada e acompanhada."@pt-br .
+
+:Milestone rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , time:Instant ;
+    dcterms:identifier "milestone" ;
+    rdfs:label "Milestone"@en ,
+        "Marco"@pt-br ;
+    skos:definition
+        "A significant checkpoint representing an event or achievement in a work process."@en ,
+        "Ponto de controle significativo que representa um evento ou uma realização em um processo de trabalho."@pt-br .
+
+:Goal rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , dul:Goal ;
+    dcterms:identifier "goal" ;
+    rdfs:label "Goal"@en ,
+        "Objetivo"@pt-br ;
+    skos:definition
+        "A desired state or outcome to be achieved."@en ,
+        "Estado ou resultado desejado a ser alcançado."@pt-br .
+
+:ActivityConstraint rdf:type owl:Class ;
+    rdfs:subClassOf ilap:ActivityConstraint ;
+    dcterms:identifier "activity_constraint" ;
+    rdfs:label "Activity constraint"@en ,
+        "Restrição de atividade"@pt-br ;
+    skos:definition
+        "A dependency or scheduling constraint between activities."@en ,
+        "Restrição de dependência ou de sequenciamento entre atividades."@pt-br .
+
+:TaskConstraint rdf:type owl:Class ;
+    rdfs:subClassOf :ActivityConstraint , obdc:DataEntity ;
+    dcterms:identifier "task_constraint" ;
+    rdfs:label "Task constraint"@en ,
+        "Restrição de tarefa"@pt-br ;
+    skos:definition
+        "An activity constraint that defines a dependency between tasks."@en ,
+        "Restrição de atividade que define uma dependência entre tarefas."@pt-br .
+
+:FinishToFinishTaskConstraint rdf:type owl:Class ;
+    rdfs:subClassOf :TaskConstraint , ilap:FF ;
+    dcterms:identifier "finish_to_finish_task_constraint" ;
+    rdfs:label "Finish-to-finish task constraint"@en ,
+        "Restrição tarefa término-término"@pt-br ;
+    skos:definition
+        "A task dependency constraint in which the successor cannot finish before the predecessor finishes."@en ,
+        "Restrição entre tarefas na qual a sucessora não pode terminar antes do término da predecessora."@pt-br .
+
+:FinishToStartTaskConstraint rdf:type owl:Class ;
+    rdfs:subClassOf :TaskConstraint , ilap:FS ;
+    dcterms:identifier "finish_to_start_task_constraint" ;
+    rdfs:label "Finish-to-start task constraint"@en ,
+        "Restrição tarefa término-início"@pt-br ;
+    skos:definition
+        "A task dependency constraint in which the successor cannot start before the predecessor finishes."@en ,
+        "Restrição entre tarefas na qual a sucessora não pode iniciar antes do término da predecessora."@pt-br .
+
+:StartToFinishTaskConstraint rdf:type owl:Class ;
+    rdfs:subClassOf :TaskConstraint , ilap:SF ;
+    dcterms:identifier "start_to_finish_task_constraint" ;
+    rdfs:label "Start-to-finish task constraint"@en ,
+        "Restrição tarefa início-término"@pt-br ;
+    skos:definition
+        "A task dependency constraint in which the successor cannot finish before the predecessor starts."@en ,
+        "Restrição entre tarefas na qual a sucessora não pode terminar antes do início da predecessora."@pt-br .
+
+:StartToStartTaskConstraint rdf:type owl:Class ;
+    rdfs:subClassOf :TaskConstraint , ilap:SS ;
+    dcterms:identifier "start_to_start_task_constraint" ;
+    rdfs:label "Start-to-start task constraint"@en ,
+        "Restrição tarefa início-início"@pt-br ;
+    skos:definition
+        "A task dependency constraint in which the successor cannot start before the predecessor starts."@en ,
+        "Restrição entre tarefas na qual a sucessora não pode iniciar antes do início da predecessora."@pt-br .
+
+#################################################################
+# Data Properties
+#################################################################
+
+:plannedStart rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:date ;
+    rdfs:label "Planned start"@en ,
+        "Início planejado"@pt-br ,
+        "Inicio planificado"@es ;
+    skos:definition
+        "Date on which the task is planned to start."@en ,
+        "Data prevista para o início da tarefa."@pt-br .
+
+:plannedFinish rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:date ;
+    rdfs:label "Planned finish"@en ,
+        "Término planejado"@pt-br ,
+        "Fin planificado"@es ;
+    skos:definition
+        "Date on which the task is planned to finish."@en ,
+        "Data prevista para o término da tarefa."@pt-br .
+
+:actualStart rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:date ;
+    rdfs:label "Actual start"@en ,
+        "Início real"@pt-br ,
+        "Inicio real"@es ;
+    skos:definition
+        "Date on which the task actually started."@en ,
+        "Data em que a tarefa efetivamente começou."@pt-br .
+
+:actualFinish rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:date ;
+    rdfs:label "Actual finish"@en ,
+        "Término real"@pt-br ,
+        "Fin real"@es ;
+    skos:definition
+        "Date on which the task actually finished."@en ,
+        "Data em que a tarefa efetivamente terminou."@pt-br .
+
+:completionPercent rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Task ;
+    rdfs:range xsd:integer ;
+    rdfs:label "Completion percentage"@en ,
+        "Percentual de conclusão"@pt-br ,
+        "Porcentaje de finalización"@es ;
+    skos:definition
+        "Task completion percentage, from 0 to 100."@en ,
+        "Percentual de conclusão da tarefa, de 0 a 100."@pt-br .
+
+:Step rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , pplan:Step ;
+    dcterms:identifier "step" ;
+    rdfs:label "Step"@en ,
+        "Etapa"@pt-br ;
+    skos:definition
+        "A step that makes up a plan."@en ,
+        "Etapa que compõe um plano."@pt-br .
+
+:Plan rdf:type owl:Class ;
+    rdfs:subClassOf
+        obdc:DataEntity ,
+        pplan:Plan ;
+    dcterms:identifier "plan" ;
+    rdfs:label "Plan"@en ,
+        "Plano"@pt-br .
+
+#################################################################
+# Object Properties
+#################################################################
+
+:hasPlan rdf:type owl:ObjectProperty ;
+    rdfs:domain :Goal ;
+    rdfs:range :Plan ;
+    rdfs:label "Has plan"@en ,
+        "Tem plano"@pt-br ;
+    skos:definition
+        "Links a goal to a plan intended to achieve it. Multiple plans can address the same goal."@en ,
+        "Relaciona um objetivo a um plano destinado a alcançá-lo. Vários planos podem atender ao mesmo objetivo."@pt-br .
+
+:hasStep rdf:type owl:ObjectProperty ;
+    owl:inverseOf pplan:isStepOfPlan ;
+    rdfs:domain :Plan ;
+    rdfs:range :Step ;
+    rdfs:label "Has step"@en ,
+        "Tem etapa"@pt-br ,
+        "Tiene etapa"@es ;
+    skos:definition
+        "Links a plan to a step belonging to it, as the inverse of pplan:isStepOfPlan."@en ,
+        "Relaciona um plano a uma etapa que lhe pertence, como inversa de pplan:isStepOfPlan."@pt-br .
+
+:dependsOn rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf ilap:hasConstraint ;
+    rdfs:domain :Task ;
+    rdfs:range :TaskConstraint ;
+    rdfs:label "Depends on"@en ,
+        "Depende de"@pt-br ;
+    skos:definition
+        "Links a dependent task to an activity constraint defining its dependency on another task."@en ,
+        "Relaciona uma tarefa dependente a uma restrição de atividade que define sua dependência de outra tarefa."@pt-br .
+
+:predecessorTask rdf:type owl:ObjectProperty ;
+    rdfs:domain :TaskConstraint ;
+    rdfs:range :Task ;
+    rdfs:label "Predecessor task"@en ,
+        "Tarefa predecessora"@pt-br ;
+    skos:definition
+        "Identifies the predecessor task referenced by a task dependency constraint."@en ,
+        "Identifica a tarefa predecessora referenciada por uma restrição de dependência entre tarefas."@pt-br .
+
+:dependsOnFinishToFinish rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf :dependsOn ;
+    rdfs:range :FinishToFinishTaskConstraint ;
+    rdfs:comment "Based on RFC 9253, Section 4 (RELTYPE=FINISHTOFINISH): https://www.rfc-editor.org/rfc/rfc9253.html#section-4. Links the successor task to a FinishToFinishTaskConstraint instance; the constraint refers to its predecessor via predecessorTask."@en ,
+        "Baseada na RFC 9253, seção 4 (RELTYPE=FINISHTOFINISH). Relaciona a tarefa sucessora a uma instância de FinishToFinishTaskConstraint; a restrição referencia a predecessora por predecessorTask."@pt-br ;
+    rdfs:label "Depends on (finish-to-finish)"@en ,
+        "Depende de (término-término)"@pt-br ;
+    skos:definition
+        "The dependent task cannot finish before the predecessor task finishes."@en ,
+        "A tarefa dependente não pode terminar antes do término da tarefa predecessora."@pt-br .
+
+:dependsOnFinishToStart rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf :dependsOn ;
+    rdfs:range :FinishToStartTaskConstraint ;
+    rdfs:comment "Based on RFC 9253, Section 4 (RELTYPE=FINISHTOSTART): https://www.rfc-editor.org/rfc/rfc9253.html#section-4. Links the successor task to a FinishToStartTaskConstraint instance; the constraint refers to its predecessor via predecessorTask."@en ,
+        "Baseada na RFC 9253, seção 4 (RELTYPE=FINISHTOSTART). Relaciona a tarefa sucessora a uma instância de FinishToStartTaskConstraint; a restrição referencia a predecessora por predecessorTask."@pt-br ;
+    rdfs:label "Depends on (finish-to-start)"@en ,
+        "Depende de (término-início)"@pt-br ;
+    skos:definition
+        "The dependent task cannot start before the predecessor task finishes."@en ,
+        "A tarefa dependente não pode iniciar antes do término da tarefa predecessora."@pt-br .
+
+:dependsOnStartToFinish rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf :dependsOn ;
+    rdfs:range :StartToFinishTaskConstraint ;
+    rdfs:comment "Based on RFC 9253, Section 4 (RELTYPE=STARTTOFINISH): https://www.rfc-editor.org/rfc/rfc9253.html#section-4. Links the successor task to a StartToFinishTaskConstraint instance; the constraint refers to its predecessor via predecessorTask."@en ,
+        "Baseada na RFC 9253, seção 4 (RELTYPE=STARTTOFINISH). Relaciona a tarefa sucessora a uma instância de StartToFinishTaskConstraint; a restrição referencia a predecessora por predecessorTask."@pt-br ;
+    rdfs:label "Depends on (start-to-finish)"@en ,
+        "Depende de (início-término)"@pt-br ;
+    skos:definition
+        "The dependent task cannot finish before the predecessor task starts."@en ,
+        "A tarefa dependente não pode terminar antes do início da tarefa predecessora."@pt-br .
+
+:dependsOnStartToStart rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf :dependsOn ;
+    rdfs:range :StartToStartTaskConstraint ;
+    rdfs:comment "Based on RFC 9253, Section 4 (RELTYPE=STARTTOSTART): https://www.rfc-editor.org/rfc/rfc9253.html#section-4. Links the successor task to a StartToStartTaskConstraint instance; the constraint refers to its predecessor via predecessorTask."@en ,
+        "Baseada na RFC 9253, seção 4 (RELTYPE=STARTTOSTART). Relaciona a tarefa sucessora a uma instância de StartToStartTaskConstraint; a restrição referencia a predecessora por predecessorTask."@pt-br ;
+    rdfs:label "Depends on (start-to-start)"@en ,
+        "Depende de (início-início)"@pt-br ;
+    skos:definition
+        "The dependent task cannot start before the predecessor task starts."@en ,
+        "A tarefa dependente não pode iniciar antes do início da tarefa predecessora."@pt-br .

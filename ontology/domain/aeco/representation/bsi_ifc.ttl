@@ -1,0 +1,4269 @@
+@prefix kind: <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl#> .
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl#> .
+@prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl#> .
+@prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO IFC4 Element Bindings"@en ,
+        "Vinculações IFC4 do AECO"@pt-br .
+
+# Ralo Sifonado (Floor Trap)
+# -----------------------------------------------------------------------------
+
+
+:AcrylicRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaDeAcrilico
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaDeAluminio — Telha de chapa de alumínio.
+# -----------------------------------------------------------------------------
+
+
+
+:AdjacentRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ComodoContiguo
+        ] .
+
+# Conduite — Tubo que protege e conduz condutores elétricos.
+# -----------------------------------------------------------------------------
+
+
+
+:AlcoveIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Alcova
+        ] .
+
+# Alicerce — Fundação ou base da edificação.
+# -----------------------------------------------------------------------------
+
+
+
+:AluminumRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaDeAluminio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaDeConcreto — Telha de concreto.
+# -----------------------------------------------------------------------------
+
+
+
+:AnchoredDiaphragmWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CortinaAtirantada
+        ] .
+
+# Cozinha — Cômodo destinado ao preparo de alimentos.
+# -----------------------------------------------------------------------------
+
+
+
+:AntechamberIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AnteSala
+        ] .
+
+# Aplique — Luminária fixada em parede.
+# -----------------------------------------------------------------------------
+
+
+
+:ArchitraveIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Arquitrave
+        ] .
+
+# AssoalhoDeMadeira — Piso formado por tábuas de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:AsphaltShingleIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Shingle
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# Soalho — Piso de tábuas de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:AtriumIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Atrio
+        ] .
+
+# Azulejo — Placa cerâmica vidrada usada no revestimento de paredes.
+# -----------------------------------------------------------------------------
+
+
+
+:AtticIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Sotao
+        ] .
+
+# StruturalGlazing — Sistema de fachada com vidros colados à estrutura sem caixilho aparente.
+# -----------------------------------------------------------------------------
+
+
+
+:BalconyIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Varanda
+        ] .
+
+# Verga — Elemento estrutural disposto sobre vãos de portas ou janelas para auxiliar na distribuição de cargas e tensões.
+# -----------------------------------------------------------------------------
+
+
+
+:BalconyWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:JanelaDeSacada
+        ] .
+
+# Kitchenette — Pequena unidade residencial com cozinha integrada.
+# -----------------------------------------------------------------------------
+
+
+
+:BarrettePileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Estacao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# Estacas — Tipo de fundação profunda utilizada para transmitir cargas a camadas resistentes do solo em maior profundidade.
+# -----------------------------------------------------------------------------
+
+
+
+:BasementIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Porao
+        ] .
+
+# PortaDeCorrer — Porta cuja folha desliza lateralmente.
+# -----------------------------------------------------------------------------
+
+
+
+:BathroomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Banheiro
+        ] .
+
+# Banzo — Barra longitudinal superior ou inferior de uma treliça.
+# -----------------------------------------------------------------------------
+
+
+
+:BathtubIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Banheira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:BATH
+        ] .
+
+# Banheiro — Cômodo destinado à higiene pessoal, com aparelhos sanitários.
+# -----------------------------------------------------------------------------
+
+
+
+:BattenIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Ripa
+        ] .
+
+# RodaMeio — Elemento de acabamento semelhante ao rodapé, situado aproximadamente à meia altura da parede.
+# -----------------------------------------------------------------------------
+
+
+
+:BayWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BayWindow
+        ] .
+
+# BlocoDeFundacao — Elemento de concreto que transmite às estacas as cargas dos pilares.
+# -----------------------------------------------------------------------------
+
+
+
+:BeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Viga
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:BEAM
+        ] .
+
+# VigaDeTravamento — Viga que liga elementos de fundação.
+# -----------------------------------------------------------------------------
+
+
+
+:BedIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cama
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
+            owl:hasValue ifc4owl:BED
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+        ] .
+
+
+# Cadeira de Escritório (Office Chair)
+# -----------------------------------------------------------------------------
+
+
+
+:BedroomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Dormitorio
+        ] .
+
+# DryWall — Parede executada com placas de gesso acartonado sobre estrutura metálica.
+# -----------------------------------------------------------------------------
+
+
+
+:BlindIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcShadingDevice ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Persiana
+        ] .
+
+# Pia — Cuba com torneira para lavagem.
+# -----------------------------------------------------------------------------
+
+
+
+:BondBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cinta
+        ] .
+
+# Cisterna — Reservatório, geralmente enterrado, para armazenamento de água.
+# -----------------------------------------------------------------------------
+
+
+
+:BoredAugerPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaBroca
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# EstacaDeConcretoPreMoldada — Estaca de concreto fabricada previamente e cravada no solo.
+# -----------------------------------------------------------------------------
+
+
+
+:BoredPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaEscavada
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# EstacaFlutuante — Estaca que transmite a carga principalmente por atrito lateral.
+# -----------------------------------------------------------------------------
+
+
+
+:BracingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Contraventamento
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:BRACE
+        ] .
+
+# Contraverga — Peça estrutural sob o peitoril de janelas que distribui tensões na alvenaria.
+# -----------------------------------------------------------------------------
+
+
+
+:ButtressedRetainingWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeContrafortes
+        ] .
+
+# MuroDeFlexao — Muro de contenção em balanço que resiste por flexão.
+# -----------------------------------------------------------------------------
+
+
+
+:CableConduitIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCableCarrierSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Conduite
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCableCarrierSegment ;
+            owl:hasValue ifc4owl:CONDUITSEGMENT
+        ] .
+
+# Condutor — Tubo vertical que conduz as águas pluviais da calha ao solo.
+# -----------------------------------------------------------------------------
+
+
+
+:CanopyIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Marquise
+        ] .
+
+# MaximAir — Janela com folha que se projeta para fora girando em torno de eixo horizontal superior.
+# -----------------------------------------------------------------------------
+
+
+
+:CantileverRetainingWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeFlexao
+        ] .
+
+# MuroDeGabiao — Muro de contenção formado por gaiolas metálicas preenchidas com pedras.
+# -----------------------------------------------------------------------------
+
+
+
+:CarpetIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Carpete
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# CarpeteDeMadeira — Revestimento de piso em réguas finas de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:CeilingLiningIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Forro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroDeGessoAcartonado — Forro de placas de gesso acartonado.
+# -----------------------------------------------------------------------------
+
+
+
+:CeilingSurfaceIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Teto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# TuboDeAguaFria — Tubo para condução de água fria.
+# -----------------------------------------------------------------------------
+
+
+
+:CentrifugalPumpIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPump ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BombaCentrifuga
+        ] .
+
+# BombaHidraulica — Equipamento que movimenta ou pressuriza água em uma instalação.
+# -----------------------------------------------------------------------------
+
+
+
+:CeramicFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoCeramico
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# PisoCimentado — Piso com acabamento de argamassa de cimento.
+# -----------------------------------------------------------------------------
+
+
+
+:ChimneyIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcChimney ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Chamine
+        ] .
+
+# Chapa — Estrutura laminar sujeita a esforços em seu plano.
+# -----------------------------------------------------------------------------
+
+
+
+:ChordIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Banzo
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:CHORD
+        ] .
+
+# Barrado — Faixa de revestimento na parte inferior de uma parede.
+# -----------------------------------------------------------------------------
+
+
+
+:CircuitBreakerIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcProtectiveDevice ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Disjuntor
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcProtectiveDevice ;
+            owl:hasValue ifc4owl:CIRCUITBREAKER
+        ] .
+
+# Divisoria — Parede leve de separação de ambientes.
+# -----------------------------------------------------------------------------
+
+
+
+:ClapboardSidingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ClapboardSiding
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CLADDING
+        ] .
+
+# Claraboia — Abertura envidraçada na cobertura para iluminação natural.
+# -----------------------------------------------------------------------------
+
+
+
+:ClayRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaCeramica
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaDeAcrilico — Telha de acrílico translúcido.
+# -----------------------------------------------------------------------------
+
+
+
+:ColdWaterPipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TuboDeAguaFria
+        ] .
+
+# TuboDeEsgoto — Tubo para condução de esgoto.
+# -----------------------------------------------------------------------------
+
+
+
+:ColumnIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcColumn ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Pilar
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcColumn ;
+            owl:hasValue ifc4owl:COLUMN
+        ] .
+
+# Pilastra — Pilar embutido na parede, com uma face saliente.
+# -----------------------------------------------------------------------------
+
+
+
+:ConcreteBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:VigaDeConcreto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:BEAM
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
+                        "Concrete"@en
+                ]
+            ]
+        ] .
+
+
+# Cama (Bed)
+# -----------------------------------------------------------------------------
+
+
+
+:ConcretePadFootingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:SapataDeConcreto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:FOOTING_PAD
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
+                        "Concrete"@en
+                ]
+            ]
+        ] .
+
+
+# Telhado (Roof)
+# -----------------------------------------------------------------------------
+
+
+
+:ConcreteRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaDeConcreto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaDeVidro — Telha de vidro para iluminação.
+# -----------------------------------------------------------------------------
+
+
+
+:ContainmentWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeContencao
+        ] .
+
+# MuroDeContrafortes — Muro de contenção reforçado por contrafortes.
+# -----------------------------------------------------------------------------
+
+
+
+:ContinuousFlightAugerPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaHeliceContinua
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# EstacaInteira — Estaca executada em peça única, sem emendas.
+# -----------------------------------------------------------------------------
+
+
+
+:CorniceIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cimalha
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# Cinta — Viga que amarra paredes de alvenaria.
+# -----------------------------------------------------------------------------
+
+
+
+:CorniceMoldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RodaTeto
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# Rodape — Elemento situado na junção das paredes com o piso, destinado à proteção da parede e ao acabamento.
+# -----------------------------------------------------------------------------
+
+
+
+:CorniceMouldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cornija
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# Corredor — Espaço de circulação que liga cômodos.
+# -----------------------------------------------------------------------------
+
+
+
+:CorridorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Corredor
+        ] .
+
+# Corrimao — Barra de apoio para as mãos ao longo de escadas e rampas.
+# -----------------------------------------------------------------------------
+
+
+
+:CoveLightingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Sanca
+        ] .
+
+# Sapata — Elemento de fundação superficial que distribui ao solo cargas provenientes de pilares ou paredes.
+# -----------------------------------------------------------------------------
+
+
+
+:CurtainWallFacadeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCurtainWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:FachadaCortina
+        ] .
+
+# Filete — Moldura estreita e delgada usada como arremate ou ornamento.
+# -----------------------------------------------------------------------------
+
+
+
+:DadoPanelIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Lambril
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:SKIRTINGBOARD
+        ] .
+
+# Lavabo — Pequeno banheiro social, sem chuveiro.
+# -----------------------------------------------------------------------------
+
+
+
+:DadoRailIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RodaMeio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# RodaTeto — Elemento de acabamento semelhante ao rodapé, situado na junção do teto com as paredes.
+# -----------------------------------------------------------------------------
+
+
+
+:DiaphragmWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ParedeDiafragma
+        ] .
+
+# ParedeEstrutural — Parede que suporta cargas da estrutura.
+# -----------------------------------------------------------------------------
+
+
+
+:DiningRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:SalaDeJantar
+        ] .
+
+# Sanca — Moldura ou rebaixo de forro junto às paredes, frequentemente com iluminação embutida.
+# -----------------------------------------------------------------------------
+
+
+
+:DomeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRoof ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cupula
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcRoof ;
+            owl:hasValue ifc4owl:DOME_ROOF
+        ] .
+
+# Desvao — Espaço entre o forro e o telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:DomeRoofIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRoof ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Domo
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcRoof ;
+            owl:hasValue ifc4owl:DOME_ROOF
+        ] .
+
+# Dormer — Estrutura saliente do telhado que abriga uma janela.
+# -----------------------------------------------------------------------------
+
+
+
+:DoorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDoor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Porta
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDoor ;
+            owl:hasValue ifc4owl:DOOR
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+        ] .
+
+
+# Sapata de Concreto (Concrete Pad Footing)
+# -----------------------------------------------------------------------------
+
+
+
+:DoorFrameArchitraveIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:GuarnicaoDePorta
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# HallDeEntrada — Espaço do edifício situado junto à entrada e que dá acesso aos demais ambientes.
+# -----------------------------------------------------------------------------
+
+
+
+:DoorFrameMoldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Guarnicao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# GuarnicaoDePorta — Moldura que arremata o encontro do marco da porta com a parede.
+# -----------------------------------------------------------------------------
+
+
+
+:DormerWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Dormer
+        ] .
+
+# Dormitorio — Cômodo destinado ao repouso.
+# -----------------------------------------------------------------------------
+
+
+
+:DowelPinIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMechanicalFastener ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cavilha
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMechanicalFastener ;
+            owl:hasValue ifc4owl:DOWEL
+        ] .
+
+# Chamine — Conduto vertical que expele fumaça e gases para o exterior.
+# -----------------------------------------------------------------------------
+
+
+
+:DownspoutIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Condutor
+        ] .
+
+# ContencaoDefinitiva — Estrutura permanente de contenção de solo.
+# -----------------------------------------------------------------------------
+
+
+
+:DrywallPartitionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ParedeDeGessoAcartonado
+        ] .
+
+# ParedeDiafragma — Parede de concreto moldada no solo para contenção.
+# -----------------------------------------------------------------------------
+
+
+
+:EarthenwarePipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Manilha
+        ] .
+
+# MaoFrancesa — Peça inclinada que apoia um elemento em balanço.
+# -----------------------------------------------------------------------------
+
+
+
+:ElectricCableIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCableSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cabo
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCableSegment ;
+            owl:hasValue ifc4owl:CABLESEGMENT
+        ] .
+
+# Caibro — Peça de madeira inclinada que apoia as ripas do telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:ElectricGeneratorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcElectricGenerator ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Gerador
+        ] .
+
+# GuardaCorpo — Barreira de proteção contra quedas.
+# -----------------------------------------------------------------------------
+
+
+
+:ElevatorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTransportElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Elevador
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTransportElement ;
+            owl:hasValue ifc4owl:ELEVATOR
+        ] .
+
+# Empena — Parede lateral de uma edificação, geralmente sem aberturas, que acompanha o caimento do telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:EntranceHallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:HallDeEntrada
+        ] .
+
+# Hidromassagem — Banheira dotada de jatos de água.
+# -----------------------------------------------------------------------------
+
+
+
+:EntranceHallwayIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Saguao
+        ] .
+
+# Sala — Cômodo de uso geral.
+# -----------------------------------------------------------------------------
+
+
+
+:EscalatorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTransportElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EscadasRolantes
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTransportElement ;
+            owl:hasValue ifc4owl:ESCALATOR
+        ] .
+
+# Escora — Barra sujeita essencialmente a esforços axiais de compressão ou elemento provisório de sustentação, metálico ou de madeira, disposto sob laj…
+# -----------------------------------------------------------------------------
+
+
+
+:FiberCementRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaFibrocimento
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaTrapezoidal — Telha metálica de perfil trapezoidal.
+# -----------------------------------------------------------------------------
+
+
+
+:FiletMoldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Filete
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# Forro — Revestimento da face inferior de lajes ou coberturas.
+# -----------------------------------------------------------------------------
+
+
+
+:FloorCoveringIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Piso
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# PisoCeramico — Piso revestido com placas cerâmicas.
+# -----------------------------------------------------------------------------
+
+
+
+:FloorTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Ladrilho
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# LadrilhoHidraulico — Placa de cimento prensada e colorida usada em pisos.
+# -----------------------------------------------------------------------------
+
+
+
+:FloorTrapIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RaloSifonado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORTRAP
+        ] .
+
+
+# Ralo Seco (Floor Waste)
+# -----------------------------------------------------------------------------
+
+
+
+:FloorWasteIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWasteTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:RaloSeco
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWasteTerminal ;
+            owl:hasValue ifc4owl:FLOORWASTE
+        ] .
+
+
+# Tubo (Pipe)
+# -----------------------------------------------------------------------------
+
+
+
+:FootingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Sapata
+        ] .
+
+# SapataCorrida — Sapata contínua sob paredes.
+# -----------------------------------------------------------------------------
+
+
+
+:FormalLivingRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:SalaDeEstar
+        ] .
+
+# SalaDeJantar — Cômodo destinado às refeições.
+# -----------------------------------------------------------------------------
+
+
+
+:FoundationIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Alicerce
+        ] .
+
+# Alisar — Guarnição que arremata o encontro entre o marco de portas ou janelas e a parede.
+# -----------------------------------------------------------------------------
+
+
+
+:FoundationBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Baldrame
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:FOOTING_BEAM
+        ] .
+
+# Bandeira — Caixilho fixo ou basculante situado acima de uma porta ou janela.
+# -----------------------------------------------------------------------------
+
+
+
+:FoundationSlabIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Radier
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSlab ;
+            owl:hasValue ifc4owl:BASESLAB
+        ] .
+
+# Reservatorio — Recipiente para armazenamento de água ou outros fluidos.
+# -----------------------------------------------------------------------------
+
+
+
+:FrankiPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaFranki
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:DRIVEN
+        ] .
+
+# EstacaHeliceContinua — Estaca moldada no local executada com trado helicoidal contínuo.
+# -----------------------------------------------------------------------------
+
+
+
+:FreightElevatorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTransportElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MontaCarga
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTransportElement ;
+            owl:hasValue ifc4owl:ELEVATOR
+        ] .
+
+# MuroDeArrimo — Muro que contém maciços de terra.
+# -----------------------------------------------------------------------------
+
+
+
+:FrictionPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaFlutuante
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:FRICTION
+        ] .
+
+# EstacaFranki — Estaca moldada no local com base alargada, executada por cravação de tubo.
+# -----------------------------------------------------------------------------
+
+
+
+:FriezeMoldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Friso
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# FundacaoDireta — Fundação que transmite as cargas ao solo pela base, em pequena profundidade.
+# -----------------------------------------------------------------------------
+
+
+
+:FullLengthPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaInteira
+        ] .
+
+# EstacaIntermediaria — Estaca posicionada entre outras estacas de um conjunto.
+# -----------------------------------------------------------------------------
+
+
+
+:GabionWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeGabiao
+        ] .
+
+# MuroDeGravidade — Muro de contenção que resiste pelo peso próprio.
+# -----------------------------------------------------------------------------
+
+
+
+:GableEndWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Empena
+        ] .
+
+# Escada — Elemento construtivo formado por degraus que liga níveis diferentes.
+# -----------------------------------------------------------------------------
+
+
+
+:GableWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Oitao
+        ] .
+
+# PadFooting — Elemento de fundação superficial que transmite ao solo a carga concentrada de um pilar ou de um pequeno grupo de pilares.
+# -----------------------------------------------------------------------------
+
+
+
+:GateIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDoor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Portao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDoor ;
+            owl:hasValue ifc4owl:GATE
+        ] .
+
+# Privada — Aparelho sanitário para recepção de dejetos (bacia sanitária).
+# -----------------------------------------------------------------------------
+
+
+
+:GlassCurtainWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCurtainWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PeleDeVidro
+        ] .
+
+# Persiana — Dispositivo de lâminas que controla a entrada de luz em janelas.
+# -----------------------------------------------------------------------------
+
+
+
+:GlassPartitionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:DivisoriaDeVidro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWall ;
+            owl:hasValue ifc4owl:PARTITIONING
+        ] .
+
+# Domo — Cobertura em forma de cúpula.
+# -----------------------------------------------------------------------------
+
+
+
+:GlassRoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaDeVidro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaFibrocimento — Telha ondulada de fibrocimento.
+# -----------------------------------------------------------------------------
+
+
+
+:GravityRetainingWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeGravidade
+        ] .
+
+# MuroDeSuporte — Estrutura destinada à contenção de terras.
+# -----------------------------------------------------------------------------
+
+
+
+:GreaseInterceptorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcInterceptor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CaixaDeGordura
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcInterceptor ;
+            owl:hasValue ifc4owl:GREASE
+        ] .
+
+# CaixaDeInspecao — Caixa enterrada que permite acesso para inspeção e limpeza de tubulações.
+# -----------------------------------------------------------------------------
+
+
+
+:GuardrailIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRailing ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:GuardaCorpo
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcRailing ;
+            owl:hasValue ifc4owl:GUARDRAIL
+        ] .
+
+# Guarnicao — Moldura que arremata o encontro de esquadrias com a parede.
+# -----------------------------------------------------------------------------
+
+
+
+:GypsumCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroDeGessoAcartonado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroDeMadeira — Forro de peças de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:HandrailIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRailing ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Corrimao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcRailing ;
+            owl:hasValue ifc4owl:HANDRAIL
+        ] .
+
+# CortinaAtirantada — Parede de contenção ancorada no solo por tirantes.
+# -----------------------------------------------------------------------------
+
+
+
+:HardwoodFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TabuaCorrida
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Taco — Peça pequena de madeira para pisos.
+# -----------------------------------------------------------------------------
+
+
+
+:HeadWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeTesta
+        ] .
+
+# Nicho — Reentrância em parede.
+# -----------------------------------------------------------------------------
+
+
+
+:HomeTheaterRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:HomeTheater
+        ] .
+
+# JanelaDeSacada — Janela que se estende até o piso e dá acesso a uma sacada.
+# -----------------------------------------------------------------------------
+
+
+
+:HydraulicPumpIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPump ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BombaHidraulica
+        ] .
+
+# Brise — Elemento de proteção solar formado por lâminas instaladas junto a fachadas ou aberturas.
+# -----------------------------------------------------------------------------
+
+
+
+:HydraulicTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:LadrilhoHidraulico
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Laje — Estrutura bidimensional plana destinada a receber esforços preferencialmente perpendiculares ao seu plano, usada como piso ou cobertura.
+# -----------------------------------------------------------------------------
+
+
+
+:IndustrialConcreteFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoIndustrialEmConcreto
+        ] .
+
+# PisoVinilico — Piso revestido com material vinílico.
+# -----------------------------------------------------------------------------
+
+
+
+:InspectionChamberIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDistributionChamberElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CaixaDeInspecao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDistributionChamberElement ;
+            owl:hasValue ifc4owl:INSPECTIONCHAMBER
+        ] .
+
+# CaixaDePassagem — Caixa que abriga derivações e passagens de condutores ou tubulações.
+# -----------------------------------------------------------------------------
+
+
+
+:IntermediatePileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaIntermediaria
+        ] .
+
+# EstacaPirulito — Tipo de estaca usada em fundações ou contenções.
+# -----------------------------------------------------------------------------
+
+
+
+:IsolatedWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ParedeSolteira
+        ] .
+
+# Parquet — Piso de tacos de madeira dispostos em padrões.
+# -----------------------------------------------------------------------------
+
+
+
+:JacuzziBathIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Hidromassagem
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:BATH
+        ] .
+
+# HomeTheater — Ambiente destinado à exibição de filmes e áudio.
+# -----------------------------------------------------------------------------
+
+
+
+:JalousieWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcShadingDevice ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Gelosia
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcShadingDevice ;
+            owl:hasValue ifc4owl:JALOUSIE
+        ] .
+
+# Gerador — Equipamento que produz energia elétrica.
+# -----------------------------------------------------------------------------
+
+
+
+:JoistIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Vigota
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:JOIST
+        ] .
+
+
+
+:JoistBattenIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Barrote
+        ] .
+
+# Basculante — Janela com folha que gira em torno de um eixo horizontal.
+# -----------------------------------------------------------------------------
+
+
+
+:JunctionBoxIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcJunctionBox ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CaixaDePassagem
+        ] .
+
+# Carpete — Revestimento têxtil de piso.
+# -----------------------------------------------------------------------------
+
+
+
+:KitchenIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cozinha
+        ] .
+
+# Cupula — Cobertura em forma de semiesfera.
+# -----------------------------------------------------------------------------
+
+
+
+:KitchenSinkIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PiaDeCozinha
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:SINK
+        ] .
+
+# Pilar — Elemento estrutural de eixo predominantemente vertical submetido essencialmente a esforços axiais.
+# -----------------------------------------------------------------------------
+
+
+
+:KitchenetteIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Kitchenette
+        ] .
+
+# Ladrao — Tubo extravasor que escoa o excesso de água de um reservatório.
+# -----------------------------------------------------------------------------
+
+
+
+:KneeBraceIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MaoFrancesa
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:BRACE
+        ] .
+
+# Marquise — Cobertura em balanço sobre entradas ou passeios.
+# -----------------------------------------------------------------------------
+
+
+
+:KneeWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MeiaParede
+        ] .
+
+# MontaCarga — Elevador destinado ao transporte de cargas.
+# -----------------------------------------------------------------------------
+
+
+
+:LandingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Patamar
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSlab ;
+            owl:hasValue ifc4owl:LANDING
+        ] .
+
+# PeleDeVidro — Fachada envidraçada contínua sobre estrutura metálica.
+# -----------------------------------------------------------------------------
+
+
+
+:LaundryRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Lavanderia
+        ] .
+
+# Lavatorio — Aparelho sanitário para lavar as mãos.
+# -----------------------------------------------------------------------------
+
+
+
+:LavatoryBasinIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Lavatorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:WASHHANDBASIN
+        ] .
+
+# Living — Sala de estar.
+# -----------------------------------------------------------------------------
+
+
+
+:LintelIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Verga
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcBeam ;
+            owl:hasValue ifc4owl:LINTEL
+        ] .
+
+# Vergalhao — Barra de aço para concreto armado.
+# -----------------------------------------------------------------------------
+
+
+
+:LivingRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Living
+        ] .
+
+# Longarina — Viga longitudinal principal de uma estrutura.
+# -----------------------------------------------------------------------------
+
+
+
+:LollipopPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaPirulito
+        ] .
+
+# EstacaRaiz — Estaca escavada de pequeno diâmetro, injetada com argamassa e armada.
+# -----------------------------------------------------------------------------
+
+
+
+:LongitudinalBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Longarina
+        ] .
+
+# Mainel — Elemento vertical que divide os caixilhos de uma esquadria.
+# -----------------------------------------------------------------------------
+
+
+
+:MainRoofPlaneIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AguaMestra
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSlab ;
+            owl:hasValue ifc4owl:ROOF
+        ] .
+
+# Alcapao — Porta horizontal instalada em piso ou forro para acesso a outro nível.
+# -----------------------------------------------------------------------------
+
+
+
+:ManholeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDistributionChamberElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PocoDeVisita
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDistributionChamberElement ;
+            owl:hasValue ifc4owl:MANHOLE
+        ] .
+
+# Porao — Espaço sob o pavimento térreo.
+# -----------------------------------------------------------------------------
+
+
+
+:MdfPartitionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:DivisoriaDeMdf
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWall ;
+            owl:hasValue ifc4owl:PARTITIONING
+        ] .
+
+# DivisoriaDeVidro — Parede leve de vidro para separação de ambientes.
+# -----------------------------------------------------------------------------
+
+
+
+:MetalCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroMetalico
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroMineral — Forro de placas de fibra mineral.
+# -----------------------------------------------------------------------------
+
+
+
+:MineralWoolCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroMineral
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# FossaSeptica — Tanque enterrado que trata o esgoto por decantação e digestão.
+# -----------------------------------------------------------------------------
+
+
+
+:MoldingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Alisar
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:MOLDING
+        ] .
+
+# Alpendre — Área coberta junto à entrada de uma edificação, aberta lateralmente.
+# -----------------------------------------------------------------------------
+
+
+
+:MosaicTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Pastilha
+        ] .
+
+# Patamar — Plataforma entre lances de escada.
+# -----------------------------------------------------------------------------
+
+
+
+:MullionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Mainel
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:MULLION
+        ] .
+
+# Manilha — Tubo de concreto ou cerâmica para esgoto ou águas pluviais.
+# -----------------------------------------------------------------------------
+
+
+
+:MushroomSlabIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:LajeCogumelo
+        ] .
+
+# Lambril — Faixa inferior das paredes junto ao pavimento, também designada rodapé em determinados usos.
+# -----------------------------------------------------------------------------
+
+
+
+:NewAdjacentRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:NovoComodoContiguo
+        ] .
+
+# Oitao — Parede lateral da edificação, junto à divisa do lote.
+# -----------------------------------------------------------------------------
+
+
+
+:NewRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:NovoComodo
+        ] .
+
+# NovoComodoContiguo — Novo cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede.
+# -----------------------------------------------------------------------------
+
+
+
+:NicheIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcOpeningElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Nicho
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcOpeningElement ;
+            owl:hasValue ifc4owl:RECESS
+        ] .
+
+# NovoComodo — Cômodo criado por construção, ampliação ou reconfiguração de uma edificação existente.
+# -----------------------------------------------------------------------------
+
+
+
+:OfficeChairIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CadeiraDeEscritorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
+            owl:hasValue ifc4owl:CHAIR
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Estofado"@pt-br,
+                        "Upholstered"@en
+                ]
+            ]
+        ] .
+
+
+# Janela (Window)
+# -----------------------------------------------------------------------------
+
+
+
+:OfficeDeskIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFurniture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MesaDeEscritorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFurniture ;
+            owl:hasValue ifc4owl:DESK
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+        ] .
+
+
+# Porta (Door)
+# -----------------------------------------------------------------------------
+
+
+
+:OpeningIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcOpeningElement ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Abertura
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcOpeningElement ;
+            owl:hasValue ifc4owl:OPENING
+        ] .
+
+# Adega — Cômodo destinado à guarda e conservação de vinhos.
+# -----------------------------------------------------------------------------
+
+
+
+:OverflowPipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Ladrao
+        ] .
+
+# Ladrilho — Placa de revestimento de piso.
+# -----------------------------------------------------------------------------
+
+
+
+:PadFootingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PadFooting
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:PAD_FOOTING
+        ] .
+
+# Parede — Elemento vertical de vedação ou divisão de ambientes.
+# -----------------------------------------------------------------------------
+
+
+
+:ParquetIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Parquet
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Pastilha — Pequena peça de revestimento cerâmico ou de vidro.
+# -----------------------------------------------------------------------------
+
+
+
+:ParquetBlockIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TacoDeMadeira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Telha — Peça de cobertura que protege contra a chuva.
+# -----------------------------------------------------------------------------
+
+
+
+:PartitionWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Divisoria
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWall ;
+            owl:hasValue ifc4owl:PARTITIONING
+        ] .
+
+# DivisoriaDeMadeira — Parede leve de madeira para separação de ambientes.
+# -----------------------------------------------------------------------------
+
+
+
+:PermanentContainmentWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ContencaoDefinitiva
+        ] .
+
+# ContencaoProvisoria — Estrutura temporária de contenção de solo.
+# -----------------------------------------------------------------------------
+
+
+
+:PilasterIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcColumn ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Pilastra
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcColumn ;
+            owl:hasValue ifc4owl:PILASTER
+        ] .
+
+# Piso — Revestimento da superfície de pavimentos.
+# -----------------------------------------------------------------------------
+
+
+
+:PileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Estaca
+        ] .
+
+# EstacaBroca — Estaca escavada manualmente com trado, de pequeno diâmetro, moldada no local.
+# -----------------------------------------------------------------------------
+
+
+
+:PileCapIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BlocoDeFundacao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:PILE_CAP
+        ] .
+
+# Boiler — Reservatório térmico para armazenamento de água quente.
+# -----------------------------------------------------------------------------
+
+
+
+:PileGroupIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Estacas
+        ] .
+
+# FachadaCortina — Fachada leve não estrutural, geralmente de vidro e perfis metálicos.
+# -----------------------------------------------------------------------------
+
+
+
+:PipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Tubo
+        ] .
+
+
+# Viga de Concreto (Concrete Beam)
+# -----------------------------------------------------------------------------
+
+
+
+:PlasterboardCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroDePlacasDeGesso
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroDePvc — Forro de réguas de PVC.
+# -----------------------------------------------------------------------------
+
+
+
+:PlasterboardPartitionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Drywall
+        ] .
+
+# Elevador — Equipamento de transporte vertical de pessoas ou cargas.
+# -----------------------------------------------------------------------------
+
+
+
+:PlateIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPlate ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Placa
+        ] .
+
+# PocoDeVentilacao — Espaço vertical ou vazio construtivo destinado a promover a ventilação natural de ambientes internos e a renovação do ar.
+# -----------------------------------------------------------------------------
+
+
+
+:PorchIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Alpendre
+        ] .
+
+# Amarracao — Parte da armadura destinada a transmitir os esforços de uma peça para outra.
+# -----------------------------------------------------------------------------
+
+
+
+:PowderRoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Lavabo
+        ] .
+
+# Lavanderia — Cômodo destinado à lavagem de roupas.
+# -----------------------------------------------------------------------------
+
+
+
+:PrecastConcretePileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaDeConcretoPreMoldada
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:DRIVEN
+        ] .
+
+# EstacaEscavada — Estaca moldada no local após escavação do solo.
+# -----------------------------------------------------------------------------
+
+
+
+:PumpIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPump ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Bomba
+        ] .
+
+# BombaAspirante — Bomba que eleva líquidos por sucção.
+# -----------------------------------------------------------------------------
+
+
+
+:PurlinIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Terca
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:PURLIN
+        ] .
+
+# Teto — Face inferior da cobertura ou laje de um ambiente.
+# -----------------------------------------------------------------------------
+
+
+
+:PvcCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroDePvc
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroMetalico — Forro de placas ou réguas metálicas.
+# -----------------------------------------------------------------------------
+
+
+
+:RafterIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Caibro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:RAFTER
+        ] .
+
+# CaixaDAgua — Reservatório para armazenamento de água da edificação.
+# -----------------------------------------------------------------------------
+
+
+
+:RafterBattenIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Vara
+        ] .
+
+# Varanda — Área coberta aberta junto à edificação.
+# -----------------------------------------------------------------------------
+
+
+
+:RafterPlateIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Frechal
+        ] .
+
+# Friso — Faixa ou moldura decorativa horizontal.
+# -----------------------------------------------------------------------------
+
+
+
+:RaisedFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoElevado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# PisoEmborrachado — Piso revestido com borracha.
+# -----------------------------------------------------------------------------
+
+
+
+:RebarIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcReinforcingBar ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Vergalhao
+        ] .
+
+# Viga — Elemento estrutural de eixo predominantemente horizontal submetido essencialmente à flexão.
+# -----------------------------------------------------------------------------
+
+
+
+:RetainingWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeArrimo
+        ] .
+
+# MuroDeContencao — Muro que contém maciços de terra.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRoof ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Telhado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcRoof ;
+            owl:hasValue ifc4owl:ROOF_NOTDEFINED
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Telha"@pt-br,
+                        "Roof tile"@en
+                ]
+            ]
+        ] .
+
+#################################################################
+# Bulk: 228 remaining kinds from kind_geometric_representation_mapping_100pct.csv
+#################################################################
+
+# Abertura — Vão executado em um elemento construtivo, como parede ou laje, para passagem, iluminação ou ventilação.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofDormerSpaceIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AguaFurtada
+        ] .
+
+# AguaMestra — Água principal de um telhado, de maior extensão.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofPlaneIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AguaDoTelhado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSlab ;
+            owl:hasValue ifc4owl:ROOF
+        ] .
+
+# AguaFurtada — Vão entre as tesouras do telhado, semelhante a um sótão, com janelas que se abrem em um volume para fora do telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofSlopeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AguaDeUmaCobertura
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSlab ;
+            owl:hasValue ifc4owl:ROOF
+        ] .
+
+# AguaDoTelhado — Plano inclinado de um telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Telha
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaCeramica — Telha de argila cozida.
+# -----------------------------------------------------------------------------
+
+
+
+:RoofVoidIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Desvao
+        ] .
+
+# Disjuntor — Dispositivo que interrompe o circuito elétrico em caso de sobrecarga ou curto-circuito.
+# -----------------------------------------------------------------------------
+
+
+
+:RoomIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Sala
+        ] .
+
+# SalaDeEstar — Cômodo de convivência.
+# -----------------------------------------------------------------------------
+
+
+
+:RootPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaRaiz
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# EstacaStrauss — Estaca moldada no local executada com tubo de revestimento e soquete.
+# -----------------------------------------------------------------------------
+
+
+
+:RubberFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoEmborrachado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# PisoIndustrialEmConcreto — Piso de concreto para uso industrial com alta resistência.
+# -----------------------------------------------------------------------------
+
+
+
+:SandwichTrapezoidalRoofPanelIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaTrapezoidalSanduiche
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# Terca — Elemento da cobertura que liga tesouras e apoia elementos secundários do telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:ScreedFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoCimentado
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# PisoElevado — Piso sobre suportes que cria espaço para instalações.
+# -----------------------------------------------------------------------------
+
+
+
+:SepticTankIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTank ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:FossaSeptica
+        ] .
+
+# Frechal — Viga de madeira sobre a parede que recebe a estrutura do telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:ServiceShaftIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Shaft
+        ] .
+
+# Shingle — Telha asfáltica.
+# -----------------------------------------------------------------------------
+
+
+
+:SewagePipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TuboDeEsgoto
+        ] .
+
+# Vara — Elemento da cobertura disposto sobre as terças e perpendicularmente a elas.
+# -----------------------------------------------------------------------------
+
+
+
+:ShallowFoundationIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:FundacaoDireta
+        ] .
+
+# Gelosia — Grade de ripas cruzadas que protege janelas.
+# -----------------------------------------------------------------------------
+
+
+
+:ShowerHeadIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Chuveiro
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:SHOWER
+        ] .
+
+# Cimalha — Moldura saliente que arremata o topo de uma parede ou fachada.
+# -----------------------------------------------------------------------------
+
+
+
+:SillBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Contraverga
+        ] .
+
+# Cornija — Moldura saliente que coroa uma fachada ou parede.
+# -----------------------------------------------------------------------------
+
+
+
+:SinkIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Pia
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:SINK
+        ] .
+
+# PiaDeCozinha — Cuba de cozinha para lavagem de utensílios.
+# -----------------------------------------------------------------------------
+
+
+
+:SkirtingBoardIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Rodape
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:SKIRTINGBOARD
+        ] .
+
+# Saguao — Espaço de entrada e circulação.
+# -----------------------------------------------------------------------------
+
+
+
+:SkylightIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Claraboia
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:SKYLIGHT
+        ] .
+
+# Closet — Pequeno cômodo destinado à guarda de roupas.
+# -----------------------------------------------------------------------------
+
+
+
+:SlabIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSlab ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Laje
+        ] .
+
+# LajeCogumelo — Laje apoiada diretamente sobre pilares, sem vigas.
+# -----------------------------------------------------------------------------
+
+
+
+:SlatIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Sarrafo
+        ] .
+
+# Shaft — Espaço vertical para passagem de instalações.
+# -----------------------------------------------------------------------------
+
+
+
+:SlidingDoorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDoor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PortaDeCorrer
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDoor ;
+            owl:hasValue ifc4owl:DOOR
+        ] .
+
+# Portao — Porta de acesso a terrenos ou garagens.
+# -----------------------------------------------------------------------------
+
+
+
+:SolarCollectorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSolarDevice ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ColetorDeEnergiaSolar
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSolarDevice ;
+            owl:hasValue ifc4owl:SOLARCOLLECTOR
+        ] .
+
+# ComodoContiguo — Cômodo situado imediatamente junto a outro, compartilhando com ele uma divisa física, normalmente uma parede, sem que seja necessária a exis…
+# -----------------------------------------------------------------------------
+
+
+
+:SolariumIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Solario
+        ] .
+
+# Sotao — Espaço entre o forro do último pavimento e o telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:StairIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcStair ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Escada
+        ] .
+
+# EscadasRolantes — Escada mecânica de degraus móveis para transporte de pessoas.
+# -----------------------------------------------------------------------------
+
+
+
+:StaircaseEnclosureIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CaixaDeEscada
+        ] .
+
+# CaixaDeGordura — Caixa que retém gorduras do esgoto de cozinhas antes do lançamento na rede.
+# -----------------------------------------------------------------------------
+
+
+
+:SteelPlateIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPlate ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Chapa
+        ] .
+
+# Chuveiro — Aparelho que distribui água em jato para banho.
+# -----------------------------------------------------------------------------
+
+
+
+:StorageTankIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTank ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Reservatorio
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTank ;
+            owl:hasValue ifc4owl:STORAGE
+        ] .
+
+# Respiro — Tubo de ventilação da instalação de esgoto.
+# -----------------------------------------------------------------------------
+
+
+
+:StraussPileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPile ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:EstacaStrauss
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcPile ;
+            owl:hasValue ifc4owl:BORED
+        ] .
+
+# Estacao — Estaca escavada de seção retangular (estaca barrete).
+# -----------------------------------------------------------------------------
+
+
+
+:StripFootingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcFooting ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:SapataCorrida
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcFooting ;
+            owl:hasValue ifc4owl:STRIP_FOOTING
+        ] .
+
+# Sarrafo — Peça fina e estreita de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:StructuralGlazingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCurtainWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:StruturalGlazing
+        ] .
+
+# TabuaCorrida — Piso de tábuas longas de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:StructuralWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ParedeEstrutural
+        ] .
+
+# ParedeSolteira — Parede isolada, sem ligação com outras.
+# -----------------------------------------------------------------------------
+
+
+
+:StrutIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcMember ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Escora
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcMember ;
+            owl:hasValue ifc4owl:STRUT
+        ] .
+
+# Estaca — Elemento de fundação profunda, esbelto, que transmite cargas ao solo.
+# -----------------------------------------------------------------------------
+
+
+
+:SuctionPumpIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPump ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BombaAspirante
+        ] .
+
+# BombaCentrifuga — Bomba que movimenta líquidos pela ação da força centrífuga de um rotor.
+# -----------------------------------------------------------------------------
+
+
+
+:SunscreenIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcShadingDevice ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Brise
+        ] .
+
+# Cabo — Condutor elétrico formado por um ou mais fios isolados.
+# -----------------------------------------------------------------------------
+
+
+
+:SupportWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MuroDeSuporte
+        ] .
+
+# MuroDeTesta — Muro na extremidade de bueiros ou galerias que contém o aterro.
+# -----------------------------------------------------------------------------
+
+
+
+:TemporaryContainmentWallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ContencaoProvisoria
+        ] .
+
+# Contrafrechal — Peça horizontal que reforça ou complementa o frechal.
+# -----------------------------------------------------------------------------
+
+
+
+:TieBarIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcReinforcingBar ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Amarracao
+        ] .
+
+# AnteSala — Cômodo que antecede uma sala principal.
+# -----------------------------------------------------------------------------
+
+
+
+:TieBeamIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcBeam ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:VigaDeTravamento
+        ] .
+
+# Vigota — Viga de pequena seção transversal, frequentemente pré-moldada ou protendida.
+# -----------------------------------------------------------------------------
+
+
+
+:TiltTurnWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Basculante
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:WINDOW
+        ] .
+
+# BayWindow — Janela que se projeta para fora do plano da fachada.
+# -----------------------------------------------------------------------------
+
+
+
+:TimberFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Soalho
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Solario — Espaço destinado a banhos de sol.
+# -----------------------------------------------------------------------------
+
+
+
+:ToiletBowlIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Privada
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:TOILETPAN
+        ] .
+
+# Radier — Fundação em laje contínua sobre o solo.
+# -----------------------------------------------------------------------------
+
+
+
+:ToiletPanIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSanitaryTerminal ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BaciaSanitaria
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcSanitaryTerminal ;
+            owl:hasValue ifc4owl:TOILETPAN
+        ] .
+
+# Baldrame — Tipo de fundação para pequenas edificações, constituída por uma viga de alvenaria, concreto simples ou concreto armado, construída diretamen…
+# -----------------------------------------------------------------------------
+
+
+
+:TopHungWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:MaximAir
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:WINDOW
+        ] .
+
+# MeiaParede — Parede de altura parcial.
+# -----------------------------------------------------------------------------
+
+
+
+:TransomWindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Bandeira
+        ] .
+
+# Banheira — Aparelho sanitário para banho de imersão.
+# -----------------------------------------------------------------------------
+
+
+
+:TrapDoorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcDoor ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Alcapao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcDoor ;
+            owl:hasValue ifc4owl:TRAPDOOR
+        ] .
+
+# Alcova — Pequeno cômodo ou recesso, geralmente destinado ao repouso.
+# -----------------------------------------------------------------------------
+
+
+
+:TrapezoidalRoofPanelIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:TelhaTrapezoidal
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:ROOFING
+        ] .
+
+# TelhaTrapezoidalSanduiche — Telha trapezoidal com isolante entre duas chapas.
+# -----------------------------------------------------------------------------
+
+
+
+:UndergroundWaterTankIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTank ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Cisterna
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTank ;
+            owl:hasValue ifc4owl:STORAGE
+        ] .
+
+# ClapboardSiding — Revestimento de fachada em tábuas horizontais sobrepostas.
+# -----------------------------------------------------------------------------
+
+
+
+:UnderlaymentIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Contrapiso
+        ] .
+
+# Contraventamento — Peças que travam uma estrutura contra esforços laterais.
+# -----------------------------------------------------------------------------
+
+
+
+:VentPipeIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcPipeSegment ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Respiro
+        ] .
+
+# Revestimento — Camada aplicada sobre superfícies para proteção e acabamento.
+# -----------------------------------------------------------------------------
+
+
+
+:VentilationShaftIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PocoDeVentilacao
+        ] .
+
+# PocoDeVisita — Câmara que dá acesso a redes subterrâneas para inspeção e manutenção.
+# -----------------------------------------------------------------------------
+
+
+
+:VinylFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:PisoVinilico
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Placa — Estrutura bidimensional plana disposta verticalmente e destinada a receber esforços predominantemente em seu plano.
+# -----------------------------------------------------------------------------
+
+
+
+:WainscotPanelingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Boiserie
+        ] .
+
+# Bomba — Equipamento que movimenta fluidos.
+# -----------------------------------------------------------------------------
+
+
+
+:WainscotingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Barrado
+        ] .
+
+# Barrote — Elemento prismático de madeira usado em construção civil.
+# -----------------------------------------------------------------------------
+
+
+
+:WalkInClosetIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Closet
+        ] .
+
+# ColetorDeEnergiaSolar — Equipamento que capta a energia solar para aquecimento de água.
+# -----------------------------------------------------------------------------
+
+
+
+:WallIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Parede
+        ] .
+
+# ParedeDeGessoAcartonado — Parede de placas de gesso acartonado sobre estrutura metálica.
+# -----------------------------------------------------------------------------
+
+
+
+:WallCladdingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "3.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.40"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
+                        "Concrete"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Revestimento
+        ] .
+
+# Ripa — Elemento da cobertura colocado sobre as varas ou caibros e destinado a apoiar as telhas.
+# -----------------------------------------------------------------------------
+
+
+
+:WallLampIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcLightFixture ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Aplique
+        ] .
+
+# Arquitrave — Viga horizontal apoiada sobre colunas, parte inferior do entablamento.
+# -----------------------------------------------------------------------------
+
+
+
+:WallTileIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.90"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.40"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Azulejo
+        ] .
+
+# BaciaSanitaria — Aparelho sanitário para recepção de dejetos, com descarga de água.
+# -----------------------------------------------------------------------------
+
+
+
+:WaterHeaterIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTank ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Boiler
+        ] .
+
+# Boiserie — Revestimento decorativo de parede em painéis de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:WaterTankIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcTank ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CaixaDAgua
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Estofado"@pt-br,
+                        "Upholstered"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcTank ;
+            owl:hasValue ifc4owl:STORAGE
+        ] .
+
+# CaixaDeEscada — Espaço vertical que abriga a escada de uma edificação.
+# -----------------------------------------------------------------------------
+
+
+
+:WindowIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWindow ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Janela
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWindow ;
+            owl:hasValue ifc4owl:WINDOW
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.05"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Vidro"@pt-br,
+                        "Glass"@en
+                ]
+            ]
+        ] .
+
+
+# Mesa de Escritório (Office Desk)
+# -----------------------------------------------------------------------------
+
+
+
+:WineCellarIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcSpace ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Adega
+        ] .
+
+# AguaDeUmaCobertura — Plano inclinado de um telhado.
+# -----------------------------------------------------------------------------
+
+
+
+:WoodBlockFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:Taco
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.60"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.75"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# TacoDeMadeira — Piso de pequenas peças de madeira.
+# -----------------------------------------------------------------------------
+
+
+
+:WoodCeilingIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:ForroDeMadeira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "0.80"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "0.05"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "2.10"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Madeira"@pt-br,
+                        "Wood"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:CEILING
+        ] .
+
+# ForroDePlacasDeGesso — Forro de placas de gesso.
+# -----------------------------------------------------------------------------
+
+
+
+:WoodFloorIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:AssoalhoDeMadeira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "1.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.50"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Concreto"@pt-br,
+                        "Concrete"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Atrio — Espaço de entrada ou pátio interno de uma edificação.
+# -----------------------------------------------------------------------------
+
+
+
+:WoodParquetIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:CarpeteDeMadeira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+            owl:hasValue ifc4owl:FLOORING
+        ] .
+
+# Cavilha — Pino de madeira ou metal usado para unir peças.
+# -----------------------------------------------------------------------------
+
+
+
+:WoodPartitionIfcBinding rdf:type owl:Class ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcWall ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:DivisoriaDeMadeira
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:xLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:yLength ;
+            owl:hasValue "10.00"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:zLength ;
+            owl:hasValue "0.20"^^xsd:double
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:hasMaterialAssociations ;
+            owl:someValuesFrom [
+                rdf:type ifc4owl:IfcRelAssociatesMaterial ;
+                ifc4owl:relatingMaterial_IfcRelAssociatesMaterial [
+                    rdf:type ifc4owl:IfcMaterial ;
+                    ifc4owl:name_IfcMaterial "Telha"@pt-br,
+                        "Roof tile"@en
+                ]
+            ]
+                ] ,
+                [
+                    rdf:type owl:Restriction ;
+            owl:onProperty ifc4owl:predefinedType_IfcWall ;
+            owl:hasValue ifc4owl:PARTITIONING
+        ] .
+
+# DivisoriaDeMdf — Parede leve de MDF para separação de ambientes.
+# -----------------------------------------------------------------------------
