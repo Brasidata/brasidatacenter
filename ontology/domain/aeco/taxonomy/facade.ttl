@@ -1,10 +1,13 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/facade.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
-@prefix ifc43owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
+@prefix ifc4x3owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
+@prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
+@prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/aeco/taxonomy/facade.ttl>
@@ -79,23 +82,23 @@
     facade:mapsToResource ifc4owl:description_IfcRoot .
 
 # ---------------------------------------------------------------
-# IfcProject, IFC4.3
+# IfcProject, IFC4x3
 # ---------------------------------------------------------------
 
-:IfcProjectIfc43Facade
+:IfcProjectIfc4x3Facade
     rdf:type facade:DataEntityFacade ;
     facade:isDeletable false ;
     schema:identifier "ifc_project" ;
     schema:name "IFC Project"@en ,
         "Projeto IFC"@pt-br ,
         "Proyecto IFC"@es ;
-    facade:isFacadeOf ifc43owl:IfcProject ;
+    facade:isFacadeOf ifc4x3owl:IfcProject ;
     facade:hasFacadeField
-        :IfcProjectIfc43GlobalIdField ,
-        :IfcProjectIfc43NameField ,
-        :IfcProjectIfc43DescriptionField .
+        :IfcProjectIfc4x3GlobalIdField ,
+        :IfcProjectIfc4x3NameField ,
+        :IfcProjectIfc4x3DescriptionField .
 
-:IfcProjectIfc43GlobalIdField
+:IfcProjectIfc4x3GlobalIdField
     rdf:type facade:FacadeField ;
     schema:identifier "global_id" ;
     schema:name "Global ID"@en ,
@@ -108,9 +111,9 @@
     facade:fieldOrder 0 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
-    facade:mapsToResource ifc43owl:globalId_IfcRoot .
+    facade:mapsToResource ifc4x3owl:globalId_IfcRoot .
 
-:IfcProjectIfc43NameField
+:IfcProjectIfc4x3NameField
     rdf:type facade:FacadeField ;
     schema:identifier "name" ;
     schema:name "Name"@en ,
@@ -124,9 +127,9 @@
     facade:isRequired true ;
     facade:isMultivalued false ;
     facade:isEditable true ;
-    facade:mapsToResource ifc43owl:name_IfcRoot .
+    facade:mapsToResource ifc4x3owl:name_IfcRoot .
 
-:IfcProjectIfc43DescriptionField
+:IfcProjectIfc4x3DescriptionField
     rdf:type facade:FacadeField ;
     schema:identifier "description" ;
     schema:name "Description"@en ,
@@ -140,4 +143,295 @@
     facade:isRequired false ;
     facade:isMultivalued false ;
     facade:isEditable true ;
-    facade:mapsToResource ifc43owl:description_IfcRoot .
+    facade:mapsToResource ifc4x3owl:description_IfcRoot .
+
+# ---------------------------------------------------------------
+# IfcElement, IFC4
+# ---------------------------------------------------------------
+
+:IfcElementIfc4Facade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable false ;
+    facade:isCommentable true ;
+    schema:identifier "ifc_element" ;
+    schema:name "IFC Element"@en ,
+        "Elemento IFC"@pt-br ,
+        "Elemento IFC"@es ;
+    facade:isFacadeOf ifc4owl:IfcElement ;
+    facade:hasFacadeField
+        :IfcElementIfc4GlobalIdField ,
+        :IfcElementIfc4IfcClassField ,
+        :IfcElementIfc4NameField ,
+        :IfcElementIfc4DescriptionField ,
+        :IfcElementIfc4ObjectTypeField ,
+        :IfcElementIfc4TagField ,
+        :IfcElementIfc4RelatedDocumentsField ,
+        socialfacade:TagsField .
+
+:IfcElementIfc4GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    schema:description "The globally unique identifier of the element (IfcRoot.GlobalId)."@en ,
+        "O identificador globalmente único do elemento (IfcRoot.GlobalId)."@pt-br ,
+        "El identificador globalmente único del elemento (IfcRoot.GlobalId)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource ifc4owl:globalId_IfcRoot .
+
+:IfcElementIfc4IfcClassField
+    rdf:type facade:FacadeField ;
+    schema:identifier "ifc_class" ;
+    schema:name "IFC class"@en ,
+        "Classe IFC"@pt-br ,
+        "Clase IFC"@es ;
+    schema:description "The IFC class the element is an instance of, such as IfcWall or IfcSlab."@en ,
+        "A classe IFC da qual o elemento é uma instância, como IfcWall ou IfcSlab."@pt-br ,
+        "La clase IFC de la que el elemento es una instancia, como IfcWall o IfcSlab."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource rdf:type .
+
+:IfcElementIfc4NameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ,
+        "Nome"@pt-br ,
+        "Nombre"@es ;
+    schema:description "The name of the element (IfcRoot.Name)."@en ,
+        "O nome do elemento (IfcRoot.Name)."@pt-br ,
+        "El nombre del elemento (IfcRoot.Name)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:name_IfcRoot .
+
+:IfcElementIfc4DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    schema:description "The description of the element (IfcRoot.Description)."@en ,
+        "A descrição do elemento (IfcRoot.Description)."@pt-br ,
+        "La descripción del elemento (IfcRoot.Description)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:description_IfcRoot .
+
+:IfcElementIfc4ObjectTypeField
+    rdf:type facade:FacadeField ;
+    schema:identifier "object_type" ;
+    schema:name "Object type"@en ,
+        "Tipo do objeto"@pt-br ,
+        "Tipo de objeto"@es ;
+    schema:description "The type of the element, when its predefined type is user defined (IfcObject.ObjectType)."@en ,
+        "O tipo do elemento, quando o seu tipo predefinido é definido pelo usuário (IfcObject.ObjectType)."@pt-br ,
+        "El tipo del elemento, cuando su tipo predefinido lo define el usuario (IfcObject.ObjectType)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:objectType_IfcObject .
+
+:IfcElementIfc4TagField
+    rdf:type facade:FacadeField ;
+    schema:identifier "tag" ;
+    schema:name "Tag"@en ,
+        "Etiqueta"@pt-br ,
+        "Etiqueta"@es ;
+    schema:description "The tag that identifies the element, such as the one of its manufacturer or of its installation (IfcElement.Tag)."@en ,
+        "A etiqueta que identifica o elemento, como a do fabricante ou a da instalação (IfcElement.Tag)."@pt-br ,
+        "La etiqueta que identifica el elemento, como la del fabricante o la de la instalación (IfcElement.Tag)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 5 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4owl:tag_IfcElement .
+
+:IfcElementIfc4RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the documents the element refers to, separated by a vertical bar. They are kept in the container, not in the IFC model."@en ,
+        "Os IRIs, no grafo do container, dos documentos a que o elemento se refere, separados por uma barra vertical. Eles são guardados no container, e não no modelo IFC."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los documentos a los que se refiere el elemento, separados por una barra vertical. Se guardan en el contenedor, no en el modelo IFC."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 6 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :IfcElementRelatedDocumentFacade .
+
+# ---------------------------------------------------------------
+# IfcElement, IFC4x3
+# ---------------------------------------------------------------
+
+:IfcElementIfc4x3Facade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable false ;
+    facade:isCommentable true ;
+    schema:identifier "ifc_element" ;
+    schema:name "IFC Element"@en ,
+        "Elemento IFC"@pt-br ,
+        "Elemento IFC"@es ;
+    facade:isFacadeOf ifc4x3owl:IfcElement ;
+    facade:hasFacadeField
+        :IfcElementIfc4x3GlobalIdField ,
+        :IfcElementIfc4x3IfcClassField ,
+        :IfcElementIfc4x3NameField ,
+        :IfcElementIfc4x3DescriptionField ,
+        :IfcElementIfc4x3ObjectTypeField ,
+        :IfcElementIfc4x3TagField ,
+        :IfcElementIfc4x3RelatedDocumentsField ,
+        socialfacade:TagsField .
+
+:IfcElementIfc4x3GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    schema:description "The globally unique identifier of the element (IfcRoot.GlobalId)."@en ,
+        "O identificador globalmente único do elemento (IfcRoot.GlobalId)."@pt-br ,
+        "El identificador globalmente único del elemento (IfcRoot.GlobalId)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource ifc4x3owl:globalId_IfcRoot .
+
+:IfcElementIfc4x3IfcClassField
+    rdf:type facade:FacadeField ;
+    schema:identifier "ifc_class" ;
+    schema:name "IFC class"@en ,
+        "Classe IFC"@pt-br ,
+        "Clase IFC"@es ;
+    schema:description "The IFC class the element is an instance of, such as IfcWall or IfcSlab."@en ,
+        "A classe IFC da qual o elemento é uma instância, como IfcWall ou IfcSlab."@pt-br ,
+        "La clase IFC de la que el elemento es una instancia, como IfcWall o IfcSlab."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:mapsToResource rdf:type .
+
+:IfcElementIfc4x3NameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ,
+        "Nome"@pt-br ,
+        "Nombre"@es ;
+    schema:description "The name of the element (IfcRoot.Name)."@en ,
+        "O nome do elemento (IfcRoot.Name)."@pt-br ,
+        "El nombre del elemento (IfcRoot.Name)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4x3owl:name_IfcRoot .
+
+:IfcElementIfc4x3DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    schema:description "The description of the element (IfcRoot.Description)."@en ,
+        "A descrição do elemento (IfcRoot.Description)."@pt-br ,
+        "La descripción del elemento (IfcRoot.Description)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4x3owl:description_IfcRoot .
+
+:IfcElementIfc4x3ObjectTypeField
+    rdf:type facade:FacadeField ;
+    schema:identifier "object_type" ;
+    schema:name "Object type"@en ,
+        "Tipo do objeto"@pt-br ,
+        "Tipo de objeto"@es ;
+    schema:description "The type of the element, when its predefined type is user defined (IfcObject.ObjectType)."@en ,
+        "O tipo do elemento, quando o seu tipo predefinido é definido pelo usuário (IfcObject.ObjectType)."@pt-br ,
+        "El tipo del elemento, cuando su tipo predefinido lo define el usuario (IfcObject.ObjectType)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4x3owl:objectType_IfcObject .
+
+:IfcElementIfc4x3TagField
+    rdf:type facade:FacadeField ;
+    schema:identifier "tag" ;
+    schema:name "Tag"@en ,
+        "Etiqueta"@pt-br ,
+        "Etiqueta"@es ;
+    schema:description "The tag that identifies the element, such as the one of its manufacturer or of its installation (IfcElement.Tag)."@en ,
+        "A etiqueta que identifica o elemento, como a do fabricante ou a da instalação (IfcElement.Tag)."@pt-br ,
+        "La etiqueta que identifica el elemento, como la del fabricante o la de la instalación (IfcElement.Tag)."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 5 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource ifc4x3owl:tag_IfcElement .
+
+:IfcElementIfc4x3RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the documents the element refers to, separated by a vertical bar. They are kept in the container, not in the IFC model."@en ,
+        "Os IRIs, no grafo do container, dos documentos a que o elemento se refere, separados por uma barra vertical. Eles são guardados no container, e não no modelo IFC."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los documentos a los que se refiere el elemento, separados por una barra vertical. Se guardan en el contenedor, no en el modelo IFC."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 6 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :IfcElementRelatedDocumentFacade .
+
+# ---------------------------------------------------------------
+# The documents an IfcElement is related to, as the files of the container they are
+# ---------------------------------------------------------------
+
+:IfcElementRelatedDocumentFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:FileDisplayProfile ;
+    facade:hasFacadeField
+        :IfcElementRelatedDocumentTitleField .
+
+:IfcElementRelatedDocumentTitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:title .

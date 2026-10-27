@@ -5,7 +5,7 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -86,6 +86,24 @@
         "Uma visualização que mostra, uma depois da outra, as imagens para as quais um campo aponta. Os arquivos que ela mostra são os que o perfil de arquivos fotográficos aceita."@pt-br ,
         "Una visualización que muestra, una tras otra, las imágenes a las que apunta un campo. Los archivos que muestra son los que acepta el perfil de archivos fotográficos."@es ;
     :acceptsFileProfile obdc:PhotographicFile .
+
+:GeometryOverlay rdf:type owl:Class ;
+    rdfs:subClassOf :Visualization ;
+    rdfs:label "Geometry overlay"@en ,
+        "Geometria sobre o documento"@pt-br ,
+        "Geometría sobre el documento"@es ;
+    skos:definition "A visualization that shows the geometries of an entity as drawn on the document the entity was made on: one file, with the geometries on it. The values are well-known texts, not files, and the document is the one the entity points to, so it has no file profile."@en ,
+        "Uma visualização que mostra as geometrias de uma entidade desenhadas sobre o documento em que a entidade foi feita: um só arquivo, com as geometrias nele. Os valores são well-known text, e não arquivos, e o documento é o que a entidade aponta, por isso não tem perfil de arquivos."@pt-br ,
+        "Una visualización que muestra las geometrías de una entidad dibujadas sobre el documento en que se hizo la entidad: un solo archivo, con las geometrías en él. Los valores son well-known text, no archivos, y el documento es el que la entidad señala, por lo que no tiene perfil de archivos."@es .
+
+:TagList rdf:type owl:Class ;
+    rdfs:subClassOf :Visualization ;
+    rdfs:label "Tag list"@en ,
+        "Lista de tags"@pt-br ,
+        "Lista de etiquetas"@es ;
+    skos:definition "A visualization that shows the values of a field as tags, small labels side by side, each of which can be removed; a tag is added by typing it. The values are texts, not files, so it has no file profile."@en ,
+        "Uma visualização que mostra os valores de um campo como tags, pequenos rótulos lado a lado, cada um podendo ser removido; uma tag é adicionada digitando-a. Os valores são textos, e não arquivos, por isso não tem perfil de arquivos."@pt-br ,
+        "Una visualización que muestra los valores de un campo como etiquetas, pequeños rótulos uno junto a otro, cada uno de los cuales puede eliminarse; una etiqueta se agrega escribiéndola. Los valores son textos, no archivos, por lo que no tiene perfil de archivos."@es .
 
 :hasAlternativeVisualization rdf:type owl:ObjectProperty ;
     rdfs:domain :FacadeField ;
@@ -169,6 +187,16 @@
         "é editável"@pt-br ;
     skos:definition "Whether a facade field value can be changed by a user. A field that does not declare it is not editable; an entity is editable when at least one of its facade fields is."@en ,
         "Se o valor de um campo de fachada pode ser alterado por um usuário. Um campo que não o declara não é editável; uma entidade é editável quando ao menos um dos campos de sua fachada é."@pt-br .
+
+:isCommentable rdf:type owl:DatatypeProperty ;
+    rdfs:domain :DataEntityFacade ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is commentable"@en ,
+        "é comentável"@pt-br ,
+        "es comentable"@es ;
+    skos:definition "Whether an instance of the entity the facade projects can be commented on by a user, in a thread of comments. A facade that does not declare it describes an entity whose instances cannot be commented on."@en ,
+        "Se uma instância da entidade que a fachada projeta pode ser comentada por um usuário, em uma thread de comentários. Uma fachada que não o declara descreve uma entidade cujas instâncias não podem ser comentadas."@pt-br ,
+        "Si una instancia de la entidad que proyecta la fachada puede ser comentada por un usuario, en un hilo de comentarios. Una fachada que no lo declara describe una entidad cuyas instancias no pueden comentarse."@es .
 
 :isCreatable rdf:type owl:DatatypeProperty ;
     rdfs:domain :DataEntityFacade ;
@@ -263,6 +291,11 @@
         ] ,
         [
             sh:path :isCreatable ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
+            sh:path :isCommentable ;
             sh:maxCount 1 ;
             sh:datatype xsd:boolean
         ] .

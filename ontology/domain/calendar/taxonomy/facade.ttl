@@ -1,0 +1,149 @@
+@prefix : <http://datacenter.app.br/ontology/domain/calendar/taxonomy/facade.ttl#> .
+@prefix calendar: <http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/calendar/taxonomy/facade.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "Calendar Facade"@en ,
+        "Fachada de Calendário"@pt-br ,
+        "Fachada de calendario"@es ;
+    schema:description "The public fields of a calendar day and its OWL-Time date-time description."@en ,
+        "Os campos públicos de um dia do calendário e de sua descrição de data OWL-Time."@pt-br ,
+        "Los campos públicos de un día del calendario y de su descripción de fecha OWL-Time."@es .
+
+#################################################################
+# Facades
+#################################################################
+
+:DayFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "day" ;
+    schema:name "Day"@en , "Dia"@pt-br , "Día"@es ;
+    facade:isFacadeOf calendar:Day ;
+    facade:hasFacadeField :GlobalIdField , :DateField , socialfacade:TagsField .
+
+:DateTimeDescriptionFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf time:DateTimeDescription ;
+    facade:hasFacadeField :YearField , :MonthField , :DayField , :UnitTypeField , :TemporalReferenceSystemField .
+
+#################################################################
+# Fields
+#################################################################
+
+:GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en , "Identificador global"@pt-br , "Identificador global"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:UuidGenerator ;
+    facade:mapsToResource dcterms:identifier .
+
+:DateField
+    rdf:type facade:FacadeField ;
+    schema:identifier "date" ;
+    schema:name "Date"@en , "Data"@pt-br , "Fecha"@es ;
+    schema:description "The calendar day, for example 2026-10-22. The year, month and day of its date-time description come from it."@en ,
+        "O dia do calendário, por exemplo 2026-10-22. O ano, o mês e o dia da sua descrição de data vêm dele."@pt-br ,
+        "El día del calendario, por ejemplo 2026-10-22. El año, el mes y el día de su descripción de fecha salen de él."@es ;
+    facade:fieldDatatype xsd:date ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:date .
+
+:DateTimeDescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "date_time_description" ;
+    schema:name "Date-time description"@en , "Descrição da data"@pt-br , "Descripción de la fecha"@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable false ;
+    facade:mapsToResource time:hasDateTimeDescription ;
+    facade:hasResourceFacade :DateTimeDescriptionFacade .
+
+:YearField
+    rdf:type facade:FacadeField ;
+    schema:identifier "year" ;
+    schema:name "Year"@en , "Ano"@pt-br , "Año"@es ;
+    schema:description "The year, for example 2026."@en ,
+        "O ano, por exemplo 2026."@pt-br ,
+        "El año, por ejemplo 2026."@es ;
+    facade:fieldDatatype xsd:gYear ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource time:year .
+
+:MonthField
+    rdf:type facade:FacadeField ;
+    schema:identifier "month" ;
+    schema:name "Month"@en , "Mês"@pt-br , "Mes"@es ;
+    schema:description "The month, for example --10."@en ,
+        "O mês, por exemplo --10."@pt-br ,
+        "El mes, por ejemplo --10."@es ;
+    facade:fieldDatatype xsd:gMonth ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource time:month .
+
+:DayField
+    rdf:type facade:FacadeField ;
+    schema:identifier "day" ;
+    schema:name "Day of month"@en , "Dia do mês"@pt-br , "Día del mes"@es ;
+    schema:description "The day of month, for example ---21."@en ,
+        "O dia do mês, por exemplo ---21."@pt-br ,
+        "El día del mes, por ejemplo ---21."@es ;
+    facade:fieldDatatype xsd:gDay ;
+    facade:fieldOrder 2 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource time:day .
+
+:UnitTypeField
+    rdf:type facade:FacadeField ;
+    schema:identifier "unit_type" ;
+    schema:name "Temporal unit"@en , "Unidade temporal"@pt-br , "Unidad temporal"@es ;
+    schema:description "Use time:unitDay for a calendar day."@en ,
+        "Use time:unitDay para um dia do calendário."@pt-br ,
+        "Use time:unitDay para un día del calendario."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 3 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource time:unitType .
+
+:TemporalReferenceSystemField
+    rdf:type facade:FacadeField ;
+    schema:identifier "temporal_reference_system" ;
+    schema:name "Temporal reference system"@en , "Sistema de referência temporal"@pt-br , "Sistema de referencia temporal"@es ;
+    schema:description "For Gregorian dates, use http://www.opengis.net/def/uom/ISO-8601/0/Gregorian."@en ,
+        "Para datas gregorianas, use http://www.opengis.net/def/uom/ISO-8601/0/Gregorian."@pt-br ,
+        "Para fechas gregorianas, use http://www.opengis.net/def/uom/ISO-8601/0/Gregorian."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 4 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource time:hasTRS .

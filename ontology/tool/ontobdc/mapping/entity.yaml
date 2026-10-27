@@ -12,3 +12,6 @@ ontology:
   plan: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Plan
   milestone: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Milestone
   goal: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Goal
+  day: http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#Day
+  dia: http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#Day
+  ifcelement: https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#IfcElement

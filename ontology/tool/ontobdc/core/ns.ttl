@@ -315,3 +315,193 @@ prov:Entity rdf:type owl:Class .
     :acceptedExtension
         ".eml" ,
         ".msg" .
+
+#################################################################
+#    Crate file properties
+#
+#    What the RO-Crate of a container (ro-crate-metadata.json) says about
+#    each file it holds. A crate file property is one property of the node
+#    of a file in the crate: the name it has there (a schema.org term), the
+#    order it is written in, and where its value comes from. A value source
+#    is a way of reading the value from the file; the code that reads
+#    knows how to read each source, and which properties the crate carries
+#    is what this ontology declares.
+#################################################################
+
+:CrateFileProperty
+    a owl:Class ;
+    rdfs:label "Crate file property"@en ;
+    rdfs:comment
+        "One property of the node that describes a file in the RO-Crate of a container."@en .
+
+:FilePropertySource
+    a owl:Class ;
+    rdfs:label "File property source"@en ;
+    rdfs:comment
+        "A way of reading the value of a crate file property from a file."@en .
+
+:cratePropertyName
+    a owl:DatatypeProperty ;
+    rdfs:domain :CrateFileProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "crate property name"@en ;
+    rdfs:comment
+        "The name of the property in the node of the file in the crate, a schema.org term such as contentSize."@en .
+
+:cratePropertyOrder
+    a owl:DatatypeProperty ;
+    rdfs:domain :CrateFileProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "crate property order"@en ;
+    rdfs:comment
+        "The place of the property among the others of the node, from the smallest."@en .
+
+:hasValueSource
+    a owl:ObjectProperty ;
+    rdfs:domain :CrateFileProperty ;
+    rdfs:range :FilePropertySource ;
+    rdfs:label "has value source"@en ;
+    rdfs:comment
+        "Where the value of the property comes from."@en .
+
+:isOptionalCrateProperty
+    a owl:DatatypeProperty ;
+    rdfs:domain :CrateFileProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is optional crate property"@en ;
+    rdfs:comment
+        "True when a file may have no value for the property, and the node then leaves it out."@en .
+
+:FileNameSource
+    a :FilePropertySource ;
+    rdfs:label "File name"@en ;
+    rdfs:comment "The name of the file, without its directory."@en .
+
+:FileSizeSource
+    a :FilePropertySource ;
+    rdfs:label "File size"@en ;
+    rdfs:comment "The size of the file in bytes, written as text."@en .
+
+:ModificationTimeSource
+    a :FilePropertySource ;
+    rdfs:label "Modification time"@en ;
+    rdfs:comment "When the file was last modified, in UTC."@en .
+
+:MediaTypeSource
+    a :FilePropertySource ;
+    rdfs:label "Media type"@en ;
+    rdfs:comment "The media type the extension of the file stands for, when it is a known one."@en .
+
+:CreationTimeSource
+    a :FilePropertySource ;
+    rdfs:label "Creation time"@en ;
+    rdfs:comment "When the file was created, in UTC, when the system tells."@en .
+
+:CrateFileName
+    a :CrateFileProperty ;
+    :cratePropertyName "name" ;
+    :cratePropertyOrder 1 ;
+    :hasValueSource :FileNameSource ;
+    :isOptionalCrateProperty false .
+
+:CrateFileContentSize
+    a :CrateFileProperty ;
+    :cratePropertyName "contentSize" ;
+    :cratePropertyOrder 2 ;
+    :hasValueSource :FileSizeSource ;
+    :isOptionalCrateProperty false .
+
+:CrateFileDateModified
+    a :CrateFileProperty ;
+    :cratePropertyName "dateModified" ;
+    :cratePropertyOrder 3 ;
+    :hasValueSource :ModificationTimeSource ;
+    :isOptionalCrateProperty false .
+
+:CrateFileEncodingFormat
+    a :CrateFileProperty ;
+    :cratePropertyName "encodingFormat" ;
+    :cratePropertyOrder 4 ;
+    :hasValueSource :MediaTypeSource ;
+    :isOptionalCrateProperty true .
+
+:CrateFileDateCreated
+    a :CrateFileProperty ;
+    :cratePropertyName "dateCreated" ;
+    :cratePropertyOrder 5 ;
+    :hasValueSource :CreationTimeSource ;
+    :isOptionalCrateProperty true .
+
+#################################################################
+#    File history
+#
+#    A file of a container changes, and moves. The history of a file is
+#    what the container knew of it, one entry for each time it was seen
+#    different: where it was (its path in the container), what it held
+#    (the hash of its content) and when. The RO-Crate of the container
+#    keeps the history of a file in its node, in one list ordered by time,
+#    and the history of the whole container in the root dataset, where each
+#    entry also says which file it is of: the file is named by an identifier
+#    (a UUID) that does not change when the file moves.
+#################################################################
+
+:FileHistoryEntry
+    a owl:Class ;
+    rdfs:label "File history entry"@en ;
+    rdfs:comment
+        "One time a file of a container was seen different: its path, the hash of its content, its size and the moment."@en .
+
+:relativePath
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:label "relative path"@en ;
+    rdfs:comment
+        "The path of the file in the container, relative to its root, with a slash between the directories."@en .
+
+:sha256
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:label "SHA-256"@en ;
+    rdfs:comment
+        "The SHA-256 of the content of the file, as lowercase hexadecimal."@en .
+
+:historyTimestamp
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "history timestamp"@en ;
+    rdfs:comment
+        "When the file was last modified, in UTC; when the system tells no modification time, when it was created."@en .
+
+:historySize
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "history size"@en ;
+    rdfs:comment
+        "The size of the file, in bytes, at that moment. An entry written before the size was kept has none."@en .
+
+:missingSince
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:dateTime ;
+    rdfs:label "missing since"@en ;
+    rdfs:comment
+        "When the file was found no longer at the path of the entry. The entry keeps the path, hash and size of what the file was, so it can be found again. An entry without it says the file is there."@en .
+
+:fileHistory
+    a owl:ObjectProperty ;
+    rdfs:range :FileHistoryEntry ;
+    rdfs:label "file history"@en ;
+    rdfs:comment
+        "The history entries, in one list ordered by timestamp, the oldest first. In the node of a file, the ones of that file; in the root dataset, the ones of all the files, each with its fileId."@en .
+
+:fileId
+    a owl:DatatypeProperty ;
+    rdfs:domain :FileHistoryEntry ;
+    rdfs:range xsd:string ;
+    rdfs:label "file id"@en ;
+    rdfs:comment
+        "The identifier (a UUID) of the file the entry is of, which names the file in the crate whatever its path."@en .

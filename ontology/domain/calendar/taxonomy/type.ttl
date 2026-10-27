@@ -1,0 +1,33 @@
+@prefix : <http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+
+<http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Calendar Types"@en ,
+        "Tipos de Calendário"@pt-br ,
+        "Tipos de calendario"@es .
+
+#################################################################
+# Classes
+#################################################################
+
+:Day rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , time:DateTimeInterval ;
+    dcterms:identifier "day" ;
+    rdfs:label "Day"@en ,
+        "Dia"@pt-br ,
+        "Día"@es ;
+    skos:definition
+        "A calendar day, stored as the range of time in which it is that date somewhere on Earth: from 00:00 at the earliest time zone (UTC+14) to 24:00 at the latest (UTC-12), which is 50 hours."@en ,
+        "Um dia do calendário, armazenado como o intervalo de tempo em que aquela data existe em algum lugar da Terra: das 00:00 do primeiro fuso horário (UTC+14) às 24:00 do último (UTC-12), ou seja, 50 horas."@pt-br ,
+        "Un día del calendario, almacenado como el intervalo de tiempo en el que existe esa fecha en algún lugar de la Tierra: desde las 00:00 del primer huso horario (UTC+14) hasta las 24:00 del último (UTC-12), es decir, 50 horas."@es ;
+    rdfs:comment
+        "The range is for storage. What happens at an instant belongs to every day whose range holds the instant, whatever the time zone of who recorded it, so two days may hold the same thing. A person sees a day in their own time zone: the 24 hours of that date there, which are always inside the range of the day. The date is described with time:hasDateTimeDescription, with time:unitType time:unitDay, time:year, time:month and time:day; for Gregorian dates, use time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>. The range follows from the date: time:hasBeginning is the date at 00:00+14:00 and time:hasEnd is the date at 24:00-12:00."@en ,
+        "O intervalo é para armazenamento. O que acontece em um instante pertence a todo dia cujo intervalo contém o instante, qualquer que seja o fuso de quem o registrou, então dois dias podem conter a mesma coisa. Uma pessoa vê o dia no seu próprio fuso: as 24 horas daquela data lá, que ficam sempre dentro do intervalo do dia. A data é descrita com time:hasDateTimeDescription, com time:unitType time:unitDay, time:year, time:month e time:day; para datas gregorianas, use time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>. O intervalo decorre da data: time:hasBeginning é a data às 00:00+14:00 e time:hasEnd é a data às 24:00-12:00."@pt-br ,
+        "El intervalo es para almacenamiento. Lo que ocurre en un instante pertenece a todo día cuyo intervalo contiene el instante, sea cual sea el huso horario de quien lo registró, así que dos días pueden contener lo mismo. Una persona ve el día en su propio huso: las 24 horas de esa fecha allí, que siempre quedan dentro del intervalo del día. La fecha se describe con time:hasDateTimeDescription, con time:unitType time:unitDay, time:year, time:month y time:day; para fechas gregorianas, use time:hasTRS <http://www.opengis.net/def/uom/ISO-8601/0/Gregorian>. El intervalo se deduce de la fecha: time:hasBeginning es la fecha a las 00:00+14:00 y time:hasEnd es la fecha a las 24:00-12:00."@es .

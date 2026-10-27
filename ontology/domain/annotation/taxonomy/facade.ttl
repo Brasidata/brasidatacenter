@@ -2,12 +2,13 @@
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix annotation: <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
+@prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/annotation/taxonomy/facade.ttl>
@@ -23,6 +24,7 @@
     rdf:type facade:DataEntityFacade ;
     facade:isDeletable true ;
     facade:isCreatable true ;
+    facade:isCommentable true ;
     schema:identifier "annotation" ;
     schema:name "Annotation"@en ,
         "Anotação"@pt-br ,
@@ -38,7 +40,8 @@
         :AuthorField ,
         :CreatedAtField ,
         :CompletedAtField ,
-        :RelatedDocumentsField .
+        :RelatedDocumentsField ,
+        socialfacade:TagsField .
 
 :GlobalIdField
     rdf:type facade:FacadeField ;
@@ -101,14 +104,16 @@
     schema:name "Geometry"@en ,
         "Geometria"@pt-br ,
         "Geometría"@es ;
-    schema:description "Well-known text of the captured points, in click order: a POINT for one, a LINESTRING for more. Absent when the annotation is not placed at any point."@en ,
-        "Well-known text dos pontos capturados, na ordem do clique: um POINT para um, um LINESTRING para mais. Ausente quando a anotação não está em nenhum ponto."@pt-br ,
-        "Well-Known Text de los puntos capturados, en el orden de los clics: un POINT para uno, un LINESTRING para más. Ausente cuando la anotación no está situada en ningún punto."@es ;
+    schema:description "The places the annotation was made at, in the coordinates of its source document, one value for each geometry, as well-known text: a point, a line, a polygon or a mesh, in two dimensions or in three (POINT, LINESTRING, POLYGON, MULTIPOLYGON, TIN, POLYHEDRALSURFACE, each of them with Z in three). Absent when the annotation is not placed anywhere. They are kept apart from the row of the annotation, in the triples of its dataset."@en ,
+        "Os lugares em que a anotação foi feita, nas coordenadas do seu documento de origem, um valor para cada geometria, em well-known text: um ponto, uma linha, um polígono ou uma malha, em duas dimensões ou em três (POINT, LINESTRING, POLYGON, MULTIPOLYGON, TIN, POLYHEDRALSURFACE, cada um com Z em três). Ausente quando a anotação não está situada em lugar nenhum. Ficam à parte da linha da anotação, nas triples do seu dataset."@pt-br ,
+        "Los lugares en que se realizó la anotación, en las coordenadas de su documento de origen, un valor para cada geometría, como well-known text: un punto, una línea, un polígono o una malla, en dos dimensiones o en tres (POINT, LINESTRING, POLYGON, MULTIPOLYGON, TIN, POLYHEDRALSURFACE, cada uno con Z en tres). Ausente cuando la anotación no está situada en ningún lugar. Se guardan aparte de la fila de la anotación, en las triples de su dataset."@es ;
     facade:fieldDatatype geo:wktLiteral ;
     facade:fieldOrder 4 ;
     facade:isRequired false ;
-    facade:isMultivalued false ;
-    facade:mapsToResource geo:asWKT .
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource geo:asWKT ;
+    facade:hasAlternativeVisualization facade:GeometryOverlay .
 
 :SourceDocumentField
     rdf:type facade:FacadeField ;
@@ -123,7 +128,9 @@
     facade:fieldOrder 5 ;
     facade:isRequired false ;
     facade:isMultivalued false ;
-    facade:mapsToResource dcterms:source .
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:source ;
+    facade:hasResourceFacade :RelatedDocumentFacade .
 
 :AuthorField
     rdf:type facade:FacadeField ;

@@ -1,0 +1,49 @@
+@prefix : <http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Social Types"@en ,
+        "Tipos Sociais"@pt-br ;
+    rdfs:comment "What people say about an entity: a thread of comments, in the vocabulary of SIOC. An entity whose facade declares facade:isCommentable can be commented on. A comment is not a data entity: it has no dataset and is not listed with the entities. It is kept as triples in the dataset of the entity it comments on, and is read as the thread of that entity."@en ,
+        "O que as pessoas dizem sobre uma entidade: uma thread de comentários, no vocabulário do SIOC. Uma entidade cuja fachada declara facade:isCommentable pode ser comentada. Um comentário não é uma entidade de dados: não tem dataset e não é listado com as entidades. É guardado como triplas no dataset da entidade que comenta, e é lido como a thread dessa entidade."@pt-br .
+
+#################################################################
+# How a thread is written
+#################################################################
+#
+#   <entity>   sioc:has_discussion  <thread> .
+#   <thread>   a sioc:Thread ;  sioc:container_of  <comment1> , <comment2> .
+#   <comment1> a :Comment ;  sioc:has_container <thread> ;
+#              dcterms:identifier "..." ; schema:text "..." ;
+#              dcterms:creator "..." ; dcterms:created "..."^^xsd:dateTime .
+#   <comment2> a :Comment ;  sioc:has_container <thread> ;  sioc:reply_of <comment1> ; ...
+#
+# The entity is the one whose dcterms:identifier is its global id. The fields of a
+# comment are the ones of an annotation (text, author, date), so they are read the
+# same way.
+
+#################################################################
+# Classes
+#################################################################
+
+sioc:Post rdf:type owl:Class .
+
+sioc:Thread rdf:type owl:Class .
+
+:Comment rdf:type owl:Class ;
+    rdfs:subClassOf sioc:Post , prov:Entity ;
+    rdfs:label "Comment"@en ,
+        "Comentário"@pt-br ,
+        "Comentario"@es ;
+    skos:definition "What a person said, in a thread, about an entity that can be commented on, or in reply to another comment of the thread."@en ,
+        "O que uma pessoa disse, em uma thread, sobre uma entidade que pode ser comentada, ou em resposta a outro comentário da thread."@pt-br ,
+        "Lo que una persona dijo, en un hilo, sobre una entidad que puede comentarse, o en respuesta a otro comentario del hilo."@es .

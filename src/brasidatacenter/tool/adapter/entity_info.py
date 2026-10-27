@@ -2,16 +2,17 @@
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 from rdflib import BNode, Graph, Literal, URIRef
 from rdflib.namespace import RDF, RDFS, XSD, Namespace
-from rdflib.util import guess_format
 
-from brasidatacenter.resources import iter_ontology_files
+from brasidatacenter.resources import iter_ontology_files, ontology_path_for_iri
+from brasidatacenter.tool.adapter import ontology_cache
 
 _FACADE = Namespace("http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#")
-_SCHEMA = Namespace("https://schema.org/")
+_SCHEMA = Namespace("http://schema.org/")
 _CSVW = Namespace("http://www.w3.org/ns/csvw#")
 _DCTERMS = Namespace("http://purl.org/dc/terms/")
 _SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
@@ -44,12 +45,25 @@ def entity_info(entity_id: str | None = None) -> dict[str, Any] | list[dict[str,
             for entity_iri in _data_entity_types()
         ]
 
+    # What the ontologies say does not change while the process runs: it is worked out once for each entity.
+    if entity_id not in _FACADES:
+        _FACADES[entity_id] = _facade_published_for(entity_id)
+    return copy.deepcopy(_FACADES[entity_id])
+
+
+_FACADES: dict[str, dict[str, Any] | None] = {}
+
+
+def _facade_published_for(entity_id: str) -> dict[str, Any] | None:
     for ontology_file in iter_ontology_files():
-        graph = Graph()
-        graph.parse(str(ontology_file), format=guess_format(str(ontology_file)))
-        subject = _facade_of(graph, entity_id)
+        # A facade is in a file that names the entity: the others are not even parsed.
+        if _local_name(URIRef(entity_id)) not in ontology_cache.text(ontology_file):
+            continue
+        shared = ontology_cache.parsed(ontology_file)
+        subject = _facade_of(shared, entity_id)
         if subject is not None:
-            return _read(graph, subject, entity_id)
+            # Reading the facade brings other ontologies in: it works on a copy, the shared graph stays as it was.
+            return _read(ontology_cache.copy(ontology_file), subject, entity_id)
 
     return None
 
@@ -137,17 +151,20 @@ def _data_entity_types() -> list[str]:
     ``subClassOf`` and ``DataEntity``. The search needs no external program,
     so it works the same inside an installed wheel.
     """
-    graph = Graph()
-    for ontology_file in iter_ontology_files():
-        text = ontology_file.read_text(encoding="utf-8")
-        if "subClassOf" in text and _local_name(_DATA_ENTITY) in text:
-            graph.parse(data=text, format=guess_format(str(ontology_file)))
+    global _DATA_ENTITY_TYPES
+    if _DATA_ENTITY_TYPES is None:
+        known: set[str] = set()
+        for ontology_file in iter_ontology_files():
+            text = ontology_cache.text(ontology_file)
+            if "subClassOf" in text and _local_name(_DATA_ENTITY) in text:
+                graph = ontology_cache.parsed(ontology_file)
+                known.update(str(type_) for type_ in graph.subjects(RDFS.subClassOf, _DATA_ENTITY) if isinstance(type_, URIRef))
+        _DATA_ENTITY_TYPES = sorted(known)
 
-    return sorted(
-        str(known)
-        for known in graph.subjects(RDFS.subClassOf, _DATA_ENTITY)
-        if isinstance(known, URIRef)
-    )
+    return list(_DATA_ENTITY_TYPES)
+
+
+_DATA_ENTITY_TYPES: list[str] | None = None
 
 
 def _local_name(iri: URIRef) -> str:
@@ -162,7 +179,22 @@ def _facade_of(graph: Graph, entity_iri: str) -> URIRef | None:
     return None
 
 
+def _bring_in_fields(graph: Graph, subject: URIRef) -> None:
+    """
+    A field the facade lists but the file of the facade does not describe is described in the ontology
+    that names it: a field is an IRI, and an ontology is published at the IRI that names its file. Its
+    description is read from there, so a field can be shared by the facades of many ontologies.
+    """
+    for field_subject in list(graph.objects(subject, _FACADE.hasFacadeField)):
+        if not isinstance(field_subject, URIRef) or graph.value(field_subject, _SCHEMA.identifier) is not None:
+            continue
+
+        ontology_file = ontology_path_for_iri(str(field_subject).split("#", 1)[0])
+        graph += ontology_cache.parsed(ontology_file)
+
+
 def _read(graph: Graph, subject: URIRef, entity_iri: str) -> dict[str, Any]:
+    _bring_in_fields(graph, subject)
     fields = [
         _read_field(graph, field_subject)
         for field_subject in graph.objects(subject, _FACADE.hasFacadeField)
@@ -174,6 +206,7 @@ def _read(graph: Graph, subject: URIRef, entity_iri: str) -> dict[str, Any]:
         "labels": _labels(graph, subject),
         "deletable": _deletable(graph, subject),
         "creatable": _creatable(graph, subject),
+        "commentable": _commentable(graph, subject),
         "entity_iri": entity_iri,
         "tree_children": _tree_children(graph, subject),
         "fields": sorted(fields, key=lambda declared: declared["order"]),
@@ -292,11 +325,9 @@ def _find_all(subject: URIRef, predicate: URIRef) -> list[Any]:
     """
     found: list[Any] = []
     for ontology_file in iter_ontology_files():
-        text = ontology_file.read_text(encoding="utf-8")
+        text = ontology_cache.text(ontology_file)
         if _local_name(subject) in text and _local_name(predicate) in text:
-            graph = Graph()
-            graph.parse(data=text, format=guess_format(str(ontology_file)))
-            found.extend(graph.objects(subject, predicate))
+            found.extend(ontology_cache.parsed(ontology_file).objects(subject, predicate))
 
     return found
 
@@ -314,6 +345,14 @@ def _deletable(graph: Graph, subject: URIRef) -> bool:
     return _flag(graph, subject, _FACADE.isDeletable)
 
 
+def _commentable(graph: Graph, subject: URIRef) -> bool:
+    """An instance can be commented on when the facade says so; a facade that does not say so forbids it."""
+    if graph.value(subject, _FACADE.isCommentable) is None:
+        return False
+
+    return _flag(graph, subject, _FACADE.isCommentable)
+
+
 def _options(graph: Graph, subject: URIRef) -> dict[str, Any]:
     """
     The values a field is chosen from, when its facade says they are the
@@ -326,11 +365,10 @@ def _options(graph: Graph, subject: URIRef) -> dict[str, Any]:
 
     options: dict[str, dict[str, str]] = {}
     for ontology_file in iter_ontology_files():
-        text = ontology_file.read_text(encoding="utf-8")
+        text = ontology_cache.text(ontology_file)
         if "subClassOf" not in text or _local_name(parent) not in text:
             continue
-        found = Graph()
-        found.parse(data=text, format=guess_format(str(ontology_file)))
+        found = ontology_cache.parsed(ontology_file)
         for child in found.subjects(RDFS.subClassOf, parent):
             identifier = found.value(child, _DCTERMS.identifier)
             if not isinstance(identifier, Literal):

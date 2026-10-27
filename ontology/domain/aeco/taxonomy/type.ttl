@@ -1,5 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/type.ttl#> .
-@prefix ifc43owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
+@prefix ifc4x3owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
 @prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -16,5 +16,11 @@
 ifcowl:IfcProject rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity .
 
-ifc43owl:IfcProject rdf:type owl:Class ;
+ifc4x3owl:IfcProject rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity .
+
+ifcowl:IfcElement rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity .
+
+ifc4x3owl:IfcElement rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity .

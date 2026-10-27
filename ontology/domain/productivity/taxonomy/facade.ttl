@@ -1,12 +1,13 @@
 @prefix : <http://datacenter.app.br/ontology/domain/productivity/taxonomy/facade.ttl#> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
 @prefix productivity: <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema: <https://schema.org/> .
+@prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/productivity/taxonomy/facade.ttl>
@@ -26,6 +27,7 @@
     rdf:type facade:DataEntityFacade ;
     facade:isDeletable true ;
     facade:isCreatable true ;
+    facade:isCommentable true ;
     schema:identifier "task" ;
     schema:name "Task"@en ,
         "Tarefa"@pt-br ,
@@ -42,7 +44,8 @@
         :PlannedFinishField ,
         :ActualStartField ,
         :ActualFinishField ,
-        :CompletionPercentField .
+        :CompletionPercentField ,
+        socialfacade:TagsField .
 
 :StepFacade
     rdf:type facade:DataEntityFacade ;
@@ -64,6 +67,7 @@
     rdf:type facade:DataEntityFacade ;
     facade:isDeletable true ;
     facade:isCreatable true ;
+    facade:isCommentable true ;
     schema:identifier "milestone" ;
     schema:name "Milestone"@en ,
         "Marco"@pt-br ,
@@ -73,12 +77,14 @@
         :GlobalIdField ,
         :TitleField ,
         :DescriptionField ,
-        :CreatedAtField .
+        :CreatedAtField ,
+        socialfacade:TagsField .
 
 :GoalFacade
     rdf:type facade:DataEntityFacade ;
     facade:isDeletable true ;
     facade:isCreatable true ;
+    facade:isCommentable true ;
     schema:identifier "goal" ;
     schema:name "Goal"@en ,
         "Objetivo"@pt-br ,
@@ -94,7 +100,8 @@
         :TitleField ,
         :DescriptionField ,
         :CreatedAtField ,
-        :RelatedDocumentsField .
+        :RelatedDocumentsField ,
+        socialfacade:TagsField .
 
 :PlanFacade
     rdf:type facade:DataEntityFacade ;

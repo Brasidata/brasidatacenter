@@ -1,0 +1,122 @@
+@prefix : <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix social: <http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "Social Facade"@en ,
+        "Fachada Social"@pt-br ,
+        "Fachada social"@es ;
+    schema:description "The public fields of a comment of a thread."@en ,
+        "Os campos públicos de um comentário de uma thread."@pt-br ,
+        "Los campos públicos de un comentario de un hilo."@es .
+
+:CommentFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    schema:identifier "comment" ;
+    schema:name "Comment"@en ,
+        "Comentário"@pt-br ,
+        "Comentario"@es ;
+    facade:isFacadeOf social:Comment ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TextField ,
+        :AuthorField ,
+        :CreatedAtField ,
+        :ReplyOfField .
+
+:GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:UuidGenerator ;
+    facade:mapsToResource dcterms:identifier .
+
+:TextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "text" ;
+    schema:name "Text"@en ,
+        "Texto"@pt-br ,
+        "Texto"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:text .
+
+:AuthorField
+    rdf:type facade:FacadeField ;
+    schema:identifier "author" ;
+    schema:name "Author"@en ,
+        "Autor"@pt-br ,
+        "Autor"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource dcterms:creator .
+
+:CreatedAtField
+    rdf:type facade:FacadeField ;
+    schema:identifier "created_at" ;
+    schema:name "Created at"@en ,
+        "Criado em"@pt-br ,
+        "Creado el"@es ;
+    facade:fieldDatatype xsd:dateTime ;
+    csvw:format "M/d/yyyy h:mm a"@en ,
+        "dd/MM/yyyy HH:mm"@pt-br ,
+        "d/M/yyyy H:mm"@es ;
+    facade:fieldOrder 3 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:CurrentDateTimeGenerator ;
+    facade:mapsToResource dcterms:created .
+
+:ReplyOfField
+    rdf:type facade:FacadeField ;
+    schema:identifier "reply_of" ;
+    schema:name "In reply to"@en ,
+        "Em resposta a"@pt-br ,
+        "En respuesta a"@es ;
+    schema:description "The global id of the comment of the thread this one answers; absent for a comment that opens the discussion."@en ,
+        "O identificador global do comentário da thread que este responde; ausente para um comentário que abre a discussão."@pt-br ,
+        "El identificador global del comentario del hilo al que este responde; ausente para un comentario que abre la discusión."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:mapsToResource sioc:reply_of .
+
+# The tags of an entity. The field is shared: the facade of every entity that can be tagged lists it.
+:TagsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "tags" ;
+    schema:name "Tags"@en ,
+        "Tags"@pt-br ,
+        "Etiquetas"@es ;
+    schema:description "The tags of the entity: free texts that describe it. A tag is added or removed; it is not changed."@en ,
+        "As tags da entidade: textos livres que a descrevem. Uma tag é adicionada ou removida; não é alterada."@pt-br ,
+        "Las etiquetas de la entidad: textos libres que la describen. Una etiqueta se agrega o se elimina; no se cambia."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 100 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:keywords ;
+    facade:hasAlternativeVisualization facade:TagList .
