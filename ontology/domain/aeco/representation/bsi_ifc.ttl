@@ -2,6 +2,8 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl#> .
 @prefix aeco: <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl#> .
 @prefix ifc4owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix express: <https://w3id.org/express#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -2614,12 +2616,22 @@
 
 
 :PileCapIfcBinding rdf:type owl:Class ;
+    rdfs:label "Pile cap IFC binding"@en ,
+        "Vinculação IFC do bloco de coroamento"@pt-br ;
+    dcterms:source <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcstructuralelementsdomain/lexical/ifcfootingtypeenum.htm> ;
+    rdfs:comment "Based on buildingSMART's official IFC4 IfcFootingTypeEnum documentation. PILE_CAP identifies the foundation element transferring column loads to piles or piers; this is an IFC predefined type."@en ,
+        "Baseado na documentação oficial IfcFootingTypeEnum do IFC4, publicada pela buildingSMART. PILE_CAP identifica o elemento de fundação que transmite cargas dos pilares às estacas ou aos apoios profundos; trata-se de um tipo predefinido do IFC."@pt-br ;
     rdfs:subClassOf aeco:IfcElementBinding ,
         ifc4owl:IfcFooting ,
         [
             rdf:type owl:Restriction ;
             owl:onProperty aeco:bindsIfcElementFor ;
             owl:hasValue kind:BlocoDeFundacao
+        ] ,
+        [
+            rdf:type owl:Restriction ;
+            owl:onProperty aeco:bindsIfcElementFor ;
+            owl:hasValue kind:BlocoDeCoroamento
         ] ,
         [
             rdf:type owl:Restriction ;
@@ -4267,3 +4279,85 @@
 
 # DivisoriaDeMdf — Parede leve de MDF para separação de ambientes.
 # -----------------------------------------------------------------------------
+
+# Official source for the pile-cap predefined type.
+<https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcstructuralelementsdomain/lexical/ifcfootingtypeenum.htm>
+    rdf:type dcterms:BibliographicResource ;
+    dcterms:title "IfcFootingTypeEnum — IFC4 documentation"@en ;
+    dcterms:publisher <https://www.buildingsmart.org/> .
+
+# Electrical chamber cover — brasidatacenter convention using IFC4 USERDEFINED.
+:ElectricalChamberCoverObjectType rdf:type ifc4owl:IfcLabel ;
+    express:hasString "ELECTRICALCHAMBERCOVER" .
+
+:ElectricalChamberCoverIfcBinding rdf:type owl:Class ;
+    rdfs:label "Electrical chamber cover IFC binding"@en ,
+        "Vinculação IFC da tampa de caixa elétrica"@pt-br ;
+    dcterms:source <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcsharedbldgelements/lexical/ifccovering.htm> ;
+    rdfs:comment "Local brasidatacenter modelling convention for electrical chamber covers, based on the IFC4 USERDEFINED mechanism. ELECTRICALCHAMBERCOVER is a project-defined ObjectType value, not a buildingSMART predefined-type enumeration or a BCA IFC-SG requirement."@en ,
+        "Convenção local de modelagem do brasidatacenter para tampas de caixas elétricas, baseada no mecanismo USERDEFINED do IFC4. ELECTRICALCHAMBERCOVER é um valor de ObjectType definido pelo projeto, e não um tipo predefinido da buildingSMART nem uma exigência IFC-SG da BCA."@pt-br ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCovering ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:bindsIfcElementFor ;
+          owl:hasValue kind:TampaDeCaixaEletrica ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ifc4owl:predefinedType_IfcCovering ;
+          owl:hasValue ifc4owl:USERDEFINED ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ifc4owl:objectType_IfcObject ;
+          owl:hasValue :ElectricalChamberCoverObjectType ] .
+
+<https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcsharedbldgelements/lexical/ifccovering.htm>
+    rdf:type dcterms:BibliographicResource ;
+    dcterms:title "IfcCovering — IFC4 documentation"@en ;
+    dcterms:publisher <https://www.buildingsmart.org/> .
+
+# Condenser and protection fence mappings adopted in novo-labsea.
+:AirCooledCondenserIfcBinding rdf:type owl:Class ;
+    rdfs:label "Air-cooled condenser IFC binding"@en ,
+        "Vinculação IFC da condensadora"@pt-br ;
+    dcterms:source <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifchvacdomain/lexical/ifccondenser.htm> ,
+        <https://github.com/EliasMPJunior/novo-labsea/blob/2408832c272d5791a03714aad48030ba3d20845a/ifc/CONDENSERS.md> ;
+    rdfs:comment "Uses the native IFC4 IfcCondenser entity and AIRCOOLED predefined type. Adopted for the three condensers in novo-labsea; equipment dimensions and positions belong to model instances."@en ,
+        "Utiliza a entidade nativa IfcCondenser e o tipo predefinido AIRCOOLED do IFC4. Adotado para as três condensadoras do novo-labsea; dimensões e posições pertencem às instâncias do modelo."@pt-br ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcCondenser ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:bindsIfcElementFor ;
+          owl:hasValue kind:Condensadora ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ifc4owl:predefinedType_IfcCondenser ;
+          owl:hasValue ifc4owl:AIRCOOLED ] .
+
+:ProtectionFenceObjectType rdf:type ifc4owl:IfcLabel ;
+    express:hasString "FENCE" .
+
+:ProtectionFenceIfcBinding rdf:type owl:Class ;
+    rdfs:label "Protection fence IFC binding"@en ,
+        "Vinculação IFC do gradil"@pt-br ;
+    dcterms:source <https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcsharedbldgelements/lexical/ifcrailing.htm> ,
+        <https://github.com/EliasMPJunior/novo-labsea/blob/6f417e22fee9fe48d257e8973f8a76c1cd6b7dbe/ifc/PROTECTION_FENCE.md> ;
+    rdfs:comment "Local brasidatacenter convention adopted for the novo-labsea protection fence: a single IfcRailing with USERDEFINED and ObjectType FENCE. FENCE is a project-defined ObjectType value in IFC4, not an IFC4 predefined-type enumeration. The equipment or technical-area protection function is retained by the Gradil kind."@en ,
+        "Convenção local do brasidatacenter adotada para o gradil do novo-labsea: um único IfcRailing com USERDEFINED e ObjectType FENCE. No IFC4, FENCE é um valor de ObjectType definido pelo projeto, e não um tipo predefinido da enumeração. A função de proteção de equipamento ou área técnica é mantida pelo kind Gradil."@pt-br ;
+    rdfs:subClassOf aeco:IfcElementBinding ,
+        ifc4owl:IfcRailing ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:bindsIfcElementFor ;
+          owl:hasValue kind:Gradil ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ifc4owl:predefinedType_IfcRailing ;
+          owl:hasValue ifc4owl:USERDEFINED ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty ifc4owl:objectType_IfcObject ;
+          owl:hasValue :ProtectionFenceObjectType ] .
+
+<https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifchvacdomain/lexical/ifccondenser.htm>
+    rdf:type dcterms:BibliographicResource ;
+    dcterms:title "IfcCondenser — IFC4 documentation"@en ;
+    dcterms:publisher <https://www.buildingsmart.org/> .
+
+<https://standards.buildingsmart.org/IFC/RELEASE/IFC4/FINAL/HTML/schema/ifcsharedbldgelements/lexical/ifcrailing.htm>
+    rdf:type dcterms:BibliographicResource ;
+    dcterms:title "IfcRailing — IFC4 documentation"@en ;
+    dcterms:publisher <https://www.buildingsmart.org/> .

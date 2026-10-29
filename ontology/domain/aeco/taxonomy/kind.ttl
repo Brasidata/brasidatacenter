@@ -1568,6 +1568,19 @@ skos:prefLabel
         "BlocoDeConcretoIntertravar"@pt-br,
         "InterlockConcretePaveBlock"@en .
 
+:BlocoDeCoroamento
+    rdf:type owl:Class ;
+    owl:equivalentClass :PileCap ;
+    dcterms:identifier "BlocoDeCoroamento" ;
+    skos:prefLabel "Bloco de coroamento"@pt-br ,
+        "Pile cap"@en ;
+    skos:altLabel "BlocoDeCoroamento" ,
+        "Bloco de coroamento de estacas"@pt-br ,
+        "Bloco sobre estacas"@pt-br ,
+        "PileCap"@en ;
+    skos:definition "Elemento de fundação que recebe as cargas de um pilar ou conjunto de pilares e as transmite a uma estaca ou grupo de estacas."@pt-br ,
+        "Foundation element transferring loads from one or more columns to a pile or pile group."@en .
+
 :BlocoDeFundacao
     rdf:type owl:Class ;
     owl:equivalentClass :PileCap ;
@@ -10551,3 +10564,35 @@ skos:prefLabel
     skos:prefLabel "Zoneamento"@pt-br ;
     skos:altLabel "Zoneamento",
         "Zoneamento"@pt-br .
+
+# Electrical access cover — independent of the sewer manhole cover.
+:TampaDeCaixaEletrica
+    rdf:type owl:Class ;
+    dcterms:identifier "TampaDeCaixaEletrica" ;
+    skos:prefLabel "Tampa de caixa elétrica"@pt-br ,
+        "Electrical chamber cover"@en ;
+    skos:altLabel "Tampa de caixa de passagem elétrica"@pt-br ;
+    skos:definition "Tampa removível de acesso a uma caixa de passagem ou inspeção de instalações elétricas."@pt-br ,
+        "Removable access cover for an electrical cable passage or inspection chamber."@en .
+
+# Air-cooled condensers and protection fences.
+:Condensadora rdf:type owl:Class ;
+    dcterms:identifier "Condensadora" ;
+    skos:prefLabel "Condensadora"@pt-br ,
+        "Air-cooled condenser"@en ;
+    skos:altLabel "Unidade condensadora"@pt-br ;
+    skos:definition "Equipamento de climatização que rejeita calor ao ar exterior pela condensação do fluido refrigerante."@pt-br ,
+        "Air-conditioning equipment that rejects heat to outdoor air by condensing the refrigerant."@en .
+
+:Gradil rdf:type owl:Class ;
+    dcterms:identifier "Gradil" ;
+    skos:prefLabel "Gradil"@pt-br ,
+        "Protection fence"@en ;
+    skos:altLabel "Grade"@pt-br ,
+        "Grade de proteção"@pt-br ,
+        "Grade de proteção de equipamento"@pt-br ,
+        "Grade de proteção de equipamentos"@pt-br ,
+        "Grade de proteção de área técnica"@pt-br ,
+        "Grade para área técnica"@pt-br ;
+    skos:definition "Elemento de fechamento e delimitação destinado à proteção de equipamentos ou áreas técnicas, representável como um único elemento independentemente do detalhamento das barras."@pt-br ,
+        "Enclosure or boundary element protecting equipment or technical areas, representable as a single element independently of individual bar detailing."@en .

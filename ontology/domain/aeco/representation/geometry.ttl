@@ -2744,6 +2744,11 @@
         ] ,
         [
             rdf:type owl:Restriction ;
+            owl:onProperty aeco:isVisualRepresentationOf ;
+            owl:someValuesFrom kind:BlocoDeCoroamento
+        ] ,
+        [
+            rdf:type owl:Restriction ;
             owl:onProperty omg:hasGeometry ;
             owl:someValuesFrom aeco:SolidBox3DRepresentation
         ] .
@@ -4335,3 +4340,38 @@
 
 # DivisoriaDeMdf — Parede leve de MDF para separação de ambientes.
 # -----------------------------------------------------------------------------
+
+# Rectangular electrical chamber cover; dimensions belong to each model instance.
+:ElectricalChamberCoverVisual rdf:type owl:Class ;
+    rdfs:subClassOf aeco:VisualRepresentation ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:isVisualRepresentationOf ;
+          owl:someValuesFrom kind:TampaDeCaixaEletrica ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty omg:hasGeometry ;
+          owl:someValuesFrom aeco:SolidBox3DRepresentation ] .
+
+# Single-element simplified representations adopted in novo-labsea.
+:AirCooledCondenserVisual rdf:type owl:Class ;
+    rdfs:comment "A single upright rectangular prism per condenser. Width, depth and height are supplied by each model instance."@en ,
+        "Um único paralelepípedo vertical por condensadora. Largura, profundidade e altura são fornecidas por cada instância do modelo."@pt-br ;
+    rdfs:seeAlso <https://github.com/EliasMPJunior/novo-labsea/blob/2408832c272d5791a03714aad48030ba3d20845a/ifc/CONDENSERS.md> ;
+    rdfs:subClassOf aeco:VisualRepresentation ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:isVisualRepresentationOf ;
+          owl:someValuesFrom kind:Condensadora ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty omg:hasGeometry ;
+          owl:someValuesFrom aeco:SolidBox3DRepresentation ] .
+
+:ProtectionFenceVisual rdf:type owl:Class ;
+    rdfs:comment "A single simplified surface envelope following the fence path and height. The novo-labsea instance has a U-shaped plan represented by three connected vertical faces in one IfcRailing. Dimensions, layout and appearance belong to each instance."@en ,
+        "Uma única envoltória superficial simplificada conforme o traçado e a altura do gradil. A instância do novo-labsea tem planta em U representada por três faces verticais conectadas em um único IfcRailing. Dimensões, traçado e aparência pertencem a cada instância."@pt-br ;
+    rdfs:seeAlso <https://github.com/EliasMPJunior/novo-labsea/blob/6f417e22fee9fe48d257e8973f8a76c1cd6b7dbe/ifc/PROTECTION_FENCE.md> ;
+    rdfs:subClassOf aeco:VisualRepresentation ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty aeco:isVisualRepresentationOf ;
+          owl:someValuesFrom kind:Gradil ] ,
+        [ rdf:type owl:Restriction ;
+          owl:onProperty omg:hasGeometry ;
+          owl:someValuesFrom aeco:FaceBasedSurface3DRepresentation ] .

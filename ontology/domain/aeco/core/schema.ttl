@@ -257,3 +257,11 @@ skos:prefLabel rdf:type owl:AnnotationProperty .
                "tipo de mídia"@pt-br ;
     skos:definition "Media type (type/subtype, as in RFC 6838) recorded for files of this encoding, e.g. as the encodingFormat of a file in an RO-Crate."@en ,
                     "Tipo de mídia (tipo/subtipo, como na RFC 6838) registrado para arquivos desta codificação, por exemplo como o encodingFormat de um arquivo em um RO-Crate."@pt-br .
+
+# Surface geometry for simplified elements such as protection fences.
+:FaceBasedSurface3DRepresentation rdf:type owl:Class ;
+    rdfs:subClassOf :ModelElement3DRepresentation ;
+    rdfs:label "Face-based 3D surface representation"@en ,
+        "Representação de superfície 3D por faces"@pt-br ;
+    skos:definition "Three-dimensional surface representation composed of one or more face sets, suitable for a simplified fence envelope following its plan path and height. In IFC4 it can be encoded as IfcFaceBasedSurfaceModel."@en ,
+        "Representação de superfície tridimensional composta por um ou mais conjuntos de faces, adequada à envoltória simplificada de um gradil conforme seu traçado em planta e sua altura. No IFC4 pode ser codificada como IfcFaceBasedSurfaceModel."@pt-br .
