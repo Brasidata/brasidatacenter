@@ -87,6 +87,16 @@ def class_name(iri: str) -> str | None:
     return None
 
 
+def class_names() -> list[str]:
+    """The names of the classes of IFC4 that stand for something (not the enumerations and selects that only type a value)."""
+    index = _index()
+    return sorted(
+        name
+        for name, block in index.blocks.items()
+        if name.startswith("Ifc") and not name.endswith(("Enum", "Select")) and "owl:Class" in block.split(";", 1)[0]
+    )
+
+
 def class_definition(iri: str) -> dict[str, Any] | None:
     """
     The definition of an IFC4 class: ``entity_iri``, ``name``, its ``superclasses`` (nearest first), its direct

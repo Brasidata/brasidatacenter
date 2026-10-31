@@ -57,6 +57,13 @@ ontouml:name rdf:type owl:AnnotationProperty .
                   ontouml:name "Has entity dataset"@en ;
                   rdfs:comment "The data container has the specified entity dataset."@en .
 
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#relativeLocation
+:relativeLocation rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :EntityDataset ;
+                  rdfs:range xsd:string ;
+                  ontouml:name "Relative location"@en ;
+                  rdfs:comment "Where the entity dataset is in its data container: its path relative to the root of the container, with a slash between the directories. It says nothing of where the container is on a disk, so the container can be moved or copied; the absolute location of a container is kept only in the storage index (prov:atLocation)."@en .
+
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasDataEntity
 :hasDataEntity rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf prov:hadMember ;
