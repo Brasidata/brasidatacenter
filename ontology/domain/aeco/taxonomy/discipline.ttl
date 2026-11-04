@@ -1,0 +1,115 @@
+@prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/discipline.ttl#> .
+@prefix adiro: <https://w3id.org/adiro/adiro_domain_common#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+# Ontology declaration
+# ---------------------------------------------------------------
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/discipline.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Disciplines"@en ,
+        "Disciplinas do AECO"@pt-br ;
+    rdfs:comment "The disciplines of the AECO domain. Each one is a class of this ontology that specializes the discipline of the same name of ADIRO Domain Common (adiro:), which is referred to by its IRI only."@en ,
+        "As disciplinas do domínio AECO. Cada uma é uma classe desta ontologia que especializa a disciplina de mesmo nome do ADIRO Domain Common (adiro:), referido apenas pelo seu IRI."@pt-br .
+
+
+# Disciplines
+# ---------------------------------------------------------------
+
+:Discipline rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Discipline ;
+    rdfs:label "Discipline"@en ,
+        "Disciplina"@pt-br ;
+    rdfs:comment "The engineering or architectural discipline a drawing or a model belongs to."@en ,
+        "A disciplina de engenharia ou de arquitetura a que um desenho ou um modelo pertence."@pt-br .
+
+:Architectural rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Architectural ,
+        :Discipline ;
+    rdfs:label "Architectural"@en ,
+        "Arquitetura"@pt-br ;
+    rdfs:comment "The architectural discipline."@en ,
+        "A disciplina de arquitetura."@pt-br .
+
+:Facade rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Facade ,
+        :Architectural ;
+    rdfs:label "Facade"@en ,
+        "Fachada"@pt-br ;
+    rdfs:comment "The facade-engineering discipline."@en ,
+        "A disciplina de projeto de fachadas."@pt-br .
+
+:Structural rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Structural ,
+        :Discipline ;
+    rdfs:label "Structural"@en ,
+        "Estrutura"@pt-br ;
+    rdfs:comment "The structural-engineering discipline."@en ,
+        "A disciplina de projeto estrutural."@pt-br .
+
+:MEP rdf:type owl:Class ;
+    rdfs:subClassOf adiro:MEP ,
+        :Discipline ;
+    rdfs:label "MEP"@en ,
+        "Instalações (MEP)"@pt-br ;
+    rdfs:comment "The mechanical, electrical and plumbing discipline."@en ,
+        "A disciplina de instalações mecânicas, elétricas e hidráulicas."@pt-br .
+
+:Mechanical rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Mechanical ,
+        :MEP ;
+    rdfs:label "Mechanical"@en ,
+        "Mecânica"@pt-br ;
+    rdfs:comment "The mechanical discipline."@en ,
+        "A disciplina de instalações mecânicas."@pt-br .
+
+:Electrical rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Electrical ,
+        :MEP ;
+    rdfs:label "Electrical"@en ,
+        "Elétrica"@pt-br ;
+    rdfs:comment "The electrical discipline."@en ,
+        "A disciplina de instalações elétricas."@pt-br .
+
+:Plumbing rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Plumbing ,
+        :MEP ;
+    rdfs:label "Plumbing"@en ,
+        "Hidráulica"@pt-br ;
+    rdfs:comment "The plumbing discipline."@en ,
+        "A disciplina de instalações hidráulicas."@pt-br .
+
+:Lighting rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Lighting ,
+        :Electrical ;
+    rdfs:label "Lighting"@en ,
+        "Iluminação"@pt-br ;
+    rdfs:comment "The lighting discipline."@en ,
+        "A disciplina de iluminação."@pt-br .
+
+:FireLifeSafety rdf:type owl:Class ;
+    rdfs:subClassOf adiro:FireLifeSafety ,
+        :Architectural ;
+    rdfs:label "Fire life safety"@en ,
+        "Segurança contra incêndio"@pt-br ;
+    rdfs:comment "The fire and life safety discipline."@en ,
+        "A disciplina de segurança contra incêndio e pânico."@pt-br .
+
+:Masterplan rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Masterplan ,
+        :Discipline ;
+    rdfs:label "Masterplan"@en ,
+        "Plano diretor"@pt-br ;
+    rdfs:comment "The masterplan discipline."@en ,
+        "A disciplina de plano diretor (implantação)."@pt-br .
+
+:Civil rdf:type owl:Class ;
+    rdfs:subClassOf adiro:Civil ,
+        :Discipline ;
+    rdfs:label "Civil"@en ,
+        "Civil"@pt-br ;
+    rdfs:comment "The civil-engineering discipline."@en ,
+        "A disciplina de engenharia civil."@pt-br .

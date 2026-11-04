@@ -167,6 +167,27 @@ def _data_entity_types() -> list[str]:
 _DATA_ENTITY_TYPES: list[str] | None = None
 
 
+def _entity_types_of(resource_class: Any) -> list[str]:
+    """
+    The entity types (direct subclasses of ``DataEntity``) a field that points to
+    the class can point to: the class itself, when it is one, and those that are
+    subclasses of it. Empty for ``DataEntity`` itself and for a class that is not
+    an entity: the field is then not restricted to some types.
+    """
+    if not isinstance(resource_class, URIRef) or resource_class == _DATA_ENTITY:
+        return []
+
+    subclasses: set[str] = {str(resource_class)}
+    for ontology_file in iter_ontology_files():
+        text = ontology_cache.text(ontology_file)
+        if "subClassOf" not in text or _local_name(resource_class) not in text:
+            continue
+        graph = ontology_cache.parsed(ontology_file)
+        subclasses.update(str(child) for child in graph.transitive_subjects(RDFS.subClassOf, resource_class) if isinstance(child, URIRef))
+
+    return sorted(subclasses.intersection(_data_entity_types()))
+
+
 def _local_name(iri: URIRef) -> str:
     return str(iri).rsplit("#", 1)[-1].rsplit("/", 1)[-1]
 
@@ -279,6 +300,7 @@ def _resource_facade(graph: Graph, subject: URIRef) -> dict[str, Any] | None:
     resource_class = graph.value(resource, _FACADE.isFacadeOf)
     return {
         "resource_iri": str(resource_class) if resource_class is not None else None,
+        "entity_types": _entity_types_of(resource_class),
         "fields": sorted(
             (
                 _read_field(graph, field_subject)

@@ -30,6 +30,7 @@
     owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> ,
         <http://datacenter.app.br/ontology/domain/aeco/taxonomy/kind.ttl> ,
         <http://datacenter.app.br/ontology/domain/aeco/taxonomy/material.ttl> ,
+        <http://datacenter.app.br/ontology/domain/aeco/taxonomy/discipline.ttl> ,
         <http://datacenter.app.br/ontology/domain/aeco/representation/geometry.ttl> ,
         <http://datacenter.app.br/ontology/domain/aeco/representation/bsi_ifc.ttl> ,
         <http://datacenter.app.br/ontology/domain/aeco/representation/encoding.ttl> .
@@ -59,6 +60,14 @@
         "Taxonomia de Materiais do AECO"@pt-br ;
     rdfs:comment "Material taxonomy: classification and hierarchical relationships between building materials (Concreto, Madeira, Aço, Vidro etc.)."@en ,
         "Taxonomia de materiais: classificação e relações hierárquicas entre materiais de construção (Concreto, Madeira, Aço, Vidro etc.)."@pt-br ;
+    owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> .
+
+<http://datacenter.app.br/ontology/domain/aeco/taxonomy/discipline.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "AECO Disciplines"@en ,
+        "Disciplinas do AECO"@pt-br ;
+    rdfs:comment "Discipline taxonomy: the disciplines of the AECO domain (Architectural, Structural, MEP, Civil etc.), each one a specialization of the discipline of the same name of ADIRO Domain Common."@en ,
+        "Taxonomia de disciplinas: as disciplinas do domínio AECO (Arquitetura, Estrutura, Instalações, Civil etc.), cada uma especializando a disciplina de mesmo nome do ADIRO Domain Common."@pt-br ;
     owl:imports <http://datacenter.app.br/ontology/domain/aeco/core/schema.ttl> .
 
 <http://datacenter.app.br/ontology/domain/aeco/representation/geometry.ttl>

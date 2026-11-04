@@ -348,3 +348,194 @@
     facade:isMultivalued false ;
     facade:isEditable true ;
     facade:mapsToResource productivity:completionPercent .
+
+:WorkStreamFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "work_stream" ;
+    schema:name "Work Stream"@en ,
+        "Frente de trabalho"@pt-br ,
+        "Frente de trabajo"@es ;
+    facade:isFacadeOf productivity:WorkStream ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :FrameworkField ,
+        :RelatedDocumentsField ,
+        socialfacade:TagsField .
+
+:FiveWTwoHFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "5w2h" ;
+    schema:name "5W2H"@en ,
+        "5W2H"@pt-br ,
+        "5W2H"@es ;
+    facade:isFacadeOf productivity:FiveWTwoH ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :WhatField ,
+        :WhyField ,
+        :WhoField ,
+        :WhereField ,
+        :WhenField ,
+        :HowField ,
+        :HowMuchField ,
+        socialfacade:TagsField .
+
+:WhatField
+    rdf:type facade:FacadeField ;
+    schema:identifier "what" ;
+    schema:name "What"@en ,
+        "O que"@pt-br ,
+        "Qué"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer what in the 5W2H. Scope or work content associated with the work stream."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem o que no 5W2H. Escopo ou conteúdo de trabalho associado à frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden qué en el 5W2H. Alcance o contenido de trabajo asociado al frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 10 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:what ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:WhyField
+    rdf:type facade:FacadeField ;
+    schema:identifier "why" ;
+    schema:name "Why"@en ,
+        "Por que"@pt-br ,
+        "Por qué"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer why in the 5W2H. Purpose, need or justification of the work stream."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem por que no 5W2H. Propósito, necessidade ou justificativa da frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden por qué en el 5W2H. Propósito, necesidad o justificación del frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 11 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:why ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:WhoField
+    rdf:type facade:FacadeField ;
+    schema:identifier "who" ;
+    schema:name "Who"@en ,
+        "Quem"@pt-br ,
+        "Quién"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer who in the 5W2H. Person, organization, team or role involved in the work stream."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quem no 5W2H. Pessoa, organização, equipe ou papel envolvido na frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden quién en el 5W2H. Persona, organización, equipo o rol involucrado en el frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 12 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:who ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:WhereField
+    rdf:type facade:FacadeField ;
+    schema:identifier "where" ;
+    schema:name "Where"@en ,
+        "Onde"@pt-br ,
+        "Dónde"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer where in the 5W2H. Place, facility, building, storey or zone the work stream is about."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem onde no 5W2H. Lugar, instalação, edificação, pavimento ou zona de que trata a frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden dónde en el 5W2H. Lugar, instalación, edificio, planta o zona de que trata el frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 13 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:where ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:WhenField
+    rdf:type facade:FacadeField ;
+    schema:identifier "when" ;
+    schema:name "When"@en ,
+        "Quando"@pt-br ,
+        "Cuándo"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer when in the 5W2H. Milestone, period or schedule of the work stream."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quando no 5W2H. Marco, período ou cronograma da frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cuándo en el 5W2H. Hito, período o cronograma del frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 14 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:when ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:HowField
+    rdf:type facade:FacadeField ;
+    schema:identifier "how" ;
+    schema:name "How"@en ,
+        "Como"@pt-br ,
+        "Cómo"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer how in the 5W2H. Method, procedure or strategy by which the work stream is performed."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem como no 5W2H. Método, procedimento ou estratégia pela qual a frente de trabalho é executada."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cómo en el 5W2H. Método, procedimiento o estrategia con que se ejecuta el frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 15 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:how ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:HowMuchField
+    rdf:type facade:FacadeField ;
+    schema:identifier "howMuch" ;
+    schema:name "How much"@en ,
+        "Quanto"@pt-br ,
+        "Cuánto"@es ;
+    schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer how much in the 5W2H. Cost, quantity or effort of the work stream."@en ,
+        "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quanto no 5W2H. Custo, quantidade ou esforço da frente de trabalho."@pt-br ,
+        "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cuánto en el 5W2H. Costo, cantidad o esfuerzo del frente de trabajo."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 16 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:howMuch ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
+:EntityReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:DataEntity ;
+    facade:hasFacadeField
+        :GlobalIdField .
+
+:FrameworkField
+    rdf:type facade:FacadeField ;
+    schema:identifier "framework" ;
+    schema:name "Framework"@en ,
+        "Framework de gerenciamento"@pt-br ,
+        "Marco de gestión"@es ;
+    schema:description "The global id of the project management framework the work stream is managed through, one of the frameworks of the container (a 5W2H, for instance), which holds what the framework asks."@en ,
+        "O identificador global do framework de gerenciamento de projeto pelo qual a frente de trabalho é gerenciada, um dos frameworks do container (um 5W2H, por exemplo), que guarda o que o framework pede."@pt-br ,
+        "El identificador global del marco de gestión de proyectos con el que se gestiona el frente de trabajo, uno de los marcos del contenedor (un 5W2H, por ejemplo), que guarda lo que pide el marco."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 20 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource obdc:usesProjectManagementFramework ;
+    facade:hasResourceFacade :ProjectManagementFrameworkReferenceFacade .
+
+:ProjectManagementFrameworkReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:ProjectManagementFramework ;
+    facade:hasFacadeField
+        :GlobalIdField .

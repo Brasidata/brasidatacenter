@@ -166,6 +166,16 @@ cpms:ManagementTechnique rdf:type owl:Class ;
     rdfs:label "Project Management Framework"@en ;
     rdfs:comment "A management technique or structured framework used to organize, guide, or support the management of project work."@en .
 
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#usesProjectManagementFramework
+:usesProjectManagementFramework rdf:type owl:ObjectProperty ;
+    rdfs:domain :DataEntity ;
+    rdfs:range :ProjectManagementFramework ;
+    ontouml:name "Uses project management framework"@en ;
+    rdfs:label "uses project management framework"@en ,
+        "usa framework de gerenciamento de projeto"@pt-br ,
+        "usa marco de gestión de proyectos"@es ;
+    rdfs:comment "The data entity (a work stream, for instance) is organized or managed through the project management framework."@en .
+
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DocumentType
 :DocumentType rdf:type owl:Class ;
               rdfs:subClassOf schema:DefinedTerm ;

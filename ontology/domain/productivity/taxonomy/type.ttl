@@ -267,6 +267,8 @@
 
 :WorkStream rdf:type owl:Class ,
         obdc:SurfaceableEntity ;
+    rdfs:subClassOf obdc:DataEntity ;
+    dcterms:identifier "work_stream" ;
     rdfs:label "Work Stream"@en ,
         "Frente de trabalho"@pt-BR ;
     rdfs:comment "Coherent scope of coordinated work within a project."@en ;
@@ -277,60 +279,64 @@
 #################################################################
 
 :what rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "what"@en ,
         "o que"@pt-BR ;
-    schema:description "Scope or work content associated with the WorkStream."@en .
+    schema:description "Scope or work content associated with the 5W2H."@en .
 
 :why rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "why"@en ,
         "por que"@pt-BR ;
-    schema:description "Purpose, need, or justification associated with the WorkStream."@en .
+    schema:description "Purpose, need, or justification associated with the 5W2H."@en .
 
 :who rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "who"@en ,
         "quem"@pt-BR ;
     schema:description "Person, organization, team, role, or other data entity involved in the WorkStream."@en .
 
 :where rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "where"@en ,
         "onde"@pt-BR ;
-    schema:description "Place, facility, building, storey, zone, or other spatial data entity associated with the WorkStream."@en .
+    schema:description "Place, facility, building, storey, zone, or other spatial data entity associated with the 5W2H."@en .
 
 :when rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "when"@en ,
         "quando"@pt-BR ;
-    schema:description "Temporal context, milestone, period, schedule, or other data entity associated with the WorkStream."@en .
+    schema:description "Temporal context, milestone, period, schedule, or other data entity associated with the 5W2H."@en .
 
 :how rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "how"@en ,
         "como"@pt-BR ;
-    schema:description "Method, procedure, execution strategy, or other data entity describing how the WorkStream is performed."@en .
+    schema:description "Method, procedure, execution strategy, or other data entity describing how the work is performed."@en .
 
 :howMuch rdf:type owl:ObjectProperty ;
-    rdfs:domain :WorkStream ;
+    rdfs:domain :FiveWTwoH ;
     rdfs:range obdc:DataEntity ;
     rdfs:label "how much"@en ,
         "quanto"@pt-BR ;
-    schema:description "Cost, quantity, effort, or other magnitude represented by a data entity associated with the WorkStream."@en .
+    schema:description "Cost, quantity, effort, or other magnitude represented by a data entity associated with the 5W2H."@en .
 
 #################################################################
 #    Project Management Frameworks
 #################################################################
 
 :FiveWTwoH rdf:type owl:Class ;
-    rdfs:subClassOf obdc:ProjectManagementFramework ;
+    rdfs:subClassOf obdc:DataEntity ,
+        obdc:ProjectManagementFramework ;
+    dcterms:identifier "5w2h" ;
+    skos:prefLabel "5W2H"@en ,
+        "5W2H"@pt-BR ;
     rdfs:label "5W2H"@en ,
         "5W2H"@pt-BR ;
     schema:identifier "5w2h" ;

@@ -1,5 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/domain/aeco/taxonomy/type.ttl#> .
-@prefix adiro: <https://w3id.org/adiro/adiro_domain_common#> .
+@prefix discipline: <http://datacenter.app.br/ontology/domain/aeco/taxonomy/discipline.ttl#> .
 @prefix ifc4x3owl: <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#> .
 @prefix ifcowl: <https://standards.buildingsmart.org/IFC/DEV/IFC4/FINAL/OWL#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
@@ -11,8 +11,8 @@
     rdf:type owl:Ontology ;
     rdfs:label "AECO Entity Types"@en ,
         "Tipos de entidade AECO"@pt-br ;
-    rdfs:comment "The IFC classes and ADIRO disciplines that are data entities of OntoBDC datasets."@en ,
-        "As classes IFC e as disciplinas ADIRO que são entidades de dados dos datasets OntoBDC."@pt-br .
+    rdfs:comment "The IFC classes and the disciplines that are data entities of OntoBDC datasets."@en ,
+        "As classes IFC e as disciplinas que são entidades de dados dos datasets OntoBDC."@pt-br .
 
 ifcowl:IfcProject rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity .
@@ -26,5 +26,5 @@ ifcowl:IfcElement rdf:type owl:Class ;
 ifc4x3owl:IfcElement rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity .
 
-adiro:Discipline rdf:type owl:Class ;
+discipline:Discipline rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity .

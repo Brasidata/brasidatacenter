@@ -12,6 +12,11 @@ ontology:
   plan: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Plan
   milestone: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Milestone
   goal: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Goal
+  workstream: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#WorkStream
+  work_stream: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#WorkStream
+  frentedetrabalho: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#WorkStream
+  5w2h: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#FiveWTwoH
+  fivewtwoh: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#FiveWTwoH
   day: http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#Day
   dia: http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#Day
   ifcelement: https://standards.buildingsmart.org/IFC/DEV/IFC4_3/OWL#IfcElement
