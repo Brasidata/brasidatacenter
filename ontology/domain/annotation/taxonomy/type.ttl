@@ -10,16 +10,20 @@
 <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl>
     rdf:type owl:Ontology ;
     rdfs:label "Annotation Types"@en ,
-        "Tipos de Anotação"@pt-br ;
+        "Tipos de Anotação"@pt-br ,
+        "Tipos de anotación"@es ;
     rdfs:comment "The concrete categories an annotation is persisted as: each is a subclass of :Annotation."@en ,
-        "As categorias concretas em que uma anotação é persistida: cada uma é subclasse de :Annotation."@pt-br .
+        "As categorias concretas em que uma anotação é persistida: cada uma é subclasse de :Annotation."@pt-br ,
+        "Las categorías concretas en que se guarda una anotación: cada una es subclase de :Annotation."@es .
 
 :Annotation rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity ;
     rdfs:label "Annotation"@en ,
-        "Anotação"@pt-br ;
+        "Anotação"@pt-br ,
+        "Anotación"@es ;
     skos:definition "Something said about a target, in one of the concrete categories that are its subclasses."@en ,
-        "Algo dito sobre um alvo, em uma das categorias concretas que são suas subclasses."@pt-br .
+        "Algo dito sobre um alvo, em uma das categorias concretas que são suas subclasses."@pt-br ,
+        "Algo dicho sobre un destino, en una de las categorías concretas que son sus subclases."@es .
 
 :completedAt rdf:type owl:DatatypeProperty ;
     rdfs:domain :Annotation ;
@@ -35,30 +39,48 @@
     rdfs:subClassOf :Annotation ;
     dcterms:identifier "note" ;
     skos:prefLabel "Note"@en ,
-        "Nota"@pt-br ;
+        "Nota"@pt-br ,
+        "Nota"@es ;
     skos:definition "Contextual explanation."@en ,
-        "Explicação contextual."@pt-br .
+        "Explicação contextual."@pt-br ,
+        "Explicación contextual."@es .
 
 :Issue rdf:type owl:Class ;
     rdfs:subClassOf :Annotation ;
     dcterms:identifier "issue" ;
     skos:prefLabel "Issue"@en ,
-        "Alerta"@pt-br ;
+        "Problema"@pt-br ,
+        "Problema"@es ;
     skos:definition "Problem with a lifecycle."@en ,
-        "Problema com ciclo de vida."@pt-br .
+        "Problema com ciclo de vida."@pt-br ,
+        "Problema con ciclo de vida."@es .
 
 :Question rdf:type owl:Class ;
     rdfs:subClassOf :Annotation ;
     dcterms:identifier "question" ;
     skos:prefLabel "Question"@en ,
-        "Dúvida"@pt-br ;
+        "Dúvida"@pt-br ,
+        "Duda"@es ;
     skos:definition "Question that awaits an answer."@en ,
-        "Dúvida que aguarda resposta."@pt-br .
+        "Dúvida que aguarda resposta."@pt-br ,
+        "Duda que espera respuesta."@es .
 
-:Location rdf:type owl:Class ;
+:classifies rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Classification ;
+    rdfs:range xsd:string ;
+    rdfs:label "Classifies"@en ,
+        "Classifica"@pt-br ,
+        "Clasifica"@es ;
+    skos:definition "The global id of the entity that what the geometry of a classification points to is."@en ,
+        "O identificador global da entidade que aquilo que a geometria de uma classificação indica é."@pt-br ,
+        "El identificador global de la entidad que es aquello que señala la geometría de una clasificación."@es .
+
+:Classification rdf:type owl:Class ;
     rdfs:subClassOf :Annotation ;
-    dcterms:identifier "location" ;
-    skos:prefLabel "Location"@en ,
-        "Localização"@pt-br ;
-    skos:definition "Representation, geospatial, relative or positional location."@en ,
-        "Localização de representação, geoespacial, relativa ou posicional."@pt-br .
+    dcterms:identifier "classification" ;
+    skos:prefLabel "Classification"@en ,
+        "Classificação"@pt-br ,
+        "Clasificación"@es ;
+    skos:definition "Indicates that what the geometry of the annotation points to is an entity."@en ,
+        "Indica que aquilo que a geometria da anotação indica é uma entidade."@pt-br ,
+        "Indica que aquello que señala la geometría de la anotación es una entidad."@es .

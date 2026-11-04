@@ -1,4 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix cpms: <https://doi.org/10.2139/ssrn.2062696#> .
 @prefix ct: <http://standards.iso.org/iso/21597/-1/ed-1/en/Container#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -151,6 +152,19 @@ skos:altLabel rdf:type owl:AnnotationProperty .
 :SurfaceableEntity rdf:type owl:Class ;
                    ontouml:name "Surfaceable entity"@en ;
                    rdfs:comment "Marks an entity class whose instances are eligible for a direct representation (a Tile) on an OntoBDC presentation surface."@en .
+
+###  https://doi.org/10.2139/ssrn.2062696#ManagementTechnique
+cpms:ManagementTechnique rdf:type owl:Class ;
+    rdfs:label "Management Technique"@en ;
+    rdfs:isDefinedBy <https://doi.org/10.2139/ssrn.2062696> ;
+    rdfs:comment "Management-technique dimension of the Construction Project Management System (CPMS) ontological framework."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#ProjectManagementFramework
+:ProjectManagementFramework rdf:type owl:Class ;
+    rdfs:subClassOf cpms:ManagementTechnique ;
+    ontouml:name "Project management framework"@en ;
+    rdfs:label "Project Management Framework"@en ;
+    rdfs:comment "A management technique or structured framework used to organize, guide, or support the management of project work."@en .
 
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DocumentType
 :DocumentType rdf:type owl:Class ;

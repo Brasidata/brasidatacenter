@@ -224,6 +224,16 @@
     skos:definition "The datatype of the values a value generator produces."@en ,
         "O tipo de dado dos valores que um gerador de valor produz."@pt-br .
 
+:appliesToType rdf:type owl:ObjectProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range owl:Class ;
+    rdfs:label "applies to type"@en ,
+        "aplica-se ao tipo"@pt-br ,
+        "se aplica al tipo"@es ;
+    skos:definition "The entity types the field belongs to. An entity has the field only when the value of its type field (the field of the facade written to rdf:type) is the dcterms:identifier of one of these classes; a field that declares none belongs to every entity of the facade."@en ,
+        "Os tipos de entidade a que o campo pertence. Uma entidade só tem o campo quando o valor do seu campo de tipo (o campo da fachada gravado em rdf:type) é o dcterms:identifier de uma destas classes; um campo que não declara nenhuma pertence a toda entidade da fachada."@pt-br ,
+        "Los tipos de entidad a los que pertenece el campo. Una entidad solo tiene el campo cuando el valor de su campo de tipo (el campo de la fachada que se escribe en rdf:type) es el dcterms:identifier de una de estas clases; un campo que no declara ninguna pertenece a toda entidad de la fachada."@es .
+
 :hasValuesFromSubclassesOf rdf:type owl:ObjectProperty ;
     rdfs:domain :FacadeField ;
     rdfs:range owl:Class ;
@@ -356,6 +366,10 @@
         [
             sh:path :hasValuesFromSubclassesOf ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :appliesToType ;
             sh:nodeKind sh:IRI
         ] ,
         [

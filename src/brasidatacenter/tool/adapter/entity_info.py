@@ -223,6 +223,7 @@ def _read_field(graph: Graph, subject: URIRef) -> dict[str, Any]:
         "editable": _editable(graph, subject),
         "default": _default(graph, subject),
         **_options(graph, subject),
+        "applies_to": _applies_to(graph, subject),
         "resource_facade": _resource_facade(graph, subject),
         "alternative_visualization": _alternative_visualization(graph, subject),
         "maps_to_resource": _required_text(graph, subject, _FACADE.mapsToResource),
@@ -351,6 +352,23 @@ def _commentable(graph: Graph, subject: URIRef) -> bool:
         return False
 
     return _flag(graph, subject, _FACADE.isCommentable)
+
+
+def _applies_to(graph: Graph, subject: URIRef) -> list[str]:
+    """
+    The identifiers (``dcterms:identifier``) of the entity types the field
+    belongs to, when its facade says it belongs to some only; empty when it
+    belongs to every entity of the facade.
+    """
+    identifiers: set[str] = set()
+    for entity_type in graph.objects(subject, _FACADE.appliesToType):
+        if not isinstance(entity_type, URIRef):
+            continue
+        identifier = _find(entity_type, _DCTERMS.identifier)
+        if isinstance(identifier, Literal):
+            identifiers.add(str(identifier))
+
+    return sorted(identifiers)
 
 
 def _options(graph: Graph, subject: URIRef) -> dict[str, Any]:

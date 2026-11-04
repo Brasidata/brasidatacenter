@@ -41,6 +41,7 @@
         :CreatedAtField ,
         :CompletedAtField ,
         :RelatedDocumentsField ,
+        :EntityField ,
         socialfacade:TagsField .
 
 :GlobalIdField
@@ -197,8 +198,32 @@
     facade:hasResourceFacade :RelatedDocumentFacade ;
     facade:hasAlternativeVisualization facade:ImageCarousel .
 
+:EntityField
+    rdf:type facade:FacadeField ;
+    schema:identifier "entity" ;
+    schema:name "Entity"@en ,
+        "Entidade"@pt-br ,
+        "Entidad"@es ;
+    schema:description "The global id of the entity that what the geometry of the annotation points to is, one of the entities of the container. It is what a classification says; the other types of annotation do not have it."@en ,
+        "O identificador global da entidade que aquilo que a geometria da anotação indica é, uma das entidades do container. É o que uma classificação diz; os outros tipos de anotação não a têm."@pt-br ,
+        "El identificador global de la entidad que es aquello que señala la geometría de la anotación, una de las entidades del contenedor. Es lo que dice una clasificación; los otros tipos de anotación no la tienen."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 10 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:appliesToType annotation:Classification ;
+    facade:mapsToResource annotation:classifies ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
 :RelatedDocumentFacade
     rdf:type facade:ResourceFacade ;
     facade:isFacadeOf obdc:FileDisplayProfile  ;
     facade:hasFacadeField
         :TitleField  .
+
+:EntityReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:DataEntity ;
+    facade:hasFacadeField
+        :GlobalIdField .

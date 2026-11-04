@@ -1,0 +1,97 @@
+# Extract of ADIRO Domain Common 4.0.0: the discipline classes only.
+# Original: https://github.com/BuroHappoldMachineLearning/ADIRO/blob/main/src/adiro_domain_common.ttl
+# Ontology: https://w3id.org/adiro/adiro_domain_common (owl:versionInfo "4.0.0")
+# Creator: Buro Happold - Machine Learning R&D.
+# Licence: GPL-3.0 (https://www.gnu.org/licenses/gpl-3.0.html). See NOTICE.md.
+# Adapted on 2026-11-03: the class declarations of the disciplines were extracted
+# as they are, and the restriction that ties them to the Layout was left out.
+# It is not an ontology of the ontology/ tree on purpose: it belongs to its authors and keeps its own licence.
+
+@prefix : <https://w3id.org/adiro/adiro_domain_common#> .
+@prefix metadata: <https://w3id.org/adiro/adiro_drawing_metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Discipline rdf:type owl:Class ;
+    rdfs:label "Discipline" ;
+    rdfs:comment "The engineering or architectural discipline associated with a Layout." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean .
+
+:Architectural rdf:type owl:Class ;
+    rdfs:label "Architectural" ;
+    rdfs:comment "The architectural discipline." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Discipline .
+
+:Facade rdf:type owl:Class ;
+    rdfs:label "Facade" ;
+    rdfs:comment "The facade-engineering discipline." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Architectural .
+
+:Structural rdf:type owl:Class ;
+    rdfs:label "Structural" ;
+    rdfs:comment "The structural-engineering discipline." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Discipline .
+
+:MEP rdf:type owl:Class ;
+    rdfs:label "MEP" ;
+    rdfs:comment "Mechanical, Electrical, and Plumbing." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Discipline .
+
+:Mechanical rdf:type owl:Class ;
+    rdfs:label "Mechanical" ;
+    rdfs:comment "The mechanical-engineering discipline, part of MEP." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :MEP .
+
+:Electrical rdf:type owl:Class ;
+    rdfs:label "Electrical" ;
+    rdfs:comment "The electrical-engineering discipline, part of MEP." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :MEP .
+
+:Plumbing rdf:type owl:Class ;
+    rdfs:label "Plumbing" ;
+    rdfs:comment "The plumbing discipline, part of MEP." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :MEP .
+
+:Lighting rdf:type owl:Class ;
+    rdfs:label "Lighting" ;
+    rdfs:comment "The lighting discipline, a specialisation of electrical." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Electrical .
+
+:FireLifeSafety rdf:type owl:Class ;
+    rdfs:label "Fire life safety" ;
+    rdfs:comment "The fire and life-safety discipline." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Architectural .
+
+:Masterplan rdf:type owl:Class ;
+    rdfs:label "Masterplan" ;
+    rdfs:comment "The masterplanning discipline, covering site-wide planning." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Discipline .
+
+:Civil rdf:type owl:Class ;
+    rdfs:label "Civil" ;
+    rdfs:comment "Civil engineering discipline." ;
+    metadata:isComputerVisionLabel "false"^^xsd:boolean ;
+    metadata:isComputerVisionOptionalLabel "true"^^xsd:boolean ;
+    rdfs:subClassOf :Discipline .
