@@ -380,24 +380,48 @@
     facade:isFacadeOf productivity:FiveWTwoH ;
     facade:hasFacadeField
         :GlobalIdField ,
-        :TitleField ,
+        :FiveWTwoHTitleField ,
         :DescriptionField ,
         :CreatedAtField ,
         :WhatField ,
+        :WhatTextField ,
         :WhyField ,
+        :WhyTextField ,
         :WhoField ,
+        :WhoTextField ,
         :WhereField ,
+        :WhereTextField ,
         :WhenField ,
+        :WhenTextField ,
         :HowField ,
+        :HowTextField ,
         :HowMuchField ,
+        :HowMuchTextField ,
         socialfacade:TagsField .
+
+:FiveWTwoHTitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    schema:description "The title of the 5W2H, which is always 5W2H: it is not asked for."@en ,
+        "O título do 5W2H, que é sempre 5W2H: não é perguntado."@pt-br ,
+        "El título del 5W2H, que siempre es 5W2H: no se pregunta."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable false ;
+    facade:hasDefaultValue "5W2H" ;
+    facade:mapsToResource dcterms:title .
 
 :WhatField
     rdf:type facade:FacadeField ;
     schema:identifier "what" ;
-    schema:name "What"@en ,
-        "O que"@pt-br ,
-        "Qué"@es ;
+    schema:name "What?"@en ,
+        "O que?"@pt-br ,
+        "¿Qué?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer what in the 5W2H. Scope or work content associated with the work stream."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem o que no 5W2H. Escopo ou conteúdo de trabalho associado à frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden qué en el 5W2H. Alcance o contenido de trabajo asociado al frente de trabajo."@es ;
@@ -412,9 +436,9 @@
 :WhyField
     rdf:type facade:FacadeField ;
     schema:identifier "why" ;
-    schema:name "Why"@en ,
-        "Por que"@pt-br ,
-        "Por qué"@es ;
+    schema:name "Why?"@en ,
+        "Por quê?"@pt-br ,
+        "¿Por qué?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer why in the 5W2H. Purpose, need or justification of the work stream."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem por que no 5W2H. Propósito, necessidade ou justificativa da frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden por qué en el 5W2H. Propósito, necesidad o justificación del frente de trabajo."@es ;
@@ -429,9 +453,9 @@
 :WhoField
     rdf:type facade:FacadeField ;
     schema:identifier "who" ;
-    schema:name "Who"@en ,
-        "Quem"@pt-br ,
-        "Quién"@es ;
+    schema:name "Who?"@en ,
+        "Quem?"@pt-br ,
+        "¿Quién?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer who in the 5W2H. Person, organization, team or role involved in the work stream."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quem no 5W2H. Pessoa, organização, equipe ou papel envolvido na frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden quién en el 5W2H. Persona, organización, equipo o rol involucrado en el frente de trabajo."@es ;
@@ -446,9 +470,9 @@
 :WhereField
     rdf:type facade:FacadeField ;
     schema:identifier "where" ;
-    schema:name "Where"@en ,
-        "Onde"@pt-br ,
-        "Dónde"@es ;
+    schema:name "Where?"@en ,
+        "Onde?"@pt-br ,
+        "¿Dónde?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer where in the 5W2H. Place, facility, building, storey or zone the work stream is about."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem onde no 5W2H. Lugar, instalação, edificação, pavimento ou zona de que trata a frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden dónde en el 5W2H. Lugar, instalación, edificio, planta o zona de que trata el frente de trabajo."@es ;
@@ -463,9 +487,9 @@
 :WhenField
     rdf:type facade:FacadeField ;
     schema:identifier "when" ;
-    schema:name "When"@en ,
-        "Quando"@pt-br ,
-        "Cuándo"@es ;
+    schema:name "When?"@en ,
+        "Quando?"@pt-br ,
+        "¿Cuándo?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer when in the 5W2H. Milestone, period or schedule of the work stream."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quando no 5W2H. Marco, período ou cronograma da frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cuándo en el 5W2H. Hito, período o cronograma del frente de trabajo."@es ;
@@ -480,9 +504,9 @@
 :HowField
     rdf:type facade:FacadeField ;
     schema:identifier "how" ;
-    schema:name "How"@en ,
-        "Como"@pt-br ,
-        "Cómo"@es ;
+    schema:name "How?"@en ,
+        "Como?"@pt-br ,
+        "¿Cómo?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer how in the 5W2H. Method, procedure or strategy by which the work stream is performed."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem como no 5W2H. Método, procedimento ou estratégia pela qual a frente de trabalho é executada."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cómo en el 5W2H. Método, procedimiento o estrategia con que se ejecuta el frente de trabajo."@es ;
@@ -497,9 +521,9 @@
 :HowMuchField
     rdf:type facade:FacadeField ;
     schema:identifier "howMuch" ;
-    schema:name "How much"@en ,
-        "Quanto"@pt-br ,
-        "Cuánto"@es ;
+    schema:name "How much?"@en ,
+        "Quanto?"@pt-br ,
+        "¿Cuánto?"@es ;
     schema:description "The global ids, separated by a vertical bar, of the entities of the container that answer how much in the 5W2H. Cost, quantity or effort of the work stream."@en ,
         "Os identificadores globais, separados por uma barra vertical, das entidades do container que respondem quanto no 5W2H. Custo, quantidade ou esforço da frente de trabalho."@pt-br ,
         "Los identificadores globales, separados por una barra vertical, de las entidades del contenedor que responden cuánto en el 5W2H. Costo, cantidad o esfuerzo del frente de trabajo."@es ;
@@ -510,6 +534,118 @@
     facade:isEditable true ;
     facade:mapsToResource productivity:howMuch ;
     facade:hasResourceFacade :EntityReferenceFacade .
+
+:WhatTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "what_text" ;
+    schema:name "What needs to be done"@en ,
+        "O que precisa ser feito"@pt-br ,
+        "Qué debe hacerse"@es ;
+    schema:description "Free-form text, including line breaks, that answers what in the 5W2H, beside the entities that also answer it. Scope or work content written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde o que no 5W2H, ao lado das entidades que também respondem. Escopo ou conteúdo de trabalho escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde qué en el 5W2H, junto a las entidades que también responden. Alcance o contenido de trabajo escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 17 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:whatText .
+
+:WhyTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "why_text" ;
+    schema:name "Why it needs to be done"@en ,
+        "Por que precisa ser feito"@pt-br ,
+        "Por qué debe hacerse"@es ;
+    schema:description "Free-form text, including line breaks, that answers why in the 5W2H, beside the entities that also answer it. Purpose, need or justification written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde por que no 5W2H, ao lado das entidades que também respondem. Propósito, necessidade ou justificativa escrita."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde por qué en el 5W2H, junto a las entidades que también responden. Propósito, necesidad o justificación escrita."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 18 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:whyText .
+
+:WhoTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "who_text" ;
+    schema:name "Who needs to do it"@en ,
+        "Quem precisa fazer"@pt-br ,
+        "Quién debe hacerlo"@es ;
+    schema:description "Free-form text, including line breaks, that answers who in the 5W2H, beside the entities that also answer it. Person, organization, team or role written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde quem no 5W2H, ao lado das entidades que também respondem. Pessoa, organização, equipe ou papel escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde quién en el 5W2H, junto a las entidades que también responden. Persona, organización, equipo o rol escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 19 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:whoText .
+
+:WhereTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "where_text" ;
+    schema:name "Where it needs to be done"@en ,
+        "Onde precisa ser feito"@pt-br ,
+        "Dónde debe hacerse"@es ;
+    schema:description "Free-form text, including line breaks, that answers where in the 5W2H, beside the entities that also answer it. Place, facility, building, storey or zone written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde onde no 5W2H, ao lado das entidades que também respondem. Lugar, instalação, edificação, pavimento ou zona escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde dónde en el 5W2H, junto a las entidades que también responden. Lugar, instalación, edificio, planta o zona escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 20 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:whereText .
+
+:WhenTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "when_text" ;
+    schema:name "When it needs to be done"@en ,
+        "Quando precisa ser feito"@pt-br ,
+        "Cuándo debe hacerse"@es ;
+    schema:description "Free-form text, including line breaks, that answers when in the 5W2H, beside the entities that also answer it. Milestone, period or schedule written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde quando no 5W2H, ao lado das entidades que também respondem. Marco, período ou cronograma escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde cuándo en el 5W2H, junto a las entidades que también responden. Hito, período o cronograma escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 21 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:whenText .
+
+:HowTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "how_text" ;
+    schema:name "How it should be done"@en ,
+        "Como deve ser feito"@pt-br ,
+        "Cómo debe hacerse"@es ;
+    schema:description "Free-form text, including line breaks, that answers how in the 5W2H, beside the entities that also answer it. Method, procedure or strategy written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde como no 5W2H, ao lado das entidades que também respondem. Método, procedimento ou estratégia escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde cómo en el 5W2H, junto a las entidades que también responden. Método, procedimiento o estrategia escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 22 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:howText .
+
+:HowMuchTextField
+    rdf:type facade:FacadeField ;
+    schema:identifier "howMuch_text" ;
+    schema:name "How much it will cost"@en ,
+        "Quanto vai custar"@pt-br ,
+        "Cuánto costará"@es ;
+    schema:description "Free-form text, including line breaks, that answers how much in the 5W2H, beside the entities that also answer it. Cost, quantity or effort written out."@en ,
+        "Texto livre, incluindo quebras de linha, que responde quanto no 5W2H, ao lado das entidades que também respondem. Custo, quantidade ou esforço escrito."@pt-br ,
+        "Texto libre, incluidas las líneas nuevas, que responde cuánto en el 5W2H, junto a las entidades que también responden. Costo, cantidad o esfuerzo escrito."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 23 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource productivity:howMuchText .
 
 :EntityReferenceFacade
     rdf:type facade:ResourceFacade ;
@@ -532,7 +668,9 @@
     facade:isMultivalued false ;
     facade:isEditable true ;
     facade:mapsToResource obdc:usesProjectManagementFramework ;
-    facade:hasResourceFacade :ProjectManagementFrameworkReferenceFacade .
+    facade:isOwned true ;
+    facade:hasResourceFacade :ProjectManagementFrameworkReferenceFacade ;
+    facade:hasAlternativeVisualization facade:FrameworkAspects .
 
 :ProjectManagementFrameworkReferenceFacade
     rdf:type facade:ResourceFacade ;

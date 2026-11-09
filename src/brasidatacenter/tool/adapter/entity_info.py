@@ -54,6 +54,28 @@ def entity_info(entity_id: str | None = None) -> dict[str, Any] | list[dict[str,
 _FACADES: dict[str, dict[str, Any] | None] = {}
 
 
+_OWNED_TYPES: list[str] | None = None
+
+
+def owned_entity_types() -> list[str]:
+    """
+    The entity types that are made for another entity: the ones the owned fields of the facades
+    (``facade:isOwned``) point to, such as the framework of a work stream. An application does not offer
+    their entities to be chosen among the others, and deletes them with the entity that owns them.
+    """
+    global _OWNED_TYPES
+    if _OWNED_TYPES is None:
+        owned: set[str] = set()
+        for entry in entity_info() or []:
+            for field in (entry["facade"] or {}).get("fields", []):
+                if field.get("owned") and field.get("resource_facade"):
+                    owned.update(field["resource_facade"]["entity_types"])
+
+        _OWNED_TYPES = sorted(owned)
+
+    return list(_OWNED_TYPES)
+
+
 def _facade_published_for(entity_id: str) -> dict[str, Any] | None:
     for ontology_file in iter_ontology_files():
         # A facade is in a file that names the entity: the others are not even parsed.
@@ -242,7 +264,9 @@ def _read_field(graph: Graph, subject: URIRef) -> dict[str, Any]:
         "required": _flag(graph, subject, _FACADE.isRequired),
         "multivalued": _flag(graph, subject, _FACADE.isMultivalued),
         "editable": _editable(graph, subject),
+        "owned": _owned(graph, subject),
         "default": _default(graph, subject),
+        "default_value": _default_value(graph, subject),
         **_options(graph, subject),
         "applies_to": _applies_to(graph, subject),
         "resource_facade": _resource_facade(graph, subject),
@@ -298,9 +322,11 @@ def _resource_facade(graph: Graph, subject: URIRef) -> dict[str, Any] | None:
         return None
 
     resource_class = graph.value(resource, _FACADE.isFacadeOf)
+    entity_types = _entity_types_of(resource_class)
     return {
         "resource_iri": str(resource_class) if resource_class is not None else None,
-        "entity_types": _entity_types_of(resource_class),
+        "entity_types": entity_types,
+        "entity_type_labels": type_labels(entity_types),
         "fields": sorted(
             (
                 _read_field(graph, field_subject)
@@ -338,6 +364,28 @@ def _alternative_visualization(graph: Graph, subject: URIRef) -> dict[str, Any] 
         "file_profile": str(profile) if profile is not None else None,
         "accepts": accepted,
     }
+
+
+def type_labels(entity_types: list[str]) -> dict[str, dict[str, str]]:
+    """
+    The names of the facades of these entity types, by type and by lower-case language tag: what a person is
+    shown to choose a type by. Only the names are read, not the fields, so facades that point to each other
+    do not lead here in circles.
+    It is what ``entity_info`` gives as ``entity_type_labels``, and what an application that narrows the types a
+    field takes gives for the types it chose.
+    """
+    labels: dict[str, dict[str, str]] = {}
+    for entity_type in entity_types:
+        for ontology_file in iter_ontology_files():
+            if _local_name(URIRef(entity_type)) not in ontology_cache.text(ontology_file):
+                continue
+            shared = ontology_cache.parsed(ontology_file)
+            facade = _facade_of(shared, entity_type)
+            if facade is not None:
+                labels[entity_type] = _labels(shared, facade)
+                break
+
+    return labels
 
 
 def _find_all(subject: URIRef, predicate: URIRef) -> list[Any]:
@@ -434,6 +482,20 @@ def _default(graph: Graph, subject: URIRef) -> str | None:
     """The IRI of the value generator that gives the field its value on creation, or None."""
     generator = graph.value(subject, _FACADE.hasDefault)
     return str(generator) if isinstance(generator, URIRef) else None
+
+
+def _default_value(graph: Graph, subject: URIRef) -> str | None:
+    """The value the facade gives the field when an instance is created and none was given, the same for every instance, or None."""
+    value = graph.value(subject, _FACADE.hasDefaultValue)
+    return str(value) if isinstance(value, Literal) else None
+
+
+def _owned(graph: Graph, subject: URIRef) -> bool:
+    """A field points to an entity of its own when the facade says so; one that does not say so points to entities that exist on their own."""
+    if graph.value(subject, _FACADE.isOwned) is None:
+        return False
+
+    return _flag(graph, subject, _FACADE.isOwned)
 
 
 def _editable(graph: Graph, subject: URIRef) -> bool:

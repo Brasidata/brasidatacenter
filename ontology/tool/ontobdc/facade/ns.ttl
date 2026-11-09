@@ -105,6 +105,15 @@
         "Uma visualização que mostra os valores de um campo como tags, pequenos rótulos lado a lado, cada um podendo ser removido; uma tag é adicionada digitando-a. Os valores são textos, e não arquivos, por isso não tem perfil de arquivos."@pt-br ,
         "Una visualización que muestra los valores de un campo como etiquetas, pequeños rótulos uno junto a otro, cada uno de los cuales puede eliminarse; una etiqueta se agrega escribiéndola. Los valores son textos, no archivos, por lo que no tiene perfil de archivos."@es .
 
+:FrameworkAspects rdf:type owl:Class ;
+    rdfs:subClassOf :Visualization ;
+    rdfs:label "Framework aspects"@en ,
+        "Aspectos do framework"@pt-br ,
+        "Aspectos del marco"@es ;
+    skos:definition "A visualization that shows, for the entity a field points to (a project management framework, such as a 5W2H), the fields of that entity that point to other entities, each with the entities chosen in it, which can be removed or added in place. The value of the field is the global id of the framework entity, not a file, so it has no file profile."@en ,
+        "Uma visualização que mostra, para a entidade para a qual um campo aponta (um framework de gerenciamento de projeto, como um 5W2H), os campos dessa entidade que apontam para outras entidades, cada um com as entidades nele escolhidas, que podem ser removidas ou acrescentadas ali mesmo. O valor do campo é o identificador global da entidade do framework, e não um arquivo, por isso não tem perfil de arquivos."@pt-br ,
+        "Una visualización que muestra, para la entidad a la que apunta un campo (un marco de gestión de proyectos, como un 5W2H), los campos de esa entidad que apuntan a otras entidades, cada uno con las entidades elegidas en él, que pueden quitarse o agregarse allí mismo. El valor del campo es el identificador global de la entidad del marco, no un archivo, por lo que no tiene perfil de archivos."@es .
+
 :hasAlternativeVisualization rdf:type owl:ObjectProperty ;
     rdfs:domain :FacadeField ;
     rdfs:range :Visualization ;
@@ -188,6 +197,16 @@
     skos:definition "Whether a facade field value can be changed by a user. A field that does not declare it is not editable; an entity is editable when at least one of its facade fields is."@en ,
         "Se o valor de um campo de fachada pode ser alterado por um usuário. Um campo que não o declara não é editável; uma entidade é editável quando ao menos um dos campos de sua fachada é."@pt-br .
 
+:isOwned rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "is owned"@en ,
+        "é possuído"@pt-br ,
+        "es poseído"@es ;
+    skos:definition "Whether the entity a facade field points to belongs to the entity of the facade: it is made for it, not chosen among the entities of the container, and it is deleted when the entity is. A field that does not declare it points to entities that exist on their own."@en ,
+        "Se a entidade para a qual um campo de fachada aponta pertence à entidade da fachada: é feita para ela, e não escolhida entre as entidades do container, e é apagada quando a entidade é. Um campo que não o declara aponta para entidades que existem por si."@pt-br ,
+        "Si la entidad a la que apunta un campo de fachada pertenece a la entidad de la fachada: se hace para ella, no se elige entre las entidades del contenedor, y se elimina cuando se elimina la entidad. Un campo que no lo declara apunta a entidades que existen por sí mismas."@es .
+
 :isCommentable rdf:type owl:DatatypeProperty ;
     rdfs:domain :DataEntityFacade ;
     rdfs:range xsd:boolean ;
@@ -253,6 +272,16 @@
     skos:definition "The value generator that gives a facade field its value when an instance is created and the value was not given. A given value always prevails; editing an instance never uses it. A field that is required and has a default does not have to be given."@en ,
         "O gerador de valor que dá a um campo de fachada o seu valor quando uma instância é criada e o valor não foi informado. Um valor informado sempre prevalece; editar uma instância nunca o usa. Um campo obrigatório que tem padrão não precisa ser informado."@pt-br ,
         "El generador de valor que da a un campo de fachada su valor cuando se crea una instancia y no se informó. Un valor informado siempre prevalece; editar una instancia nunca lo usa. Un campo obligatorio que tiene valor predeterminado no necesita informarse."@es .
+
+:hasDefaultValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FacadeField ;
+    rdfs:range rdfs:Literal ;
+    rdfs:label "has default value"@en ,
+        "tem valor padrão"@pt-br ,
+        "tiene valor por defecto"@es ;
+    skos:definition "The value a facade field has when an instance is created and the value was not given, the same for every instance (such as the title of an entity that is always called the same). A given value always prevails; editing an instance never uses it. A field declares this or a default generator, not both."@en ,
+        "O valor que um campo de fachada tem quando uma instância é criada e o valor não foi informado, o mesmo para toda instância (como o título de uma entidade que sempre tem o mesmo nome). Um valor informado sempre prevalece; editar uma instância nunca o usa. Um campo declara isto ou um gerador de valor, não os dois."@pt-br ,
+        "El valor que tiene un campo de fachada cuando se crea una instancia y no se informó, el mismo para toda instancia (como el título de una entidad que siempre se llama igual). Un valor informado siempre prevalece; editar una instancia nunca lo usa. Un campo declara esto o un generador de valor, no ambos."@es .
 
 :UuidGenerator rdf:type :ValueGenerator ;
     rdfs:label "UUID generator"@en ,
@@ -359,9 +388,19 @@
             sh:datatype xsd:boolean
         ] ,
         [
+            sh:path :isOwned ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:boolean
+        ] ,
+        [
             sh:path :hasDefault ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI
+        ] ,
+        [
+            sh:path :hasDefaultValue ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal
         ] ,
         [
             sh:path :hasValuesFromSubclassesOf ;
@@ -379,6 +418,17 @@
             sh:nodeKind sh:IRI
         ] ;
     sh:sparql [
+        rdf:type sh:SPARQLConstraint ;
+        sh:message "A field declares a default generator or a default value, not both."@en ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#hasDefault> ?generator .
+                $this <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#hasDefaultValue> ?value .
+            }
+        """
+    ] ,
+    [
         rdf:type sh:SPARQLConstraint ;
         sh:message "The value generator of the default produces a datatype other than the datatype of the field."@en ;
         sh:select """

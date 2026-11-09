@@ -328,6 +328,59 @@
     schema:description "Cost, quantity, effort, or other magnitude represented by a data entity associated with the 5W2H."@en .
 
 #################################################################
+#    Data Properties
+#################################################################
+
+:whatText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "what (text)"@en ,
+        "o que (texto)"@pt-BR ;
+    schema:description "Free text that answers what in the 5W2H, beside the entities that also answer it."@en .
+
+:whyText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "why (text)"@en ,
+        "por que (texto)"@pt-BR ;
+    schema:description "Free text that answers why in the 5W2H, beside the entities that also answer it."@en .
+
+:whoText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "who (text)"@en ,
+        "quem (texto)"@pt-BR ;
+    schema:description "Free text that answers who in the 5W2H, beside the entities that also answer it."@en .
+
+:whereText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "where (text)"@en ,
+        "onde (texto)"@pt-BR ;
+    schema:description "Free text that answers where in the 5W2H, beside the entities that also answer it."@en .
+
+:whenText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "when (text)"@en ,
+        "quando (texto)"@pt-BR ;
+    schema:description "Free text that answers when in the 5W2H, beside the entities that also answer it."@en .
+
+:howText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "how (text)"@en ,
+        "como (texto)"@pt-BR ;
+    schema:description "Free text that answers how in the 5W2H, beside the entities that also answer it."@en .
+
+:howMuchText rdf:type owl:DatatypeProperty ;
+    rdfs:domain :FiveWTwoH ;
+    rdfs:range xsd:string ;
+    rdfs:label "how much (text)"@en ,
+        "quanto (texto)"@pt-BR ;
+    schema:description "Free text that answers how much in the 5W2H, beside the entities that also answer it."@en .
+
+#################################################################
 #    Project Management Frameworks
 #################################################################
 
