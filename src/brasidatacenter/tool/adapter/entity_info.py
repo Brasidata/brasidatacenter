@@ -236,6 +236,18 @@ def _bring_in_fields(graph: Graph, subject: URIRef) -> None:
         graph += ontology_cache.parsed(ontology_file)
 
 
+def _bring_in_resource_facade(graph: Graph, resource: URIRef) -> None:
+    """
+    A facade of resources that the file of the field does not describe is described in the ontology that
+    names it, as a field is: it is read from there, so one facade of resources serves the fields of many ontologies.
+    """
+    if graph.value(resource, _FACADE.isFacadeOf) is not None:
+        return
+
+    ontology_file = ontology_path_for_iri(str(resource).split("#", 1)[0])
+    graph += ontology_cache.parsed(ontology_file)
+
+
 def _read(graph: Graph, subject: URIRef, entity_iri: str) -> dict[str, Any]:
     _bring_in_fields(graph, subject)
     fields = [
@@ -321,6 +333,7 @@ def _resource_facade(graph: Graph, subject: URIRef) -> dict[str, Any] | None:
     if not isinstance(resource, URIRef):
         return None
 
+    _bring_in_resource_facade(graph, resource)
     resource_class = graph.value(resource, _FACADE.isFacadeOf)
     entity_types = _entity_types_of(resource_class)
     return {

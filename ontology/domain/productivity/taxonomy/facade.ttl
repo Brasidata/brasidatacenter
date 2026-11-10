@@ -1,4 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/domain/productivity/taxonomy/facade.ttl#> .
+@prefix reference: <http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl#> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
@@ -431,7 +432,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:what ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :WhyField
     rdf:type facade:FacadeField ;
@@ -448,7 +449,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:why ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :WhoField
     rdf:type facade:FacadeField ;
@@ -465,7 +466,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:who ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :WhereField
     rdf:type facade:FacadeField ;
@@ -482,7 +483,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:where ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :WhenField
     rdf:type facade:FacadeField ;
@@ -499,7 +500,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:when ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :HowField
     rdf:type facade:FacadeField ;
@@ -516,7 +517,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:how ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :HowMuchField
     rdf:type facade:FacadeField ;
@@ -533,7 +534,7 @@
     facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource productivity:howMuch ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :WhatTextField
     rdf:type facade:FacadeField ;
@@ -646,12 +647,6 @@
     facade:isMultivalued false ;
     facade:isEditable true ;
     facade:mapsToResource productivity:howMuchText .
-
-:EntityReferenceFacade
-    rdf:type facade:ResourceFacade ;
-    facade:isFacadeOf obdc:DataEntity ;
-    facade:hasFacadeField
-        :GlobalIdField .
 
 :FrameworkField
     rdf:type facade:FacadeField ;

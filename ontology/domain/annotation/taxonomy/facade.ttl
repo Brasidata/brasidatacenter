@@ -1,4 +1,5 @@
 @prefix : <http://datacenter.app.br/ontology/domain/annotation/taxonomy/facade.ttl#> .
+@prefix reference: <http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl#> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix annotation: <http://datacenter.app.br/ontology/domain/annotation/taxonomy/type.ttl#> .
@@ -214,16 +215,10 @@
     facade:isEditable true ;
     facade:appliesToType annotation:Classification ;
     facade:mapsToResource annotation:classifies ;
-    facade:hasResourceFacade :EntityReferenceFacade .
+    facade:hasResourceFacade reference:EntityReferenceFacade .
 
 :RelatedDocumentFacade
     rdf:type facade:ResourceFacade ;
     facade:isFacadeOf obdc:FileDisplayProfile  ;
     facade:hasFacadeField
         :TitleField  .
-
-:EntityReferenceFacade
-    rdf:type facade:ResourceFacade ;
-    facade:isFacadeOf obdc:DataEntity ;
-    facade:hasFacadeField
-        :GlobalIdField .

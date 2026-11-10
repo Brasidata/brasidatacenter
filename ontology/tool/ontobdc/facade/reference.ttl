@@ -1,0 +1,36 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl>
+    rdf:type owl:Ontology ;
+    schema:name "Entity Reference Facade"@en ,
+        "Fachada de referência a entidade"@pt-br ,
+        "Fachada de referencia a entidad"@es ;
+    schema:description "The facade of the entities of the container that a field points to: what a field of entities shows of each entity it holds, its global id."@en ,
+        "A fachada das entidades do container para as quais um campo aponta: o que um campo de entidades mostra de cada entidade que guarda, o seu identificador global."@pt-br ,
+        "La fachada de las entidades del contenedor a las que apunta un campo: lo que un campo de entidades muestra de cada entidad que guarda, su identificador global."@es .
+
+:GlobalIdField
+    rdf:type facade:FacadeField ;
+    schema:identifier "global_id" ;
+    schema:name "Global ID"@en ,
+        "Identificador global"@pt-br ,
+        "Identificador global"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 0 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:hasDefault facade:UuidGenerator ;
+    facade:mapsToResource dcterms:identifier .
+
+:EntityReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:DataEntity ;
+    facade:hasFacadeField
+        :GlobalIdField .
