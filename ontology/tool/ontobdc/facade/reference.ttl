@@ -29,6 +29,23 @@
     facade:hasDefault facade:UuidGenerator ;
     facade:mapsToResource dcterms:identifier .
 
+:RelatedEntitiesField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_entities" ;
+    schema:name "Related entities"@en ,
+        "Entidades relacionadas"@pt-br ,
+        "Entidades relacionadas"@es ;
+    schema:description "The global ids of the entities of the container that this one is related to, separated by a vertical bar. The relations that have a field of their own are not here."@en ,
+        "Os identificadores globais das entidades do container com as quais esta se relaciona, separados por uma barra vertical. As relações que têm campo próprio não estão aqui."@pt-br ,
+        "Los identificadores globales de las entidades del contenedor con las que se relaciona esta, separados por una barra vertical. Las relaciones que tienen campo propio no están aquí."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 90 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource obdc:relatedEntity ;
+    facade:hasResourceFacade :EntityReferenceFacade .
+
 :EntityReferenceFacade
     rdf:type facade:ResourceFacade ;
     facade:isFacadeOf obdc:DataEntity ;

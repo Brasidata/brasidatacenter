@@ -42,6 +42,7 @@
         :CreatedAtField ,
         :CompletedAtField ,
         :RelatedDocumentsField ,
+        reference:RelatedEntitiesField ,
         :EntityField ,
         socialfacade:TagsField .
 

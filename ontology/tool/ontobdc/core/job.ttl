@@ -1,0 +1,333 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/core/job.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/core/job.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl> ;
+    rdfs:label "OntoBDC Job"@en , "Job do OntoBDC"@pt-br ;
+    dcterms:source <https://www.ivoa.net/documents/UWS/20161024/REC-UWS-1.1-20161024.html> ;
+    rdfs:comment "Local OWL translation of the IVOA UWS 1.1 job model, not an IVOA-issued ontology. The existing obdc:Job is reused. Optional or nil XML values are represented by absent RDF values. Protocol bindings, HTTP operations and wire-format details are not modeled; execution and state-transition validation belong to the runtime."@en .
+
+dcterms:source rdf:type owl:AnnotationProperty .
+
+# Vocabulary and constraints
+
+obdc:Job rdf:type owl:Class .
+obdc:Job skos:scopeNote "For UWS-oriented management, the persistent Job entity records the procedure it executes, its parameters and results, and its run."@en .
+obdc:Job skos:scopeNote "Na gestão inspirada no UWS, a entidade persistente Job registra o procedimento que executa, seus parâmetros e resultados e sua execução."@pt-br .
+
+:ProcedureRun rdf:type owl:Class .
+:ProcedureRun rdfs:label "Procedure run"@en .
+:ProcedureRun rdfs:label "Execução de procedimento"@pt-br .
+:ProcedureRun skos:definition "A run of a procedure."@en .
+:ProcedureRun skos:definition "Uma execução de um procedimento."@pt-br .
+
+:ExecutionStatus rdf:type owl:Class .
+:ExecutionStatus rdfs:label "Execution status"@en .
+:ExecutionStatus rdfs:label "Status de execução"@pt-br .
+:ExecutionStatus skos:definition "Operational state of a procedure run."@en .
+:ExecutionStatus skos:definition "Estado operacional de uma execução de procedimento."@pt-br .
+
+:StatusList rdf:type owl:Class .
+:StatusList rdfs:label "Status list"@en .
+:StatusList rdfs:label "Lista de status"@pt-br .
+:StatusList skos:definition "A set of execution status values."@en .
+:StatusList skos:definition "Um conjunto de status de execução."@pt-br .
+
+:Parameter rdf:type owl:Class .
+:Parameter rdfs:label "Parameter"@en .
+:Parameter rdfs:label "Parâmetro"@pt-br .
+:Parameter skos:definition "A named input represented directly or by reference."@en .
+:Parameter skos:definition "Entrada identificada representada diretamente ou por referência."@pt-br .
+
+:ResultReference rdf:type owl:Class .
+:ResultReference rdfs:label "Result reference"@en .
+:ResultReference rdfs:label "Referência de resultado"@pt-br .
+:ResultReference skos:definition "Identifies an output and optionally describes its accessible location and format."@en .
+:ResultReference skos:definition "Identifica uma saída e pode descrever seu endereço e formato."@pt-br .
+
+:ErrorSummary rdf:type owl:Class .
+:ErrorSummary rdfs:label "Error summary"@en .
+:ErrorSummary rdfs:label "Resumo de erro"@pt-br .
+:ErrorSummary skos:definition "Short description and classification of a procedure run failure."@en .
+:ErrorSummary skos:definition "Descrição breve e classificação de falha da execução de procedimento."@pt-br .
+
+:ErrorType rdf:type owl:Class .
+:ErrorType rdfs:label "Error type"@en .
+:ErrorType rdfs:label "Tipo de erro"@pt-br .
+:ErrorType skos:definition "Classification of a failure as transient or fatal."@en .
+:ErrorType skos:definition "Classificação de uma falha como transitória ou fatal."@pt-br .
+
+:Pending rdf:type :ExecutionStatus .
+:Pending rdf:type owl:NamedIndividual .
+:Pending skos:notation "PENDING" .
+:Pending rdfs:label "PENDING"@en .
+:Pending skos:definition "Created but not committed to run."@en .
+:Pending skos:definition "Criado, aguardando solicitação de execução."@pt-br .
+
+:Queued rdf:type :ExecutionStatus .
+:Queued rdf:type owl:NamedIndividual .
+:Queued skos:notation "QUEUED" .
+:Queued rdfs:label "QUEUED"@en .
+:Queued skos:definition "Committed to run but waiting for a processor."@en .
+:Queued skos:definition "Comprometido para execução, aguardando processador."@pt-br .
+
+:Executing rdf:type :ExecutionStatus .
+:Executing rdf:type owl:NamedIndividual .
+:Executing skos:notation "EXECUTING" .
+:Executing rdfs:label "EXECUTING"@en .
+:Executing skos:definition "Assigned to a processor and may produce outputs."@en .
+:Executing skos:definition "Atribuído a um processador; pode produzir resultados."@pt-br .
+
+:Completed rdf:type :ExecutionStatus .
+:Completed rdf:type owl:NamedIndividual .
+:Completed skos:notation "COMPLETED" .
+:Completed rdfs:label "COMPLETED"@en .
+:Completed skos:definition "Execution ended successfully."@en .
+:Completed skos:definition "Execução concluída com sucesso."@pt-br .
+
+:Error rdf:type :ExecutionStatus .
+:Error rdf:type owl:NamedIndividual .
+:Error skos:notation "ERROR" .
+:Error rdfs:label "ERROR"@en .
+:Error skos:definition "Execution failed; outputs cannot be trusted."@en .
+:Error skos:definition "Execução falhou; resultados não são confiáveis."@pt-br .
+
+:Aborted rdf:type :ExecutionStatus .
+:Aborted rdf:type owl:NamedIndividual .
+:Aborted skos:notation "ABORTED" .
+:Aborted rdfs:label "ABORTED"@en .
+:Aborted skos:definition "Stopped by the user or the service."@en .
+:Aborted skos:definition "Execução interrompida pelo usuário ou pelo serviço."@pt-br .
+
+:Unknown rdf:type :ExecutionStatus .
+:Unknown rdf:type owl:NamedIndividual .
+:Unknown skos:notation "UNKNOWN" .
+:Unknown rdfs:label "UNKNOWN"@en .
+:Unknown skos:definition "The service cannot determine the status."@en .
+:Unknown skos:definition "Status não conhecido pelo serviço."@pt-br .
+
+:Held rdf:type :ExecutionStatus .
+:Held rdf:type owl:NamedIndividual .
+:Held skos:notation "HELD" .
+:Held rdfs:label "HELD"@en .
+:Held skos:definition "Held before execution; another run request is needed."@en .
+:Held skos:definition "Retido antes da execução; exige nova solicitação para executar."@pt-br .
+
+:Suspended rdf:type :ExecutionStatus .
+:Suspended rdf:type owl:NamedIndividual .
+:Suspended skos:notation "SUSPENDED" .
+:Suspended rdfs:label "SUSPENDED"@en .
+:Suspended skos:definition "Execution paused by the service and may resume automatically."@en .
+:Suspended skos:definition "Execução suspensa pelo serviço; pode ser retomada automaticamente."@pt-br .
+
+:Archived rdf:type :ExecutionStatus .
+:Archived rdf:type owl:NamedIndividual .
+:Archived skos:notation "ARCHIVED" .
+:Archived rdfs:label "ARCHIVED"@en .
+:Archived skos:definition "Metadata retained after expiry; outputs may have been removed."@en .
+:Archived skos:definition "Metadados preservados após a expiração, com possível remoção dos resultados."@pt-br .
+
+:Transient rdf:type :ErrorType .
+:Transient rdf:type owl:NamedIndividual .
+:Transient skos:notation "transient" .
+:Transient rdfs:label "transient"@en .
+:Transient skos:definition "A transient failure."@en .
+:Transient skos:definition "Uma falha transitória."@pt-br .
+
+:Fatal rdf:type :ErrorType .
+:Fatal rdf:type owl:NamedIndividual .
+:Fatal skos:notation "fatal" .
+:Fatal rdfs:label "fatal"@en .
+:Fatal skos:definition "A fatal failure."@en .
+:Fatal skos:definition "Uma falha fatal."@pt-br .
+
+:ActiveStatus rdf:type :StatusList .
+:ActiveStatus rdf:type owl:NamedIndividual .
+:ActiveStatus rdfs:label "Active status"@en .
+:ActiveStatus rdfs:label "Status ativo"@pt-br .
+:ActiveStatus skos:definition "The status of a run that has not finished."@en .
+:ActiveStatus skos:definition "O status de uma execução que não terminou."@pt-br .
+:ActiveStatus :includesStatus :Pending .
+:ActiveStatus :includesStatus :Queued .
+:ActiveStatus :includesStatus :Executing .
+:ActiveStatus :includesStatus :Held .
+:ActiveStatus :includesStatus :Suspended .
+:ActiveStatus :includesStatus :Unknown .
+
+:FinishedStatus rdf:type :StatusList .
+:FinishedStatus rdf:type owl:NamedIndividual .
+:FinishedStatus rdfs:label "Finished status"@en .
+:FinishedStatus rdfs:label "Status finalizado"@pt-br .
+:FinishedStatus skos:definition "The status of a run that has finished."@en .
+:FinishedStatus skos:definition "O status de uma execução que terminou."@pt-br .
+:FinishedStatus :includesStatus :Completed .
+:FinishedStatus :includesStatus :Error .
+:FinishedStatus :includesStatus :Aborted .
+:FinishedStatus :includesStatus :Archived .
+
+:run rdf:type owl:ObjectProperty .
+:run rdfs:domain obdc:Job .
+:run rdfs:range :ProcedureRun .
+:run rdfs:label "Run"@en .
+:run rdfs:label "Execução"@pt-br .
+:run skos:definition "The run of the procedure that the job executes."@en .
+:run skos:definition "A execução do procedimento que o job executa."@pt-br .
+
+:status rdf:type owl:ObjectProperty .
+:status rdfs:domain :ProcedureRun .
+:status rdfs:range :ExecutionStatus .
+:status rdfs:label "Status"@en .
+:status rdfs:label "Status"@pt-br .
+:status skos:definition "Current operational status of the run."@en .
+:status skos:definition "Status operacional atual da execução."@pt-br .
+
+:includesStatus rdf:type owl:ObjectProperty .
+:includesStatus rdfs:domain :StatusList .
+:includesStatus rdfs:range :ExecutionStatus .
+:includesStatus rdfs:label "Includes status"@en .
+:includesStatus rdfs:label "Inclui status"@pt-br .
+:includesStatus skos:definition "Links a status list to a status that belongs to it."@en .
+:includesStatus skos:definition "Relaciona uma lista de status a um status que pertence a ela."@pt-br .
+
+:hasParameter rdf:type owl:ObjectProperty .
+:hasParameter rdfs:domain obdc:Job .
+:hasParameter rdfs:range :Parameter .
+:hasParameter rdfs:label "Has parameter"@en .
+:hasParameter rdfs:label "Tem parâmetro"@pt-br .
+:hasParameter skos:definition "Includes an input parameter."@en .
+:hasParameter skos:definition "Inclui um parâmetro de entrada."@pt-br .
+
+:hasResult rdf:type owl:ObjectProperty .
+:hasResult rdfs:domain obdc:Job .
+:hasResult rdfs:range :ResultReference .
+:hasResult rdfs:label "Has result"@en .
+:hasResult rdfs:label "Tem resultado"@pt-br .
+:hasResult skos:definition "Includes a reference to an output."@en .
+:hasResult skos:definition "Inclui uma referência a uma saída."@pt-br .
+
+:errorSummary rdf:type owl:ObjectProperty .
+:errorSummary rdfs:domain :ProcedureRun .
+:errorSummary rdfs:range :ErrorSummary .
+:errorSummary rdfs:label "Error summary"@en .
+:errorSummary rdfs:label "Resumo de erro"@pt-br .
+:errorSummary skos:definition "Summarizes a failure of the run."@en .
+:errorSummary skos:definition "Resume uma falha da execução."@pt-br .
+
+:errorType rdf:type owl:ObjectProperty .
+:errorType rdfs:domain :ErrorSummary .
+:errorType rdfs:range :ErrorType .
+:errorType rdfs:label "Error type"@en .
+:errorType rdfs:label "Tipo de erro"@pt-br .
+:errorType skos:definition "Classifies the failure."@en .
+:errorType skos:definition "Classifica a falha."@pt-br .
+
+:executesProcedure rdf:type owl:ObjectProperty .
+:executesProcedure rdfs:domain obdc:Job .
+:executesProcedure rdfs:range obdc:Procedure .
+:executesProcedure rdfs:label "Executes procedure"@en .
+:executesProcedure rdfs:label "Executa procedimento"@pt-br .
+:executesProcedure skos:definition "Links a persistent job record to the procedure selected for execution. This relation is an OntoBDC extension."@en .
+:executesProcedure skos:definition "Relaciona o registro persistente de um job ao procedimento selecionado para execução. Esta relação é uma extensão do OntoBDC."@pt-br .
+
+:creationTime rdf:type owl:DatatypeProperty .
+:creationTime rdfs:domain obdc:Job .
+:creationTime rdfs:range xsd:dateTime .
+:creationTime rdfs:label "Creation time"@en .
+:creationTime rdfs:label "Data de criação"@pt-br .
+:creationTime skos:definition "Instant when the job was created."@en .
+:creationTime skos:definition "Instante de criação do job."@pt-br .
+
+:startTime rdf:type owl:DatatypeProperty .
+:startTime rdfs:domain obdc:Job .
+:startTime rdfs:range xsd:dateTime .
+:startTime rdfs:label "Start time"@en .
+:startTime rdfs:label "Início"@pt-br .
+:startTime skos:definition "Instant when execution began, when known."@en .
+:startTime skos:definition "Instante de início da execução, quando conhecido."@pt-br .
+
+:endTime rdf:type owl:DatatypeProperty .
+:endTime rdfs:domain obdc:Job .
+:endTime rdfs:range xsd:dateTime .
+:endTime rdfs:label "End time"@en .
+:endTime rdfs:label "Término"@pt-br .
+:endTime skos:definition "Instant when execution ended, when known."@en .
+:endTime skos:definition "Instante de término da execução, quando conhecido."@pt-br .
+
+:executionDuration rdf:type owl:DatatypeProperty .
+:executionDuration rdfs:domain :ProcedureRun .
+:executionDuration rdfs:range xsd:nonNegativeInteger .
+:executionDuration rdfs:label "Execution duration"@en .
+:executionDuration rdfs:label "Duração limite"@pt-br .
+:executionDuration skos:definition "Maximum permitted elapsed execution time in seconds; zero denotes no limit."@en .
+:executionDuration skos:definition "Tempo decorrido máximo permitido para execução, em segundos; zero indica ausência de limite."@pt-br .
+
+:destruction rdf:type owl:DatatypeProperty .
+:destruction rdfs:domain :ProcedureRun .
+:destruction rdfs:range xsd:dateTime .
+:destruction rdfs:label "Destruction time"@en .
+:destruction rdfs:label "Data de destruição"@pt-br .
+:destruction skos:definition "Instant when the service is to remove the data of the run or archive it."@en .
+:destruction skos:definition "Instante previsto para remoção dos dados da execução ou seu arquivamento pelo serviço."@pt-br .
+
+:errorDetail rdf:type owl:DatatypeProperty .
+:errorDetail rdfs:domain :ProcedureRun .
+:errorDetail rdfs:range xsd:string .
+:errorDetail rdfs:label "Error detail"@en .
+:errorDetail rdfs:label "Detalhe do erro"@pt-br .
+:errorDetail skos:definition "Detailed human-readable failure information, if available."@en .
+:errorDetail skos:definition "Informação detalhada e legível sobre a falha, se disponível."@pt-br .
+
+:parameterId rdf:type owl:DatatypeProperty .
+:parameterId rdfs:domain :Parameter .
+:parameterId rdfs:range xsd:string .
+:parameterId rdfs:label "Parameter ID"@en .
+:parameterId rdfs:label "ID do parâmetro"@pt-br .
+:parameterId skos:definition "Name or identifier of the input."@en .
+:parameterId skos:definition "Nome ou identificador da entrada."@pt-br .
+
+:parameterValue rdf:type owl:DatatypeProperty .
+:parameterValue rdfs:domain :Parameter .
+:parameterValue rdfs:range xsd:string .
+:parameterValue rdfs:label "Parameter value"@en .
+:parameterValue rdfs:label "Valor do parâmetro"@pt-br .
+:parameterValue skos:definition "Serialized input value, or URL when represented by reference."@en .
+:parameterValue skos:definition "Valor serializado da entrada, ou URL quando representado por referência."@pt-br .
+
+:resultId rdf:type owl:DatatypeProperty .
+:resultId rdfs:domain :ResultReference .
+:resultId rdfs:range xsd:string .
+:resultId rdfs:label "Result ID"@en .
+:resultId rdfs:label "ID do resultado"@pt-br .
+:resultId skos:definition "Identifier of an output reference."@en .
+:resultId skos:definition "Identificador de uma referência de saída."@pt-br .
+
+:href rdf:type owl:DatatypeProperty .
+:href rdfs:domain :ResultReference .
+:href rdfs:range xsd:anyURI .
+:href rdfs:label "Result address"@en .
+:href rdfs:label "Endereço do resultado"@pt-br .
+:href skos:definition "Location of the referenced output, when supplied."@en .
+:href skos:definition "Localização da saída referenciada, quando fornecida."@pt-br .
+
+:message rdf:type owl:DatatypeProperty .
+:message rdfs:domain :ErrorSummary .
+:message rdfs:range xsd:string .
+:message rdfs:label "Message"@en .
+:message rdfs:label "Mensagem"@pt-br .
+:message skos:definition "Brief human-readable failure message."@en .
+:message skos:definition "Mensagem breve e legível sobre a falha."@pt-br .
+
+:hasDetail rdf:type owl:DatatypeProperty .
+:hasDetail rdfs:domain :ErrorSummary .
+:hasDetail rdfs:range xsd:boolean .
+:hasDetail rdfs:label "Has detail"@en .
+:hasDetail rdfs:label "Tem detalhe"@pt-br .
+:hasDetail skos:definition "Indicates whether a more detailed error representation is accessible."@en .
+:hasDetail skos:definition "Indica se uma representação mais detalhada do erro está disponível."@pt-br .

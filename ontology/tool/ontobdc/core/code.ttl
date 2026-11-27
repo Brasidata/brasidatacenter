@@ -1,0 +1,39 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/core/code.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pko: <https://w3id.org/pko#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uml: <https://meta.linked.archi/uml/onto#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/core/code.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "OntoBDC Code"@en ,
+        "Código do OntoBDC"@pt-br .
+
+:Capability rdf:type owl:Class , uml:Class ;
+    rdfs:subClassOf fno:Function ;
+    uml:name "Capability" ;
+    uml:isAbstract true ;
+    rdfs:label "Capability"@en ,
+        "Capacidade"@pt-br ;
+    skos:definition
+        "A reusable executable software function in OntoBDC, having metadata that describes its input and output schemas and executed within an application context."@en ,
+        "Função de software executável e reutilizável no OntoBDC, com metadados que descrevem seus esquemas de entrada e saída e executada em um contexto de aplicação."@pt-br ;
+    dcterms:source <https://github.com/EliasMPJunior/ontobdc-wip/blob/daybreak-release/src/ontobdc/shared/adapter/capability.py> ,
+        <https://github.com/EliasMPJunior/ontobdc-wip/blob/daybreak-release/src/ontobdc/shared/domain/port/capability.py> .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/code.ttl#FiniteStateMachine
+:FiniteStateMachine rdf:type pko:ProcedureType ;
+    dcterms:identifier "finite_state_machine" ;
+    rdfs:label "Finite State Machine"@en ,
+        "Máquina de estados finitos"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/modal/doc/main.htm> ;
+    skos:definition
+        "A procedure execution strategy in which each step is a state and the next step is selected by explicit transitions guarded by requirements."@en ,
+        "Estratégia de execução de procedimentos em que cada etapa é um estado e a próxima etapa é escolhida por transições explícitas, protegidas por requisitos."@pt-br ;
+    skos:scopeNote
+        "A step can start when each of its required input variables holds at least one value, and it completes when each of its required output variables does. Running a step replaces the values of its output variables. When a step completes, the transitions that leave it are evaluated: a transition without requirements always fires, and one with requirements fires when all of them hold. A requirement refers only to a variable the step that the transition leaves produces. The requirements of the transitions that leave a step must exclude each other and cover every outcome of the step, so exactly one transition fires. A step that no transition leaves is a final step."@en ,
+        "Uma etapa pode começar quando cada uma de suas variáveis de entrada obrigatórias tem pelo menos um valor, e termina quando cada uma de suas variáveis de saída obrigatórias tem. Executar uma etapa substitui os valores de suas variáveis de saída. Quando uma etapa termina, as transições que saem dela são avaliadas: uma transição sem requisitos sempre dispara, e uma com requisitos dispara quando todos são satisfeitos. Um requisito se refere apenas a uma variável produzida pela etapa de onde a transição sai. Os requisitos das transições que saem de uma etapa devem se excluir mutuamente e cobrir todos os resultados da etapa, de modo que exatamente uma transição dispare. Uma etapa de que nenhuma transição sai é uma etapa final."@pt-br .

@@ -1,10 +1,13 @@
 
 @prefix : <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
 @prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix code: <http://datacenter.app.br/ontology/tool/ontobdc/core/code.ttl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix ilap: <http://data.posccaesar.org/ilap/> .
 @prefix pplan: <http://purl.org/net/p-plan#> .
+@prefix pko: <https://w3id.org/pko#> .
+@prefix sbpmnc: <https://sBPMN.github.io/2.0/classes#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -28,8 +31,17 @@
     rdfs:label "Task"@en ,
         "Tarefa"@pt-br ;
     skos:definition
-        "A defined unit of work that can be planned, executed and tracked."@en ,
-        "Unidade de trabalho definida que pode ser planejada, executada e acompanhada."@pt-br .
+        "A type of work that can be executed by one or more actions."@en ,
+        "Um tipo de trabalho que pode ser executado por uma ou mais ações."@pt-br .
+
+:Action rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity , dul:Action ;
+    dcterms:identifier "action" ;
+    rdfs:label "Action"@en ,
+        "Ação"@pt-br ;
+    skos:definition
+        "An event in which an agent executes one or more defined tasks."@en ,
+        "Um evento no qual um agente executa uma ou mais tarefas definidas."@pt-br .
 
 :Milestone rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity , time:Instant ;
@@ -108,54 +120,54 @@
 #################################################################
 
 :plannedStart rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Task ;
+    rdfs:domain :Action ;
     rdfs:range xsd:date ;
     rdfs:label "Planned start"@en ,
         "Início planejado"@pt-br ,
         "Inicio planificado"@es ;
     skos:definition
-        "Date on which the task is planned to start."@en ,
-        "Data prevista para o início da tarefa."@pt-br .
+        "Date on which the action is planned to start."@en ,
+        "Data prevista para o início da ação."@pt-br .
 
 :plannedFinish rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Task ;
+    rdfs:domain :Action ;
     rdfs:range xsd:date ;
     rdfs:label "Planned finish"@en ,
         "Término planejado"@pt-br ,
         "Fin planificado"@es ;
     skos:definition
-        "Date on which the task is planned to finish."@en ,
-        "Data prevista para o término da tarefa."@pt-br .
+        "Date on which the action is planned to finish."@en ,
+        "Data prevista para o término da ação."@pt-br .
 
 :actualStart rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Task ;
+    rdfs:domain :Action ;
     rdfs:range xsd:date ;
     rdfs:label "Actual start"@en ,
         "Início real"@pt-br ,
         "Inicio real"@es ;
     skos:definition
-        "Date on which the task actually started."@en ,
-        "Data em que a tarefa efetivamente começou."@pt-br .
+        "Date on which the action actually started."@en ,
+        "Data em que a ação efetivamente começou."@pt-br .
 
 :actualFinish rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Task ;
+    rdfs:domain :Action ;
     rdfs:range xsd:date ;
     rdfs:label "Actual finish"@en ,
         "Término real"@pt-br ,
         "Fin real"@es ;
     skos:definition
-        "Date on which the task actually finished."@en ,
-        "Data em que a tarefa efetivamente terminou."@pt-br .
+        "Date on which the action actually finished."@en ,
+        "Data em que a ação efetivamente terminou."@pt-br .
 
 :completionPercent rdf:type owl:DatatypeProperty ;
-    rdfs:domain :Task ;
+    rdfs:domain :Action ;
     rdfs:range xsd:integer ;
     rdfs:label "Completion percentage"@en ,
         "Percentual de conclusão"@pt-br ,
         "Porcentaje de finalización"@es ;
     skos:definition
-        "Task completion percentage, from 0 to 100."@en ,
-        "Percentual de conclusão da tarefa, de 0 a 100."@pt-br .
+        "Action completion percentage, from 0 to 100."@en ,
+        "Percentual de conclusão da ação, de 0 a 100."@pt-br .
 
 :Step rdf:type owl:Class ;
     rdfs:subClassOf obdc:DataEntity , pplan:Step ;
@@ -173,6 +185,101 @@
     dcterms:identifier "plan" ;
     rdfs:label "Plan"@en ,
         "Plano"@pt-br .
+
+#################################################################
+# Procedure execution strategies
+#################################################################
+
+:ModelOfComputation rdf:type owl:Class ;
+    rdfs:subClassOf pko:ProcedureType ;
+    rdfs:label "Model of Computation"@en ,
+        "Modelo de computação"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/doc/mainVergil.htm> ;
+    owl:oneOf (
+        code:FiniteStateMachine
+        :SynchronousDataflow
+        :DynamicDataflow
+        :DiscreteEvent
+        :ProcessNetworks
+        :SynchronousReactive
+        :ContinuousTime
+        :Rendezvous
+    ) .
+
+[] rdf:type owl:AllDifferent ;
+    owl:distinctMembers (
+        code:FiniteStateMachine
+        :SynchronousDataflow
+        :DynamicDataflow
+        :DiscreteEvent
+        :ProcessNetworks
+        :SynchronousReactive
+        :ContinuousTime
+        :Rendezvous
+    ) .
+
+:SynchronousDataflow rdf:type :ModelOfComputation ;
+    dcterms:identifier "synchronous_dataflow" ;
+    rdfs:label "Synchronous Dataflow"@en ,
+        "Fluxo de dados síncrono"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/doc/codeDoc/ptolemy/domains/sdf/kernel/SDFDirector.html> ;
+    skos:definition
+        "A model with statically known token production and consumption rates and a statically determined schedule."@en ,
+        "Modelo com taxas de produção e consumo de tokens conhecidas estaticamente e escalonamento determinado estaticamente."@pt-br .
+
+:DynamicDataflow rdf:type :ModelOfComputation ;
+    dcterms:identifier "dynamic_dataflow" ;
+    rdfs:label "Dynamic Dataflow"@en ,
+        "Fluxo de dados dinâmico"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/ddf/doc/main.htm> ;
+    skos:definition
+        "A model in which actors fire according to data-dependent firing rules."@en ,
+        "Modelo no qual os atores executam conforme regras de disparo dependentes dos dados."@pt-br .
+
+:DiscreteEvent rdf:type :ModelOfComputation ;
+    dcterms:identifier "discrete_event" ;
+    rdfs:label "Discrete Event"@en ,
+        "Evento discreto"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/de/doc/main.htm> ;
+    skos:definition
+        "A model in which computation proceeds through events tagged with discrete points in model time."@en ,
+        "Modelo no qual a computação avança por eventos associados a instantes discretos do tempo do modelo."@pt-br .
+
+:ProcessNetworks rdf:type :ModelOfComputation ;
+    dcterms:identifier "process_networks" ;
+    rdfs:label "Process Networks"@en ,
+        "Redes de processos"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/publications/papers/99/HMAD/html/pn.html> ;
+    skos:definition
+        "A model of concurrent processes communicating asynchronously through FIFO channels."@en ,
+        "Modelo de processos concorrentes que se comunicam assincronamente por canais FIFO."@pt-br .
+
+:SynchronousReactive rdf:type :ModelOfComputation ;
+    dcterms:identifier "synchronous_reactive" ;
+    rdfs:label "Synchronous Reactive"@en ,
+        "Síncrono reativo"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/sr/doc/main.htm> ;
+    skos:definition
+        "A model in which components react synchronously at logical instants."@en ,
+        "Modelo no qual os componentes reagem sincronicamente em instantes lógicos."@pt-br .
+
+:ContinuousTime rdf:type :ModelOfComputation ;
+    dcterms:identifier "continuous_time" ;
+    rdfs:label "Continuous Time"@en ,
+        "Tempo contínuo"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/continuous/doc/main.htm> ;
+    skos:definition
+        "A model in which continuous dynamics evolve over model time."@en ,
+        "Modelo no qual dinâmicas contínuas evoluem ao longo do tempo do modelo."@pt-br .
+
+:Rendezvous rdf:type :ModelOfComputation ;
+    dcterms:identifier "rendezvous" ;
+    rdfs:label "Rendezvous"@en ,
+        "Rendezvous"@pt-br ;
+    dcterms:source <https://ptolemy.berkeley.edu/ptolemyII/ptII11.0/ptII11.0.1/ptolemy/domains/rendezvous/doc/main.htm> ;
+    skos:definition
+        "A model of concurrent processes communicating by synchronized message transfers."@en ,
+        "Modelo de processos concorrentes que se comunicam por transferências sincronizadas de mensagens."@pt-br .
 
 #################################################################
 # Object Properties
@@ -197,6 +304,104 @@
     skos:definition
         "Links a plan to a step belonging to it, as the inverse of pplan:isStepOfPlan."@en ,
         "Relaciona um plano a uma etapa que lhe pertence, como inversa de pplan:isStepOfPlan."@pt-br .
+
+:canBeRealizedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain :Step ;
+    rdfs:range [
+        rdf:type owl:Class ;
+        owl:unionOf (
+            code:Capability
+            obdc:Procedure
+            sbpmnc:globalUserTask
+            sbpmnc:globalManualTask
+        )
+    ] ;
+    rdfs:label "Can be realized by"@en ,
+        "Pode ser realizada por"@pt-br ;
+    skos:definition
+        "Links a step to an alternative means of realizing it. Each linked capability, procedure or reusable human task is a candidate for execution to produce the step's outputs."@en ,
+        "Relaciona uma etapa a uma forma alternativa de realizá-la. Cada capacidade, procedimento ou tarefa humana reutilizável associada é uma opção de execução para produzir as saídas da etapa."@pt-br .
+
+#################################################################
+# Variables and requirements of procedure steps
+#################################################################
+
+:hasRequiredInputVar rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf pplan:hasInputVar ;
+    rdfs:label "Has required input variable"@en ,
+        "Tem variável de entrada obrigatória"@pt-br ;
+    skos:definition
+        "Links a step to a variable it reads and that must hold at least one value for the step to start."@en ,
+        "Relaciona uma etapa a uma variável que ela lê e que precisa ter pelo menos um valor para a etapa começar."@pt-br .
+
+:hasOptionalInputVar rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf pplan:hasInputVar ;
+    rdfs:label "Has optional input variable"@en ,
+        "Tem variável de entrada opcional"@pt-br ;
+    skos:definition
+        "Links a step to a variable it reads when the variable holds a value, and that may hold none."@en ,
+        "Relaciona uma etapa a uma variável que ela lê quando a variável tem valor, e que pode não ter nenhum."@pt-br .
+
+:hasRequiredOutputVar rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf pplan:hasOutputVar ;
+    rdfs:label "Has required output variable"@en ,
+        "Tem variável de saída obrigatória"@pt-br ;
+    skos:definition
+        "Links a step to a variable it produces and that must hold at least one value for the step to complete."@en ,
+        "Relaciona uma etapa a uma variável que ela produz e que precisa ter pelo menos um valor para a etapa terminar."@pt-br .
+
+:hasOptionalOutputVar rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf pplan:hasOutputVar ;
+    rdfs:label "Has optional output variable"@en ,
+        "Tem variável de saída opcional"@pt-br ;
+    skos:definition
+        "Links a step to a variable it produces and that may hold no value when the step completes. A requirement of a transition tells the outcomes apart."@en ,
+        "Relaciona uma etapa a uma variável que ela produz e que pode ficar sem valor quando a etapa termina. Um requisito de uma transição distingue os resultados."@pt-br .
+
+:valueType rdf:type owl:ObjectProperty ;
+    rdfs:domain pplan:Variable ;
+    rdfs:range rdfs:Class ;
+    rdfs:label "Value type"@en ,
+        "Tipo do valor"@pt-br ;
+    skos:definition
+        "The class or datatype of the values of a variable."@en ,
+        "A classe ou o tipo de dado dos valores de uma variável."@pt-br .
+
+:onVariable rdf:type owl:ObjectProperty ;
+    rdfs:domain pko:Requirement ;
+    rdfs:range pplan:Variable ;
+    rdfs:label "On variable"@en ,
+        "Sobre a variável"@pt-br ;
+    skos:definition
+        "The variable whose values a requirement evaluates."@en ,
+        "A variável cujos valores um requisito avalia."@pt-br .
+
+:minValues rdf:type owl:DatatypeProperty ;
+    rdfs:domain pko:Requirement ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "Minimum number of values"@en ,
+        "Número mínimo de valores"@pt-br ;
+    skos:definition
+        "A requirement holds only if its variable has at least this many values. It has the meaning of sh:minCount."@en ,
+        "Um requisito só é satisfeito se sua variável tem pelo menos esta quantidade de valores. Tem o significado de sh:minCount."@pt-br .
+
+:maxValues rdf:type owl:DatatypeProperty ;
+    rdfs:domain pko:Requirement ;
+    rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "Maximum number of values"@en ,
+        "Número máximo de valores"@pt-br ;
+    skos:definition
+        "A requirement holds only if its variable has at most this many values. It has the meaning of sh:maxCount."@en ,
+        "Um requisito só é satisfeito se sua variável tem no máximo esta quantidade de valores. Tem o significado de sh:maxCount."@pt-br .
+
+:requiredValue rdf:type owl:DatatypeProperty ;
+    rdfs:domain pko:Requirement ;
+    rdfs:range rdfs:Literal ;
+    rdfs:label "Required value"@en ,
+        "Valor exigido"@pt-br ;
+    skos:definition
+        "A requirement holds only if its variable has this value among its values. It has the meaning of sh:hasValue. A requirement with more than one condition holds when all of them do."@en ,
+        "Um requisito só é satisfeito se sua variável tem este valor entre seus valores. Tem o significado de sh:hasValue. Um requisito com mais de uma condição é satisfeito quando todas o são."@pt-br .
 
 :dependsOn rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf ilap:hasConstraint ;

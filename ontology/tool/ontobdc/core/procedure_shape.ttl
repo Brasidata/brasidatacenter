@@ -1,0 +1,73 @@
+@prefix : <http://datacenter.app.br/ontology/tool/ontobdc/core/procedure_shape.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pko: <https://w3id.org/pko#> .
+@prefix pplan: <http://purl.org/net/p-plan#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/tool/ontobdc/core/procedure_shape.ttl>
+    rdf:type owl:Ontology ;
+    owl:imports <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl> ;
+    rdfs:label "OntoBDC Procedure Shape"@en ,
+        "Shape de procedimento do OntoBDC"@pt-br ;
+    dcterms:description
+        "The shape that a procedure must conform to for a job to execute it. It has no target of its own: whoever validates a procedure names the node it validates."@en ,
+        "O shape a que um procedimento deve estar conforme para que um job o execute. Não tem alvo próprio: quem valida um procedimento indica o nó que valida."@pt-br .
+
+:ProcedureShape
+    rdf:type sh:NodeShape ;
+    rdfs:label "Procedure shape"@en ,
+        "Shape de procedimento"@pt-br ;
+    sh:property
+        [
+            sh:path rdf:type ;
+            sh:hasValue obdc:Procedure ;
+            sh:message "The node is not an obdc:Procedure."@en
+        ] ,
+        [
+            sh:path dcterms:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:message "A procedure has exactly one dcterms:identifier, a string."@en
+        ] ,
+        [
+            sh:path rdfs:label ;
+            sh:minCount 1 ;
+            sh:message "A procedure has at least one rdfs:label."@en
+        ] ,
+        [
+            sh:path pko:hasProcedureType ;
+            sh:minCount 1 ;
+            sh:message "A procedure has at least one pko:hasProcedureType."@en
+        ] ,
+        [
+            sh:path pko:hasProcedureTarget ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:message "A procedure has exactly one pko:hasProcedureTarget, the id of what it executes."@en
+        ] ,
+        [
+            sh:path obdc:hasRequiredInputVar ;
+            sh:class pplan:Variable ;
+            sh:node :RequiredInputVariableShape ;
+            sh:message "Each obdc:hasRequiredInputVar of a procedure is a pplan:Variable with one dcterms:identifier, the name of the parameter."@en
+        ] .
+
+:RequiredInputVariableShape
+    rdf:type sh:NodeShape ;
+    rdfs:label "Required input variable shape"@en ,
+        "Shape de variável de entrada obrigatória"@pt-br ;
+    sh:property
+        [
+            sh:path dcterms:identifier ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:datatype xsd:string ;
+            sh:message "A variable a procedure requires has exactly one dcterms:identifier, a string: the name of the parameter."@en
+        ] .

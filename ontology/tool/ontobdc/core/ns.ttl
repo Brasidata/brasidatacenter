@@ -5,6 +5,8 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix ontouml: <http://w3id.org/ontouml#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pko: <https://w3id.org/pko#> .
+@prefix pplan: <http://purl.org/net/p-plan#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -50,6 +52,24 @@ ontouml:name rdf:type owl:AnnotationProperty .
                         ontouml:name "Belongs to data container"@en ;
                         rdfs:comment "The entity dataset belongs to the specified data container."@en .
 
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataStorage
+:DataStorage rdf:type owl:Class ;
+             ontouml:name "Data storage"@en ;
+             rdfs:comment "The storage of a root: the index of its data containers and of the addons installed in it."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#Addon
+:Addon rdf:type owl:Class ;
+       ontouml:name "Addon"@en ;
+       rdfs:comment "A folder of code and ontologies that adds to OntoBDC: its system.obdc says its scope is addon. It is installed in the storage, in its addon folder."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasAddon
+:hasAddon rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf dcterms:hasPart ;
+          rdfs:domain :DataStorage ;
+          rdfs:range :Addon ;
+          ontouml:name "Has addon"@en ;
+          rdfs:comment "The data storage has the addon installed."@en .
+
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasEntityDataset
 :hasEntityDataset rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf dcterms:hasPart ;
@@ -60,10 +80,11 @@ ontouml:name rdf:type owl:AnnotationProperty .
 
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#relativeLocation
 :relativeLocation rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :EntityDataset ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( :EntityDataset :Addon ) ] ;
                   rdfs:range xsd:string ;
                   ontouml:name "Relative location"@en ;
-                  rdfs:comment "Where the entity dataset is in its data container: its path relative to the root of the container, with a slash between the directories. It says nothing of where the container is on a disk, so the container can be moved or copied; the absolute location of a container is kept only in the storage index (prov:atLocation)."@en .
+                  rdfs:comment "Where the entity dataset is in its data container: its path relative to the root of the container, with a slash between the directories. It says nothing of where the container is on a disk, so the container can be moved or copied; the absolute location of a container is kept only in the storage index (prov:atLocation). For an addon it is its path relative to the root of the storage that keeps it."@en .
 
 ###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasDataEntity
 :hasDataEntity rdf:type owl:ObjectProperty ;
@@ -81,11 +102,22 @@ ontouml:name rdf:type owl:AnnotationProperty .
                  ontouml:name "Has document type"@en ;
                  rdfs:comment "Relates a data entity to its document type classification."@en .
 
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#relatedEntity
+:relatedEntity rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf dcterms:relation ;
+               rdfs:domain :DataEntity ;
+               rdfs:range :DataEntity ;
+               ontouml:name "Related entity"@en ;
+               rdfs:comment "Relates a data entity to another data entity."@en .
+
 ###  http://purl.org/dc/terms/hasPart
 dcterms:hasPart rdf:type owl:ObjectProperty .
 
 ###  http://purl.org/dc/terms/isPartOf
 dcterms:isPartOf rdf:type owl:ObjectProperty .
+
+###  http://purl.org/dc/terms/relation
+dcterms:relation rdf:type owl:ObjectProperty .
 
 ###  http://schema.org/additionalType
 schema:additionalType rdf:type owl:ObjectProperty .
@@ -152,6 +184,43 @@ skos:altLabel rdf:type owl:AnnotationProperty .
 :SurfaceableEntity rdf:type owl:Class ;
                    ontouml:name "Surfaceable entity"@en ;
                    rdfs:comment "Marks an entity class whose instances are eligible for a direct representation (a Tile) on an OntoBDC presentation surface."@en .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#hasRequiredInputVar
+:hasRequiredInputVar rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf pplan:hasInputVar ;
+    rdfs:domain :Procedure ;
+    rdfs:range pplan:Variable ;
+    rdfs:label "Has required input variable"@en ,
+        "Tem variável de entrada obrigatória"@pt-br ;
+    skos:definition
+        "Links a procedure to a variable it reads and that must be given a value for a job to execute it. The identifier of the variable is the name of the parameter."@en ,
+        "Relaciona um procedimento a uma variável que ele lê e a que se deve dar um valor para que um job o execute. O identificador da variável é o nome do parâmetro."@pt-br .
+
+pplan:hasInputVar rdf:type owl:ObjectProperty .
+
+pplan:Variable rdf:type owl:Class .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#Procedure
+:Procedure rdf:type owl:Class ;
+    rdfs:subClassOf
+        :DataEntity ,
+        pko:Procedure ;
+    dcterms:identifier "procedure" ;
+    rdfs:label "Procedure"@en ,
+        "Procedimento"@pt-br ;
+    skos:definition
+        "A sequence of actions to achieve a desired outcome."@en ,
+        "Uma sequência de ações para alcançar um resultado desejado."@pt-br .
+
+###  http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#Job
+:Job rdf:type owl:Class ;
+    rdfs:subClassOf :DataEntity ;
+    dcterms:identifier "job" ;
+    rdfs:label "Job"@en ,
+        "Job"@pt-br ;
+    skos:definition
+        "A record of the execution of a procedure, with its parameters, results and run."@en ,
+        "Um registro da execução de um procedimento, com seus parâmetros, resultados e execução."@pt-br .
 
 ###  https://doi.org/10.2139/ssrn.2062696#ManagementTechnique
 cpms:ManagementTechnique rdf:type owl:Class ;

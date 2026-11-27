@@ -1,6 +1,9 @@
 @prefix : <http://datacenter.app.br/ontology/domain/calendar/taxonomy/facade.ttl#> .
 @prefix calendar: <http://datacenter.app.br/ontology/domain/calendar/taxonomy/type.ttl#> .
+@prefix reference: <http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl#> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -30,7 +33,13 @@
     schema:identifier "day" ;
     schema:name "Day"@en , "Dia"@pt-br , "Día"@es ;
     facade:isFacadeOf calendar:Day ;
-    facade:hasFacadeField :GlobalIdField , :DateField , socialfacade:TagsField .
+    facade:hasFacadeField :GlobalIdField , :DateField , :RelatedDocumentsField ,
+        reference:RelatedEntitiesField , socialfacade:TagsField .
+
+:RelatedDocumentFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:FileDisplayProfile ;
+    facade:hasFacadeField :TitleField .
 
 :DateTimeDescriptionFacade
     rdf:type facade:ResourceFacade ;
@@ -60,6 +69,9 @@
         "O dia do calendário, por exemplo 2026-10-22. O ano, o mês e o dia da sua descrição de data vêm dele."@pt-br ,
         "El día del calendario, por ejemplo 2026-10-22. El año, el mes y el día de su descripción de fecha salen de él."@es ;
     facade:fieldDatatype xsd:date ;
+    csvw:format "M/d/yyyy (UTC)"@en ,
+        "dd/MM/yyyy (UTC)"@pt-br ,
+        "d/M/yyyy (UTC)"@es ;
     facade:fieldOrder 1 ;
     facade:isRequired true ;
     facade:isMultivalued false ;
@@ -147,3 +159,34 @@
     facade:isMultivalued false ;
     facade:isEditable true ;
     facade:mapsToResource time:hasTRS .
+
+:TitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:title .
+
+:RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the documents the day refers to, separated by a vertical bar."@en ,
+        "Os IRIs, no grafo do container, dos documentos a que o dia se refere, separados por uma barra vertical."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los documentos a los que se refiere el día, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :RelatedDocumentFacade ;
+    facade:hasAlternativeVisualization facade:ImageCarousel .

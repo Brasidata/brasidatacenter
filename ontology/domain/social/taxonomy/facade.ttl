@@ -1,12 +1,15 @@
 @prefix : <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
+@prefix reference: <http://datacenter.app.br/ontology/tool/ontobdc/facade/reference.ttl#> .
 @prefix facade: <http://datacenter.app.br/ontology/tool/ontobdc/facade/ns.ttl#> .
 @prefix social: <http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl>
@@ -14,9 +17,82 @@
     schema:name "Social Facade"@en ,
         "Fachada Social"@pt-br ,
         "Fachada social"@es ;
-    schema:description "The public fields of a comment of a thread."@en ,
-        "Os campos públicos de um comentário de uma thread."@pt-br ,
-        "Los campos públicos de un comentario de un hilo."@es .
+    schema:description "The public fields of the conversations, the comments, the people and the social groups."@en ,
+        "Os campos públicos das conversas, dos comentários, das pessoas e dos grupos sociais."@pt-br ,
+        "Los campos públicos de las conversaciones, los comentarios, las personas y los grupos sociales."@es .
+
+:ConversationFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "conversation" ;
+    schema:name "Conversation"@en ,
+        "Conversa"@pt-br ,
+        "Conversación"@es ;
+    facade:isFacadeOf social:Conversation ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :RelatedDocumentsField ,
+        reference:RelatedEntitiesField .
+
+:RelatedDocumentFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf obdc:FileDisplayProfile ;
+    facade:hasFacadeField :TitleField .
+
+:ConversationReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf social:Conversation ;
+    facade:hasFacadeField :TitleField .
+
+:PersonFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "person" ;
+    schema:name "Person"@en ,
+        "Pessoa"@pt-br ,
+        "Persona"@es ;
+    facade:isFacadeOf social:Person ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :NameField ,
+        :DescriptionField ,
+        :AlternativeNamesField ,
+        :EmailField ,
+        :TelephoneField ,
+        :ParticipatesField ,
+        :RelatedDocumentsField ,
+        :NicknameField ,
+        reference:RelatedEntitiesField .
+
+:PersonReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf social:Person ;
+    facade:hasFacadeField :NameField .
+
+:SocialGroupFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "social_group" ;
+    schema:name "Social Group"@en ,
+        "Grupo social"@pt-br ,
+        "Grupo social"@es ;
+    facade:isFacadeOf social:SocialGroup ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :NameField ,
+        :DescriptionField ,
+        :HasConversationField ,
+        :MembershipField ,
+        :RelatedDocumentsField ,
+        reference:RelatedEntitiesField .
 
 :CommentFacade
     rdf:type facade:DataEntityFacade ;
@@ -46,6 +122,169 @@
     facade:isMultivalued false ;
     facade:hasDefault facade:UuidGenerator ;
     facade:mapsToResource dcterms:identifier .
+
+:TitleField
+    rdf:type facade:FacadeField ;
+    schema:identifier "title" ;
+    schema:name "Title"@en ,
+        "Título"@pt-br ,
+        "Título"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:title .
+
+:DescriptionField
+    rdf:type facade:FacadeField ;
+    schema:identifier "description" ;
+    schema:name "Description"@en ,
+        "Descrição"@pt-br ,
+        "Descripción"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 2 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:description .
+
+:NameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "name" ;
+    schema:name "Name"@en ,
+        "Nome"@pt-br ,
+        "Nombre"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 1 ;
+    facade:isRequired true ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:name .
+
+:AlternativeNamesField
+    rdf:type facade:FacadeField ;
+    schema:identifier "alternative_names" ;
+    schema:name "Alternative names"@en ,
+        "Nomes alternativos"@pt-br ,
+        "Nombres alternativos"@es ;
+    schema:description "The other names the person is known by, separated by a vertical bar."@en ,
+        "Os outros nomes pelos quais a pessoa é conhecida, separados por uma barra vertical."@pt-br ,
+        "Los otros nombres por los que se conoce a la persona, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:alternateName .
+
+:NicknameField
+    rdf:type facade:FacadeField ;
+    schema:identifier "nickname" ;
+    schema:name "Nickname"@en ,
+        "Apelido"@pt-br ,
+        "Apodo"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 8 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource vcard:nickname .
+
+:EmailField
+    rdf:type facade:FacadeField ;
+    schema:identifier "email" ;
+    schema:name "Email"@en ,
+        "E-mail"@pt-br ,
+        "Correo electrónico"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:email .
+
+:TelephoneField
+    rdf:type facade:FacadeField ;
+    schema:identifier "telephone" ;
+    schema:name "Telephone"@en ,
+        "Telefone"@pt-br ,
+        "Teléfono"@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 5 ;
+    facade:isRequired false ;
+    facade:isMultivalued false ;
+    facade:isEditable true ;
+    facade:mapsToResource schema:telephone .
+
+:MembershipField
+    rdf:type facade:FacadeField ;
+    schema:identifier "membership" ;
+    schema:name "Members"@en ,
+        "Membros"@pt-br ,
+        "Miembros"@es ;
+    schema:description "The IRIs, in the container graph, of the people that are members of the social group, separated by a vertical bar."@en ,
+        "Os IRIs, no grafo do container, das pessoas que são membros do grupo social, separados por uma barra vertical."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de las personas que son miembros del grupo social, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 4 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource social:membership ;
+    facade:hasResourceFacade :PersonReferenceFacade .
+
+:ParticipatesField
+    rdf:type facade:FacadeField ;
+    schema:identifier "participates" ;
+    schema:name "Conversations"@en ,
+        "Conversas"@pt-br ,
+        "Conversaciones"@es ;
+    schema:description "The global ids of the conversations the person takes part in, separated by a vertical bar."@en ,
+        "Os identificadores globais das conversas de que a pessoa participa, separados por uma barra vertical."@pt-br ,
+        "Los identificadores globales de las conversaciones en las que participa la persona, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 6 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource social:participates ;
+    facade:hasResourceFacade :ConversationReferenceFacade .
+
+:HasConversationField
+    rdf:type facade:FacadeField ;
+    schema:identifier "has_conversation" ;
+    schema:name "Conversations"@en ,
+        "Conversas"@pt-br ,
+        "Conversaciones"@es ;
+    schema:description "The global ids of the conversations the social group has, separated by a vertical bar."@en ,
+        "Os identificadores globais das conversas que o grupo social tem, separados por uma barra vertical."@pt-br ,
+        "Los identificadores globales de las conversaciones que tiene el grupo social, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:string ;
+    facade:fieldOrder 3 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource social:hasConversation ;
+    facade:hasResourceFacade :ConversationReferenceFacade .
+
+:RelatedDocumentsField
+    rdf:type facade:FacadeField ;
+    schema:identifier "related_documents" ;
+    schema:name "Related documents"@en ,
+        "Documentos relacionados"@pt-br ,
+        "Documentos relacionados"@es ;
+    schema:description "The IRIs, in the container graph, of the documents the conversation refers to, separated by a vertical bar."@en ,
+        "Os IRIs, no grafo do container, dos documentos a que a conversa se refere, separados por uma barra vertical."@pt-br ,
+        "Los IRI, en el grafo del contenedor, de los documentos a los que se refiere la conversación, separados por una barra vertical."@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 7 ;
+    facade:isRequired false ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dcterms:relation ;
+    facade:hasResourceFacade :RelatedDocumentFacade ;
+    facade:hasAlternativeVisualization facade:ImageCarousel .
 
 :TextField
     rdf:type facade:FacadeField ;

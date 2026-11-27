@@ -54,6 +54,25 @@ def entity_info(entity_id: str | None = None) -> dict[str, Any] | list[dict[str,
 _FACADES: dict[str, dict[str, Any] | None] = {}
 
 
+def entity_info_in_graph(graph: Graph, entity_id: str) -> dict[str, Any] | None:
+    """
+    The facade that the given graph publishes for the entity IRI, in the same form as ``entity_info(entity_id)``: for an
+    entity whose ontology is not one this package ships (an addon's, kept with its data). ``None`` when the graph
+    publishes none. The graph is not changed.
+
+    Raises:
+        ValueError: the facade is missing something a field needs.
+    """
+    subject = _facade_of(graph, entity_id)
+    if subject is None:
+        return None
+
+    own = Graph()
+    for triple in graph:
+        own.add(triple)
+    return _read(own, subject, entity_id)
+
+
 _OWNED_TYPES: list[str] | None = None
 
 

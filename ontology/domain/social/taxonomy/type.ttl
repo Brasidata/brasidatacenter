@@ -1,5 +1,7 @@
 @prefix : <http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8,6 +10,7 @@
 @prefix sioc: <http://rdfs.org/sioc/ns#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix convo: <https://ontology.inferal.com/modules/conversation/> .
 
 <http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl>
     rdf:type owl:Ontology ;
@@ -37,7 +40,105 @@
 
 sioc:Post rdf:type owl:Class .
 
-sioc:Thread rdf:type owl:Class .
+
+:Conversation rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity, sioc:Thread, convo:Thread, schema:Conversation ;
+    dcterms:identifier "conversation" ;
+    rdfs:label "Conversation"@en ,
+        "Conversa"@pt-br ,
+        "Conversación"@es ;
+    skos:definition
+        "A persistent discussion or reasoning thread to which annotations may belong."@en ,
+        "Uma linha persistente de discussão ou raciocínio à qual podem pertencer anotações."@pt-br ,
+        "Un hilo persistente de discusión o razonamiento al que pueden pertenecer anotaciones."@es .
+
+:ConversationRecord rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity, convo:ConversationRecord ;
+    dcterms:identifier "conversation_record" ;
+    rdfs:label "Conversation Record"@en ,
+        "Registro de conversa"@pt-br ,
+        "Registro de conversación"@es ;
+    skos:definition
+        "An information entity that records, reconstructs, or otherwise represents a conversation."@en ,
+        "Uma entidade de informação que registra, reconstrói ou de outro modo representa uma conversa."@pt-br ,
+        "Una entidad de información que registra, reconstruye o de otro modo representa una conversación."@es .
+
+:SocialAgent rdf:type owl:Class ;
+    rdfs:subClassOf dul:Agent ;
+    dcterms:identifier "social_agent" ;
+    rdfs:label "Social Agent"@en ,
+        "Agente social"@pt-br ,
+        "Agente social"@es ;
+    skos:definition
+        "An agent that takes part in social life, such as a person or an organization. It is not a data entity: only the types that say so are."@en ,
+        "Um agente que participa da vida social, como uma pessoa ou uma organização. Não é uma entidade de dados: só o são os tipos que o dizem."@pt-br ,
+        "Un agente que participa en la vida social, como una persona o una organización. No es una entidad de datos: solo lo son los tipos que lo dicen."@es .
+
+:Person rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity, :SocialAgent, dul:Person, schema:Person, prov:Person ;
+    dcterms:identifier "person" ;
+    rdfs:label "Person"@en ,
+        "Pessoa"@pt-br ,
+        "Persona"@es ;
+    skos:definition
+        "A human being, known by name and by the ways to reach them."@en ,
+        "Um ser humano, conhecido pelo nome e pelos meios de contato."@pt-br ,
+        "Un ser humano, conocido por su nombre y por los medios de contacto."@es .
+
+:Organization rdf:type owl:Class ;
+    rdfs:subClassOf :SocialAgent, dul:Organization, schema:Organization, prov:Organization ;
+    dcterms:identifier "organization" ;
+    rdfs:label "Organization"@en ,
+        "Organização"@pt-br ,
+        "Organización"@es ;
+    skos:definition
+        "A social agent that is structured internally and created by convention, such as a company, an institution or an association."@en ,
+        "Um agente social estruturado internamente e criado por convenção, como uma empresa, uma instituição ou uma associação."@pt-br ,
+        "Un agente social estructurado internamente y creado por convención, como una empresa, una institución o una asociación."@es .
+
+:SocialGroup rdf:type owl:Class ;
+    rdfs:subClassOf obdc:DataEntity, dul:Group ;
+    dcterms:identifier "social_group" ;
+    rdfs:label "Social Group"@en ,
+        "Grupo social"@pt-br ,
+        "Grupo social"@es ;
+    skos:definition
+        "A set of people that act together, as one agent, because they share a social relation, each of them a person."@en ,
+        "Um conjunto de pessoas que atuam juntas, como um só agente, porque compartilham uma relação social, cada uma delas uma pessoa."@pt-br ,
+        "Un conjunto de personas que actúan juntas, como un solo agente, porque comparten una relación social, cada una de ellas una persona."@es .
+
+:membership rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf obdc:relatedEntity ;
+    rdfs:domain :SocialGroup ;
+    rdfs:range :Person ;
+    rdfs:label "Membership"@en ,
+        "Participação"@pt-br ,
+        "Pertenencia"@es ;
+    skos:definition "Relates a social group to a person that is a member of it."@en ,
+        "Relaciona um grupo social a uma pessoa que é membro dele."@pt-br ,
+        "Relaciona un grupo social con una persona que es miembro de él."@es .
+
+:participates rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf obdc:relatedEntity, dul:isParticipantIn ;
+    rdfs:domain :Person ;
+    rdfs:range :Conversation ;
+    rdfs:label "Participates"@en ,
+        "Participa"@pt-br ,
+        "Participa"@es ;
+    skos:definition "Relates a person to a conversation they take part in."@en ,
+        "Relaciona uma pessoa a uma conversa de que ela participa."@pt-br ,
+        "Relaciona una persona con una conversación en la que participa."@es .
+
+:hasConversation rdf:type owl:ObjectProperty ;
+    rdfs:subPropertyOf obdc:relatedEntity, schema:subjectOf ;
+    rdfs:domain :SocialGroup ;
+    rdfs:range :Conversation ;
+    rdfs:label "Has conversation"@en ,
+        "Tem conversa"@pt-br ,
+        "Tiene conversación"@es ;
+    skos:definition "Relates a social group to a conversation it has."@en ,
+        "Relaciona um grupo social a uma conversa que ele tem."@pt-br ,
+        "Relaciona un grupo social con una conversación que tiene."@es .
 
 :Comment rdf:type owl:Class ;
     rdfs:subClassOf sioc:Post , prov:Entity ;
@@ -47,3 +148,5 @@ sioc:Thread rdf:type owl:Class .
     skos:definition "What a person said, in a thread, about an entity that can be commented on, or in reply to another comment of the thread."@en ,
         "O que uma pessoa disse, em uma thread, sobre uma entidade que pode ser comentada, ou em resposta a outro comentário da thread."@pt-br ,
         "Lo que una persona dijo, en un hilo, sobre una entidad que puede comentarse, o en respuesta a otro comentario del hilo."@es .
+
+

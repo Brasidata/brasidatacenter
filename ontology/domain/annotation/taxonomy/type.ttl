@@ -65,15 +65,16 @@
         "Dúvida que aguarda resposta."@pt-br ,
         "Duda que espera respuesta."@es .
 
-:classifies rdf:type owl:DatatypeProperty ;
+:classifies rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:subPropertyOf obdc:relatedEntity ;
     rdfs:domain :Classification ;
-    rdfs:range xsd:string ;
+    rdfs:range obdc:DataEntity ;
     rdfs:label "Classifies"@en ,
         "Classifica"@pt-br ,
         "Clasifica"@es ;
-    skos:definition "The global id of the entity that what the geometry of a classification points to is."@en ,
-        "O identificador global da entidade que aquilo que a geometria de uma classificação indica é."@pt-br ,
-        "El identificador global de la entidad que es aquello que señala la geometría de una clasificación."@es .
+    skos:definition "The entity that what the geometry of a classification points to is; a classification has only one."@en ,
+        "A entidade que aquilo que a geometria de uma classificação indica é; uma classificação tem apenas uma."@pt-br ,
+        "La entidad que es aquello que señala la geometría de una clasificación; una clasificación solo tiene una."@es .
 
 :Classification rdf:type owl:Class ;
     rdfs:subClassOf :Annotation ;

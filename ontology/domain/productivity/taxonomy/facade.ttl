@@ -5,6 +5,7 @@
 @prefix socialfacade: <http://datacenter.app.br/ontology/domain/social/taxonomy/facade.ttl#> .
 @prefix productivity: <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
 @prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -40,7 +41,28 @@
         :DescriptionField ,
         :CreatedAtField ,
         :RelatedDocumentsField ,
+        reference:RelatedEntitiesField ,
         :DependsOnField ,
+        socialfacade:TagsField .
+
+:ActionFacade
+    rdf:type facade:DataEntityFacade ;
+    facade:isDeletable true ;
+    facade:isCreatable true ;
+    facade:isCommentable true ;
+    schema:identifier "action" ;
+    schema:name "Action"@en ,
+        "Ação"@pt-br ,
+        "Acción"@es ;
+    facade:isFacadeOf productivity:Action ;
+    facade:hasFacadeField
+        :GlobalIdField ,
+        :TitleField ,
+        :DescriptionField ,
+        :CreatedAtField ,
+        :ExecutesTaskField ,
+        :RelatedDocumentsField ,
+        reference:RelatedEntitiesField ,
         :PlannedStartField ,
         :PlannedFinishField ,
         :ActualStartField ,
@@ -62,7 +84,8 @@
         :TitleField ,
         :DescriptionField ,
         :CreatedAtField ,
-        :RelatedDocumentsField .
+        :RelatedDocumentsField ,
+        reference:RelatedEntitiesField .
 
 :MilestoneFacade
     rdf:type facade:DataEntityFacade ;
@@ -102,6 +125,7 @@
         :DescriptionField ,
         :CreatedAtField ,
         :RelatedDocumentsField ,
+        reference:RelatedEntitiesField ,
         socialfacade:TagsField .
 
 :PlanFacade
@@ -123,7 +147,8 @@
         :TitleField ,
         :DescriptionField ,
         :CreatedAtField ,
-        :RelatedDocumentsField .
+        :RelatedDocumentsField ,
+        reference:RelatedEntitiesField .
 
 :TaskConstraintFacade
     rdf:type facade:DataEntityFacade ;
@@ -266,6 +291,25 @@
     facade:mapsToResource productivity:dependsOn ;
     facade:hasResourceFacade :TaskConstraintReferenceFacade .
 
+:ExecutesTaskField
+    rdf:type facade:FacadeField ;
+    schema:identifier "executes_task" ;
+    schema:name "Executes task"@en ,
+        "Executa tarefa"@pt-br ,
+        "Ejecuta tarea"@es ;
+    facade:fieldDatatype xsd:anyURI ;
+    facade:fieldOrder 5 ;
+    facade:isRequired true ;
+    facade:isMultivalued true ;
+    facade:isEditable true ;
+    facade:mapsToResource dul:executesTask ;
+    facade:hasResourceFacade :TaskReferenceFacade .
+
+:TaskReferenceFacade
+    rdf:type facade:ResourceFacade ;
+    facade:isFacadeOf productivity:Task ;
+    facade:hasFacadeField :TitleField .
+
 :TaskConstraintReferenceFacade
     rdf:type facade:ResourceFacade ;
     facade:isFacadeOf productivity:TaskConstraint ;
@@ -367,6 +411,7 @@
         :CreatedAtField ,
         :FrameworkField ,
         :RelatedDocumentsField ,
+        reference:RelatedEntitiesField ,
         socialfacade:TagsField .
 
 :FiveWTwoHFacade
@@ -660,7 +705,7 @@
     facade:fieldDatatype xsd:string ;
     facade:fieldOrder 20 ;
     facade:isRequired false ;
-    facade:isMultivalued false ;
+    facade:isMultivalued true ;
     facade:isEditable true ;
     facade:mapsToResource obdc:usesProjectManagementFramework ;
     facade:isOwned true ;

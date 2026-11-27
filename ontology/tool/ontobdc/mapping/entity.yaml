@@ -7,9 +7,16 @@ ontology:
   entity_dataset: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#EntityDataset
   datacontainer: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataContainer
   data_container: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#DataContainer
+  conversation: http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#Conversation
+  person: http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#Person
+  social_group: http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#SocialGroup
+  socialgroup: http://datacenter.app.br/ontology/domain/social/taxonomy/type.ttl#SocialGroup
   task: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Task
+  action: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Action
   step: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Step
   plan: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Plan
+  procedure: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#Procedure
+  job: http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#Job
   milestone: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Milestone
   goal: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#Goal
   workstream: http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#WorkStream

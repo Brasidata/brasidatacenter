@@ -1,0 +1,506 @@
+@prefix : <http://datacenter.app.br/ontology/domain/social/procedure/meeting.ttl#> .
+@prefix code: <http://datacenter.app.br/ontology/tool/ontobdc/core/code.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix obdc: <http://datacenter.app.br/ontology/tool/ontobdc/core/ns.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pko: <https://w3id.org/pko#> .
+@prefix pplan: <http://purl.org/net/p-plan#> .
+@prefix productivity: <http://datacenter.app.br/ontology/domain/productivity/taxonomy/type.ttl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://datacenter.app.br/ontology/domain/social/procedure/meeting.ttl>
+    rdf:type owl:Ontology ;
+    rdfs:label "Social Procedures"@en ,
+        "Procedimentos sociais"@pt-br ;
+    dcterms:description
+        "Reusable social-domain procedures, each a finite-state machine (code:FiniteStateMachine) over P-Plan variables, with PKO steps, actions, functions and guarded transitions. The definitions are templates, not records of actual meetings or executions."@en ,
+        "Procedimentos reutilizáveis do domínio social, cada um uma máquina de estados finitos (code:FiniteStateMachine) sobre variáveis do P-Plan, com etapas, ações, funções e transições protegidas do PKO. As definições são modelos, não registros de reuniões ou execuções reais."@pt-br .
+
+#################################################################
+# Procedure: schedule a meeting
+#################################################################
+#
+# The machine, with the variable each guard evaluates:
+#
+#   DefineMeeting
+#     -> CheckAvailability
+#          CandidateSlots >= 1 -> AgreeOnSlot
+#          CandidateSlots  = 0 -> DecideRetry
+#   AgreeOnSlot
+#          AgreedSlot >= 1     -> CreateInvitation
+#          AgreedSlot  = 0     -> DecideRetry
+#   CreateInvitation
+#          CalendarEvent >= 1  -> CheckResponses
+#          CalendarEvent  = 0  -> DecideRetry
+#   CheckResponses
+#          EssentialDecline = false -> Scheduled (final)
+#          EssentialDecline = true  -> DecideRetry
+#   DecideRetry
+#          RetryScheduling = true   -> DefineMeeting
+#          RetryScheduling = false  -> Cancelled (final)
+#
+
+:ScheduleMeeting
+    rdf:type obdc:Procedure ;
+    dcterms:identifier "schedule_meeting" ;
+    rdfs:label "Schedule a meeting"@en ,
+        "Marcar uma reunião"@pt-br ;
+    dcterms:description
+        "Define the meeting, find the times when the participants are available, agree on one, create the calendar event and send the invitations, and check the responses. When no time is found, none is agreed, the event cannot be created or an essential participant declines, decide whether to try again from the definition of the meeting or to cancel."@en ,
+        "Definir a reunião, encontrar os horários em que os participantes estão disponíveis, acordar um deles, criar o evento no calendário, enviar os convites e verificar as respostas. Quando nenhum horário é encontrado, nenhum é acordado, o evento não pode ser criado ou um participante indispensável recusa, decidir se tenta de novo a partir da definição da reunião ou se cancela."@pt-br ;
+    pko:isTemplate true ;
+    pko:hasProcedureType code:FiniteStateMachine .
+
+#################################################################
+# Steps (the states of the machine)
+#################################################################
+
+:DefineMeeting
+    rdf:type productivity:Step ;
+    dcterms:identifier "define_meeting" ;
+    rdfs:label "Define the meeting"@en ,
+        "Definir a reunião"@pt-br ;
+    dcterms:description
+        "Establish the subject, the participants and which of them are essential, the duration, the time zone, the period in which the meeting can happen and, optionally, its format and place. Use what is already known, with the values of a previous attempt, and ask for what is missing."@en ,
+        "Estabelecer o assunto, os participantes e quais deles são indispensáveis, a duração, o fuso horário, o período em que a reunião pode acontecer e, opcionalmente, o formato e o local. Usar o que já se sabe, com os valores de uma tentativa anterior, e pedir o que falta."@pt-br ;
+    pko:requiresAction :ProvideMeetingDetails ;
+    productivity:hasRequiredOutputVar
+        :MeetingSubject ,
+        :MeetingParticipants ,
+        :EssentialParticipants ,
+        :MeetingDuration ,
+        :MeetingTimeZone ,
+        :SchedulingWindow ;
+    productivity:hasOptionalOutputVar
+        :MeetingMode ,
+        :MeetingLocation .
+
+:CheckAvailability
+    rdf:type productivity:Step ;
+    dcterms:identifier "check_availability" ;
+    rdfs:label "Find available time slots"@en ,
+        "Encontrar horários disponíveis"@pt-br ;
+    dcterms:description
+        "Find the time slots within the period, long enough for the duration, in which the participants are available. Read the calendars that can be read and, for the participants whose calendars cannot, ask them for times. Finding none is an outcome of the step, not a failure of it."@en ,
+        "Encontrar, dentro do período, os horários com a duração necessária em que os participantes estão disponíveis. Consultar os calendários que podem ser lidos e, para os participantes cujos calendários não podem, pedir-lhes horários. Não encontrar nenhum é um resultado da etapa, não uma falha dela."@pt-br ;
+    pko:requiresFunction :ReadCalendarAvailability ;
+    pko:requiresAction :AskParticipantsForAvailability ;
+    productivity:hasRequiredInputVar
+        :MeetingParticipants ,
+        :MeetingDuration ,
+        :MeetingTimeZone ,
+        :SchedulingWindow ;
+    productivity:hasOptionalOutputVar :CandidateSlots .
+
+:AgreeOnSlot
+    rdf:type productivity:Step ;
+    dcterms:identifier "agree_on_slot" ;
+    rdfs:label "Agree on a meeting time"@en ,
+        "Acordar o horário da reunião"@pt-br ;
+    dcterms:description
+        "Propose the candidate slots and obtain the agreement of the essential participants on one of them. A slot is not agreed because it is free. Reaching no agreement is an outcome of the step."@en ,
+        "Propor os horários candidatos e obter a concordância dos participantes indispensáveis com um deles. Um horário não é acordado por estar livre. Não chegar a acordo é um resultado da etapa."@pt-br ;
+    pko:requiresAction :NegotiateMeetingTime ;
+    productivity:hasRequiredInputVar
+        :CandidateSlots ,
+        :EssentialParticipants ,
+        :MeetingTimeZone ;
+    productivity:hasOptionalOutputVar :AgreedSlot .
+
+:CreateInvitation
+    rdf:type productivity:Step ;
+    dcterms:identifier "create_invitation" ;
+    rdfs:label "Create and send the invitation"@en ,
+        "Criar e enviar o convite"@pt-br ;
+    dcterms:description
+        "Create the calendar event at the agreed time, with the subject, the participants and, when they are known, the format and the place or link, and send the invitations. Not being able to create the event is an outcome of the step."@en ,
+        "Criar o evento no calendário no horário acordado, com o assunto, os participantes e, quando conhecidos, o formato e o local ou link, e enviar os convites. Não conseguir criar o evento é um resultado da etapa."@pt-br ;
+    pko:requiresFunction
+        :CreateCalendarEvent ,
+        :SendCalendarInvitations ;
+    productivity:hasRequiredInputVar
+        :MeetingSubject ,
+        :MeetingParticipants ,
+        :MeetingDuration ,
+        :MeetingTimeZone ,
+        :AgreedSlot ;
+    productivity:hasOptionalInputVar
+        :MeetingMode ,
+        :MeetingLocation ;
+    productivity:hasOptionalOutputVar :CalendarEvent .
+
+:CheckResponses
+    rdf:type productivity:Step ;
+    dcterms:identifier "check_responses" ;
+    rdfs:label "Review invitation responses"@en ,
+        "Verificar as respostas aos convites"@pt-br ;
+    dcterms:description
+        "Read the responses to the invitations and determine whether an essential participant declined. A response that is still missing or tentative does not stop the meeting from being scheduled: the meeting is scheduled when the event and the invitations exist and no essential participant declined."@en ,
+        "Ler as respostas aos convites e determinar se um participante indispensável recusou. Uma resposta que ainda falta ou é provisória não impede que a reunião esteja marcada: a reunião está marcada quando o evento e os convites existem e nenhum participante indispensável recusou."@pt-br ;
+    pko:requiresFunction :ReviewInvitationResponses ;
+    productivity:hasRequiredInputVar
+        :CalendarEvent ,
+        :EssentialParticipants ;
+    productivity:hasRequiredOutputVar :EssentialDecline ;
+    productivity:hasOptionalOutputVar :InvitationResponses .
+
+:DecideRetry
+    rdf:type productivity:Step ;
+    dcterms:identifier "decide_retry" ;
+    rdfs:label "Decide whether to try again"@en ,
+        "Decidir se tenta de novo"@pt-br ;
+    dcterms:description
+        "Decide, after an attempt that did not end in a scheduled meeting, whether to try again, which goes back to the definition of the meeting with its values at hand, or to give up."@en ,
+        "Decidir, depois de uma tentativa que não terminou numa reunião marcada, se tenta de novo, o que volta à definição da reunião com seus valores à mão, ou se desiste."@pt-br ;
+    pko:requiresAction :DecideToRetry ;
+    productivity:hasRequiredOutputVar :RetryScheduling .
+
+:Scheduled
+    rdf:type productivity:Step ;
+    dcterms:identifier "scheduled" ;
+    rdfs:label "Meeting scheduled"@en ,
+        "Reunião marcada"@pt-br ;
+    dcterms:description
+        "Final step: the event and the invitations exist and no essential participant declined."@en ,
+        "Etapa final: o evento e os convites existem e nenhum participante indispensável recusou."@pt-br .
+
+:Cancelled
+    rdf:type productivity:Step ;
+    dcterms:identifier "cancelled" ;
+    rdfs:label "Scheduling cancelled"@en ,
+        "Agendamento cancelado"@pt-br ;
+    dcterms:description
+        "Final step: it was decided not to try again, and no meeting is scheduled."@en ,
+        "Etapa final: decidiu-se não tentar de novo, e nenhuma reunião está marcada."@pt-br .
+
+#################################################################
+# Transitions
+#################################################################
+
+:DefineToAvailability
+    rdf:type pko:Transition ;
+    rdfs:label "Meeting defined"@en ,
+        "Reunião definida"@pt-br ;
+    pko:fromStep :DefineMeeting ;
+    pko:toStep :CheckAvailability .
+
+:AvailabilityToAgreement
+    rdf:type pko:Transition ;
+    rdfs:label "Time slots found"@en ,
+        "Horários encontrados"@pt-br ;
+    pko:fromStep :CheckAvailability ;
+    pko:toStep :AgreeOnSlot ;
+    pko:hasRequirement :CandidateSlotsFound .
+
+:AvailabilityToRetryDecision
+    rdf:type pko:Transition ;
+    rdfs:label "No time slot found"@en ,
+        "Nenhum horário encontrado"@pt-br ;
+    pko:fromStep :CheckAvailability ;
+    pko:toStep :DecideRetry ;
+    pko:hasRequirement :NoCandidateSlots .
+
+:AgreementToInvitation
+    rdf:type pko:Transition ;
+    rdfs:label "Time agreed"@en ,
+        "Horário acordado"@pt-br ;
+    pko:fromStep :AgreeOnSlot ;
+    pko:toStep :CreateInvitation ;
+    pko:hasRequirement :SlotAgreed .
+
+:AgreementToRetryDecision
+    rdf:type pko:Transition ;
+    rdfs:label "No time agreed"@en ,
+        "Nenhum horário acordado"@pt-br ;
+    pko:fromStep :AgreeOnSlot ;
+    pko:toStep :DecideRetry ;
+    pko:hasRequirement :NoSlotAgreed .
+
+:InvitationToResponses
+    rdf:type pko:Transition ;
+    rdfs:label "Event created and invitations sent"@en ,
+        "Evento criado e convites enviados"@pt-br ;
+    pko:fromStep :CreateInvitation ;
+    pko:toStep :CheckResponses ;
+    pko:hasRequirement :EventCreated .
+
+:InvitationToRetryDecision
+    rdf:type pko:Transition ;
+    rdfs:label "Event not created"@en ,
+        "Evento não criado"@pt-br ;
+    pko:fromStep :CreateInvitation ;
+    pko:toStep :DecideRetry ;
+    pko:hasRequirement :EventNotCreated .
+
+:ResponsesToScheduled
+    rdf:type pko:Transition ;
+    rdfs:label "No essential participant declined"@en ,
+        "Nenhum participante indispensável recusou"@pt-br ;
+    pko:fromStep :CheckResponses ;
+    pko:toStep :Scheduled ;
+    pko:hasRequirement :NoEssentialDecline .
+
+:ResponsesToRetryDecision
+    rdf:type pko:Transition ;
+    rdfs:label "An essential participant declined"@en ,
+        "Um participante indispensável recusou"@pt-br ;
+    pko:fromStep :CheckResponses ;
+    pko:toStep :DecideRetry ;
+    pko:hasRequirement :EssentialDeclined .
+
+:RetryDecisionToDefinition
+    rdf:type pko:Transition ;
+    rdfs:label "Try again"@en ,
+        "Tentar de novo"@pt-br ;
+    pko:fromStep :DecideRetry ;
+    pko:toStep :DefineMeeting ;
+    pko:hasRequirement :RetryChosen .
+
+:RetryDecisionToCancelled
+    rdf:type pko:Transition ;
+    rdfs:label "Give up"@en ,
+        "Desistir"@pt-br ;
+    pko:fromStep :DecideRetry ;
+    pko:toStep :Cancelled ;
+    pko:hasRequirement :RetryRefused .
+
+#################################################################
+# Requirements (the guards of the transitions)
+#################################################################
+
+:CandidateSlotsFound
+    rdf:type pko:Requirement ;
+    rdfs:label "At least one time slot was found"@en ,
+        "Pelo menos um horário foi encontrado"@pt-br ;
+    productivity:onVariable :CandidateSlots ;
+    productivity:minValues 1 .
+
+:NoCandidateSlots
+    rdf:type pko:Requirement ;
+    rdfs:label "No time slot was found"@en ,
+        "Nenhum horário foi encontrado"@pt-br ;
+    productivity:onVariable :CandidateSlots ;
+    productivity:maxValues 0 .
+
+:SlotAgreed
+    rdf:type pko:Requirement ;
+    rdfs:label "A time was agreed with the essential participants"@en ,
+        "Um horário foi acordado com os participantes indispensáveis"@pt-br ;
+    productivity:onVariable :AgreedSlot ;
+    productivity:minValues 1 .
+
+:NoSlotAgreed
+    rdf:type pko:Requirement ;
+    rdfs:label "No time was agreed with the essential participants"@en ,
+        "Nenhum horário foi acordado com os participantes indispensáveis"@pt-br ;
+    productivity:onVariable :AgreedSlot ;
+    productivity:maxValues 0 .
+
+:EventCreated
+    rdf:type pko:Requirement ;
+    rdfs:label "The calendar event was created and the invitations were sent"@en ,
+        "O evento de calendário foi criado e os convites foram enviados"@pt-br ;
+    productivity:onVariable :CalendarEvent ;
+    productivity:minValues 1 .
+
+:EventNotCreated
+    rdf:type pko:Requirement ;
+    rdfs:label "The calendar event was not created"@en ,
+        "O evento de calendário não foi criado"@pt-br ;
+    productivity:onVariable :CalendarEvent ;
+    productivity:maxValues 0 .
+
+:NoEssentialDecline
+    rdf:type pko:Requirement ;
+    rdfs:label "No essential participant declined"@en ,
+        "Nenhum participante indispensável recusou"@pt-br ;
+    productivity:onVariable :EssentialDecline ;
+    productivity:requiredValue false .
+
+:EssentialDeclined
+    rdf:type pko:Requirement ;
+    rdfs:label "An essential participant declined"@en ,
+        "Um participante indispensável recusou"@pt-br ;
+    productivity:onVariable :EssentialDecline ;
+    productivity:requiredValue true .
+
+:RetryChosen
+    rdf:type pko:Requirement ;
+    rdfs:label "It was decided to try again"@en ,
+        "Decidiu-se tentar de novo"@pt-br ;
+    productivity:onVariable :RetryScheduling ;
+    productivity:requiredValue true .
+
+:RetryRefused
+    rdf:type pko:Requirement ;
+    rdfs:label "It was decided not to try again"@en ,
+        "Decidiu-se não tentar de novo"@pt-br ;
+    productivity:onVariable :RetryScheduling ;
+    productivity:requiredValue false .
+
+#################################################################
+# Planned human actions (pko:Action), not executed productivity:Action
+#################################################################
+
+:ProvideMeetingDetails
+    rdf:type pko:Action ;
+    rdfs:label "Provide the meeting details"@en ,
+        "Informar os dados da reunião"@pt-br .
+
+:AskParticipantsForAvailability
+    rdf:type pko:Action ;
+    rdfs:label "Ask participants for available times"@en ,
+        "Pedir horários disponíveis aos participantes"@pt-br .
+
+:NegotiateMeetingTime
+    rdf:type pko:Action ;
+    rdfs:label "Agree on one of the proposed times"@en ,
+        "Acordar um dos horários propostos"@pt-br .
+
+:DecideToRetry
+    rdf:type pko:Action ;
+    rdfs:label "Decide whether to try again"@en ,
+        "Decidir se tenta de novo"@pt-br .
+
+#################################################################
+# Software functions (descriptions, not implementations)
+#################################################################
+
+:ReadCalendarAvailability
+    rdf:type pko:Function ;
+    rdfs:label "Read the availability in the calendars that can be read"@en ,
+        "Consultar a disponibilidade nos calendários que podem ser lidos"@pt-br .
+
+:CreateCalendarEvent
+    rdf:type pko:Function ;
+    rdfs:label "Create a calendar event"@en ,
+        "Criar um evento de calendário"@pt-br .
+
+:SendCalendarInvitations
+    rdf:type pko:Function ;
+    rdfs:label "Send calendar invitations"@en ,
+        "Enviar convites de calendário"@pt-br .
+
+:ReviewInvitationResponses
+    rdf:type pko:Function ;
+    rdfs:label "Read the responses to the invitations and tell whether an essential participant declined"@en ,
+        "Ler as respostas aos convites e dizer se um participante indispensável recusou"@pt-br .
+
+#################################################################
+# Variables: the information the steps read and produce
+#################################################################
+
+:MeetingSubject
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting subject"@en ,
+        "Assunto da reunião"@pt-br ;
+    productivity:valueType xsd:string .
+
+:MeetingParticipants
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting participants"@en ,
+        "Participantes da reunião"@pt-br ;
+    productivity:valueType schema:Person .
+
+:EssentialParticipants
+    rdf:type pplan:Variable ;
+    rdfs:label "Essential participants"@en ,
+        "Participantes indispensáveis"@pt-br ;
+    rdfs:comment
+        "The participants without whom the meeting does not happen: some of the meeting participants."@en ,
+        "Os participantes sem os quais a reunião não acontece: alguns dos participantes da reunião."@pt-br ;
+    productivity:valueType schema:Person .
+
+:MeetingDuration
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting duration"@en ,
+        "Duração da reunião"@pt-br ;
+    productivity:valueType time:Duration .
+
+:MeetingTimeZone
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting time zone"@en ,
+        "Fuso horário da reunião"@pt-br ;
+    rdfs:comment
+        "The time zone in which the proposed times are read."@en ,
+        "O fuso horário em que os horários propostos são lidos."@pt-br ;
+    productivity:valueType time:TimeZone .
+
+:SchedulingWindow
+    rdf:type pplan:Variable ;
+    rdfs:label "Scheduling window"@en ,
+        "Período de agendamento"@pt-br ;
+    rdfs:comment
+        "The period within which the meeting can happen."@en ,
+        "O período dentro do qual a reunião pode acontecer."@pt-br ;
+    productivity:valueType time:Interval .
+
+:MeetingMode
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting format"@en ,
+        "Formato da reunião"@pt-br ;
+    rdfs:comment
+        "In person, online or both."@en ,
+        "Presencial, remoto ou ambos."@pt-br ;
+    productivity:valueType schema:EventAttendanceModeEnumeration .
+
+:MeetingLocation
+    rdf:type pplan:Variable ;
+    rdfs:label "Meeting place or link"@en ,
+        "Local ou link da reunião"@pt-br ;
+    productivity:valueType xsd:string .
+
+:CandidateSlots
+    rdf:type pplan:Variable ;
+    rdfs:label "Candidate time slots"@en ,
+        "Horários candidatos"@pt-br ;
+    productivity:valueType time:Interval .
+
+:AgreedSlot
+    rdf:type pplan:Variable ;
+    rdfs:label "Agreed time slot"@en ,
+        "Horário acordado"@pt-br ;
+    rdfs:comment
+        "At most one value: the time agreed, among the candidate slots."@en ,
+        "No máximo um valor: o horário acordado, entre os candidatos."@pt-br ;
+    productivity:valueType time:Interval .
+
+:CalendarEvent
+    rdf:type pplan:Variable ;
+    rdfs:label "Calendar event"@en ,
+        "Evento de calendário"@pt-br ;
+    rdfs:comment
+        "At most one value: the event created for the meeting."@en ,
+        "No máximo um valor: o evento criado para a reunião."@pt-br ;
+    productivity:valueType schema:Event .
+
+:InvitationResponses
+    rdf:type pplan:Variable ;
+    rdfs:label "Invitation responses"@en ,
+        "Respostas aos convites"@pt-br ;
+    rdfs:comment
+        "The responses received so far, one for each participant that answered."@en ,
+        "As respostas recebidas até agora, uma para cada participante que respondeu."@pt-br ;
+    productivity:valueType schema:RsvpAction .
+
+:EssentialDecline
+    rdf:type pplan:Variable ;
+    rdfs:label "Essential participant declined"@en ,
+        "Participante indispensável recusou"@pt-br ;
+    rdfs:comment
+        "Exactly one value: true if an essential participant declined the invitation, false if none did."@en ,
+        "Exatamente um valor: verdadeiro se um participante indispensável recusou o convite, falso se nenhum recusou."@pt-br ;
+    productivity:valueType xsd:boolean .
+
+:RetryScheduling
+    rdf:type pplan:Variable ;
+    rdfs:label "Try scheduling again"@en ,
+        "Tentar agendar de novo"@pt-br ;
+    rdfs:comment
+        "Exactly one value: true to go back to the definition of the meeting, false to give up."@en ,
+        "Exatamente um valor: verdadeiro para voltar à definição da reunião, falso para desistir."@pt-br ;
+    productivity:valueType xsd:boolean .
